@@ -13,3 +13,12 @@
   * optional_paths: có thể chọn các LO học tiếp theo tuỳ điều kiện hiện tại
   * resources: tài nguyên bổ sung
   * tag: 1 số tag
+
+### Folder: demo_V4: Giảm số lượng state bằng cách gom nhóm
+
+## Giảm từ 90,000 → còn 3,240 trạng thái.
+
+* Rút gọn score thành 3 mức: low (score < 40), medium (40 < score < 80), high (score > 80)
+* Rút gọn time_spent (phút) thành 3 mức: < 0.5; < 1.5; > 1.5
+* Rút gọn attempts thành 4 mức: 0, 1, 2, >=3
+* Gom object_position thành 10 nhóm, mỗi nhóm có 5 object (position chia 5 lấy phần nguyên)
