@@ -2,7 +2,7 @@
 
 ### Folder: demo_V1_V2: 1 chương, chưa có bắt buộc kiến thức trước và option kiến thức sau
 
-* V1: 1 chương, chưa có tìm số cụm trong Kmean tự động
+* V1: 1 chương, chưa có tìm số cụm trong Kmean tự động, thứ tự gợi ý LO còn lộn xộn, chưa đi tới cuối khóa
 * V2: 1 chương, có tìm số cụm trong Kmean tự động
 
 ### Folder: demo_V3: 1 khoá học, thêm một số cột trong course_structure.json
