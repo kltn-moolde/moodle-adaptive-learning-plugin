@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <!-- Câu hỏi 1 -->
+  <question type="multichoice">
+    <name>
+      <text>Java if-else cơ bản</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[
+        <p>Giá trị của biến <code>result</code> là gì sau khi thực hiện đoạn mã sau?</p>
+        <pre><code>
+int a = 5;
+int b = 10;
+String result;
+if (a > b) {
+    result = "A lớn hơn B";
+} else {
+    result = "A không lớn hơn B";
+}
+System.out.println(result);
+        </code></pre>
+      ]]></text>
+    </questiontext>
+    <defaultgrade>1</defaultgrade>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text>Chính xác!</text>
+    </correctfeedback>
+    <incorrectfeedback format="html">
+      <text>Sai rồi, hãy kiểm tra lại điều kiện if.</text>
+    </incorrectfeedback>
+    <answer fraction="0">
+      <text><![CDATA[A lớn hơn B]]></text>
+    </answer>
+    <answer fraction="100">
+      <text><![CDATA[A không lớn hơn B]]></text>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Lỗi biên dịch]]></text>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Không in ra gì]]></text>
+    </answer>
+  </question>
+
+  <!-- Câu hỏi 2 -->
+  <question type="multichoice">
+    <name>
+      <text>Câu lệnh if-else lồng nhau</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[
+        <p>Đầu ra của đoạn mã dưới đây là gì?</p>
+        <pre><code>
+int x = 15;
+if (x > 10) {
+    if (x < 20) {
+        System.out.println("Giá trị hợp lệ");
+    } else {
+        System.out.println("Quá lớn");
+    }
+} else {
+    System.out.println("Quá nhỏ");
+}
+        </code></pre>
+      ]]></text>
+    </questiontext>
+    <defaultgrade>1</defaultgrade>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text>Chính xác!</text>
+    </correctfeedback>
+    <incorrectfeedback format="html">
+      <text>Sai rồi, hãy xem kỹ cả hai điều kiện if.</text>
+    </incorrectfeedback>
+    <answer fraction="100">
+      <text><![CDATA[Giá trị hợp lệ]]></text>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Quá nhỏ]]></text>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Quá lớn]]></text>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Lỗi cú pháp]]></text>
+    </answer>
+  </question>
+</quiz>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <!-- Question 1 -->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 1: Khái niệm biến</text>
+    </name>
+    <questiontext format="html">
+      <text>Biến trong lập trình là gì?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text>Biến là một vị trí lưu trữ trong bộ nhớ máy tính, được đặt tên để lưu trữ dữ liệu có thể thay đổi trong quá trình thực thi chương trình.</text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.33</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100" format="html">
+      <text>Một vị trí lưu trữ dữ liệu được đặt tên</text>
+      <feedback format="html">
+        <text>Đúng! Biến là một vị trí lưu trữ được đặt tên trong bộ nhớ.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Một giá trị không đổi</text>
+      <feedback format="html">
+        <text>Sai. Giá trị không đổi được gọi là hằng số, không phải biến.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Một hàm trong chương trình</text>
+      <feedback format="html">
+        <text>Sai. Hàm là một khối mã thực hiện một tác vụ cụ thể, không phải biến.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Một kiểu dữ liệu cố định</text>
+      <feedback format="html">
+        <text>Sai. Kiểu dữ liệu xác định đặc điểm của biến, không phải bản thân biến.</text>
+      </feedback>
+    </answer>
+  </question>
+
+  <!-- Question 2 -->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 2: Kiểu dữ liệu số</text>
+    </name>
+    <questiontext format="html">
+      <text>Kiểu dữ liệu nào sau đây được sử dụng để lưu trữ số nguyên?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text>Kiểu dữ liệu số nguyên (integer) được sử dụng để lưu trữ các số không có phần thập phân.</text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.33</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100" format="html">
+      <text>int</text>
+      <feedback format="html">
+        <text>Đúng! int là kiểu dữ liệu dùng để lưu trữ số nguyên.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>float</text>
+      <feedback format="html">
+        <text>Sai. float dùng để lưu trữ số thực có phần thập phân.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>string</text>
+      <feedback format="html">
+        <text>Sai. string dùng để lưu trữ chuỗi ký tự.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>boolean</text>
+      <feedback format="html">
+        <text>Sai. boolean dùng để lưu trữ giá trị true/false.</text>
+      </feedback>
+    </answer>
+  </question>
+
+  <!-- Question 3 -->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 3: Khai báo biến</text>
+    </name>
+    <questiontext format="html">
+      <text>Trong Python, cách khai báo biến đúng là gì?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text>Trong Python, biến được khai báo bằng cách gán giá trị cho nó mà không cần từ khóa cụ thể.</text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.33</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100" format="html">
+      <text>x = 10</text>
+      <feedback format="html">
+        <text>Đúng! Trong Python, biến được khai báo bằng cách gán giá trị trực tiếp.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>var x = 10</text>
+      <feedback format="html">
+        <text>Sai. Cú pháp này không đúng trong Python, mà thường được dùng trong JavaScript.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>int x = 10</text>
+      <feedback format="html">
+        <text>Sai. Python không yêu cầu khai báo kiểu dữ liệu khi tạo biến.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>declare x = 10</text>
+      <feedback format="html">
+        <text>Sai. Python không sử dụng từ khóa declare để khai báo biến.</text>
+      </feedback>
+    </answer>
+  </question>
+
+  <!-- Question 4 -->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 4: Kiểu dữ liệu chuỗi</text>
+    </name>
+    <questiontext format="html">
+      <text>Kiểu dữ liệu nào dùng để lưu trữ chuỗi ký tự trong Python?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text>Kiểu dữ liệu chuỗi (string) trong Python được sử dụng để lưu trữ các chuỗi ký tự, được bao quanh bởi dấu nháy đơn hoặc nháy kép.</text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.33</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100" format="html">
+      <text>str</text>
+      <feedback format="html">
+        <text>Đúng! str là kiểu dữ liệu dùng để lưu trữ chuỗi trong Python.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>char</text>
+      <feedback format="html">
+        <text>Sai. Python không có kiểu dữ liệu char riêng như một số ngôn ngữ khác.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>text</text>
+      <feedback format="html">
+        <text>Sai. Không có kiểu dữ liệu text trong Python.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>varchar</text>
+      <feedback format="html">
+        <text>Sai. varchar thường được dùng trong cơ sở dữ liệu, không phải trong Python.</text>
+      </feedback>
+    </answer>
+  </question>
+</quiz>

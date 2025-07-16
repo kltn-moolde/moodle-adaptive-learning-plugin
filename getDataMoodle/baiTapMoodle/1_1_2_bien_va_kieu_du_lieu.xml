@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="essay">
+    <name><text>Bài tập 1: Khai báo biến int</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+        <p>Hãy khai báo một biến nguyên có tên <code>age</code> và gán giá trị 20 cho biến đó trong Java.</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Biến int được khai báo bằng cú pháp: <code>int age = 20;</code></p>]]></text></generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>10</responsefieldlines>
+    <attachments>0</attachments>
+    <graderinfo format="html"><text><![CDATA[<p>Đáp án mẫu: <code>int age = 20;</code></p>]]></text></graderinfo>
+  </question>
+
+  <question type="essay">
+    <name><text>Bài tập 2: Biến kiểu double</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+        <p>Viết câu lệnh khai báo một biến kiểu <code>double</code> tên là <code>height</code> và gán giá trị 1.75.</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Ví dụ: <code>double height = 1.75;</code></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>10</responsefieldlines>
+    <attachments>0</attachments>
+    <graderinfo format="html"><text><![CDATA[<p>Đáp án mẫu: <code>double height = 1.75;</code></p>]]></text></graderinfo>
+  </question>
+
+  <question type="essay">
+    <name><text>Bài tập 3: Biến kiểu String</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+        <p>Khai báo một biến kiểu <code>String</code> có tên là <code>name</code> và gán giá trị <code>"Loc"</code>.</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Ví dụ: <code>String name = "Loc";</code></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>10</responsefieldlines>
+    <attachments>0</attachments>
+    <graderinfo format="html"><text><![CDATA[<p>Đáp án mẫu: <code>String name = "Loc";</code></p>]]></text></graderinfo>
+  </question>
+
+  <question type="essay">
+    <name><text>Bài tập 4: Gán giá trị cho biến</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+        <p>Giả sử bạn có một biến kiểu <code>int</code> tên là <code>score</code>. Hãy viết lệnh gán giá trị 95 cho biến này.</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Ví dụ: <code>score = 95;</code></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>10</responsefieldlines>
+    <attachments>0</attachments>
+    <graderinfo format="html"><text><![CDATA[<p>Đáp án mẫu: <code>score = 95;</code></p>]]></text></graderinfo>
+  </question>
+
+  <question type="essay">
+    <name><text>Bài tập 5: Tổng hợp biến</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+        <p>Viết đoạn mã khai báo 3 biến: <code>String fullName = "Nguyen Huu Loc"</code>, <code>int age = 21</code>, <code>double weight = 55.5</code>.</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html"><text><![CDATA[<p>Ví dụ:</p><pre><code>String fullName = "Nguyen Huu Loc";
+int age = 21;
+double weight = 55.5;</code></pre>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <responseformat>editor</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>10</responsefieldlines>
+    <attachments>0</attachments>
+    <graderinfo format="html"><text><![CDATA[<p>Đáp án mẫu:</p><pre><code>String fullName = "Nguyen Huu Loc";
+int age = 21;
+double weight = 55.5;</code></pre>]]></text></graderinfo>
+  </question>
+</quiz>
