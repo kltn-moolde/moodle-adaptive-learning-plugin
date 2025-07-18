@@ -27,3 +27,19 @@
 
 * Auth tự động, có các API chuẩn LTI 1.3, có API get data log từ moodle
 * Cần lấy token truy cập function từ moodle và gán vào application.properties
+* Hướng dẫn cấu hình:
+  * Tool name: User Log Viewer
+  * Tool URL: http://localhost:8080/lti/launch
+  * LTI version: LTI 1.3
+  * Public key type: Keyset URL
+  * Public keyset URL: http://localhost:8080/lti/jwks
+  * Initiate login URL: http://localhost:8080/lti/login
+  * Redirection URI(s): http://localhost:8080/lti/launch
+  * Kích hoạt "IMS LTI Names and Role Provisioning"
+  * Kích hoạt "IMS LTI Assignment and Grade Services"
+  * Share launcher's name with tool: Yes
+  * Share launcher's email with tool: Yes
+  * Accept grades from the tool: No
+  * Cập nhật file application.properties với thông tin của Moodle
+    * Secret key tự tạo (512 bit)
+    * Chỉnh sửa SecurityConfig cho phù hợp
