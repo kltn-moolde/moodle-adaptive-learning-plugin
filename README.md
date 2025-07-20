@@ -16,12 +16,29 @@
 
 ### Folder: demo_V4: Giảm số lượng state bằng cách gom nhóm
 
-### Giảm từ 90,000 → còn 3,240 trạng thái.
+####  Giảm từ 90,000 → còn 3,240 trạng thái.
 
 * Rút gọn score thành 3 mức: low (score < 40), medium (40 < score < 80), high (score > 80)
 * Rút gọn time_spent (phút) thành 3 mức: < 0.5; < 1.5; > 1.5
 * Rút gọn attempts thành 4 mức: 0, 1, 2, >=3
 * Gom object_position thành 10 nhóm, mỗi nhóm có 5 object (position chia 5 lấy phần nguyên)
+
+### Folder: local_userlog -> plugin php create api get data from Moodle
+
+### Folder: getDataMoodel: các hàm, api lấy data moodle
+
+* course_log_somethingelse.ipynb: lấy thông tin coure, log, nhiều thứ,...
+* courseOrigin.ipynb: lấy thông tin khoá học
+* lession.ipynb: lấy data bài học ở dạng lesson khi tạo
+* restructureDataCourseMoodle.ipynb: chuyển đổi json từ courseOrigin.ipynb thành dạng dễ đọc hơn
+
+* data/ : thư mục chưa data
+* sql/ : thư mục chứa câu lệnh sql về lấy log từ moodle 
+    - lấy log user theo khoá học
+    - lấy log user theo khoá học có kèm theo tag dok
+    - lấy log user full yêu cầu của model đang train -> chưa hoạt động đúng (20/07/25)
+
+
 
 ### Plugin Spring boot
 
