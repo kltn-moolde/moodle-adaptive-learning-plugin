@@ -100,6 +100,9 @@ public class LtiController {
     @PostMapping("/launch")
     public String launch(@RequestParam Map<String, Object> params, Model model) {
         try {
+            System.out.println("=== LAUNCH METHOD CALLED ===");
+            System.out.println("Received Form Params: " + params);
+
             String idToken = (String) params.get("id_token");
             String state = (String) params.get("state");
 
@@ -107,10 +110,15 @@ public class LtiController {
             // For this example, we'll simulate processing the launch data
 
             // Process the launch
+            System.out.println("=== truoc khi chayj processLaunch ===");
             LtiLaunch launch = ltiService.processLaunch(params);
+            System.out.println("=== sau khi chayj processLaunch ===");
 
+            System.out.println("=== truoc khi chay gen token ===");
             // Generate a session token
             String sessionToken = ltiService.generateJwtToken(launch.getUserId(), launch.getCourseId());
+
+            System.out.println("=== sau svdhsgkhi chay gen token ===");
 
             System.out.println("Launch object: " + launch.getUserId());
             System.out.println("Model keys: " + model.asMap().keySet());
@@ -124,6 +132,8 @@ public class LtiController {
             return "redirect:/lti/dashboard?token=" + sessionToken;
 
         } catch (Exception e) {
+            System.out.println("Received Form Params: " + params);
+            System.out.println("=== Loi LAUNCH METHOD ===");
             model.addAttribute("error", "Launch failed: " + e.getMessage());
             return "error";
         }

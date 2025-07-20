@@ -29,7 +29,9 @@ public class LtiService {
     private int jwtExpiration;
 
     public LtiLaunch processLaunch(Map<String, Object> launchData) {
+        System.out.println("====== Chayj toiws processLaunch ========");
         System.out.println("launchData: " + launchData);
+
 
         // Extract JWT token from launchData
         String idToken = (String) launchData.get("id_token");
@@ -82,32 +84,65 @@ public class LtiService {
     }
 
     // Helper method to decode JWT token
+//    private Map<String, Object> decodeJwtToken(String idToken) {
+//        try {
+//            System.out.println("=== decodeJwtToken METHOD CALLED ===");
+//            // Split JWT token into parts
+//            String[] tokenParts = idToken.split("\\.");
+//            if (tokenParts.length != 3) {
+//                throw new RuntimeException("Invalid JWT token format");
+//            }
+//
+//            // Decode payload (second part)
+//            String payload = tokenParts[1];
+//
+//            // Add padding if needed
+//            switch (payload.length() % 4) {
+//                case 2: payload += "=="; break;
+//                case 3: payload += "="; break;
+//            }
+//
+//            // Decode base64
+//            byte[] decodedBytes = Base64.getDecoder().decode(payload);
+//            String decodedPayload = new String(decodedBytes, StandardCharsets.UTF_8);
+//
+//            // Parse JSON
+//            ObjectMapper objectMapper = new ObjectMapper();
+//            return objectMapper.readValue(decodedPayload, Map.class);
+//
+//        } catch (Exception e) {
+//            System.out.println("Loi decodeJwtToken METHOD CALLED " + e);
+//            throw new RuntimeException("Error decoding JWT token", e);
+//        }
+//    }
+
     private Map<String, Object> decodeJwtToken(String idToken) {
         try {
-            // Split JWT token into parts
+            System.out.println("=== decodeJwtToken METHOD CALLED ===");
+
             String[] tokenParts = idToken.split("\\.");
             if (tokenParts.length != 3) {
                 throw new RuntimeException("Invalid JWT token format");
             }
 
-            // Decode payload (second part)
             String payload = tokenParts[1];
 
             // Add padding if needed
             switch (payload.length() % 4) {
                 case 2: payload += "=="; break;
                 case 3: payload += "="; break;
+                case 1: payload += "==="; break;
             }
 
-            // Decode base64
-            byte[] decodedBytes = Base64.getDecoder().decode(payload);
+            // Use Base64 URL Decoder
+            byte[] decodedBytes = Base64.getUrlDecoder().decode(payload);
             String decodedPayload = new String(decodedBytes, StandardCharsets.UTF_8);
 
-            // Parse JSON
             ObjectMapper objectMapper = new ObjectMapper();
             return objectMapper.readValue(decodedPayload, Map.class);
 
         } catch (Exception e) {
+            System.out.println("Loi decodeJwtToken METHOD CALLED " + e);
             throw new RuntimeException("Error decoding JWT token", e);
         }
     }
