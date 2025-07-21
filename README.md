@@ -60,3 +60,16 @@
   * Cập nhật file application.properties với thông tin của Moodle
     * Secret key tự tạo (512 bit)
     * Chỉnh sửa SecurityConfig cho phù hợp
+
+### Update demo V4
+
+* Chỉ tăng step khi thực sự được thêm recommendation
+* Thêm retry logic khi gặp object đã visited
+* Sửa logic Go_to_high_level và Go_to_low_level: tăng giảm chỉ trong cùng chapter, low thì chỉ giảm chapter, high thì chỉ tăng chapter
+* Cải thiện fallback: Ưu tiên objects theo thứ tự tự nhiên của khóa học, Chỉ fallback khi không có action cụ thể nào thành công
+* Tăng giới hạn vòng lặp để tránh trường hợp bất ngờ
+* Kết quả:
+  * Bước tuần tự: 1, 2, 3, 4, 5...
+  * Action chính xác: Go_to_low_level thực sự chọn DOK thấp hơn, Go_to_high_level chọn DOK cao hơn
+* Thêm các api flask: get user info, get recommendation, get course object
+
