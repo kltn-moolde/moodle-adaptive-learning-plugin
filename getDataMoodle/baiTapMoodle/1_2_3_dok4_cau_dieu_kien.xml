@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="essay">
+  <name>
+    <text>Phân tích và tối ưu đoạn mã điều kiện phức tạp</text>
+  </name>
+  <questiontext format="html">
+    <text><![CDATA[
+      <p>Cho đoạn mã Java sau:</p>
+      <pre>
+if ((score > 70 && isPassed) || (!isPassed && score > 90)) {
+    System.out.println("Eligible");
+} else {
+    System.out.println("Not Eligible");
+}
+      </pre>
+      <p>Yêu cầu:</p>
+      <ul>
+        <li>Giải thích logic hoạt động của đoạn mã trên.</li>
+        <li>Đề xuất cách viết lại đoạn mã này để rõ ràng, dễ hiểu và dễ bảo trì hơn.</li>
+      </ul>
+    ]]></text>
+  </questiontext>
+  <defaultgrade>1.0000000</defaultgrade>
+  <penalty>0.0000000</penalty>
+  <hidden>0</hidden>
+  <responseformat>editor</responseformat>
+  <responserequired>1</responserequired>
+</question>
+<question type="essay">
+  <name>
+    <text>Thiết kế hệ thống điều kiện phức tạp</text>
+  </name>
+  <questiontext format="html">
+    <text><![CDATA[
+      <p>Yêu cầu:</p>
+      <ul>
+        <li>Thiết kế một chương trình Java cho phép người dùng nhập vào tuổi, điểm trung bình và tình trạng hoàn thành khóa học.</li>
+        <li>Sử dụng các câu điều kiện lồng nhau để xác định người đó có đủ điều kiện tốt nghiệp không.</li>
+        <li>Viết đoạn mã tương ứng và giải thích tại sao bạn chọn cấu trúc điều kiện như vậy.</li>
+      </ul>
+    ]]></text>
+  </questiontext>
+  <defaultgrade>1.0000000</defaultgrade>
+  <penalty>0.0000000</penalty>
+  <hidden>0</hidden>
+  <responseformat>editor</responseformat>
+  <responserequired>1</responserequired>
+</question>
+<question type="essay">
+  <name>
+    <text>So sánh và đánh giá chiến lược viết điều kiện</text>
+  </name>
+  <questiontext format="html">
+    <text><![CDATA[
+      <p>So sánh hai chiến lược viết điều kiện trong Java sau:</p>
+      <ol>
+        <li>Sử dụng câu lệnh if-else lồng nhau.</li>
+        <li>Sử dụng biểu thức điều kiện kết hợp với toán tử ba ngôi (ternary operator).</li>
+      </ol>
+      <p>Yêu cầu:</p>
+      <ul>
+        <li>Viết ví dụ cụ thể cho mỗi chiến lược.</li>
+        <li>Phân tích ưu nhược điểm trong các tình huống sử dụng khác nhau.</li>
+      </ul>
+    ]]></text>
+  </questiontext>
+  <defaultgrade>1.0000000</defaultgrade>
+  <penalty>0.0000000</penalty>
+  <hidden>0</hidden>
+  <responseformat>editor</responseformat>
+  <responserequired>1</responserequired>
+</question>
+</quiz>

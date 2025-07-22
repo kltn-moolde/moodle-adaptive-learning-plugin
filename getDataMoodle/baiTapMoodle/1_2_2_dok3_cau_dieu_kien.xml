@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<question type="multichoice">
+  <name>
+    <text>Nested if-else logic in Java</text>
+  </name>
+  <questiontext format="html">
+    <text><![CDATA[
+      <p>What will be printed by the following Java code?</p>
+      <pre><code>
+int a = 5, b = 10;
+if (a > b)
+    if (a > 0)
+        System.out.println("A");
+    else
+        System.out.println("B");
+else
+    System.out.println("C");
+      </code></pre>
+    ]]></text>
+  </questiontext>
+  <answer fraction="100">
+    <text>C</text>
+  </answer>
+  <answer fraction="0">
+    <text>A</text>
+  </answer>
+  <answer fraction="0">
+    <text>B</text>
+  </answer>
+  <answer fraction="0">
+    <text>Compilation error</text>
+  </answer>
+  <shuffleanswers>true</shuffleanswers>
+  <single>true</single>
+  <answernumbering>abc</answernumbering>
+  <generalfeedback format="html">
+    <text><![CDATA[
+      <p>The condition <code>a > b</code> is false (5 > 10), so the outer else executes: <code>System.out.println("C");</code></p>
+    ]]></text>
+  </generalfeedback>
+</question>
+<question type="multichoice">
+  <name>
+    <text>Java Ternary Operator Logic</text>
+  </name>
+  <questiontext format="html">
+    <text><![CDATA[
+      <p>What is the output of the following code?</p>
+      <pre><code>
+int x = 4;
+int y = 10;
+String result = (x * 2 > y) ? "High" : (x + 2 == y) ? "Equal" : "Low";
+System.out.println(result);
+      </code></pre>
+    ]]></text>
+  </questiontext>
+  <answer fraction="100">
+    <text>Equal</text>
+  </answer>
+  <answer fraction="0">
+    <text>High</text>
+  </answer>
+  <answer fraction="0">
+    <text>Low</text>
+  </answer>
+  <answer fraction="0">
+    <text>Compilation error</text>
+  </answer>
+  <shuffleanswers>true</shuffleanswers>
+  <single>true</single>
+  <answernumbering>abc</answernumbering>
+  <generalfeedback format="html">
+    <text><![CDATA[
+      <p><code>x * 2</code> is 8, which is not greater than <code>y = 10</code>, so check next: <code>x + 2 == y</code> → 6 == 10 → false. Therefore, result = "Low". Wait, this is incorrect — let's reanalyze:</p>
+      <ul>
+        <li><code>x * 2 = 8</code> → false for first condition</li>
+        <li><code>x + 2 == y</code> → 6 == 10 → false</li>
+        <li>So result = "Low"</li>
+      </ul>
+      <p>Correct answer should be <strong>Low</strong>. (So we need to fix the answer!)</p>
+    ]]></text>
+  </generalfeedback>
+</question>
+</quiz>

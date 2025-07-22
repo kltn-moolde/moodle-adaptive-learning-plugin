@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <!-- Câu 1 -->
+  <question type="multichoice">
+    <name>
+      <text>DOK4 - Tối ưu hóa điều kiện</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[
+        <p>Xét đoạn mã Java sau:</p>
+        <pre>
+if ((age > 18 && hasID) || (age > 18 && isMember)) {
+    grantAccess();
+}
+        </pre>
+        <p>Đoạn mã trên có thể được viết ngắn gọn hơn bằng điều kiện nào dưới đây mà vẫn giữ nguyên logic?</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback>
+      <text><![CDATA[
+        <p>Đáp án đúng là <code>if (age > 18 && (hasID || isMember))</code>. Điều kiện ban đầu kiểm tra tuổi trên 18 và (có ID hoặc là thành viên). Bằng cách nhóm lại, ta có thể viết gọn mà vẫn giữ logic.</p>
+      ]]></text>
+    </generalfeedback>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="100">
+      <text><![CDATA[<code>if (age > 18 && (hasID || isMember))</code>]]></text>
+      <feedback>
+        <text><![CDATA[Đúng, điều kiện này tương đương với mã gốc nhưng ngắn gọn hơn.]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[<code>if ((age > 18 || hasID) && isMember)</code>]]></text>
+      <feedback>
+        <text><![CDATA[Sai, điều kiện này yêu cầu isMember phải đúng, không tương đương với mã gốc.]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[<code>if (hasID || isMember)</code>]]></text>
+      <feedback>
+        <text><![CDATA[Sai, điều kiện này bỏ qua kiểm tra tuổi, làm thay đổi logic.]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[<code>if ((hasID && isMember) && age > 18)</code>]]></text>
+      <feedback>
+        <text><![CDATA[Sai, điều kiện này yêu cầu cả hasID và isMember phải đúng, không tương đương với mã gốc.]]></text>
+      </feedback>
+    </answer>
+  </question>
+
+  <!-- Câu 2 -->
+  <question type="multichoice">
+    <name>
+      <text>DOK4 - Đánh giá hiệu quả mã</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[
+        <p>Đoạn mã sau kiểm tra điều kiện đăng ký thành viên VIP:</p>
+        <pre>
+if (points >= 1000 && (years > 2 || isRecommended)) {
+    upgradeVIP();
+}
+        </pre>
+        <p>Câu lệnh trên có điểm yếu gì?</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback>
+      <text><![CDATA[
+        <p>Đáp án đúng là "Có thể gây khó đọc – nên tách điều kiện phụ để dễ hiểu". Điều kiện phức tạp với toán tử lồng nhau có thể làm mã khó bảo trì. Tách điều kiện thành các biến trung gian sẽ cải thiện tính rõ ràng.</p>
+      ]]></text>
+    </generalfeedback>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0">
+      <text><![CDATA[Điều kiện không rõ ràng do quá ngắn]]></text>
+      <feedback>
+        <text><![CDATA[Sai, mã không quá ngắn mà ngược lại, điều kiện phức tạp gây khó đọc.]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text><![CDATA[Có thể gây khó đọc – nên tách điều kiện phụ để dễ hiểu]]></text>
+      <feedback>
+        <text><![CDATA[Đúng, điều kiện phức tạp nên được tách ra để tăng tính dễ đọc và bảo trì.]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Điều kiện luôn đúng nếu <code>isRecommended == true</code>]]></text>
+      <feedback>
+        <text><![CDATA[Sai, điều kiện vẫn yêu cầu <code>points >= 1000</code>, nên không luôn đúng.]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[Không thể dùng <code>&&</code> và <code>||</code> trong cùng điều kiện]]></text>
+      <feedback>
+        <text><![CDATA[Sai, có thể sử dụng cả <code>&&</code> và <code>||</code> trong cùng điều kiện nếu logic rõ ràng.]]></text>
+      </feedback>
+    </answer>
+  </question>
+
+  <!-- Câu 3 -->
+  <question type="multichoice">
+    <name>
+      <text>DOK4 - Thiết kế điều kiện phân loại học sinh</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[
+        <p>Bạn được giao thiết kế điều kiện phân loại học sinh như sau:</p>
+        <ul>
+          <li>"Giỏi" nếu điểm trung bình từ 8 trở lên và không có môn nào dưới 6.</li>
+          <li>"Khá" nếu điểm trung bình từ 6.5 trở lên và không có môn nào dưới 5.</li>
+          <li>Ngược lại là "Trung bình".</li>
+        </ul>
+        <p>Trong các đoạn mã sau, đoạn nào thể hiện đúng logic?</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback>
+      <text><![CDATA[
+        <p>Đáp án đúng sử dụng điều kiện <code>if (avg >= 8 && minMark >= 6)</code> cho "Giỏi", sau đó <code>else if (avg >= 6.5 && minMark >= 5)</code> cho "Khá", và <code>else</code> cho "Trung bình". Các đáp án khác hoặc thiếu điều kiện, hoặc có lỗi logic.</p>
+      ]]></text>
+    </generalfeedback>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+    <answer fraction="0">
+      <text><![CDATA[
+<pre>
+if (avg >= 8 && minMark >= 6)
+    grade = "Giỏi";
+else if (avg >= 6.5 && minMark >= 5)
+    grade = "Khá";
+else
+    grade = "Giỏi";
+</pre>
+      ]]></text>
+      <feedback>
+        <text><![CDATA[Sai, trường hợp <code>else</code> trả về "Giỏi" thay vì "Trung bình", không đúng với yêu cầu.]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text><![CDATA[
+<pre>
+if (avg >= 8 && minMark >= 6)
+    grade = "Giỏi";
+else if (avg >= 6.5 && minMark >= 5)
+    grade = "Khá";
+else
+    grade = "Trung bình";
+</pre>
+      ]]></text>
+      <feedback>
+        <text><![CDATA[Đúng, đoạn mã này thể hiện chính xác logic phân loại học sinh theo yêu cầu.]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[
+<pre>
+if (avg >= 8 || minMark >= 6)
+    grade = "Giỏi";
+else
+    grade = "Trung bình";
+</pre>
+      ]]></text>
+      <feedback>
+        <text><![CDATA[Sai, điều kiện dùng <code>||</code> thay vì <code>&&</code> và bỏ qua phân loại "Khá".]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text><![CDATA[
+<pre>
+if (minMark >= 5)
+    grade = "Khá";
+else
+    grade = "Trung bình";
+</pre>
+      ]]></text>
+      <feedback>
+        <text><![CDATA[Sai, đoạn mã này bỏ qua điều kiện điểm trung bình và phân loại "Giỏi".]]></text>
+      </feedback>
+    </answer>
+  </question>
+</quiz>
