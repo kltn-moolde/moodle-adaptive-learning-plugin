@@ -16,7 +16,7 @@
 
 ### Folder: demo_V4: Giảm số lượng state bằng cách gom nhóm
 
-####  Giảm từ 90,000 → còn 3,240 trạng thái.
+#### Giảm từ 90,000 → còn 3,240 trạng thái.
 
 * Rút gọn score thành 3 mức: low (score < 40), medium (40 < score < 80), high (score > 80)
 * Rút gọn time_spent (phút) thành 3 mức: < 0.5; < 1.5; > 1.5
@@ -27,18 +27,26 @@
 
 ### Folder: getDataMoodel: các hàm, api lấy data moodle
 
-* course_log_somethingelse.ipynb: lấy thông tin coure, log, nhiều thứ,...
-* courseOrigin.ipynb: lấy thông tin khoá học
-* lession.ipynb: lấy data bài học ở dạng lesson khi tạo
-* restructureDataCourseMoodle.ipynb: chuyển đổi json từ courseOrigin.ipynb thành dạng dễ đọc hơn
+course_log_somethingelse.ipynb: lấy thông tin coure, log, nhiều thứ,...
 
-* data/ : thư mục chưa data
-* sql/ : thư mục chứa câu lệnh sql về lấy log từ moodle 
-    - lấy log user theo khoá học
-    - lấy log user theo khoá học có kèm theo tag dok
-    - lấy log user full yêu cầu của model đang train -> chưa hoạt động đúng (20/07/25)
+courseOrigin.ipynb: lấy thông tin khoá học
 
+lession.ipynb: lấy data bài học ở dạng lesson khi tạo
 
+restructureDataCourseMoodle.ipynb: chuyển đổi json từ courseOrigin.ipynb thành dạng dễ đọc hơn
+
+data/ : thư mục chưa data
+
+sql/ : thư mục chứa câu lệnh sql về lấy log từ moodle
+
+- lấy log user theo khoá học
+- lấy log user theo khoá học có kèm theo tag dok
+- lấy log user full yêu cầu của model đang train -> chưa hoạt động đúng (20/07/25)
+
+#### update important: 22/07/25
+
+* getDataMoodle/data/backup-moodle2-course-4-java-20250722-0445.mbz: file export/import khoá học
+* getDataMoodle/majorTableMoodle.sql -> dòng 500, câu lệnh sql lấy log bài tập gần hoàn thiện
 
 ### Plugin Spring boot
 
@@ -72,4 +80,3 @@
   * Bước tuần tự: 1, 2, 3, 4, 5...
   * Action chính xác: Go_to_low_level thực sự chọn DOK thấp hơn, Go_to_high_level chọn DOK cao hơn
 * Thêm các api flask: get user info, get recommendation, get course object
-

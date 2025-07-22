@@ -183,6 +183,7 @@ LIMIT 200;
 
 
 
+
 -- thời gian hoàn thành của 1 bài tập có kèm theo thông tin khoá học, bài học nào (import câu hỏi ở dạng trong 1 lesson), có kèm theo điểm số
 -- chỉnh lại l.userid = 4 và l.courseid = 4 nếu cần lấy cho user và khóa học khác
 SELECT
@@ -273,116 +274,303 @@ ORDER BY
   l.timecreated DESC
 LIMIT 200;
 
------------ KẾT THÚC -----------
 
 
 
-
-
-
-
-
------------ LỖI -----------
--- Truy vấn để lấy tất cả thông tin mình cần nhưng bị lỗi, chưa đúng
-WITH log_data AS (
-  SELECT 
-    l.id AS log_id,
-    l.userid AS user_id,
-    FROM_UNIXTIME(l.timecreated) AS timestamp,
-    l.objecttable,
-    l.objectid,
-    l.target AS activity_type,
-    l.action,
-    l.contextinstanceid,
-    l.courseid,
-    t.name AS dok_tag,
-    cm.id AS course_module_id,
-    cm.instance,
-    cm.module,
-    cm.idnumber,
-    -- Tách chapter và unit từ idnumber nếu có
-    SUBSTRING_INDEX(idnumber, '.', 1) AS chapter,
-    SUBSTRING_INDEX(SUBSTRING_INDEX(idnumber, '.', 2), '.', -1) AS unit,
-    
-    -- Tính time_spent bằng cách lấy hiệu giữa 2 lần truy cập liên tiếp
-    TIMESTAMPDIFF(SECOND,
-      LAG(FROM_UNIXTIME(l.timecreated)) OVER (PARTITION BY l.userid ORDER BY l.timecreated),
-      FROM_UNIXTIME(l.timecreated)
-    ) AS time_spent
-
-  FROM mdl_logstore_standard_log l
-  LEFT JOIN mdl_modules m ON m.name = l.objecttable
-  LEFT JOIN mdl_course_modules cm 
-      ON cm.module = m.id AND cm.instance = l.objectid
-  LEFT JOIN mdl_tag_instance ti 
-      ON ti.itemid = cm.id AND ti.itemtype = 'course_modules'
-  LEFT JOIN mdl_tag t 
-      ON t.id = ti.tagid
-  WHERE
-    l.userid = 4
-    AND l.courseid = 3
-    AND l.target IN ('course_module', 'question', 'lesson', 'resource', 'page', 'quiz')
-),
-
--- Lấy điểm và số lần làm bài nếu là quiz
-quiz_data AS (
-  SELECT
-    qa.userid,
-    q.id AS quizid,
-    qg.grade AS score,
-    COUNT(qa.id) AS attempts
-  FROM mdl_quiz q
-  LEFT JOIN mdl_quiz_grades qg ON qg.quiz = q.id
-  LEFT JOIN mdl_quiz_attempts qa ON qa.quiz = q.id AND qa.userid = 4
-  WHERE q.course = 3
-  GROUP BY qa.userid, q.id, qg.grade
-),
-
--- Lấy thông tin hoàn thành hoạt động
-completion_data AS (
-  SELECT 
-    userid,
-    coursemoduleid,
-    completionstate AS completed
-  FROM mdl_course_modules_completion
-  WHERE userid = 4
-)
-
--- Ghép tất cả lại
+-- chua lam xong, lam xong, attempt 1.0
 SELECT
-  l.log_id,
-  l.user_id,
-  l.timestamp,
-  l.objecttable,
-  l.objectid,
-  l.activity_type,
-  l.action,
-  l.contextinstanceid,
-  l.courseid,
-  l.dok_tag,
-  l.idnumber,
-  l.chapter,
-  l.unit,
-  l.time_spent,
-  
-  -- Quiz info
-  q.score,
-  q.attempts,
-
-  -- Có phải dạng đánh giá không?
+  l.userid AS user_id,
+  l.objectid AS lesson_id,
+  c.fullname AS course_name,
+  cs.section AS section_number,
+  cs.name AS section_name,
+  m.name AS module_name,
+  FROM_UNIXTIME(MIN(l.timecreated)) AS start_time,
+  FROM_UNIXTIME(MAX(l.timecreated)) AS end_time,
+  SEC_TO_TIME(MAX(l.timecreated) - MIN(l.timecreated)) AS duration,
+  t.name AS dok_tag,
+  lg.grade AS score,
+  COUNT(CASE WHEN l.action = 'started' THEN 1 END) AS started_count,
+  COUNT(CASE WHEN l.action = 'ended' THEN 1 END) AS ended_count,
+  COUNT(DISTINCT lt.id) AS attempts,
   CASE 
-    WHEN l.objecttable IN ('quiz', 'lesson') THEN 1
-    ELSE 0
-  END AS has_assessment,
-
-  -- Trạng thái hoàn thành
-  c.completed
-
-FROM log_data l
-LEFT JOIN quiz_data q 
-  ON q.userid = l.user_id AND l.objecttable = 'quiz' AND q.quizid = l.objectid
-LEFT JOIN completion_data c 
-  ON c.userid = l.user_id AND c.coursemoduleid = l.course_module_id
-
-ORDER BY l.timestamp DESC
+    WHEN COUNT(CASE WHEN l.action = 'ended' THEN 1 END) = 0 THEN 'incomplete'
+    WHEN lg.grade IS NOT NULL THEN 'completed'
+    ELSE 'in_progress'
+  END AS status
+FROM mdl_logstore_standard_log l
+LEFT JOIN mdl_modules m 
+    ON m.name = l.objecttable
+LEFT JOIN mdl_course_modules cm 
+    ON cm.module = m.id AND cm.instance = l.objectid
+LEFT JOIN mdl_course c 
+    ON c.id = l.courseid
+LEFT JOIN mdl_course_sections cs 
+    ON cs.id = cm.section
+LEFT JOIN mdl_tag_instance ti 
+    ON ti.itemid = cm.id AND ti.itemtype = 'course_modules'
+LEFT JOIN mdl_tag t 
+    ON t.id = ti.tagid
+LEFT JOIN mdl_lesson_grades lg
+    ON lg.lessonid = l.objectid AND lg.userid = l.userid
+LEFT JOIN mdl_lesson_timer lt
+    ON lt.lessonid = l.objectid AND lt.userid = l.userid
+WHERE
+  l.userid = 4
+  AND l.courseid = 4
+  AND l.target = 'lesson'
+  AND l.action IN ('started', 'ended')
+GROUP BY
+  l.userid, l.objectid, c.fullname, cs.section, cs.name, m.name, t.name, lg.grade
+ORDER BY
+  MAX(l.timecreated) DESC
 LIMIT 200;
+
+
+
+
+
+
+-- đếm số điểm hiện tại của bài tập - không cần hoàn thành mới tính điểm - 1.1
+SELECT 
+  u.id AS user_id,
+  u.firstname,
+  u.lastname,
+  l.id AS lesson_id,
+  l.name AS lesson_name,
+
+  -- Điểm thật nếu đã hoàn thành
+  lg.grade AS real_grade,
+
+  -- Tính tổng số câu đúng hiện tại (la.correct = 1)
+  CASE 
+    WHEN lg.grade IS NULL AND total_questions > 0 THEN 
+      ROUND(100.0 * correct_answers / total_questions, 2)
+    ELSE NULL
+  END AS estimated_grade,
+
+  -- Ghi chú xem là điểm thật hay tạm
+  CASE 
+    WHEN lg.grade IS NOT NULL THEN 'Real'
+    ELSE 'Estimated'
+  END AS grade_type
+
+FROM mdl_user u
+JOIN mdl_lesson l
+-- Điểm thật
+LEFT JOIN mdl_lesson_grades lg ON lg.lessonid = l.id AND lg.userid = u.id
+
+-- Tổng số câu đúng
+LEFT JOIN (
+  SELECT lessonid, userid, COUNT(*) AS correct_answers
+  FROM mdl_lesson_attempts
+  WHERE correct = 1
+  GROUP BY lessonid, userid
+) corrects ON corrects.lessonid = l.id AND corrects.userid = u.id
+
+-- Tổng số câu trong bài học
+LEFT JOIN (
+  SELECT lessonid, COUNT(*) AS total_questions
+  FROM mdl_lesson_pages
+  WHERE qtype > 0  -- chỉ đếm câu hỏi, loại qtype = 0 là thông tin
+  GROUP BY lessonid
+) questions ON questions.lessonid = l.id
+
+WHERE u.id = 4
+GROUP BY u.id, l.id, lg.grade, correct_answers, total_questions;
+
+
+
+
+
+-- chua lam xong, lam xong, attempt - 1.2
+SELECT
+  l.userid AS user_id,
+  l.objectid AS lesson_id,
+  c.fullname AS course_name,
+  cs.section AS section_number,
+  cs.name AS section_name,
+  m.name AS module_name,
+  FROM_UNIXTIME(MIN(l.timecreated)) AS start_time,
+  FROM_UNIXTIME(MAX(l.timecreated)) AS end_time,
+  SEC_TO_TIME(MAX(l.timecreated) - MIN(l.timecreated)) AS duration,
+  t.name AS dok_tag,
+  lg.grade AS score,
+  COUNT(CASE WHEN l.action = 'started' THEN 1 END) AS started_count,
+  COUNT(CASE WHEN l.action = 'ended' THEN 1 END) AS ended_count,
+  COUNT(DISTINCT lt.id) AS attempts,
+  CASE 
+    WHEN COUNT(CASE WHEN l.action = 'ended' THEN 1 END) = 0 THEN 'incomplete'
+    WHEN lg.grade IS NOT NULL THEN 'completed'
+    ELSE 'in_progress'
+  END AS status
+FROM mdl_logstore_standard_log l
+LEFT JOIN mdl_modules m 
+    ON m.name = l.objecttable
+LEFT JOIN mdl_course_modules cm 
+    ON cm.module = m.id AND cm.instance = l.objectid
+LEFT JOIN mdl_course c 
+    ON c.id = l.courseid
+LEFT JOIN mdl_course_sections cs 
+    ON cs.id = cm.section
+LEFT JOIN mdl_tag_instance ti 
+    ON ti.itemid = cm.id AND ti.itemtype = 'course_modules'
+LEFT JOIN mdl_tag t 
+    ON t.id = ti.tagid
+LEFT JOIN mdl_lesson_grades lg
+    ON lg.lessonid = l.objectid AND lg.userid = l.userid
+LEFT JOIN mdl_lesson_timer lt
+    ON lt.lessonid = l.objectid AND lt.userid = l.userid
+WHERE
+  l.userid = 4
+  AND l.courseid = 4
+  AND l.target = 'lesson'
+  AND l.action IN ('started', 'ended')
+GROUP BY
+  l.userid, l.objectid, c.fullname, cs.section, cs.name, m.name, t.name, lg.grade
+ORDER BY
+  MAX(l.timecreated) DESC
+LIMIT 200;
+
+
+
+
+
+-- đếm số điểm hiện tại của bài tập - không cần hoàn thành mới tính điểm - 1.1 + 1.2
+SELECT 
+  u.id AS user_id,
+  u.firstname,
+  u.lastname,
+  l.id AS lesson_id,
+  l.name AS lesson_name,
+
+  -- Điểm thật nếu đã hoàn thành
+  lg.grade AS real_grade,
+
+  -- Tính tổng số câu đúng hiện tại (la.correct = 1)
+  CASE 
+    WHEN lg.grade IS NULL AND total_questions > 0 THEN 
+      ROUND(100.0 * correct_answers / total_questions, 2)
+    ELSE NULL
+  END AS estimated_grade,
+
+  -- Ghi chú xem là điểm thật hay tạm
+  CASE 
+    WHEN lg.grade IS NOT NULL THEN 'Real'
+    ELSE 'Estimated'
+  END AS grade_type
+
+FROM mdl_user u
+JOIN mdl_lesson l
+-- Điểm thật
+LEFT JOIN mdl_lesson_grades lg ON lg.lessonid = l.id AND lg.userid = u.id
+
+-- Tổng số câu đúng
+LEFT JOIN (
+  SELECT lessonid, userid, COUNT(*) AS correct_answers
+  FROM mdl_lesson_attempts
+  WHERE correct = 1
+  GROUP BY lessonid, userid
+) corrects ON corrects.lessonid = l.id AND corrects.userid = u.id
+
+-- Tổng số câu trong bài học
+LEFT JOIN (
+  SELECT lessonid, COUNT(*) AS total_questions
+  FROM mdl_lesson_pages
+  WHERE qtype > 0  -- chỉ đếm câu hỏi, loại qtype = 0 là thông tin
+  GROUP BY lessonid
+) questions ON questions.lessonid = l.id
+
+WHERE u.id = 4
+GROUP BY u.id, l.id, lg.grade, correct_answers, total_questions;
+
+
+
+
+
+-- LẤY log bài tập của user cụ thể trong 1 khoá học có kèm theo thông tin bài học, khoá học, section, mô-đun, tag dok, thời gian bắt đầu và kết thúc, thời gian hoàn thành, điểm số
+-- chỉnh lại l.userid = 4 và l.courseid = 4 nếu cần lấy cho user và khóa học khác
+-- chỉnh lại l.target nếu cần lấy log cho loại hoạt động khác
+-- Gộp 1.0 và 1.1 và 1.2
+-- Có 1 trường hợp chưa hoạt động đúng là khi bài tập chưa hoàn thành thì nó hiện duration = 00:00:00
+-- Đúng phải là thời gian đã làm là bao lâu
+-- Các trường khác đã đủ đối với log là bài tập để train model
+-- Hiện tại thiếu video
+
+SELECT
+  u.id AS user_id,
+  u.firstname,
+  u.lastname,
+  l.objectid AS lesson_id,
+  ls.name AS lesson_name,
+  c.fullname AS course_name,
+  cs.section AS section_number,
+  cs.name AS section_name,
+  m.name AS module_name,
+  FROM_UNIXTIME(MIN(l.timecreated)) AS start_time,
+  FROM_UNIXTIME(MAX(l.timecreated)) AS end_time,
+  SEC_TO_TIME(MAX(l.timecreated) - MIN(l.timecreated)) AS duration,
+  t.name AS dok_tag,
+
+  -- Điểm: thực hoặc tạm tính
+  CASE 
+    WHEN lg.grade IS NOT NULL THEN lg.grade
+    WHEN corrects.correct_answers IS NOT NULL AND questions.total_questions > 0 THEN 
+      ROUND(100.0 * corrects.correct_answers / questions.total_questions, 2)
+    ELSE NULL
+  END AS score,
+
+  -- Ghi chú điểm là thật hay tạm
+  CASE 
+    WHEN lg.grade IS NOT NULL THEN 'Real'
+    WHEN corrects.correct_answers IS NOT NULL THEN 'Estimated'
+    ELSE 'No attempts'
+  END AS grade_type
+
+FROM mdl_logstore_standard_log l
+
+JOIN mdl_user u ON u.id = l.userid
+LEFT JOIN mdl_lesson ls ON ls.id = l.objectid
+LEFT JOIN mdl_modules m ON m.name = l.objecttable
+LEFT JOIN mdl_course_modules cm ON cm.module = m.id AND cm.instance = l.objectid
+LEFT JOIN mdl_course c ON c.id = l.courseid
+LEFT JOIN mdl_course_sections cs ON cs.id = cm.section
+LEFT JOIN mdl_tag_instance ti ON ti.itemid = cm.id AND ti.itemtype = 'course_modules'
+LEFT JOIN mdl_tag t ON t.id = ti.tagid
+
+-- Điểm thực
+LEFT JOIN mdl_lesson_grades lg ON lg.lessonid = l.objectid AND lg.userid = l.userid
+
+-- Câu trả lời đúng
+LEFT JOIN (
+  SELECT lessonid, userid, COUNT(*) AS correct_answers
+  FROM mdl_lesson_attempts
+  WHERE correct = 1
+  GROUP BY lessonid, userid
+) corrects ON corrects.lessonid = l.objectid AND corrects.userid = l.userid
+
+-- Tổng số câu hỏi trong lesson
+LEFT JOIN (
+  SELECT lessonid, COUNT(*) AS total_questions
+  FROM mdl_lesson_pages
+  WHERE qtype > 0
+  GROUP BY lessonid
+) questions ON questions.lessonid = l.objectid
+
+WHERE
+  l.userid = 4
+  AND l.courseid = 4
+  AND l.target = 'lesson'
+  AND l.action IN ('started', 'ended')
+
+GROUP BY
+  u.id, u.firstname, u.lastname, l.objectid, ls.name,
+  c.fullname, cs.section, cs.name, m.name, t.name,
+  lg.grade, corrects.correct_answers, questions.total_questions
+
+ORDER BY
+  MAX(l.timecreated) DESC
+LIMIT 200;
+
+
+----------- KẾT THÚC -----------

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <!-- Câu hỏi 1 -->
+  <question type="multichoice">
+    <name>
+      <text>DOK3 - Phân tích cấu trúc chương trình Java</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[
+        <p>Hãy phân tích đoạn mã sau và cho biết điều gì sẽ xảy ra khi biên dịch và chạy chương trình:</p>
+        <pre>
+public class Main {
+    static int x = 10;
+    public static void main(String[] args) {
+        int x = 5;
+        System.out.println(x);
+    }
+}
+        </pre>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[Câu hỏi đánh giá khả năng phân tích sự khác biệt giữa biến toàn cục (static) và biến cục bộ trong Java.]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <shuffleanswers>1</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text>Chính xác!</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Gần đúng. Hãy kiểm tra kỹ lại các phạm vi biến.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Sai. Hãy xem lại phạm vi của biến trong Java.</text>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>In ra 5 vì biến cục bộ x trong hàm main() che khuất biến static x.</p>]]></text>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>In ra 10 vì biến static x được ưu tiên sử dụng.</p>]]></text>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Lỗi biên dịch do trùng tên biến.</p>]]></text>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Lỗi runtime do không khởi tạo biến x.</p>]]></text>
+    </answer>
+  </question>
+
+  <!-- Câu hỏi 2 -->
+  <question type="multichoice">
+    <name>
+      <text>DOK3 - Xây dựng thứ tự thực thi trong Java</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[
+        <p>Đâu là trình tự thực thi đúng của một chương trình Java khi có static block, constructor và method main?</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[Câu hỏi yêu cầu người học hiểu rõ thứ tự khởi tạo và thực thi trong một chương trình Java.]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <shuffleanswers>1</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text>Chính xác!</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Gần đúng, hãy xem xét lại thứ tự static block.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Sai. Hãy ôn lại quy trình khởi tạo của Java.</text>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Static block → main() → constructor</p>]]></text>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Constructor → static block → main()</p>]]></text>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>main() → constructor → static block</p>]]></text>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Static block → constructor → main()</p>]]></text>
+    </answer>
+  </question>
+</quiz>
