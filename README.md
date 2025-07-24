@@ -27,6 +27,9 @@
 
 ### Folder: getDataMoodel: các hàm, api lấy data moodle
 
+- local_userlog_v1.zip: version đầu tiên
+- local_userlog_v2.zip: version thứ 2 - lấy log theo courseid và userid
+
 course_log_somethingelse.ipynb: lấy thông tin coure, log, nhiều thứ,...
 
 courseOrigin.ipynb: lấy thông tin khoá học
