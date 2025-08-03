@@ -29,6 +29,8 @@
 
 - local_userlog_v1.zip: version đầu tiên
 - local_userlog_v2.zip: version thứ 2 - lấy log theo courseid và userid
+- local_userlog_v3.zip: version thứ 3 - lấy log theo courseid và userid, lấy nhiều thứ khác
+- local_userlog_v4.zip: version thứ 4 - bổ sung lấy log realtime
 
 course_log_somethingelse.ipynb: lấy thông tin coure, log, nhiều thứ,...
 
