@@ -46,11 +46,51 @@ $functions = [
         'ajax'        => true,
         'capabilities' => 'moodle/logstore:read',
     ],
-    'local_userlog_get_quiz_attempts' => [
+    'local_userlog_get_quiz_attempts' => [ // ok
         'classname'   => 'local_userlog\external\get_quiz_attempts',
         'methodname'  => 'execute',
         'classpath'   => 'local/userlog/classes/external/get_quiz_attempts.php',
         'description' => 'Get number of quiz attempts by user',
+        'type'        => 'read',
+        'ajax'        => true,
+    ],
+    'local_userlog_get_total_quiz_time' => [ // ok
+        'classname'   => 'local_userlog\external\get_total_quiz_time',
+        'methodname'  => 'execute',
+        'classpath'   => 'local/userlog/classes/external/get_total_quiz_time.php',
+        'description' => 'Get total quiz time (in seconds) for a user in a course',
+        'type'        => 'read',
+        'ajax'        => true,
+    ],
+    'local_userlog_get_resource_views' => [ // ok
+        'classname'   => 'local_userlog\external\get_resource_views',
+        'methodname'  => 'execute',
+        'classpath'   => 'local/userlog/classes/external/get_resource_views.php',
+        'description' => 'Get number of resource views (dynamic types) for a user in a course',
+        'type'        => 'read',
+        'ajax'        => true,
+    ],
+    'local_userlog_get_learning_days' => [ // ok
+        'classname'   => 'local_userlog\external\get_learning_days',
+        'methodname'  => 'execute',
+        'classpath'   => 'local/userlog/classes/external/get_learning_days.php',
+        'description' => 'Get number of learning days for a user in a course',
+        'type'        => 'read',
+        'ajax'        => true,
+    ],
+    'local_userlog_get_pass_quiz_count' => [ // ok
+        'classname'   => 'local_userlog\external\get_pass_quiz_count',
+        'methodname'  => 'execute',
+        'classpath'   => 'local/userlog/classes/external/get_pass_quiz_count.php',
+        'description' => 'Get number of passed quiz attempts by user in a course',
+        'type'        => 'read',
+        'ajax'        => true,
+    ],
+    'local_userlog_get_avg_quiz_score' => [ //ok
+        'classname'   => 'local_userlog\external\get_avg_quiz_score',
+        'methodname'  => 'execute',
+        'classpath'   => 'local/userlog/classes/external/get_avg_quiz_score.php',
+        'description' => 'Tính điểm trung bình của các bài quiz đã hoàn thành',
         'type'        => 'read',
         'ajax'        => true,
     ],
@@ -88,7 +128,12 @@ $services = [
             'local_userlog_get_access_count', 
             'local_userlog_get_completion_rate',
             'local_userlog_get_time_diffs',
-            'local_userlog_get_quiz_attempts',
+            'local_userlog_get_quiz_attempts', // ok
+            'local_userlog_get_total_quiz_time', // ok
+            'local_userlog_get_resource_views', // ok
+            'local_userlog_get_learning_days', // ok
+            'local_userlog_get_pass_quiz_count', // ok
+            'local_userlog_get_avg_quiz_score', // ok
             'local_userlog_get_grade_status',
             'local_userlog_get_total_study_time',
             'local_userlog_get_user_object_activity_summary'

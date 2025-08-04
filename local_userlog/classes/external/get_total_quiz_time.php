@@ -9,11 +9,11 @@ use external_function_parameters;
 use external_single_structure;
 use external_value;
 
-class get_quiz_attempts extends external_api {
+class get_total_quiz_time extends external_api {
     public static function execute_parameters() {
         return new external_function_parameters([
-            'userid' => new external_value(PARAM_INT, 'User ID'),
-            'courseid' => new external_value(PARAM_INT, 'Course ID')
+            'userid'    => new external_value(PARAM_INT, 'User ID'),
+            'courseid'  => new external_value(PARAM_INT, 'Course ID')
         ]);
     }
 
@@ -21,28 +21,32 @@ class get_quiz_attempts extends external_api {
         global $DB;
 
         self::validate_parameters(self::execute_parameters(), [
-            'userid' => $userid,
-            'courseid' => $courseid
+            'userid'    => $userid,
+            'courseid'  => $courseid
         ]);
 
         $sql = "
-            SELECT COUNT(*) AS quiz_attempts
+            SELECT SUM(qa.timefinish - qa.timestart) AS total_quiz_time
             FROM {quiz_attempts} qa
             JOIN {quiz} q ON qa.quiz = q.id
-            WHERE qa.userid = :userid AND q.course = :courseid
+            WHERE qa.userid = :userid
+              AND q.course = :courseid
+              AND qa.timefinish > 0
         ";
 
-        $attempts = $DB->get_field_sql($sql, [
-            'userid' => $userid,
-            'courseid' => $courseid
+        $total = $DB->get_field_sql($sql, [
+            'userid'    => $userid,
+            'courseid'  => $courseid
         ]);
 
-        return ['quiz_attempts' => (int)$attempts];
+        return [
+            'total_quiz_time' => (int)$total
+        ];
     }
 
     public static function execute_returns() {
         return new external_single_structure([
-            'quiz_attempts' => new external_value(PARAM_INT, 'Total number of quiz attempts')
+            'total_quiz_time' => new external_value(PARAM_INT, 'Total quiz time in seconds')
         ]);
     }
 }

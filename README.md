@@ -31,6 +31,7 @@
 - local_userlog_v2.zip: version thứ 2 - lấy log theo courseid và userid
 - local_userlog_v3.zip: version thứ 3 - lấy log theo courseid và userid, lấy nhiều thứ khác
 - local_userlog_v4.zip: version thứ 4 - bổ sung lấy log realtime
+- local_userlog_v5.zip: version thứ 5 - log cho Kmean - demo V6
 
 course_log_somethingelse.ipynb: lấy thông tin coure, log, nhiều thứ,...
 
@@ -85,3 +86,18 @@ sql/ : thư mục chứa câu lệnh sql về lấy log từ moodle
   * Bước tuần tự: 1, 2, 3, 4, 5...
   * Action chính xác: Go_to_low_level thực sự chọn DOK thấp hơn, Go_to_high_level chọn DOK cao hơn
 * Thêm các api flask: get user info, get recommendation, get course object
+
+
+### Update demo V5
+
+- lấy được log thực tế, gợi ý được thực tế
+- tuy nhiên mọi thứ còn thủ công
+- gợi ý sai
+- Kmean sai, code rối, ...
+
+### Update demo V6 !important
+
+- lấy được log thực tế hoàn thiện cho Kmean
+- Kmean đã đúng
+- phát triển local_userlog v6 - phiên bản hoàn thiện cho Kmean
+- code đẹp
