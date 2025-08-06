@@ -1,0 +1,16 @@
+quiz_bin,read_bin,quiz_passed,cluster,action,q_value
+0,0,0,0,read_new_resource,0.9621500000000001
+0,0,0,0,review_old_resource,0.0
+0,0,0,0,attempt_new_quiz,4.088085
+0,0,0,0,redo_failed_quiz,0.0
+0,0,0,0,skip_to_next_module,0.0
+0,2,0,0,read_new_resource,0.13231350000000003
+0,2,0,0,review_old_resource,0.0
+0,2,0,0,attempt_new_quiz,0.012150000000000001
+0,2,0,0,redo_failed_quiz,0.0
+0,2,0,0,skip_to_next_module,0.0
+0,2,1,0,read_new_resource,0.0
+0,2,1,0,review_old_resource,0.0
+0,2,1,0,attempt_new_quiz,0.253935
+0,2,1,0,redo_failed_quiz,0.0
+0,2,1,0,skip_to_next_module,0.0

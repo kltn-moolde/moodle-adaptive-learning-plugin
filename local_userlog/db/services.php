@@ -94,6 +94,30 @@ $functions = [
         'type'        => 'read',
         'ajax'        => true,
     ],
+    'local_userlog_get_total_resources_by_section' => [ // ok
+        'classname'   => 'local_userlog\external\get_total_resources_by_section',
+        'methodname'  => 'execute',
+        'classpath'   => 'local/userlog/classes/external/get_total_resources_by_section.php',
+        'description' => 'Get total number of resources (resource, hvp) in a section',
+        'type'        => 'read',
+        'ajax'        => true
+    ],
+    'local_userlog_get_viewed_resources_distinct_by_section' => [ // ok
+        'classname'   => 'local_userlog\external\get_viewed_resources_distinct_by_section',
+        'methodname'  => 'execute',
+        'classpath'   => 'local/userlog/classes/external/get_viewed_resources_distinct_by_section.php',
+        'description' => 'Get number of distinct resources viewed by a user in a section',
+        'type'        => 'read',
+        'ajax'        => true
+    ],
+    'local_userlog_get_latest_quiz_pass_status_by_section' => [ // ok
+        'classname'   => 'local_userlog\external\get_latest_quiz_pass_status_by_section',
+        'methodname'  => 'execute',
+        'classpath'   => 'local/userlog/classes/external/get_latest_quiz_pass_status_by_section.php',
+        'description' => 'Get latest quiz pass status by user in a section',
+        'type'        => 'read',
+        'ajax'        => true,
+    ],
     'local_userlog_get_grade_status' => [
         'classname'   => 'local_userlog\external\get_grade_status',
         'methodname'  => 'execute',
@@ -134,6 +158,9 @@ $services = [
             'local_userlog_get_learning_days', // ok
             'local_userlog_get_pass_quiz_count', // ok
             'local_userlog_get_avg_quiz_score', // ok
+            'local_userlog_get_total_resources_by_section', // ok
+            'local_userlog_get_viewed_resources_distinct_by_section', // ok
+            'local_userlog_get_latest_quiz_pass_status_by_section', // ok
             'local_userlog_get_grade_status',
             'local_userlog_get_total_study_time',
             'local_userlog_get_user_object_activity_summary'

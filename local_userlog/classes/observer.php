@@ -19,59 +19,39 @@ class observer {
             return true;
         }
 
-        // DEBUG: lưu log test ra file /tmp nếu server hỗ trợ
-        @file_put_contents('/tmp/observer_log_debug.txt', "Event: $type - User: $userid\n", FILE_APPEND);
+        // Lấy course_module.id từ event context
+        $cmid = $event->contextinstanceid;
 
-        // Lấy dữ liệu
-        $last_result = self::get_last_result($userid, $type);
-        $completion = self::get_completion_rate($userid, $courseid);
-        $pass = self::get_pass_rate($userid, $courseid);
-        $low_score_count = self::get_low_score_quiz_count($userid, $courseid);
+        // Lấy sectionid từ bảng course_modules
+        $sectionid = $DB->get_field('course_modules', 'section', ['id' => $cmid]);
 
-        // Tạo thư mục lưu file CSV
+        // Tạo thư mục lưu log nếu chưa có
         $logdir = $CFG->dataroot . '/local_userlog_data';
         if (!is_dir($logdir)) {
             mkdir($logdir, 0777, true);
         }
 
-        $path = $logdir . '/user_log_summary.csv';
+        // ==== Log DEBUG riêng ====
+        $debuglog = $logdir . '/debug.txt';
+        $debugLine = "[DEBUG] time: {$time}, userid: {$userid}, courseid: {$courseid}, sectionid: {$sectionid}, type: {$type}, cmid: {$cmid}\n";
+        file_put_contents($debuglog, $debugLine, FILE_APPEND | LOCK_EX);
 
-        // Nếu chưa có file => thêm header
+        // ==== Ghi CSV chính ====
+        $path = $logdir . '/user_log_summary.csv';
         if (!file_exists($path)) {
-            $header = 'userid,courseid,last_type,last_result,completion_rate,pass_rate,low_score_quiz_count,time' . "\n";
+            $header = 'userid,courseid,sectionid,type,time' . "\n";
             file_put_contents($path, $header, FILE_APPEND | LOCK_EX);
         }
 
-        // Ghi log mới
         $line = implode(',', [
             $userid,
             $courseid,
+            $sectionid,
             $type,
-            $last_result,
-            $completion,
-            $pass,
-            $low_score_count,
             $time
         ]);
         file_put_contents($path, $line . "\n", FILE_APPEND | LOCK_EX);
 
         return true;
-    }
-
-    private static function get_last_result($userid, $type) {
-        // Bạn có thể thay thế bằng logic thật sau này
-        return ($type === 'quiz') ? 'fail' : 'done';
-    }
-
-    private static function get_completion_rate($userid, $courseid) {
-        return 1.0;
-    }
-
-    private static function get_pass_rate($userid, $courseid) {
-        return 1.0;
-    }
-
-    private static function get_low_score_quiz_count($userid, $courseid) {
-        return 1;
     }
 }
