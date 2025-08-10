@@ -25,32 +25,52 @@ class get_latest_quiz_pass_status_by_section extends external_api {
             'userid'    => $userid
         ]);
 
+        // ✅ Truyền đủ 3 tham số (sectionid, userid1, userid2)
         $params = [
             'sectionid' => $sectionid,
-            'userid'    => $userid
+            'userid1'   => $userid,
+            'userid2'   => $userid
         ];
 
         $sql = "
             SELECT 
-                qa.quiz AS quizid,
+                q.id AS quizid,
                 cs.id AS sectionid,
                 cs.name AS sectionname,
-                qa.sumgrades,
-                COALESCE(gi.gradepass, 0) AS gradepass,
+                ROUND(
+                    (qa.sumgrades / q.sumgrades) * gi.grademax,
+                    2
+                ) AS last_grade,
+                gi.gradepass,
                 CASE
-                  WHEN qa.sumgrades >= COALESCE(gi.gradepass, 0) THEN 1 ELSE 0
+                    WHEN ROUND((qa.sumgrades / q.sumgrades) * gi.grademax, 2) >= COALESCE(gi.gradepass, 0) 
+                    THEN 1 ELSE 0
                 END AS is_passed
             FROM {course_sections} cs
-            JOIN {course_modules} cm ON cm.section = cs.id
-            JOIN {modules} m ON m.id = cm.module AND m.name = 'quiz'
-            JOIN {quiz} q ON q.id = cm.instance
-            JOIN {quiz_attempts} qa ON qa.quiz = q.id
-            JOIN {grade_items} gi ON gi.iteminstance = q.id AND gi.itemmodule = 'quiz'
+            JOIN {course_modules} cm 
+                ON cm.section = cs.id
+            JOIN {modules} m 
+                ON m.id = cm.module AND m.name = 'quiz'
+            JOIN {quiz} q 
+                ON q.id = cm.instance
+            /* subquery: lấy thời gian attempt gần nhất cho từng quiz */
+            JOIN (
+                SELECT quiz, userid, MAX(timemodified) AS last_time
+                FROM {quiz_attempts}
+                WHERE state = 'finished'
+                GROUP BY quiz, userid
+            ) last_qa_time
+                ON last_qa_time.quiz = q.id 
+                AND last_qa_time.userid = :userid1
+            JOIN {quiz_attempts} qa
+                ON qa.quiz = last_qa_time.quiz
+                AND qa.userid = last_qa_time.userid
+                AND qa.timemodified = last_qa_time.last_time
+            JOIN {grade_items} gi
+                ON gi.iteminstance = q.id AND gi.itemmodule = 'quiz'
             WHERE cs.id = :sectionid
-              AND qa.userid = :userid
-              AND qa.state = 'finished'
-            ORDER BY qa.timemodified DESC
-            LIMIT 1
+            AND qa.userid = :userid2
+            ORDER BY q.id
         ";
 
         $result = $DB->get_record_sql($sql, $params);

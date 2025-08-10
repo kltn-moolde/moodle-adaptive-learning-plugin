@@ -9,7 +9,7 @@ use external_function_parameters;
 use external_value;
 use external_single_structure;
 
-class get_pass_quiz_count extends external_api {
+class get_pass_quiz_count_attempt extends external_api {
     public static function execute_parameters() {
         return new external_function_parameters([
             'userid'   => new external_value(PARAM_INT, 'User ID'),
@@ -26,17 +26,16 @@ class get_pass_quiz_count extends external_api {
         ]);
 
         $sql = "
-           SELECT COUNT(*) AS pass_quiz_count
-            FROM {grade_items} gi
-            JOIN {grade_grades} gg 
-                ON gi.id = gg.itemid
+          SELECT COUNT(*) AS pass_attempt_count
+            FROM {quiz_attempts} qa
             JOIN {quiz} q 
-                ON q.id = gi.iteminstance 
-                AND gi.itemmodule = 'quiz'
-            WHERE gi.courseid = :courseid
-                AND gg.userid = :userid
-                AND gg.rawgrade IS NOT NULL
-                AND gg.rawgrade >= gi.gradepass
+                ON q.id = qa.quiz
+            JOIN {grade_items} gi
+                ON gi.iteminstance = q.id AND gi.itemmodule = 'quiz'
+            WHERE q.course = :courseid
+            AND qa.userid = :userid
+            AND qa.state = 'finished'
+            AND ROUND((qa.sumgrades / q.sumgrades) * gi.grademax, 2) >= gi.gradepass
         ";
 
         $params = ['userid' => $userid, 'courseid' => $courseid];

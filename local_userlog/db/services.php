@@ -86,6 +86,14 @@ $functions = [
         'type'        => 'read',
         'ajax'        => true,
     ],
+    'local_userlog_get_pass_quiz_count_attempt' => [ // ok
+        'classname'   => 'local_userlog\external\get_pass_quiz_count_attempt',
+        'methodname'  => 'execute',
+        'classpath'   => 'local/userlog/classes/external/get_pass_quiz_count_attempt.php',
+        'description' => 'Get number of passed quiz attempts by user in a course',
+        'type'        => 'read',
+        'ajax'        => true,
+    ],
     'local_userlog_get_avg_quiz_score' => [ //ok
         'classname'   => 'local_userlog\external\get_avg_quiz_score',
         'methodname'  => 'execute',
@@ -157,6 +165,7 @@ $services = [
             'local_userlog_get_resource_views', // ok
             'local_userlog_get_learning_days', // ok
             'local_userlog_get_pass_quiz_count', // ok
+            'local_userlog_get_pass_quiz_count_attempt', // ok
             'local_userlog_get_avg_quiz_score', // ok
             'local_userlog_get_total_resources_by_section', // ok
             'local_userlog_get_viewed_resources_distinct_by_section', // ok
