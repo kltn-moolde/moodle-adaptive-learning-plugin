@@ -126,6 +126,22 @@ $functions = [
         'type'        => 'read',
         'ajax'        => true,
     ],
+    'local_userlog_get_category_questionbank' => [ // ok
+        'classname'   => 'local_userlog\external\get_category_questionbank',
+        'methodname'  => 'execute',
+        'classpath'   => 'local/userlog/classes/external/get_category_questionbank.php',
+        'description' => 'Get question bank categories (hierarchical) for a given course',
+        'type'        => 'read',
+        'ajax'        => true,
+    ],
+    'local_userlog_create_quiz_from_categories' => [ // dang lam
+        'classname'   => 'local_userlog\external\create_quiz_from_categories',
+        'methodname'  => 'execute',
+        'classpath'   => 'local/userlog/classes/external/create_quiz_from_categories.php',
+        'description' => 'Create a quiz in a given course from selected question bank categories, with specific numbers of easy, medium, and hard questions',
+        'type'        => 'write',
+        'ajax'        => true,
+    ],
     'local_userlog_get_grade_status' => [
         'classname'   => 'local_userlog\external\get_grade_status',
         'methodname'  => 'execute',
@@ -170,6 +186,8 @@ $services = [
             'local_userlog_get_total_resources_by_section', // ok
             'local_userlog_get_viewed_resources_distinct_by_section', // ok
             'local_userlog_get_latest_quiz_pass_status_by_section', // ok
+            'local_userlog_get_category_questionbank', // ok
+            'local_userlog_create_quiz_from_categories', // dang lam
             'local_userlog_get_grade_status',
             'local_userlog_get_total_study_time',
             'local_userlog_get_user_object_activity_summary'

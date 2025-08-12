@@ -31,8 +31,14 @@
 - local_userlog_v2.zip: version thứ 2 - lấy log theo courseid và userid
 - local_userlog_v3.zip: version thứ 3 - lấy log theo courseid và userid, lấy nhiều thứ khác
 - local_userlog_v4.zip: version thứ 4 - bổ sung lấy log realtime
-- local_userlog_v5.zip: version thứ 5 - log cho Kmean - demo V6
+- local_userlog_v5.zip: version thứ 5 - log cho Kmean - demo V5
 - local_userlog_v6.zip: version thứ 6 - log cho Qtable - demo V6
+- local_userlog_v7.zip: version thứ 7 - demo V6
+  + bổ sung api get category question bank 
+- local_userlog_v8.zip: version thứ 8 - demo V6
+  + bổ sung cấu hình: hiển thị feedback khi làm xong, cấu hình gradepass
+  + bổ sung chỉ hiển thị quiz cho user cụ thể
+  
 
 course_log_somethingelse.ipynb: lấy thông tin coure, log, nhiều thứ,...
 
@@ -97,7 +103,5 @@ sql/ : thư mục chứa câu lệnh sql về lấy log từ moodle
 
 ### Update demo V6 !important
 
-- lấy được log thực tế hoàn thiện cho Kmean
-- Kmean đã đúng
-- phát triển local_userlog v6 - phiên bản hoàn thiện cho Kmean
-- code đẹp
+- Dữ liệu thật từ moodle
+- realtime gợi ý hành động
