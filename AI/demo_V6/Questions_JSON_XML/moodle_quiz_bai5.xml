@@ -1,0 +1,703 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz>
+  <!--Câu 1-->
+  <question type="multichoice">
+    <name>
+      <text>RS1: Khái niệm chia sẻ tài nguyên</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Chia sẻ tài nguyên trên mạng là gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Cho phép nhiều người dùng truy cập tài nguyên như tệp, máy in từ xa</text>
+      <feedback>
+        <text>Đúng, chia sẻ tài nguyên giúp sử dụng chung tệp, máy in, hoặc dữ liệu qua mạng.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ lưu trữ dữ liệu trên máy tính cá nhân</text>
+      <feedback>
+        <text>Sai, chia sẻ tài nguyên liên quan đến mạng, không chỉ lưu trữ cục bộ.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Kết nối mạng Wi-Fi cho thiết bị</text>
+      <feedback>
+        <text>Sai, chia sẻ tài nguyên không phải là kết nối Wi-Fi.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 2-->
+  <question type="multichoice">
+    <name>
+      <text>RS2: Chia sẻ thư mục</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Làm thế nào để chia sẻ một thư mục trên mạng trong Windows?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Nhấp chuột phải vào thư mục, chọn 'Properties' và bật chia sẻ</text>
+      <feedback>
+        <text>Đúng, trong Windows, bạn bật chia sẻ thư mục qua tab Sharing trong Properties.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Sao chép thư mục vào ổ USB</text>
+      <feedback>
+        <text>Sai, sao chép vào USB không phải chia sẻ trên mạng.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Cài đặt phần mềm trình duyệt web</text>
+      <feedback>
+        <text>Sai, trình duyệt web không liên quan đến chia sẻ thư mục.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 3-->
+  <question type="multichoice">
+    <name>
+      <text>RS3: Chia sẻ máy in</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Chia sẻ máy in trên mạng giúp gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Cho phép nhiều máy tính in qua cùng một máy in</text>
+      <feedback>
+        <text>Đúng, chia sẻ máy in giúp nhiều người dùng truy cập máy in qua mạng.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Tăng tốc độ in của máy in</text>
+      <feedback>
+        <text>Sai, chia sẻ không tăng tốc độ in mà chỉ cho phép truy cập chung.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Lưu trữ tài liệu in</text>
+      <feedback>
+        <text>Sai, chia sẻ máy in không liên quan đến lưu trữ tài liệu.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 4-->
+  <question type="multichoice">
+    <name>
+      <text>RS4: Quyền truy cập</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Quyền truy cập khi chia sẻ thư mục bao gồm những gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Đọc, ghi hoặc toàn quyền kiểm soát</text>
+      <feedback>
+        <text>Đúng, quyền truy cập thường bao gồm đọc, ghi, hoặc toàn quyền.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ quyền đọc</text>
+      <feedback>
+        <text>Sai, quyền truy cập không giới hạn ở chỉ đọc.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ quyền in</text>
+      <feedback>
+        <text>Sai, quyền in liên quan đến máy in, không phải thư mục.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 5-->
+  <question type="multichoice">
+    <name>
+      <text>RS5: Giao thức SMB</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Giao thức SMB được sử dụng để làm gì trong chia sẻ tài nguyên?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Chia sẻ tệp và máy in trong mạng Windows</text>
+      <feedback>
+        <text>Đúng, SMB (Server Message Block) hỗ trợ chia sẻ tệp và máy in trong mạng.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Truy cập trang web</text>
+      <feedback>
+        <text>Sai, truy cập trang web sử dụng HTTP, không phải SMB.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Gửi email</text>
+      <feedback>
+        <text>Sai, gửi email sử dụng SMTP, không phải SMB.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 6-->
+  <question type="multichoice">
+    <name>
+      <text>RS6: Cấu hình chia sẻ</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Bước đầu tiên để chia sẻ tài nguyên trên mạng Windows là gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Bật tính năng 'File and Printer Sharing' trong Network Settings</text>
+      <feedback>
+        <text>Đúng, cần bật chia sẻ tệp và máy in trong cài đặt mạng.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Cài đặt trình duyệt web</text>
+      <feedback>
+        <text>Sai, trình duyệt web không liên quan đến chia sẻ tài nguyên.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Tắt tường lửa</text>
+      <feedback>
+        <text>Sai, tắt tường lửa không phải bước đầu tiên và có thể gây rủi ro bảo mật.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 7-->
+  <question type="multichoice">
+    <name>
+      <text>RS7: Truy cập thư mục chia sẻ</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Làm thế nào để truy cập thư mục chia sẻ trên mạng?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Sử dụng đường dẫn UNC như \\tên_máy\tên_thư_mục</text>
+      <feedback>
+        <text>Đúng, đường dẫn UNC (Universal Naming Convention) được dùng để truy cập tài nguyên chia sẻ.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Sao chép thư mục qua USB</text>
+      <feedback>
+        <text>Sai, sao chép qua USB không phải truy cập qua mạng.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Mở trình duyệt web</text>
+      <feedback>
+        <text>Sai, trình duyệt web không dùng để truy cập thư mục chia sẻ.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 8-->
+  <question type="multichoice">
+    <name>
+      <text>RS8: Bảo mật chia sẻ</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Làm thế nào để bảo mật thư mục chia sẻ trên mạng?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Cài đặt mật khẩu và phân quyền truy cập</text>
+      <feedback>
+        <text>Đúng, mật khẩu và quyền truy cập giúp bảo vệ thư mục chia sẻ.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Tắt hoàn toàn chia sẻ</text>
+      <feedback>
+        <text>Sai, tắt chia sẻ không phải cách bảo mật mà là dừng chia sẻ.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Sử dụng Wi-Fi công cộng</text>
+      <feedback>
+        <text>Sai, Wi-Fi công cộng không an toàn cho chia sẻ tài nguyên.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 9-->
+  <question type="multichoice">
+    <name>
+      <text>RS9: Workgroup</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Workgroup trong mạng Windows có vai trò gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Nhóm các máy tính để dễ dàng chia sẻ tài nguyên</text>
+      <feedback>
+        <text>Đúng, Workgroup giúp các máy tính trong cùng nhóm chia sẻ tài nguyên dễ dàng.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Kết nối Internet toàn cầu</text>
+      <feedback>
+        <text>Sai, Workgroup không liên quan đến kết nối Internet.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Lưu trữ dữ liệu đám mây</text>
+      <feedback>
+        <text>Sai, Workgroup không dùng để lưu trữ đám mây.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 10-->
+  <question type="multichoice">
+    <name>
+      <text>RS10: Chia sẻ máy in trong Windows</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Làm thế nào để chia sẻ máy in trong Windows?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Vào Control Panel, chọn Printers, bật tùy chọn chia sẻ</text>
+      <feedback>
+        <text>Đúng, chia sẻ máy in được thực hiện qua cài đặt trong Control Panel.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Cài đặt trình duyệt web</text>
+      <feedback>
+        <text>Sai, trình duyệt web không liên quan đến chia sẻ máy in.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Sao chép driver máy in qua USB</text>
+      <feedback>
+        <text>Sai, sao chép driver không phải là chia sẻ máy in qua mạng.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 11-->
+  <question type="multichoice">
+    <name>
+      <text>RS11: Truy cập máy in chia sẻ</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Làm thế nào để sử dụng máy in chia sẻ từ máy tính khác?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Thêm máy in qua 'Add Printer' trong Control Panel</text>
+      <feedback>
+        <text>Đúng, bạn cần thêm máy in chia sẻ qua cài đặt trong Control Panel.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Sao chép tệp in qua email</text>
+      <feedback>
+        <text>Sai, email không dùng để truy cập máy in chia sẻ.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Tắt tường lửa</text>
+      <feedback>
+        <text>Sai, tắt tường lửa không phải cách truy cập máy in.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 12-->
+  <question type="multichoice">
+    <name>
+      <text>RS12: Giao thức NFS</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Giao thức NFS được sử dụng để làm gì trong chia sẻ tài nguyên?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Chia sẻ tệp trong các hệ thống Unix/Linux</text>
+      <feedback>
+        <text>Đúng, NFS (Network File System) dùng để chia sẻ tệp trong môi trường Unix/Linux.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chia sẻ máy in trong Windows</text>
+      <feedback>
+        <text>Sai, chia sẻ máy in trong Windows sử dụng SMB, không phải NFS.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Gửi email</text>
+      <feedback>
+        <text>Sai, gửi email sử dụng SMTP, không phải NFS.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 13-->
+  <question type="multichoice">
+    <name>
+      <text>RS13: HomeGroup</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[HomeGroup trong Windows có tác dụng gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Tạo nhóm để chia sẻ tệp và máy in dễ dàng trong mạng gia đình</text>
+      <feedback>
+        <text>Đúng, HomeGroup đơn giản hóa việc chia sẻ trong mạng gia đình.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Kết nối mạng Internet toàn cầu</text>
+      <feedback>
+        <text>Sai, HomeGroup không liên quan đến Internet toàn cầu.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Lưu trữ dữ liệu đám mây</text>
+      <feedback>
+        <text>Sai, HomeGroup không phải dịch vụ lưu trữ đám mây.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 14-->
+  <question type="multichoice">
+    <name>
+      <text>RS14: Tường lửa và chia sẻ</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Tường lửa có thể ảnh hưởng đến chia sẻ tài nguyên như thế nào?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Chặn kết nối chia sẻ nếu không được cấu hình đúng</text>
+      <feedback>
+        <text>Đúng, tường lửa cần được cấu hình để cho phép chia sẻ tài nguyên.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Tăng tốc độ chia sẻ tài nguyên</text>
+      <feedback>
+        <text>Sai, tường lửa không tăng tốc độ mà kiểm soát truy cập.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Tự động chia sẻ tệp</text>
+      <feedback>
+        <text>Sai, tường lửa không có chức năng chia sẻ tệp.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 15-->
+  <question type="multichoice">
+    <name>
+      <text>RS15: Quyền đọc và ghi</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Quyền 'Read' và 'Write' trong chia sẻ thư mục có ý nghĩa gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Read cho phép xem, Write cho phép chỉnh sửa</text>
+      <feedback>
+        <text>Đúng, Read cho phép đọc nội dung, Write cho phép chỉnh sửa hoặc xóa.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Read cho phép in, Write cho phép lưu trữ</text>
+      <feedback>
+        <text>Sai, quyền Read và Write không liên quan đến in.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Read và Write đều cho phép xem nội dung</text>
+      <feedback>
+        <text>Sai, Write cho phép chỉnh sửa, không chỉ xem.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 16-->
+  <question type="multichoice">
+    <name>
+      <text>RS16: Chia sẻ qua đám mây</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Chia sẻ tài nguyên qua đám mây khác với chia sẻ qua mạng LAN như thế nào?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Đám mây sử dụng Internet, LAN sử dụng mạng nội bộ dạng hệ thống</text>
+      <feedback>
+        <text>Đúng, chia sẻ qua đám mây sử dụng Internet và máy chủ từ xa, còn LAN dùng mạng nội bộ.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Cả hai đều sử dụng mạng nội bộ</text>
+      <feedback>
+        <text>Sai, chia sẻ qua đám mây sử dụng Internet, không phải mạng nội bộ.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Cả hai đều cần Wi-Fi</text>
+      <feedback>
+        <text>Sai, đám mây không yêu cầu Wi-Fi, chỉ cần kết nối Internet.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>hard</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 17-->
+  <question type="multichoice">
+    <name>
+      <text>RS17: Giao thức SFTP</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Giao thức SFTP được sử dụng để làm gì trong chia sẻ tài nguyên?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Chia sẻ tệp an toàn qua mạng bằng mã hóa SSH</text>
+      <feedback>
+        <text>Đúng, SFTP (Secure File Transfer Protocol) đảm bảo truyền tệp an toàn.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chia sẻ máy in trong mạng LAN</text>
+      <feedback>
+        <text>Sai, SFTP không liên quan đến chia sẻ máy in.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Gửi email</text>
+      <feedback>
+        <text>Sai, gửi email sử dụng SMTP, không phải SFTP.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>hard</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 18-->
+  <question type="multichoice">
+    <name>
+      <text>RS18: Network Drive</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Ổ đĩa mạng (Network Drive) là gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Thư mục chia sẻ được ánh xạ thành ổ đĩa trên máy tính</text>
+      <feedback>
+        <text>Đúng, ổ đĩa mạng là thư mục chia sẻ được ánh xạ như một ổ đĩa cục bộ.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Ổ cứng vật lý trong router</text>
+      <feedback>
+        <text>Sai, ổ đĩa mạng không phải là ổ cứng vật lý.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Ổ đĩa lưu trữ đám mây</text>
+      <feedback>
+        <text>Sai, ổ đĩa mạng thuộc mạng nội bộ, không phải đám mây.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>hard</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 19-->
+  <question type="multichoice">
+    <name>
+      <text>RS19: Chia sẻ tài nguyên và bảo mật</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Điều gì quan trọng khi chia sẻ tài nguyên trên mạng công cộng?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Sử dụng mã hóa và xác thực người dùng</text>
+      <feedback>
+        <text>Đúng, mã hóa và xác thực giúp bảo vệ tài nguyên trên mạng công cộng.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Tắt chia sẻ tài nguyên</text>
+      <feedback>
+        <text>Sai, tắt chia sẻ không phải là cách sử dụng tài nguyên.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Sử dụng Wi-Fi không bảo mật</text>
+      <feedback>
+        <text>Sai, Wi-Fi không bảo mật làm tăng rủi ro cho tài nguyên.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>hard</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 20-->
+  <question type="multichoice">
+    <name>
+      <text>RS20: Lỗi chia sẻ tài nguyên</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Nguyên nhân phổ biến của lỗi khi truy cập tài nguyên chia sẻ là gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Quyền truy cập chưa được cấu hình đúng hoặc tường lửa chặn</text>
+      <feedback>
+        <text>Đúng, lỗi thường do quyền truy cập hoặc tường lửa không được cấu hình đúng.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Máy tính không có trình duyệt web</text>
+      <feedback>
+        <text>Sai, trình duyệt web không liên quan đến chia sẻ tài nguyên.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Tốc độ Internet chậm</text>
+      <feedback>
+        <text>Sai, tốc độ Internet không phải nguyên nhân chính trong mạng nội bộ.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>hard</text>
+      </tag>
+    </tags>
+  </question>
+</quiz>

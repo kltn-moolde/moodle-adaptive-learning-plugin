@@ -1,0 +1,81 @@
+{
+  "chapter_1": {
+    "name": "Cơ sở lập trình Java Swing",
+    "learning_units": {
+      "1.1": {
+        "name": "Giới thiệu và xử lý ngoại lệ",
+        "learning_objects": {
+          "1.1.1": {
+            "name": "Hiểu cú pháp Try...Catch",
+            "dok_level": 1,
+            "description": "Video hoặc tài liệu giải thích cú pháp cơ bản của Try...Catch",
+            "activity_type": "video",
+            "duration": 10,
+            "has_assessment": false
+          },
+          "1.1.2": {
+            "name": "Áp dụng Try...Catch trong chương trình đơn giản",
+            "dok_level": 2,
+            "description": "Tài liệu hướng dẫn áp dụng Try...Catch để xử lý lỗi nhập liệu",
+            "activity_type": "practice",
+            "duration": 15,
+            "has_assessment": true
+          },
+          "1.1.3": {
+            "name": "Phân tích lỗi với Try...Catch",
+            "dok_level": 3,
+            "description": "Quiz hoặc bài tập yêu cầu phân tích và xử lý nhiều lỗi phức tạp",
+            "activity_type": "quiz",
+            "duration": 20,
+            "has_assessment": true
+          },
+          "1.1.4": {
+            "name": "Thiết kế chương trình xử lý ngoại lệ nâng cao",
+            "dok_level": 4,
+            "description": "Bài tập yêu cầu thiết kế chương trình xử lý ngoại lệ độc đáo",
+            "activity_type": "project",
+            "duration": 30,
+            "has_assessment": true
+          }
+        }
+      },
+      "1.2": {
+        "name": "Giao diện người dùng cơ bản",
+        "learning_objects": {
+          "1.2.1": {
+            "name": "Hiểu JFrame và JPanel",
+            "dok_level": 1,
+            "description": "Tìm hiểu các thành phần cơ bản của Swing",
+            "activity_type": "video",
+            "duration": 15,
+            "has_assessment": false
+          },
+          "1.2.2": {
+            "name": "Tạo giao diện đơn giản",
+            "dok_level": 2,
+            "description": "Thực hành tạo form đơn giản",
+            "activity_type": "practice",
+            "duration": 25,
+            "has_assessment": true
+          },
+          "1.2.3": {
+            "name": "Phân tích layout managers",
+            "dok_level": 3,
+            "description": "So sánh và lựa chọn layout phù hợp",
+            "activity_type": "quiz",
+            "duration": 20,
+            "has_assessment": true
+          },
+          "1.2.4": {
+            "name": "Thiết kế giao diện phức tạp",
+            "dok_level": 4,
+            "description": "Tạo ứng dụng với giao diện chuyên nghiệp",
+            "activity_type": "project",
+            "duration": 45,
+            "has_assessment": true
+          }
+        }
+      }
+    }
+  }
+}

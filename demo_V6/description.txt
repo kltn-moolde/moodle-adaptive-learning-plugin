@@ -1,0 +1,72 @@
+MÔ TẢ LUỒNG, NHỮNG GÌ CÓ, HƯỚNG PHÁT TRIỂN CHO V6
+
+1. Local_userlog: v8
+    - Danh sách các api đơn lẻ, phục vụ mục đích lấy dữ liệu cần thiết cho Kmean, QLearning
+    - Api tạo quiz từ ngân hàng câu hỏi 
+    - 1 file observe lắng nghe và ghi lại những sự kiện sẽ cập nhật Qtable
+2. Kmean
+    - Từ api ở local_userlog -> lấy ra được thông tin 1 user
+        -> Viết hàm nhân bản dữ liệu -> Áp dụng Kmean
+3. QLearning
+    - Lắng nghe output file obsever
+        -> Kết hợp với local_userlog và kmean để tạo ra Qtable
+    - 3 thành phần quan trọng của Qtable
+    3.1 State
+       {
+            "avg_quiz_score",     // Điểm trung bình quiz trong course
+            "completion_rate",    // % hoàn thành video/pdf trong section
+            "quiz_passed",        // Quiz cuối cùng trong section: pass=1, fail=0
+            "cluster",            // Nhóm từ Kmean
+            "sectionid"           // Section hiện tại
+        }
+    3.2 Action
+        {
+            read_new_resource,
+            review_old_resource,
+            attempt_new_quiz,
+            redo_failed_quiz,
+            skip_to_next_module
+        }
+    3.3 Rewarding
+        - Điểm trung bình tăng -> +7
+        - Điểm trung bình giảm -> -5
+        - Tỉ lệ hoàn thành tăng -> +5
+        - Bài quiz trước fail, bài quiz sau pass -> +10
+        
+            
+=================== HƯỚNG PHÁT TRIỂN CHO V6 ===================
+2.1 Mở rộng Action
+	•	Thêm hành động thông minh hơn:
+	•	"attempt_easier_quiz" → khi fail ở quiz khó.
+	•	"attempt_harder_quiz" → khi liên tục pass ở quiz dễ.
+	•	"redo_similar_quiz" → luyện quiz cùng dạng.
+	•	"return_previous_module" → quay lại module trước để ôn.
+	•	Logic loại bỏ action không khả dụng (ví dụ: "read_new_resource" nhưng hết tài nguyên mới → reward âm, hoặc chuyển sang action khác).
+
+2.2 Cải thiện Reward
+	•	Thêm yếu tố độ khó động:
+	•	Độ khó = % người pass quiz đó (tính từ logs).
+	•	Giữ tag difficulty để bổ sung thông tin.
+	•	Thưởng khi người học học liên tục hoặc tăng tốc độ hoàn thành.
+	•	Phạt khi bỏ qua gợi ý nhiều lần liên tiếp.
+
+2.3 Hiển thị Lộ trình học cá nhân hoá
+	•	Thay vì chỉ hiển thị next_action, tạo API “full learning path”:
+	•	Dự đoán toàn bộ lộ trình dựa vào Q-table + metadata khoá học.
+	•	Đánh dấu trạng thái từng bước (completed / current / upcoming).
+	•	Cho phép cập nhật lộ trình khi hành vi học thay đổi (adaptive).        
+
+2.4 Kết hợp mô hình theo dõi năng lực
+	•	Tích hợp BKT hoặc DKT để ước lượng xác suất user nắm vững mỗi kỹ năng.
+	•	Kết quả BKT/DKT sẽ bổ sung vào state của Q-learning → tăng độ chính xác khi gợi ý.
+
+2.5 Xử lý hành vi ngoài luồng
+	•	Nếu user không làm theo gợi ý:
+	•	Ghi nhận vào log và giảm Q-value cho action đã gợi ý.
+	•	Dùng heuristic để chọn action mới phù hợp với hành vi thực tế.
+	•	Tích hợp exploration policy để đôi khi thử gợi ý khác (Epsilon-greedy).
+
+2.6 Tối ưu hoá cho nhiều cấu trúc course
+	•	Không phụ thuộc vào tag độ khó cố định.
+	•	Dùng thống kê từ logs (pass_rate, avg_score) để suy ra độ khó và liên kết các quiz.
+	•	Hỗ trợ course với cấu trúc khác nhau mà không cần thiết kế lại state.

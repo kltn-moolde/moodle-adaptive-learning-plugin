@@ -1,0 +1,32 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Java build
+/target/
+/out/
+/build/
+
+# IntelliJ IDEA
+*.iml
+.idea/
+
+# VSCode
+.vscode/
+
+# Logs
+*.log
+
+# Environment
+.env
+
+# Maven wrapper
+.mvn/wrapper/maven-wrapper.jar
+
+# Temporary files
+*.swp
+*.swo

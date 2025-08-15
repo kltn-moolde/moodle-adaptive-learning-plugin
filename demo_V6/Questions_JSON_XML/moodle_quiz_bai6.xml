@@ -1,0 +1,703 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz>
+  <!--Câu 1-->
+  <question type="multichoice">
+    <name>
+      <text>CE1: Không gian mạng</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Không gian mạng là gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Môi trường số nơi con người tương tác qua Internet</text>
+      <feedback>
+        <text>Đúng, không gian mạng là môi trường số nơi con người giao tiếp và trao đổi thông tin.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ là các trang web trên trình duyệt</text>
+      <feedback>
+        <text>Sai, không gian mạng bao gồm nhiều hơn chỉ các trang web.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Phần cứng của mạng máy tính</text>
+      <feedback>
+        <text>Sai, không gian mạng liên quan đến môi trường số, không phải phần cứng.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 2-->
+  <question type="multichoice">
+    <name>
+      <text>CE2: Giao tiếp mạng</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Giao tiếp trong không gian mạng nên tuân theo nguyên tắc nào?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Tôn trọng, lịch sự và tuân thủ pháp luật</text>
+      <feedback>
+        <text>Đúng, giao tiếp mạng cần tôn trọng, lịch sự và hợp pháp.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ cần nhanh chóng và ngắn gọn</text>
+      <feedback>
+        <text>Sai, giao tiếp mạng cần chú ý đến đạo đức và pháp luật, không chỉ tốc độ.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Không cần tuân thủ quy tắc nào</text>
+      <feedback>
+        <text>Sai, giao tiếp mạng phải tuân thủ các quy tắc đạo đức và pháp luật.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 3-->
+  <question type="multichoice">
+    <name>
+      <text>CE3: Đạo đức mạng</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Đạo đức trong không gian mạng bao gồm điều gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Không chia sẻ thông tin sai lệch hoặc xúc phạm người khác</text>
+      <feedback>
+        <text>Đúng, đạo đức mạng yêu cầu không lan truyền thông tin sai hoặc gây hại.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ sử dụng mạng để chơi game</text>
+      <feedback>
+        <text>Sai, đạo đức mạng không giới hạn ở việc chơi game.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Sử dụng mạng mà không cần quan tâm đến người khác</text>
+      <feedback>
+        <text>Sai, đạo đức mạng yêu cầu tôn trọng người dùng khác.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 4-->
+  <question type="multichoice">
+    <name>
+      <text>CE4: Pháp luật mạng</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Pháp luật trong không gian mạng ở Việt Nam nghiêm cấm điều gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Phát tán thông tin sai lệch, xúc phạm danh dự người khác</text>
+      <feedback>
+        <text>Đúng, pháp luật Việt Nam nghiêm cấm phát tán thông tin sai lệch hoặc xúc phạm.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Sử dụng mạng để học tập</text>
+      <feedback>
+        <text>Sai, sử dụng mạng để học tập là hợp pháp.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chia sẻ hình ảnh cá nhân</text>
+      <feedback>
+        <text>Sai, chia sẻ hình ảnh cá nhân là hợp pháp nếu không vi phạm quyền riêng tư.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 5-->
+  <question type="multichoice">
+    <name>
+      <text>CE5: An toàn thông tin</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Hành động nào giúp bảo vệ an toàn thông tin trong không gian mạng?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Sử dụng mật khẩu mạnh và không chia sẻ thông tin cá nhân</text>
+      <feedback>
+        <text>Đúng, mật khẩu mạnh và bảo vệ thông tin cá nhân giúp tăng an toàn.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chia sẻ mật khẩu qua email</text>
+      <feedback>
+        <text>Sai, chia sẻ mật khẩu qua email làm tăng nguy cơ mất an toàn.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Sử dụng Wi-Fi công cộng không bảo mật</text>
+      <feedback>
+        <text>Sai, Wi-Fi công cộng không bảo mật làm tăng nguy cơ bị tấn công.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 6-->
+  <question type="multichoice">
+    <name>
+      <text>CE6: Quy tắc ứng xử</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Quy tắc ứng xử nào nên áp dụng khi bình luận trên mạng xã hội?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Bình luận lịch sự, không xúc phạm người khác</text>
+      <feedback>
+        <text>Đúng, bình luận cần lịch sự và tôn trọng người khác.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Sử dụng ngôn ngữ gây tranh cãi để thu hút sự chú ý</text>
+      <feedback>
+        <text>Sai, ngôn ngữ gây tranh cãi có thể vi phạm đạo đức mạng.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ bình luận khi có Wi-Fi</text>
+      <feedback>
+        <text>Sai, kết nối Wi-Fi không liên quan đến quy tắc ứng xử.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 7-->
+  <question type="multichoice">
+    <name>
+      <text>CE7: Tấn công mạng</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Hành vi tấn công mạng (cyberattack) bao gồm hành động nào?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Xâm nhập trái phép vào hệ thống máy tính</text>
+      <feedback>
+        <text>Đúng, tấn công mạng bao gồm các hành vi như hack, đánh cắp dữ liệu.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chia sẻ tệp hợp pháp trên mạng</text>
+      <feedback>
+        <text>Sai, chia sẻ tệp hợp pháp không phải là tấn công mạng.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Sử dụng mạng để học tập</text>
+      <feedback>
+        <text>Sai, học tập qua mạng không phải là hành vi tấn công.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 8-->
+  <question type="multichoice">
+    <name>
+      <text>CE8: Quyền riêng tư</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Làm thế nào để bảo vệ quyền riêng tư trong không gian mạng?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Không chia sẻ thông tin cá nhân nhạy cảm công khai</text>
+      <feedback>
+        <text>Đúng, hạn chế chia sẻ thông tin cá nhân giúp bảo vệ quyền riêng tư.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Đăng tất cả thông tin cá nhân lên mạng xã hội</text>
+      <feedback>
+        <text>Sai, đăng thông tin cá nhân công khai làm tăng nguy cơ bị lạm dụng.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Sử dụng Wi-Fi công cộng để đăng nhập tài khoản</text>
+      <feedback>
+        <text>Sai, Wi-Fi công cộng không an toàn cho việc đăng nhập.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 9-->
+  <question type="multichoice">
+    <name>
+      <text>CE9: Tin giả</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Hậu quả của việc lan truyền tin giả trên mạng là gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Gây hoang mang và làm mất lòng tin của cộng đồng</text>
+      <feedback>
+        <text>Đúng, tin giả có thể gây hoang mang và ảnh hưởng tiêu cực đến xã hội.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Tăng cường giao tiếp trên mạng</text>
+      <feedback>
+        <text>Sai, tin giả không giúp cải thiện giao tiếp mà gây hại.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Không có hậu quả gì</text>
+      <feedback>
+        <text>Sai, tin giả có thể gây hậu quả nghiêm trọng.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 10-->
+  <question type="multichoice">
+    <name>
+      <text>CE10: Luật an ninh mạng</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Luật An ninh mạng ở Việt Nam yêu cầu gì khi sử dụng mạng xã hội?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Không đăng tải nội dung vi phạm pháp luật hoặc xúc phạm người khác</text>
+      <feedback>
+        <text>Đúng, Luật An ninh mạng nghiêm cấm đăng nội dung vi phạm pháp luật.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ sử dụng mạng xã hội để chơi game</text>
+      <feedback>
+        <text>Sai, mạng xã hội không chỉ dùng để chơi game.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Đăng tất cả thông tin cá nhân</text>
+      <feedback>
+        <text>Sai, đăng thông tin cá nhân có thể vi phạm quyền riêng tư.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 11-->
+  <question type="multichoice">
+    <name>
+      <text>CE11: Phishing</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Phishing trong không gian mạng là gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Lừa đảo để đánh cắp thông tin cá nhân qua email hoặc website giả</text>
+      <feedback>
+        <text>Đúng, phishing là kỹ thuật lừa đảo để lấy thông tin nhạy cảm.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chia sẻ tệp hợp pháp</text>
+      <feedback>
+        <text>Sai, chia sẻ tệp hợp pháp không phải là phishing.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Cài đặt phần mềm diệt virus</text>
+      <feedback>
+        <text>Sai, cài đặt phần mềm diệt virus không liên quan đến phishing.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 12-->
+  <question type="multichoice">
+    <name>
+      <text>CE12: Ứng xử khi bị xúc phạm</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Nên làm gì khi bị xúc phạm trên không gian mạng?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Báo cáo hành vi vi phạm và không đáp trả tiêu cực</text>
+      <feedback>
+        <text>Đúng, báo cáo hành vi và giữ bình tĩnh là cách ứng xử đúng.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Đáp trả bằng ngôn ngữ xúc phạm</text>
+      <feedback>
+        <text>Sai, đáp trả tiêu cực có thể làm tình hình tồi tệ hơn.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chia sẻ thông tin cá nhân để giải thích</text>
+      <feedback>
+        <text>Sai, chia sẻ thông tin cá nhân có thể gây nguy hiểm.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 13-->
+  <question type="multichoice">
+    <name>
+      <text>CE13: Bản quyền nội dung</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Việc sử dụng nội dung không có bản quyền trên mạng có thể dẫn đến hậu quả gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Vi phạm pháp luật và bị xử phạt</text>
+      <feedback>
+        <text>Đúng, sử dụng nội dung không phép có thể vi phạm luật bản quyền.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Tăng lưu lượng truy cập mạng</text>
+      <feedback>
+        <text>Sai, việc này không liên quan đến lưu lượng mạng.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Không có hậu quả gì</text>
+      <feedback>
+        <text>Sai, vi phạm bản quyền có thể dẫn đến hậu quả pháp lý.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 14-->
+  <question type="multichoice">
+    <name>
+      <text>CE14: Mật khẩu an toàn</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Mật khẩu an toàn nên có đặc điểm gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Kết hợp chữ hoa, chữ thường, số và ký tự đặc biệt</text>
+      <feedback>
+        <text>Đúng, mật khẩu an toàn cần phức tạp và đa dạng ký tự.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Dùng tên hoặc ngày sinh cá nhân</text>
+      <feedback>
+        <text>Sai, dùng thông tin cá nhân làm mật khẩu dễ bị đoán.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Ngắn và dễ nhớ</text>
+      <feedback>
+        <text>Sai, mật khẩu ngắn và đơn giản không an toàn.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 15-->
+  <question type="multichoice">
+    <name>
+      <text>CE15: Trách nhiệm cá nhân</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Trách nhiệm cá nhân khi sử dụng không gian mạng là gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Kiểm chứng thông tin trước khi chia sẻ</text>
+      <feedback>
+        <text>Đúng, kiểm chứng thông tin giúp tránh lan truyền tin giả.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chia sẻ mọi thông tin mà không cần kiểm tra</text>
+      <feedback>
+        <text>Sai, chia sẻ thông tin không kiểm chứng có thể gây hại.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ sử dụng mạng để giải trí</text>
+      <feedback>
+        <text>Sai, trách nhiệm cá nhân bao gồm việc sử dụng mạng có trách nhiệm.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 16-->
+  <question type="multichoice">
+    <name>
+      <text>CE16: Luật bản quyền</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Luật bản quyền trong không gian mạng bảo vệ điều gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Tác phẩm sáng tạo như âm nhạc, sách, phần mềm</text>
+      <feedback>
+        <text>Đúng, luật bản quyền bảo vệ các tác phẩm sáng tạo khỏi bị sử dụng trái phép.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Tốc độ truy cập Internet</text>
+      <feedback>
+        <text>Sai, bản quyền không liên quan đến tốc độ Internet.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Kết nối Wi-Fi công cộng</text>
+      <feedback>
+        <text>Sai, bản quyền không liên quan đến kết nối Wi-Fi.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>hard</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 17-->
+  <question type="multichoice">
+    <name>
+      <text>CE17: Tấn công DDoS</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Tấn công DDoS trong không gian mạng là gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Tấn công làm quá tải máy chủ bằng lưu lượng giả</text>
+      <feedback>
+        <text>Đúng, DDoS (Distributed Denial of Service) làm gián đoạn dịch vụ bằng lưu lượng giả.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chia sẻ tệp hợp pháp</text>
+      <feedback>
+        <text>Sai, chia sẻ tệp hợp pháp không phải là tấn công DDoS.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Cài đặt phần mềm diệt virus</text>
+      <feedback>
+        <text>Sai, cài đặt phần mềm diệt virus không liên quan đến DDoS.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>hard</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 18-->
+  <question type="multichoice">
+    <name>
+      <text>CE18: Bảo mật tài khoản</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Làm thế nào để bảo mật tài khoản mạng xã hội?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Sử dụng xác thực hai yếu tố (2FA)</text>
+      <feedback>
+        <text>Đúng, xác thực hai yếu tố tăng cường bảo mật cho tài khoản.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Sử dụng cùng một mật khẩu cho nhiều tài khoản</text>
+      <feedback>
+        <text>Sai, dùng cùng mật khẩu làm tăng nguy cơ bị tấn công.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Đăng nhập trên nhiều thiết bị công cộng</text>
+      <feedback>
+        <text>Sai, đăng nhập trên thiết bị công cộng không an toàn.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>hard</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 19-->
+  <question type="multichoice">
+    <name>
+      <text>CE19: Hành vi bắt nạt mạng</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Bắt nạt qua mạng (cyberbullying) bao gồm hành vi nào?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Gửi tin nhắn xúc phạm hoặc đe dọa qua mạng</text>
+      <feedback>
+        <text>Đúng, cyberbullying bao gồm các hành vi xúc phạm, đe dọa qua mạng.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chia sẻ tài liệu học tập</text>
+      <feedback>
+        <text>Sai, chia sẻ tài liệu học tập không phải là bắt nạt.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Sử dụng mạng để học tập</text>
+      <feedback>
+        <text>Sai, học tập qua mạng không liên quan đến bắt nạt.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>hard</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 20-->
+  <question type="multichoice">
+    <name>
+      <text>CE20: Trách nhiệm pháp lý</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Trách nhiệm pháp lý khi đăng nội dung vi phạm trên mạng là gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Có thể bị phạt hành chính hoặc truy cứu trách nhiệm hình sự</text>
+      <feedback>
+        <text>Đúng, nội dung vi phạm có thể dẫn đến xử phạt theo pháp luật.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Không có trách nhiệm pháp lý</text>
+      <feedback>
+        <text>Sai, đăng nội dung vi phạm có thể chịu trách nhiệm pháp lý.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ cần xóa nội dung là xong</text>
+      <feedback>
+        <text>Sai, xóa nội dung không miễn trừ trách nhiệm pháp lý.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>hard</text>
+      </tag>
+    </tags>
+  </question>
+</quiz>

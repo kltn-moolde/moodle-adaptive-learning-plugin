@@ -1,0 +1,465 @@
+{
+  "quiz_title": "Bài kiểm tra Tin học lớp 12 - Bài 3: Một số thiết bị mạng thông dụng",
+  "questions": [
+    {
+      "question_type": "multichoice",
+      "name": "ND1: Router là gì",
+      "question_text": "Router là thiết bị mạng dùng để làm gì?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "text": "Kết nối các mạng khác nhau và chuyển tiếp gói tin",
+          "fraction": 100,
+          "feedback": "Đúng, router kết nối các mạng và định tuyến dữ liệu giữa chúng."
+        },
+        {
+          "text": "Chỉ lưu trữ dữ liệu mạng",
+          "fraction": 0,
+          "feedback": "Sai, router không dùng để lưu trữ mà để định tuyến dữ liệu."
+        },
+        {
+          "text": "Cung cấp tín hiệu Wi-Fi cho thiết bị",
+          "fraction": 0,
+          "feedback": "Sai, đó là chức năng chính của điểm truy cập Wi-Fi, không phải router."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "ND2: Switch là gì",
+      "question_text": "Switch (bộ chuyển mạch) có chức năng gì trong mạng?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "text": "Kết nối các thiết bị trong cùng một mạng LAN",
+          "fraction": 100,
+          "feedback": "Đúng, switch kết nối các thiết bị trong mạng LAN và chuyển gói tin đến đúng đích."
+        },
+        {
+          "text": "Kết nối mạng Internet toàn cầu",
+          "fraction": 0,
+          "feedback": "Sai, đó là chức năng của router, không phải switch."
+        },
+        {
+          "text": "Lưu trữ dữ liệu mạng",
+          "fraction": 0,
+          "feedback": "Sai, switch không dùng để lưu trữ dữ liệu."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "ND3: Hub là gì",
+      "question_text": "Hub khác với switch ở điểm nào?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "text": "Hub gửi dữ liệu đến tất cả các cổng, còn switch chỉ gửi đến cổng đích",
+          "fraction": 100,
+          "feedback": "Đúng, hub không thông minh như switch, nó gửi dữ liệu đến mọi cổng."
+        },
+        {
+          "text": "Hub kết nối các mạng khác nhau",
+          "fraction": 0,
+          "feedback": "Sai, đó là chức năng của router, không phải hub."
+        },
+        {
+          "text": "Hub có tốc độ nhanh hơn switch",
+          "fraction": 0,
+          "feedback": "Sai, switch thường hiệu quả hơn hub."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "ND4: Access Point",
+      "question_text": "Điểm truy cập (Access Point) có vai trò gì trong mạng?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "text": "Cung cấp kết nối Wi-Fi cho các thiết bị không dây",
+          "fraction": 100,
+          "feedback": "Đúng, Access Point tạo điểm kết nối Wi-Fi cho các thiết bị."
+        },
+        {
+          "text": "Kết nối các mạng WAN",
+          "fraction": 0,
+          "feedback": "Sai, đó là chức năng của router, không phải Access Point."
+        },
+        {
+          "text": "Lưu trữ dữ liệu Wi-Fi",
+          "fraction": 0,
+          "feedback": "Sai, Access Point không dùng để lưu trữ dữ liệu."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "ND5: Modem là gì",
+      "question_text": "Modem có chức năng gì trong mạng?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "text": "Chuyển đổi tín hiệu số thành analog và ngược lại",
+          "fraction": 100,
+          "feedback": "Đúng, modem chuyển đổi tín hiệu để kết nối mạng Internet."
+        },
+        {
+          "text": "Chỉ kết nối các thiết bị trong mạng LAN",
+          "fraction": 0,
+          "feedback": "Sai, đó là chức năng của switch, không phải modem."
+        },
+        {
+          "text": "Tăng tốc độ Wi-Fi",
+          "fraction": 0,
+          "feedback": "Sai, modem không trực tiếp tăng tốc độ Wi-Fi."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "ND6: Tầm quan trọng của router",
+      "question_text": "Tại sao router quan trọng trong mạng gia đình?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "text": "Cho phép nhiều thiết bị kết nối Internet",
+          "fraction": 100,
+          "feedback": "Đúng, router phân phối kết nối Internet cho nhiều thiết bị."
+        },
+        {
+          "text": "Chỉ dùng để lưu trữ dữ liệu",
+          "fraction": 0,
+          "feedback": "Sai, router không dùng để lưu trữ."
+        },
+        {
+          "text": "Chỉ kết nối mạng nội bộ",
+          "fraction": 0,
+          "feedback": "Sai, router kết nối cả mạng nội bộ và Internet."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "ND7: Vai trò của switch",
+      "question_text": "Switch hoạt động ở tầng nào của mô hình OSI?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "Tầng liên kết dữ liệu (Data Link Layer)",
+          "fraction": 100,
+          "feedback": "Đúng, switch hoạt động ở tầng 2 (Data Link Layer) của mô hình OSI."
+        },
+        {
+          "text": "Tầng ứng dụng (Application Layer)",
+          "fraction": 0,
+          "feedback": "Sai, tầng ứng dụng liên quan đến phần mềm, không phải switch."
+        },
+        {
+          "text": "Tầng vật lý (Physical Layer)",
+          "fraction": 0,
+          "feedback": "Sai, tầng vật lý liên quan đến phần cứng như cáp, không phải switch."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "ND8: Router và tầng OSI",
+      "question_text": "Router hoạt động ở tầng nào của mô hình OSI?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "Tầng mạng (Network Layer)",
+          "fraction": 100,
+          "feedback": "Đúng, router hoạt động ở tầng 3 (Network Layer) để định tuyến gói tin."
+        },
+        {
+          "text": "Tầng liên kết dữ liệu (Data Link Layer)",
+          "fraction": 0,
+          "feedback": "Sai, đó là tầng của switch, không phải router."
+        },
+        {
+          "text": "Tầng vật lý (Physical Layer)",
+          "fraction": 0,
+          "feedback": "Sai, router không hoạt động ở tầng vật lý."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "ND9: Hub và tầng OSI",
+      "question_text": "Hub hoạt động ở tầng nào của mô hình OSI?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "Tầng vật lý (Physical Layer)",
+          "fraction": 100,
+          "feedback": "Đúng, hub hoạt động ở tầng 1 (Physical Layer) để truyền tín hiệu."
+        },
+        {
+          "text": "Tầng mạng (Network Layer)",
+          "fraction": 0,
+          "feedback": "Sai, tầng mạng là tầng của router, không phải hub."
+        },
+        {
+          "text": "Tầng ứng dụng (Application Layer)",
+          "fraction": 0,
+          "feedback": "Sai, hub không liên quan đến tầng ứng dụng."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "ND10: Access Point và Wi-Fi",
+      "question_text": "Access Point khác với router ở điểm nào?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "Access Point chỉ cung cấp Wi-Fi, không định tuyến gói tin",
+          "fraction": 100,
+          "feedback": "Đúng, Access Point cung cấp kết nối Wi-Fi, còn router có thêm chức năng định tuyến."
+        },
+        {
+          "text": "Access Point kết nối các mạng WAN",
+          "fraction": 0,
+          "feedback": "Sai, đó là chức năng của router, không phải Access Point."
+        },
+        {
+          "text": "Access Point lưu trữ dữ liệu",
+          "fraction": 0,
+          "feedback": "Sai, Access Point không dùng để lưu trữ dữ liệu."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "ND11: Modem và Internet",
+      "question_text": "Tại sao modem cần thiết để kết nối Internet?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "Chuyển đổi tín hiệu số thành analog để kết nối với nhà cung cấp dịch vụ",
+          "fraction": 100,
+          "feedback": "Đúng, modem chuyển đổi tín hiệu để kết nối mạng Internet."
+        },
+        {
+          "text": "Cung cấp Wi-Fi cho thiết bị",
+          "fraction": 0,
+          "feedback": "Sai, đó là chức năng của Access Point hoặc router."
+        },
+        {
+          "text": "Kết nối các thiết bị trong mạng LAN",
+          "fraction": 0,
+          "feedback": "Sai, đó là chức năng của switch."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "ND12: Switch thông minh",
+      "question_text": "Switch thông minh (managed switch) có ưu điểm gì so với switch thông thường?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "Cho phép cấu hình và quản lý mạng",
+          "fraction": 100,
+          "feedback": "Đúng, switch thông minh cho phép quản lý chi tiết như VLAN, QoS."
+        },
+        {
+          "text": "Chỉ tăng tốc độ truyền dữ liệu",
+          "fraction": 0,
+          "feedback": "Sai, switch thông minh không chỉ tăng tốc độ mà còn có tính năng quản lý."
+        },
+        {
+          "text": "Kết nối mạng WAN",
+          "fraction": 0,
+          "feedback": "Sai, đó là chức năng của router."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "ND13: Tường lửa",
+      "question_text": "Thiết bị tường lửa (Firewall) có vai trò gì trong mạng?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "Bảo vệ mạng khỏi các truy cập trái phép",
+          "fraction": 100,
+          "feedback": "Đúng, tường lửa kiểm soát và bảo vệ lưu lượng mạng."
+        },
+        {
+          "text": "Chuyển đổi tín hiệu Wi-Fi",
+          "fraction": 0,
+          "feedback": "Sai, đó không phải chức năng của tường lửa."
+        },
+        {
+          "text": "Kết nối các thiết bị trong LAN",
+          "fraction": 0,
+          "feedback": "Sai, đó là chức năng của switch."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "ND14: NIC là gì",
+      "question_text": "Thẻ giao tiếp mạng (NIC) có vai trò gì?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "Kết nối máy tính với mạng",
+          "fraction": 100,
+          "feedback": "Đúng, NIC (Network Interface Card) cho phép máy tính kết nối mạng."
+        },
+        {
+          "text": "Cung cấp tín hiệu Wi-Fi",
+          "fraction": 0,
+          "feedback": "Sai, NIC không cung cấp Wi-Fi mà chỉ kết nối mạng."
+        },
+        {
+          "text": "Lưu trữ dữ liệu mạng",
+          "fraction": 0,
+          "feedback": "Sai, NIC không dùng để lưu trữ dữ liệu."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "ND15: Repeater",
+      "question_text": "Repeater (bộ lặp) có chức năng gì trong mạng?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "Khuếch đại tín hiệu mạng để mở rộng khoảng cách",
+          "fraction": 100,
+          "feedback": "Đúng, repeater khuếch đại tín hiệu để truyền xa hơn."
+        },
+        {
+          "text": "Kết nối các mạng khác nhau",
+          "fraction": 0,
+          "feedback": "Sai, đó là chức năng của router."
+        },
+        {
+          "text": "Chuyển đổi tín hiệu số thành analog",
+          "fraction": 0,
+          "feedback": "Sai, đó là chức năng của modem."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "ND16: Bridge",
+      "question_text": "Bridge (cầu nối) khác với switch ở điểm nào?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "text": "Bridge kết nối hai mạng LAN, switch kết nối nhiều thiết bị trong một LAN",
+          "fraction": 100,
+          "feedback": "Đúng, bridge kết nối hai mạng LAN, còn switch quản lý nhiều thiết bị trong một LAN."
+        },
+        {
+          "text": "Bridge cung cấp Wi-Fi",
+          "fraction": 0,
+          "feedback": "Sai, bridge không cung cấp Wi-Fi."
+        },
+        {
+          "text": "Bridge hoạt động ở tầng mạng",
+          "fraction": 0,
+          "feedback": "Sai, bridge hoạt động ở tầng liên kết dữ liệu, giống switch."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "ND17: Gateway",
+      "question_text": "Gateway có vai trò gì trong mạng?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "text": "Kết nối các mạng sử dụng giao thức khác nhau",
+          "fraction": 100,
+          "feedback": "Đúng, gateway chuyển đổi giao thức để kết nối các mạng khác nhau."
+        },
+        {
+          "text": "Chỉ khuếch đại tín hiệu mạng",
+          "fraction": 0,
+          "feedback": "Sai, đó là chức năng của repeater."
+        },
+        {
+          "text": "Chỉ cung cấp Wi-Fi",
+          "fraction": 0,
+          "feedback": "Sai, gateway không giới hạn ở việc cung cấp Wi-Fi."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "ND18: VLAN",
+      "question_text": "VLAN trên switch được sử dụng để làm gì?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "text": "Phân chia mạng logic mà không cần thêm phần cứng",
+          "fraction": 100,
+          "feedback": "Đúng, VLAN tạo các mạng ảo để tăng tính linh hoạt và bảo mật."
+        },
+        {
+          "text": "Tăng tốc độ truyền dữ liệu",
+          "fraction": 0,
+          "feedback": "Sai, VLAN không trực tiếp tăng tốc độ mà tổ chức mạng."
+        },
+        {
+          "text": "Kết nối mạng WAN",
+          "fraction": 0,
+          "feedback": "Sai, VLAN hoạt động trong mạng LAN."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "ND19: Tường lửa phần mềm",
+      "question_text": "Tường lửa phần mềm khác với tường lửa phần cứng như thế nào?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "text": "Tường lửa phần mềm chạy trên hệ điều hành, tường lửa phần cứng là thiết bị riêng",
+          "fraction": 100,
+          "feedback": "Đúng, tường lửa phần mềm là phần mềm cài đặt, còn phần cứng là thiết bị chuyên dụng."
+        },
+        {
+          "text": "Tường lửa phần mềm cung cấp Wi-Fi",
+          "fraction": 0,
+          "feedback": "Sai, tường lửa không cung cấp Wi-Fi."
+        },
+        {
+          "text": "Tường lửa phần mềm kết nối các mạng WAN",
+          "fraction": 0,
+          "feedback": "Sai, đó là chức năng của router hoặc gateway."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "ND20: Thiết bị mạng và bảo mật",
+      "question_text": "Thiết bị mạng nào giúp tăng cường bảo mật cho mạng?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "text": "Tường lửa và router với tính năng bảo mật",
+          "fraction": 100,
+          "feedback": "Đúng, tường lửa và router có thể được cấu hình để bảo vệ mạng."
+        },
+        {
+          "text": "Hub và repeater",
+          "fraction": 0,
+          "feedback": "Sai, hub và repeater không có tính năng bảo mật."
+        },
+        {
+          "text": "Chỉ modem",
+          "fraction": 0,
+          "feedback": "Sai, modem không đủ để đảm bảo bảo mật mạng."
+        }
+      ]
+    }
+  ]
+}

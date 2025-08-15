@@ -101,7 +101,14 @@ sql/ : thư mục chứa câu lệnh sql về lấy log từ moodle
 - gợi ý sai
 - Kmean sai, code rối, ...
 
-### Update demo V6 !important
+### Update demo V6 
 
 - Dữ liệu thật từ moodle
 - realtime gợi ý hành động
+
+### Update demo V7 - 140825
+
+- Nâng cấp thuật toán Qlearning
+  + Thử quiz dễ hơn khi fail quiz khó
+  + Thử quiz khó hơn khi pass nhiều quiz dễ
+  + Làm lại quiz tương tự dạng đã học

@@ -1,0 +1,465 @@
+{
+  "quiz_title": "Bài kiểm tra Tin học lớp 12 - Trí tuệ nhân tạo trong khoa học và đời sống",
+  "questions": [
+    {
+      "question_type": "multichoice",
+      "name": "AI1: Khái niệm cơ bản",
+      "question_text": "Trí tuệ nhân tạo (AI) được ứng dụng trong lĩnh vực nào sau đây?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "text": "Y tế, giao thông và giáo dục",
+          "fraction": 100,
+          "feedback": "Đúng, AI được ứng dụng rộng rãi trong y tế, giao thông, giáo dục và nhiều lĩnh vực khác."
+        },
+        {
+          "text": "Chỉ trong chơi game",
+          "fraction": 0,
+          "feedback": "Sai, AI không chỉ giới hạn trong chơi game mà còn ứng dụng trong nhiều lĩnh vực."
+        },
+        {
+          "text": "Chỉ trong sản xuất phần cứng",
+          "fraction": 0,
+          "feedback": "Sai, AI chủ yếu liên quan đến phần mềm và xử lý dữ liệu thông minh."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "AI2: Ứng dụng y tế",
+      "question_text": "AI hỗ trợ y tế như thế nào?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "text": "Chẩn đoán bệnh dựa trên hình ảnh y khoa",
+          "fraction": 100,
+          "feedback": "Đúng, AI được sử dụng để phân tích hình ảnh y khoa, hỗ trợ chẩn đoán bệnh."
+        },
+        {
+          "text": "Thay thế hoàn toàn bác sĩ",
+          "fraction": 0,
+          "feedback": "Sai, AI chỉ hỗ trợ bác sĩ, không thay thế hoàn toàn."
+        },
+        {
+          "text": "Chỉ dùng để lưu trữ hồ sơ bệnh nhân",
+          "fraction": 0,
+          "feedback": "Sai, AI có khả năng phân tích và đưa ra dự đoán, không chỉ lưu trữ."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "AI3: Học máy",
+      "question_text": "Học máy (Machine Learning) là gì?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "text": "Một nhánh của AI, giúp máy học từ dữ liệu",
+          "fraction": 100,
+          "feedback": "Đúng, học máy là một nhánh của AI, giúp hệ thống tự học từ dữ liệu."
+        },
+        {
+          "text": "Một loại phần cứng máy tính",
+          "fraction": 0,
+          "feedback": "Sai, học máy là một lĩnh vực phần mềm, không phải phần cứng."
+        },
+        {
+          "text": "Một ngôn ngữ lập trình",
+          "fraction": 0,
+          "feedback": "Sai, học máy không phải ngôn ngữ lập trình mà là một phương pháp AI."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "AI4: Ứng dụng giao thông",
+      "question_text": "AI được sử dụng trong giao thông để làm gì?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "text": "Điều khiển xe tự hành",
+          "fraction": 100,
+          "feedback": "Đúng, AI được sử dụng trong xe tự hành để điều hướng và tránh chướng ngại vật."
+        },
+        {
+          "text": "Sản xuất lốp xe",
+          "fraction": 0,
+          "feedback": "Sai, AI không liên quan trực tiếp đến sản xuất lốp xe."
+        },
+        {
+          "text": "Thiết kế đường cao tốc",
+          "fraction": 0,
+          "feedback": "Sai, AI chủ yếu hỗ trợ điều khiển và tối ưu hóa giao thông."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "AI5: Ứng dụng giáo dục",
+      "question_text": "AI hỗ trợ giáo dục như thế nào?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "text": "Cá nhân hóa nội dung học tập cho học sinh",
+          "fraction": 100,
+          "feedback": "Đúng, AI phân tích dữ liệu để cá nhân hóa việc học cho từng học sinh."
+        },
+        {
+          "text": "Thay thế hoàn toàn giáo viên",
+          "fraction": 0,
+          "feedback": "Sai, AI chỉ hỗ trợ giáo viên, không thay thế hoàn toàn."
+        },
+        {
+          "text": "Chỉ dùng để in sách giáo khoa",
+          "fraction": 0,
+          "feedback": "Sai, AI không giới hạn ở việc in ấn mà có ứng dụng thông minh hơn."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "AI6: Lợi ích của AI",
+      "question_text": "Lợi ích chính của AI trong đời sống là gì?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "text": "Tăng hiệu quả và tiết kiệm thời gian",
+          "fraction": 100,
+          "feedback": "Đúng, AI giúp tự động hóa và tối ưu hóa công việc."
+        },
+        {
+          "text": "Tăng chi phí sản xuất",
+          "fraction": 0,
+          "feedback": "Sai, AI thường giúp giảm chi phí."
+        },
+        {
+          "text": "Làm giảm sự sáng tạo của con người",
+          "fraction": 0,
+          "feedback": "Sai, AI có thể hỗ trợ sáng tạo, không làm giảm nó."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "AI7: Thách thức của AI",
+      "question_text": "Một thách thức khi sử dụng AI là gì?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "Vấn đề bảo mật và quyền riêng tư",
+          "fraction": 100,
+          "feedback": "Đúng, AI xử lý lượng lớn dữ liệu, dẫn đến nguy cơ về bảo mật và quyền riêng tư."
+        },
+        {
+          "text": "Không cần bảo trì hệ thống",
+          "fraction": 0,
+          "feedback": "Sai, hệ thống AI cần được bảo trì thường xuyên."
+        },
+        {
+          "text": "Chỉ sử dụng được ở một lĩnh vực",
+          "fraction": 0,
+          "feedback": "Sai, AI có thể được ứng dụng trong nhiều lĩnh vực."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "AI8: Học sâu",
+      "question_text": "Học sâu (Deep Learning) là gì?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "Một nhánh của học máy sử dụng mạng nơ-ron",
+          "fraction": 100,
+          "feedback": "Đúng, học sâu sử dụng mạng nơ-ron để mô phỏng cách xử lý thông tin của não người."
+        },
+        {
+          "text": "Một phần mềm chỉnh sửa ảnh",
+          "fraction": 0,
+          "feedback": "Sai, học sâu không phải là phần mềm chỉnh sửa ảnh."
+        },
+        {
+          "text": "Một công cụ lưu trữ dữ liệu",
+          "fraction": 0,
+          "feedback": "Sai, học sâu liên quan đến xử lý dữ liệu, không phải lưu trữ."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "AI9: Ứng dụng nông nghiệp",
+      "question_text": "AI được ứng dụng trong nông nghiệp như thế nào?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "Dự đoán thời tiết và phân tích đất",
+          "fraction": 100,
+          "feedback": "Đúng, AI giúp dự đoán thời tiết và tối ưu hóa nông nghiệp chính xác."
+        },
+        {
+          "text": "Chỉ dùng để tưới cây tự động",
+          "fraction": 0,
+          "feedback": "Sai, AI có nhiều ứng dụng hơn trong nông nghiệp."
+        },
+        {
+          "text": "Sản xuất phân bón",
+          "fraction": 0,
+          "feedback": "Sai, AI không trực tiếp sản xuất phân bón."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "AI10: Xử lý ngôn ngữ tự nhiên",
+      "question_text": "Xử lý ngôn ngữ tự nhiên (NLP) trong AI là gì?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "Khả năng máy hiểu và tạo ra ngôn ngữ con người",
+          "fraction": 100,
+          "feedback": "Đúng, NLP giúp máy tương tác với con người qua ngôn ngữ tự nhiên."
+        },
+        {
+          "text": "Chỉ dùng để dịch văn bản",
+          "fraction": 0,
+          "feedback": "Sai, NLP không chỉ giới hạn ở dịch thuật mà còn phân tích ngữ nghĩa."
+        },
+        {
+          "text": "Tạo phần cứng máy tính",
+          "fraction": 0,
+          "feedback": "Sai, NLP liên quan đến phần mềm, không phải phần cứng."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "AI11: Chatbot",
+      "question_text": "Chatbot sử dụng AI hoạt động như thế nào?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "Sử dụng NLP để trả lời câu hỏi của người dùng",
+          "fraction": 100,
+          "feedback": "Đúng, chatbot dựa trên NLP để hiểu và trả lời tự nhiên."
+        },
+        {
+          "text": "Chỉ gửi tin nhắn tự động mà không hiểu nội dung",
+          "fraction": 0,
+          "feedback": "Sai, chatbot AI có khả năng hiểu và phản hồi thông minh."
+        },
+        {
+          "text": "Chỉ dùng để lưu trữ tin nhắn",
+          "fraction": 0,
+          "feedback": "Sai, chatbot không chỉ lưu trữ mà còn xử lý thông tin."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "AI12: Đạo đức trong AI",
+      "question_text": "Vấn đề đạo đức trong AI liên quan đến điều gì?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "Sử dụng dữ liệu cá nhân một cách minh bạch",
+          "fraction": 100,
+          "feedback": "Đúng, đạo đức trong AI yêu cầu minh bạch và bảo vệ dữ liệu cá nhân."
+        },
+        {
+          "text": "Tăng tốc độ xử lý máy tính",
+          "fraction": 0,
+          "feedback": "Sai, đạo đức không liên quan đến tốc độ xử lý."
+        },
+        {
+          "text": "Chỉ tập trung vào lợi nhuận",
+          "fraction": 0,
+          "feedback": "Sai, đạo đức trong AI tập trung vào trách nhiệm xã hội."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "AI13: AI trong công nghiệp",
+      "question_text": "AI được ứng dụng trong công nghiệp như thế nào?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "Tự động hóa dây chuyền sản xuất",
+          "fraction": 100,
+          "feedback": "Đúng, AI giúp tối ưu hóa và tự động hóa quy trình sản xuất."
+        },
+        {
+          "text": "Chỉ dùng để kiểm tra chất lượng sản phẩm",
+          "fraction": 0,
+          "feedback": "Sai, AI có nhiều ứng dụng hơn trong công nghiệp."
+        },
+        {
+          "text": "Chỉ thiết kế bao bì sản phẩm",
+          "fraction": 0,
+          "feedback": "Sai, AI không giới hạn ở thiết kế bao bì."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "AI14: AI và việc làm",
+      "question_text": "AI ảnh hưởng đến việc làm như thế nào?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "Tạo ra công việc mới nhưng cũng thay thế một số công việc cũ",
+          "fraction": 100,
+          "feedback": "Đúng, AI tạo cơ hội mới nhưng cũng tự động hóa một số công việc."
+        },
+        {
+          "text": "Hoàn toàn thay thế tất cả công việc của con người",
+          "fraction": 0,
+          "feedback": "Sai, AI không thay thế hoàn toàn mà hỗ trợ con người."
+        },
+        {
+          "text": "Không ảnh hưởng đến việc làm",
+          "fraction": 0,
+          "feedback": "Sai, AI có tác động lớn đến thị trường lao động."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "AI15: AI trong nghiên cứu khoa học",
+      "question_text": "AI hỗ trợ nghiên cứu khoa học như thế nào?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "Phân tích dữ liệu lớn và dự đoán kết quả",
+          "fraction": 100,
+          "feedback": "Đúng, AI giúp xử lý dữ liệu phức tạp trong nghiên cứu khoa học."
+        },
+        {
+          "text": "Chỉ dùng để viết báo cáo khoa học",
+          "fraction": 0,
+          "feedback": "Sai, AI có ứng dụng sâu hơn trong phân tích và dự đoán."
+        },
+        {
+          "text": "Thay thế hoàn toàn nhà khoa học",
+          "fraction": 0,
+          "feedback": "Sai, AI chỉ hỗ trợ, không thay thế nhà khoa học."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "AI16: Hạn chế của AI",
+      "question_text": "Một hạn chế lớn của AI là gì?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "text": "Thiếu khả năng sáng tạo như con người",
+          "fraction": 100,
+          "feedback": "Đúng, AI có thể mô phỏng nhưng không thực sự sáng tạo như con người."
+        },
+        {
+          "text": "Không thể xử lý dữ liệu lớn",
+          "fraction": 0,
+          "feedback": "Sai, AI rất giỏi trong xử lý dữ liệu lớn."
+        },
+        {
+          "text": "Không thể học từ dữ liệu",
+          "fraction": 0,
+          "feedback": "Sai, học từ dữ liệu là một đặc trưng của AI."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "AI17: Mạng nơ-ron",
+      "question_text": "Mạng nơ-ron nhân tạo hoạt động dựa trên nguyên lý nào?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "text": "Mô phỏng cách hoạt động của não bộ con người",
+          "fraction": 100,
+          "feedback": "Đúng, mạng nơ-ron mô phỏng cách xử lý thông tin của não bộ."
+        },
+        {
+          "text": "Lưu trữ dữ liệu trên đám mây",
+          "fraction": 0,
+          "feedback": "Sai, mạng nơ-ron không liên quan đến lưu trữ đám mây."
+        },
+        {
+          "text": "Chỉ dùng để kết nối internet",
+          "fraction": 0,
+          "feedback": "Sai, mạng nơ-ron tập trung vào xử lý dữ liệu."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "AI18: AI và môi trường",
+      "question_text": "AI góp phần bảo vệ môi trường như thế nào?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "text": "Tối ưu hóa tiêu thụ năng lượng và giám sát môi trường",
+          "fraction": 100,
+          "feedback": "Đúng, AI giúp giảm tiêu thụ năng lượng và giám sát môi trường hiệu quả."
+        },
+        {
+          "text": "Tăng lượng khí thải carbon",
+          "fraction": 0,
+          "feedback": "Sai, AI thường được dùng để giảm tác động môi trường."
+        },
+        {
+          "text": "Chỉ dùng để dự báo thời tiết",
+          "fraction": 0,
+          "feedback": "Sai, AI có nhiều ứng dụng hơn trong bảo vệ môi trường."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "AI19: Tương lai của AI",
+      "question_text": "Tương lai của AI có thể dẫn đến điều gì?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "text": "Tăng cường hợp tác giữa con người và máy",
+          "fraction": 100,
+          "feedback": "Đúng, AI sẽ hỗ trợ con người trong nhiều lĩnh vực, tạo ra sự hợp tác."
+        },
+        {
+          "text": "Hoàn toàn thay thế con người trong mọi công việc",
+          "fraction": 0,
+          "feedback": "Sai, AI không thể thay thế hoàn toàn con người."
+        },
+        {
+          "text": "Không phát triển thêm nữa",
+          "fraction": 0,
+          "feedback": "Sai, AI đang phát triển nhanh chóng."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "AI20: AI và an ninh",
+      "question_text": "AI được sử dụng trong an ninh như thế nào?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "text": "Phân tích video giám sát và phát hiện mối đe dọa",
+          "fraction": 100,
+          "feedback": "Đúng, AI giúp phân tích dữ liệu an ninh để phát hiện nguy cơ."
+        },
+        {
+          "text": "Chỉ dùng để khóa cửa tự động",
+          "fraction": 0,
+          "feedback": "Sai, AI có ứng dụng phức tạp hơn trong an ninh."
+        },
+        {
+          "text": "Chỉ lưu trữ dữ liệu camera",
+          "fraction": 0,
+          "feedback": "Sai, AI phân tích dữ liệu, không chỉ lưu trữ."
+        }
+      ]
+    }
+  ]
+}
