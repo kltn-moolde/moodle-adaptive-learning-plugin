@@ -1,32 +1,26 @@
-# macOS
-.DS_Store
+
+**/.DS_Store
 .AppleDouble
 .LSOverride
 
-# Thumbnails
 ._*
 
-# Java build
-/target/
-/out/
-/build/
+**/target/
+**/out/
+**/build/
 
-# IntelliJ IDEA
 *.iml
-.idea/
+**/.idea/
 
-# VSCode
-.vscode/
+**/.vscode/
 
-# Logs
+
 *.log
 
-# Environment
 .env
 
-# Maven wrapper
-.mvn/wrapper/maven-wrapper.jar
+**/.mvn/wrapper/maven-wrapper.jar
 
-# Temporary files
+
 *.swp
 *.swo
