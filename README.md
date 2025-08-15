@@ -112,3 +112,4 @@ sql/ : thư mục chứa câu lệnh sql về lấy log từ moodle
   + Thử quiz dễ hơn khi fail quiz khó
   + Thử quiz khó hơn khi pass nhiều quiz dễ
   + Làm lại quiz tương tự dạng đã học
+  + finish time: 13h or 14h 160825
