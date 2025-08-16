@@ -38,6 +38,9 @@
 - local_userlog_v8.zip: version thứ 8 - demo V6
   + bổ sung cấu hình: hiển thị feedback khi làm xong, cấu hình gradepass
   + bổ sung chỉ hiển thị quiz cho user cụ thể
+- local_userlog_v9.zip: version thứ 9 - demo V7
+  + bổ sung api tính điểm trung bình của 1 section
+  + bổ sung api lấy tag name (level) của quiz
   
 
 course_log_somethingelse.ipynb: lấy thông tin coure, log, nhiều thứ,...
@@ -112,4 +115,5 @@ sql/ : thư mục chứa câu lệnh sql về lấy log từ moodle
   + Thử quiz dễ hơn khi fail quiz khó
   + Thử quiz khó hơn khi pass nhiều quiz dễ
   + Làm lại quiz tương tự dạng đã học
-  + finish time: 13h or 14h 160825
+  + finish time: 13h or 14h 160825 -> hoàn thành
+  -> Gợi ý chưa chính xác, thiếu ràng buộc, chưa theo 1 lộ trình

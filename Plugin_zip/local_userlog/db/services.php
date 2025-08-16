@@ -134,13 +134,31 @@ $functions = [
         'type'        => 'read',
         'ajax'        => true,
     ],
-    'local_userlog_create_quiz_from_categories' => [ // dang lam
+    'local_userlog_create_quiz_from_categories' => [ // ok
         'classname'   => 'local_userlog\external\create_quiz_from_categories',
         'methodname'  => 'execute',
         'classpath'   => 'local/userlog/classes/external/create_quiz_from_categories.php',
         'description' => 'Create a quiz in a given course from selected question bank categories, with specific numbers of easy, medium, and hard questions',
         'type'        => 'write',
         'ajax'        => true,
+    ],
+    'local_userlog_get_quiz_tags' => [ // ok
+        'classname'   => 'local_userlog\external\get_quiz_tags',
+        'methodname'  => 'execute',
+        'classpath'   => 'local/userlog/classes/external/get_quiz_tags.php',
+        'description' => 'Get tags of a quiz by quiz ID',
+        'type'        => 'read',
+        'ajax'        => true,
+        'capabilities' => 'moodle/course:view',
+    ],
+    'local_userlog_get_user_section_avg_grade' => [ // ok
+        'classname'   => 'local_userlog\external\get_user_section_avg_grade',
+        'methodname'  => 'execute',
+        'classpath'   => 'local/userlog/classes/external/get_user_section_avg_grade.php',
+        'description' => 'Get average grade of a user in a specific section of a course',
+        'type'        => 'read',
+        'ajax'        => true,
+        'capabilities'=> 'moodle/course:view',
     ],
     'local_userlog_get_grade_status' => [
         'classname'   => 'local_userlog\external\get_grade_status',
@@ -187,7 +205,9 @@ $services = [
             'local_userlog_get_viewed_resources_distinct_by_section', // ok
             'local_userlog_get_latest_quiz_pass_status_by_section', // ok
             'local_userlog_get_category_questionbank', // ok
-            'local_userlog_create_quiz_from_categories', // dang lam
+            'local_userlog_create_quiz_from_categories', // ok
+            'local_userlog_get_quiz_tags', // ok
+            'local_userlog_get_user_section_avg_grade', // ok
             'local_userlog_get_grade_status',
             'local_userlog_get_total_study_time',
             'local_userlog_get_user_object_activity_summary'

@@ -11,6 +11,7 @@ class observer {
         $userid = $event->userid;
         $courseid = $event->courseid;
         $type = $event->objecttable; // quiz, resource, hvp,...
+        $objectid = $event->objectid; // ID của resource/quiz
         $time = $event->timecreated;
 
         // Chỉ log những loại này
@@ -31,15 +32,10 @@ class observer {
             mkdir($logdir, 0777, true);
         }
 
-        // ==== Log DEBUG riêng ====
-        $debuglog = $logdir . '/debug.txt';
-        $debugLine = "[DEBUG] time: {$time}, userid: {$userid}, courseid: {$courseid}, sectionid: {$sectionid}, type: {$type}, cmid: {$cmid}\n";
-        file_put_contents($debuglog, $debugLine, FILE_APPEND | LOCK_EX);
-
         // ==== Ghi CSV chính ====
         $path = $logdir . '/user_log_summary.csv';
         if (!file_exists($path)) {
-            $header = 'userid,courseid,sectionid,type,time' . "\n";
+            $header = 'userid,courseid,sectionid,type,objectid,time' . "\n";
             file_put_contents($path, $header, FILE_APPEND | LOCK_EX);
         }
 
@@ -48,6 +44,7 @@ class observer {
             $courseid,
             $sectionid,
             $type,
+            $objectid,
             $time
         ]);
         file_put_contents($path, $line . "\n", FILE_APPEND | LOCK_EX);
