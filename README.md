@@ -27,6 +27,22 @@
 
 ### Folder: getDataMoodel: các hàm, api lấy data moodle
 
+- local_userlog_v1.zip: version đầu tiên
+- local_userlog_v2.zip: version thứ 2 - lấy log theo courseid và userid
+- local_userlog_v3.zip: version thứ 3 - lấy log theo courseid và userid, lấy nhiều thứ khác
+- local_userlog_v4.zip: version thứ 4 - bổ sung lấy log realtime
+- local_userlog_v5.zip: version thứ 5 - log cho Kmean - demo V5
+- local_userlog_v6.zip: version thứ 6 - log cho Qtable - demo V6
+- local_userlog_v7.zip: version thứ 7 - demo V6
+  + bổ sung api get category question bank 
+- local_userlog_v8.zip: version thứ 8 - demo V6
+  + bổ sung cấu hình: hiển thị feedback khi làm xong, cấu hình gradepass
+  + bổ sung chỉ hiển thị quiz cho user cụ thể
+- local_userlog_v9.zip: version thứ 9 - demo V7
+  + bổ sung api tính điểm trung bình của 1 section
+  + bổ sung api lấy tag name (level) của quiz
+  
+
 course_log_somethingelse.ipynb: lấy thông tin coure, log, nhiều thứ,...
 
 courseOrigin.ipynb: lấy thông tin khoá học
@@ -80,3 +96,24 @@ sql/ : thư mục chứa câu lệnh sql về lấy log từ moodle
   * Bước tuần tự: 1, 2, 3, 4, 5...
   * Action chính xác: Go_to_low_level thực sự chọn DOK thấp hơn, Go_to_high_level chọn DOK cao hơn
 * Thêm các api flask: get user info, get recommendation, get course object
+
+### Update demo V5
+
+- lấy được log thực tế, gợi ý được thực tế
+- tuy nhiên mọi thứ còn thủ công
+- gợi ý sai
+- Kmean sai, code rối, ...
+
+### Update demo V6 
+
+- Dữ liệu thật từ moodle
+- realtime gợi ý hành động
+
+### Update demo V7 - 140825
+
+- Nâng cấp thuật toán Qlearning
+  + Thử quiz dễ hơn khi fail quiz khó
+  + Thử quiz khó hơn khi pass nhiều quiz dễ
+  + Làm lại quiz tương tự dạng đã học
+  + finish time: 13h or 14h 160825 -> hoàn thành
+  -> Gợi ý chưa chính xác, thiếu ràng buộc, chưa theo 1 lộ trình

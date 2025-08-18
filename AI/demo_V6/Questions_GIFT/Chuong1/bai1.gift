@@ -1,0 +1,120 @@
+
+::AI là gì?:: [tags: easy] Trí tuệ nhân tạo (AI) là gì? {
+    =Là ngành nghiên cứu tạo ra máy móc có khả năng học hỏi và suy nghĩ giống con người #Đúng rồi, AI là trí tuệ nhân tạo mô phỏng khả năng của con người.
+    ~Là loại robot dùng để dọn dẹp nhà cửa #Sai, robot dọn dẹp chỉ là ứng dụng nhỏ của AI.
+    ~Là phần mềm chơi game thôi #Sai, AI rộng hơn nhiều ứng dụng chơi game.
+}
+
+::Ví dụ về AI trong đời sống:: [tags: easy] Ví dụ nào sau đây là ứng dụng của trí tuệ nhân tạo? {
+    =Chatbot trả lời tự động #Đúng, chatbot là ứng dụng phổ biến của AI.
+    ~Điều khiển từ xa của tivi #Sai, điều khiển từ xa không có trí tuệ nhân tạo.
+    ~Máy in phun màu #Sai, máy in không phải là AI.
+}
+
+::Thuật toán AI:: [tags: medium] Thuật toán nào thường dùng trong trí tuệ nhân tạo để học từ dữ liệu? {
+    =Machine Learning (Học máy) #Đúng, học máy là một nhánh của AI.
+    ~HTML #Sai, HTML là ngôn ngữ đánh dấu, không phải thuật toán AI.
+    ~SQL #Sai, SQL dùng để quản lý dữ liệu, không phải thuật toán AI.
+}
+
+::Mục tiêu AI:: [tags: medium] Mục tiêu chính của trí tuệ nhân tạo là gì? {
+    =Tạo ra hệ thống có thể tự học và đưa ra quyết định #Chính xác, AI hướng đến khả năng tự học và ra quyết định.
+    ~Tạo ra phần cứng mạnh mẽ #Sai, phần cứng chỉ hỗ trợ, không phải mục tiêu AI.
+    ~Tạo ra phần mềm chơi nhạc #Sai, đây không phải mục tiêu chính của AI.
+}
+
+::Phân loại AI:: [tags: hard] AI có thể được phân thành mấy loại chính? {
+    =Ba loại: AI hẹp, AI tổng quát, AI siêu việt #Đúng, đây là ba phân loại phổ biến.
+    ~Hai loại: AI phần mềm và AI phần cứng #Sai, đây không phải cách phân loại chuẩn.
+    ~Năm loại: Robot, chatbot, nhận dạng giọng nói, xử lý ảnh, học máy #Sai, đây là các ứng dụng, không phải phân loại.
+}
+
+::AI tổng quát (AGI):: [tags: hard] AI tổng quát (Artificial General Intelligence) có đặc điểm gì? {
+    =Có khả năng hiểu và học mọi nhiệm vụ trí tuệ như con người #Chính xác, AGI mô phỏng trí tuệ toàn diện.
+    ~Chỉ thực hiện nhiệm vụ cụ thể như chơi cờ vua #Sai, đó là AI hẹp.
+    ~Là robot với cảm xúc và ý thức #Sai, chưa có AI có ý thức thật sự.
+}
+
+::Ngôn ngữ lập trình AI:: [tags: easy] Ngôn ngữ lập trình nào phổ biến trong phát triển AI? {
+    =Python #Đúng, Python rất phổ biến vì thư viện hỗ trợ mạnh.
+    ~HTML #Sai, HTML không dùng để lập trình AI.
+    ~CSS #Sai, CSS chỉ dùng để định dạng giao diện.
+}
+
+::Dữ liệu trong AI:: [tags: medium] Tại sao dữ liệu quan trọng trong trí tuệ nhân tạo? {
+    =Vì AI học từ dữ liệu để cải thiện hiệu suất #Chính xác, dữ liệu giúp AI học và dự đoán tốt hơn.
+    ~Vì dữ liệu giúp AI làm phần cứng tốt hơn #Sai, phần cứng không liên quan trực tiếp.
+    ~Vì dữ liệu là phần mềm AI #Sai, dữ liệu chỉ là nguồn thông tin.
+}
+
+::Thuật toán học sâu (Deep Learning):: [tags: hard] Deep Learning là gì trong AI? {
+    =Là một phương pháp học máy sử dụng mạng nơ-ron nhiều lớp #Đúng, deep learning dùng mạng nơ-ron sâu.
+    ~Là thuật toán đơn giản để phân loại dữ liệu #Sai, deep learning khá phức tạp.
+    ~Là cách để lưu trữ dữ liệu lớn #Sai, deep learning không phải lưu trữ.
+}
+
+::Mục đích sử dụng AI trong công nghiệp:: [tags: easy] Mục đích chính của AI trong công nghiệp là gì? {
+    =Tự động hóa và tăng năng suất #Đúng, AI giúp tự động và nâng cao hiệu quả.
+    ~Giải trí cho nhân viên #Sai, đây không phải mục đích chính.
+    ~Tạo phần mềm học tập #Sai, đây chỉ là một ứng dụng nhỏ.
+}
+
+::AI có thể làm gì?:: [tags: easy] Trí tuệ nhân tạo có thể làm gì trong đời sống? {
+    =Tự động nhận diện khuôn mặt #Đúng, AI được dùng trong nhận diện khuôn mặt.
+    ~Chạy các chương trình Windows #Sai, AI không phải hệ điều hành.
+    ~Lưu trữ dữ liệu trên ổ cứng #Sai, đây là chức năng của phần cứng.
+}
+
+::Học máy là gì?:: [tags: medium] Học máy (Machine Learning) là gì trong trí tuệ nhân tạo? {
+    =Phương pháp giúp máy tính học từ dữ liệu và cải thiện hiệu quả #Chính xác, học máy là cốt lõi của AI.
+    ~Là phần mềm dùng để soạn thảo văn bản #Sai, không liên quan.
+    ~Là hệ thống điều khiển robot tự động #Sai, robot chỉ là ứng dụng.
+}
+
+::Mạng nơ-ron nhân tạo:: [tags: hard] Mạng nơ-ron nhân tạo trong AI mô phỏng điều gì? {
+    =Hoạt động của các tế bào thần kinh trong não người #Đúng, mạng nơ-ron nhân tạo mô phỏng não bộ.
+    ~Mạng internet toàn cầu #Sai, đây là mạng máy tính.
+    ~Hệ thống lưu trữ dữ liệu đám mây #Sai, không liên quan đến nơ-ron.
+}
+
+::Dữ liệu lớn trong AI:: [tags: medium] Big Data trong AI có vai trò gì? {
+    =Cung cấp dữ liệu đa dạng và lớn để AI học và phân tích #Chính xác, dữ liệu lớn giúp AI chính xác hơn.
+    ~Là phần mềm để lập trình AI #Sai, Big Data là khái niệm về dữ liệu.
+    ~Là robot tự động hóa trong nhà máy #Sai, không phải là Big Data.
+}
+
+::Ý nghĩa của thuật toán trong AI:: [tags: hard] Thuật toán trong trí tuệ nhân tạo có vai trò gì? {
+    =Là tập hợp các bước để máy tính học và giải quyết vấn đề #Đúng, thuật toán hướng dẫn AI hoạt động.
+    ~Là phần cứng giúp máy tính nhanh hơn #Sai, thuật toán là phần mềm.
+    ~Là giao diện người dùng của phần mềm AI #Sai, không phải giao diện.
+}
+
+::Ứng dụng AI trong y tế:: [tags: easy] Ví dụ ứng dụng AI trong lĩnh vực y tế là gì? {
+    =Chẩn đoán hình ảnh y khoa tự động #Đúng, AI giúp phân tích hình ảnh y tế.
+    ~Chế tạo thuốc bằng tay #Sai, không phải AI.
+    ~Bảo quản thuốc trong tủ lạnh #Sai, không liên quan AI.
+}
+
+::Phân biệt AI hẹp và AI tổng quát:: [tags: medium] AI hẹp khác AI tổng quát như thế nào? {
+    =AI hẹp chuyên về một nhiệm vụ, AI tổng quát hiểu và thực hiện nhiều nhiệm vụ #Chính xác.
+    ~AI hẹp thông minh hơn AI tổng quát #Sai, AI tổng quát phức tạp hơn.
+    ~AI hẹp là phần mềm, AI tổng quát là phần cứng #Sai, không đúng.
+}
+
+::Tương lai của AI:: [tags: hard] Thách thức lớn nhất trong phát triển AI là gì? {
+    =Tạo ra AI có khả năng suy nghĩ và ý thức như con người #Đúng, đây là thách thức lớn.
+    ~Tìm nguồn dữ liệu lớn #Sai, dữ liệu hiện nay rất dồi dào.
+    ~Tăng tốc phần cứng máy tính #Sai, phần cứng không phải thách thức chính.
+}
+
+::AI và Robot:: [tags: easy] Robot và AI có gì khác nhau? {
+    =Robot là thiết bị vật lý, AI là phần mềm trí tuệ #Đúng, robot là phần cứng, AI là phần mềm.
+    ~Robot và AI là một #Sai, không giống nhau.
+    ~AI chỉ dùng trong máy tính, robot chỉ dùng trong nhà máy #Sai, không đúng.
+}
+
+::Tính ứng dụng của AI:: [tags: medium] AI được sử dụng trong lĩnh vực nào? {
+    =Cả công nghiệp, y tế, giáo dục, và giải trí #Đúng, AI rất đa dạng ứng dụng.
+    ~Chỉ trong công nghiệp #Sai, AI rộng hơn.
+    ~Chỉ trong an ninh mạng #Sai, không đúng.
+}

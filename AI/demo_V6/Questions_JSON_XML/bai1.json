@@ -1,0 +1,465 @@
+{
+  "quiz_title": "Bài kiểm tra Tin học lớp 12 - Bài 1: Làm quen với trí tuệ nhân tạo",
+  "questions": [
+    {
+      "question_type": "multichoice",
+      "name": "Bài1: Khái niệm AI cơ bản",
+      "question_text": "Trí tuệ nhân tạo (AI) là gì?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "text": "Khả năng của máy tính thực hiện các công việc mang tính trí tuệ của con người",
+          "fraction": 100,
+          "feedback": "Đúng, AI là trí tuệ nhân tạo mô phỏng khả năng trí tuệ con người."
+        },
+        {
+          "text": "Chỉ là phần mềm chơi game",
+          "fraction": 0,
+          "feedback": "Sai, AI rộng lớn hơn nhiều so với chỉ chơi game."
+        },
+        {
+          "text": "Thiết bị phần cứng dùng để lưu trữ dữ liệu",
+          "fraction": 0,
+          "feedback": "Sai, AI tập trung vào phần mềm và khả năng xử lý thông minh."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "Bài1: Đặc trưng của AI",
+      "question_text": "Đặc trưng cơ bản của AI bao gồm những gì?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "text": "Khả năng học hỏi và suy nghĩ giống con người",
+          "fraction": 100,
+          "feedback": "Đúng, AI có khả năng học và điều chỉnh dựa trên dữ liệu."
+        },
+        {
+          "text": "Chỉ in ấn tài liệu",
+          "fraction": 0,
+          "feedback": "Sai, đó không phải đặc trưng của AI."
+        },
+        {
+          "text": "Kết nối internet nhanh chóng",
+          "fraction": 0,
+          "feedback": "Sai, AI không chỉ giới hạn ở kết nối mạng."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "Bài1: Ứng dụng AI hàng ngày",
+      "question_text": "Ví dụ nào sau đây là ứng dụng của AI?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "text": "Trợ lý ảo như Siri",
+          "fraction": 100,
+          "feedback": "Đúng, Siri sử dụng AI để nhận dạng giọng nói và trả lời."
+        },
+        {
+          "text": "Máy tính cơ bản không có phần mềm",
+          "fraction": 0,
+          "feedback": "Sai, đó không phải ứng dụng AI."
+        },
+        {
+          "text": "Bàn phím máy tính",
+          "fraction": 0,
+          "feedback": "Sai, bàn phím là thiết bị nhập liệu thông thường."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "Bài1: Lịch sử AI sơ lược",
+      "question_text": "AI bắt đầu được nghiên cứu từ khi nào?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "text": "Những năm 1950",
+          "fraction": 100,
+          "feedback": "Đúng, AI bắt đầu từ thập niên 1950 với Alan Turing."
+        },
+        {
+          "text": "Năm 2000",
+          "fraction": 0,
+          "feedback": "Sai, AI đã có từ sớm hơn."
+        },
+        {
+          "text": "Thế kỷ 19",
+          "fraction": 0,
+          "feedback": "Sai, AI hiện đại bắt đầu muộn hơn."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "Bài1: AI trong dịch thuật",
+      "question_text": "Google Translate là ví dụ về ứng dụng AI nào?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "text": "Xử lý ngôn ngữ tự nhiên",
+          "fraction": 100,
+          "feedback": "Đúng, nó sử dụng NLP để dịch ngôn ngữ."
+        },
+        {
+          "text": "Chơi cờ vua",
+          "fraction": 0,
+          "feedback": "Sai, đó là ứng dụng khác."
+        },
+        {
+          "text": "Điều khiển xe hơi",
+          "fraction": 0,
+          "feedback": "Sai, không phải lĩnh vực chính của Google Translate."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "Bài1: Robot Asimo",
+      "question_text": "Robot Asimo là ví dụ về AI trong lĩnh vực nào?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "text": "Robot học",
+          "fraction": 100,
+          "feedback": "Đúng, Asimo là robot humanoid sử dụng AI."
+        },
+        {
+          "text": "In ấn 3D",
+          "fraction": 0,
+          "feedback": "Sai, không liên quan."
+        },
+        {
+          "text": "Lưu trữ dữ liệu",
+          "fraction": 0,
+          "feedback": "Sai, Asimo tập trung vào di chuyển và tương tác."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "Bài1: Nhận dạng khuôn mặt",
+      "question_text": "Nhận dạng khuôn mặt là ứng dụng của AI trong lĩnh vực gì?",
+      "difficulty": "easy",
+      "answers": [
+        {
+          "text": "Thị giác máy tính",
+          "fraction": 100,
+          "feedback": "Đúng, nó sử dụng AI để phân tích hình ảnh."
+        },
+        {
+          "text": "Âm nhạc",
+          "fraction": 0,
+          "feedback": "Sai, không phải lĩnh vực chính."
+        },
+        {
+          "text": "Nấu ăn",
+          "fraction": 0,
+          "feedback": "Sai, không liên quan đến AI nhận dạng khuôn mặt."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "Bài1: Phân loại AI",
+      "question_text": "AI yếu (narrow AI) khác với AI mạnh ở điểm gì?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "AI yếu chỉ thực hiện nhiệm vụ cụ thể, AI mạnh có thể suy nghĩ như con người",
+          "fraction": 100,
+          "feedback": "Đúng, narrow AI hạn chế, general AI toàn diện hơn."
+        },
+        {
+          "text": "AI yếu mạnh hơn AI mạnh",
+          "fraction": 0,
+          "feedback": "Sai, ngược lại."
+        },
+        {
+          "text": "Cả hai giống nhau hoàn toàn",
+          "fraction": 0,
+          "feedback": "Sai, chúng khác nhau về phạm vi."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "Bài1: Hệ chuyên gia MYCIN",
+      "question_text": "Hệ chuyên gia MYCIN dùng để làm gì?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "Chẩn đoán bệnh và đề xuất thuốc",
+          "fraction": 100,
+          "feedback": "Đúng, nó là hệ thống AI y tế sớm."
+        },
+        {
+          "text": "Dịch sách",
+          "fraction": 0,
+          "feedback": "Sai, không phải ứng dụng của MYCIN."
+        },
+        {
+          "text": "Chơi nhạc",
+          "fraction": 0,
+          "feedback": "Sai, MYCIN tập trung vào y học."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "Bài1: Học máy trong AI",
+      "question_text": "Học máy (Machine Learning) là gì trong AI?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "Phương pháp cho phép máy học từ dữ liệu mà không cần lập trình rõ ràng",
+          "fraction": 100,
+          "feedback": "Đúng, ML là một phần quan trọng của AI hiện đại."
+        },
+        {
+          "text": "Chỉ lập trình thủ công",
+          "fraction": 0,
+          "feedback": "Sai, ML tránh lập trình chi tiết."
+        },
+        {
+          "text": "Sử dụng phần cứng đặc biệt",
+          "fraction": 0,
+          "feedback": "Sai, ML tập trung vào thuật toán."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "Bài1: Cảnh báo về AI",
+      "question_text": "Một rủi ro của AI là gì?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "Vi phạm quyền riêng tư",
+          "fraction": 100,
+          "feedback": "Đúng, AI có thể thu thập dữ liệu cá nhân mà không kiểm soát."
+        },
+        {
+          "text": "Tăng tốc độ in ấn",
+          "fraction": 0,
+          "feedback": "Sai, không phải rủi ro."
+        },
+        {
+          "text": "Giảm giá thành phần cứng",
+          "fraction": 0,
+          "feedback": "Sai, đó là lợi ích tiềm năng."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "Bài1: Alan Turing và AI",
+      "question_text": "Alan Turing nổi tiếng với đóng góp gì cho AI?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "Bài kiểm tra Turing để đánh giá trí tuệ máy",
+          "fraction": 100,
+          "feedback": "Đúng, Turing Test kiểm tra xem máy có thể giả lập con người không."
+        },
+        {
+          "text": "Phát minh máy in",
+          "fraction": 0,
+          "feedback": "Sai, không liên quan."
+        },
+        {
+          "text": "Xây dựng mạng xã hội",
+          "fraction": 0,
+          "feedback": "Sai, Turing làm việc về lý thuyết tính toán."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "Bài1: Ứng dụng AI trong y tế",
+      "question_text": "AI được sử dụng trong y tế như thế nào?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "Chẩn đoán bệnh qua hình ảnh",
+          "fraction": 100,
+          "feedback": "Đúng, AI phân tích X-quang, MRI để phát hiện bệnh."
+        },
+        {
+          "text": "Nấu ăn tự động",
+          "fraction": 0,
+          "feedback": "Sai, không phải ứng dụng y tế."
+        },
+        {
+          "text": "Sửa chữa xe máy",
+          "fraction": 0,
+          "feedback": "Sai, không liên quan đến y tế."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "Bài1: Xe tự lái",
+      "question_text": "Xe tự lái sử dụng AI để làm gì?",
+      "difficulty": "medium",
+      "answers": [
+        {
+          "text": "Nhận dạng vật cản và ra quyết định lái xe",
+          "fraction": 100,
+          "feedback": "Đúng, sử dụng thị giác máy tính và học máy."
+        },
+        {
+          "text": "Chỉ chơi nhạc",
+          "fraction": 0,
+          "feedback": "Sai, không phải chức năng chính."
+        },
+        {
+          "text": "Lưu trữ hành lý",
+          "fraction": 0,
+          "feedback": "Sai, không liên quan đến AI."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "Bài1: Tác động xã hội của AI",
+      "question_text": "AI có thể dẫn đến vấn đề gì trong xã hội?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "text": "Mất việc làm do tự động hóa",
+          "fraction": 100,
+          "feedback": "Đúng, AI thay thế một số công việc thủ công và lặp lại."
+        },
+        {
+          "text": "Tăng số lượng sách in",
+          "fraction": 0,
+          "feedback": "Sai, không phải tác động tiêu cực."
+        },
+        {
+          "text": "Giảm thời gian học tập",
+          "fraction": 0,
+          "feedback": "Sai, có thể là lợi ích nhưng không chính xác."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "Bài1: So sánh AI và con người",
+      "question_text": "Sự khác biệt chính giữa AI và trí tuệ con người là gì?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "text": "AI thiếu cảm xúc và ý thức tự giác",
+          "fraction": 100,
+          "feedback": "Đúng, AI hiện tại chỉ mô phỏng, không có ý thức thực sự."
+        },
+        {
+          "text": "AI luôn chậm hơn con người",
+          "fraction": 0,
+          "feedback": "Sai, AI thường nhanh hơn ở một số nhiệm vụ."
+        },
+        {
+          "text": "AI không cần dữ liệu",
+          "fraction": 0,
+          "feedback": "Sai, AI phụ thuộc vào dữ liệu để học."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "Bài1: Phát triển AI tương lai",
+      "question_text": "AI mạnh (general AI) có thể làm gì trong tương lai?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "text": "Thực hiện bất kỳ nhiệm vụ trí tuệ nào như con người",
+          "fraction": 100,
+          "feedback": "Đúng, general AI nhằm đạt mức trí tuệ tổng quát."
+        },
+        {
+          "text": "Chỉ dịch ngôn ngữ",
+          "fraction": 0,
+          "feedback": "Sai, đó là narrow AI."
+        },
+        {
+          "text": "Sản xuất phần cứng",
+          "fraction": 0,
+          "feedback": "Sai, không phải mục tiêu chính."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "Bài1: Đạo đức trong AI",
+      "question_text": "Vấn đề đạo đức quan trọng trong AI là gì?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "text": "Đảm bảo AI không phân biệt đối xử dựa trên dữ liệu thiên kiến",
+          "fraction": 100,
+          "feedback": "Đúng, bias trong dữ liệu có thể dẫn đến bất công."
+        },
+        {
+          "text": "Tăng tốc độ kết nối mạng",
+          "fraction": 0,
+          "feedback": "Sai, không phải vấn đề đạo đức."
+        },
+        {
+          "text": "Giảm kích thước thiết bị",
+          "fraction": 0,
+          "feedback": "Sai, không liên quan đến đạo đức."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "Bài1: Lĩnh vực nghiên cứu AI",
+      "question_text": "Lĩnh vực nào không phải là nghiên cứu chính của AI?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "text": "Sản xuất cơ khí truyền thống",
+          "fraction": 100,
+          "feedback": "Đúng, sản xuất cơ khí không phải lĩnh vực AI chính, mặc dù AI có thể áp dụng."
+        },
+        {
+          "text": "Xử lý ngôn ngữ tự nhiên",
+          "fraction": 0,
+          "feedback": "Sai, đây là lĩnh vực chính."
+        },
+        {
+          "text": "Học máy",
+          "fraction": 0,
+          "feedback": "Sai, học máy là cốt lõi của AI."
+        }
+      ]
+    },
+    {
+      "question_type": "multichoice",
+      "name": "Bài1: Tích hợp AI trong đời sống",
+      "question_text": "AI được tích hợp vào mạng xã hội như thế nào?",
+      "difficulty": "hard",
+      "answers": [
+        {
+          "text": "Phân tích ý kiến và gợi ý nội dung",
+          "fraction": 100,
+          "feedback": "Đúng, sử dụng NLP để hiểu và khuyến nghị."
+        },
+        {
+          "text": "Chỉ lưu trữ ảnh",
+          "fraction": 0,
+          "feedback": "Sai, đó là chức năng cơ bản không cần AI."
+        },
+        {
+          "text": "Sửa chữa phần cứng",
+          "fraction": 0,
+          "feedback": "Sai, không liên quan."
+        }
+      ]
+    }
+  ]
+}

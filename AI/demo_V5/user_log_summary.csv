@@ -1,0 +1,7 @@
+userid,courseid,cluster,last_type,last_result,completion_rate,pass_rate,low_score_quiz_count
+4,5,0,resource,done,0.6667,0.2143,11
+4,5,0,quiz,fail,0.6667,0.2143,11
+4,5,0,hvp,done,0.6667,0.2143,11
+4,5,0,quiz,fail,0.6667,0.2143,11
+4,5,0,quiz,fail,0.6667,0.2143,11
+4,5,0,quiz,pass,0.6667,0.2143,11

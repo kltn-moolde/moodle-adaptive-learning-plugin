@@ -1,0 +1,249 @@
+[
+  {
+    "sectionid": 33,
+    "name": "General",
+    "lessons": [],
+    "resources": [
+      {
+        "id": 52,
+        "name": "Announcements",
+        "modname": "forum"
+      },
+      {
+        "id": 60,
+        "name": "Tin 12 - Định hướng Khoa học Máy tính course question bank",
+        "modname": "qbank"
+      },
+      {
+        "id": 102,
+        "name": "Bài kiểm tra cuối kỳ môn Tin học - 120825 - 10",
+        "modname": "quiz"
+      },
+      {
+        "id": 103,
+        "name": "Bài kiểm tra cuối kỳ môn Tin học - 120825 - 11",
+        "modname": "quiz"
+      },
+      {
+        "id": 104,
+        "name": "Bài kiểm tra cuối kỳ môn Tin học - 120825 - 20",
+        "modname": "quiz"
+      },
+      {
+        "id": 105,
+        "name": "Bài kiểm tra cuối kỳ môn Tin học - 120825 - 200",
+        "modname": "quiz"
+      }
+    ]
+  },
+  {
+    "sectionId_old": 34,
+    "name": "Chủ đề 1: MÁY TÍNH VÀ XÃ HỘI TRI THỨC",
+    "lessons": [
+      {
+        "sectionId_old": 53,
+        "sectionId_new": 38,
+        "name": "Bài 1: Làm quen với Trí tuệ nhân tạo",
+        "resources": [
+          {
+            "id": 62,
+            "name": "SGK_CS_Bai1",
+            "modname": "resource"
+          },
+          {
+            "id": 63,
+            "name": "Video bài giảng bài 1",
+            "modname": "hvp"
+          },
+          {
+            "id": 61,
+            "name": "bài kiểm tra bài 1 - easy",
+            "modname": "quiz"
+          },
+          {
+            "id": 106,
+            "name": "bài kiểm tra bài 1 - medium",
+            "modname": "quiz"
+          },
+          {
+            "id": 107,
+            "name": "bài kiểm tra bài 1 - hard",
+            "modname": "quiz"
+          }
+        ]
+      },
+      {
+        "sectionId_old": 54,
+        "sectionId_new": 39,
+        "name": "Bài 2: Trí tuệ nhân tạo trong khoa học và đời sống",
+        "resources": [
+          {
+            "id": 64,
+            "name": "SGK_CS_Bai2",
+            "modname": "resource"
+          },
+          {
+            "id": 65,
+            "name": "Video bài giảng bài 2",
+            "modname": "hvp"
+          },
+          {
+            "id": 66,
+            "name": "bài kiểm tra bài 2 - easy",
+            "modname": "quiz"
+          },
+          {
+            "id": 108,
+            "name": "bài kiểm tra bài 2 - medium",
+            "modname": "quiz"
+          },
+          {
+            "id": 109,
+            "name": "bài kiểm tra bài 2 - hard",
+            "modname": "quiz"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "sectionId_old": 35,
+    "name": "Chủ đề 2: MẠNG MÁY TÍNH VÀ INTERNET",
+    "lessons": [
+      {
+        "sectionId_old": 55,
+        "sectionId_new": 40,
+        "name": "Bài 3: Một số thiết bị mạng thông dụng",
+        "resources": [
+          {
+            "id": 67,
+            "name": "Video bài giảng bài 3",
+            "modname": "hvp"
+          },
+          {
+            "id": 68,
+            "name": "SGK_CS_Bai3",
+            "modname": "resource"
+          },
+          {
+            "id": 75,
+            "name": "Trắc nghiệm bài 3 - easy",
+            "modname": "quiz"
+          },
+          {
+            "id": 110,
+            "name": "bài kiểm tra bài 3 - medium",
+            "modname": "quiz"
+          },
+          {
+            "id": 111,
+            "name": "bài kiểm tra bài 3 - hard",
+            "modname": "quiz"
+          }
+        ]
+      },
+      {
+        "sectionId_old": 56,
+        "sectionId_new": 41,
+        "name": "Bài 4: Giao thức mạng",
+        "resources": [
+          {
+            "id": 69,
+            "name": "Video bài giảng bài 4",
+            "modname": "hvp"
+          },
+          {
+            "id": 70,
+            "name": "SGK_CS_Bai4",
+            "modname": "resource"
+          },
+          {
+            "id": 76,
+            "name": "Trắc nghiệm bài 4 - easy",
+            "modname": "quiz"
+          },
+          {
+            "id": 112,
+            "name": "Bài kiểm tra bài 4 - medium",
+            "modname": "quiz"
+          },
+          {
+            "id": 113,
+            "name": "Bài kiểm tra bài 4 - hard",
+            "modname": "quiz"
+          }
+        ]
+      },
+      {
+        "sectionId_old": 57,
+        "sectionId_new": 42,
+        "name": "Bài 5: Thực hành chia sẽ tài nguyên trên mạng",
+        "resources": [
+          {
+            "id": 71,
+            "name": "Video bài giảng bài 5",
+            "modname": "hvp"
+          },
+          {
+            "id": 72,
+            "name": "SGK_CS_Bai5",
+            "modname": "resource"
+          },
+          {
+            "id": 77,
+            "name": "Trắc nghiệm bài 5 - easy",
+            "modname": "quiz"
+          },
+          {
+            "id": 114,
+            "name": "Bài kiểm tra bài 5 - medium",
+            "modname": "quiz"
+          },
+          {
+            "id": 115,
+            "name": "Bài kiểm tra bài 5 - hard",
+            "modname": "quiz"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "sectionId_old": 36,
+    "name": "Chủ đề 3: ĐẠO ĐỨC, PHÁT LUẬT VÀ VĂN HOÁ TRONG MÔI TRƯỜNG SỐ",
+    "lessons": [
+      {
+        "sectionId_old": 58,
+        "sectionId_new": 43,
+        "name": "Bài 6: Giao tiếp và ứng xử trong không gian mạng",
+        "resources": [
+          {
+            "id": 73,
+            "name": "Video bài giảng bài 6",
+            "modname": "hvp"
+          },
+          {
+            "id": 74,
+            "name": "SGK_CS_Bai6",
+            "modname": "resource"
+          },
+          {
+            "id": 78,
+            "name": "Trắc nghiệm bài 6 - easy",
+            "modname": "quiz"
+          },
+          {
+            "id": 116,
+            "name": "Bài kiểm tra bài 6 - medium",
+            "modname": "quiz"
+          },
+          {
+            "id": 117,
+            "name": "Bài kiểm tra bài 6 - hard",
+            "modname": "quiz"
+          }
+        ]
+      }
+    ]
+  }
+]

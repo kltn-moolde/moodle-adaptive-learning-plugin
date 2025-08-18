@@ -1,0 +1,703 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz>
+  <!--Câu 1-->
+  <question type="multichoice">
+    <name>
+      <text>AI1: Khái niệm cơ bản</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Trí tuệ nhân tạo (AI) được ứng dụng trong lĩnh vực nào sau đây?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Y tế, giao thông và giáo dục</text>
+      <feedback>
+        <text>Đúng, AI được ứng dụng rộng rãi trong y tế, giao thông, giáo dục và nhiều lĩnh vực khác.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ trong chơi game</text>
+      <feedback>
+        <text>Sai, AI không chỉ giới hạn trong chơi game mà còn ứng dụng trong nhiều lĩnh vực.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ trong sản xuất phần cứng</text>
+      <feedback>
+        <text>Sai, AI chủ yếu liên quan đến phần mềm và xử lý dữ liệu thông minh.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 2-->
+  <question type="multichoice">
+    <name>
+      <text>AI2: Ứng dụng y tế</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[AI hỗ trợ y tế như thế nào?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Chẩn đoán bệnh dựa trên hình ảnh y khoa</text>
+      <feedback>
+        <text>Đúng, AI được sử dụng để phân tích hình ảnh y khoa, hỗ trợ chẩn đoán bệnh.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Thay thế hoàn toàn bác sĩ</text>
+      <feedback>
+        <text>Sai, AI chỉ hỗ trợ bác sĩ, không thay thế hoàn toàn.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ dùng để lưu trữ hồ sơ bệnh nhân</text>
+      <feedback>
+        <text>Sai, AI có khả năng phân tích và đưa ra dự đoán, không chỉ lưu trữ.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 3-->
+  <question type="multichoice">
+    <name>
+      <text>AI3: Học máy</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Học máy (Machine Learning) là gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Một nhánh của AI, giúp máy học từ dữ liệu</text>
+      <feedback>
+        <text>Đúng, học máy là một nhánh của AI, giúp hệ thống tự học từ dữ liệu.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Một loại phần cứng máy tính</text>
+      <feedback>
+        <text>Sai, học máy là một lĩnh vực phần mềm, không phải phần cứng.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Một ngôn ngữ lập trình</text>
+      <feedback>
+        <text>Sai, học máy không phải ngôn ngữ lập trình mà là một phương pháp AI.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 4-->
+  <question type="multichoice">
+    <name>
+      <text>AI4: Ứng dụng giao thông</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[AI được sử dụng trong giao thông để làm gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Điều khiển xe tự hành</text>
+      <feedback>
+        <text>Đúng, AI được sử dụng trong xe tự hành để điều hướng và tránh chướng ngại vật.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Sản xuất lốp xe</text>
+      <feedback>
+        <text>Sai, AI không liên quan trực tiếp đến sản xuất lốp xe.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Thiết kế đường cao tốc</text>
+      <feedback>
+        <text>Sai, AI chủ yếu hỗ trợ điều khiển và tối ưu hóa giao thông.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 5-->
+  <question type="multichoice">
+    <name>
+      <text>AI5: Ứng dụng giáo dục</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[AI hỗ trợ giáo dục như thế nào?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Cá nhân hóa nội dung học tập cho học sinh</text>
+      <feedback>
+        <text>Đúng, AI phân tích dữ liệu để cá nhân hóa việc học cho từng học sinh.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Thay thế hoàn toàn giáo viên</text>
+      <feedback>
+        <text>Sai, AI chỉ hỗ trợ giáo viên, không thay thế hoàn toàn.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ dùng để in sách giáo khoa</text>
+      <feedback>
+        <text>Sai, AI không giới hạn ở việc in ấn mà có ứng dụng thông minh hơn.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 6-->
+  <question type="multichoice">
+    <name>
+      <text>AI6: Lợi ích của AI</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Lợi ích chính của AI trong đời sống là gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Tăng hiệu quả và tiết kiệm thời gian</text>
+      <feedback>
+        <text>Đúng, AI giúp tự động hóa và tối ưu hóa công việc.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Tăng chi phí sản xuất</text>
+      <feedback>
+        <text>Sai, AI thường giúp giảm chi phí.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Làm giảm sự sáng tạo của con người</text>
+      <feedback>
+        <text>Sai, AI có thể hỗ trợ sáng tạo, không làm giảm nó.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 7-->
+  <question type="multichoice">
+    <name>
+      <text>AI7: Thách thức của AI</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Một thách thức khi sử dụng AI là gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Vấn đề bảo mật và quyền riêng tư</text>
+      <feedback>
+        <text>Đúng, AI xử lý lượng lớn dữ liệu, dẫn đến nguy cơ về bảo mật và quyền riêng tư.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Không cần bảo trì hệ thống</text>
+      <feedback>
+        <text>Sai, hệ thống AI cần được bảo trì thường xuyên.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ sử dụng được ở một lĩnh vực</text>
+      <feedback>
+        <text>Sai, AI có thể được ứng dụng trong nhiều lĩnh vực.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 8-->
+  <question type="multichoice">
+    <name>
+      <text>AI8: Học sâu</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Học sâu (Deep Learning) là gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Một nhánh của học máy sử dụng mạng nơ-ron</text>
+      <feedback>
+        <text>Đúng, học sâu sử dụng mạng nơ-ron để mô phỏng cách xử lý thông tin của não người.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Một phần mềm chỉnh sửa ảnh</text>
+      <feedback>
+        <text>Sai, học sâu không phải là phần mềm chỉnh sửa ảnh.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Một công cụ lưu trữ dữ liệu</text>
+      <feedback>
+        <text>Sai, học sâu liên quan đến xử lý dữ liệu, không phải lưu trữ.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 9-->
+  <question type="multichoice">
+    <name>
+      <text>AI9: Ứng dụng nông nghiệp</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[AI được ứng dụng trong nông nghiệp như thế nào?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Dự đoán thời tiết và phân tích đất</text>
+      <feedback>
+        <text>Đúng, AI giúp dự đoán thời tiết và tối ưu hóa nông nghiệp chính xác.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ dùng để tưới cây tự động</text>
+      <feedback>
+        <text>Sai, AI có nhiều ứng dụng hơn trong nông nghiệp.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Sản xuất phân bón</text>
+      <feedback>
+        <text>Sai, AI không trực tiếp sản xuất phân bón.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 10-->
+  <question type="multichoice">
+    <name>
+      <text>AI10: Xử lý ngôn ngữ tự nhiên</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Xử lý ngôn ngữ tự nhiên (NLP) trong AI là gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Khả năng máy hiểu và tạo ra ngôn ngữ con người</text>
+      <feedback>
+        <text>Đúng, NLP giúp máy tương tác với con người qua ngôn ngữ tự nhiên.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ dùng để dịch văn bản</text>
+      <feedback>
+        <text>Sai, NLP không chỉ giới hạn ở dịch thuật mà còn phân tích ngữ nghĩa.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Tạo phần cứng máy tính</text>
+      <feedback>
+        <text>Sai, NLP liên quan đến phần mềm, không phải phần cứng.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 11-->
+  <question type="multichoice">
+    <name>
+      <text>AI11: Chatbot</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Chatbot sử dụng AI hoạt động như thế nào?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Sử dụng NLP để trả lời câu hỏi của người dùng</text>
+      <feedback>
+        <text>Đúng, chatbot dựa trên NLP để hiểu và trả lời tự nhiên.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ gửi tin nhắn tự động mà không hiểu nội dung</text>
+      <feedback>
+        <text>Sai, chatbot AI có khả năng hiểu và phản hồi thông minh.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ dùng để lưu trữ tin nhắn</text>
+      <feedback>
+        <text>Sai, chatbot không chỉ lưu trữ mà còn xử lý thông tin.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 12-->
+  <question type="multichoice">
+    <name>
+      <text>AI12: Đạo đức trong AI</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Vấn đề đạo đức trong AI liên quan đến điều gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Sử dụng dữ liệu cá nhân một cách minh bạch</text>
+      <feedback>
+        <text>Đúng, đạo đức trong AI yêu cầu minh bạch và bảo vệ dữ liệu cá nhân.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Tăng tốc độ xử lý máy tính</text>
+      <feedback>
+        <text>Sai, đạo đức không liên quan đến tốc độ xử lý.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ tập trung vào lợi nhuận</text>
+      <feedback>
+        <text>Sai, đạo đức trong AI tập trung vào trách nhiệm xã hội.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 13-->
+  <question type="multichoice">
+    <name>
+      <text>AI13: AI trong công nghiệp</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[AI được ứng dụng trong công nghiệp như thế nào?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Tự động hóa dây chuyền sản xuất</text>
+      <feedback>
+        <text>Đúng, AI giúp tối ưu hóa và tự động hóa quy trình sản xuất.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ dùng để kiểm tra chất lượng sản phẩm</text>
+      <feedback>
+        <text>Sai, AI có nhiều ứng dụng hơn trong công nghiệp.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ thiết kế bao bì sản phẩm</text>
+      <feedback>
+        <text>Sai, AI không giới hạn ở thiết kế bao bì.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 14-->
+  <question type="multichoice">
+    <name>
+      <text>AI14: AI và việc làm</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[AI ảnh hưởng đến việc làm như thế nào?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Tạo ra công việc mới nhưng cũng thay thế một số công việc cũ</text>
+      <feedback>
+        <text>Đúng, AI tạo cơ hội mới nhưng cũng tự động hóa một số công việc.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Hoàn toàn thay thế tất cả công việc của con người</text>
+      <feedback>
+        <text>Sai, AI không thay thế hoàn toàn mà hỗ trợ con người.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Không ảnh hưởng đến việc làm</text>
+      <feedback>
+        <text>Sai, AI có tác động lớn đến thị trường lao động.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 15-->
+  <question type="multichoice">
+    <name>
+      <text>AI15: AI trong nghiên cứu khoa học</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[AI hỗ trợ nghiên cứu khoa học như thế nào?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Phân tích dữ liệu lớn và dự đoán kết quả</text>
+      <feedback>
+        <text>Đúng, AI giúp xử lý dữ liệu phức tạp trong nghiên cứu khoa học.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ dùng để viết báo cáo khoa học</text>
+      <feedback>
+        <text>Sai, AI có ứng dụng sâu hơn trong phân tích và dự đoán.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Thay thế hoàn toàn nhà khoa học</text>
+      <feedback>
+        <text>Sai, AI chỉ hỗ trợ, không thay thế nhà khoa học.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 16-->
+  <question type="multichoice">
+    <name>
+      <text>AI16: Hạn chế của AI</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Một hạn chế lớn của AI là gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Thiếu khả năng sáng tạo như con người</text>
+      <feedback>
+        <text>Đúng, AI có thể mô phỏng nhưng không thực sự sáng tạo như con người.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Không thể xử lý dữ liệu lớn</text>
+      <feedback>
+        <text>Sai, AI rất giỏi trong xử lý dữ liệu lớn.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Không thể học từ dữ liệu</text>
+      <feedback>
+        <text>Sai, học từ dữ liệu là một đặc trưng của AI.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>hard</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 17-->
+  <question type="multichoice">
+    <name>
+      <text>AI17: Mạng nơ-ron</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Mạng nơ-ron nhân tạo hoạt động dựa trên nguyên lý nào?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Mô phỏng cách hoạt động của não bộ con người</text>
+      <feedback>
+        <text>Đúng, mạng nơ-ron mô phỏng cách xử lý thông tin của não bộ.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Lưu trữ dữ liệu trên đám mây</text>
+      <feedback>
+        <text>Sai, mạng nơ-ron không liên quan đến lưu trữ đám mây.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ dùng để kết nối internet</text>
+      <feedback>
+        <text>Sai, mạng nơ-ron tập trung vào xử lý dữ liệu.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>hard</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 18-->
+  <question type="multichoice">
+    <name>
+      <text>AI18: AI và môi trường</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[AI góp phần bảo vệ môi trường như thế nào?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Tối ưu hóa tiêu thụ năng lượng và giám sát môi trường</text>
+      <feedback>
+        <text>Đúng, AI giúp giảm tiêu thụ năng lượng và giám sát môi trường hiệu quả.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Tăng lượng khí thải carbon</text>
+      <feedback>
+        <text>Sai, AI thường được dùng để giảm tác động môi trường.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ dùng để dự báo thời tiết</text>
+      <feedback>
+        <text>Sai, AI có nhiều ứng dụng hơn trong bảo vệ môi trường.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>hard</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 19-->
+  <question type="multichoice">
+    <name>
+      <text>AI19: Tương lai của AI</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Tương lai của AI có thể dẫn đến điều gì?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Tăng cường hợp tác giữa con người và máy</text>
+      <feedback>
+        <text>Đúng, AI sẽ hỗ trợ con người trong nhiều lĩnh vực, tạo ra sự hợp tác.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Hoàn toàn thay thế con người trong mọi công việc</text>
+      <feedback>
+        <text>Sai, AI không thể thay thế hoàn toàn con người.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Không phát triển thêm nữa</text>
+      <feedback>
+        <text>Sai, AI đang phát triển nhanh chóng.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>hard</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 20-->
+  <question type="multichoice">
+    <name>
+      <text>AI20: AI và an ninh</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[AI được sử dụng trong an ninh như thế nào?]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Phân tích video giám sát và phát hiện mối đe dọa</text>
+      <feedback>
+        <text>Đúng, AI giúp phân tích dữ liệu an ninh để phát hiện nguy cơ.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ dùng để khóa cửa tự động</text>
+      <feedback>
+        <text>Sai, AI có ứng dụng phức tạp hơn trong an ninh.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ lưu trữ dữ liệu camera</text>
+      <feedback>
+        <text>Sai, AI phân tích dữ liệu, không chỉ lưu trữ.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>hard</text>
+      </tag>
+    </tags>
+  </question>
+</quiz>
