@@ -117,3 +117,7 @@ sql/ : thư mục chứa câu lệnh sql về lấy log từ moodle
   + Làm lại quiz tương tự dạng đã học
   + finish time: 13h or 14h 160825 -> hoàn thành
   -> Gợi ý chưa chính xác, thiếu ràng buộc, chưa theo 1 lộ trình
+
+### Add common service, apigateway service
+- Common service chứa các utils, logic, business rule dùng chung
+- apigateway đang hardcode uri, sau khi có discovery service thì cần sửa lại
