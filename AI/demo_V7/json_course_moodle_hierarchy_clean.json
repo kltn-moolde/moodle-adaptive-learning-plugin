@@ -37,12 +37,12 @@
     ]
   },
   {
-    "sectionId_old": 34,
+    "sectionIdOld": 34,
     "name": "Chủ đề 1: MÁY TÍNH VÀ XÃ HỘI TRI THỨC",
     "lessons": [
       {
-        "sectionId_old": 53,
-        "sectionId_new": 38,
+        "sectionIdOld": 53,
+        "sectionIdNew": 38,
         "name": "Bài 1: Làm quen với Trí tuệ nhân tạo",
         "resources": [
           {
@@ -73,8 +73,8 @@
         ]
       },
       {
-        "sectionId_old": 54,
-        "sectionId_new": 39,
+        "sectionIdOld": 54,
+        "sectionIdNew": 39,
         "name": "Bài 2: Trí tuệ nhân tạo trong khoa học và đời sống",
         "resources": [
           {
@@ -107,12 +107,12 @@
     ]
   },
   {
-    "sectionId_old": 35,
+    "sectionIdOld": 35,
     "name": "Chủ đề 2: MẠNG MÁY TÍNH VÀ INTERNET",
     "lessons": [
       {
-        "sectionId_old": 55,
-        "sectionId_new": 40,
+        "sectionIdOld": 55,
+        "sectionIdNew": 40,
         "name": "Bài 3: Một số thiết bị mạng thông dụng",
         "resources": [
           {
@@ -143,8 +143,8 @@
         ]
       },
       {
-        "sectionId_old": 56,
-        "sectionId_new": 41,
+        "sectionIdOld": 56,
+        "sectionIdNew": 41,
         "name": "Bài 4: Giao thức mạng",
         "resources": [
           {
@@ -175,8 +175,8 @@
         ]
       },
       {
-        "sectionId_old": 57,
-        "sectionId_new": 42,
+        "sectionIdOld": 57,
+        "sectionIdNew": 42,
         "name": "Bài 5: Thực hành chia sẽ tài nguyên trên mạng",
         "resources": [
           {
@@ -209,12 +209,12 @@
     ]
   },
   {
-    "sectionId_old": 36,
+    "sectionIdOld": 36,
     "name": "Chủ đề 3: ĐẠO ĐỨC, PHÁT LUẬT VÀ VĂN HOÁ TRONG MÔI TRƯỜNG SỐ",
     "lessons": [
       {
-        "sectionId_old": 58,
-        "sectionId_new": 43,
+        "sectionIdOld": 58,
+        "sectionIdNew": 43,
         "name": "Bài 6: Giao tiếp và ứng xử trong không gian mạng",
         "resources": [
           {

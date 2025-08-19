@@ -1,4 +1,5 @@
 package com.example.plugin_moodle_LTI_13.config;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -15,6 +16,9 @@ import java.util.Arrays;
 @EnableWebSecurity
 public class SecurityConfig {
 
+    @Value("${lti.tool.issuer}")
+    private String issuer;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -30,7 +34,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configurationSource(request -> {
                     CorsConfiguration config = new CorsConfiguration();
-                    config.setAllowedOrigins(Arrays.asList("http://localhost")); // Cho phép Moodle
+                    config.setAllowedOrigins(Arrays.asList(issuer)); // Cho phép Moodle
                     config.setAllowedMethods(Arrays.asList("GET", "POST"));
                     config.setAllowedHeaders(Arrays.asList("*"));
                     return config;
