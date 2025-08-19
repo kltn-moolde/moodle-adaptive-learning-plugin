@@ -70,12 +70,12 @@ sql/ : thư mục chứa câu lệnh sql về lấy log từ moodle
 * Cần lấy token truy cập function từ moodle và gán vào application.properties
 * Hướng dẫn cấu hình:
   * Tool name: User Log Viewer
-  * Tool URL: http://localhost:8080/lti/launch
+  * Tool URL: http://localhost:8082/lti/launch
   * LTI version: LTI 1.3
   * Public key type: Keyset URL
-  * Public keyset URL: http://localhost:8080/lti/jwks
-  * Initiate login URL: http://localhost:8080/lti/login
-  * Redirection URI(s): http://localhost:8080/lti/launch
+  * Public keyset URL: http://localhost:8082/lti/jwks
+  * Initiate login URL: http://localhost:8082/lti/login
+  * Redirection URI(s): http://localhost:8082/lti/launch
   * Kích hoạt "IMS LTI Names and Role Provisioning"
   * Kích hoạt "IMS LTI Assignment and Grade Services"
   * Share launcher's name with tool: Yes

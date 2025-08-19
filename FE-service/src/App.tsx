@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Layout from './components/Layout';
 import Login from './components/Login';
 import StudentDashboard from './components/StudentDashboard';
@@ -8,13 +8,22 @@ import {
   mockUsers, 
   mockLearningPath, 
   mockStudentProgress, 
-  mockCourseStats,
-  mockLessons 
+  mockCourseStats
 } from './data/mockData';
-import type { User } from './types';
+import { courseService } from './service/courseService';
+import type { User, Course } from './types';
 
 function App() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [courses, setCourses] = useState<Course[]>([]);
+
+  useEffect(() => {
+    if (currentUser?.role === 'INSTRUCTOR') {
+      courseService.getCourses()
+        .then(setCourses)
+        .catch(err => console.error("Lỗi khi load courses:", err));
+    }
+  }, [currentUser]);
 
   const handleLogin = (user: User) => {
     setCurrentUser(user);
@@ -22,6 +31,7 @@ function App() {
 
   const handleLogout = () => {
     setCurrentUser(null);
+    setCourses([]); // clear khi logout
   };
 
   const renderDashboard = () => {
@@ -35,7 +45,7 @@ function App() {
           <InstructorDashboard 
             students={mockStudentProgress} 
             courseStats={mockCourseStats}
-            lessons={mockLessons}
+            courses={courses}   // ✅ truyền courses từ API
           />
         );
       case 'ADMIN':
