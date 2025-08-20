@@ -15,7 +15,7 @@ class observer {
         $time = $event->timecreated;
 
         // Chỉ log những loại này
-        $allowed = ['quiz', 'resource', 'hvp'];
+        $allowed = ['quiz_attempts', 'resource', 'hvp'];
         if (!in_array($type, $allowed)) {
             return true;
         }
