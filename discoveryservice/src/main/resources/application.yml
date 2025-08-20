@@ -9,5 +9,18 @@ eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
   server:
     enable-self-preservation: false
+    expected-client-renewal-interval-seconds: 10
+    eviction-interval-timer-in-ms: 4000
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+
+# Logging configuration
+logging:
+  level:
+    com.netflix.eureka: DEBUG
+    com.netflix.discovery: DEBUG

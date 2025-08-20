@@ -33,3 +33,18 @@ build/
 .vscode/
 
 .properties
+
+.yml
+
+### React ###
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+### Maven ###
+.mvn/
+mvnw
+mvnw.cmd
+

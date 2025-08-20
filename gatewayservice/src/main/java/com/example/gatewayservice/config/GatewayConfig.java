@@ -14,30 +14,34 @@ public class GatewayConfig {
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
-                // LTI Service routes
+                // LTI Service routes using service discovery
                 .route("lti-service", r -> r.path("/lti/**")
-                        .uri("http://localhost:8082"))
+                        .uri("lb://lti-service"))
                 
-                // Recommendation Service routes
+                // Recommendation Service routes using service discovery
                 .route("recommendation-service", r -> r.path("/api/recommendations/**")
-                        .uri("http://localhost:8083"))
+                        .uri("lb://recommendation-service"))
                 
-                // Course Service routes
+                // Course Service routes using service discovery
                 .route("course-service", r -> r.path("/api/courses/**")
-                        .uri("http://localhost:8084"))
+                        .uri("lb://course-service"))
                 
-                // Analytics Service routes
+                // Analytics Service routes using service discovery
                 .route("analytics-service", r -> r.path("/api/analytics/**")
-                        .uri("http://localhost:8085"))
+                        .uri("lb://analytics-service"))
                 
-                // User Service routes
+                // User Service routes using service discovery
                 .route("user-service", r -> r.path("/api/users/**")
-                        .uri("http://localhost:8086"))
+                        .uri("lb://user-service"))
+                
+                // Common Service routes using service discovery
+                .route("common-service", r -> r.path("/api/common/**")
+                        .uri("lb://common-service"))
                 
                 // React Frontend (fallback for SPA routing)
                 .route("react-frontend", r -> r.path("/**")
-                        .and().not(path -> path.getPath().startsWith("/api/") || 
-                                          path.getPath().startsWith("/lti/"))
+                        .and().not(p -> p.path("/api/**"))
+                        .and().not(p -> p.path("/lti/**"))
                         .uri("http://localhost:3000"))
                 
                 .build();

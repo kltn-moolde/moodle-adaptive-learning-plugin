@@ -6,6 +6,12 @@ spring:
     name: gatewayservice
   cloud:
     gateway:
+      # Enable discovery locator for automatic route creation
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      
       # CORS configuration
       globalcors:
         cors-configurations:
@@ -20,65 +26,80 @@ spring:
             allowedHeaders: "*"
             allowCredentials: false
       
-      # Routes configuration
+      # Routes configuration using service discovery
       routes:
-        # React Frontend
+        # React Frontend (direct URL since it's not a microservice)
         - id: react-frontend
           uri: http://localhost:3000
           predicates:
-            - Path=/,/static/**,/public/**,/assets/**
+            - Path=/,/static/**,/public/**,/assets/**,/manifest.json,/favicon.ico
           filters:
             - StripPrefix=0
             
-        # LTI Service (port 8082)
+        # LTI Service using service discovery
         - id: lti-service
-          uri: http://localhost:8082
+          uri: lb://lti-service
           predicates:
             - Path=/lti/**
           filters:
             - StripPrefix=1
             
-        # Recommendation Service (port 8083)
+        # Recommendation Service using service discovery
         - id: recommendation-service
-          uri: http://localhost:8083
+          uri: lb://recommendation-service
           predicates:
             - Path=/api/recommendations/**
           filters:
             - StripPrefix=2
             
-        # Course Service (port 8084)
+        # Course Service using service discovery
         - id: course-service
-          uri: http://localhost:8084
+          uri: lb://course-service
           predicates:
             - Path=/api/courses/**
           filters:
             - StripPrefix=2
             
-        # Analytics Service (port 8085)
+        # Analytics Service using service discovery
         - id: analytics-service
-          uri: http://localhost:8085
+          uri: lb://analytics-service
           predicates:
             - Path=/api/analytics/**
           filters:
             - StripPrefix=2
             
-        # User Service (port 8086)
+        # User Service using service discovery
         - id: user-service
-          uri: http://localhost:8086
+          uri: lb://user-service
           predicates:
             - Path=/api/users/**
+          filters:
+            - StripPrefix=2
+            
+        # Common Service using service discovery  
+        - id: common-service
+          uri: lb://common-service
+          predicates:
+            - Path=/api/common/**
           filters:
             - StripPrefix=2
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+    registry-fetch-interval-seconds: 5
   instance:
     prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
 
 # Logging configuration
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG
     org.springframework.web.cors: DEBUG
+    com.netflix.eureka: DEBUG
+    com.netflix.discovery: DEBUG

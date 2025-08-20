@@ -1,0 +1,45 @@
+server:
+  port: 8086
+
+spring:
+  application:
+    name: user-service
+  
+  # Database Configuration
+  datasource:
+    url: jdbc:postgresql://ep-empty-rain-a1rj0l15-pooler.ap-southeast-1.aws.neon.tech/neondb
+    username: neondb_owner
+    password: npg_IoHUcLAK49sv
+    driver-class-name: org.postgresql.Driver
+  
+  # JPA Configuration
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+# Eureka Configuration
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+    registry-fetch-interval-seconds: 5
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+# Logging Configuration
+logging:
+  level:
+    com.example.userservice: DEBUG
+    org.springframework.web: DEBUG
+    com.netflix.eureka: DEBUG
+    com.netflix.discovery: DEBUG
