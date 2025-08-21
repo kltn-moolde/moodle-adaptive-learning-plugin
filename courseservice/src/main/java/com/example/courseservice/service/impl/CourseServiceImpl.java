@@ -1,10 +1,15 @@
 package com.example.courseservice.service.impl;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
+import com.example.commonservice.enums.TokenType;
+import com.example.commonservice.service.MoodleApiClient;
 import com.example.courseservice.mapper.CourseMapper;
+import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.courseservice.dto.CourseDTO;
@@ -12,13 +17,12 @@ import com.example.courseservice.entity.Course;
 import com.example.courseservice.repository.CourseRepository;
 import com.example.courseservice.service.CourseService;
 
-import lombok.RequiredArgsConstructor;
-
 @Service
 @RequiredArgsConstructor
 public class CourseServiceImpl implements CourseService {
 
     private final CourseRepository courseRepository;
+    private final MoodleApiClient moodleApiClient;
 
     @Override
     public List<CourseDTO> getAllCourses() {

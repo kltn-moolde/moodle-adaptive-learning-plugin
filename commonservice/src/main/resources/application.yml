@@ -1,15 +1,15 @@
 server:
-  port: 8080
+  port: 8081
 
 spring:
   application:
     name: common-service
 
-  datasource:
-    url: jdbc:mysql://localhost:3306/adaptive_learning_common?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
-    username: root
-    password: password
-    driver-class-name: com.mysql.cj.jdbc.Driver
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/adaptive_learning_common?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+#    username: root
+#    password: password
+#    driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
@@ -46,4 +46,4 @@ moodle:
   api:
     url: "http://localhost:8100/webservice/rest/server.php"
     token-plugin: "873fe06ae8e762265a72049a30cfbdc4"
-    token-moodle: "873fe06ae8e762265a72049a30cfbdc4"
+    token-system: "873fe06ae8e762265a72049a30cfbdc4"

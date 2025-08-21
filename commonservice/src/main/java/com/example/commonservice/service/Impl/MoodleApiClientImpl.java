@@ -2,19 +2,25 @@ package com.example.commonservice.service.Impl;
 
 import com.example.commonservice.enums.TokenType;
 import com.example.commonservice.service.MoodleApiClient;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.core5.http.HttpEntity;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.Map;
 
 @Service
+@RequiredArgsConstructor
 public class MoodleApiClientImpl implements MoodleApiClient {
 
-    private final RestTemplate restTemplate;
+    private final ObjectMapper objectMapper = new ObjectMapper(); // để parse JSON
 
     @Value("${moodle.api.url}")
     private String moodleUrl;
@@ -24,10 +30,6 @@ public class MoodleApiClientImpl implements MoodleApiClient {
 
     @Value("${moodle.api.token-system}")
     private String apiTokenSystem;
-
-    public MoodleApiClientImpl(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
-    }
 
     @Override
     public <T> T callMoodleApi(String wsfunction, Map<String, Object> params, Class<T> responseType, TokenType tokenType) throws Exception {
@@ -42,65 +44,50 @@ public class MoodleApiClientImpl implements MoodleApiClient {
             params.forEach(uriBuilder::queryParam);
         }
 
-        try {
-            ResponseEntity<T> response = restTemplate.exchange(
-                    uriBuilder.toUriString(),
-                    HttpMethod.GET,
-                    null,
-                    responseType
-            );
-            return response.getBody();
+        String finalUrl = uriBuilder.toUriString();
+        System.out.println("🔎 Moodle API URL (HttpClient): " + finalUrl);
+
+        try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
+            HttpGet request = new HttpGet(finalUrl);
+
+            try (CloseableHttpResponse response = httpClient.execute(request)) {
+                int statusCode = response.getCode();
+                if (statusCode != 200) {
+                    throw new Exception("Moodle API trả về lỗi HTTP: " + statusCode);
+                }
+
+                HttpEntity entity = response.getEntity();
+                if (entity == null) {
+                    throw new Exception("Moodle API không trả dữ liệu");
+                }
+
+                String result = EntityUtils.toString(entity);
+
+                // parse JSON sang object mong muốn
+                return objectMapper.readValue(result, responseType);
+            }
         } catch (Exception e) {
-            throw new Exception("Lỗi khi gọi Moodle API: " + e.getMessage(), e);
+            throw new Exception("Lỗi khi gọi Moodle API bằng HttpClient: " + e.getMessage(), e);
         }
     }
-
-
-    /**
-     * ============================
-     * 💡 CÁCH SỬ DỤNG (HƯỚNG DẪN) 💡
-     * ============================
-     *
-     * 👉 1. Gọi API KHÔNG CẦN PARAMS (ví dụ lấy thông tin site):
-     *
-     * var siteInfo = moodleApiClient.callMoodleApi(
-     *      "core_webservice_get_site_info",
-     *      null,                        // không cần params
-     *      SiteInfoResponse.class,
-     *      TokenType.SYSTEM
-     * );
-     *
-     * 👉 2. Gọi API CÓ PARAMS DẠNG criteria[] (tìm user theo email / username):
-     *
-     * var users = moodleApiClient.callMoodleApi(
-     *      "core_user_get_users",
-     *      MoodleParams.create()
-     *          .criteria("email", "test@test.com")
-     *          .criteria("username", "john")
-     *          .build(),
-     *      UserResponse.class,
-     *      TokenType.SYSTEM
-     * );
-     *
-     * 👉 3. Gọi API PLUGIN CUSTOM (ví dụ local_myplugin_get_data):
-     *
-     * var pluginData = moodleApiClient.callMoodleApi(
-     *      "local_myplugin_get_data",
-     *      MoodleParams.create()
-     *          .add("userid", 5)
-     *          .add("courseid", 101)
-     *          .build(),
-     *      MyPluginResponse.class,
-     *      TokenType.PLUGIN
-     * );
-     *
-     * 👉 4. Nếu API có nhiều criteria (search nâng cao):
-     *
-     * MoodleParams.create()
-     *      .criteria("email", "a@b.com")
-     *      .criteria("idnumber", "12345")
-     *      .criteria("username", "loc")
-     *      .build();
-     *
-     */
 }
+
+
+//// 🔎 Lấy danh sách user theo email
+//var users = moodleApiClient.callMoodleApi(
+//        "core_user_get_users",
+//        MoodleParams.create()
+//                .criteria("email", "test@test.com")
+//                .criteria("username", "loc")   // có thể add nhiều tiêu chí
+//                .build(),
+//        UserResponse.class,
+//        TokenType.SYSTEM
+//);
+//
+//// 🔎 Lấy thông tin course
+//var courses = moodleApiClient.callMoodleApi(
+//        "core_course_get_courses",
+//        null,   // không cần params
+//        CourseResponse[].class,
+//        TokenType.SYSTEM
+//);

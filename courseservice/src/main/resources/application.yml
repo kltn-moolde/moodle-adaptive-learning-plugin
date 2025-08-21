@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: courseservice
+    name: course-service
   data:
     mongodb:
       uri: mongodb+srv://lockbkbang:lHkgnWyAGVSi3CrQ@cluster0.z20xcvv.mongodb.net/courseservice?retryWrites=true&w=majority&appName=Cluster0

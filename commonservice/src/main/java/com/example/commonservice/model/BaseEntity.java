@@ -1,6 +1,7 @@
 package com.example.commonservice.model;
 
 import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
 @MappedSuperclass
