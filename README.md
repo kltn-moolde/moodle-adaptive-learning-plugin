@@ -41,6 +41,7 @@
 - local_userlog_v9.zip: version thứ 9 - demo V7
   + bổ sung api tính điểm trung bình của 1 section
   + bổ sung api lấy tag name (level) của quiz
+  + bổ sung api lấy tỉ lệ hoàn thành của 1 section
   
 
 course_log_somethingelse.ipynb: lấy thông tin coure, log, nhiều thứ,...

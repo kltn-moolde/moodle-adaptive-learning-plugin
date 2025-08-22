@@ -160,6 +160,14 @@ $functions = [
         'ajax'        => true,
         'capabilities'=> 'moodle/course:view',
     ],
+    'local_userlog_get_section_completion' => [ // ok
+        'classname'   => 'local_userlog\external\get_section_completion',
+        'methodname'  => 'execute',
+        'classpath'   => 'local/userlog/classes/external/get_section_completion.php',
+        'description' => 'Get section completion stats (total, completed, rate) for a user',
+        'type'        => 'read',
+        'ajax'        => true,
+    ],
     'local_userlog_get_grade_status' => [
         'classname'   => 'local_userlog\external\get_grade_status',
         'methodname'  => 'execute',
@@ -208,6 +216,7 @@ $services = [
             'local_userlog_create_quiz_from_categories', // ok
             'local_userlog_get_quiz_tags', // ok
             'local_userlog_get_user_section_avg_grade', // ok
+            'local_userlog_get_section_completion', // ok
             'local_userlog_get_grade_status',
             'local_userlog_get_total_study_time',
             'local_userlog_get_user_object_activity_summary'

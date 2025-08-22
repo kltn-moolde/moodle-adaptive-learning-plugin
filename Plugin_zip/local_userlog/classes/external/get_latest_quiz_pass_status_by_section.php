@@ -70,7 +70,8 @@ class get_latest_quiz_pass_status_by_section extends external_api {
                 ON gi.iteminstance = q.id AND gi.itemmodule = 'quiz'
             WHERE cs.id = :sectionid
             AND qa.userid = :userid2
-            ORDER BY q.id
+            ORDER BY qa.timemodified DESC
+            LIMIT 1;
         ";
 
         $result = $DB->get_record_sql($sql, $params);
