@@ -18,6 +18,8 @@
 *.log
 
 .env
+**/venv/
+**/__pycache__/
 
 **/.mvn/wrapper/maven-wrapper.jar
 
