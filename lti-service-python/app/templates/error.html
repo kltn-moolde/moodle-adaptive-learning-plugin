@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Error - LTI Service{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card border-danger">
+            <div class="card-header bg-danger text-white">
+                <h4 class="mb-0">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    Error Occurred
+                </h4>
+            </div>
+            <div class="card-body">
+                <div class="text-center mb-4">
+                    <i class="fas fa-times-circle fa-4x text-danger mb-3"></i>
+                    <h5>Oops! Something went wrong</h5>
+                </div>
+                
+                <div class="alert alert-danger">
+                    <strong>Error Details:</strong><br>
+                    {{ error }}
+                </div>
+                
+                <div class="text-center">
+                    <a href="/" class="btn btn-primary me-2">
+                        <i class="fas fa-home me-2"></i>
+                        Go Home
+                    </a>
+                    <button class="btn btn-secondary" onclick="history.back()">
+                        <i class="fas fa-arrow-left me-2"></i>
+                        Go Back
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mt-4">
+            <div class="card-header">
+                <h6 class="mb-0">
+                    <i class="fas fa-question-circle me-2"></i>
+                    Need Help?
+                </h6>
+            </div>
+            <div class="card-body">
+                <p>If you continue to experience issues, please check the following:</p>
+                <ul>
+                    <li>Make sure your LTI tool is properly configured in Moodle</li>
+                    <li>Verify that the JWT token is valid and not expired</li>
+                    <li>Check that all required LTI claims are present</li>
+                    <li>Ensure the service is running and accessible</li>
+                </ul>
+                <p class="mb-0">
+                    <a href="/health" class="btn btn-outline-info btn-sm">
+                        <i class="fas fa-heartbeat me-1"></i>
+                        Check Service Health
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
