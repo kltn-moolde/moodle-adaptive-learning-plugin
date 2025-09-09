@@ -6,6 +6,7 @@ import StudentDashboard from './pages/StudentDashboard';
 import InstructorDashboard from './pages/InstructorDashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import Profile from './pages/Profile';
+import { useLTIAuth, LTILoader, LTIError, LTIContext } from './components/lti';
 import {
   mockUsers,
   mockLearningPath,
@@ -17,9 +18,31 @@ import {
 } from './data/mockData';
 
 function App() {
-  // Simulate current user - change role here to test different views
-  const [currentUser, setCurrentUser] = useState<User>(mockUsers[0]); // Default: Student
+  // Use LTI authentication instead of mock users
+  const { user: ltiUser, loading, isLTI, error, reinitialize } = useLTIAuth();
+  
+  // Fallback to mock user for testing when not in LTI context
+  const [fallbackUser, setFallbackUser] = useState<User>(mockUsers[0]);
   const [currentPage, setCurrentPage] = useState<string>('roadmap');
+
+  // Use LTI user if available, otherwise fallback user
+  const currentUser: User = ltiUser ? {
+    id: ltiUser.id.toString(),
+    name: ltiUser.name,
+    email: ltiUser.email,
+    role: ltiUser.role as 'STUDENT' | 'INSTRUCTOR' | 'ADMIN',
+    avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(ltiUser.name)}&background=0D8ABC&color=fff`,
+  } : fallbackUser;
+
+  // Show loading screen during LTI authentication
+  if (loading) {
+    return <LTILoader />;
+  }
+
+  // Show error screen if LTI authentication failed
+  if (error && isLTI) {
+    return <LTIError error={error} onRetry={reinitialize} />;
+  }
 
   const handleProfileClick = () => {
     setCurrentPage('profile');
@@ -35,7 +58,13 @@ function App() {
   };
 
   const handleUpdateUser = (updatedUser: User) => {
-    setCurrentUser(updatedUser);
+    if (ltiUser) {
+      // For LTI users, we can't really update the user data
+      // since it comes from Moodle, so we just log it
+      console.log('LTI user update attempt:', updatedUser);
+    } else {
+      setFallbackUser(updatedUser);
+    }
   };
 
   const renderContent = () => {
@@ -173,31 +202,40 @@ function App() {
         </div>
       </div>
       
-      {/* Role Switcher for Testing */}
-      <div className="fixed bottom-4 right-4 z-50">
-        <div className="bg-white border rounded-lg shadow-lg p-3">
-          <p className="text-xs text-gray-600 mb-2">Test as:</p>
-          <div className="flex space-x-2">
-            {mockUsers.slice(0, 3).map((user) => (
-              <button
-                key={user.id}
-                onClick={() => {
-                  setCurrentUser(user);
-                  setCurrentPage(user.role === 'STUDENT' ? 'roadmap' : 
-                                user.role === 'INSTRUCTOR' ? 'students' : 'dashboard');
-                }}
-                className={`px-2 py-1 text-xs rounded ${
-                  currentUser.id === user.id 
-                    ? 'bg-primary-500 text-white' 
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                }`}
-              >
-                {user.role}
-              </button>
-            ))}
+      {/* Role Switcher for Testing - Only show when not in LTI context */}
+      {!isLTI && (
+        <div className="fixed bottom-4 right-4 z-50">
+          <div className="bg-white border rounded-lg shadow-lg p-3">
+            <p className="text-xs text-gray-600 mb-2">Test as:</p>
+            <div className="flex space-x-2">
+              {mockUsers.slice(0, 3).map((user) => (
+                <button
+                  key={user.id}
+                  onClick={() => {
+                    setFallbackUser(user);
+                    setCurrentPage(user.role === 'STUDENT' ? 'roadmap' : 
+                                  user.role === 'INSTRUCTOR' ? 'students' : 'dashboard');
+                  }}
+                  className={`px-2 py-1 text-xs rounded ${
+                    currentUser.id === user.id 
+                      ? 'bg-primary-500 text-white' 
+                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  }`}
+                >
+                  {user.role}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      )}
+
+      {/* LTI Context Indicator */}
+      {isLTI && ltiUser && (
+        <div className="fixed top-4 right-4 z-50">
+          <LTIContext user={ltiUser} />
+        </div>
+      )}
     </div>
   );
 }

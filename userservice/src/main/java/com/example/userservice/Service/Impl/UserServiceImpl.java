@@ -127,4 +127,67 @@ public class UserServiceImpl implements UserService {
     public boolean existsByExternalId(String externalId) {
         return userRepository.existsByExternalId(externalId);
     }
+    
+    @Override
+    public UserDTO createLTIUser(String name, String email, String role, String ltiUserId, String courseId) {
+        // Map LTI role to system role
+        Role userRole = getRoleByName(mapLTIRoleToSystemRole(role));
+        
+        User user = new User();
+        user.setName(name);
+        user.setEmail(email);
+        user.setExternalId(ltiUserId);
+        user.setRole(userRole);
+        user.setCreateAt(LocalDateTime.now());
+        
+        User savedUser = userRepository.save(user);
+        return userMapper.toDTO(savedUser);
+    }
+    
+    @Override
+    public UserDTO updateUserFromLTI(UserDTO existingUser, String name, String role, String ltiUserId, String courseId) {
+        Optional<User> userOpt = userRepository.findById(existingUser.getId());
+        if (userOpt.isPresent()) {
+            User user = userOpt.get();
+            
+            // Update name if different
+            if (!name.equals(user.getName())) {
+                user.setName(name);
+            }
+            
+            // Update role if different
+            String systemRole = mapLTIRoleToSystemRole(role);
+            Role newRole = getRoleByName(systemRole);
+            if (!user.getRole().getId().equals(newRole.getId())) {
+                user.setRole(newRole);
+            }
+            
+            // Update external ID if different
+            if (ltiUserId != null && !ltiUserId.equals(user.getExternalId())) {
+                user.setExternalId(ltiUserId);
+            }
+            
+            user.setUpdateAt(LocalDateTime.now());
+            User savedUser = userRepository.save(user);
+            return userMapper.toDTO(savedUser);
+        }
+        return existingUser;
+    }
+    
+    private String mapLTIRoleToSystemRole(String ltiRole) {
+        if (ltiRole == null) return "STUDENT";
+        
+        String role = ltiRole.toLowerCase();
+        if (role.contains("instructor") || role.contains("teacher")) {
+            return "INSTRUCTOR";
+        } else if (role.contains("admin")) {
+            return "ADMIN";
+        }
+        return "STUDENT";
+    }
+    
+    private Role getRoleByName(String roleName) {
+        return roleRepository.findByRoleName(roleName)
+                .orElseThrow(() -> new RuntimeException("Role not found: " + roleName));
+    }
 }

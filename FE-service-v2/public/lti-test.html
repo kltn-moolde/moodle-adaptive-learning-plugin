@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LTI Launch Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            background: #007cba;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #005a87;
+        }
+        .info {
+            background: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .role-selector {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .role-btn {
+            padding: 8px 16px;
+            border: 2px solid #007cba;
+            background: white;
+            color: #007cba;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .role-btn.active {
+            background: #007cba;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 Moodle LTI Launch Test</h1>
+        
+        <div class="info">
+            <strong>Note:</strong> This page simulates an LTI launch from Moodle. 
+            In a real scenario, Moodle would automatically send these parameters via POST request.
+        </div>
+
+        <form id="ltiForm" method="POST" action="http://localhost:5173" target="_blank">
+            <div class="form-group">
+                <label for="user_id">User ID:</label>
+                <input type="text" id="user_id" name="user_id" value="12345" required>
+            </div>
+
+            <div class="form-group">
+                <label for="lis_person_name_full">Full Name:</label>
+                <input type="text" id="lis_person_name_full" name="lis_person_name_full" value="John Doe" required>
+            </div>
+
+            <div class="form-group">
+                <label for="lis_person_contact_email_primary">Email:</label>
+                <input type="email" id="lis_person_contact_email_primary" name="lis_person_contact_email_primary" value="john.doe@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label>User Role:</label>
+                <div class="role-selector">
+                    <button type="button" class="role-btn active" data-role="Student" data-lti-role="Student">
+                        👨‍🎓 Student
+                    </button>
+                    <button type="button" class="role-btn" data-role="Instructor" data-lti-role="Instructor">
+                        👨‍🏫 Instructor
+                    </button>
+                    <button type="button" class="role-btn" data-role="Administrator" data-lti-role="Administrator">
+                        👨‍💼 Admin
+                    </button>
+                </div>
+                <input type="hidden" id="roles" name="roles" value="Student">
+                <input type="hidden" id="custom_user_role" name="custom_user_role" value="STUDENT">
+            </div>
+
+            <div class="form-group">
+                <label for="context_id">Course ID:</label>
+                <input type="text" id="context_id" name="context_id" value="course_123" required>
+            </div>
+
+            <div class="form-group">
+                <label for="context_title">Course Title:</label>
+                <input type="text" id="context_title" name="context_title" value="Advanced Web Development" required>
+            </div>
+
+            <div class="form-group">
+                <label for="resource_link_id">Resource Link ID:</label>
+                <input type="text" id="resource_link_id" name="resource_link_id" value="resource_456" required>
+            </div>
+
+            <div class="form-group">
+                <label for="tool_consumer_instance_guid">Tool Consumer GUID:</label>
+                <input type="text" id="tool_consumer_instance_guid" name="tool_consumer_instance_guid" value="moodle.example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="custom_course_id">Custom Course ID:</label>
+                <input type="text" id="custom_course_id" name="custom_course_id" value="123">
+            </div>
+
+            <!-- Hidden LTI parameters -->
+            <input type="hidden" name="lti_message_type" value="basic-lti-launch-request">
+            <input type="hidden" name="lti_version" value="LTI-1p0">
+            <input type="hidden" name="resource_link_title" value="Adaptive Learning Tool">
+            <input type="hidden" name="launch_presentation_return_url" value="http://localhost/moodle/mod/lti/return.php">
+            
+            <button type="submit">🚀 Launch LTI Tool</button>
+        </form>
+    </div>
+
+    <script>
+        // Handle role selection
+        document.querySelectorAll('.role-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('active'));
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Update hidden inputs
+                const role = btn.dataset.role;
+                const ltiRole = btn.dataset.ltiRole;
+                document.getElementById('roles').value = ltiRole;
+                
+                // Map to system roles
+                let systemRole = 'STUDENT';
+                if (role === 'Instructor') systemRole = 'INSTRUCTOR';
+                if (role === 'Administrator') systemRole = 'ADMIN';
+                
+                document.getElementById('custom_user_role').value = systemRole;
+            });
+        });
+
+        // Auto-fill form for quick testing
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('role')) {
+                const role = params.get('role');
+                const btn = document.querySelector(`[data-role="${role}"]`);
+                if (btn) btn.click();
+            }
+        });
+
+        // Add quick launch buttons
+        const quickLaunchDiv = document.createElement('div');
+        quickLaunchDiv.innerHTML = `
+            <h3>Quick Launch:</h3>
+            <button type="button" onclick="quickLaunch('Student')" style="margin: 5px; background: #28a745;">Launch as Student</button>
+            <button type="button" onclick="quickLaunch('Instructor')" style="margin: 5px; background: #17a2b8;">Launch as Instructor</button>
+            <button type="button" onclick="quickLaunch('Administrator')" style="margin: 5px; background: #dc3545;">Launch as Admin</button>
+        `;
+        document.querySelector('.container').appendChild(quickLaunchDiv);
+
+        function quickLaunch(role) {
+            // Update form with role
+            const btn = document.querySelector(`[data-role="${role}"]`);
+            if (btn) btn.click();
+            
+            // Submit form
+            document.getElementById('ltiForm').submit();
+        }
+    </script>
+</body>
+</html>

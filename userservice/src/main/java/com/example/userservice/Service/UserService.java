@@ -26,4 +26,9 @@ public interface UserService {
     boolean existsByEmail(String email);
     
     boolean existsByExternalId(String externalId);
+    
+    // LTI-specific methods
+    UserDTO createLTIUser(String name, String email, String role, String ltiUserId, String courseId);
+    
+    UserDTO updateUserFromLTI(UserDTO existingUser, String name, String role, String ltiUserId, String courseId);
 }
