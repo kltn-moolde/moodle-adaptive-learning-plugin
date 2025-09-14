@@ -1,0 +1,23 @@
+name: CI/CD course-service-py
+
+on:
+  push:
+    paths:
+      - 'courseservice_py/**'
+  pull_request:
+    paths:
+      - 'courseservice_py/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build courseservice_py
+        run: |
+          cd courseservice_py
+          echo "building courseservice_py..."
+      - name: Deploy courseservice_py
+        run: |
+          echo "Deploying courseservice_py..."
