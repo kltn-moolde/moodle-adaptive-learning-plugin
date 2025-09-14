@@ -19,23 +19,23 @@ class Settings(BaseSettings):
     PORT: int = 8082
     
     # Frontend Configuration
-    FRONTEND_URL: str = "http://localhost:3000"  # React Frontend URL
+    FRONTEND_URL: str = "http://localhost:5173"  # React Frontend URL
     
     # Database
     DATABASE_URL: str = "sqlite:///./lti_service.db"
     
     # JWT
-    JWT_SECRET: str = "your-secret-key-here-change-in-production"
-    JWT_ALGORITHM: str = "HS256"
+    JWT_SECRET: str = "384E3C37BFF4B95EE7CC16BED39A5"
+    JWT_ALGORITHM: str = "RS256"
     JWT_EXPIRATION: int = 3600
     
     # LTI 1.3
-    LTI_CLIENT_ID: str = "your-client-id"
-    LTI_DEPLOYMENT_ID: str = "your-deployment-id"
-    LTI_ISSUER: str = "https://your-moodle-instance.com"
-    LTI_AUTH_URL: str = "https://your-moodle-instance.com/mod/lti/auth.php"
-    LTI_TOKEN_URL: str = "https://your-moodle-instance.com/mod/lti/token.php"
-    LTI_KEYSET_URL: str = "https://your-moodle-instance.com/mod/lti/certs.php"
+    LTI_CLIENT_ID: str = "ilWFql3vODVfqMp"
+    LTI_DEPLOYMENT_ID: str = "1"
+    LTI_ISSUER: str = "http://localhost/moodle"
+    LTI_AUTH_URL: str = "http://localhost/moodle/mod/lti/auth.php"
+    LTI_TOKEN_URL: str = "http://localhost/moodle/mod/lti/token.php"
+    LTI_KEYSET_URL: str = "http://localhost/moodle/mod/lti/certs.php"
     
     # Tool Configuration
     TOOL_TITLE: str = "User Log Viewer"
@@ -45,12 +45,12 @@ class Settings(BaseSettings):
     TOOL_PUBLIC_JWK_URL: str = "http://localhost:8082/lti/jwks"
     
     # Moodle API
-    MOODLE_API_URL: str = "https://your-moodle-instance.com/webservice/rest/server.php"
-    MOODLE_API_TOKEN: str = "your-moodle-api-token"
+    MOODLE_API_URL: str = "http://localhost/moodle/webservice/rest/server.php"
+    MOODLE_API_TOKEN: str = "9b13f135bae7ba27d67e609c414b70df"
     
     # Security
     ALLOWED_HOSTS: List[str] = ["localhost", "127.0.0.1"]
-    CORS_ORIGINS: List[str] = ["http://localhost:3000", "http://localhost:8080"]
+    CORS_ORIGINS: List[str] = ["http://localhost:5173", "http://localhost:8080"]
     
     # Logging
     LOG_LEVEL: str = "INFO"

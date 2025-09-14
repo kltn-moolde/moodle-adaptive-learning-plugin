@@ -7,11 +7,14 @@ import jwt
 import json
 import uuid
 import base64
+import requests
 from datetime import datetime, timedelta
 from typing import Dict, Any, Optional
 from urllib.parse import urlencode, quote_plus
 from fastapi import HTTPException, Depends
 from sqlalchemy.orm import Session
+from jose import jwt as jose_jwt
+from jose.utils import base64url_decode
 
 from app.config import settings
 from app.database import get_db
@@ -179,9 +182,9 @@ class LTIService:
             logger.error(f"Error decoding JWT token: {str(e)}")
             raise HTTPException(status_code=400, detail=f"Error decoding JWT token: {str(e)}")
     
-    def generate_jwt_token(self, user_id: str, course_id: str) -> str:
+    def generate_jwt_token(self, user_id: str, course_id: str, launch_data: Dict[str, Any] = None) -> str:
         """
-        Generate JWT session token
+        Generate JWT session token after successful LTI launch
         """
         expiry_date = datetime.utcnow() + timedelta(seconds=settings.JWT_EXPIRATION)
         
@@ -189,38 +192,152 @@ class LTIService:
             "sub": user_id,
             "iat": datetime.utcnow(),
             "exp": expiry_date,
-            "course_id": course_id
+            "course_id": course_id,
+            "iss": "lti-service-python",
+            "aud": "frontend-app"
         }
+        
+        # Add LTI-specific claims if provided
+        if launch_data:
+            payload.update({
+                "name": launch_data.get("name"),
+                "email": launch_data.get("email"),
+                "roles": launch_data.get("https://purl.imsglobal.org/spec/lti/claim/roles", []),
+                "context_title": launch_data.get("https://purl.imsglobal.org/spec/lti/claim/context", {}).get("title")
+            })
         
         return jwt.encode(
             payload,
             settings.JWT_SECRET,
-            algorithm=settings.JWT_ALGORITHM
+            algorithm="HS256"  # Use HS256 for session tokens (different from LTI tokens)
         )
+    
+    def get_jwks(self) -> Dict[str, Any]:
+        """
+        Get JWKS (JSON Web Key Set) from Moodle
+        """
+        try:
+            response = requests.get(self.keyset_url, timeout=10)
+            response.raise_for_status()
+            return response.json()
+        except Exception as e:
+            logger.error(f"Error fetching JWKS: {str(e)}")
+            raise HTTPException(status_code=500, detail="Failed to fetch JWKS")
+    
+    def get_public_key_from_jwks(self, jwks: Dict[str, Any], kid: str) -> Dict[str, Any]:
+        """
+        Extract JWK from JWKS for given key ID
+        """
+        for key in jwks.get("keys", []):
+            if key.get("kid") == kid:
+                return key
+        
+        raise ValueError(f"Key with kid '{kid}' not found in JWKS")
     
     def validate_token(self, token: str) -> bool:
         """
-        Validate JWT session token
+        Validate LTI id_token from Moodle (RS256)
         """
         try:
-            jwt.decode(token, settings.JWT_SECRET, algorithms=[settings.JWT_ALGORITHM])
+            # Decode header to get key ID
+            header = jose_jwt.get_unverified_header(token)
+            kid = header.get("kid")
+            
+            if not kid:
+                logger.warning("No kid in token header")
+                return False
+            
+            # Get JWKS and extract public key
+            jwks = self.get_jwks()
+            jwk = self.get_public_key_from_jwks(jwks, kid)
+            
+            # Verify token using python-jose
+            payload = jose_jwt.decode(
+                token,
+                jwk,
+                algorithms=["RS256"],
+                audience=self.client_id,
+                issuer=self.issuer
+            )
+            
+            logger.info("Token validation successful")
             return True
-        except jwt.ExpiredSignatureError:
+            
+        except jose_jwt.ExpiredSignatureError:
             logger.warning("Token has expired")
             return False
-        except jwt.InvalidTokenError:
-            logger.warning("Invalid token")
+        except jose_jwt.JWTError as e:
+            logger.warning(f"Invalid token: {str(e)}")
             return False
         except Exception as e:
             logger.error(f"Error validating token: {str(e)}")
             return False
     
-    def get_user_id_from_token(self, token: str) -> str:
+    def decode_token(self, token: str) -> Dict[str, Any]:
         """
-        Extract user ID from JWT token
+        Decode LTI id_token and return payload
         """
         try:
-            payload = jwt.decode(token, settings.JWT_SECRET, algorithms=[settings.JWT_ALGORITHM])
+            # Decode header to get key ID
+            header = jose_jwt.get_unverified_header(token)
+            kid = header.get("kid")
+            
+            if not kid:
+                raise ValueError("No kid in token header")
+            
+            # Get JWKS and extract public key
+            jwks = self.get_jwks()
+            jwk = self.get_public_key_from_jwks(jwks, kid)
+            
+            # Decode token
+            payload = jose_jwt.decode(
+                token,
+                jwk,
+                algorithms=["RS256"],
+                audience=self.client_id,
+                issuer=self.issuer
+            )
+            
+            return payload
+            
+        except Exception as e:
+            logger.error(f"Error decoding token: {str(e)}")
+            raise HTTPException(status_code=401, detail=f"Failed to decode token: {str(e)}")
+    
+    def validate_session_token(self, token: str) -> bool:
+        """
+        Validate JWT session token (HS256) - for app sessions after LTI launch
+        """
+        try:
+            jwt.decode(token, settings.JWT_SECRET, algorithms=["HS256"])
+            return True
+        except jwt.ExpiredSignatureError:
+            logger.warning("Session token has expired")
+            return False
+        except jwt.InvalidTokenError:
+            logger.warning("Invalid session token")
+            return False
+        except Exception as e:
+            logger.error(f"Error validating session token: {str(e)}")
+            return False
+    
+    def decode_session_token(self, token: str) -> Dict[str, Any]:
+        """
+        Decode session token and return payload
+        """
+        try:
+            payload = jwt.decode(token, settings.JWT_SECRET, algorithms=["HS256"])
+            return payload
+        except Exception as e:
+            logger.error(f"Error decoding session token: {str(e)}")
+            raise HTTPException(status_code=401, detail="Invalid session token")
+    
+    def get_user_id_from_token(self, token: str) -> str:
+        """
+        Extract user ID from JWT session token
+        """
+        try:
+            payload = jwt.decode(token, settings.JWT_SECRET, algorithms=["HS256"])
             return payload.get("sub")
         except Exception as e:
             logger.error(f"Error extracting user ID from token: {str(e)}")
@@ -228,10 +345,10 @@ class LTIService:
     
     def get_course_id_from_token(self, token: str) -> str:
         """
-        Extract course ID from JWT token
+        Extract course ID from JWT session token
         """
         try:
-            payload = jwt.decode(token, settings.JWT_SECRET, algorithms=[settings.JWT_ALGORITHM])
+            payload = jwt.decode(token, settings.JWT_SECRET, algorithms=["HS256"])
             course_id = payload.get("course_id")
             if not course_id:
                 raise HTTPException(status_code=400, detail="Course ID not found in token")

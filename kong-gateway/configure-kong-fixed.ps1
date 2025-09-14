@@ -157,30 +157,37 @@ function New-JwtConsumer {
 # Wait for Kong to be ready
 Wait-ForKong
 
-Write-Host "🔧 Setting up services and routes..." -ForegroundColor Blue
+Write-Host "Setting up services and routes..." -ForegroundColor Blue
 
 # 1. User Service (Authentication - No JWT required for login)
-New-KongService "user-service" "http://host.docker.internal:8080" "/api/users"
+New-KongService "user-service" "http://192.168.1.6:8080" "/"
 New-KongRoute "user-service" "/auth/*" "auth-route"
 New-KongRoute "user-service" "/api/users/*" "users-route"
 Enable-CorsPlugin "user-service"
 
 # 2. Course Service (JWT Protected)
-New-KongService "course-service" "http://host.docker.internal:8081" "/api/courses"
+New-KongService "course-service" "http://192.168.1.6:8081" "/api/courses"
 New-KongRoute "course-service" "/api/courses/*" "courses-route"
 Enable-JwtPlugin "course-service"
 Enable-CorsPlugin "course-service"
 
 # 3. LTI Service (Partial JWT Protection) - Local port 8082
-New-KongService "lti-service" "http://host.docker.internal:8082" "/"
+New-KongService "lti-service" "http://192.168.1.6:8082" "/"
 New-KongRoute "lti-service" "/lti/*" "lti-route"
 New-KongRoute "lti-service" "/api/lti/*" "lti-api-route"
 Enable-CorsPlugin "lti-service"
 
 # 4. Frontend Service (No JWT needed - static files) - Local port 5173
-New-KongService "frontend-service" "http://host.docker.internal:5173" "/"
-New-KongRoute "frontend-service" "/" "frontend-route"
+New-KongService "frontend-service" "http://192.168.1.6:5173" "/"
+New-KongRoute "frontend-service" "/app/*" "frontend-route"
+New-KongRoute "frontend-service" "/assets/*" "frontend-assets-route"
+New-KongRoute "frontend-service" "/src/*" "frontend-src-route"
 Enable-CorsPlugin "frontend-service"
 
 # Create JWT consumer for the application
 New-JwtConsumer "adaptive-learning-app" "adaptive-learning-issuer" "your-super-secret-jwt-key-for-kong-gateway-2024"
+
+Write-Host ""
+Write-Host "Kong Gateway configuration completed!" -ForegroundColor Green
+Write-Host "Gateway: http://192.168.1.9:8000" -ForegroundColor White
+Write-Host "Admin API: http://192.168.1.9:8001" -ForegroundColor White

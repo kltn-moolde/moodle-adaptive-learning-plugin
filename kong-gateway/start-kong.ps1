@@ -14,11 +14,11 @@ try {
 
 # Stop any existing containers
 Write-Host "🛑 Stopping existing containers..." -ForegroundColor Yellow
-docker-compose down
+docker-compose -f docker-compose-local.yml down
 
 # Start all services
-Write-Host "📦 Starting all services..." -ForegroundColor Cyan
-docker-compose up -d
+Write-Host "📦 Starting Kong Gateway..." -ForegroundColor Cyan
+docker-compose -f docker-compose-local.yml up -d
 
 # Wait for Kong to be ready
 Write-Host "⏳ Waiting for Kong Gateway to start..." -ForegroundColor Yellow

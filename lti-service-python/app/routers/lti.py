@@ -64,12 +64,13 @@ async def lti_launch(
     Handle LTI 1.3 launch request and redirect to Frontend
     """
     try:
-        # Validate JWT token
+        logger.info(f"id_token received: {id_token}")
+        # Validate LTI id_token from Moodle (RS256)
         is_valid = lti_service.validate_token(id_token)
         if not is_valid:
             raise HTTPException(status_code=401, detail="Invalid LTI token")
         
-        # Decode launch data from token
+        # Decode LTI launch data from token
         launch_data = lti_service.decode_token(id_token)
         
         # Extract user and course information from LTI token

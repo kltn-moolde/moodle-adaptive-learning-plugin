@@ -110,7 +110,7 @@ class LTIService {
             const ltiUserData: Partial<UserData> = {
                 name: ltiParams.lis_person_name_full,
                 email: ltiParams.lis_person_contact_email_primary,
-                role: systemRole,
+                roleName: systemRole,
             };
 
             // Call User Service via Kong Gateway to get JWT token

@@ -12,7 +12,7 @@ export interface UserData {
     id: number;
     name: string;
     email: string;
-    role: string;
+    roleName: string;
     roleId: number;
 }
 

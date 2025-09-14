@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
 public class AuthController {
@@ -28,7 +28,7 @@ public class AuthController {
     private final UserService userService;
     private final JwtUtil jwtUtil;
     
-    @PostMapping("/login")
+    @PostMapping("/auth/login")
     public ResponseEntity<?> login(@Valid @RequestBody AuthRequest authRequest) {
         try {
             // Authenticate user
@@ -69,7 +69,7 @@ public class AuthController {
         }
     }
     
-    @PostMapping("/register")
+    @PostMapping("/auth/register")
     public ResponseEntity<?> register(@Valid @RequestBody UserDTO userDTO) {
         try {
             // Check if user already exists
@@ -104,7 +104,7 @@ public class AuthController {
         }
     }
     
-    @PostMapping("/validate")
+    @PostMapping("/auth/validate")
     public ResponseEntity<?> validateToken(@RequestHeader("Authorization") String token) {
         try {
             // Remove "Bearer " prefix
@@ -140,7 +140,7 @@ public class AuthController {
         }
     }
     
-    @PostMapping("/refresh")
+    @PostMapping("/auth/refresh")
     public ResponseEntity<?> refreshToken(@RequestHeader("Authorization") String token) {
         try {
             // Remove "Bearer " prefix
@@ -179,7 +179,7 @@ public class AuthController {
         }
     }
     
-    @GetMapping("/me")
+    @GetMapping("/auth/me")
     public ResponseEntity<?> getCurrentUser(@RequestHeader("Authorization") String token) {
         try {
             // Remove "Bearer " prefix
@@ -207,13 +207,13 @@ public class AuthController {
         }
     }
     
-    @PostMapping("/lti")
+    @PostMapping("/auth/lti")
     public ResponseEntity<?> ltiAuthentication(@RequestBody Map<String, Object> ltiData) {
         try {
             // Extract LTI user data
             String name = (String) ltiData.get("name");
             String email = (String) ltiData.get("email");
-            String role = (String) ltiData.get("role");
+            String role = (String) ltiData.get("roleName");
             String ltiUserId = (String) ltiData.get("ltiUserId");
             String courseId = (String) ltiData.get("courseId");
             
@@ -261,7 +261,7 @@ public class AuthController {
         }
     }
     
-    @GetMapping("/health")
+    @GetMapping("/auth/health")
     public ResponseEntity<?> healthCheck() {
         Map<String, Object> health = new HashMap<>();
         health.put("status", "UP");

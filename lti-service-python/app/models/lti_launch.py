@@ -22,6 +22,8 @@ class LTILaunch(Base):
     user_email = Column(String(255), nullable=True)
     course_id = Column(String(255), nullable=True, index=True)
     launch_time = Column(DateTime, default=func.now())
+    deployment_id = Column(String, nullable=True)
+    launch_data = Column(Text, nullable=True)
     
     # Additional LTI claims
     given_name = Column(String(255), nullable=True)
