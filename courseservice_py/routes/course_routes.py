@@ -3,6 +3,7 @@ from flask import Blueprint, request, jsonify
 from database import mongo
 from services.moodle_client import get_course_contents, get_courses_from_moodle
 from bson.objectid import ObjectId
+import requests
 
 course_bp = Blueprint("course", __name__)
 
@@ -73,3 +74,20 @@ def get_moodle_courses():
 def get_moodle_course_contents(course_id):
     course_contents = get_course_contents(course_id)
     return jsonify({"message": "Retrieved course contents from Moodle", "contents": course_contents})
+
+
+@course_bp.route("/test/external", methods=["GET"])
+def test_external_call():
+    try:
+        # Gọi một trang bên ngoài, ví dụ Google
+        response = requests.get("https://www.google.com", timeout=5)
+        return jsonify({
+            "message": "External call successful",
+            "status_code": response.status_code,
+            "content_snippet": response.text[:200]  # chỉ lấy 200 ký tự đầu
+        })
+    except requests.RequestException as e:
+        return jsonify({
+            "message": "External call failed",
+            "error": str(e)
+        }), 500
