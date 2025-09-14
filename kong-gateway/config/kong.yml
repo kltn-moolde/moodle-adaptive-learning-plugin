@@ -1,0 +1,78 @@
+_format_version: "3.0"
+_transform: true
+
+services:
+  - name: user-service
+    url: http://user-service:8080
+    plugins:
+      - name: cors
+        config:
+          origins: ["*"]
+          methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
+          headers: ["Accept", "Accept-Version", "Content-Length", "Content-MD5", "Content-Type", "Date", "Authorization"]
+          exposed_headers: ["X-Auth-Token"]
+          credentials: true
+          max_age: 3600
+
+  - name: lti-service
+    url: http://lti-service:8082
+    plugins:
+      - name: cors
+        config:
+          origins: ["*"]
+          methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
+          headers: ["Accept", "Accept-Version", "Content-Length", "Content-MD5", "Content-Type", "Date", "Authorization"]
+          exposed_headers: ["X-Auth-Token"]
+          credentials: true
+          max_age: 3600
+
+  - name: frontend-service
+    url: http://frontend-service:5173
+    plugins:
+      - name: cors
+        config:
+          origins: ["*"]
+          methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
+          headers: ["Accept", "Accept-Version", "Content-Length", "Content-MD5", "Content-Type", "Date", "Authorization"]
+          exposed_headers: ["X-Auth-Token"]
+          credentials: true
+          max_age: 3600
+
+routes:
+  - name: auth-route
+    service: user-service
+    paths: ["/auth"]
+    strip_path: false
+    preserve_host: false
+
+  - name: users-route
+    service: user-service
+    paths: ["/api/users"]
+    strip_path: false
+    preserve_host: false
+
+  - name: lti-route
+    service: lti-service
+    paths: ["/lti"]
+    strip_path: false
+    preserve_host: false
+
+  - name: lti-api-route
+    service: lti-service
+    paths: ["/api/lti"]
+    strip_path: false
+    preserve_host: false
+
+  - name: frontend-route
+    service: frontend-service
+    paths: ["/"]
+    strip_path: false
+    preserve_host: false
+    protocols: ["http", "https"]
+
+consumers:
+  - username: adaptive-learning-app
+    jwt_secrets:
+      - key: adaptive-learning-issuer
+        secret: 8811636d3cc7015b74e3eb74b68939a07791def83843ed3a63bee85b32aeb9ad
+        algorithm: HS256

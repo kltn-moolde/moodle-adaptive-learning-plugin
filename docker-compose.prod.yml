@@ -1,0 +1,95 @@
+version: '3.8'
+
+services:
+  # Kong Gateway (DB-less mode)
+  kong-gateway:
+    image: kong/kong-gateway:3.7.1.1
+    restart: unless-stopped
+    ports:
+      - "${KONG_PROXY_PORT:-8000}:8000"
+      - "${KONG_ADMIN_PORT:-8001}:8001"
+    environment:
+      KONG_DATABASE: "off"
+      KONG_DECLARATIVE_CONFIG: /kong/declarative/kong.yml
+      KONG_PROXY_ACCESS_LOG: /dev/stdout
+      KONG_ADMIN_ACCESS_LOG: /dev/stdout
+      KONG_PROXY_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_LISTEN: 0.0.0.0:8001
+      KONG_PROXY_LISTEN: 0.0.0.0:8000
+    volumes:
+      - ./kong-gateway/config:/kong/declarative
+    networks:
+      - app-network
+    depends_on:
+      - user-service
+      - lti-service
+      - frontend-service
+
+  # User Service
+  user-service:
+    image: ${DOCKER_REGISTRY}/adaptive-learning-user-service:${IMAGE_TAG:-latest}
+    restart: unless-stopped
+    ports:
+      - "${USER_SERVICE_PORT:-8080}:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILE:-production}
+      - SERVER_ADDRESS=0.0.0.0
+      - SERVER_PORT=8080
+      - DATABASE_URL=${DATABASE_URL:-jdbc:h2:mem:testdb}
+      - JWT_SECRET=${JWT_SECRET:-default-jwt-secret-change-in-production}
+      - FRONTEND_URL=${FRONTEND_URL:-http://localhost:5173}
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/auth/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # LTI Service
+  lti-service:
+    image: ${DOCKER_REGISTRY}/adaptive-learning-lti-service:${IMAGE_TAG:-latest}
+    restart: unless-stopped
+    ports:
+      - "${LTI_SERVICE_PORT:-8082}:8082"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8082
+      - DEBUG=${DEBUG:-False}
+      - FRONTEND_URL=${FRONTEND_URL:-http://localhost:5173}
+      - USER_SERVICE_URL=${USER_SERVICE_URL:-http://user-service:8080}
+      - LTI_ISSUER=${LTI_ISSUER:-http://51.68.124.207/moodle}
+      - LTI_AUTH_URL=${LTI_AUTH_URL:-http://51.68.124.207/moodle/mod/lti/auth.php}
+      - LTI_TOKEN_URL=${LTI_TOKEN_URL:-http://51.68.124.207/moodle/mod/lti/token.php}
+      - LTI_KEYSET_URL=${LTI_KEYSET_URL:-http://51.68.124.207/moodle/mod/lti/certs.php}
+      - MOODLE_API_URL=${MOODLE_API_URL:-http://51.68.124.207/moodle/webservice/rest/server.php}
+      - MOODLE_API_TOKEN=${MOODLE_API_TOKEN:-81a9b0ee5932a556056b43fda60e9520}
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8082/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Frontend Service
+  frontend-service:
+    image: ${DOCKER_REGISTRY}/adaptive-learning-frontend:${IMAGE_TAG:-latest}
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT:-5173}:5173"
+    environment:
+      - VITE_API_BASE_URL=${API_BASE_URL:-http://localhost:8000}
+      - VITE_LTI_SERVICE_URL=${LTI_SERVICE_URL:-http://localhost:8082}
+    networks:
+      - app-network
+    depends_on:
+      - kong-gateway
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  kong-config:

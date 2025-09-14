@@ -20,7 +20,7 @@ export class KongApiService {
     private baseURL: string;
     private token: string | null = null;
 
-    constructor(baseURL: string = 'http://localhost:8000') {
+    constructor(baseURL: string = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000') {
         this.baseURL = baseURL;
         this.token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
     }
