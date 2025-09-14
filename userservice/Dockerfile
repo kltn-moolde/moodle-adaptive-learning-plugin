@@ -1,17 +1,17 @@
-# Build stage
-FROM maven:3.8.6-eclipse-temurin-17 AS builder
+# Build stage: Maven + JDK 21
+FROM maven:3.9.11-eclipse-temurin-21-alpine AS builder
 
 WORKDIR /app
 
 # Copy Maven configuration
-COPY pom.xml .
+COPY pom.xml . 
 COPY src ./src
 
 # Build the application
 RUN mvn clean package -DskipTests
 
-# Runtime stage
-FROM eclipse-temurin:17-jre-alpine
+# Runtime stage: JDK 21 JRE
+FROM eclipse-temurin:21-jre-alpine
 
 WORKDIR /app
 

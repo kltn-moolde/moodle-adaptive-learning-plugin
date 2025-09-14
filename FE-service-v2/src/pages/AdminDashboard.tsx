@@ -17,7 +17,7 @@ interface AdminDashboardProps {
 
 const AdminDashboard: React.FC<AdminDashboardProps> = ({ users, systemMetrics }) => {
   const [activeTab, setActiveTab] = useState<'overview' | 'users' | 'system'>('overview');
-  const [selectedUser, setSelectedUser] = useState<User | null>(null);
+  // const [setSelectedUser] = useState<User | null>(null);
 
   const getRoleStats = () => {
     const stats = { STUDENT: 0, INSTRUCTOR: 0, ADMIN: 0 };
@@ -237,7 +237,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ users, systemMetrics })
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                           <button 
-                            onClick={() => setSelectedUser(user)}
+                            // onClick={() => setSelectedUser(user)}
                             className="text-primary-600 hover:text-primary-900 mr-3"
                           >
                             Edit

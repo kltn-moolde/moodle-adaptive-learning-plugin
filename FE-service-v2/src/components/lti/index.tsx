@@ -155,7 +155,7 @@ export const LTIContext: React.FC<LTIContextProps> = ({ user }) => {
                     </h3>
                     <div className="mt-1 text-sm text-blue-600">
                         <p><strong>Course:</strong> {courseContext?.courseTitle || 'Unknown'}</p>
-                        <p><strong>User:</strong> {user.name} ({user.role})</p>
+                        <p><strong>User:</strong> {user.name} ({user.roleName})</p>
                         <p><strong>LTI ID:</strong> {user.ltiUserId}</p>
                     </div>
                 </div>

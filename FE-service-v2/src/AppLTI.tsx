@@ -37,7 +37,7 @@ const Dashboard: React.FC = () => {
     id: ltiUser.id.toString(),
     name: ltiUser.name,
     email: ltiUser.email,
-    role: ltiUser.role as 'STUDENT' | 'INSTRUCTOR' | 'ADMIN',
+    role: ltiUser.roleName as 'STUDENT' | 'INSTRUCTOR' | 'ADMIN',
     avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(ltiUser.name)}&background=0D8ABC&color=fff`,
   } : mockUsers[0]; // Default to first mock user
 

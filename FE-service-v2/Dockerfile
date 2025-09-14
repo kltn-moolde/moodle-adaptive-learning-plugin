@@ -1,13 +1,12 @@
-# Build stage
-FROM node:18-alpine AS builder
-
+# Stage 1: build
+FROM node:22-bullseye AS builder
 WORKDIR /app
 
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci --only=production
+# Install all dependencies (dev + prod)
+RUN npm ci
 
 # Copy source code
 COPY . .
@@ -15,19 +14,19 @@ COPY . .
 # Build the application
 RUN npm run build
 
-# Production stage
-FROM node:18-alpine
-
+# Stage 2: production
+FROM node:22-bullseye
 WORKDIR /app
 
 # Install serve to serve static files
 RUN npm install -g serve
 
-# Create non-root user
-RUN addgroup -g 1001 -S nodejs && \
-    adduser -S frontend -u 1001
+# Create group & user
+RUN groupadd -g 1001 frontend \
+    && useradd -m -u 1001 -g frontend frontend
 
-# Copy built application from builder stage
+
+# Copy built app
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/package*.json ./
 
@@ -35,12 +34,10 @@ COPY --from=builder /app/package*.json ./
 RUN npm ci --only=production && npm cache clean --force
 
 # Change ownership to frontend user
-RUN chown -R frontend:nodejs /app
-
-# Switch to non-root user
+RUN chown -R frontend:frontend /app
 USER frontend
 
-# Expose port
+# Expose port (serve default)
 EXPOSE 5173
 
 # Health check
