@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # Kong Gateway (DB-less mode)
   kong-gateway:
@@ -84,8 +82,6 @@ services:
       - VITE_LTI_SERVICE_URL=${LTI_SERVICE_URL:-http://localhost:8082}
     networks:
       - app-network
-    depends_on:
-      - kong-gateway
 
 networks:
   app-network:
