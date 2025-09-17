@@ -34,16 +34,15 @@ services:
       - SPRING_PROFILES_ACTIVE=${SPRING_PROFILE:-production}
       - SERVER_ADDRESS=0.0.0.0
       - SERVER_PORT=8080
-      - DATABASE_URL=${DATABASE_URL:-jdbc:h2:mem:testdb}
+      # - DATABASE_URL=${DATABASE_URL:-jdbc:h2:mem:testdb}
+      - DATABASE_URL=jdbc:mysql://mysql8.4:3306/user_service?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root_pass
       - JWT_SECRET=${JWT_SECRET:-default-jwt-secret-change-in-production}
       - FRONTEND_URL=${FRONTEND_URL:-http://localhost:5173}
     networks:
       - app-network
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/auth/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+      - moodle_project_default
 
   # LTI Service
   lti-service:
@@ -86,6 +85,8 @@ services:
 networks:
   app-network:
     driver: bridge
+  moodle_project_default:
+    external: true
 
 volumes:
   kong-config:
