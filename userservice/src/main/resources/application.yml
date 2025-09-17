@@ -8,10 +8,10 @@ spring:
   
   # Database Configuration
   datasource:
-    url: jdbc:postgresql://ep-empty-rain-a1rj0l15-pooler.ap-southeast-1.aws.neon.tech/neondb
-    username: neondb_owner
-    password: npg_IoHUcLAK49sv
-    driver-class-name: org.postgresql.Driver
+    url: jdbc:mysql://mysql8.4:3306/user_service?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: root
+    password: root_pass
+    driver-class-name: com.mysql.cj.jdbc.Driver
   
   # JPA Configuration
   jpa:
