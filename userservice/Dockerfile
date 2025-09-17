@@ -15,6 +15,9 @@ FROM eclipse-temurin:21-jre-alpine
 
 WORKDIR /app
 
+# Install curl (as root)
+RUN apk add --no-cache curl
+
 # Create non-root user
 RUN addgroup -g 1001 -S spring && \
     adduser -S spring -u 1001
