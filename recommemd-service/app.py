@@ -1,33 +1,69 @@
 from flask import Flask, request, jsonify
 import threading
 from config import q_table, q_table_lock, LOG_FILE_PATH
-from q_learning import (
-    load_data, load_q_table_from_csv, initialize_q_table,
-    q_learning_daemon, process_log_line, suggest_next_action, last_state_action, get_state_from_log_line, get_last_user_log
-)
+from q_learning import *
 
 app = Flask(__name__)
+
+
+@app.route('/api/update-learning-event', methods=['POST'])
+def update_learning_event():
+    global last_state_action, q_table
+
+    data = request.json
+    try:
+        userid = int(data['userid'])
+        courseid = int(data['courseid'])
+        sectionid = int(data['sectionid'])
+        objecttype = data['type']
+        objectid = int(data['objectid'])
+    except (KeyError, TypeError, ValueError):
+        return jsonify({"error": "Invalid payload"}), 400
+
+    # Lấy trạng thái mới từ Moodle
+    current_state, passed_quiz = get_state_from_moodle(userid, courseid, sectionid, objecttype, objectid)
+
+    # Cập nhật Q-table
+    with q_table_lock:
+        if userid in last_state_action:
+            prev_state, prev_action = last_state_action[userid]
+
+            # Chỉ update nếu cùng section
+            if prev_state[0] == current_state[0]:
+                reward = get_reward(
+                    action=prev_action,
+                    old_score=prev_state[3],
+                    new_score=current_state[3],
+                    old_complete=prev_state[2],
+                    new_complete=current_state[2],
+                    cluster=get_user_cluster(userid),
+                    quiz_level=prev_state[1],
+                    passed_hard_quiz=passed_quiz,
+                )
+                update_q_table(prev_state, prev_action, reward, current_state)
+                save_q_table_to_csv(q_table)
+
+        # Chọn action tiếp theo
+        action, _ = suggest_next_action(current_state, userid=userid)
+        last_state_action[userid] = (current_state, action)
+
+    return jsonify({"status": "ok", "next_action": action})
+
 
 @app.route('/api/suggest-action', methods=['POST'])
 def suggest_action_api():
     data = request.json
     try:
-        userid = int(data.get('userid'))
-        courseid = int(data.get('courseid'))
+        userid = int(data['userid'])
+        courseid = int(data['courseid'])
     except (TypeError, ValueError):
         return jsonify({"error": "Invalid input data"}), 400
 
-    # --- Lấy log cuối cùng ---
-    last_line = get_last_user_log(userid, courseid)
-    if last_line is None:
-        return jsonify({"error": "No recent activity for this user"}), 404
-
-    userid, courseid, current_state, passed_quiz = get_state_from_log_line(last_line)
-    if current_state is None:
-        return jsonify({"error": "Cannot parse last log line"}), 500
-
-    # --- Chọn action dựa trên state gần nhất ---
     with q_table_lock:
+        if userid not in last_state_action:
+            return jsonify({"error": "No recent activity for this user"}), 404
+
+        current_state, _ = last_state_action[userid]
         action, q_value = suggest_next_action(current_state, userid)
 
     return jsonify({
@@ -41,7 +77,8 @@ def suggest_action_api():
             "complete_rate_bin": current_state[2],
             "score_bin": current_state[3]
         }
-    })    
+    })
+
 
 if __name__ == '__main__':
     # --- Khởi tạo dữ liệu và Q-table ---
@@ -49,11 +86,6 @@ if __name__ == '__main__':
     q_table = load_q_table_from_csv()
     if not q_table:
         q_table = initialize_q_table()
-
-    # --- Chạy daemon đọc log để cập nhật Q-table realtime ---
-    daemon_thread = threading.Thread(target=lambda: [process_log_line(line) for line in q_learning_daemon()])
-    daemon_thread.daemon = True
-    daemon_thread.start()
 
     # --- Chạy Flask ---
     app.run(debug=True, port=8088, use_reloader=False)

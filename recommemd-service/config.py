@@ -7,7 +7,7 @@ EXPLORATION_RATE = 0.2
 
 # --- Moodle API ---
 MOODLE_URL = 'http://localhost:8100/webservice/rest/server.php'
-TOKEN = 'bf5eaf838a5f18b8f4b5c2862746caca'
+TOKEN = '7e6e5e687f484ae22d9b686e712c1060'
 
 # --- Actions ---
 ACTIONS = [

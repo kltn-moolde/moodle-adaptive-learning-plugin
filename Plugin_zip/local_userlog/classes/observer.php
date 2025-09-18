@@ -6,7 +6,7 @@ defined('MOODLE_INTERNAL') || die();
 class observer {
 
     public static function log_learning_event(\core\event\base $event) {
-        global $DB, $CFG;
+        global $DB;
 
         $userid = $event->userid;
         $courseid = $event->courseid;
@@ -26,29 +26,34 @@ class observer {
         // Lấy sectionid từ bảng course_modules
         $sectionid = $DB->get_field('course_modules', 'section', ['id' => $cmid]);
 
-        // Tạo thư mục lưu log nếu chưa có
-        $logdir = $CFG->dataroot . '/local_userlog_data';
-        if (!is_dir($logdir)) {
-            mkdir($logdir, 0777, true);
+        // ==== Gọi API bên ngoài thay vì ghi file ====
+        $payload = [
+            'userid' => $userid,
+            'courseid' => $courseid,
+            'sectionid' => $sectionid,
+            'type' => $type,
+            'objectid' => $objectid,
+            'time' => $time
+        ];
+
+        $api_url = 'http://localhost:8088/api/update-learning-event';
+
+        $options = [
+            'http' => [
+                'header'  => "Content-Type: application/json\r\n",
+                'method'  => 'POST',
+                'content' => json_encode($payload),
+                'timeout' => 5
+            ]
+        ];
+
+        $context = stream_context_create($options);
+        $result = @file_get_contents($api_url, false, $context);
+
+        if ($result === FALSE) {
+            // Ghi lỗi nếu gửi API thất bại
+            error_log("❌ Failed to send learning event for user $userid");
         }
-
-        // ==== Ghi CSV chính ====
-        $path = $logdir . '/user_log_summary.csv';
-        if (!file_exists($path)) {
-            $header = 'userid,courseid,sectionid,type,objectid,time' . "\n";
-            file_put_contents($path, $header, FILE_APPEND | LOCK_EX);
-        }
-
-        $line = implode(',', [
-            $userid,
-            $courseid,
-            $sectionid,
-            $type,
-            $objectid,
-            $time
-        ]);
-        file_put_contents($path, $line . "\n", FILE_APPEND | LOCK_EX);
-
         return true;
     }
 }
