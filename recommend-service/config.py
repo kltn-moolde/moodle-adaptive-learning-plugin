@@ -26,7 +26,7 @@ class Config:
     )
     
     DEFAULT_QTABLE_PATH = os.getenv(
-        "QTABLE_PATH", 
+        "DEFAULT_QTABLE_PATH", 
         "/data/q_table_results.csv")
 
     # --- Q-learning hyperparameters ---
