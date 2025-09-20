@@ -20,7 +20,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=forum&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=forum&rev=1758167912&image=monologo&filtericon=1",
         "modname": "forum",
         "purpose": "collaboration",
         "branded": false,
@@ -46,7 +46,7 @@
         "visible": 0,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=qbank&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=qbank&rev=1758167912&image=monologo&filtericon=1",
         "modname": "qbank",
         "purpose": "content",
         "branded": false,
@@ -71,7 +71,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1758167912&image=monologo&filtericon=1",
         "modname": "quiz",
         "purpose": "assessment",
         "branded": false,
@@ -96,7 +96,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1758167912&image=monologo&filtericon=1",
         "modname": "quiz",
         "purpose": "assessment",
         "branded": false,
@@ -121,7 +121,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1758167912&image=monologo&filtericon=1",
         "modname": "quiz",
         "purpose": "assessment",
         "branded": false,
@@ -146,12 +146,37 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1758167912&image=monologo&filtericon=1",
         "modname": "quiz",
         "purpose": "assessment",
         "branded": false,
         "modplural": "Quizzes",
         "availability": "{\"op\":\"&\",\"show\":false,\"c\":[{\"type\":\"group\",\"id\":4,\"show\":true}],\"showc\":[false]}",
+        "indent": 0,
+        "onclick": "",
+        "afterlink": null,
+        "customdata": "\"\"",
+        "noviewlink": false,
+        "completion": 0,
+        "downloadcontent": 1,
+        "dates": [],
+        "groupmode": 0
+      },
+      {
+        "id": 119,
+        "url": "http://localhost:8100/mod/lti/view.php?id=119",
+        "name": "user log viewer",
+        "instance": 6,
+        "contextid": 150,
+        "visible": 1,
+        "uservisible": true,
+        "visibleoncoursepage": 1,
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=lti&rev=1758167912&image=monologo&filtericon=1",
+        "modname": "lti",
+        "purpose": "other",
+        "branded": false,
+        "modplural": "External tools",
+        "availability": null,
         "indent": 0,
         "onclick": "",
         "afterlink": null,
@@ -184,7 +209,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=subsection&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=subsection&rev=1758167912&image=monologo&filtericon=1",
         "modname": "subsection",
         "purpose": "content",
         "branded": false,
@@ -208,7 +233,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=subsection&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=subsection&rev=1758167912&image=monologo&filtericon=1",
         "modname": "subsection",
         "purpose": "content",
         "branded": false,
@@ -246,7 +271,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=subsection&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=subsection&rev=1758167912&image=monologo&filtericon=1",
         "modname": "subsection",
         "purpose": "content",
         "branded": false,
@@ -270,7 +295,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=subsection&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=subsection&rev=1758167912&image=monologo&filtericon=1",
         "modname": "subsection",
         "purpose": "content",
         "branded": false,
@@ -294,7 +319,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=subsection&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=subsection&rev=1758167912&image=monologo&filtericon=1",
         "modname": "subsection",
         "purpose": "content",
         "branded": false,
@@ -332,7 +357,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=subsection&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=subsection&rev=1758167912&image=monologo&filtericon=1",
         "modname": "subsection",
         "purpose": "content",
         "branded": false,
@@ -371,7 +396,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=core&rev=1754971150&image=f%2Fpdf&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=core&rev=1758167912&image=f%2Fpdf&filtericon=1",
         "modname": "resource",
         "purpose": "content",
         "branded": false,
@@ -446,7 +471,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=hvp&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=hvp&rev=1758167912&image=monologo&filtericon=1",
         "modname": "hvp",
         "purpose": "other",
         "branded": false,
@@ -491,7 +516,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1758167912&image=monologo&filtericon=1",
         "modname": "quiz",
         "purpose": "assessment",
         "branded": false,
@@ -557,7 +582,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1758167912&image=monologo&filtericon=1",
         "modname": "quiz",
         "purpose": "assessment",
         "branded": false,
@@ -566,9 +591,36 @@
         "indent": 0,
         "onclick": "",
         "afterlink": null,
-        "customdata": "\"\"",
+        "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
         "noviewlink": false,
-        "completion": 0,
+        "completion": 2,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": true,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [
+            {
+              "rulename": "completionusegrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a grade"
+              }
+            },
+            {
+              "rulename": "completionpassgrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a passing grade"
+              }
+            }
+          ],
+          "isoverallcomplete": false
+        },
         "downloadcontent": 1,
         "dates": [],
         "groupmode": 0
@@ -582,7 +634,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1758167912&image=monologo&filtericon=1",
         "modname": "quiz",
         "purpose": "assessment",
         "branded": false,
@@ -591,9 +643,36 @@
         "indent": 0,
         "onclick": "",
         "afterlink": null,
-        "customdata": "\"\"",
+        "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
         "noviewlink": false,
-        "completion": 0,
+        "completion": 2,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": true,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [
+            {
+              "rulename": "completionusegrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a grade"
+              }
+            },
+            {
+              "rulename": "completionpassgrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a passing grade"
+              }
+            }
+          ],
+          "isoverallcomplete": false
+        },
         "downloadcontent": 1,
         "dates": [],
         "groupmode": 0
@@ -621,7 +700,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=core&rev=1754971150&image=f%2Fpdf&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=core&rev=1758167912&image=f%2Fpdf&filtericon=1",
         "modname": "resource",
         "purpose": "content",
         "branded": false,
@@ -696,7 +775,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=hvp&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=hvp&rev=1758167912&image=monologo&filtericon=1",
         "modname": "hvp",
         "purpose": "other",
         "branded": false,
@@ -741,7 +820,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1758167912&image=monologo&filtericon=1",
         "modname": "quiz",
         "purpose": "assessment",
         "branded": false,
@@ -800,7 +879,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1758167912&image=monologo&filtericon=1",
         "modname": "quiz",
         "purpose": "assessment",
         "branded": false,
@@ -809,9 +888,36 @@
         "indent": 0,
         "onclick": "",
         "afterlink": null,
-        "customdata": "\"\"",
+        "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
         "noviewlink": false,
-        "completion": 0,
+        "completion": 2,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": true,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [
+            {
+              "rulename": "completionusegrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a grade"
+              }
+            },
+            {
+              "rulename": "completionpassgrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a passing grade"
+              }
+            }
+          ],
+          "isoverallcomplete": false
+        },
         "downloadcontent": 1,
         "dates": [],
         "groupmode": 0
@@ -825,7 +931,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1758167912&image=monologo&filtericon=1",
         "modname": "quiz",
         "purpose": "assessment",
         "branded": false,
@@ -834,9 +940,36 @@
         "indent": 0,
         "onclick": "",
         "afterlink": null,
-        "customdata": "\"\"",
+        "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
         "noviewlink": false,
-        "completion": 0,
+        "completion": 2,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": true,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [
+            {
+              "rulename": "completionusegrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a grade"
+              }
+            },
+            {
+              "rulename": "completionpassgrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a passing grade"
+              }
+            }
+          ],
+          "isoverallcomplete": false
+        },
         "downloadcontent": 1,
         "dates": [],
         "groupmode": 0
@@ -864,7 +997,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=hvp&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=hvp&rev=1758167912&image=monologo&filtericon=1",
         "modname": "hvp",
         "purpose": "other",
         "branded": false,
@@ -875,7 +1008,19 @@
         "afterlink": null,
         "customdata": "\"\"",
         "noviewlink": false,
-        "completion": 0,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
         "downloadcontent": 1,
         "dates": [],
         "groupmode": 0
@@ -889,7 +1034,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=core&rev=1754971150&image=f%2Fpdf&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=core&rev=1758167912&image=f%2Fpdf&filtericon=1",
         "modname": "resource",
         "purpose": "content",
         "branded": false,
@@ -904,7 +1049,19 @@
         },
         "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:10:\\\"printintro\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:3:{s:4:\\\"type\\\";s:12:\\\"PDF document\\\";s:8:\\\"mimetype\\\";s:15:\\\"application\\/pdf\\\";s:9:\\\"extension\\\";s:3:\\\"PDF\\\";}}\",\"display\":5}",
         "noviewlink": false,
-        "completion": 0,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 1756088020,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
         "downloadcontent": 1,
         "dates": [],
         "groupmode": 0,
@@ -914,7 +1071,7 @@
             "filename": "SGK_CS_Bai3.pdf",
             "filepath": "/",
             "filesize": 3374342,
-            "fileurl": "http://localhost:8100/webservice/pluginfile.php?file=%2F96%2Fmod_resource%2Fcontent%2F1%2FSGK_CS_Bai3.pdf&amp;forcedownload=1",
+            "fileurl": "http://localhost:8100/webservice/pluginfile.php?file=%2F96%2Fmod_resource%2Fcontent%2F2%2FSGK_CS_Bai3.pdf&amp;forcedownload=1",
             "timecreated": 1753944458,
             "timemodified": 1753944463,
             "sortorder": 1,
@@ -944,7 +1101,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1758167912&image=monologo&filtericon=1",
         "modname": "quiz",
         "purpose": "assessment",
         "branded": false,
@@ -953,9 +1110,36 @@
         "indent": 0,
         "onclick": "",
         "afterlink": null,
-        "customdata": "\"\"",
+        "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
         "noviewlink": false,
-        "completion": 0,
+        "completion": 2,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": true,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [
+            {
+              "rulename": "completionusegrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a grade"
+              }
+            },
+            {
+              "rulename": "completionpassgrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a passing grade"
+              }
+            }
+          ],
+          "isoverallcomplete": false
+        },
         "downloadcontent": 1,
         "dates": [],
         "groupmode": 0
@@ -969,7 +1153,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1758167912&image=monologo&filtericon=1",
         "modname": "quiz",
         "purpose": "assessment",
         "branded": false,
@@ -978,9 +1162,29 @@
         "indent": 0,
         "onclick": "",
         "afterlink": null,
-        "customdata": "\"\"",
+        "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
         "noviewlink": false,
-        "completion": 0,
+        "completion": 2,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": true,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [
+            {
+              "rulename": "completionusegrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a grade"
+              }
+            }
+          ],
+          "isoverallcomplete": false
+        },
         "downloadcontent": 1,
         "dates": [],
         "groupmode": 0
@@ -994,7 +1198,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1758167912&image=monologo&filtericon=1",
         "modname": "quiz",
         "purpose": "assessment",
         "branded": false,
@@ -1003,9 +1207,36 @@
         "indent": 0,
         "onclick": "",
         "afterlink": null,
-        "customdata": "\"\"",
+        "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
         "noviewlink": false,
-        "completion": 0,
+        "completion": 2,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": true,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [
+            {
+              "rulename": "completionusegrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a grade"
+              }
+            },
+            {
+              "rulename": "completionpassgrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a passing grade"
+              }
+            }
+          ],
+          "isoverallcomplete": false
+        },
         "downloadcontent": 1,
         "dates": [],
         "groupmode": 0
@@ -1033,7 +1264,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=hvp&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=hvp&rev=1758167912&image=monologo&filtericon=1",
         "modname": "hvp",
         "purpose": "other",
         "branded": false,
@@ -1044,7 +1275,19 @@
         "afterlink": null,
         "customdata": "\"\"",
         "noviewlink": false,
-        "completion": 0,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
         "downloadcontent": 1,
         "dates": [],
         "groupmode": 0
@@ -1058,7 +1301,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=core&rev=1754971150&image=f%2Fpdf&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=core&rev=1758167912&image=f%2Fpdf&filtericon=1",
         "modname": "resource",
         "purpose": "content",
         "branded": false,
@@ -1073,7 +1316,19 @@
         },
         "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:10:\\\"printintro\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:3:{s:4:\\\"type\\\";s:12:\\\"PDF document\\\";s:8:\\\"mimetype\\\";s:15:\\\"application\\/pdf\\\";s:9:\\\"extension\\\";s:3:\\\"PDF\\\";}}\",\"display\":5}",
         "noviewlink": false,
-        "completion": 0,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
         "downloadcontent": 1,
         "dates": [],
         "groupmode": 0,
@@ -1083,7 +1338,7 @@
             "filename": "SGK_CS_Bai4.pdf",
             "filepath": "/",
             "filesize": 2741972,
-            "fileurl": "http://localhost:8100/webservice/pluginfile.php?file=%2F98%2Fmod_resource%2Fcontent%2F1%2FSGK_CS_Bai4.pdf&amp;forcedownload=1",
+            "fileurl": "http://localhost:8100/webservice/pluginfile.php?file=%2F98%2Fmod_resource%2Fcontent%2F2%2FSGK_CS_Bai4.pdf&amp;forcedownload=1",
             "timecreated": 1753944555,
             "timemodified": 1753944557,
             "sortorder": 1,
@@ -1113,7 +1368,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1758167912&image=monologo&filtericon=1",
         "modname": "quiz",
         "purpose": "assessment",
         "branded": false,
@@ -1122,9 +1377,36 @@
         "indent": 0,
         "onclick": "",
         "afterlink": null,
-        "customdata": "\"\"",
+        "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
         "noviewlink": false,
-        "completion": 0,
+        "completion": 2,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": true,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [
+            {
+              "rulename": "completionusegrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a grade"
+              }
+            },
+            {
+              "rulename": "completionpassgrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a passing grade"
+              }
+            }
+          ],
+          "isoverallcomplete": false
+        },
         "downloadcontent": 1,
         "dates": [],
         "groupmode": 0
@@ -1138,7 +1420,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1758167912&image=monologo&filtericon=1",
         "modname": "quiz",
         "purpose": "assessment",
         "branded": false,
@@ -1147,9 +1429,36 @@
         "indent": 0,
         "onclick": "",
         "afterlink": null,
-        "customdata": "\"\"",
+        "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
         "noviewlink": false,
-        "completion": 0,
+        "completion": 2,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": true,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [
+            {
+              "rulename": "completionusegrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a grade"
+              }
+            },
+            {
+              "rulename": "completionpassgrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a passing grade"
+              }
+            }
+          ],
+          "isoverallcomplete": false
+        },
         "downloadcontent": 1,
         "dates": [],
         "groupmode": 0
@@ -1163,7 +1472,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1758167912&image=monologo&filtericon=1",
         "modname": "quiz",
         "purpose": "assessment",
         "branded": false,
@@ -1172,9 +1481,36 @@
         "indent": 0,
         "onclick": "",
         "afterlink": null,
-        "customdata": "\"\"",
+        "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
         "noviewlink": false,
-        "completion": 0,
+        "completion": 2,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": true,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [
+            {
+              "rulename": "completionusegrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a grade"
+              }
+            },
+            {
+              "rulename": "completionpassgrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a passing grade"
+              }
+            }
+          ],
+          "isoverallcomplete": false
+        },
         "downloadcontent": 1,
         "dates": [],
         "groupmode": 0
@@ -1202,7 +1538,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=hvp&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=hvp&rev=1758167912&image=monologo&filtericon=1",
         "modname": "hvp",
         "purpose": "other",
         "branded": false,
@@ -1213,7 +1549,19 @@
         "afterlink": null,
         "customdata": "\"\"",
         "noviewlink": false,
-        "completion": 0,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
         "downloadcontent": 1,
         "dates": [],
         "groupmode": 0
@@ -1227,7 +1575,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=core&rev=1754971150&image=f%2Fpdf&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=core&rev=1758167912&image=f%2Fpdf&filtericon=1",
         "modname": "resource",
         "purpose": "content",
         "branded": false,
@@ -1242,7 +1590,19 @@
         },
         "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:10:\\\"printintro\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:3:{s:4:\\\"type\\\";s:12:\\\"PDF document\\\";s:8:\\\"mimetype\\\";s:15:\\\"application\\/pdf\\\";s:9:\\\"extension\\\";s:3:\\\"PDF\\\";}}\",\"display\":5}",
         "noviewlink": false,
-        "completion": 0,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
         "downloadcontent": 1,
         "dates": [],
         "groupmode": 0,
@@ -1252,7 +1612,7 @@
             "filename": "SGK_CS_Bai5.pdf",
             "filepath": "/",
             "filesize": 3619697,
-            "fileurl": "http://localhost:8100/webservice/pluginfile.php?file=%2F100%2Fmod_resource%2Fcontent%2F1%2FSGK_CS_Bai5.pdf&amp;forcedownload=1",
+            "fileurl": "http://localhost:8100/webservice/pluginfile.php?file=%2F100%2Fmod_resource%2Fcontent%2F2%2FSGK_CS_Bai5.pdf&amp;forcedownload=1",
             "timecreated": 1753944613,
             "timemodified": 1753944622,
             "sortorder": 1,
@@ -1282,7 +1642,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1758167912&image=monologo&filtericon=1",
         "modname": "quiz",
         "purpose": "assessment",
         "branded": false,
@@ -1291,9 +1651,36 @@
         "indent": 0,
         "onclick": "",
         "afterlink": null,
-        "customdata": "\"\"",
+        "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
         "noviewlink": false,
-        "completion": 0,
+        "completion": 2,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": true,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [
+            {
+              "rulename": "completionusegrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a grade"
+              }
+            },
+            {
+              "rulename": "completionpassgrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a passing grade"
+              }
+            }
+          ],
+          "isoverallcomplete": false
+        },
         "downloadcontent": 1,
         "dates": [],
         "groupmode": 0
@@ -1307,7 +1694,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1758167912&image=monologo&filtericon=1",
         "modname": "quiz",
         "purpose": "assessment",
         "branded": false,
@@ -1316,9 +1703,36 @@
         "indent": 0,
         "onclick": "",
         "afterlink": null,
-        "customdata": "\"\"",
+        "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
         "noviewlink": false,
-        "completion": 0,
+        "completion": 2,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": true,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [
+            {
+              "rulename": "completionusegrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a grade"
+              }
+            },
+            {
+              "rulename": "completionpassgrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a passing grade"
+              }
+            }
+          ],
+          "isoverallcomplete": false
+        },
         "downloadcontent": 1,
         "dates": [],
         "groupmode": 0
@@ -1332,7 +1746,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1758167912&image=monologo&filtericon=1",
         "modname": "quiz",
         "purpose": "assessment",
         "branded": false,
@@ -1341,9 +1755,43 @@
         "indent": 0,
         "onclick": "",
         "afterlink": null,
-        "customdata": "\"\"",
+        "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"1\"}}",
         "noviewlink": false,
-        "completion": 0,
+        "completion": 2,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": true,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [
+            {
+              "rulename": "completionminattempts",
+              "rulevalue": {
+                "status": 0,
+                "description": "Make attempts: 1"
+              }
+            },
+            {
+              "rulename": "completionusegrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a grade"
+              }
+            },
+            {
+              "rulename": "completionpassgrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a passing grade"
+              }
+            }
+          ],
+          "isoverallcomplete": false
+        },
         "downloadcontent": 1,
         "dates": [],
         "groupmode": 0
@@ -1371,7 +1819,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=hvp&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=hvp&rev=1758167912&image=monologo&filtericon=1",
         "modname": "hvp",
         "purpose": "other",
         "branded": false,
@@ -1382,7 +1830,19 @@
         "afterlink": null,
         "customdata": "\"\"",
         "noviewlink": false,
-        "completion": 0,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
         "downloadcontent": 1,
         "dates": [],
         "groupmode": 0
@@ -1396,7 +1856,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=core&rev=1754971150&image=f%2Fpdf&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=core&rev=1758167912&image=f%2Fpdf&filtericon=1",
         "modname": "resource",
         "purpose": "content",
         "branded": false,
@@ -1411,7 +1871,19 @@
         },
         "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:10:\\\"printintro\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:3:{s:4:\\\"type\\\";s:12:\\\"PDF document\\\";s:8:\\\"mimetype\\\";s:15:\\\"application\\/pdf\\\";s:9:\\\"extension\\\";s:3:\\\"PDF\\\";}}\",\"display\":5}",
         "noviewlink": false,
-        "completion": 0,
+        "completion": 1,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": false,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [],
+          "isoverallcomplete": false
+        },
         "downloadcontent": 1,
         "dates": [],
         "groupmode": 0,
@@ -1421,7 +1893,7 @@
             "filename": "SGK_CS_Bai6.pdf",
             "filepath": "/",
             "filesize": 2717822,
-            "fileurl": "http://localhost:8100/webservice/pluginfile.php?file=%2F102%2Fmod_resource%2Fcontent%2F1%2FSGK_CS_Bai6.pdf&amp;forcedownload=1",
+            "fileurl": "http://localhost:8100/webservice/pluginfile.php?file=%2F102%2Fmod_resource%2Fcontent%2F2%2FSGK_CS_Bai6.pdf&amp;forcedownload=1",
             "timecreated": 1753944696,
             "timemodified": 1753944699,
             "sortorder": 1,
@@ -1451,7 +1923,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1758167912&image=monologo&filtericon=1",
         "modname": "quiz",
         "purpose": "assessment",
         "branded": false,
@@ -1460,9 +1932,29 @@
         "indent": 0,
         "onclick": "",
         "afterlink": null,
-        "customdata": "\"\"",
+        "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
         "noviewlink": false,
-        "completion": 0,
+        "completion": 2,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": true,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [
+            {
+              "rulename": "completionusegrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a grade"
+              }
+            }
+          ],
+          "isoverallcomplete": false
+        },
         "downloadcontent": 1,
         "dates": [],
         "groupmode": 0
@@ -1476,7 +1968,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1758167912&image=monologo&filtericon=1",
         "modname": "quiz",
         "purpose": "assessment",
         "branded": false,
@@ -1485,9 +1977,36 @@
         "indent": 0,
         "onclick": "",
         "afterlink": null,
-        "customdata": "\"\"",
+        "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
         "noviewlink": false,
-        "completion": 0,
+        "completion": 2,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": true,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [
+            {
+              "rulename": "completionusegrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a grade"
+              }
+            },
+            {
+              "rulename": "completionpassgrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a passing grade"
+              }
+            }
+          ],
+          "isoverallcomplete": false
+        },
         "downloadcontent": 1,
         "dates": [],
         "groupmode": 0
@@ -1501,7 +2020,7 @@
         "visible": 1,
         "uservisible": true,
         "visibleoncoursepage": 1,
-        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1754971150&image=monologo&filtericon=1",
+        "modicon": "http://localhost:8100/theme/image.php?theme=boost&component=quiz&rev=1758167912&image=monologo&filtericon=1",
         "modname": "quiz",
         "purpose": "assessment",
         "branded": false,
@@ -1510,9 +2029,36 @@
         "indent": 0,
         "onclick": "",
         "afterlink": null,
-        "customdata": "\"\"",
+        "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
         "noviewlink": false,
-        "completion": 0,
+        "completion": 2,
+        "completiondata": {
+          "state": 0,
+          "timecompleted": 0,
+          "overrideby": null,
+          "valueused": false,
+          "hascompletion": true,
+          "isautomatic": true,
+          "istrackeduser": true,
+          "uservisible": true,
+          "details": [
+            {
+              "rulename": "completionusegrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a grade"
+              }
+            },
+            {
+              "rulename": "completionpassgrade",
+              "rulevalue": {
+                "status": 0,
+                "description": "Receive a passing grade"
+              }
+            }
+          ],
+          "isoverallcomplete": false
+        },
         "downloadcontent": 1,
         "dates": [],
         "groupmode": 0

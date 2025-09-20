@@ -33,6 +33,11 @@
         "id": 105,
         "name": "Bài kiểm tra cuối kỳ môn Tin học - 120825 - 200",
         "modname": "quiz"
+      },
+      {
+        "id": 119,
+        "name": "user log viewer",
+        "modname": "lti"
       }
     ]
   },
