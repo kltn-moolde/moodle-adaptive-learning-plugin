@@ -83,7 +83,6 @@ def create_app():
 
     return app
 
-
 # --- Local dev chạy trực tiếp ---
 if __name__ == "__main__":
     load_data()
