@@ -1,12 +1,36 @@
 from flask import Flask, request, jsonify
-import threading
-from config import q_table, q_table_lock
-from q_learning import *
+import os
+
+from config import Config, q_table, q_table_lock
+from q_learning import (
+    load_data,
+    load_q_table_from_csv,
+    initialize_q_table,
+    save_q_table_to_csv,
+    update_q_table,
+    suggest_next_action,
+    get_state_from_moodle,
+    get_reward,
+    get_user_cluster,
+)
+
+# Lưu cache action cuối cùng của user
+last_state_action = {}
 
 
 def create_app():
     app = Flask(__name__)
 
+    # --- Load data + Q-table khi service khởi động ---
+    load_data()
+    global q_table
+    if not os.path.exists(Config.DEFAULT_QTABLE_PATH):
+        print(f"⚠️ Q-table file not found. Initializing new Q-table at {Config.DEFAULT_QTABLE_PATH}")
+        q_table = initialize_q_table(Config.DEFAULT_QTABLE_PATH)
+    else:
+        q_table = load_q_table_from_csv(Config.DEFAULT_QTABLE_PATH)
+
+    # --- ROUTES ---
     @app.route('/api/update-learning-event', methods=['POST'])
     def update_learning_event():
         global last_state_action, q_table
@@ -81,16 +105,14 @@ def create_app():
             }
         })
 
-    return app
+    @app.route("/")
+    def health():
+        return "✅ Recommend Service is running!"
 
+    return app
 
 
 # --- Local dev chạy trực tiếp ---
 if __name__ == "__main__":
-    load_data()
-    q_table = load_q_table_from_csv()
-    if not q_table:
-        q_table = initialize_q_table()
-
     app = create_app()
     app.run(debug=True, port=8088, use_reloader=False)
