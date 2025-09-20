@@ -52,6 +52,7 @@ jobs:
                 -e ADDRESS_COURSE_SERVICE_BASE="${{ secrets.ADDRESS_COURSE_SERVICE_BASE }}" \
                 -e COURSE_ID="${{ secrets.COURSE_ID }}" \
                 -e USER_CLUSTERS_CSV="${{ secrets.USER_CLUSTERS_CSV }}" \
+                -e DEFAULT_QTABLE_PATH="${{ secrets.DEFAULT_QTABLE_PATH }}" \
                 -v /home/ubuntu/data:/data \
                 --name recommend_service \
                 ${{ secrets.DOCKER_USERNAME }}/recommend_service:latest
