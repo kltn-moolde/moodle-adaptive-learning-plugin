@@ -24,6 +24,10 @@ class Config:
         "USER_CLUSTERS_CSV",
         "https://res.cloudinary.com/doycy5gbl/raw/upload/v1758335677/synthetic_user_features_clustered_p7ps1r.csv"
     )
+    
+    DEFAULT_QTABLE_PATH = os.getenv(
+        "QTABLE_PATH", 
+        "/data/q_table_results.csv")
 
     # --- Q-learning hyperparameters ---
     LEARNING_RATE = float(os.getenv("LEARNING_RATE", 0.1))

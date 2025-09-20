@@ -36,7 +36,7 @@ def load_data():
         exit()
 
 # --- Q-table management ---
-def initialize_q_table(filename='data/q_table_results.csv'):
+def initialize_q_table(filename=DEFAULT_QTABLE_PATH):
     initial_q_table = {}
     levels = ['easy', 'medium', 'hard']
     for section_id in section_ids:
@@ -48,7 +48,7 @@ def initialize_q_table(filename='data/q_table_results.csv'):
     save_q_table_to_csv(initial_q_table, filename)
     return initial_q_table
 
-def save_q_table_to_csv(q_table_to_save, filename='data/q_table_results.csv'):
+def save_q_table_to_csv(q_table_to_save, filename=DEFAULT_QTABLE_PATH):
     q_table_data = []
     for state, actions_dict in q_table_to_save.items():
         for action, q_value in actions_dict.items():
@@ -60,7 +60,7 @@ def save_q_table_to_csv(q_table_to_save, filename='data/q_table_results.csv'):
             q_table_data.append(row)
     pd.DataFrame(q_table_data).to_csv(filename, index=False)
 
-def load_q_table_from_csv(filename='q_table_results.csv'):
+def load_q_table_from_csv(filename=DEFAULT_QTABLE_PATH):
     if not os.path.exists(filename):
         return {}
     q_table_loaded = {}
