@@ -14,7 +14,7 @@ def load_data():
     global section_ids, user_clusters_df
     try:
         # 1. Gọi API lấy course structure
-        url = f"{ADDRESS_COURSE_SERVICE_BASE}/api/moodle/courses/{COURSE_ID}/contents/structure"
+        url = f"{Config.ADDRESS_COURSE_SERVICE_BASE}/api/moodle/courses/{Config.COURSE_ID}/contents/structure"
         response = requests.get(url, timeout=10)
         response.raise_for_status()
         data = response.json()  # vì Flask route trả về JSON
@@ -26,7 +26,7 @@ def load_data():
                     section_ids.append(lesson["sectionIdNew"])
 
         # 3. Load user_clusters.csv
-        user_clusters_df = pd.read_csv(USER_CLUSTERS_CSV)
+        user_clusters_df = pd.read_csv(Config.USER_CLUSTERS_CSV)
 
     except requests.RequestException as e:
         print(f"❌ Error calling API: {e}")
@@ -36,19 +36,19 @@ def load_data():
         exit()
 
 # --- Q-table management ---
-def initialize_q_table(filename=DEFAULT_QTABLE_PATH):
+def initialize_q_table(filename=Config.DEFAULT_QTABLE_PATH):
     initial_q_table = {}
     levels = ['easy', 'medium', 'hard']
     for section_id in section_ids:
         for level in levels:
-            for complete_rate in COMPLETE_RATE_BINS:
-                for score_bin in SCORE_AVG_BINS:
+            for complete_rate in Config.COMPLETE_RATE_BINS:
+                for score_bin in Config.SCORE_AVG_BINS:
                     state = (section_id, level, complete_rate, score_bin)
-                    initial_q_table[state] = {action: 0.0 for action in ACTIONS}
+                    initial_q_table[state] = {action: 0.0 for action in Config.ACTIONS}
     save_q_table_to_csv(initial_q_table, filename)
     return initial_q_table
 
-def save_q_table_to_csv(q_table_to_save, filename=DEFAULT_QTABLE_PATH):
+def save_q_table_to_csv(q_table_to_save, filename=Config.DEFAULT_QTABLE_PATH):
     q_table_data = []
     for state, actions_dict in q_table_to_save.items():
         for action, q_value in actions_dict.items():
@@ -60,7 +60,7 @@ def save_q_table_to_csv(q_table_to_save, filename=DEFAULT_QTABLE_PATH):
             q_table_data.append(row)
     pd.DataFrame(q_table_data).to_csv(filename, index=False)
 
-def load_q_table_from_csv(filename=DEFAULT_QTABLE_PATH):
+def load_q_table_from_csv(filename=Config.DEFAULT_QTABLE_PATH):
     if not os.path.exists(filename):
         return {}
     q_table_loaded = {}
@@ -71,7 +71,7 @@ def load_q_table_from_csv(filename=DEFAULT_QTABLE_PATH):
             action = row['action']
             q_value = row['q_value']
             if state not in q_table_loaded:
-                q_table_loaded[state] = {a: 0.0 for a in ACTIONS}
+                q_table_loaded[state] = {a: 0.0 for a in Config.ACTIONS}
             q_table_loaded[state][action] = q_value
     except Exception as e:
         print(f"❌ Error loading Q-table: {e}")
@@ -80,21 +80,21 @@ def load_q_table_from_csv(filename=DEFAULT_QTABLE_PATH):
 
 # --- Discretization ---
 def discretize_score(score):
-    for b in reversed(SCORE_AVG_BINS):
+    for b in reversed(Config.SCORE_AVG_BINS):
         if score >= b: return b
-    return SCORE_AVG_BINS[0]
+    return Config.SCORE_AVG_BINS[0]
 
 def discretize_complete_rate(rate):
-    for b in reversed(COMPLETE_RATE_BINS):
+    for b in reversed(Config.COMPLETE_RATE_BINS):
         if rate >= b: return b
-    return COMPLETE_RATE_BINS[0]
+    return Config.COMPLETE_RATE_BINS[0]
 
 # --- Moodle API ---
 def call_moodle_api(function, extra_params):
-    params = {'wstoken': TOKEN_PLUGIN_PHP_MOODLE, 'moodlewsrestformat': 'json', 'wsfunction': function}
+    params = {'wstoken': Config.TOKEN_PLUGIN_PHP_MOODLE, 'moodlewsrestformat': 'json', 'wsfunction': function}
     params.update(extra_params)
     try:
-        response = requests.post(MOODLE_API_BASE, data=params, timeout=10)
+        response = requests.post(Config.MOODLE_API_BASE, data=params, timeout=10)
         response.raise_for_status()
         return response.json()
     except requests.exceptions.RequestException as e:
@@ -146,14 +146,14 @@ def get_state_from_moodle(userid, courseid, sectionid, objecttype, objectid):
 def get_q_value(state, action):
     global q_table
     if state not in q_table:
-        q_table[state] = {a:0.0 for a in ACTIONS}
+        q_table[state] = {a:0.0 for a in Config.ACTIONS}
     return q_table[state][action]
 
 def update_q_table(state, action, reward, next_state):
     global q_table
     current_q = get_q_value(state, action)
     max_future_q = max(q_table[next_state].values()) if next_state in q_table else 0.0
-    q_table[state][action] = current_q + LEARNING_RATE * (reward + DISCOUNT_FACTOR * max_future_q - current_q)
+    q_table[state][action] = current_q + Config.LEARNING_RATE * (reward + Config.DISCOUNT_FACTOR * max_future_q - current_q)
 
 def get_reward(action, old_score, new_score, old_complete, new_complete, cluster=None, quiz_level='medium', passed_hard_quiz=1):
     score_improvement = new_score - old_score
@@ -206,7 +206,7 @@ def suggest_next_action(current_state, userid):
     """
     Selects the next action using an Epsilon-Greedy policy.
     """
-    filtered_actions = ACTIONS.copy()
+    filtered_actions = Config.ACTIONS.copy()
     complete_bin_resource = current_state[2]
     score_bin = current_state[3]
     section_id = current_state[0]
@@ -234,7 +234,7 @@ def suggest_next_action(current_state, userid):
 
 
     # --- Exploration or Exploitation ---
-    if current_state not in q_table or random.uniform(0, 1) < EXPLORATION_RATE:
+    if current_state not in q_table or random.uniform(0, 1) < Config.EXPLORATION_RATE:
         action = random.choice(filtered_actions)
         q_value = get_q_value(current_state, action)
         return action, q_value
