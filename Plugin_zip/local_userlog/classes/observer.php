@@ -36,7 +36,7 @@ class observer {
             'time' => $time
         ];
 
-        $api_url = 'http://localhost:8088/api/update-learning-event';
+        $api_url = 'http://51.68.124.207:8088/api/update-learning-event';
 
         $options = [
             'http' => [

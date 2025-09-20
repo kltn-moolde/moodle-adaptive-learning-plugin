@@ -7,23 +7,36 @@ import requests
 import time
 from config import *
 
-# --- Data loading ---
-def load_data(): 
+section_ids = []
+user_clusters_df = None
+
+def load_data():
     global section_ids, user_clusters_df
     try:
-        with open(COURSE_HIERARCHY_JSON, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-            for section in data:
-                if "lessons" in section:
-                    for lesson in section["lessons"]:
-                        section_ids.append(lesson["sectionIdNew"])
+        # 1. Gọi API lấy course structure
+        url = f"{ADDRESS_COURSE_SERVICE_BASE}/api/moodle/courses/{COURSE_ID}/contents/structure"
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+        data = response.json()  # vì Flask route trả về JSON
+
+        # 2. Trích xuất sectionIds
+        for section in data:
+            if "lessons" in section:
+                for lesson in section["lessons"]:
+                    section_ids.append(lesson["sectionIdNew"])
+
+        # 3. Load user_clusters.csv
         user_clusters_df = pd.read_csv(USER_CLUSTERS_CSV)
+
+    except requests.RequestException as e:
+        print(f"❌ Error calling API: {e}")
+        exit()
     except FileNotFoundError as e:
         print(f"❌ Error loading data: {e}")
         exit()
 
 # --- Q-table management ---
-def initialize_q_table(filename='q_table_results.csv'):
+def initialize_q_table(filename='data/q_table_results.csv'):
     initial_q_table = {}
     levels = ['easy', 'medium', 'hard']
     for section_id in section_ids:
@@ -35,7 +48,7 @@ def initialize_q_table(filename='q_table_results.csv'):
     save_q_table_to_csv(initial_q_table, filename)
     return initial_q_table
 
-def save_q_table_to_csv(q_table_to_save, filename='q_table_results.csv'):
+def save_q_table_to_csv(q_table_to_save, filename='data/q_table_results.csv'):
     q_table_data = []
     for state, actions_dict in q_table_to_save.items():
         for action, q_value in actions_dict.items():
@@ -78,10 +91,10 @@ def discretize_complete_rate(rate):
 
 # --- Moodle API ---
 def call_moodle_api(function, extra_params):
-    params = {'wstoken': TOKEN, 'moodlewsrestformat': 'json', 'wsfunction': function}
+    params = {'wstoken': TOKEN_PLUGIN_PHP_MOODLE, 'moodlewsrestformat': 'json', 'wsfunction': function}
     params.update(extra_params)
     try:
-        response = requests.post(MOODLE_URL, data=params, timeout=10)
+        response = requests.post(MOODLE_API_BASE, data=params, timeout=10)
         response.raise_for_status()
         return response.json()
     except requests.exceptions.RequestException as e:
