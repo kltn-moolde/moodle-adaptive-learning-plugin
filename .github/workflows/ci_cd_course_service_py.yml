@@ -1,12 +1,12 @@
-name: CI/CD course-service-py
+name: CI/CD course-service
 
 on:
   push:
     paths:
-      - 'courseservice_py/**'
+      - 'courseservice/**'
   pull_request:
     paths:
-      - 'courseservice_py/**'
+      - 'courseservice/**'
 
 jobs:
   build-and-deploy:
@@ -25,13 +25,13 @@ jobs:
       # Build Docker image
       - name: Build Docker image
         run: |
-          cd courseservice_py
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/courseservice_py:latest .
+          cd courseservice
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/course_service:latest .
 
       # Push image lên DockerHub
       - name: Push Docker image
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/courseservice_py:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/course_service:latest
 
       # Optional: Deploy (tuỳ môi trường)
       - name: Deploy service
@@ -42,9 +42,9 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            docker pull ${{ secrets.DOCKER_USERNAME }}/courseservice_py:latest
-            docker stop courseservice_py || true
-            docker rm courseservice_py || true
+            docker pull ${{ secrets.DOCKER_USERNAME }}/course_service:latest
+            docker stop course_service || true
+            docker rm course_service || true
             docker run -d \
                 --name course_service \
                 --network moodle-adaptive-learning-plugin_app-network \
@@ -52,5 +52,4 @@ jobs:
                 -e MONGO_URI="${{ secrets.MONGO_URI }}" \
                 -e MOODLE_API_BASE="${{ secrets.MOODLE_API_BASE }}" \
                 -e MOODLE_TOKEN="${{ secrets.MOODLE_TOKEN }}" \
-                --name courseservice_py \
-                ${{ secrets.DOCKER_USERNAME }}/courseservice_py:latest
+                ${{ secrets.DOCKER_USERNAME }}/course_service:latest
