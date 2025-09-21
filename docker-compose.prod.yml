@@ -67,10 +67,10 @@ services:
     networks:
       - app-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8082/health"]
+      test: ["CMD-SHELL", "curl -f http://localhost:5001 || exit 1"]
       interval: 30s
       timeout: 10s
-      retries: 3
+      retries: 5
 
   # Frontend Service
   frontend-service:
