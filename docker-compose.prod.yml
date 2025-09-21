@@ -1,6 +1,7 @@
 services:
-  # Kong Gateway (DB-less mode)
+  # Kong Gateway
   kong-gateway:
+    container_name: kong-gateway
     image: kong/kong-gateway:3.7.1.1
     restart: unless-stopped
     ports:
@@ -26,6 +27,7 @@ services:
 
   # User Service
   user-service:
+    container_name: user-service
     image: ${DOCKER_REGISTRY}/adaptive-learning-user-service:${IMAGE_TAG:-latest}
     restart: unless-stopped
     ports:
@@ -34,7 +36,6 @@ services:
       - SPRING_PROFILES_ACTIVE=${SPRING_PROFILE:-production}
       - SERVER_ADDRESS=0.0.0.0
       - SERVER_PORT=8080
-      # - DATABASE_URL=${DATABASE_URL:-jdbc:h2:mem:testdb}
       - DATABASE_URL=jdbc:mysql://mysql8.4:3306/user_service?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root_pass
@@ -46,6 +47,7 @@ services:
 
   # LTI Service
   lti-service:
+    container_name: lti-service
     image: ${DOCKER_REGISTRY}/adaptive-learning-lti-service:${IMAGE_TAG:-latest}
     restart: unless-stopped
     ports:
@@ -72,6 +74,7 @@ services:
 
   # Frontend Service
   frontend-service:
+    container_name: frontend-service
     image: ${DOCKER_REGISTRY}/adaptive-learning-frontend:${IMAGE_TAG:-latest}
     restart: unless-stopped
     ports:
@@ -82,7 +85,9 @@ services:
     networks:
       - app-network
 
+  # Course Service
   course-service:
+    container_name: course-service
     image: ${DOCKER_REGISTRY_LOC}/course_service:${IMAGE_TAG:-latest}
     restart: unless-stopped
     ports:
@@ -95,7 +100,9 @@ services:
       - app-network
       - moodle_project_default
    
+  # Recommend Service
   recommend-service:
+    container_name: recommend-service
     image: ${DOCKER_REGISTRY_LOC}/recommend_service:${IMAGE_TAG:-latest}
     restart: unless-stopped
     ports:
