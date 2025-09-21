@@ -57,3 +57,4 @@ jobs:
                 -e DEFAULT_QTABLE_PATH="${{ secrets.DEFAULT_QTABLE_PATH }}" \
                 -v /home/ubuntu/data:/data \
                 ${{ secrets.DOCKER_USERNAME }}/recommend_service:latest
+            docker network connect moodle_project_default recommend_service
