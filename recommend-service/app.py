@@ -21,6 +21,7 @@ last_state_action = {}
 def create_app():
     app = Flask(__name__)
 
+
     # --- Load data + Q-table khi service khởi động ---
     load_data()
     global q_table
