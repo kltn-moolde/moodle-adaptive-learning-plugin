@@ -98,11 +98,6 @@ services:
     networks:
       - app-network
       - moodle_project_default
-    healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:5001 || exit 1"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
 
   recommend-service:
     container_name: recommend-service
@@ -123,8 +118,7 @@ services:
       - app-network
       - moodle_project_default
     depends_on:
-      course-service:
-        condition: service_healthy
+      - course-service
 
 networks:
   app-network:
