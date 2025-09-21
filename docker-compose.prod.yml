@@ -85,7 +85,6 @@ services:
     networks:
       - app-network
 
-  # Course Service
   course-service:
     container_name: course-service
     image: ${DOCKER_REGISTRY_LOC}/course_service:${IMAGE_TAG:-latest}
@@ -99,8 +98,12 @@ services:
     networks:
       - app-network
       - moodle_project_default
-   
-  # Recommend Service
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
   recommend-service:
     container_name: recommend-service
     image: ${DOCKER_REGISTRY_LOC}/recommend_service:${IMAGE_TAG:-latest}
@@ -119,6 +122,9 @@ services:
     networks:
       - app-network
       - moodle_project_default
+    depends_on:
+      course-service:
+        condition: service_healthy
 
 networks:
   app-network:
