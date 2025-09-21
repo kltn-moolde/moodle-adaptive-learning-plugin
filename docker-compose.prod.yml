@@ -57,7 +57,7 @@ services:
       - PORT=8082
       - DEBUG=${DEBUG:-False}
       - FRONTEND_URL=${FRONTEND_URL:-http://localhost:5173}
-      - USER_SERVICE_URL=${USER_SERVICE_URL:-http://user-service:8080}
+      - USER_SERVICE_URL=${USER_SERVICE_URL:-http://user-service:8085}
       - LTI_ISSUER=${LTI_ISSUER:-http://51.68.124.207/moodle}
       - LTI_AUTH_URL=${LTI_AUTH_URL:-http://51.68.124.207/moodle/mod/lti/auth.php}
       - LTI_TOKEN_URL=${LTI_TOKEN_URL:-http://51.68.124.207/moodle/mod/lti/token.php}
