@@ -67,10 +67,10 @@ services:
     networks:
       - app-network
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:5001 || exit 1"]
+      test: ["CMD", "curl", "-f", "http://localhost:8082/health"]
       interval: 30s
       timeout: 10s
-      retries: 5
+      retries: 3
 
   # Frontend Service
   frontend-service:
@@ -99,7 +99,7 @@ services:
       - app-network
       - moodle_project_default
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
+      test: ["CMD-SHELL", "curl -f http://localhost:5001 || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 5
