@@ -83,7 +83,7 @@ services:
       - app-network
 
   course-service:
-    image: ${DOCKER_REGISTRY}/courseservice_py:${IMAGE_TAG:-latest}
+    image: ${DOCKER_REGISTRY_LOC}/course_service:${IMAGE_TAG:-latest}
     restart: unless-stopped
     ports:
       - "5001:5001"
@@ -93,9 +93,10 @@ services:
       - MOODLE_TOKEN=${MOODLE_TOKEN}
     networks:
       - app-network
+      - moodle_project_default
    
   recommend-service:
-    image: ${DOCKER_REGISTRY}/recommend_service:${IMAGE_TAG:-latest}
+    image: ${DOCKER_REGISTRY_LOC}/recommend_service:${IMAGE_TAG:-latest}
     restart: unless-stopped
     ports:
       - "8088:8088"
@@ -110,9 +111,7 @@ services:
       - /home/ubuntu/data:/data
     networks:
       - app-network
-    depends_on:
-      - course-service
-      - lti-service  
+      - moodle_project_default
 
 networks:
   app-network:
