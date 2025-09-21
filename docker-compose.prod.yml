@@ -82,6 +82,38 @@ services:
     networks:
       - app-network
 
+  course-service:
+    image: ${DOCKER_REGISTRY}/courseservice_py:${IMAGE_TAG:-latest}
+    restart: unless-stopped
+    ports:
+      - "5001:5001"
+    environment:
+      - MONGO_URI=${MONGO_URI}
+      - MOODLE_API_BASE=${MOODLE_API_BASE}
+      - MOODLE_TOKEN=${MOODLE_TOKEN}
+    networks:
+      - app-network
+   
+  recommend-service:
+    image: ${DOCKER_REGISTRY}/recommend_service:${IMAGE_TAG:-latest}
+    restart: unless-stopped
+    ports:
+      - "8088:8088"
+    environment:
+      - MOODLE_API_BASE=${MOODLE_API_BASE}
+      - TOKEN_PLUGIN_PHP_MOODLE=${TOKEN_PLUGIN_PHP_MOODLE}
+      - ADDRESS_COURSE_SERVICE_BASE=${ADDRESS_COURSE_SERVICE_BASE}
+      - COURSE_ID=${COURSE_ID}
+      - USER_CLUSTERS_CSV=${USER_CLUSTERS_CSV}
+      - DEFAULT_QTABLE_PATH=${DEFAULT_QTABLE_PATH}
+    volumes:
+      - /home/ubuntu/data:/data
+    networks:
+      - app-network
+    depends_on:
+      - course-service
+      - lti-service  
+
 networks:
   app-network:
     driver: bridge

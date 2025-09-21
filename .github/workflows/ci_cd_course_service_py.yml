@@ -46,6 +46,8 @@ jobs:
             docker stop courseservice_py || true
             docker rm courseservice_py || true
             docker run -d \
+                --name course_service \
+                --network app-network \
                 -p 5001:5001 \
                 -e MONGO_URI="${{ secrets.MONGO_URI }}" \
                 -e MOODLE_API_BASE="${{ secrets.MOODLE_API_BASE }}" \

@@ -46,6 +46,8 @@ jobs:
             docker stop recommend_service || true
             docker rm recommend_service || true
             docker run -d \
+                --name recommend_service \
+                --network app-network \
                 -p 8088:8088 \
                 -e MOODLE_API_BASE="${{ secrets.MOODLE_API_BASE }}" \
                 -e TOKEN_PLUGIN_PHP_MOODLE="${{ secrets.TOKEN_PLUGIN_PHP_MOODLE }}" \
