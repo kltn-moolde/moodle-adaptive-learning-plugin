@@ -20,6 +20,7 @@ services:
       - ./kong-gateway/config:/kong/declarative
     networks:
       - app-network
+      - moodle_project_default
     depends_on:
       - user-service
       - lti-service
@@ -66,6 +67,7 @@ services:
       - MOODLE_API_TOKEN=${MOODLE_API_TOKEN:-81a9b0ee5932a556056b43fda60e9520}
     networks:
       - app-network
+      - moodle_project_default
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8082/health"]
       interval: 30s
