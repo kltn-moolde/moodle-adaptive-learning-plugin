@@ -69,69 +69,70 @@ class LTIService:
         return auth_url
     
     def process_launch(self, launch_data: Dict[str, Any], 
-                      db: Session = Depends(get_db)) -> LTILaunch:
-        """
-        Process LTI 1.3 launch and extract user information
-        """
+                  db: Session = Depends(get_db)) -> LTILaunch:
         logger.info("====== Running processLaunch ========")
-        logger.info(f"launchData: {launch_data}")
         
-        # Extract JWT token from launch data
+        # Log toàn bộ launch data từ Moodle
+        logger.info(f"[LTI] Raw launch_data: {json.dumps(launch_data, indent=2)}")
+        
+        # Extract JWT token từ launch data
         id_token = launch_data.get("id_token")
         if not id_token:
+            logger.error("[LTI] Không tìm thấy id_token trong launch_data")
             raise HTTPException(status_code=400, detail="ID token not found in launch data")
         
-        # Decode JWT token to get actual payload
-        token_payload = self._decode_jwt_token(id_token)
-        logger.info(f"Decoded token payload: {token_payload}")
+        logger.info(f"[LTI] Raw id_token (JWT): {id_token[:50]}... (truncated)")
         
-        # Extract user information from decoded token
+        # Decode JWT token để lấy payload
+        token_payload = self._decode_jwt_token(id_token)
+        logger.info(f"[LTI] Decoded token payload: {json.dumps(token_payload, indent=2)}")
+        
+        # Extract user info
         user_id = token_payload.get("sub")
         
-        # Extract context information
+        # Context (course)
         context_claim = "https://purl.imsglobal.org/spec/lti/claim/context"
         context = token_payload.get(context_claim, {})
         context_id = context.get("id") if context else None
         course_title = context.get("title") if context else None
         
-        # Extract resource link information
+        # Resource link
         resource_link_claim = "https://purl.imsglobal.org/spec/lti/claim/resource_link"
         resource_link = token_payload.get(resource_link_claim, {})
         resource_link_id = resource_link.get("id") if resource_link else None
         resource_title = resource_link.get("title") if resource_link else None
         
-        # Extract user information
+        # User
         user_name = token_payload.get("name")
         user_email = token_payload.get("email")
         given_name = token_payload.get("given_name")
         family_name = token_payload.get("family_name")
         
-        # Extract course information
-        course_id = context_id
-        
-        # Extract roles
+        # Roles
         roles_claim = "https://purl.imsglobal.org/spec/lti/claim/roles"
         roles = token_payload.get(roles_claim, [])
         
-        # Extract issuer and audience
+        # Issuer & Audience
         iss = token_payload.get("iss")
         aud = token_payload.get("aud")
         
-        logger.info(f"User Id: {user_id}")
-        logger.info(f"Context Id: {context_id}")
-        logger.info(f"Resource Link Id: {resource_link_id}")
-        logger.info(f"User Name: {user_name}")
-        logger.info(f"User Email: {user_email}")
-        logger.info(f"Course Id: {course_id}")
+        # Log các trường quan trọng
+        logger.info(f"[LTI] User Id: {user_id}")
+        logger.info(f"[LTI] User Email: {user_email}")
+        logger.info(f"[LTI] Context Id (Course Id): {context_id}")
+        logger.info(f"[LTI] Course Title: {course_title}")
+        logger.info(f"[LTI] Resource Link Id: {resource_link_id}")
+        logger.info(f"[LTI] Roles: {roles}")
+        logger.info(f"[LTI] Issuer: {iss}, Audience: {aud}")
         
-        # Create LTI Launch object
+        # Tạo đối tượng LTILaunch
         launch = LTILaunch(
             user_id=user_id,
             context_id=context_id,
             resource_link_id=resource_link_id,
             user_name=user_name,
             user_email=user_email,
-            course_id=course_id,
+            course_id=context_id,
             given_name=given_name,
             family_name=family_name,
             roles=json.dumps(roles) if roles else None,
@@ -143,7 +144,7 @@ class LTIService:
             launch_time=datetime.utcnow()
         )
         
-        # Save to database
+        # Save vào database
         db.add(launch)
         db.commit()
         db.refresh(launch)
