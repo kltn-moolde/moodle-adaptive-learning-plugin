@@ -3,7 +3,7 @@ name: moodle_project
 services:
   moodle:
     image: bitnami/moodle:5.0.2
-    container_name: moodle5.0.2
+    container_name: moodle502
     ports:
       - "9090:8080"  
       - "9443:8443"  

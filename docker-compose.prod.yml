@@ -58,11 +58,11 @@ services:
       - DEBUG=${DEBUG:-False}
       - FRONTEND_URL=${FRONTEND_URL:-http://localhost:5173}
       - USER_SERVICE_URL=${USER_SERVICE_URL:-http://user-service:8085}
-      - LTI_ISSUER=${LTI_ISSUER:-http://51.68.124.207/moodle}
-      - LTI_AUTH_URL=${LTI_AUTH_URL:-http://51.68.124.207/moodle/mod/lti/auth.php}
-      - LTI_TOKEN_URL=${LTI_TOKEN_URL:-http://51.68.124.207/moodle/mod/lti/token.php}
-      - LTI_KEYSET_URL=${LTI_KEYSET_URL:-http://51.68.124.207/moodle/mod/lti/certs.php}
-      - MOODLE_API_URL=${MOODLE_API_URL:-http://51.68.124.207/moodle/webservice/rest/server.php}
+      - LTI_ISSUER=${LTI_ISSUER:-http://51.68.124.207}
+      - LTI_AUTH_URL=${LTI_AUTH_URL:-http://51.68.124.207:9090/mod/lti/auth.php}
+      - LTI_TOKEN_URL=${LTI_TOKEN_URL:-http://51.68.124.207:9090/mod/lti/token.php}
+      - LTI_KEYSET_URL=${LTI_KEYSET_URL:-http://51.68.124.207:9090/mod/lti/certs.php}
+      - MOODLE_API_URL=${MOODLE_API_URL:-http://51.68.124.207:9090/webservice/rest/server.php}
       - MOODLE_API_TOKEN=${MOODLE_API_TOKEN:-81a9b0ee5932a556056b43fda60e9520}
     networks:
       - app-network
@@ -125,6 +125,3 @@ networks:
     driver: bridge
   moodle_project_default:
     external: true
-
-volumes:
-  kong-config:
