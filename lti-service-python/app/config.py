@@ -50,7 +50,7 @@ class Settings(BaseSettings):
     
     # Security
     ALLOWED_HOSTS: List[str] = ["localhost", "127.0.0.1", "51.68.124.207"]
-    CORS_ORIGINS: List[str] = ["http://localhost:5173", "http://localhost:8080", "http://51.68.124.207:5173", "http://51.68.124.207:8080"]
+    CORS_ORIGINS: List[str] = ["http://localhost:5173", "http://localhost:8085", "http://51.68.124.207:5173", "http://51.68.124.207:8085"]
     
     # Logging
     LOG_LEVEL: str = "INFO"
