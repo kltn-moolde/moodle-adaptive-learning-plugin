@@ -215,20 +215,30 @@ class LTIService:
     
     def get_jwks(self) -> Dict[str, Any]:
         """
-        Get JWKS (JSON Web Key Set) from Moodle without redirect
+        Get JWKS (JSON Web Key Set) from Moodle without redirect.
+        Thử cả 2 trường hợp: Host có port và không có port.
         """
-        try:
-            # Chỉ định IP nội bộ nhưng header Host trỏ tới domain Moodle
-            # url = "http://172.18.0.2:8080/mod/lti/certs.php"
-            url = "http://moodle502:8080/mod/lti/certs.php"
-            headers = {"Host": "51.68.124.207:9090"}
+        url = "http://moodle502:8080/mod/lti/certs.php"
+        host_variants = [
+            "51.68.124.207:9090",  # có port
+            "51.68.124.207"        # không có port
+        ]
 
-            response = requests.get(url, headers=headers, timeout=10)
-            response.raise_for_status()
-            return response.json()
-        except Exception as e:
-            logger.error(f"Error fetching JWKS: {str(e)}")
-            raise HTTPException(status_code=500, detail="Failed to fetch JWKS")   
+        last_error = None
+        for host in host_variants:
+            try:
+                headers = {"Host": host}
+                logger.info(f"Fetching JWKS from {url} with Host={host}")
+                response = requests.get(url, headers=headers, timeout=10)
+                response.raise_for_status()
+                logger.info(f"JWKS fetched successfully with Host={host}")
+                return response.json()
+            except Exception as e:
+                logger.warning(f"Failed with Host={host}: {str(e)}")
+                last_error = e
+
+        logger.error(f"All attempts to fetch JWKS failed: {str(last_error)}")
+        raise HTTPException(status_code=500, detail="Failed to fetch JWKS")   
     
     def get_public_key_from_jwks(self, jwks: Dict[str, Any], kid: str) -> Dict[str, Any]:
         """
