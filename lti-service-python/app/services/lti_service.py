@@ -215,15 +215,20 @@ class LTIService:
     
     def get_jwks(self) -> Dict[str, Any]:
         """
-        Get JWKS (JSON Web Key Set) from Moodle
+        Get JWKS (JSON Web Key Set) from Moodle without redirect
         """
         try:
-            response = requests.get(self.keyset_url, timeout=10)
+            # Chỉ định IP nội bộ nhưng header Host trỏ tới domain Moodle
+            # url = "http://172.18.0.2:8080/mod/lti/certs.php"
+            url = "http://moodle502:8080/mod/lti/certs.php"
+            headers = {"Host": "51.68.124.207:9090"}
+
+            response = requests.get(url, headers=headers, timeout=10)
             response.raise_for_status()
             return response.json()
         except Exception as e:
             logger.error(f"Error fetching JWKS: {str(e)}")
-            raise HTTPException(status_code=500, detail="Failed to fetch JWKS")
+            raise HTTPException(status_code=500, detail="Failed to fetch JWKS")   
     
     def get_public_key_from_jwks(self, jwks: Dict[str, Any], kid: str) -> Dict[str, Any]:
         """
