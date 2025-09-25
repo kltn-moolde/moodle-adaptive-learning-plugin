@@ -9,8 +9,6 @@ import Profile from './pages/Profile';
 import { useLTIAuth, LTILoader, LTIError, LTIContext } from './components/lti';
 import {
   mockUsers,
-  mockLearningPath,
-  mockActivities,
   mockStudentProgress,
   mockVideoAnalytics,
   mockActionAnalytics,
@@ -104,8 +102,8 @@ function App() {
         if (currentUser.role === 'STUDENT') {
           return (
             <StudentDashboard
-              learningPath={mockLearningPath}
-              recentActivities={mockActivities}
+              userId={parseInt(currentUser.id)}
+              courseId={parseInt(ltiUser?.courseId?.toString() || '3')}
             />
           );
         }

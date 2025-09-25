@@ -10,8 +10,6 @@ import AdminDashboard from './pages/AdminDashboard';
 import Profile from './pages/Profile';
 import {
   mockUsers,
-  mockLearningPath,
-  mockActivities,
   mockStudentProgress,
   mockVideoAnalytics,
   mockActionAnalytics,
@@ -21,7 +19,7 @@ import {
 // Main Dashboard Component (works for both LTI and regular access)
 const Dashboard: React.FC = () => {
   const { user: ltiUser, loading, isLTI, error, reinitialize } = useLTIAuth();
-  
+
   // Show loading screen during LTI authentication
   if (loading) {
     return <LTILoader />;
@@ -60,22 +58,22 @@ const Dashboard: React.FC = () => {
         </div>
       )}
 
-      <Header 
-        user={currentUser} 
-        onProfileClick={() => {}}
+      <Header
+        user={currentUser}
+        onProfileClick={() => { }}
         onLogout={handleLogout}
       />
-      
+
       <div className="flex">
         {/* Sidebar Navigation */}
         <div className="w-64 min-h-screen bg-white shadow-lg">
-          <Navigation 
+          <Navigation
             userRole={currentUser.role}
             currentPage=""
-            onNavigate={() => {}}
+            onNavigate={() => { }}
           />
         </div>
-        
+
         {/* Main Content */}
         <div className="flex-1 p-6">
           {/* Route-based content will be rendered here by React Router */}
@@ -83,14 +81,14 @@ const Dashboard: React.FC = () => {
             <Route path="/profile" element={
               <Profile user={currentUser} onUpdateUser={handleUpdateUser} />
             } />
-            
+
             {/* Student Routes */}
             {currentUser.role === 'STUDENT' && (
               <>
                 <Route path="/roadmap" element={
-                  <StudentDashboard 
-                    learningPath={mockLearningPath} 
-                    recentActivities={mockActivities} 
+                  <StudentDashboard
+                    userId={parseInt(currentUser.id)}
+                    courseId={parseInt(ltiUser?.courseId?.toString() || '1')}
                   />
                 } />
                 <Route path="/progress" element={
@@ -108,12 +106,12 @@ const Dashboard: React.FC = () => {
                 <Route path="/" element={<Navigate to="/roadmap" replace />} />
               </>
             )}
-            
+
             {/* Instructor Routes */}
             {currentUser.role === 'INSTRUCTOR' && (
               <>
                 <Route path="/students" element={
-                  <InstructorDashboard 
+                  <InstructorDashboard
                     students={mockStudentProgress}
                     videoAnalytics={mockVideoAnalytics}
                     actionAnalytics={mockActionAnalytics}
@@ -134,12 +132,12 @@ const Dashboard: React.FC = () => {
                 <Route path="/" element={<Navigate to="/students" replace />} />
               </>
             )}
-            
+
             {/* Admin Routes */}
             {currentUser.role === 'ADMIN' && (
               <>
                 <Route path="/dashboard" element={
-                  <AdminDashboard 
+                  <AdminDashboard
                     users={mockUsers}
                     systemMetrics={mockSystemMetrics}
                   />
@@ -165,7 +163,7 @@ const Dashboard: React.FC = () => {
                 <Route path="/" element={<Navigate to="/dashboard" replace />} />
               </>
             )}
-            
+
             <Route path="*" element={
               <div className="p-6 bg-white rounded-lg shadow-md">
                 <h2 className="text-2xl font-bold text-primary-800 mb-4">Welcome</h2>
@@ -186,7 +184,7 @@ const App: React.FC = () => {
       <Routes>
         {/* LTI Dashboard Route (from Python LTI service) */}
         <Route path="/lti-dashboard/*" element={<Dashboard />} />
-        
+
         {/* Default Dashboard Route */}
         <Route path="/*" element={<Dashboard />} />
       </Routes>
