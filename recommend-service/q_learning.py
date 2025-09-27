@@ -165,10 +165,25 @@ def discretize_complete_rate(rate):
 
 # --- Moodle API ---
 def call_moodle_api(function, extra_params):
-    params = {'wstoken': Config.TOKEN_PLUGIN_PHP_MOODLE, 'moodlewsrestformat': 'json', 'wsfunction': function}
+    params = {
+        'wstoken': Config.TOKEN_PLUGIN_PHP_MOODLE,
+        'moodlewsrestformat': 'json',
+        'wsfunction': function
+    }
     params.update(extra_params)
+
+    headers = {
+        "Host": "51.68.124.207:9090",  
+        "Content-Type": "application/x-www-form-urlencoded"
+    }
+
     try:
-        response = requests.post(Config.MOODLE_API_BASE, data=params, timeout=10)
+        response = requests.post(
+            Config.MOODLE_API_BASE,
+            data=params,
+            headers=headers,
+            timeout=10
+        )
         response.raise_for_status()
         return response.json()
     except requests.exceptions.RequestException as e:
