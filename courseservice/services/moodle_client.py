@@ -1,22 +1,22 @@
 import requests
 from config import Config
 
+HEADERS = {"Host": "51.68.124.207:9090"}  # hoặc host container Moodle nếu cùng Docker network
+TIMEOUT = 30  # giây
+
 def get_courses_from_moodle():
     params = {
         "wstoken": Config.MOODLE_TOKEN,
         "wsfunction": "core_course_get_courses",
         "moodlewsrestformat": "json"
     }
-    
-    headers = {"Host": "51.68.124.207:9090"} 
     response = requests.get(
         Config.MOODLE_API_BASE,
-        headers=headers,
+        headers=HEADERS,
         params=params,
-        timeout=30,           # tránh treo
-        allow_redirects=True  # follow redirect
+        timeout=TIMEOUT,
+        allow_redirects=True
     )
-    response = requests.get(Config.MOODLE_API_BASE, headers=headers, params=params)
     response.raise_for_status()
     return response.json()
 
@@ -27,15 +27,17 @@ def get_course_contents(course_id):
         "moodlewsrestformat": "json",
         "courseid": course_id
     }
-    response = requests.get(Config.MOODLE_API_BASE, params=params)
+    response = requests.get(
+        Config.MOODLE_API_BASE,
+        headers=HEADERS,
+        params=params,
+        timeout=TIMEOUT,
+        allow_redirects=True
+    )
     response.raise_for_status()
     return response.json()
 
-
 def get_course_by_id(course_id: int):
-    """
-    Lấy thông tin chi tiết 1 khóa học từ Moodle theo course_id.
-    """
     params = {
         "wstoken": Config.MOODLE_TOKEN,
         "wsfunction": "core_course_get_courses_by_field",
@@ -43,10 +45,15 @@ def get_course_by_id(course_id: int):
         "field": "id",
         "value": course_id
     }
-    response = requests.get(Config.MOODLE_API_BASE, params=params)
+    response = requests.get(
+        Config.MOODLE_API_BASE,
+        headers=HEADERS,
+        params=params,
+        timeout=TIMEOUT,
+        allow_redirects=True
+    )
     response.raise_for_status()
     return response.json()
-
 
 def get_moodle_course_users(course_id):
     params = {
@@ -55,11 +62,16 @@ def get_moodle_course_users(course_id):
         "moodlewsrestformat": "json",
         "courseid": course_id
     }
-    response = requests.get(Config.MOODLE_API_BASE, params=params)
+    response = requests.get(
+        Config.MOODLE_API_BASE,
+        headers=HEADERS,
+        params=params,
+        timeout=TIMEOUT,
+        allow_redirects=True
+    )
     response.raise_for_status()
     return response.json()
 
-# Lấy thông tin chi tiết 1 user từ Moodle
 def get_moodle_user_detail(user_id):
     params = {
         "wstoken": Config.MOODLE_TOKEN,
@@ -68,7 +80,13 @@ def get_moodle_user_detail(user_id):
         "field": "id",
         "values[0]": user_id
     }
-    response = requests.get(Config.MOODLE_API_BASE, params=params)
+    response = requests.get(
+        Config.MOODLE_API_BASE,
+        headers=HEADERS,
+        params=params,
+        timeout=TIMEOUT,
+        allow_redirects=True
+    )
     response.raise_for_status()
     return response.json()
 
@@ -150,8 +168,5 @@ def convert_course_structure(course_data: list):
 
         return new_structure
 
-    # B1. Xây dựng phân cấp
     hierarchy = process_sections(course_data)
-
-    # B2. Làm sạch
     return clean_structure(hierarchy)
