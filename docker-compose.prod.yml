@@ -114,6 +114,7 @@ services:
       - COURSE_ID=${COURSE_ID}
       - USER_CLUSTERS_CSV=${USER_CLUSTERS_CSV}
       - DEFAULT_QTABLE_PATH=${DEFAULT_QTABLE_PATH}
+      - DEFAULT_STATE_PATH=${DEFAULT_STATE_PATH}
     volumes:
       - /home/ubuntu/data:/data
     networks:
