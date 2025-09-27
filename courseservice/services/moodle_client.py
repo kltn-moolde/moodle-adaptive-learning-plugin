@@ -7,7 +7,16 @@ def get_courses_from_moodle():
         "wsfunction": "core_course_get_courses",
         "moodlewsrestformat": "json"
     }
-    response = requests.get(Config.MOODLE_API_BASE, params=params)
+    
+    headers = {"Host": "51.68.124.207:9090"} 
+    response = requests.get(
+        Config.MOODLE_API_BASE,
+        headers=headers,
+        params=params,
+        timeout=30,           # tránh treo
+        allow_redirects=True  # follow redirect
+    )
+    response = requests.get(Config.MOODLE_API_BASE, headers=headers, params=params)
     response.raise_for_status()
     return response.json()
 
