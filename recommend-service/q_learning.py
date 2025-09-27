@@ -47,18 +47,6 @@ def initialize_q_table(filename=Config.DEFAULT_QTABLE_PATH):
     save_q_table_to_csv(initial_q_table, filename)
     return initial_q_table
 
-# def save_q_table_to_csv(q_table_to_save, filename=Config.DEFAULT_QTABLE_PATH):
-#     q_table_data = []
-#     for state, actions_dict in q_table_to_save.items():
-#         for action, q_value in actions_dict.items():
-#             row = {
-#                 'sectionid': state[0], 'level': state[1],
-#                 'complete_rate': state[2], 'score_bin': state[3],
-#                 'action': action, 'q_value': q_value
-#             }
-#             q_table_data.append(row)
-#     pd.DataFrame(q_table_data).to_csv(filename, index=False)
-    
     
 def save_q_table_to_csv(q_table_to_save, filename=Config.DEFAULT_QTABLE_PATH):
     # Đọc file CSV hiện có (nếu có) để giữ nguyên dữ liệu cũ
@@ -151,12 +139,20 @@ def load_q_table_from_csv(filename=Config.DEFAULT_QTABLE_PATH):
 
 
 # --- Discretization ---
+
 def discretize_score(score):
     if score is None:
+        print("⚠️ discretize_score: score=None → return 0")
         return 0
-    for b in Config.SCORE_AVG_BINS:
+
+    print(f"\n🔍 DEBUG discretize_score: input score={score}")
+    for b in reversed(Config.SCORE_AVG_BINS):
+        print(f"  - check bin={b}: score >= {b}? {'YES' if score >= b else 'NO'}")
         if score >= b:
+            print(f"  ✅ match bin={b} → return {b}")
             return b
+
+    print("❌ no bin matched → return 0")
     return 0
 
 def discretize_complete_rate(rate):
@@ -193,34 +189,90 @@ def get_user_cluster(user_id):
     row = config.user_clusters_df[config.user_clusters_df['userid'] == user_id]
     return row.iloc[0]['cluster'] if not row.empty else None
 
+# # --- State & reward ---
+# def get_state_from_moodle(userid, courseid, sectionid, objecttype, objectid):
+#     avg_score_data = call_moodle_api('local_userlog_get_user_section_avg_grade', {
+#         'userid': userid, 'courseid': courseid, 'sectionid': sectionid
+#     })
+#     avg_score = safe_get(avg_score_data, 'avg_section_grade', 0)
+
+#     quiz_level = 'medium'
+#     if objecttype == "quiz":
+#         quiz_level_data = call_moodle_api('local_userlog_get_quiz_tags', {'quizid': objectid})
+#         quiz_level = safe_get(quiz_level_data, 'tag_name', 'medium')
+
+#     total_resources = safe_get(call_moodle_api('local_userlog_get_total_resources_by_section', {
+#         'sectionid': sectionid, 'objecttypes[0]': 'resource', 'objecttypes[1]': 'hvp'
+#     }), 'total_resources', 0)
+#     viewed_resources = safe_get(call_moodle_api('local_userlog_get_viewed_resources_distinct_by_section', {
+#         'userid': userid, 'courseid': courseid, 'sectionid': sectionid,
+#         'objecttypes[0]': 'resource', 'objecttypes[1]': 'hvp'
+#     }), 'viewed_resources', 0)
+#     complete_rate = viewed_resources / total_resources if total_resources>0 else 0.0
+
+#     passed_lastest_quiz = safe_get(call_moodle_api('local_userlog_get_latest_quiz_pass_status_by_section',{
+#         'sectionid': sectionid, 'userid': userid
+#     }),'is_passed',0)==1
+
+#     state = (sectionid, quiz_level, discretize_complete_rate(complete_rate), discretize_score(avg_score))
+#     return state, passed_lastest_quiz
+
+
 # --- State & reward ---
 def get_state_from_moodle(userid, courseid, sectionid, objecttype, objectid):
+    print(f"\n🔍 DEBUG: get_state_from_moodle(userid={userid}, courseid={courseid}, sectionid={sectionid}, objecttype={objecttype}, objectid={objectid})")
+
+    # --- Lấy điểm trung bình section ---
     avg_score_data = call_moodle_api('local_userlog_get_user_section_avg_grade', {
         'userid': userid, 'courseid': courseid, 'sectionid': sectionid
     })
+    print(f"📊 API avg_score_data: {avg_score_data}")
     avg_score = safe_get(avg_score_data, 'avg_section_grade', 0)
+    print(f"➡️ avg_score: {avg_score}")
 
+    # --- Quiz level ---
     quiz_level = 'medium'
     if objecttype == "quiz":
         quiz_level_data = call_moodle_api('local_userlog_get_quiz_tags', {'quizid': objectid})
+        print(f"📊 API quiz_level_data: {quiz_level_data}")
         quiz_level = safe_get(quiz_level_data, 'tag_name', 'medium')
+    print(f"➡️ quiz_level: {quiz_level}")
 
-    total_resources = safe_get(call_moodle_api('local_userlog_get_total_resources_by_section', {
+    # --- Tài nguyên ---
+    total_resources_data = call_moodle_api('local_userlog_get_total_resources_by_section', {
         'sectionid': sectionid, 'objecttypes[0]': 'resource', 'objecttypes[1]': 'hvp'
-    }), 'total_resources', 0)
-    viewed_resources = safe_get(call_moodle_api('local_userlog_get_viewed_resources_distinct_by_section', {
+    })
+    print(f"📊 API total_resources_data: {total_resources_data}")
+    total_resources = safe_get(total_resources_data, 'total_resources', 0)
+
+    viewed_resources_data = call_moodle_api('local_userlog_get_viewed_resources_distinct_by_section', {
         'userid': userid, 'courseid': courseid, 'sectionid': sectionid,
         'objecttypes[0]': 'resource', 'objecttypes[1]': 'hvp'
-    }), 'viewed_resources', 0)
-    complete_rate = viewed_resources / total_resources if total_resources>0 else 0.0
+    })
+    print(f"📊 API viewed_resources_data: {viewed_resources_data}")
+    viewed_resources = safe_get(viewed_resources_data, 'viewed_resources', 0)
 
-    passed_lastest_quiz = safe_get(call_moodle_api('local_userlog_get_latest_quiz_pass_status_by_section',{
+    complete_rate = viewed_resources / total_resources if total_resources > 0 else 0.0
+    print(f"➡️ complete_rate: {complete_rate:.2f} ({viewed_resources}/{total_resources})")
+
+    # --- Quiz pass status ---
+    latest_quiz_status = call_moodle_api('local_userlog_get_latest_quiz_pass_status_by_section', {
         'sectionid': sectionid, 'userid': userid
-    }),'is_passed',0)==1
+    })
+    print(f"📊 API latest_quiz_status: {latest_quiz_status}")
+    passed_lastest_quiz = safe_get(latest_quiz_status, 'is_passed', 0) == 1
+    print(f"➡️ passed_lastest_quiz: {passed_lastest_quiz}")
 
-    state = (sectionid, quiz_level, discretize_complete_rate(complete_rate), discretize_score(avg_score))
+    # --- State ---
+    state = (
+        sectionid,
+        quiz_level,
+        discretize_complete_rate(complete_rate),
+        discretize_score(avg_score)
+    )
+    print(f"✅ Final state: {state}")
+
     return state, passed_lastest_quiz
-
 
 
 def get_q_value(state, action):

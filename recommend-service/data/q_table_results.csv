@@ -200,11 +200,11 @@ sectionid,level,complete_rate,score_bin,action,q_value
 38,medium,0.3,8,do_quiz_easier,0.0
 38,medium,0.3,8,do_quiz_same,0.0
 38,medium,0.6,0,read_new_resource,0.0
-38,medium,0.6,0,review_old_resource,0.0
+38,medium,0.6,0,review_old_resource,1.05
 38,medium,0.6,0,attempt_new_quiz,0.0
 38,medium,0.6,0,redo_failed_quiz,0.0
 38,medium,0.6,0,skip_to_next_module,0.0
-38,medium,0.6,0,do_quiz_harder,-0.1
+38,medium,0.6,0,do_quiz_harder,0.0
 38,medium,0.6,0,do_quiz_easier,0.0
 38,medium,0.6,0,do_quiz_same,0.0
 38,medium,0.6,2,read_new_resource,0.0
@@ -592,7 +592,7 @@ sectionid,level,complete_rate,score_bin,action,q_value
 39,medium,0.6,6,do_quiz_easier,0.0
 39,medium,0.6,6,do_quiz_same,0.0
 39,medium,0.6,8,read_new_resource,0.0
-39,medium,0.6,8,review_old_resource,0.0
+39,medium,0.6,8,review_old_resource,0.49750000000000005
 39,medium,0.6,8,attempt_new_quiz,0.0
 39,medium,0.6,8,redo_failed_quiz,0.0
 39,medium,0.6,8,skip_to_next_module,0.0
@@ -1963,7 +1963,7 @@ sectionid,level,complete_rate,score_bin,action,q_value
 43,medium,0.3,0,review_old_resource,0.0
 43,medium,0.3,0,attempt_new_quiz,0.0
 43,medium,0.3,0,redo_failed_quiz,0.0
-43,medium,0.3,0,skip_to_next_module,0.30000000000000004
+43,medium,0.3,0,skip_to_next_module,0.3
 43,medium,0.3,0,do_quiz_harder,0.0
 43,medium,0.3,0,do_quiz_easier,0.0
 43,medium,0.3,0,do_quiz_same,0.0
