@@ -1,21 +1,23 @@
 from flask import Flask, request, jsonify
 import os
 
+from state_manager import load_last_state_action, save_last_state_action
 from config import Config, q_table, q_table_lock
+import config
+
 from q_learning import (
     load_data,
     load_q_table_from_csv,
     initialize_q_table,
     save_q_table_to_csv,
-    update_q_table,
+    update_q_value,
     suggest_next_action,
     get_state_from_moodle,
     get_reward,
     get_user_cluster,
 )
 
-# Lưu cache action cuối cùng của user
-last_state_action = {}
+last_state_action = load_last_state_action()
 
 
 def create_app():
@@ -53,8 +55,10 @@ def create_app():
 
         # Cập nhật Q-table
         with q_table_lock:
-            if userid in last_state_action:
-                prev_state, prev_action = last_state_action[userid]
+            user_key = str(userid)   # gán ngay từ đầu
+
+            if user_key in last_state_action:
+                prev_state, prev_action = last_state_action[user_key]
 
                 # Chỉ update nếu cùng section
                 if prev_state[0] == current_state[0]:
@@ -68,13 +72,15 @@ def create_app():
                         quiz_level=prev_state[1],
                         passed_hard_quiz=passed_quiz,
                     )
-                    update_q_table(prev_state, prev_action, reward, current_state)
-                    save_q_table_to_csv(q_table)
+                    update_q_value(prev_state, prev_action, reward, current_state)
+                    save_q_table_to_csv(config.q_table)
 
             # Chọn action tiếp theo
             action, _ = suggest_next_action(current_state, userid=userid)
-            last_state_action[userid] = (current_state, action)
-
+            last_state_action[user_key] = (current_state, action)
+            
+            # 👉 Lưu xuống file JSON
+            save_last_state_action(last_state_action)
         return jsonify({"status": "ok", "next_action": action})
 
     @app.route('/api/suggest-action', methods=['POST'])
@@ -87,10 +93,11 @@ def create_app():
             return jsonify({"error": "Invalid input data"}), 400
 
         with q_table_lock:
-            if userid not in last_state_action:
+            user_key = str(userid) 
+            if user_key not in last_state_action:
                 return jsonify({"error": "No recent activity for this user"}), 404
 
-            current_state, _ = last_state_action[userid]
+            current_state, _ = last_state_action[user_key]
             action, q_value = suggest_next_action(current_state, userid)
 
         return jsonify({

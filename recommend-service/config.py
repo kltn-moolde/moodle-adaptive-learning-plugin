@@ -27,7 +27,11 @@ class Config:
     
     DEFAULT_QTABLE_PATH = os.getenv(
         "DEFAULT_QTABLE_PATH", 
-        "/data/q_table_results.csv")
+        "data/q_table_results.csv")
+    
+    DEFAULT_STATE_PATH = os.getenv(
+        "DEFAULT_STATE_PATH", 
+        "data/last_state_action.json")
 
     # --- Q-learning hyperparameters ---
     LEARNING_RATE = float(os.getenv("LEARNING_RATE", 0.1))

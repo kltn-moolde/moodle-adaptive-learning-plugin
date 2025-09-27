@@ -5,13 +5,12 @@ import os
 import random
 import requests
 import time
-from config import *
+from config import Config
+import config
 
-section_ids = []
-user_clusters_df = None
 
 def load_data():
-    global section_ids, user_clusters_df
+    config.section_ids = [] 
     try:
         # 1. Gọi API lấy course structure
         url = f"{Config.ADDRESS_COURSE_SERVICE_BASE}/api/moodle/courses/{Config.COURSE_ID}/contents/structure"
@@ -23,10 +22,10 @@ def load_data():
         for section in data:
             if "lessons" in section:
                 for lesson in section["lessons"]:
-                    section_ids.append(lesson["sectionIdNew"])
+                    config.section_ids.append(lesson["sectionIdNew"])
 
         # 3. Load user_clusters.csv
-        user_clusters_df = pd.read_csv(Config.USER_CLUSTERS_CSV)
+        config.user_clusters_df = pd.read_csv(Config.USER_CLUSTERS_CSV)
 
     except requests.RequestException as e:
         print(f"❌ Error calling API: {e}")
@@ -39,7 +38,7 @@ def load_data():
 def initialize_q_table(filename=Config.DEFAULT_QTABLE_PATH):
     initial_q_table = {}
     levels = ['easy', 'medium', 'hard']
-    for section_id in section_ids:
+    for section_id in config.section_ids:
         for level in levels:
             for complete_rate in Config.COMPLETE_RATE_BINS:
                 for score_bin in Config.SCORE_AVG_BINS:
@@ -48,17 +47,89 @@ def initialize_q_table(filename=Config.DEFAULT_QTABLE_PATH):
     save_q_table_to_csv(initial_q_table, filename)
     return initial_q_table
 
+# def save_q_table_to_csv(q_table_to_save, filename=Config.DEFAULT_QTABLE_PATH):
+#     q_table_data = []
+#     for state, actions_dict in q_table_to_save.items():
+#         for action, q_value in actions_dict.items():
+#             row = {
+#                 'sectionid': state[0], 'level': state[1],
+#                 'complete_rate': state[2], 'score_bin': state[3],
+#                 'action': action, 'q_value': q_value
+#             }
+#             q_table_data.append(row)
+#     pd.DataFrame(q_table_data).to_csv(filename, index=False)
+    
+    
 def save_q_table_to_csv(q_table_to_save, filename=Config.DEFAULT_QTABLE_PATH):
-    q_table_data = []
+    # Đọc file CSV hiện có (nếu có) để giữ nguyên dữ liệu cũ
+    if os.path.exists(filename):
+        try:
+            df_existing = pd.read_csv(filename)
+            print(f"[DEBUG] Loaded existing CSV with {len(df_existing)} rows")
+        except Exception as e:
+            print(f"⚠️ Error loading existing CSV: {e}. Creating new one.")
+            df_existing = pd.DataFrame()
+    else:
+        df_existing = pd.DataFrame()
+        print(f"[DEBUG] Creating new Q-table CSV file")
+
+    # Tạo danh sách các row cần cập nhật từ q_table_to_save
+    updated_rows = []
     for state, actions_dict in q_table_to_save.items():
         for action, q_value in actions_dict.items():
             row = {
-                'sectionid': state[0], 'level': state[1],
-                'complete_rate': state[2], 'score_bin': state[3],
-                'action': action, 'q_value': q_value
+                'sectionid': state[0], 
+                'level': state[1],
+                'complete_rate': state[2], 
+                'score_bin': state[3],
+                'action': action, 
+                'q_value': q_value
             }
-            q_table_data.append(row)
-    pd.DataFrame(q_table_data).to_csv(filename, index=False)
+            updated_rows.append(row)
+
+    df_new = pd.DataFrame(updated_rows)
+
+    # Nếu file cũ tồn tại, merge dữ liệu để giữ nguyên các giá trị không thay đổi
+    if not df_existing.empty and len(df_new) > 0:
+        # Tạo key để merge
+        merge_cols = ['sectionid', 'level', 'complete_rate', 'score_bin', 'action']
+        
+        # Merge: giữ nguyên tất cả rows cũ, chỉ update q_value của những rows mới
+        df_final = df_existing.merge(
+            df_new[merge_cols + ['q_value']], 
+            on=merge_cols, 
+            how='left', 
+            suffixes=('', '_new')
+        )
+        
+        # Cập nhật q_value cho những row có dữ liệu mới
+        df_final['q_value'] = df_final['q_value_new'].fillna(df_final['q_value'])
+        df_final = df_final.drop(columns=['q_value_new'])
+        
+        # Thêm những row hoàn toàn mới (không có trong file cũ)
+        new_rows_only = df_new.merge(
+            df_existing[merge_cols], 
+            on=merge_cols, 
+            how='left', 
+            indicator=True
+        )
+        new_rows_only = new_rows_only[new_rows_only['_merge'] == 'left_only'][merge_cols + ['q_value']]
+        
+        if not new_rows_only.empty:
+            df_final = pd.concat([df_final, new_rows_only], ignore_index=True)
+            
+    else:
+        df_final = df_new
+
+    # 🔍 Debug in Q-value khác 0
+    if not df_final.empty:
+        non_zero = df_final[df_final["q_value"] != 0]
+        print(f"[DEBUG] Saving Q-table → {os.path.abspath(filename)}")
+        print(f"[DEBUG] Total rows: {len(df_final)}, Non-zero entries: {len(non_zero)}")
+        if len(non_zero) > 0:
+            print(f"[DEBUG] Sample non-zero entries:\n{non_zero.head(5)}")
+
+    df_final.to_csv(filename, index=False)    
 
 def load_q_table_from_csv(filename=Config.DEFAULT_QTABLE_PATH):
     if not os.path.exists(filename):
@@ -78,15 +149,22 @@ def load_q_table_from_csv(filename=Config.DEFAULT_QTABLE_PATH):
         return {}
     return q_table_loaded
 
+
 # --- Discretization ---
 def discretize_score(score):
-    for b in reversed(Config.SCORE_AVG_BINS):
-        if score >= b: return b
-    return Config.SCORE_AVG_BINS[0]
+    if score is None:
+        return 0
+    for b in Config.SCORE_AVG_BINS:
+        if score >= b:
+            return b
+    return 0
 
 def discretize_complete_rate(rate):
+    if rate is None:
+        return Config.COMPLETE_RATE_BINS[0]  # mặc định lấy mức thấp nhất
     for b in reversed(Config.COMPLETE_RATE_BINS):
-        if rate >= b: return b
+        if rate >= b:
+            return b
     return Config.COMPLETE_RATE_BINS[0]
 
 # --- Moodle API ---
@@ -108,11 +186,11 @@ def safe_get(data, key, default=None):
         return data[0].get(key, default)
     return default
 
+
 def get_user_cluster(user_id):
-    global user_clusters_df
-    if user_clusters_df is None:
+    if config.user_clusters_df is None:
         return None
-    row = user_clusters_df[user_clusters_df['userid']==user_id]
+    row = config.user_clusters_df[config.user_clusters_df['userid'] == user_id]
     return row.iloc[0]['cluster'] if not row.empty else None
 
 # --- State & reward ---
@@ -143,25 +221,49 @@ def get_state_from_moodle(userid, courseid, sectionid, objecttype, objectid):
     state = (sectionid, quiz_level, discretize_complete_rate(complete_rate), discretize_score(avg_score))
     return state, passed_lastest_quiz
 
-def get_q_value(state, action):
-    global q_table
-    if state not in q_table:
-        q_table[state] = {a:0.0 for a in Config.ACTIONS}
-    return q_table[state][action]
 
-def update_q_table(state, action, reward, next_state):
-    global q_table
-    current_q = get_q_value(state, action)
-    max_future_q = max(q_table[next_state].values()) if next_state in q_table else 0.0
-    q_table[state][action] = current_q + Config.LEARNING_RATE * (reward + Config.DISCOUNT_FACTOR * max_future_q - current_q)
+
+def get_q_value(state, action):
+    # đảm bảo state luôn là tuple hashable
+    state = tuple(state)  
+    if state not in config.q_table:
+        config.q_table[state] = {a: 0.0 for a in Config.ACTIONS}
+    return config.q_table[state][action]
+
+    
+def update_q_value(state, action, reward, next_state):
+    state = tuple(state)
+    next_state = tuple(next_state)
+
+    # nếu state chưa có thì giữ nguyên q_table, chỉ thêm mới
+    if state not in config.q_table:
+        config.q_table[state] = {a: 0.0 for a in Config.ACTIONS}
+
+    if next_state not in config.q_table:
+        config.q_table[next_state] = {a: 0.0 for a in Config.ACTIONS}
+
+    old_value = config.q_table[state][action]
+    next_max = max(config.q_table[next_state].values())
+
+    new_value = (1 - Config.LEARNING_RATE) * old_value + \
+                Config.LEARNING_RATE * (reward + Config.DISCOUNT_FACTOR * next_max)
+
+    config.q_table[state][action] = new_value    
+    
 
 def get_reward(action, old_score, new_score, old_complete, new_complete, cluster=None, quiz_level='medium', passed_hard_quiz=1):
     score_improvement = new_score - old_score
     complete_bonus = (new_complete - old_complete) * 10
     action_bonus = 0
     cluster_bonus = 0
-    
-     # --- Logic mới ---
+
+    print("\n[DEBUG] ==== get_reward START ====")
+    print(f"Action: {action}")
+    print(f"Old score: {old_score}, New score: {new_score}, Score improvement: {score_improvement}")
+    print(f"Old complete: {old_complete}, New complete: {new_complete}, Complete bonus: {complete_bonus}")
+    print(f"Cluster: {cluster}, Quiz level: {quiz_level}, Passed hard quiz: {passed_hard_quiz}")
+
+    # --- Logic mới ---
     if action == 'read_new_resource':
         if new_complete >= 1.0:
             action_bonus = -2
@@ -188,6 +290,7 @@ def get_reward(action, old_score, new_score, old_complete, new_complete, cluster
         else:
             action_bonus = -1
 
+    print(f"Action bonus: {action_bonus}")
 
     # --- Cluster-based personalization ---
     if cluster == 0:  # Yếu
@@ -197,8 +300,12 @@ def get_reward(action, old_score, new_score, old_complete, new_complete, cluster
         if action in ['do_quiz_harder', 'skip_to_next_module']:
             cluster_bonus = 2
 
+    print(f"Cluster bonus: {cluster_bonus}")
 
     total_reward = score_improvement + complete_bonus + action_bonus + cluster_bonus
+    print(f"Total reward: {total_reward}")
+    print("[DEBUG] ==== get_reward END ====\n")
+
     return total_reward
 
 
@@ -234,11 +341,11 @@ def suggest_next_action(current_state, userid):
 
 
     # --- Exploration or Exploitation ---
-    if current_state not in q_table or random.uniform(0, 1) < Config.EXPLORATION_RATE:
+    if current_state not in config.q_table or random.uniform(0, 1) < Config.EXPLORATION_RATE:
         action = random.choice(filtered_actions)
         q_value = get_q_value(current_state, action)
         return action, q_value
     else:
-        q_values = {a: q_table[current_state][a] for a in filtered_actions}
+        q_values = {a: config.q_table[current_state][a] for a in filtered_actions}
         best_action = max(q_values, key=q_values.get)
         return best_action, q_values[best_action]
