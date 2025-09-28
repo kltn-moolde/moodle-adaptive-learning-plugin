@@ -3,6 +3,8 @@ import os
 import pandas as pd
 from datetime import datetime
 import requests
+from flask_cors import CORS
+
 
 from state_manager import load_last_state_action, save_last_state_action
 from config import Config, q_table, q_table_lock
@@ -29,7 +31,7 @@ last_state_action = load_last_state_action()
 def create_app():
     app = Flask(__name__)
 
-
+    CORS(app)
     # --- Load data + Q-table khi service khởi động ---
     load_data()
     global q_table

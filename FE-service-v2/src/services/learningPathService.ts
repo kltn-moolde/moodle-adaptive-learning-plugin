@@ -6,6 +6,7 @@ export interface SuggestedAction {
   q_value: number;
   source_state: {
     complete_rate_bin: number;
+    lesson_name: string;
     quiz_level: string;
     score_bin: number;
     section_id: number;
@@ -25,6 +26,7 @@ export interface LearningStep {
   quiz_level: string;
   score_bin: number;
   complete_rate: number;
+  lesson_name: string;
 }
 
 export interface LearningPathData {
@@ -120,7 +122,8 @@ export class LearningPathService {
         section_id: 1,
         quiz_level: 'easy',
         score_bin: 1,
-        complete_rate: 0.1
+        complete_rate: 0.1,
+        lesson_name: source_state.lesson_name
       },
       {
         id: 'basic_concepts',
@@ -132,7 +135,8 @@ export class LearningPathService {
         section_id: 2,
         quiz_level: 'easy',
         score_bin: 3,
-        complete_rate: 0.3
+        complete_rate: 0.3,
+        lesson_name: source_state.lesson_name
       },
       {
         id: 'current_section',
@@ -144,7 +148,8 @@ export class LearningPathService {
         section_id: source_state.section_id,
         quiz_level: source_state.quiz_level,
         score_bin: source_state.score_bin,
-        complete_rate: source_state.complete_rate_bin
+        complete_rate: source_state.complete_rate_bin,
+        lesson_name: source_state.lesson_name
       }
     ];
 
@@ -160,7 +165,8 @@ export class LearningPathService {
         section_id: source_state.section_id + 1,
         quiz_level: 'hard',
         score_bin: source_state.score_bin + 2,
-        complete_rate: source_state.complete_rate_bin + 0.2
+        complete_rate: source_state.complete_rate_bin + 0.2,
+        lesson_name: source_state.lesson_name
       });
     }
 
@@ -174,7 +180,8 @@ export class LearningPathService {
       section_id: source_state.section_id + 2,
       quiz_level: 'hard',
       score_bin: 10,
-      complete_rate: 1.0
+      complete_rate: 1.0,
+      lesson_name: source_state.lesson_name
     });
 
     return steps;
@@ -215,7 +222,8 @@ export class LearningPathService {
           section_id: 1,
           quiz_level: 'easy',
           score_bin: 1,
-          complete_rate: 0.0
+          complete_rate: 0.0,
+          lesson_name: 'Introduction to Course'
         },
         {
           id: 'concepts',
@@ -227,7 +235,8 @@ export class LearningPathService {
           section_id: 2,
           quiz_level: 'medium',
           score_bin: 5,
-          complete_rate: 0.3
+          complete_rate: 0.3,
+          lesson_name: 'Basic Concepts'
         },
         {
           id: 'practice',
@@ -239,7 +248,8 @@ export class LearningPathService {
           section_id: 3,
           quiz_level: 'medium',
           score_bin: 7,
-          complete_rate: 0.6
+          complete_rate: 0.6,
+          lesson_name: 'Practice Exercises'
         },
         {
           id: 'assessment',
@@ -251,7 +261,8 @@ export class LearningPathService {
           section_id: 4,
           quiz_level: 'hard',
           score_bin: 10,
-          complete_rate: 1.0
+          complete_rate: 1.0,
+          lesson_name: 'Final Assessment'
         }
       ],
       next_action: null

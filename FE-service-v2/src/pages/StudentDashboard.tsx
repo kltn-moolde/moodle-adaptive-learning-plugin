@@ -188,6 +188,7 @@ const StudentDashboard: React.FC<StudentDashboardProps> = ({ userId, courseId })
                       : 'bg-gray-50 border-gray-200'
                   }`}>
                     <h4 className="font-semibold text-gray-800 mb-2">Step {index + 1}: {step.action}</h4>
+                    <p className="text-sm text-primary-700 mb-2">{step.lesson_name}</p>
                     <p className="text-gray-600 text-sm mb-3">
                       Action: {step.action.replace(/_/g, ' ')}
                       {index === learningPath.current_step - 1 && learningPath.next_action && 
