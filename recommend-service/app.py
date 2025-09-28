@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, app, request, jsonify
 import os
 import pandas as pd
 from datetime import datetime
@@ -38,6 +38,28 @@ def create_app():
         q_table = initialize_q_table(Config.DEFAULT_QTABLE_PATH)
     else:
         q_table = load_q_table_from_csv(Config.DEFAULT_QTABLE_PATH)
+        
+     # --- API health ---
+    @app.route("/api/health", methods=["GET"])
+    def health():
+        try:
+            # Gọi sang course-service
+            url = f"{Config.ADDRESS_COURSE_SERVICE_BASE}/api/moodle/courses/{Config.COURSE_ID}/contents/structure"
+            resp = requests.get(url, timeout=5)
+
+            if resp.status_code != 200:
+                return jsonify({
+                    "status": "DOWN",
+                    "reason": f"Course-service responded with {resp.status_code}"
+                }), 500
+
+            return jsonify({"status": "UP"}), 200
+
+        except Exception as e:
+            return jsonify({
+                "status": "DOWN",
+                "error": str(e)
+            }), 500
 
     # --- ROUTES ---
     @app.route('/api/update-learning-event', methods=['POST'])

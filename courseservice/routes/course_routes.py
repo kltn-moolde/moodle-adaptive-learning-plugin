@@ -8,6 +8,33 @@ import json
 
 course_bp = Blueprint("course", __name__)
 
+
+def health():
+    try:
+        # 1. Kiểm tra kết nối MongoDB
+        mongo.db.command("ping")
+        if not mongo:
+            return jsonify({
+                "status": "DOWN",
+                "reason": "MongoDB connection failed"
+            }), 500
+
+        # 2. Thử gọi Moodle API
+        moodle_courses = get_courses_from_moodle()
+        if not moodle_courses:
+            return jsonify({
+                "status": "DOWN",
+                "reason": "Moodle API did not return data"
+            }), 500
+
+        return jsonify({"status": "UP"}), 200
+
+    except Exception as e:
+        return jsonify({
+            "status": "DOWN",
+            "error": str(e)
+        }), 500
+
 # GET all
 @course_bp.route("/courses", methods=["GET"])
 def get_courses():
