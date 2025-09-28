@@ -35,7 +35,7 @@ class Settings(BaseSettings):
     LTI_ISSUER: str = "http://51.68.124.207:9090"
     LTI_AUTH_URL: str = "http://51.68.124.207:9090/mod/lti/auth.php"
     LTI_TOKEN_URL: str = "http://51.68.124.207:9090/mod/lti/token.php"
-    LTI_KEYSET_URL: str = "http://moodle502:8080/mod/lti/certs.php"
+    LTI_KEYSET_URL: str = "http://127.0.0.1:8100/mod/lti/certs.php"
     
     # Tool Configuration
     TOOL_TITLE: str = "User Log Viewer"

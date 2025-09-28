@@ -218,7 +218,7 @@ class LTIService:
         Get JWKS (JSON Web Key Set) from Moodle without redirect
         """
         try:
-            url = "http://moodle502:8080/mod/lti/certs.php"
+            url = settings.LTI_KEYSET_URL
             headers = {"Host": settings.ADDRESS_MOODLE}
 
             logger.info(f"Fetching JWKS from {url} with Host header")
