@@ -25,7 +25,7 @@ function App() {
 
   // Use LTI user if available, otherwise fallback user
   const currentUser: User = ltiUser ? {
-    id: ltiUser.id.toString(),
+    id: ltiUser.ltiUserId.toString(),
     name: ltiUser.name,
     email: ltiUser.email,
     role: ltiUser.roleName as 'STUDENT' | 'INSTRUCTOR' | 'ADMIN',
