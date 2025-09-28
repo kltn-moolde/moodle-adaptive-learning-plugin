@@ -398,8 +398,6 @@ def create_app():
                 "error": f"Analytics error: {str(e)}"
             }), 500
 
-    @app.route("/")
-    def health():
         return "✅ Recommend Service is running!"
 
     return app
