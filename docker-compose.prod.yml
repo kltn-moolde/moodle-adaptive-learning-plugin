@@ -78,7 +78,7 @@ services:
   # Frontend Service
   frontend-service:
     container_name: frontend-service
-    image: ${DOCKER_REGISTRY_LOC}/adaptive-learning-frontend:${IMAGE_TAG:-latest}
+    image: ${DOCKER_REGISTRY}/adaptive-learning-frontend:${IMAGE_TAG:-latest}
     restart: unless-stopped
     ports:
       - "${FRONTEND_PORT:-5173}:5173"
