@@ -12,7 +12,7 @@ RUN npm ci
 COPY . .
 
 # Build the application
-RUN npm run build -- --mode production
+RUN npm run build
 
 # Stage 2: production
 FROM node:22-bullseye
