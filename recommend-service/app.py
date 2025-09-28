@@ -113,15 +113,9 @@ def create_app():
             save_last_state_action(last_state_action)
         return jsonify({"status": "ok", "next_action": action})
 
-    @app.route('/api/suggest-action', methods=['POST', 'OPTIONS'])
+    @app.route('/api/suggest-action', methods=['POST'])
     def suggest_action_api():
-        if request.method == 'OPTIONS':
-            return '', 200
-
-        data = request.get_json(force=True)
-        if not data or 'userid' not in data or 'courseid' not in data:
-            return jsonify({"error": "Missing 'userid' or 'courseid'"}), 400
-
+        data = request.json
         try:
             userid = int(data['userid'])
             courseid = int(data['courseid'])
@@ -138,14 +132,19 @@ def create_app():
 
         section_id = current_state[0]
 
-        try:
-            course_structure = call_moodle_api(
-                'local_course_get_contents_structure', 
-                {'courseid': courseid}
-            )
-        except Exception as e:
-            return jsonify({"error": f"Failed to get course structure: {str(e)}"}), 500
+        # Gọi API Moodle để lấy cấu trúc course
+        course_structure = call_moodle_api(
+            'local_course_get_contents_structure', 
+            {'courseid': courseid}
+        )
+        
+        # 1. Gọi API lấy course structure
+        url = f"{Config.ADDRESS_COURSE_SERVICE_BASE}/api/moodle/courses/{Config.COURSE_ID}/contents/structure"
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+        course_structure = response.json() 
 
+        # Tìm lesson tương ứng với section_id
         lesson_name = None
         for section in course_structure:
             lessons = section.get('lessons', [])
@@ -163,14 +162,13 @@ def create_app():
             "q_value": q_value,
             "source_state": {
                 "section_id": section_id,
-                "lesson_name": lesson_name,
+                "lesson_name": lesson_name,  # thêm tên bài học
                 "quiz_level": current_state[1],
                 "complete_rate_bin": current_state[2],
                 "score_bin": current_state[3]
             }
-        })
-        
-        
+    })
+    
     @app.route('/api/qtable/nonzero', methods=['GET'])
     def get_nonzero_qvalues():
         # Load CSV
