@@ -42,6 +42,6 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /opt/adaptive-learning  
+            cd /opt/adaptive-learning/moodle-adaptive-learning-plugin 
             docker compose --env-file .env.production -f docker-compose.prod.yml pull recommend-service
             docker compose --env-file .env.production -f docker-compose.prod.yml up -d recommend-service  
