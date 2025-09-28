@@ -42,21 +42,6 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            docker pull ${{ secrets.DOCKER_USERNAME }}/recommend_service:latest
-            docker stop recommend_service || true
-            docker rm recommend_service || true
-            docker run -d \
-                --name recommend_service \
-                --network moodle-adaptive-learning-plugin_app-network \
-                -p 8088:8088 \
-                -e MOODLE_API_BASE="${{ secrets.MOODLE_API_BASE }}" \
-                -e TOKEN_PLUGIN_PHP_MOODLE="${{ secrets.TOKEN_PLUGIN_PHP_MOODLE }}" \
-                -e ADDRESS_COURSE_SERVICE_BASE="${{ secrets.ADDRESS_COURSE_SERVICE_BASE }}" \
-                -e COURSE_ID="${{ secrets.COURSE_ID }}" \
-                -e USER_CLUSTERS_CSV="${{ secrets.USER_CLUSTERS_CSV }}" \
-                -e DEFAULT_QTABLE_PATH="${{ secrets.DEFAULT_QTABLE_PATH }}" \
-                -e ADDRESS_MOODLE="${{ secrets.ADDRESS_MOODLE }}" \
-                -e DEFAULT_STATE_PATH="${{ secrets.DEFAULT_STATE_PATH }}" \
-                -v /home/ubuntu/data:/data \
-                ${{ secrets.DOCKER_USERNAME }}/recommend_service:latest
-            docker network connect moodle_project_default recommend_service
+            cd /opt/adaptive-learning  
+            docker compose --env-file .env.production -f docker-compose.prod.yml pull recommend-service
+            docker compose --env-file .env.production -f docker-compose.prod.yml up -d recommend-service  
