@@ -219,7 +219,7 @@ class LTIService:
         """
         try:
             url = "http://moodle502:8080/mod/lti/certs.php"
-            headers = {"Host": "51.68.124.207:9090"}  # trỏ đúng issuer
+            headers = {"Host": settings.ADDRESS_MOODLE}
 
             logger.info(f"Fetching JWKS from {url} with Host header")
             response = requests.get(url, headers=headers, timeout=10)

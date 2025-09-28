@@ -1,7 +1,7 @@
 import requests
 from config import Config
 
-HEADERS = {"Host": "51.68.124.207:9090"}  # hoặc host container Moodle nếu cùng Docker network
+HEADERS = {"Host": Config.ADDRESS_MOODLE} 
 TIMEOUT = 30  # giây
 
 def get_courses_from_moodle():

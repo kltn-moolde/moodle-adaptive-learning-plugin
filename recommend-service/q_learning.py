@@ -173,7 +173,7 @@ def call_moodle_api(function, extra_params):
     params.update(extra_params)
 
     headers = {
-        "Host": "51.68.124.207:9090",  
+        "Host": Config.ADDRESS_MOODLE,
         "Content-Type": "application/x-www-form-urlencoded"
     }
 

@@ -47,6 +47,7 @@ class Settings(BaseSettings):
     # Moodle API
     MOODLE_API_URL: str = "http://51.68.124.207:9090/webservice/rest/server.php"
     MOODLE_API_TOKEN: str = "9b13f135bae7ba27d67e609c414b70df"
+    ADDRESS_MOODLE: str = "127.0.0.1:8100"
     
     # Security
     ALLOWED_HOSTS: List[str] = ["localhost", "127.0.0.1", "51.68.124.207"]

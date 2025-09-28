@@ -7,6 +7,12 @@ class Config:
         "MOODLE_API_BASE",
         "http://localhost:8100/webservice/rest/server.php"
     )
+    
+    ADDRESS_MOODLE = os.getenv(
+        "ADDRESS_MOODLE",
+        "localhost:8100"
+    )
+    
     TOKEN_PLUGIN_PHP_MOODLE = os.getenv(
         "TOKEN_PLUGIN_PHP_MOODLE",
         "7e6e5e687f484ae22d9b686e712c1060"
