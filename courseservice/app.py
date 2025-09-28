@@ -11,6 +11,7 @@ def create_app():
 
     app.register_blueprint(course_bp, url_prefix="/api")
 
+
     return app
 
 if __name__ == "__main__":
