@@ -77,11 +77,33 @@ export class LearningPathService {
   // Get complete learning path for user
   async getLearningPath(userId: number, courseId: number): Promise<LearningPathData> {
     try {
-      // Get suggested action first
+      // Get suggested action from real API
       const suggestedAction = await this.getSuggestedAction(userId, courseId);
       
-      // Generate learning path based on suggested action
-      const learningPath = this.generateLearningPathFromAction(suggestedAction);
+      // Create minimal learning path with only real data from API
+      const learningPath: LearningPathData = {
+        course_id: suggestedAction.course_id,
+        user_id: suggestedAction.user_id,
+        current_step: 1,
+        total_steps: 1,
+        progress: 0,
+        steps: [
+          {
+            id: 'current_action',
+            title: suggestedAction.source_state.lesson_name || `Section ${suggestedAction.source_state.section_id}`,
+            description: this.getActionDescription(suggestedAction.suggested_action),
+            completed: false,
+            current: true,
+            action: suggestedAction.suggested_action,
+            section_id: suggestedAction.source_state.section_id,
+            quiz_level: suggestedAction.source_state.quiz_level,
+            score_bin: suggestedAction.source_state.score_bin,
+            complete_rate: suggestedAction.source_state.complete_rate_bin,
+            lesson_name: suggestedAction.source_state.lesson_name || 'Current Lesson'
+          }
+        ],
+        next_action: suggestedAction
+      };
       
       return learningPath;
     } catch (error) {
@@ -91,102 +113,9 @@ export class LearningPathService {
     }
   }
 
-  // Generate learning path based on suggested action
-  private generateLearningPathFromAction(action: SuggestedAction): LearningPathData {
-    const steps = this.generateStepsFromAction(action);
-    const currentStepIndex = steps.findIndex(step => step.current);
-    
-    return {
-      course_id: action.course_id,
-      user_id: action.user_id,
-      current_step: currentStepIndex + 1,
-      total_steps: steps.length,
-      progress: Math.round((currentStepIndex / steps.length) * 100),
-      steps: steps,
-      next_action: action
-    };
-  }
 
-  // Generate steps based on suggested action
-  private generateStepsFromAction(action: SuggestedAction): LearningStep[] {
-    const { source_state, suggested_action } = action;
 
-    // Generate steps based on current state and suggested action
-    const steps: LearningStep[] = [
-      {
-        id: 'intro',
-        title: 'Introduction to Course',
-        description: 'Get familiar with course materials and objectives',
-        completed: source_state.complete_rate_bin > 0.2,
-        current: false,
-        action: 'read_material',
-        section_id: 1,
-        quiz_level: 'easy',
-        score_bin: 1,
-        complete_rate: 0.1,
-        lesson_name: source_state.lesson_name
-      },
-      {
-        id: 'basic_concepts',
-        title: 'Basic Concepts',
-        description: 'Learn fundamental concepts and terminology',
-        completed: source_state.complete_rate_bin > 0.4,
-        current: false,
-        action: 'watch_video',
-        section_id: 2,
-        quiz_level: 'easy',
-        score_bin: 3,
-        complete_rate: 0.3,
-        lesson_name: source_state.lesson_name
-      },
-      {
-        id: 'current_section',
-        title: `Section ${source_state.section_id}`,
-        description: this.getActionDescription(suggested_action),
-        completed: false,
-        current: true,
-        action: suggested_action,
-        section_id: source_state.section_id,
-        quiz_level: source_state.quiz_level,
-        score_bin: source_state.score_bin,
-        complete_rate: source_state.complete_rate_bin,
-        lesson_name: source_state.lesson_name
-      }
-    ];
 
-    // Add future steps based on suggested action
-    if (suggested_action.includes('quiz')) {
-      steps.push({
-        id: 'advanced_practice',
-        title: 'Advanced Practice',
-        description: 'Apply knowledge with advanced exercises',
-        completed: false,
-        current: false,
-        action: 'do_advanced_quiz',
-        section_id: source_state.section_id + 1,
-        quiz_level: 'hard',
-        score_bin: source_state.score_bin + 2,
-        complete_rate: source_state.complete_rate_bin + 0.2,
-        lesson_name: source_state.lesson_name
-      });
-    }
-
-    steps.push({
-      id: 'final_assessment',
-      title: 'Final Assessment',
-      description: 'Complete the course with final evaluation',
-      completed: false,
-      current: false,
-      action: 'final_exam',
-      section_id: source_state.section_id + 2,
-      quiz_level: 'hard',
-      score_bin: 10,
-      complete_rate: 1.0,
-      lesson_name: source_state.lesson_name
-    });
-
-    return steps;
-  }
 
   // Get action description based on suggested action
   private getActionDescription(action: string): string {

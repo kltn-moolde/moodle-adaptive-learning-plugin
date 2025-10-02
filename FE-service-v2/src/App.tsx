@@ -3,15 +3,12 @@ import type { User } from './types';
 import Header from './components/Header';
 import Navigation from './components/Navigation';
 import StudentDashboard from './pages/StudentDashboard';
-import InstructorDashboard from './pages/InstructorDashboard';
+import TeacherDashboard from './pages/TeacherDashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import Profile from './pages/Profile';
 import { useLTIAuth, LTILoader, LTIError, LTIContext } from './components/lti';
 import {
   mockUsers,
-  mockStudentProgress,
-  mockVideoAnalytics,
-  mockActionAnalytics,
   mockSystemMetrics
 } from './data/mockData';
 
@@ -129,10 +126,9 @@ function App() {
       case 'students':
         if (currentUser.role === 'INSTRUCTOR') {
           return (
-            <InstructorDashboard
-              students={mockStudentProgress}
-              videoAnalytics={mockVideoAnalytics}
-              actionAnalytics={mockActionAnalytics}
+            <TeacherDashboard
+              userId={parseInt(currentUser.id)}
+              courseId={parseInt(ltiUser?.courseId?.toString() || '3')}
             />
           );
         }

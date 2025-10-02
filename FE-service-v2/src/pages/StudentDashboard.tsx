@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { learningPathService, type LearningPathData } from '../services/learningPathService';
+import DashboardAnalytics from '../components/DashboardAnalytics';
 
 interface StudentDashboardProps {
   userId: number;
@@ -150,107 +151,160 @@ const StudentDashboard: React.FC<StudentDashboardProps> = ({ userId, courseId })
         )}
       </div>
 
-      {/* Roadmap */}
+      {/* Current Recommended Action */}
       <div className="bg-white rounded-lg shadow-md p-6">
-        <h3 className="text-xl font-bold text-primary-800 mb-6">Learning Roadmap</h3>
+        <h3 className="text-xl font-bold text-primary-800 mb-6">Current Recommended Action</h3>
         
-        <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-primary-200"></div>
-          
-          <div className="space-y-6">
-            {learningPath.steps.map((step, index) => (
-              <div key={index} className="relative flex items-start">
-                {/* Step circle */}
-                <div className={`relative z-10 flex items-center justify-center w-16 h-16 rounded-full border-4 ${
-                  step.completed 
-                    ? 'bg-primary-500 border-primary-500' 
-                    : index === learningPath.current_step - 1
-                    ? 'bg-white border-primary-500'
-                    : 'bg-white border-gray-300'
-                }`}>
-                  {step.completed ? (
-                    <i className="fas fa-check text-white text-lg"></i>
-                  ) : index === learningPath.current_step - 1 ? (
-                    <span className="text-primary-500 font-bold">{index + 1}</span>
-                  ) : (
-                    <span className="text-gray-400 font-bold">{index + 1}</span>
-                  )}
-                </div>
-                
-                {/* Content */}
-                <div className="ml-6 flex-1">
-                  <div className={`p-4 rounded-lg border-2 ${
-                    step.completed 
-                      ? 'bg-primary-50 border-primary-200' 
-                      : index === learningPath.current_step - 1
-                      ? 'bg-blue-50 border-blue-200'
-                      : 'bg-gray-50 border-gray-200'
-                  }`}>
-                    <h4 className="font-semibold text-gray-800 mb-2">Step {index + 1}: {step.action}</h4>
-                    <p className="text-sm text-primary-700 mb-2">{step.lesson_name}</p>
-                    <p className="text-gray-600 text-sm mb-3">
-                      Action: {step.action.replace(/_/g, ' ')}
-                      {index === learningPath.current_step - 1 && learningPath.next_action && 
-                        ` (Q-Value: ${learningPath.next_action.q_value.toFixed(2)})`}
-                    </p>
-                    
-                    {/* Step Status */}
-                    <div className="flex items-center space-x-4 text-sm">
-                      <span className={`flex items-center ${step.completed ? 'text-green-600' : 'text-gray-600'}`}>
-                        <i className={`fas ${step.completed ? 'fa-check-circle' : 'fa-clock'} mr-1`}></i>
-                        {step.completed ? 'Completed' : 'Pending'}
-                      </span>
-                    </div>
-                    
-                    {/* Action Button */}
-                    {!step.completed && index === learningPath.current_step - 1 && (
-                      <button 
-                        onClick={handleExecuteAction}
-                        className="mt-3 px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors"
-                      >
-                        Execute Action
-                      </button>
-                    )}
+        {learningPath.steps.length > 0 && (
+          <div className="bg-gradient-to-r from-blue-50 to-primary-50 rounded-lg p-6 border-l-4 border-primary-500">
+            <div className="flex items-start justify-between">
+              <div className="flex-1">
+                <div className="flex items-center mb-3">
+                  <div className="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center mr-4">
+                    <i className="fas fa-lightbulb text-white text-lg"></i>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-semibold text-gray-800">{learningPath.steps[0].title}</h4>
+                    <p className="text-sm text-primary-700">{learningPath.steps[0].lesson_name}</p>
                   </div>
                 </div>
+                
+                <p className="text-gray-700 mb-4">{learningPath.steps[0].description}</p>
+                
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                  <div className="text-center">
+                    <div className="text-sm text-gray-500">Section</div>
+                    <div className="font-semibold">{learningPath.steps[0].section_id}</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-sm text-gray-500">Level</div>
+                    <div className={`font-semibold px-2 py-1 rounded text-xs ${getDifficultyColor(learningPath.steps[0].quiz_level)}`}>
+                      {learningPath.steps[0].quiz_level}
+                    </div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-sm text-gray-500">Score Bin</div>
+                    <div className="font-semibold">{learningPath.steps[0].score_bin}</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-sm text-gray-500">Complete Rate</div>
+                    <div className="font-semibold">{(learningPath.steps[0].complete_rate * 100).toFixed(0)}%</div>
+                  </div>
+                </div>
+                
+                <button 
+                  onClick={handleExecuteAction}
+                  className="w-full md:w-auto px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors flex items-center justify-center"
+                >
+                  <i className="fas fa-play mr-2"></i>
+                  {learningPath.steps[0].action.replace(/_/g, ' ').toUpperCase()}
+                </button>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
-      {/* Learning Insights */}
+      {/* Learning Analytics from ML API */}
       <div className="bg-white rounded-lg shadow-md p-6">
-        <h3 className="text-xl font-bold text-primary-800 mb-4">Learning Insights</h3>
+        <h3 className="text-xl font-bold text-primary-800 mb-4">ML Learning Analytics</h3>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Current State */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Current Learning State */}
           <div className="bg-blue-50 rounded-lg p-4">
-            <h4 className="font-semibold text-blue-800 mb-2">Current State</h4>
+            <h4 className="font-semibold text-blue-800 mb-3 flex items-center">
+              <i className="fas fa-chart-bar mr-2"></i>
+              Current State
+            </h4>
             {learningPath.next_action && (
-              <div className="space-y-2 text-sm">
-                <p><span className="font-medium">Quiz Level:</span> {learningPath.next_action.source_state.quiz_level}</p>
-                <p><span className="font-medium">Complete Rate Bin:</span> {learningPath.next_action.source_state.complete_rate_bin}</p>
-                <p><span className="font-medium">Score Bin:</span> {learningPath.next_action.source_state.score_bin}</p>
-                <p><span className="font-medium">Section ID:</span> {learningPath.next_action.source_state.section_id}</p>
+              <div className="space-y-3 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Lesson:</span>
+                  <span className="font-medium">{learningPath.next_action.source_state.lesson_name || 'N/A'}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Quiz Level:</span>
+                  <span className={`font-medium px-2 py-1 rounded text-xs ${getDifficultyColor(learningPath.next_action.source_state.quiz_level)}`}>
+                    {learningPath.next_action.source_state.quiz_level}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Complete Rate:</span>
+                  <span className="font-medium">{(learningPath.next_action.source_state.complete_rate_bin * 100).toFixed(0)}%</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Score Bin:</span>
+                  <span className="font-medium">{learningPath.next_action.source_state.score_bin}/10</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Section:</span>
+                  <span className="font-medium">{learningPath.next_action.source_state.section_id}</span>
+                </div>
               </div>
             )}
           </div>
 
-          {/* Next Action */}
+          {/* ML Recommendation */}
           <div className="bg-green-50 rounded-lg p-4">
-            <h4 className="font-semibold text-green-800 mb-2">Recommended Action</h4>
+            <h4 className="font-semibold text-green-800 mb-3 flex items-center">
+              <i className="fas fa-robot mr-2"></i>
+              ML Recommendation
+            </h4>
             {learningPath.next_action && (
-              <div className="space-y-2 text-sm">
-                <p><span className="font-medium">Action:</span> {learningPath.next_action.suggested_action.replace(/_/g, ' ')}</p>
-                <p><span className="font-medium">Q-Value:</span> {learningPath.next_action.q_value.toFixed(4)}</p>
-                <p><span className="font-medium">Confidence:</span> {(learningPath.next_action.q_value * 100).toFixed(1)}%</p>
+              <div className="space-y-3 text-sm">
+                <div>
+                  <span className="text-gray-600">Suggested Action:</span>
+                  <div className="font-medium text-green-700 mt-1">
+                    {learningPath.next_action.suggested_action.replace(/_/g, ' ').toUpperCase()}
+                  </div>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Q-Value:</span>
+                  <span className="font-medium">{learningPath.next_action.q_value.toFixed(4)}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Confidence:</span>
+                  <span className="font-medium">{Math.abs(learningPath.next_action.q_value * 100).toFixed(1)}%</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">User ID:</span>
+                  <span className="font-medium">{learningPath.next_action.user_id}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Course ID:</span>
+                  <span className="font-medium">{learningPath.next_action.course_id}</span>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Action Explanation */}
+          <div className="bg-yellow-50 rounded-lg p-4">
+            <h4 className="font-semibold text-yellow-800 mb-3 flex items-center">
+              <i className="fas fa-info-circle mr-2"></i>
+              Why This Action?
+            </h4>
+            {learningPath.steps.length > 0 && (
+              <div className="text-sm text-gray-700">
+                <p className="leading-relaxed">{learningPath.steps[0].description}</p>
+                <div className="mt-3 pt-3 border-t border-yellow-200">
+                  <p className="text-xs text-gray-500">
+                    Based on your current performance and learning patterns, 
+                    our ML algorithm recommends this action to optimize your learning progression.
+                  </p>
+                </div>
               </div>
             )}
           </div>
         </div>
       </div>
+
+      {/* Moodle Analytics Dashboard */}
+      <DashboardAnalytics 
+        userId={userId} 
+        courseId={courseId} 
+        isTeacher={false}
+      />
     </div>
   );
 };
