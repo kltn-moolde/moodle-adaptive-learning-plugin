@@ -77,5 +77,4 @@ yarn.lock
 mvnw
 mvnw.cmd
 
-demo_pineline/data/udk_moodle_log.csv
 demo_pineline/data/*.csv
