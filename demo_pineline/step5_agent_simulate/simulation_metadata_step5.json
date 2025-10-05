@@ -1,0 +1,31 @@
+{
+  "simulation_parameters": {
+    "n_agents": 200,
+    "num_sessions": 5,
+    "total_events": 19575,
+    "total_assessments": 8611
+  },
+  "validation_metrics": {
+    "event_distribution": {
+      "chi_square": 4036.700074255405,
+      "chi_square_pvalue": 0.0
+    },
+    "grade_distribution": {
+      "ks_statistic": 0.15580923624820966,
+      "ks_pvalue": 1.2992549245479595e-06,
+      "wasserstein_distance": 0.6176471193629445
+    }
+  },
+  "archetype_performance": {
+    "Struggling but Trying": {
+      "mean_grade": 6.727288843628022,
+      "std_grade": 1.463638034352961,
+      "n_assessments": 5572
+    },
+    "Efficient Learner": {
+      "mean_grade": 7.263424520536943,
+      "std_grade": 1.387276704523871,
+      "n_assessments": 3039
+    }
+  }
+}

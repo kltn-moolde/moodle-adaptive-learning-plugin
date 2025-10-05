@@ -1,0 +1,70 @@
+{
+  "hyperparameters": {
+    "alpha": 0.1,
+    "gamma": 0.9,
+    "epsilon": 0.1,
+    "num_epochs": 100
+  },
+  "state_space": {
+    "n_states": 25,
+    "archetypes": [
+      "Efficient Learner",
+      "Struggling but Trying"
+    ],
+    "knowledge_bins": [
+      0.0,
+      0.2,
+      0.4,
+      0.6,
+      0.8,
+      1.0
+    ],
+    "knowledge_labels": [
+      "Very Low",
+      "Low",
+      "Medium",
+      "High",
+      "Very High"
+    ],
+    "performance_bins": [
+      0,
+      3,
+      5,
+      7,
+      10
+    ],
+    "performance_labels": [
+      "Failing",
+      "Poor",
+      "Average",
+      "Good"
+    ]
+  },
+  "action_space": {
+    "n_actions": 6,
+    "actions": [
+      "assignment_submit",
+      "forum_post",
+      "quiz_attempt",
+      "reading_complete",
+      "resource_view",
+      "video_view"
+    ]
+  },
+  "q_table_shape": [
+    25,
+    6
+  ],
+  "training_results": {
+    "final_avg_q_value": 1.1059884584464899,
+    "final_avg_reward": 0.015385784330187727,
+    "total_updates": 5955400
+  },
+  "evaluation_results": {
+    "learned_policy_reward": 136.4127500000005,
+    "random_policy_reward": 136.9928000000004,
+    "frequent_policy_reward": 137.8429500000005,
+    "improvement_vs_random_pct": -0.4234164131252771,
+    "improvement_vs_frequent_pct": -1.0375575972510804
+  }
+}

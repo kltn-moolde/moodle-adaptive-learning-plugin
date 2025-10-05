@@ -1,0 +1,88 @@
+{
+  "num_configs_tested": 1,
+  "num_batches": 3,
+  "best_config": "default",
+  "batch_metrics": [
+    {
+      "batch_id": 0,
+      "config_id": "default",
+      "n_events": 20043,
+      "n_grades": 8680,
+      "avg_grade": 6.886713766716703,
+      "std_grade": 1.5225218455176914
+    },
+    {
+      "batch_id": 1,
+      "config_id": "default",
+      "n_events": 20179,
+      "n_grades": 8745,
+      "avg_grade": 6.820861746226221,
+      "std_grade": 1.5161058706195887
+    },
+    {
+      "batch_id": 2,
+      "config_id": "default",
+      "n_events": 19932,
+      "n_grades": 8613,
+      "avg_grade": 6.9035408353957255,
+      "std_grade": 1.4814172142707491
+    }
+  ],
+  "final_validation": {
+    "chi_square_pvalue": 0.0,
+    "ks_pvalue": 3.58912600200899e-05,
+    "wasserstein_distance": 0.5722148897965951
+  },
+  "data_statistics": {
+    "total_events": 60154,
+    "total_grades": 26038,
+    "unique_users": 600,
+    "avg_grade": 6.870163172329391,
+    "std_grade": 1.5072434469092155
+  },
+  "configurations": [
+    {
+      "config_id": "default",
+      "n_agents": 200,
+      "num_sessions": 5,
+      "events_per_session_range": [
+        10,
+        30
+      ],
+      "init_knowledge_ranges": {
+        "high_achiever": [
+          0.6,
+          0.8
+        ],
+        "struggling": [
+          0.2,
+          0.4
+        ],
+        "average": [
+          0.4,
+          0.6
+        ]
+      },
+      "learning_rate_mean": 0.1,
+      "learning_rate_std": 0.02,
+      "retention_rate_range": [
+        0.85,
+        0.95
+      ],
+      "performance_noise_std": 1.0,
+      "motivation_range": [
+        0.3,
+        1.0
+      ],
+      "event_impacts": {
+        "quiz_attempt": 0.08,
+        "video_view": 0.05,
+        "resource_view": 0.04,
+        "reading_complete": 0.06,
+        "assignment_submit": 0.1,
+        "forum_post": 0.03
+      },
+      "random_seed": 42
+    }
+  ]
+}

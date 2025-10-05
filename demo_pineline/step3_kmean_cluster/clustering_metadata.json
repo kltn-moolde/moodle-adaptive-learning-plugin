@@ -1,0 +1,64 @@
+{
+  "optimal_k": 2,
+  "metrics": {
+    "silhouette_score": 0.2571274330597957,
+    "davies_bouldin_index": 1.4643497296844878,
+    "calinski_harabasz_index": 457.04503645959204
+  },
+  "archetypes": {
+    "0": {
+      "name": "Efficient Learner",
+      "description": "High performance + Moderate engagement",
+      "profile": {
+        "total_events": 307.5295454545454,
+        "event_diversity": 18.697727272727274,
+        "num_courses": 7.175,
+        "active_days": 96.95227272727273,
+        "avg_grade": 6.365701207640863,
+        "grade_std": 2.260823478674288,
+        "num_assessments": 8.079545454545455
+      },
+      "count": 440,
+      "percentage": 39.63963963963964
+    },
+    "1": {
+      "name": "Struggling but Trying",
+      "description": "Low performance + High effort",
+      "profile": {
+        "total_events": 1286.7074626865672,
+        "event_diversity": 33.34925373134328,
+        "num_courses": 10.4044776119403,
+        "active_days": 128.48507462686567,
+        "avg_grade": 5.306889887790169,
+        "grade_std": 3.8388551956204293,
+        "num_assessments": 20.03283582089552
+      },
+      "count": 670,
+      "percentage": 60.36036036036037
+    }
+  },
+  "cluster_centers": [
+    [
+      -0.7390526158842949,
+      -0.811465321971802,
+      -0.6519698705735479,
+      -0.7321823485371668,
+      0.24205954774950256,
+      -0.6054096544035723,
+      -0.7224014186662995
+    ],
+    [
+      0.4853479865508803,
+      0.5329025995038702,
+      0.4281593179885988,
+      0.4808361691885874,
+      -0.15896447911907596,
+      0.3975824596083156,
+      0.47441287195995824
+    ]
+  ],
+  "pca_explained_variance": [
+    0.4670792366304686,
+    0.19855539803239614
+  ]
+}

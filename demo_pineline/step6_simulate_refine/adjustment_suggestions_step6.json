@@ -1,0 +1,18 @@
+{
+  "event_distribution": {
+    "issue": "Chi-square test failed",
+    "actions": [
+      "adjust_markov_probs",
+      "add_temporal_effects"
+    ]
+  },
+  "grade_distribution": {
+    "issue": "KS test failed",
+    "current_mean": 6.916502212821635,
+    "target_mean": 6.5,
+    "actions": [
+      "adjust_init_knowledge",
+      "tune_learning_rate"
+    ]
+  }
+}

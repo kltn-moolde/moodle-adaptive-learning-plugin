@@ -1,0 +1,57 @@
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                     DATA QUALITY REPORT - BƯỚC 6                             ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+1. DATASET SUMMARY
+   ├─ Total events generated: 60,154
+   ├─ Total grades generated: 26,038
+   ├─ Unique users: 600
+   ├─ Unique event sequences: 600
+   └─ Data increase from Step 5: 207.3%
+
+2. VALIDATION METRICS (vs Real Data)
+   ├─ Event Distribution (Chi-square test)
+   │  ├─ χ² statistic: 13180.51
+   │  ├─ p-value: 0.0000
+   │  └─ Result: ❌ FAIL
+   │
+   ├─ Grade Distribution (Kolmogorov-Smirnov test)
+   │  ├─ KS statistic: 0.1349
+   │  ├─ p-value: 0.0000
+   │  └─ Result: ❌ FAIL
+   │
+   └─ Distribution Distance (Wasserstein)
+      ├─ Distance: 0.5722
+      └─ Result: ✅ GOOD (< 1.0)
+
+3. GRADE STATISTICS
+   ├─ Mean: 6.870
+   ├─ Std: 1.507
+   ├─ Min: 0.964
+   ├─ Max: 10.000
+   ├─ Skewness: -0.023
+   └─ Kurtosis: -0.360
+
+4. ARCHETYPE DISTRIBUTION
+   ├─ Efficient Learner: 241 users (40.2%)
+   ├─ Struggling but Trying: 359 users (59.8%)
+
+5. CONFIGURATION TESTING
+   ├─ Configurations tested: 1
+   ├─ Total batches: 3
+   └─ Best configuration: 'default'
+
+6. IMPROVEMENT FROM STEP 5
+   ├─ Event distribution p-value: 0.0000 → 0.0000
+   ├─ Grade distribution p-value: 0.0000 → 0.0000
+   └─ Wasserstein distance: 0.6176 → 0.5722
+
+7. RECOMMENDATION FOR Q-LEARNING
+   ❌ Consider more refinement before Q-learning
+
+   Recommended file: synthetic_events_refined_step6.csv
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                              END OF REPORT                                   ║
+╚══════════════════════════════════════════════════════════════════════════════╝

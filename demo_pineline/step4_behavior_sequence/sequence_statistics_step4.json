@@ -1,0 +1,16 @@
+{
+  "total_users": 1090,
+  "total_events": 5000,
+  "avg_sequence_length": 4.587155963302752,
+  "median_sequence_length": 4.0,
+  "min_sequence_length": 1,
+  "max_sequence_length": 12,
+  "event_type_distribution": {
+    "quiz_attempt": 1497,
+    "resource_view": 1303,
+    "video_view": 755,
+    "assignment_submit": 730,
+    "forum_post": 493,
+    "reading_complete": 222
+  }
+}
