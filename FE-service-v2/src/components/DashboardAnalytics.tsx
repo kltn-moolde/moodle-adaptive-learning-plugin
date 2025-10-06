@@ -16,6 +16,8 @@ const DashboardAnalyticsComponent: React.FC<DashboardAnalyticsProps> = ({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  userId = 4;
+  courseId = 3;
   useEffect(() => {
     const fetchAnalytics = async () => {
       try {
@@ -258,7 +260,7 @@ const DashboardAnalyticsComponent: React.FC<DashboardAnalyticsProps> = ({
           Competency Report
         </h3>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {analytics.competencyReport.competencies.map((comp, index) => (
             <div key={index} className="border border-gray-200 rounded-lg p-4">
               <div className="flex items-center justify-between mb-2">
@@ -299,7 +301,7 @@ const DashboardAnalyticsComponent: React.FC<DashboardAnalyticsProps> = ({
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
 
       {/* Teacher Dashboard - Simple Overview */}

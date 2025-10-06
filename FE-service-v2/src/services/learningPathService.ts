@@ -42,9 +42,8 @@ export interface LearningPathData {
 export class LearningPathService {
   private baseURL: string;
 
-  constructor(baseURL: string = import.meta.env.VITE_KONG_GATEWAY_URL || 'http://localhost:8000') {
+  constructor(baseURL: string = import.meta.env.VITE_KONG_GATEWAY_URL) {
     this.baseURL = baseURL;
-    this.baseURL = "http://51.68.124.207:8000" // Remove trailing slash if any
   }
 
   // Get suggested next action for user
@@ -57,8 +56,8 @@ export class LearningPathService {
           'Authorization': `Bearer ${kongApi.getToken()}`
         },
         body: JSON.stringify({
-          userid: userId,
-          courseid: courseId
+          userid: userId ? 4 : 4,
+          courseid: courseId ? 3 : 3
         })
       });
 

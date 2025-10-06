@@ -203,8 +203,8 @@ export class MoodleApiService {
   private token: string;
 
   constructor(
-    moodleUrl: string = import.meta.env.VITE_MOODLE_URL || 'http://localhost:8100',
-    token: string = import.meta.env.VITE_MOODLE_TOKEN || ''
+    moodleUrl: string = import.meta.env.VITE_MOODLE_URL,
+    token: string = import.meta.env.VITE_MOODLE_TOKEN
   ) {
     this.moodleUrl = moodleUrl;
     this.token = token;
@@ -212,39 +212,48 @@ export class MoodleApiService {
 
   // Get course completion status
   async getCourseCompletion(userId: number, courseId: number): Promise<CourseCompletion> {
-    try {
-      const response = await fetch(`${this.moodleUrl}/webservice/rest/server.php`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams({
-          wstoken: this.token,
-          wsfunction: 'core_completion_get_course_completion_status',
-          moodlewsrestformat: 'json',
-          courseid: courseId.toString(),
-          userid: userId.toString(),
-        }),
-      });
+  try {
+    const bodyData = new URLSearchParams({
+      wstoken: this.token,
+      wsfunction: 'core_completion_get_course_completion_status',
+      moodlewsrestformat: 'json',
+      courseid: courseId.toString(),
+      userid: userId.toString(),
+    });
 
-      if (!response.ok) {
-        throw new Error(`Moodle API error: ${response.status}`);
-      }
 
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Error getting course completion:', error);
-      // Mock data fallback
-      return {
-        courseid: courseId,
-        userid: userId,
-        completionstatus: 0,
-        progress: 65,
-        timecompleted: undefined,
-      };
+    const response = await fetch(`${this.moodleUrl}/webservice/rest/server.php`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: bodyData,
+    });
+
+    if (!response.ok) {
+      const text = await response.text();
+      console.error('❌ [getCourseCompletion] Error response body:', text);
+      throw new Error(`Moodle API error: ${response.status}`);
     }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error('💥 [getCourseCompletion] Exception:', error);
+
+    // Mock data fallback
+    const mockData = {
+      courseid: courseId,
+      userid: userId,
+      completionstatus: 0,
+      progress: 65,
+      timecompleted: undefined,
+    };
+    console.log('🧩 [getCourseCompletion] Returning mock data:', mockData);
+    return mockData;
   }
+}
 
   // Get activities completion status
   async getActivitiesCompletion(userId: number, courseId: number): Promise<ActivityCompletion[]> {
