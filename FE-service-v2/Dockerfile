@@ -5,8 +5,10 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
+RUN npm install -g npm@latest
+
 # Install all dependencies (dev + prod)
-RUN npm ci
+RUN npm ci || (echo "=== NPM CI LOGS ===" && cat /root/.npm/_logs/*.log && exit 1)
 
 # Copy source code
 COPY . .
