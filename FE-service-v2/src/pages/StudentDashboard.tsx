@@ -289,7 +289,7 @@ const StudentDashboard: React.FC<StudentDashboardProps> = ({ userId, courseId })
                 <p className="leading-relaxed">{learningPath.steps[0].description}</p>
                 <div className="mt-3 pt-3 border-t border-yellow-200">
                   <p className="text-xs text-gray-500">
-                    Based on your current performance and learning patterns, 
+                    AI mock: Based on your current performance and learning patterns, 
                     our ML algorithm recommends this action to optimize your learning progression.
                   </p>
                 </div>
