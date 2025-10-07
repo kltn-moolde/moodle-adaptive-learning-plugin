@@ -28,7 +28,7 @@ export const useKongAuth = () => {
                 setAuthenticated(false);
             }
         } catch (error) {
-            console.error('Auth check failed:', error);
+            console.error('Auth check failed :', error);
             setUser(null);
             setAuthenticated(false);
         } finally {
