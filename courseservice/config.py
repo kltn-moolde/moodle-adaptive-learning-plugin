@@ -5,3 +5,6 @@ class Config:
     MOODLE_API_BASE = os.getenv("MOODLE_API_BASE", "http://localhost:8100/webservice/rest/server.php")
     ADDRESS_MOODLE = os.getenv("ADDRESS_MOODLE", "localhost:8100")
     MOODLE_TOKEN = os.getenv("MOODLE_TOKEN", "a5187ae3fec69f55815fa924f038ccf2")
+    
+    # Gemini AI Configuration
+    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "AIzaSyAxNFSQyws7cC9ZnRFKT2rwRU8vT4pXWF8")

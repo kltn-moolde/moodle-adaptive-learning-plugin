@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { learningPathService, type LearningPathData } from '../services/learningPathService';
+import { learningPathExplanationService, type LearningPathExplanation } from '../services/learningPathExplanationService';
 import DashboardAnalytics from '../components/DashboardAnalytics';
 
 interface StudentDashboardProps {
@@ -11,6 +12,9 @@ const StudentDashboard: React.FC<StudentDashboardProps> = ({ userId, courseId })
   const [learningPath, setLearningPath] = useState<LearningPathData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [aiExplanation, setAiExplanation] = useState<LearningPathExplanation | null>(null);
+  const [loadingAI, setLoadingAI] = useState(false);
+  const [showAIExplanation, setShowAIExplanation] = useState(false);
 
   // Load learning path on component mount
   useEffect(() => {
@@ -55,6 +59,47 @@ const StudentDashboard: React.FC<StudentDashboardProps> = ({ userId, courseId })
       } catch (err) {
         console.error('Error executing action:', err);
       }
+    }
+  };
+
+  const handleGetAIExplanation = async () => {
+    if (!learningPath?.next_action) return;
+
+    try {
+      setLoadingAI(true);
+      setError(null);
+      
+      // Prepare learning path data for API
+      const learningPathData = {
+        suggested_action: learningPath.next_action.suggested_action,
+        q_value: learningPath.next_action.q_value,
+        source_state: {
+          section_id: learningPath.next_action.source_state.section_id,
+          lesson_name: learningPath.next_action.source_state.lesson_name || 'Current Lesson',
+          quiz_level: learningPath.next_action.source_state.quiz_level,
+          complete_rate_bin: learningPath.next_action.source_state.complete_rate_bin,
+          score_bin: learningPath.next_action.source_state.score_bin
+        }
+      };
+
+      // Call AI explanation API
+      const explanation = await learningPathExplanationService.getExplanation(
+        userId.toString(),
+        courseId.toString(),
+        learningPathData
+      );
+
+      if (explanation) {
+        setAiExplanation(explanation);
+        setShowAIExplanation(true);
+      } else {
+        setError('Không thể lấy giải thích từ AI. Vui lòng thử lại sau.');
+      }
+    } catch (err) {
+      console.error('Error getting AI explanation:', err);
+      setError('Không thể lấy giải thích từ AI. Vui lòng thử lại sau.');
+    } finally {
+      setLoadingAI(false);
     }
   };
 
@@ -137,16 +182,36 @@ const StudentDashboard: React.FC<StudentDashboardProps> = ({ userId, courseId })
           )}
         </div>
 
-        {/* Next Action Button */}
+        {/* Action Buttons */}
         {learningPath.next_action && (
-          <div className="mt-4 pt-4 border-t border-gray-200">
-            <button 
-              onClick={handleExecuteAction}
-              className="px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors"
-            >
-              <i className="fas fa-play mr-2"></i>
-              {learningPath.next_action.suggested_action.replace(/_/g, ' ').toUpperCase()}
-            </button>
+          <div className="mt-4 pt-4 border-t border-gray-200 space-y-3">
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button 
+                onClick={handleExecuteAction}
+                className="flex-1 px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors flex items-center justify-center"
+              >
+                <i className="fas fa-play mr-2"></i>
+                {learningPath.next_action.suggested_action.replace(/_/g, ' ').toUpperCase()}
+              </button>
+              
+              <button
+                onClick={handleGetAIExplanation}
+                disabled={loadingAI}
+                className="px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-lg hover:from-purple-600 hover:to-indigo-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-w-[160px]"
+              >
+                {loadingAI ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    Đang phân tích...
+                  </>
+                ) : (
+                  <>
+                    <i className="fas fa-brain mr-2"></i>
+                    Lấy ý kiến từ AI
+                  </>
+                )}
+              </button>
+            </div>
           </div>
         )}
       </div>
@@ -204,6 +269,87 @@ const StudentDashboard: React.FC<StudentDashboardProps> = ({ userId, courseId })
           </div>
         )}
       </div>
+
+      {/* AI Explanation Section */}
+      {showAIExplanation && aiExplanation && (
+        <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-lg shadow-md p-6 border border-purple-200">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-xl font-bold text-purple-800 flex items-center">
+              <i className="fas fa-brain mr-2"></i>
+              AI Giải Thích Lộ Trình Học Tập
+            </h3>
+            <button
+              onClick={() => setShowAIExplanation(false)}
+              className="text-purple-600 hover:text-purple-800 p-2 rounded-full hover:bg-purple-100 transition-colors"
+            >
+              <i className="fas fa-times"></i>
+            </button>
+          </div>
+          
+          <div className="space-y-4">
+            {/* Main Reason */}
+            <div className="bg-white rounded-lg p-4 border-l-4 border-purple-500">
+              <h4 className="font-semibold text-purple-800 mb-2 flex items-center">
+                <i className="fas fa-lightbulb mr-2"></i>
+                Lý do chính
+              </h4>
+              <p className="text-gray-700">{aiExplanation.reason}</p>
+            </div>
+
+            {/* Current Status */}
+            <div className="bg-white rounded-lg p-4 border-l-4 border-blue-500">
+              <h4 className="font-semibold text-blue-800 mb-2 flex items-center">
+                <i className="fas fa-user-graduate mr-2"></i>
+                Trạng thái hiện tại của bạn
+              </h4>
+              <p className="text-gray-700">{aiExplanation.current_status}</p>
+            </div>
+
+            {/* Benefit */}
+            <div className="bg-white rounded-lg p-4 border-l-4 border-green-500">
+              <h4 className="font-semibold text-green-800 mb-2 flex items-center">
+                <i className="fas fa-trophy mr-2"></i>
+                Lợi ích khi làm theo gợi ý
+              </h4>
+              <p className="text-gray-700">{aiExplanation.benefit}</p>
+            </div>
+
+            {/* Next Steps */}
+            <div className="bg-white rounded-lg p-4 border-l-4 border-orange-500">
+              <h4 className="font-semibold text-orange-800 mb-2 flex items-center">
+                <i className="fas fa-list-ol mr-2"></i>
+                Các bước tiếp theo
+              </h4>
+              <ul className="space-y-2">
+                {aiExplanation.next_steps.map((step, index) => (
+                  <li key={index} className="flex items-start text-gray-700">
+                    <span className="bg-orange-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5 flex-shrink-0">
+                      {index + 1}
+                    </span>
+                    <span className="flex-1">{step}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Motivation */}
+            <div className="bg-gradient-to-r from-purple-500 to-indigo-600 rounded-lg p-4 text-white text-center">
+              <h4 className="font-semibold mb-2 flex items-center justify-center">
+                <i className="fas fa-heart mr-2"></i>
+                Lời động viên
+              </h4>
+              <p className="text-purple-100">{aiExplanation.motivation}</p>
+            </div>
+          </div>
+
+          <div className="mt-4 text-center">
+            <p className="text-xs text-purple-600">
+              <i className="fas fa-info-circle mr-1"></i>
+              Giải thích được tạo bởi AI Gemini dựa trên dữ liệu học tập của bạn
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Learning Analytics from ML API */}
       <div className="bg-white rounded-lg shadow-md p-6">

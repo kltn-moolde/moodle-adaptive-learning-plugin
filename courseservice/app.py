@@ -2,6 +2,7 @@ from flask import Flask
 from config import Config
 from database import mongo
 from routes.course_routes import course_bp
+from routes.learning_path_routes import learning_path_bp
 from flask_cors import CORS
 
 def create_app():
@@ -13,6 +14,7 @@ def create_app():
     CORS(app)
 
     app.register_blueprint(course_bp, url_prefix="/api")
+    app.register_blueprint(learning_path_bp, url_prefix="/api")
 
 
     return app
