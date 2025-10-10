@@ -26,7 +26,7 @@ interface LearningPathData {
 }
 
 class LearningPathExplanationService {
-  private baseUrl = '/api';
+  private baseUrl = import.meta.env.VITE_KONG_GATEWAY_URL + '/api';
 
   async getExplanation(
     userId: string, 
