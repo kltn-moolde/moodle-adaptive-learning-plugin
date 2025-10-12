@@ -16,9 +16,9 @@ const StudentDashboard: React.FC<StudentDashboardProps> = ({ userId, courseId })
   const [loadingAI, setLoadingAI] = useState(false);
   const [showAIExplanation, setShowAIExplanation] = useState(false);
 
-  // Load learning path on component mount
+  // Load learning path and AI explanation on component mount
   useEffect(() => {
-    const loadLearningPath = async () => {
+    const loadData = async () => {
       try {
         setLoading(true);
         setError(null);
@@ -26,15 +26,27 @@ const StudentDashboard: React.FC<StudentDashboardProps> = ({ userId, courseId })
         // Call real API to get learning path
         const pathData = await learningPathService.getLearningPath(userId, courseId);
         setLearningPath(pathData);
+
+        // Auto-load existing AI explanation if available
+        const existingExplanation = await learningPathExplanationService.getLatestUserExplanation(
+          userId.toString(), 
+          courseId.toString()
+        );
+        
+        if (existingExplanation) {
+          setAiExplanation(existingExplanation);
+          setShowAIExplanation(true);
+        }
+        
       } catch (err) {
-        console.error('Error loading learning path:', err);
+        console.error('Error loading data:', err);
         setError('Failed to load learning path. Please try again.');
       } finally {
         setLoading(false);
       }
     };
 
-    loadLearningPath();
+    loadData();
   }, [userId, courseId]);
 
   const getDifficultyColor = (quizLevel: string) => {

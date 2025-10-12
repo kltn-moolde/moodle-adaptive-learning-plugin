@@ -74,6 +74,53 @@ class LearningPathExplanationService {
     }
   }
 
+  async getTeacherRecommendations(courseId: string): Promise<any> {
+    try {
+      const response = await fetch(`${this.baseUrl}/learning-path/teacher-recommendations/${courseId}`);
+
+      if (!response.ok) {
+        return null; // No recommendations found
+      }
+
+      const result = await response.json();
+      return result.success ? result.data : null;
+    } catch (error) {
+      console.error('Error getting teacher recommendations:', error);
+      return null;
+    }
+  }
+
+  async generateTeacherRecommendations(courseId: string): Promise<any> {
+    try {
+      const response = await fetch(`${this.baseUrl}/learning-path/generate-teacher-recommendations/${courseId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      return result.success ? result.data : null;
+    } catch (error) {
+      console.error('Error generating teacher recommendations:', error);
+      return null;
+    }
+  }
+
+  async getLatestUserExplanation(userId: string, courseId: string): Promise<LearningPathExplanation | null> {
+    try {
+      const explanations = await this.getUserExplanations(userId, courseId);
+      return explanations.length > 0 ? explanations[0].explanation : null;
+    } catch (error) {
+      console.error('Error getting latest user explanation:', error);
+      return null;
+    }
+  }
+
   async healthCheck(): Promise<boolean> {
     try {
       const response = await fetch(`${this.baseUrl}/learning-path/health`);

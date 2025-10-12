@@ -190,6 +190,164 @@ def get_user_explanations(user_id, course_id):
         logger.error(f"Error getting user explanations: {e}")
         return jsonify({'error': 'Internal server error'}), 500
 
+@learning_path_bp.route('/learning-path/teacher-explanations/<course_id>', methods=['GET'])
+def get_teacher_explanations(course_id):
+    """Lấy tất cả explanations của course cho teacher"""
+    try:
+        explanations = list(mongo.db.learning_path_explanations.find(
+            {'course_id': course_id},
+            {'_id': 0, 'user_id': 1, 'explanation': 1, 'learning_path': 1, 'created_at': 1}
+        ).sort('created_at', -1))
+        
+        return jsonify({
+            'success': True,
+            'data': explanations
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"Error getting teacher explanations: {e}")
+        return jsonify({'error': 'Internal server error'}), 500
+
+@learning_path_bp.route('/learning-path/generate-teacher-recommendations/<course_id>', methods=['POST'])
+def generate_teacher_recommendations(course_id):
+    """Generate AI recommendations cho teacher về class"""
+    try:
+        # Lấy tất cả explanations của course
+        explanations = list(mongo.db.learning_path_explanations.find(
+            {'course_id': course_id}
+        ))
+        
+        if not explanations:
+            return jsonify({
+                'success': False,
+                'message': 'No student data available for recommendations'
+            }), 404
+        
+        # Tạo prompt cho teacher recommendations
+        prompt = create_teacher_recommendations_prompt(explanations, course_id)
+        
+        # Gọi Gemini AI
+        recommendations = gemini_service.generate_explanation(prompt)
+        
+        if recommendations:
+            # Lưu teacher recommendations
+            save_data = {
+                'course_id': course_id,
+                'type': 'teacher_recommendations',
+                'recommendations': recommendations,
+                'student_count': len(explanations),
+                'created_at': datetime.now(),
+                'source': 'gemini_ai'
+            }
+            
+            # Check if teacher recommendations already exist
+            existing = mongo.db.teacher_recommendations.find_one({'course_id': course_id})
+            if existing:
+                mongo.db.teacher_recommendations.update_one(
+                    {'course_id': course_id},
+                    {'$set': save_data}
+                )
+            else:
+                mongo.db.teacher_recommendations.insert_one(save_data)
+            
+            return jsonify({
+                'success': True,
+                'data': recommendations,
+                'student_count': len(explanations)
+            }), 200
+        else:
+            # Fallback recommendations
+            fallback = get_teacher_fallback_recommendations(course_id, len(explanations))
+            return jsonify({
+                'success': True,
+                'data': fallback,
+                'student_count': len(explanations),
+                'note': 'AI service unavailable, using fallback recommendations'
+            }), 200
+            
+    except Exception as e:
+        logger.error(f"Error generating teacher recommendations: {e}")
+        return jsonify({'error': 'Internal server error'}), 500
+
+def create_teacher_recommendations_prompt(explanations, course_id):
+    """Tạo prompt cho teacher recommendations"""
+    student_count = len(explanations)
+    
+    # Phân tích pattern từ student explanations
+    low_performers = sum(1 for exp in explanations if exp.get('learning_path', {}).get('source_state', {}).get('score_bin', 5) <= 3)
+    high_performers = sum(1 for exp in explanations if exp.get('learning_path', {}).get('source_state', {}).get('score_bin', 5) >= 8)
+    
+    prompt = f"""
+Bạn là AI mentor cho giáo viên. Hãy đưa ra gợi ý giảng dạy dựa trên dữ liệu học sinh.
+
+THÔNG TIN LỚP HỌC:
+- Course ID: {course_id}
+- Tổng số học sinh: {student_count}
+- Học sinh cần hỗ trợ (điểm thấp): {low_performers}
+- Học sinh giỏi (điểm cao): {high_performers}
+- Học sinh trung bình: {student_count - low_performers - high_performers}
+
+Trả về JSON format:
+{{
+  "class_overview": "Tổng quan tình hình lớp học (50-80 từ)",
+  "main_challenges": "Thách thức chính của lớp (40-60 từ)",
+  "teaching_suggestions": [
+    "Gợi ý 1 cụ thể",
+    "Gợi ý 2 cụ thể",
+    "Gợi ý 3 cụ thể"
+  ],
+  "priority_actions": [
+    "Hành động ưu tiên 1",
+    "Hành động ưu tiên 2"
+  ],
+  "motivation": "Lời động viên cho giáo viên (20-30 từ)"
+}}
+
+Viết bằng tiếng Việt, tập trung vào hành động cụ thể.
+"""
+    return prompt
+
+def get_teacher_fallback_recommendations(course_id, student_count):
+    """Fallback recommendations cho teacher"""
+    return {
+        "class_overview": f"Lớp học có {student_count} học sinh với mức độ đa dạng. Cần điều chỉnh phương pháp giảng dạy để phù hợp với từng nhóm học sinh.",
+        "main_challenges": "Học sinh có trình độ không đồng đều, cần phương pháp dạy phân hóa để đảm bảo tất cả đều theo kịp.",
+        "teaching_suggestions": [
+            "Tạo nhóm học tập theo trình độ để hỗ trợ lẫn nhau",
+            "Cung cấp bài tập bổ sung cho học sinh cần hỗ trợ",
+            "Thiết kế hoạt động thách thức cho học sinh giỏi"
+        ],
+        "priority_actions": [
+            "Xác định học sinh cần hỗ trợ thêm và tạo kế hoạch cá nhân hóa",
+            "Tăng cường tương tác và feedback trong quá trình học"
+        ],
+        "motivation": "Hãy kiên nhẫn! Mỗi học sinh đều có tiềm năng phát triển."
+    }
+
+@learning_path_bp.route('/learning-path/teacher-recommendations/<course_id>', methods=['GET'])
+def get_teacher_recommendations(course_id):
+    """Lấy teacher recommendations đã lưu"""
+    try:
+        recommendations = mongo.db.teacher_recommendations.find_one(
+            {'course_id': course_id},
+            {'_id': 0}
+        )
+        
+        if recommendations:
+            return jsonify({
+                'success': True,
+                'data': recommendations
+            }), 200
+        else:
+            return jsonify({
+                'success': False,
+                'message': 'No teacher recommendations found'
+            }), 404
+        
+    except Exception as e:
+        logger.error(f"Error getting teacher recommendations: {e}")
+        return jsonify({'error': 'Internal server error'}), 500
+
 @learning_path_bp.route('/learning-path/health', methods=['GET'])
 def health_check():
     """Health check"""

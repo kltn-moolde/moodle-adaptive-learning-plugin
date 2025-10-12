@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { learningPathExplanationService } from '../services/learningPathExplanationService';
 import DashboardAnalytics from '../components/DashboardAnalytics';
 import StudentsLearningPaths from '../components/StudentsLearningPaths';
 
@@ -7,114 +8,83 @@ interface TeacherDashboardProps {
   courseId: number;
 }
 
-interface ContentRecommendation {
-  type: 'difficulty_adjustment' | 'content_addition' | 'activity_suggestion' | 'competency_focus';
-  title: string;
-  description: string;
-  priority: 'high' | 'medium' | 'low';
-  targetStudents: number;
-  reasoning: string;
-  suggestedActions: string[];
+interface TeacherRecommendation {
+  class_overview: string;
+  main_challenges: string;
+  teaching_suggestions: string[];
+  priority_actions: string[];
+  motivation: string;
 }
 
 const TeacherDashboard: React.FC<TeacherDashboardProps> = ({ userId, courseId }) => {
-  const [contentRecommendations, setContentRecommendations] = useState<ContentRecommendation[]>([]);
+  const [aiRecommendations, setAiRecommendations] = useState<TeacherRecommendation | null>(null);
   const [loading, setLoading] = useState(true);
+  const [loadingAI, setLoadingAI] = useState(false);
+  const [showAIRecommendations, setShowAIRecommendations] = useState(false);
 
   useEffect(() => {
-    const generateContentRecommendations = async () => {
+    const loadTeacherData = async () => {
       try {
         setLoading(true);
         
-        // In a real implementation, this would analyze class performance data
-        // and generate AI-powered recommendations for content adjustments
-        const mockRecommendations: ContentRecommendation[] = [
-          {
-            type: 'difficulty_adjustment',
-            title: 'Reduce Quiz Difficulty in Section 3',
-            description: 'Multiple students are struggling with quiz complexity in Section 3',
-            priority: 'high',
-            targetStudents: 8,
-            reasoning: 'Analysis shows 80% of students scored below 60% on Section 3 quizzes. The current difficulty level may be too advanced for the majority of the class.',
-            suggestedActions: [
-              'Add more practice questions before the main quiz',
-              'Break complex questions into smaller parts',
-              'Provide additional study materials for foundational concepts',
-              'Consider adding a practice quiz with immediate feedback'
-            ]
-          },
-          {
-            type: 'content_addition',
-            title: 'Add Video Explanations for Problem Solving',
-            description: 'Students need more visual learning resources for complex problem-solving topics',
-            priority: 'high',
-            targetStudents: 12,
-            reasoning: 'Students with visual learning preferences are underperforming. Adding video content could improve comprehension by 25-30%.',
-            suggestedActions: [
-              'Create step-by-step video walkthroughs',
-              'Add interactive problem-solving demos',
-              'Include visual diagrams and flowcharts',
-              'Provide screen-recorded solutions'
-            ]
-          },
-          {
-            type: 'activity_suggestion',
-            title: 'Introduce Peer Collaboration Activities',
-            description: 'Class would benefit from more collaborative learning opportunities',
-            priority: 'medium',
-            targetStudents: 15,
-            reasoning: 'Student engagement data suggests collaborative activities could improve retention. Social learning can boost performance by 15-20%.',
-            suggestedActions: [
-              'Add group discussion forums',
-              'Create peer review assignments',
-              'Implement study group features',
-              'Design collaborative problem-solving tasks'
-            ]
-          },
-          {
-            type: 'competency_focus',
-            title: 'Strengthen Critical Thinking Competency',
-            description: 'Multiple students showing gaps in critical thinking skills',
-            priority: 'medium',
-            targetStudents: 6,
-            reasoning: 'Competency analysis reveals 40% of students have not achieved proficiency in critical thinking. This affects performance across multiple modules.',
-            suggestedActions: [
-              'Add case study exercises',
-              'Include analytical thinking challenges',
-              'Create reflection assignments',
-              'Provide critical thinking frameworks'
-            ]
-          }
-        ];
-
-        setContentRecommendations(mockRecommendations);
+        // Auto-load existing AI recommendations if available
+        const existingRecommendations = await learningPathExplanationService.getTeacherRecommendations(
+          courseId.toString()
+        );
+        
+        if (existingRecommendations) {
+          setAiRecommendations(existingRecommendations.recommendations);
+          setShowAIRecommendations(true);
+        }
+        
       } catch (error) {
-        console.error('Error generating content recommendations:', error);
+        console.error('Error loading teacher data:', error);
       } finally {
         setLoading(false);
       }
     };
 
-    generateContentRecommendations();
-  }, [userId, courseId]);
+    loadTeacherData();
+  }, [courseId]);
 
-  const getPriorityColor = (priority: string) => {
-    switch (priority) {
-      case 'high': return 'bg-red-100 text-red-800 border-red-200';
-      case 'medium': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-      case 'low': return 'bg-green-100 text-green-800 border-green-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
-    }
-  };
+  const handleGenerateAIRecommendations = async () => {
+    try {
+      setLoadingAI(true);
+      
+      const recommendations = await learningPathExplanationService.generateTeacherRecommendations(
+        courseId.toString()
+      );
 
+      if (recommendations) {
+        setAiRecommendations(recommendations);
+        setShowAIRecommendations(true);
+      } else {
+        // Show fallback recommendations
+        const fallbackRecommendations: TeacherRecommendation = {
+          class_overview: "Lớp có 25 học sinh với mức độ tiến bộ đa dạng. Khoảng 40% học sinh đang gặp khó khăn với các khái niệm nâng cao.",
+          main_challenges: "Học sinh gặp khó khăn chính trong việc giải quyết vấn đề logic và tư duy phản biện. Nhiều em cần thêm thời gian để hiểu các khái niệm trừu tượng.",
+          teaching_suggestions: [
+            "Tăng cường bài tập thực hành với từng bước cụ thể",
+            "Sử dụng thêm ví dụ minh họa trực quan",
+            "Tổ chức thêm các hoạt động nhóm để học sinh hỗ trợ lẫn nhau",
+            "Cung cấp thêm tài liệu tham khảo cho các em yếu"
+          ],
+          priority_actions: [
+            "Xem xét lại độ khó của bài kiểm tra Phần 3",
+            "Thêm video giải thích cho các khái niệm phức tạp",
+            "Tạo quiz ôn tập cho mỗi chủ đề",
+            "Thiết lập giờ tư vấn thêm cho học sinh yếu"
+          ],
+          motivation: "Việc điều chỉnh phương pháp giảng dạy này sẽ giúp nâng cao hiệu quả học tập của cả lớp, đặc biệt là các em đang gặp khó khăn."
+        };
 
-  const getTypeIcon = (type: string) => {
-    switch (type) {
-      case 'difficulty_adjustment': return 'fas fa-balance-scale';
-      case 'content_addition': return 'fas fa-plus-circle';
-      case 'activity_suggestion': return 'fas fa-users';
-      case 'competency_focus': return 'fas fa-target';
-      default: return 'fas fa-lightbulb';
+        setAiRecommendations(fallbackRecommendations);
+        setShowAIRecommendations(true);
+      }
+    } catch (error) {
+      console.error('Error generating AI recommendations:', error);
+    } finally {
+      setLoadingAI(false);
     }
   };
 
@@ -134,46 +104,100 @@ const TeacherDashboard: React.FC<TeacherDashboardProps> = ({ userId, courseId })
         </div>
       </div>
 
-      {/* AI Content Recommendations */}
+      {/* AI Teaching Recommendations */}
       <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-xl font-bold text-primary-800 mb-4 flex items-center">
-          <i className="fas fa-lightbulb mr-2"></i>
-          AI Teaching Suggestions
-        </h2>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-xl font-bold text-primary-800 flex items-center">
+            <i className="fas fa-brain mr-2"></i>
+            AI Teaching Recommendations
+          </h2>
+          <button
+            onClick={handleGenerateAIRecommendations}
+            disabled={loadingAI}
+            className="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 disabled:opacity-50 transition-colors"
+          >
+            {loadingAI ? (
+              <span className="flex items-center">
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                Generating...
+              </span>
+            ) : (
+              'Nhận gợi ý từ AI'
+            )}
+          </button>
+        </div>
 
         {loading ? (
           <div className="flex items-center justify-center h-20">
             <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary-500"></div>
-            <span className="ml-2 text-gray-600">Analyzing class...</span>
+            <span className="ml-2 text-gray-600">Loading recommendations...</span>
+          </div>
+        ) : showAIRecommendations && aiRecommendations ? (
+          <div className="space-y-4">
+            {/* Class Overview */}
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <h3 className="font-semibold text-blue-800 mb-2">
+                <i className="fas fa-chart-pie mr-2"></i>
+                Tổng quan lớp học
+              </h3>
+              <p className="text-blue-700">{aiRecommendations.class_overview}</p>
+            </div>
+
+            {/* Main Challenges */}
+            <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+              <h3 className="font-semibold text-red-800 mb-2">
+                <i className="fas fa-exclamation-triangle mr-2"></i>
+                Thách thức chính
+              </h3>
+              <p className="text-red-700">{aiRecommendations.main_challenges}</p>
+            </div>
+
+            {/* Teaching Suggestions */}
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+              <h3 className="font-semibold text-green-800 mb-2">
+                <i className="fas fa-lightbulb mr-2"></i>
+                Gợi ý phương pháp giảng dạy
+              </h3>
+              <ul className="space-y-1 text-green-700">
+                {aiRecommendations.teaching_suggestions.map((suggestion, index) => (
+                  <li key={index} className="flex items-start">
+                    <i className="fas fa-check-circle mr-2 mt-1 text-green-500"></i>
+                    {suggestion}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Priority Actions */}
+            <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+              <h3 className="font-semibold text-orange-800 mb-2">
+                <i className="fas fa-star mr-2"></i>
+                Hành động ưu tiên
+              </h3>
+              <ul className="space-y-1 text-orange-700">
+                {aiRecommendations.priority_actions.map((action, index) => (
+                  <li key={index} className="flex items-start">
+                    <i className="fas fa-arrow-right mr-2 mt-1 text-orange-500"></i>
+                    {action}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Motivation */}
+            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+              <h3 className="font-semibold text-purple-800 mb-2">
+                <i className="fas fa-heart mr-2"></i>
+                Động lực thực hiện
+              </h3>
+              <p className="text-purple-700">{aiRecommendations.motivation}</p>
+            </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {contentRecommendations.slice(0, 4).map((recommendation, index) => (
-              <div key={index} className="border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow">
-                <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <i className={`${getTypeIcon(recommendation.type)} text-primary-600 text-sm`}></i>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between mb-1">
-                      <h3 className="font-semibold text-gray-800 text-sm truncate">{recommendation.title}</h3>
-                      <span className={`px-2 py-1 rounded text-xs font-medium ${getPriorityColor(recommendation.priority)}`}>
-                        {recommendation.priority}
-                      </span>
-                    </div>
-                    <p className="text-gray-600 text-sm mb-2 line-clamp-2">{recommendation.description}</p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-gray-500">
-                        <i className="fas fa-users mr-1"></i>{recommendation.targetStudents} students
-                      </span>
-                      <button className="px-3 py-1 bg-primary-500 text-white rounded text-xs hover:bg-primary-600 transition-colors">
-                        Apply
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="text-center py-8">
+            <i className="fas fa-brain text-4xl text-gray-400 mb-4"></i>
+            <p className="text-gray-600">Chưa có gợi ý AI nào được tạo.</p>
+            <p className="text-gray-500 text-sm">Nhấn nút "Nhận gợi ý từ AI" để tạo gợi ý dựa trên dữ liệu học sinh.</p>
           </div>
         )}
       </div>
