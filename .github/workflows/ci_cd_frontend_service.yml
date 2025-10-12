@@ -45,4 +45,4 @@ jobs:
           script: |
             cd /opt/adaptive-learning/moodle-adaptive-learning-plugin
             docker compose --env-file .env.production -f docker-compose.prod.yml pull frontend-service
-            docker compose --env-file .env.production -f docker-compose.prod.yml up -d frontend-service
+            docker compose --env-file .env.production -f docker-compose.prod.yml up -d --force-recreate frontend-service
