@@ -1,0 +1,7 @@
+,view_course,view_assignment,submit_assignment,attempt_quiz,submit_quiz,view_resource
+view_course,0.0,0.5405167949871587,0.0,0.0,0.0,0.45948320501284123
+view_assignment,0.3949044586012414,0.0,0.6050955413987585,0.0,0.0,0.0
+submit_assignment,0.4,0.0,0.0,0.0,0.0,0.6
+attempt_quiz,0.0,0.0,0.0,0.0,0.0,0.0
+submit_quiz,0.0,0.0,0.0,0.0,0.0,0.0
+view_resource,0.3,0.4000000000000001,0.0,0.0,0.0,0.3

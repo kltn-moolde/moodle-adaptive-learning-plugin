@@ -1,0 +1,7 @@
+State,Cluster_0,Cluster_1,Cluster_2
+view_course,view_assignment,view_assignment,view_assignment
+view_assignment,submit_assignment,submit_assignment,attempt_quiz
+submit_assignment,attempt_quiz,view_resource,attempt_quiz
+attempt_quiz,view_resource,view_course,view_course
+submit_quiz,attempt_quiz,view_course,view_assignment
+view_resource,view_assignment,view_assignment,view_assignment

@@ -1,0 +1,514 @@
+{
+  "cluster_0": {
+    "n_students": 12,
+    "percentage": 80.0,
+    "feature_statistics": {
+      "total_events": {
+        "mean": 0.6755689424333334,
+        "std": 0.21192326476832152,
+        "min": 0.4192771084,
+        "max": 1.0,
+        "median": 0.65983935745,
+        "q25": 0.4658634538,
+        "q75": 0.804618473875,
+        "count": 12
+      },
+      "\\assignsubmission_comments\\event\\comment_created": {
+        "mean": 0.08333333333333333,
+        "std": 0.28867513459481287,
+        "min": 0.0,
+        "max": 1.0,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "count": 12
+      },
+      "\\assignsubmission_file\\event\\assessable_uploaded": {
+        "mean": 0.5208333333333334,
+        "std": 0.17789373570190428,
+        "min": 0.2857142857,
+        "max": 1.0,
+        "median": 0.5,
+        "q25": 0.4642857143,
+        "q75": 0.508928571425,
+        "count": 12
+      },
+      "\\assignsubmission_file\\event\\submission_created": {
+        "mean": 0.891025641025,
+        "std": 0.20863121970501344,
+        "min": 0.3846153846,
+        "max": 1.0,
+        "median": 1.0,
+        "q25": 0.923076923075,
+        "q75": 1.0,
+        "count": 12
+      },
+      "\\core\\event\\badge_listing_viewed": {
+        "mean": 0.08333333333333333,
+        "std": 0.28867513459481287,
+        "min": 0.0,
+        "max": 1.0,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "count": 12
+      },
+      "\\core\\event\\course_module_completion_updated": {
+        "mean": 0.37870370370833334,
+        "std": 0.3018632127027579,
+        "min": 0.0888888889,
+        "max": 1.0,
+        "median": 0.21666666665,
+        "q25": 0.177777777775,
+        "q75": 0.622222222225,
+        "count": 12
+      },
+      "\\core\\event\\course_user_report_viewed": {
+        "mean": 0.166666666675,
+        "std": 0.33700705344502874,
+        "min": 0.0,
+        "max": 1.0,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.09090909095,
+        "count": 12
+      },
+      "\\core\\event\\recent_activity_viewed": {
+        "mean": 0.16666666666666666,
+        "std": 0.3256694736394648,
+        "min": 0.0,
+        "max": 1.0,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.125,
+        "count": 12
+      },
+      "\\core\\event\\user_list_viewed": {
+        "mean": 0.08333333333333333,
+        "std": 0.28867513459481287,
+        "min": 0.0,
+        "max": 1.0,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "count": 12
+      },
+      "\\core\\event\\user_profile_viewed": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "count": 12
+      },
+      "\\gradereport_overview\\event\\grade_report_viewed": {
+        "mean": 0.125,
+        "std": 0.3107907802540305,
+        "min": 0.0,
+        "max": 1.0,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "count": 12
+      },
+      "\\gradereport_user\\event\\grade_report_viewed": {
+        "mean": 0.2967171717166667,
+        "std": 0.3271692988614675,
+        "min": 0.0,
+        "max": 1.0,
+        "median": 0.17424242425,
+        "q25": 0.071969696975,
+        "q75": 0.435606060575,
+        "count": 12
+      },
+      "\\mod_assign\\event\\feedback_viewed": {
+        "mean": 0.30929487179166665,
+        "std": 0.28125715977497173,
+        "min": 0.0576923077,
+        "max": 1.0,
+        "median": 0.23076923075,
+        "q25": 0.1105769231,
+        "q75": 0.375,
+        "count": 12
+      },
+      "\\mod_data\\event\\course_module_viewed": {
+        "mean": 0.32624113474166666,
+        "std": 0.2690280511362549,
+        "min": 0.0212765957,
+        "max": 1.0,
+        "median": 0.28723404254999996,
+        "q25": 0.1808510638,
+        "q75": 0.409574468075,
+        "count": 12
+      },
+      "\\mod_data\\event\\record_created": {
+        "mean": 0.8333333333333334,
+        "std": 0.3892494720807615,
+        "min": 0.0,
+        "max": 1.0,
+        "median": 1.0,
+        "q25": 1.0,
+        "q75": 1.0,
+        "count": 12
+      },
+      "\\mod_data\\event\\record_updated": {
+        "mean": 0.08333333333333333,
+        "std": 0.28867513459481287,
+        "min": 0.0,
+        "max": 1.0,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "count": 12
+      },
+      "\\mod_folder\\event\\course_module_viewed": {
+        "mean": 0.38414634144166676,
+        "std": 0.26476720168406975,
+        "min": 0.0731707317,
+        "max": 1.0,
+        "median": 0.3170731707,
+        "q25": 0.23170731705,
+        "q75": 0.42682926825,
+        "count": 12
+      },
+      "\\mod_page\\event\\course_module_viewed": {
+        "mean": 0.44444444444166664,
+        "std": 0.3301616785870332,
+        "min": 0.0,
+        "max": 1.0,
+        "median": 0.375,
+        "q25": 0.229166666675,
+        "q75": 0.6458333333,
+        "count": 12
+      },
+      "\\mod_quiz\\event\\attempt_reviewed": {
+        "mean": 0.6666666666666666,
+        "std": 0.2741377667369368,
+        "min": 0.2,
+        "max": 1.0,
+        "median": 0.7,
+        "q25": 0.4,
+        "q75": 0.8500000000000001,
+        "count": 12
+      },
+      "\\mod_quiz\\event\\attempt_started": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0,
+        "median": 1.0,
+        "q25": 1.0,
+        "q75": 1.0,
+        "count": 12
+      },
+      "\\mod_quiz\\event\\attempt_summary_viewed": {
+        "mean": 0.4722222222166666,
+        "std": 0.26432048705139033,
+        "min": 0.0,
+        "max": 1.0,
+        "median": 0.3333333333,
+        "q25": 0.3333333333,
+        "q75": 0.6666666667,
+        "count": 12
+      },
+      "\\mod_quiz\\event\\course_module_viewed": {
+        "mean": 0.5722222222166667,
+        "std": 0.21734547898933712,
+        "min": 0.2666666667,
+        "max": 1.0,
+        "median": 0.5333333333,
+        "q25": 0.4,
+        "q75": 0.7333333333,
+        "count": 12
+      },
+      "\\mod_resource\\event\\course_module_viewed": {
+        "mean": 0.5704225352083333,
+        "std": 0.2985661816244154,
+        "min": 0.1408450704,
+        "max": 1.0,
+        "median": 0.5774647887,
+        "q25": 0.366197183075,
+        "q75": 0.785211267625,
+        "count": 12
+      },
+      "\\mod_url\\event\\course_module_viewed": {
+        "mean": 0.3125,
+        "std": 0.37119279479684264,
+        "min": 0.0,
+        "max": 1.0,
+        "median": 0.25,
+        "q25": 0.0,
+        "q75": 0.5,
+        "count": 12
+      },
+      "mean_module_grade": {
+        "mean": 0.6992992992916666,
+        "std": 0.11137364365309714,
+        "min": 0.5135135135,
+        "max": 0.8513513514,
+        "median": 0.70405405405,
+        "q25": 0.624999999975,
+        "q75": 0.80855855855,
+        "count": 12
+      }
+    }
+  },
+  "cluster_1": {
+    "n_students": 3,
+    "percentage": 20.0,
+    "feature_statistics": {
+      "total_events": {
+        "mean": 0.19812583666666664,
+        "std": 0.19563193968160336,
+        "min": 0.0,
+        "max": 0.3911646586,
+        "median": 0.2032128514,
+        "q25": 0.1016064257,
+        "q75": 0.29718875499999997,
+        "count": 3
+      },
+      "\\assignsubmission_comments\\event\\comment_created": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "count": 3
+      },
+      "\\assignsubmission_file\\event\\assessable_uploaded": {
+        "mean": 0.17857142856666666,
+        "std": 0.15567496226439373,
+        "min": 0.0,
+        "max": 0.2857142857,
+        "median": 0.25,
+        "q25": 0.125,
+        "q75": 0.26785714285,
+        "count": 3
+      },
+      "\\assignsubmission_file\\event\\submission_created": {
+        "mean": 0.38461538463333333,
+        "std": 0.33529991874801585,
+        "min": 0.0,
+        "max": 0.6153846154,
+        "median": 0.5384615385,
+        "q25": 0.26923076925,
+        "q75": 0.57692307695,
+        "count": 3
+      },
+      "\\core\\event\\badge_listing_viewed": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "count": 3
+      },
+      "\\core\\event\\course_module_completion_updated": {
+        "mean": 0.06666666666666667,
+        "std": 0.05879447357711332,
+        "min": 0.0,
+        "max": 0.1111111111,
+        "median": 0.0888888889,
+        "q25": 0.04444444445,
+        "q75": 0.1,
+        "count": 3
+      },
+      "\\core\\event\\course_user_report_viewed": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "count": 3
+      },
+      "\\core\\event\\recent_activity_viewed": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "count": 3
+      },
+      "\\core\\event\\user_list_viewed": {
+        "mean": 0.3333333333333333,
+        "std": 0.5773502691896258,
+        "min": 0.0,
+        "max": 1.0,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.5,
+        "count": 3
+      },
+      "\\core\\event\\user_profile_viewed": {
+        "mean": 0.3333333333333333,
+        "std": 0.5773502691896258,
+        "min": 0.0,
+        "max": 1.0,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.5,
+        "count": 3
+      },
+      "\\gradereport_overview\\event\\grade_report_viewed": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "count": 3
+      },
+      "\\gradereport_user\\event\\grade_report_viewed": {
+        "mean": 0.101010101,
+        "std": 0.17495462700966385,
+        "min": 0.0,
+        "max": 0.303030303,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.1515151515,
+        "count": 3
+      },
+      "\\mod_assign\\event\\feedback_viewed": {
+        "mean": 0.14102564103333334,
+        "std": 0.196430172392341,
+        "min": 0.0,
+        "max": 0.3653846154,
+        "median": 0.0576923077,
+        "q25": 0.02884615385,
+        "q75": 0.21153846155,
+        "count": 3
+      },
+      "\\mod_data\\event\\course_module_viewed": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "count": 3
+      },
+      "\\mod_data\\event\\record_created": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "count": 3
+      },
+      "\\mod_data\\event\\record_updated": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "count": 3
+      },
+      "\\mod_folder\\event\\course_module_viewed": {
+        "mean": 0.0569105691,
+        "std": 0.06138076776029078,
+        "min": 0.0,
+        "max": 0.1219512195,
+        "median": 0.0487804878,
+        "q25": 0.0243902439,
+        "q75": 0.08536585365,
+        "count": 3
+      },
+      "\\mod_page\\event\\course_module_viewed": {
+        "mean": 0.027777777766666668,
+        "std": 0.048112522413223814,
+        "min": 0.0,
+        "max": 0.0833333333,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.04166666665,
+        "count": 3
+      },
+      "\\mod_quiz\\event\\attempt_reviewed": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "count": 3
+      },
+      "\\mod_quiz\\event\\attempt_started": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "count": 3
+      },
+      "\\mod_quiz\\event\\attempt_summary_viewed": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "count": 3
+      },
+      "\\mod_quiz\\event\\course_module_viewed": {
+        "mean": 0.13333333333333333,
+        "std": 0.17638342071244173,
+        "min": 0.0,
+        "max": 0.3333333333,
+        "median": 0.0666666667,
+        "q25": 0.03333333335,
+        "q75": 0.19999999999999998,
+        "count": 3
+      },
+      "\\mod_resource\\event\\course_module_viewed": {
+        "mean": 0.13145539906666667,
+        "std": 0.18110142272719282,
+        "min": 0.0,
+        "max": 0.338028169,
+        "median": 0.0563380282,
+        "q25": 0.0281690141,
+        "q75": 0.1971830986,
+        "count": 3
+      },
+      "\\mod_url\\event\\course_module_viewed": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "count": 3
+      },
+      "mean_module_grade": {
+        "mean": 0.3423423423333333,
+        "std": 0.569708531674592,
+        "min": 0.0,
+        "max": 1.0,
+        "median": 0.027027027,
+        "q25": 0.0135135135,
+        "q75": 0.5135135135,
+        "count": 3
+      }
+    }
+  }
+}
