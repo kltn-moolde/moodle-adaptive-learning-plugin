@@ -1,0 +1,36 @@
+{
+  "total_users": 15,
+  "clusters": {
+    "cluster_0": {
+      "n_users": 12,
+      "userids": [
+        8609,
+        8670,
+        9043,
+        9109,
+        9146,
+        9151,
+        9152,
+        9169,
+        9183,
+        9220,
+        9227,
+        9260
+      ],
+      "grades_records": 183,
+      "log_events": 10093,
+      "unique_event_types": 37
+    },
+    "cluster_1": {
+      "n_users": 3,
+      "userids": [
+        8671,
+        8860,
+        8964
+      ],
+      "grades_records": 28,
+      "log_events": 740,
+      "unique_event_types": 19
+    }
+  }
+}

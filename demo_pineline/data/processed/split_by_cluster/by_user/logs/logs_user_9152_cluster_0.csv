@@ -1,0 +1,752 @@
+id,timecreated,eventname,action,target,userid,courseid,other
+9242648,2022-09-07 11:02:25,\core\event\course_viewed,viewed,course,9152,670,
+9242772,2022-09-07 11:05:23,\mod_page\event\course_module_viewed,viewed,course_module,9152,670,
+9255683,2022-09-08 09:10:55,\core\event\course_viewed,viewed,course,9152,670,
+9299431,2022-09-12 18:33:34,\core\event\course_viewed,viewed,course,9152,670,
+9321648,2022-09-14 11:02:51,\core\event\course_viewed,viewed,course,9152,670,
+9321703,2022-09-14 11:04:24,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9321704,2022-09-14 11:04:24,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9321735,2022-09-14 11:04:58,\core\event\course_viewed,viewed,course,9152,670,
+9321738,2022-09-14 11:05:00,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9321739,2022-09-14 11:05:00,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9321752,2022-09-14 11:05:19,\core\event\course_viewed,viewed,course,9152,670,
+9321902,2022-09-14 11:12:11,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9321905,2022-09-14 11:12:17,\core\event\course_viewed,viewed,course,9152,670,
+9321916,2022-09-14 11:13:31,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9321917,2022-09-14 11:13:31,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9321918,2022-09-14 11:13:39,\core\event\course_viewed,viewed,course,9152,670,
+9321937,2022-09-14 11:16:32,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9322041,2022-09-14 11:27:52,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9322042,2022-09-14 11:27:52,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9322052,2022-09-14 11:28:32,\core\event\course_viewed,viewed,course,9152,670,
+9322083,2022-09-14 11:31:55,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9322998,2022-09-14 12:08:23,\core\event\course_viewed,viewed,course,9152,670,
+9322999,2022-09-14 12:08:25,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9323000,2022-09-14 12:08:25,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9323165,2022-09-14 12:17:36,\core\event\course_viewed,viewed,course,9152,670,
+9323166,2022-09-14 12:17:44,\core\event\course_viewed,viewed,course,9152,670,
+9324904,2022-09-14 14:46:14,\core\event\course_viewed,viewed,course,9152,670,
+9324906,2022-09-14 14:46:19,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9324907,2022-09-14 14:46:19,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9353497,2022-09-17 09:55:34,\core\event\course_viewed,viewed,course,9152,670,
+9354199,2022-09-17 11:23:53,\core\event\course_viewed,viewed,course,9152,670,
+9354200,2022-09-17 11:23:59,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9354201,2022-09-17 11:24:00,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9354220,2022-09-17 11:30:56,\core\event\course_viewed,viewed,course,9152,670,
+9354221,2022-09-17 11:31:01,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9354222,2022-09-17 11:31:05,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9354224,2022-09-17 11:31:08,\core\event\course_viewed,viewed,course,9152,670,
+9354856,2022-09-17 12:53:26,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9357129,2022-09-17 19:13:36,\core\event\course_viewed,viewed,course,9152,670,
+9357173,2022-09-17 19:18:43,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9357174,2022-09-17 19:18:43,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9357175,2022-09-17 19:18:53,\core\event\course_viewed,viewed,course,9152,670,
+9357197,2022-09-17 19:19:50,\core\event\course_viewed,viewed,course,9152,670,
+9357198,2022-09-17 19:19:52,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9357199,2022-09-17 19:19:53,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9358111,2022-09-17 20:38:30,\core\event\course_viewed,viewed,course,9152,670,
+9358112,2022-09-17 20:38:31,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9358113,2022-09-17 20:38:31,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9361864,2022-09-18 09:11:43,\core\event\course_viewed,viewed,course,9152,670,
+9361865,2022-09-18 09:11:50,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9361866,2022-09-18 09:11:50,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9361871,2022-09-18 09:15:16,\core\event\course_viewed,viewed,course,9152,670,
+9361878,2022-09-18 09:17:26,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9361888,2022-09-18 09:20:26,\core\event\course_viewed,viewed,course,9152,670,
+9361890,2022-09-18 09:20:32,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9361891,2022-09-18 09:20:32,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9362048,2022-09-18 09:38:06,\core\event\course_viewed,viewed,course,9152,670,
+9362049,2022-09-18 09:38:14,\mod_folder\event\course_module_viewed,viewed,course_module,9152,670,
+9362080,2022-09-18 09:42:14,\core\event\course_viewed,viewed,course,9152,670,
+9362081,2022-09-18 09:42:16,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9362082,2022-09-18 09:42:16,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9362093,2022-09-18 09:47:21,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9362094,2022-09-18 09:47:21,\mod_assign\event\submission_form_viewed,viewed,submission_form,9152,670,{'assignid': '****'}
+9362097,2022-09-18 09:48:02,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9362098,2022-09-18 09:48:02,\assignsubmission_onlinetext\event\assessable_uploaded,uploaded,assessable,9152,670,"{'pathnamehashes': {}, 'content': '', 'format': '*'}"
+9362099,2022-09-18 09:48:02,\assignsubmission_onlinetext\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'onlinetextwordcount': 0, 'groupid': 0, 'groupname': None}"
+9362100,2022-09-18 09:48:02,\assignsubmission_file\event\assessable_uploaded,uploaded,assessable,9152,670,"{'content': '', 'pathnamehashes': {'0': 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'}}"
+9362101,2022-09-18 09:48:02,\assignsubmission_file\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'filesubmissioncount': 1, 'groupid': 0, 'groupname': None}"
+9362102,2022-09-18 09:48:02,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9362103,2022-09-18 09:48:02,\mod_assign\event\assessable_submitted,submitted,assessable,9152,670,{'submission_editable': True}
+9362104,2022-09-18 09:48:02,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9362105,2022-09-18 09:48:02,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9362106,2022-09-18 09:48:09,\core\event\course_viewed,viewed,course,9152,670,
+9362107,2022-09-18 09:48:12,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9362108,2022-09-18 09:48:12,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9362109,2022-09-18 09:48:14,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9362110,2022-09-18 09:48:14,\mod_assign\event\submission_form_viewed,viewed,submission_form,9152,670,{'assignid': '****'}
+9362113,2022-09-18 09:48:21,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9362114,2022-09-18 09:48:22,\assignsubmission_file\event\assessable_uploaded,uploaded,assessable,9152,670,"{'content': '', 'pathnamehashes': {'0': 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'}}"
+9362115,2022-09-18 09:48:22,\assignsubmission_file\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'filesubmissioncount': 1, 'groupid': 0, 'groupname': None}"
+9362116,2022-09-18 09:48:22,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9362117,2022-09-18 09:48:22,\mod_assign\event\assessable_submitted,submitted,assessable,9152,670,{'submission_editable': True}
+9362118,2022-09-18 09:48:22,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9362119,2022-09-18 09:48:22,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9407968,2022-09-21 11:07:00,\core\event\course_viewed,viewed,course,9152,670,
+9408087,2022-09-21 11:09:55,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9408090,2022-09-21 11:09:57,\core\event\course_viewed,viewed,course,9152,670,
+9408296,2022-09-21 11:17:18,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9408948,2022-09-21 11:46:12,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9440986,2022-09-24 19:46:07,\core\event\course_viewed,viewed,course,9152,670,
+9481028,2022-09-28 11:00:03,\core\event\course_viewed,viewed,course,9152,670,
+9481228,2022-09-28 11:04:06,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9481229,2022-09-28 11:04:06,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '**'}
+9481250,2022-09-28 11:04:13,\core\event\course_viewed,viewed,course,9152,670,
+9481252,2022-09-28 11:04:14,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9481253,2022-09-28 11:04:14,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '**'}
+9481268,2022-09-28 11:04:24,\core\event\course_viewed,viewed,course,9152,670,
+9481271,2022-09-28 11:04:30,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9481272,2022-09-28 11:04:30,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '**'}
+9481274,2022-09-28 11:04:32,\core\event\course_viewed,viewed,course,9152,670,
+9481276,2022-09-28 11:04:33,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9481277,2022-09-28 11:04:34,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '**'}
+9481280,2022-09-28 11:04:36,\core\event\course_viewed,viewed,course,9152,670,
+9481287,2022-09-28 11:04:59,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9481291,2022-09-28 11:05:07,\core\event\course_viewed,viewed,course,9152,670,
+9481356,2022-09-28 11:11:14,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9481391,2022-09-28 11:13:10,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9481392,2022-09-28 11:13:11,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '**'}
+9481395,2022-09-28 11:13:14,\core\event\course_viewed,viewed,course,9152,670,
+9481396,2022-09-28 11:13:16,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9481397,2022-09-28 11:13:16,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '**'}
+9481398,2022-09-28 11:13:19,\core\event\course_viewed,viewed,course,9152,670,
+9485140,2022-09-28 16:51:38,\core\event\course_viewed,viewed,course,9152,670,
+9485141,2022-09-28 16:51:41,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9485144,2022-09-28 16:51:49,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9486265,2022-09-28 19:19:02,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9486266,2022-09-28 19:19:02,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '**'}
+9486270,2022-09-28 19:19:17,\core\event\course_viewed,viewed,course,9152,670,
+9486300,2022-09-28 19:21:57,\core\event\course_viewed,viewed,course,9152,670,
+9486301,2022-09-28 19:22:02,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9486302,2022-09-28 19:22:03,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9486303,2022-09-28 19:22:08,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9486304,2022-09-28 19:22:09,\mod_assign\event\submission_form_viewed,viewed,submission_form,9152,670,{'assignid': '****'}
+9486305,2022-09-28 19:22:27,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9486306,2022-09-28 19:22:27,\assignsubmission_onlinetext\event\assessable_uploaded,uploaded,assessable,9152,670,"{'pathnamehashes': {}, 'content': '', 'format': '*'}"
+9486307,2022-09-28 19:22:27,\assignsubmission_onlinetext\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'onlinetextwordcount': 0, 'groupid': 0, 'groupname': None}"
+9486308,2022-09-28 19:22:27,\assignsubmission_file\event\assessable_uploaded,uploaded,assessable,9152,670,"{'content': '', 'pathnamehashes': {'0': 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'}}"
+9486309,2022-09-28 19:22:27,\assignsubmission_file\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'filesubmissioncount': 1, 'groupid': 0, 'groupname': None}"
+9486310,2022-09-28 19:22:27,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9486311,2022-09-28 19:22:27,\mod_assign\event\assessable_submitted,submitted,assessable,9152,670,{'submission_editable': True}
+9486312,2022-09-28 19:22:28,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9486313,2022-09-28 19:22:28,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9486314,2022-09-28 19:22:31,\core\event\course_viewed,viewed,course,9152,670,
+9486315,2022-09-28 19:22:35,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9486316,2022-09-28 19:22:35,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9486317,2022-09-28 19:22:37,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9486318,2022-09-28 19:22:37,\mod_assign\event\submission_form_viewed,viewed,submission_form,9152,670,{'assignid': '****'}
+9486319,2022-09-28 19:22:43,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9486320,2022-09-28 19:22:43,\assignsubmission_onlinetext\event\assessable_uploaded,uploaded,assessable,9152,670,"{'pathnamehashes': {}, 'content': '', 'format': '*'}"
+9486321,2022-09-28 19:22:43,\assignsubmission_onlinetext\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'onlinetextwordcount': 0, 'groupid': 0, 'groupname': None}"
+9486322,2022-09-28 19:22:43,\assignsubmission_file\event\assessable_uploaded,uploaded,assessable,9152,670,"{'content': '', 'pathnamehashes': {'0': 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'}}"
+9486323,2022-09-28 19:22:44,\assignsubmission_file\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'filesubmissioncount': 1, 'groupid': 0, 'groupname': None}"
+9486324,2022-09-28 19:22:44,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9486325,2022-09-28 19:22:44,\mod_assign\event\assessable_submitted,submitted,assessable,9152,670,{'submission_editable': True}
+9486326,2022-09-28 19:22:45,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9486327,2022-09-28 19:22:45,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9486328,2022-09-28 19:22:48,\core\event\course_viewed,viewed,course,9152,670,
+9486331,2022-09-28 19:23:07,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9486332,2022-09-28 19:23:10,\core\event\course_viewed,viewed,course,9152,670,
+9497253,2022-09-29 17:07:22,\core\event\course_viewed,viewed,course,9152,670,
+9498251,2022-09-29 18:45:47,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9498252,2022-09-29 18:45:48,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '**'}
+9498253,2022-09-29 18:45:49,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9498254,2022-09-29 18:45:50,\mod_assign\event\submission_form_viewed,viewed,submission_form,9152,670,{'assignid': '**'}
+9498256,2022-09-29 18:45:59,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9498257,2022-09-29 18:45:59,\assignsubmission_file\event\assessable_uploaded,uploaded,assessable,9152,670,"{'content': '', 'pathnamehashes': {'0': 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'}}"
+9498258,2022-09-29 18:45:59,\assignsubmission_file\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'filesubmissioncount': 1, 'groupid': 0, 'groupname': None}"
+9498259,2022-09-29 18:45:59,\mod_assign\event\assessable_submitted,submitted,assessable,9152,670,{'submission_editable': True}
+9498260,2022-09-29 18:45:59,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9498261,2022-09-29 18:45:59,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '**'}
+9498262,2022-09-29 18:46:02,\core\event\course_viewed,viewed,course,9152,670,
+9498264,2022-09-29 18:46:05,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9498265,2022-09-29 18:46:06,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '**'}
+9498266,2022-09-29 18:46:07,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9498267,2022-09-29 18:46:07,\mod_assign\event\submission_form_viewed,viewed,submission_form,9152,670,{'assignid': '**'}
+9498270,2022-09-29 18:46:19,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9498271,2022-09-29 18:46:19,\assignsubmission_onlinetext\event\assessable_uploaded,uploaded,assessable,9152,670,"{'pathnamehashes': {}, 'content': '', 'format': '*'}"
+9498272,2022-09-29 18:46:19,\assignsubmission_onlinetext\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'onlinetextwordcount': 0, 'groupid': 0, 'groupname': None}"
+9498273,2022-09-29 18:46:19,\assignsubmission_file\event\assessable_uploaded,uploaded,assessable,9152,670,"{'content': '', 'pathnamehashes': {'0': 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'}}"
+9498274,2022-09-29 18:46:19,\assignsubmission_file\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'filesubmissioncount': 1, 'groupid': 0, 'groupname': None}"
+9498275,2022-09-29 18:46:19,\mod_assign\event\assessable_submitted,submitted,assessable,9152,670,{'submission_editable': True}
+9498276,2022-09-29 18:46:19,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9498277,2022-09-29 18:46:20,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '**'}
+9498279,2022-09-29 18:46:23,\core\event\course_viewed,viewed,course,9152,670,
+9498281,2022-09-29 18:46:27,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9498282,2022-09-29 18:46:27,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9498283,2022-09-29 18:46:29,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9498284,2022-09-29 18:46:29,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '**'}
+9498285,2022-09-29 18:46:30,\core\event\course_viewed,viewed,course,9152,670,
+9559893,2022-10-05 11:01:35,\core\event\course_viewed,viewed,course,9152,670,
+9560102,2022-10-05 11:06:29,\core\event\course_viewed,viewed,course,9152,670,
+9560884,2022-10-05 11:17:31,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9560885,2022-10-05 11:17:35,\core\event\course_viewed,viewed,course,9152,670,
+9560891,2022-10-05 11:17:43,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9560898,2022-10-05 11:17:50,\core\event\course_viewed,viewed,course,9152,670,
+9560899,2022-10-05 11:17:51,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9637013,2022-10-12 11:03:35,\core\event\course_viewed,viewed,course,9152,670,
+9637018,2022-10-12 11:03:45,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9637019,2022-10-12 11:03:46,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9637022,2022-10-12 11:03:54,\core\event\course_viewed,viewed,course,9152,670,
+9637023,2022-10-12 11:03:55,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9637024,2022-10-12 11:03:55,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9637038,2022-10-12 11:04:16,\core\event\course_viewed,viewed,course,9152,670,
+9637116,2022-10-12 11:05:29,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9637539,2022-10-12 11:27:28,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9637540,2022-10-12 11:27:28,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9638585,2022-10-12 12:23:44,\core\event\course_viewed,viewed,course,9152,670,
+9638586,2022-10-12 12:23:47,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9638587,2022-10-12 12:23:47,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9640421,2022-10-12 14:31:53,\core\event\course_viewed,viewed,course,9152,670,
+9640431,2022-10-12 14:32:05,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9640432,2022-10-12 14:32:05,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9640450,2022-10-12 14:33:02,\core\event\course_viewed,viewed,course,9152,670,
+9640504,2022-10-12 14:38:41,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9640505,2022-10-12 14:38:42,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9640615,2022-10-12 14:42:46,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9640617,2022-10-12 14:42:50,\core\event\course_viewed,viewed,course,9152,670,
+9640618,2022-10-12 14:42:51,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9640848,2022-10-12 14:49:21,\core\event\course_viewed,viewed,course,9152,670,
+9640855,2022-10-12 14:49:28,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9640856,2022-10-12 14:49:28,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9642215,2022-10-12 16:39:24,\core\event\course_viewed,viewed,course,9152,670,
+9642219,2022-10-12 16:39:31,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9642220,2022-10-12 16:39:31,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9642221,2022-10-12 16:39:32,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9642222,2022-10-12 16:39:33,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9642224,2022-10-12 16:39:33,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9642226,2022-10-12 16:39:35,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9642227,2022-10-12 16:39:35,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9642228,2022-10-12 16:39:36,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9642229,2022-10-12 16:39:36,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9642230,2022-10-12 16:39:37,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9642231,2022-10-12 16:39:41,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9642234,2022-10-12 16:39:51,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9642235,2022-10-12 16:39:52,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9642236,2022-10-12 16:39:52,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9642237,2022-10-12 16:39:53,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9642238,2022-10-12 16:39:53,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9642239,2022-10-12 16:39:54,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9642240,2022-10-12 16:39:57,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9642245,2022-10-12 16:40:05,\core\event\course_viewed,viewed,course,9152,670,
+9642248,2022-10-12 16:40:30,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9642249,2022-10-12 16:40:30,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9698709,2022-10-17 15:22:33,\core\event\course_viewed,viewed,course,9152,670,
+9698710,2022-10-17 15:22:44,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9698711,2022-10-17 15:22:44,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9698712,2022-10-17 15:22:49,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9698713,2022-10-17 15:22:49,\mod_assign\event\submission_form_viewed,viewed,submission_form,9152,670,{'assignid': '****'}
+9698714,2022-10-17 15:22:57,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9698715,2022-10-17 15:22:57,\assignsubmission_onlinetext\event\assessable_uploaded,uploaded,assessable,9152,670,"{'pathnamehashes': {}, 'content': '*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************', 'format': '*'}"
+9698716,2022-10-17 15:22:57,\assignsubmission_onlinetext\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'onlinetextwordcount': 138, 'groupid': 0, 'groupname': None}"
+9698717,2022-10-17 15:22:57,\assignsubmission_file\event\assessable_uploaded,uploaded,assessable,9152,670,"{'content': '', 'pathnamehashes': {}}"
+9698718,2022-10-17 15:22:57,\assignsubmission_file\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'filesubmissioncount': 0, 'groupid': 0, 'groupname': None}"
+9698719,2022-10-17 15:22:57,\mod_assign\event\assessable_submitted,submitted,assessable,9152,670,{'submission_editable': True}
+9698720,2022-10-17 15:22:57,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9698721,2022-10-17 15:22:57,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9698722,2022-10-17 15:23:13,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9698723,2022-10-17 15:23:13,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9698724,2022-10-17 15:23:16,\core\event\course_viewed,viewed,course,9152,670,
+9761607,2022-10-22 18:27:31,\core\event\course_viewed,viewed,course,9152,670,
+9779394,2022-10-24 14:01:04,\core\event\course_viewed,viewed,course,9152,670,
+9779396,2022-10-24 14:01:09,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9779397,2022-10-24 14:01:09,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9779398,2022-10-24 14:01:12,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9779399,2022-10-24 14:01:12,\mod_assign\event\submission_form_viewed,viewed,submission_form,9152,670,{'assignid': '****'}
+9779403,2022-10-24 14:01:18,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9779404,2022-10-24 14:01:18,\assignsubmission_onlinetext\event\assessable_uploaded,uploaded,assessable,9152,670,"{'pathnamehashes': {}, 'content': '**************************************************', 'format': '*'}"
+9779405,2022-10-24 14:01:18,\assignsubmission_onlinetext\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'onlinetextwordcount': 1, 'groupid': 0, 'groupname': None}"
+9779406,2022-10-24 14:01:18,\assignsubmission_file\event\assessable_uploaded,uploaded,assessable,9152,670,"{'content': '', 'pathnamehashes': {}}"
+9779407,2022-10-24 14:01:18,\assignsubmission_file\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'filesubmissioncount': 0, 'groupid': 0, 'groupname': None}"
+9779408,2022-10-24 14:01:18,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9779409,2022-10-24 14:01:18,\mod_assign\event\assessable_submitted,submitted,assessable,9152,670,{'submission_editable': True}
+9779410,2022-10-24 14:01:18,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9779411,2022-10-24 14:01:19,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9779425,2022-10-24 14:02:23,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9779426,2022-10-24 14:02:24,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9779428,2022-10-24 14:02:26,\core\event\course_viewed,viewed,course,9152,670,
+9779430,2022-10-24 14:02:31,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9779433,2022-10-24 14:02:32,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9779434,2022-10-24 14:02:32,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9779435,2022-10-24 14:02:35,\core\event\course_viewed,viewed,course,9152,670,
+9779438,2022-10-24 14:02:47,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9779439,2022-10-24 14:02:47,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9779440,2022-10-24 14:02:53,\core\event\course_viewed,viewed,course,9152,670,
+9779441,2022-10-24 14:02:58,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9782377,2022-10-24 16:59:07,\core\event\course_user_report_viewed,viewed,course_user_report,9152,670,{'mode': '*****'}
+9807239,2022-10-26 11:01:39,\core\event\course_viewed,viewed,course,9152,670,
+9807297,2022-10-26 11:03:40,\core\event\course_viewed,viewed,course,9152,670,
+9807352,2022-10-26 11:04:37,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9807353,2022-10-26 11:04:37,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9807368,2022-10-26 11:04:46,\core\event\course_viewed,viewed,course,9152,670,
+9808023,2022-10-26 11:36:55,\mod_folder\event\course_module_viewed,viewed,course_module,9152,670,
+9819573,2022-10-27 07:54:17,\core\event\course_viewed,viewed,course,9152,670,
+9819586,2022-10-27 07:54:30,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9819587,2022-10-27 07:54:30,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9819593,2022-10-27 07:54:42,\core\event\course_viewed,viewed,course,9152,670,
+9846289,2022-10-29 16:27:45,\core\event\course_viewed,viewed,course,9152,670,
+9846290,2022-10-29 16:28:06,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9846291,2022-10-29 16:28:06,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9846292,2022-10-29 16:28:15,\core\event\course_viewed,viewed,course,9152,670,
+9846293,2022-10-29 16:28:25,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9846294,2022-10-29 16:28:25,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9846295,2022-10-29 16:28:44,\core\event\course_viewed,viewed,course,9152,670,
+9846296,2022-10-29 16:29:48,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9846297,2022-10-29 16:29:48,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9846298,2022-10-29 16:29:52,\core\event\course_viewed,viewed,course,9152,670,
+9846299,2022-10-29 16:29:57,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9846300,2022-10-29 16:29:58,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9846302,2022-10-29 16:30:08,\core\event\course_viewed,viewed,course,9152,670,
+9846303,2022-10-29 16:30:12,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9846304,2022-10-29 16:30:12,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9846305,2022-10-29 16:33:58,\core\event\course_viewed,viewed,course,9152,670,
+9846448,2022-10-29 16:45:25,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9846449,2022-10-29 16:45:25,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9846553,2022-10-29 16:59:03,\core\event\course_viewed,viewed,course,9152,670,
+9846554,2022-10-29 16:59:07,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9846555,2022-10-29 16:59:08,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9846556,2022-10-29 16:59:09,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9846557,2022-10-29 16:59:09,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9847606,2022-10-29 20:43:14,\core\event\course_viewed,viewed,course,9152,670,
+9847607,2022-10-29 20:43:21,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9847608,2022-10-29 20:43:21,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9847619,2022-10-29 20:43:54,\core\event\course_viewed,viewed,course,9152,670,
+9847659,2022-10-29 20:44:52,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9847660,2022-10-29 20:44:52,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9847662,2022-10-29 20:44:55,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9847663,2022-10-29 20:44:55,\mod_assign\event\submission_form_viewed,viewed,submission_form,9152,670,{'assignid': '****'}
+9847666,2022-10-29 20:45:09,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9847667,2022-10-29 20:45:09,\assignsubmission_onlinetext\event\assessable_uploaded,uploaded,assessable,9152,670,"{'pathnamehashes': {}, 'content': '', 'format': '*'}"
+9847668,2022-10-29 20:45:09,\assignsubmission_onlinetext\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'onlinetextwordcount': 0, 'groupid': 0, 'groupname': None}"
+9847669,2022-10-29 20:45:09,\assignsubmission_file\event\assessable_uploaded,uploaded,assessable,9152,670,"{'content': '', 'pathnamehashes': {'0': 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'}}"
+9847670,2022-10-29 20:45:09,\assignsubmission_file\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'filesubmissioncount': 1, 'groupid': 0, 'groupname': None}"
+9847671,2022-10-29 20:45:09,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9847672,2022-10-29 20:45:09,\mod_assign\event\assessable_submitted,submitted,assessable,9152,670,{'submission_editable': True}
+9847673,2022-10-29 20:45:09,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9847674,2022-10-29 20:45:09,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9847675,2022-10-29 20:45:11,\core\event\course_viewed,viewed,course,9152,670,
+9847677,2022-10-29 20:45:14,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9847678,2022-10-29 20:45:14,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9847680,2022-10-29 20:45:16,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9847681,2022-10-29 20:45:16,\mod_assign\event\submission_form_viewed,viewed,submission_form,9152,670,{'assignid': '****'}
+9847682,2022-10-29 20:45:23,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9847683,2022-10-29 20:45:23,\assignsubmission_onlinetext\event\assessable_uploaded,uploaded,assessable,9152,670,"{'pathnamehashes': {}, 'content': '', 'format': '*'}"
+9847684,2022-10-29 20:45:23,\assignsubmission_onlinetext\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'onlinetextwordcount': 0, 'groupid': 0, 'groupname': None}"
+9847685,2022-10-29 20:45:23,\assignsubmission_file\event\assessable_uploaded,uploaded,assessable,9152,670,"{'content': '', 'pathnamehashes': {'0': 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'}}"
+9847686,2022-10-29 20:45:23,\assignsubmission_file\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'filesubmissioncount': 1, 'groupid': 0, 'groupname': None}"
+9847687,2022-10-29 20:45:23,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+9847688,2022-10-29 20:45:23,\mod_assign\event\assessable_submitted,submitted,assessable,9152,670,{'submission_editable': True}
+9847689,2022-10-29 20:45:23,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9847690,2022-10-29 20:45:24,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+9903223,2022-11-02 11:53:32,\core\event\course_viewed,viewed,course,9152,670,
+9903766,2022-11-02 12:10:10,\core\event\course_viewed,viewed,course,9152,670,
+9903932,2022-11-02 12:17:29,\core\event\course_viewed,viewed,course,9152,670,
+9904012,2022-11-02 12:22:37,\mod_data\event\course_module_viewed,viewed,course_module,9152,670,
+9904023,2022-11-02 12:23:04,\core\event\course_viewed,viewed,course,9152,670,
+9904024,2022-11-02 12:23:13,\mod_data\event\course_module_viewed,viewed,course_module,9152,670,
+9904058,2022-11-02 12:24:09,\core\event\course_viewed,viewed,course,9152,670,
+9904063,2022-11-02 12:24:13,\mod_folder\event\course_module_viewed,viewed,course_module,9152,670,
+9947054,2022-11-06 10:28:32,\core\event\course_viewed,viewed,course,9152,670,
+9947133,2022-11-06 10:30:57,\core\event\course_viewed,viewed,course,9152,670,
+9947738,2022-11-06 10:49:32,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9947739,2022-11-06 10:49:35,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9947747,2022-11-06 10:49:53,\mod_data\event\course_module_viewed,viewed,course_module,9152,670,
+9948077,2022-11-06 11:01:15,\core\event\course_viewed,viewed,course,9152,670,
+9948084,2022-11-06 11:01:24,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9948092,2022-11-06 11:01:38,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9948098,2022-11-06 11:01:45,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+9949085,2022-11-06 11:46:03,\mod_data\event\course_module_viewed,viewed,course_module,9152,670,
+9949086,2022-11-06 11:46:05,\mod_data\event\course_module_viewed,viewed,course_module,9152,670,
+9949090,2022-11-06 11:46:14,\mod_data\event\course_module_viewed,viewed,course_module,9152,670,
+9949353,2022-11-06 11:58:05,\mod_data\event\record_created,created,record,9152,670,{'dataid': '****'}
+9949354,2022-11-06 11:58:05,\mod_data\event\course_module_viewed,viewed,course_module,9152,670,
+9949614,2022-11-06 12:07:23,\core\event\course_viewed,viewed,course,9152,670,
+9949867,2022-11-06 12:12:24,\core\event\course_viewed,viewed,course,9152,670,
+9949877,2022-11-06 12:12:38,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+9949878,2022-11-06 12:12:39,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10040205,2022-11-12 17:19:43,\core\event\course_viewed,viewed,course,9152,670,
+10040207,2022-11-12 17:19:56,\mod_data\event\course_module_viewed,viewed,course_module,9152,670,
+10040208,2022-11-12 17:20:03,\mod_data\event\course_module_viewed,viewed,course_module,9152,670,
+10040209,2022-11-12 17:20:07,\mod_data\event\course_module_viewed,viewed,course_module,9152,670,
+10040211,2022-11-12 17:20:22,\mod_data\event\course_module_viewed,viewed,course_module,9152,670,
+10040212,2022-11-12 17:20:32,\mod_data\event\course_module_viewed,viewed,course_module,9152,670,
+10040213,2022-11-12 17:20:34,\core\event\course_viewed,viewed,course,9152,670,
+10040216,2022-11-12 17:20:40,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10040220,2022-11-12 17:20:44,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10040222,2022-11-12 17:20:50,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10040223,2022-11-12 17:20:50,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10040224,2022-11-12 17:20:51,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10040227,2022-11-12 17:20:54,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10040228,2022-11-12 17:20:55,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10040229,2022-11-12 17:20:57,\core\event\course_viewed,viewed,course,9152,670,
+10040233,2022-11-12 17:21:03,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10040234,2022-11-12 17:21:03,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10040235,2022-11-12 17:21:05,\core\event\course_viewed,viewed,course,9152,670,
+10040237,2022-11-12 17:21:11,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10040238,2022-11-12 17:21:11,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10040241,2022-11-12 17:21:16,\core\event\course_viewed,viewed,course,9152,670,
+10040243,2022-11-12 17:21:22,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10040244,2022-11-12 17:21:22,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10040267,2022-11-12 17:23:49,\core\event\course_viewed,viewed,course,9152,670,
+10040269,2022-11-12 17:23:53,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10040270,2022-11-12 17:23:53,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10040272,2022-11-12 17:24:14,\core\event\course_viewed,viewed,course,9152,670,
+10040486,2022-11-12 17:53:45,\core\event\course_viewed,viewed,course,9152,670,
+10040488,2022-11-12 17:54:07,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10040489,2022-11-12 17:54:07,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10040490,2022-11-12 17:54:12,\core\event\course_viewed,viewed,course,9152,670,
+10058030,2022-11-14 11:43:04,\core\event\course_viewed,viewed,course,9152,670,
+10058074,2022-11-14 11:44:26,\core\event\course_viewed,viewed,course,9152,670,
+10058076,2022-11-14 11:44:37,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10058077,2022-11-14 11:44:37,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10059100,2022-11-14 12:24:32,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10059101,2022-11-14 12:24:32,\mod_assign\event\submission_form_viewed,viewed,submission_form,9152,670,{'assignid': '****'}
+10059278,2022-11-14 12:35:59,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10059279,2022-11-14 12:35:59,\assignsubmission_onlinetext\event\assessable_uploaded,uploaded,assessable,9152,670,"{'pathnamehashes': {}, 'content': '', 'format': '*'}"
+10059280,2022-11-14 12:35:59,\assignsubmission_onlinetext\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'onlinetextwordcount': 0, 'groupid': 0, 'groupname': None}"
+10059281,2022-11-14 12:35:59,\assignsubmission_file\event\assessable_uploaded,uploaded,assessable,9152,670,"{'content': '', 'pathnamehashes': {'0': 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'}}"
+10059282,2022-11-14 12:35:59,\assignsubmission_file\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'filesubmissioncount': 1, 'groupid': 0, 'groupname': None}"
+10059283,2022-11-14 12:35:59,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10059284,2022-11-14 12:35:59,\mod_assign\event\assessable_submitted,submitted,assessable,9152,670,{'submission_editable': True}
+10059285,2022-11-14 12:36:00,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10059286,2022-11-14 12:36:00,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10059288,2022-11-14 12:36:08,\core\event\course_viewed,viewed,course,9152,670,
+10059289,2022-11-14 12:36:14,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10059290,2022-11-14 12:36:15,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10059291,2022-11-14 12:36:15,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10059292,2022-11-14 12:36:17,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10059293,2022-11-14 12:36:18,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10069306,2022-11-15 09:17:30,\core\event\course_viewed,viewed,course,9152,670,
+10069307,2022-11-15 09:17:34,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10069308,2022-11-15 09:17:34,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10071115,2022-11-15 11:45:59,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10071116,2022-11-15 11:45:59,\mod_assign\event\submission_form_viewed,viewed,submission_form,9152,670,{'assignid': '****'}
+10071220,2022-11-15 11:53:03,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10071221,2022-11-15 11:53:03,\assignsubmission_onlinetext\event\assessable_uploaded,uploaded,assessable,9152,670,"{'pathnamehashes': {}, 'content': '', 'format': '*'}"
+10071222,2022-11-15 11:53:03,\assignsubmission_onlinetext\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'onlinetextwordcount': 0, 'groupid': 0, 'groupname': None}"
+10071223,2022-11-15 11:53:03,\assignsubmission_file\event\assessable_uploaded,uploaded,assessable,9152,670,"{'content': '', 'pathnamehashes': {'0': 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'}}"
+10071224,2022-11-15 11:53:03,\assignsubmission_file\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'filesubmissioncount': 1, 'groupid': 0, 'groupname': None}"
+10071225,2022-11-15 11:53:03,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': 9152, 'overrideby': None, 'completionstate': 1}"
+10071226,2022-11-15 11:53:03,\mod_assign\event\assessable_submitted,submitted,assessable,9152,670,{'submission_editable': True}
+10071227,2022-11-15 11:53:03,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10071228,2022-11-15 11:53:03,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10087993,2022-11-16 12:35:08,\core\event\course_viewed,viewed,course,9152,670,
+10088002,2022-11-16 12:35:17,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10088005,2022-11-16 12:35:18,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10088034,2022-11-16 12:35:38,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+10088055,2022-11-16 12:36:01,\core\event\course_viewed,viewed,course,9152,670,
+10088058,2022-11-16 12:36:09,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+10088107,2022-11-16 12:37:13,\core\event\course_viewed,viewed,course,9152,670,
+10297675,2022-11-28 12:59:07,\core\event\course_viewed,viewed,course,9152,670,
+10297678,2022-11-28 12:59:14,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10297679,2022-11-28 12:59:14,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10297840,2022-11-28 13:03:05,\core\event\course_viewed,viewed,course,9152,670,
+10298994,2022-11-28 13:53:19,\mod_page\event\course_module_viewed,viewed,course_module,9152,670,
+10299001,2022-11-28 13:53:28,\core\event\course_viewed,viewed,course,9152,670,
+10299003,2022-11-28 13:53:29,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10299004,2022-11-28 13:53:30,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10299005,2022-11-28 13:53:31,\core\event\course_viewed,viewed,course,9152,670,
+10299008,2022-11-28 13:53:36,\core\event\course_viewed,viewed,course,9152,670,
+10299009,2022-11-28 13:53:38,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10299010,2022-11-28 13:53:38,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10299569,2022-11-28 14:17:12,\core\event\course_viewed,viewed,course,9152,670,
+10299579,2022-11-28 14:17:24,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10299580,2022-11-28 14:17:24,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10299583,2022-11-28 14:17:27,\core\event\course_viewed,viewed,course,9152,670,
+10299631,2022-11-28 14:18:49,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10299632,2022-11-28 14:18:49,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10299641,2022-11-28 14:19:06,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10299642,2022-11-28 14:19:06,\mod_assign\event\submission_form_viewed,viewed,submission_form,9152,670,{'assignid': '****'}
+10299663,2022-11-28 14:19:55,\core\event\course_viewed,viewed,course,9152,670,
+10299664,2022-11-28 14:20:01,\mod_folder\event\course_module_viewed,viewed,course_module,9152,670,
+10299666,2022-11-28 14:20:06,\core\event\course_viewed,viewed,course,9152,670,
+10299689,2022-11-28 14:22:01,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10299690,2022-11-28 14:22:01,\assignsubmission_onlinetext\event\assessable_uploaded,uploaded,assessable,9152,670,"{'pathnamehashes': {}, 'content': '***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************', 'format': '*'}"
+10299691,2022-11-28 14:22:01,\assignsubmission_onlinetext\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'onlinetextwordcount': 87, 'groupid': 0, 'groupname': None}"
+10299692,2022-11-28 14:22:01,\mod_assign\event\assessable_submitted,submitted,assessable,9152,670,{'submission_editable': True}
+10299693,2022-11-28 14:22:01,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10299694,2022-11-28 14:22:01,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10299697,2022-11-28 14:22:06,\core\event\course_viewed,viewed,course,9152,670,
+10299698,2022-11-28 14:22:11,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10299700,2022-11-28 14:22:14,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10299701,2022-11-28 14:22:15,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10299702,2022-11-28 14:22:15,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10299703,2022-11-28 14:22:16,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10299704,2022-11-28 14:22:16,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10299705,2022-11-28 14:22:19,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10299706,2022-11-28 14:22:21,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10299707,2022-11-28 14:22:23,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10299708,2022-11-28 14:22:24,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10299709,2022-11-28 14:22:24,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10299710,2022-11-28 14:22:25,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10301381,2022-11-28 15:32:44,\core\event\course_viewed,viewed,course,9152,670,
+10343503,2022-11-30 10:49:10,\core\event\course_user_report_viewed,viewed,course_user_report,9152,670,{'mode': '*****'}
+10344474,2022-11-30 11:57:09,\core\event\course_viewed,viewed,course,9152,670,
+10344486,2022-11-30 11:57:27,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+10346055,2022-11-30 13:26:09,\core\event\course_viewed,viewed,course,9152,670,
+10386590,2022-12-04 15:20:59,\core\event\course_viewed,viewed,course,9152,670,
+10386596,2022-12-04 15:22:10,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10386597,2022-12-04 15:22:10,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '***'}
+10386600,2022-12-04 15:22:13,\core\event\course_viewed,viewed,course,9152,670,
+10386602,2022-12-04 15:22:27,\core\event\course_user_report_viewed,viewed,course_user_report,9152,670,{'mode': '*****'}
+10426074,2022-12-07 12:09:19,\core\event\course_viewed,viewed,course,9152,670,
+10426075,2022-12-07 12:09:24,\mod_folder\event\course_module_viewed,viewed,course_module,9152,670,
+10427029,2022-12-07 13:10:29,\core\event\course_viewed,viewed,course,9152,670,
+10427030,2022-12-07 13:10:32,\mod_folder\event\course_module_viewed,viewed,course_module,9152,670,
+10501352,2022-12-14 10:08:52,\core\event\course_viewed,viewed,course,9152,670,
+10501361,2022-12-14 10:09:25,\mod_folder\event\course_module_viewed,viewed,course_module,9152,670,
+10501363,2022-12-14 10:09:32,\core\event\course_viewed,viewed,course,9152,670,
+10501376,2022-12-14 10:09:55,\mod_folder\event\course_module_viewed,viewed,course_module,9152,670,
+10501377,2022-12-14 10:10:01,\core\event\course_viewed,viewed,course,9152,670,
+10501381,2022-12-14 10:10:13,\mod_folder\event\course_module_viewed,viewed,course_module,9152,670,
+10501382,2022-12-14 10:10:22,\core\event\course_viewed,viewed,course,9152,670,
+10501714,2022-12-14 10:25:50,\core\event\course_viewed,viewed,course,9152,670,
+10501730,2022-12-14 10:25:55,\mod_folder\event\course_module_viewed,viewed,course_module,9152,670,
+10566214,2022-12-20 09:28:04,\mod_folder\event\course_module_viewed,viewed,course_module,9152,670,
+10641316,2022-12-27 12:11:38,\core\event\course_user_report_viewed,viewed,course_user_report,9152,670,{'mode': '*****'}
+10641372,2022-12-27 12:15:11,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10641373,2022-12-27 12:15:11,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10641374,2022-12-27 12:15:16,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10641375,2022-12-27 12:15:16,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '***'}
+10641376,2022-12-27 12:15:28,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10641377,2022-12-27 12:15:28,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '**'}
+10641378,2022-12-27 12:15:32,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10641379,2022-12-27 12:15:32,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '**'}
+10641380,2022-12-27 12:15:36,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10641381,2022-12-27 12:15:36,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10641382,2022-12-27 12:15:41,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10641383,2022-12-27 12:15:41,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10641384,2022-12-27 12:15:48,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10641385,2022-12-27 12:15:48,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10641386,2022-12-27 12:15:52,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10641387,2022-12-27 12:15:52,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10641388,2022-12-27 12:15:57,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10641389,2022-12-27 12:15:58,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10641391,2022-12-27 12:16:02,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10641392,2022-12-27 12:16:02,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10641393,2022-12-27 12:16:09,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10641394,2022-12-27 12:16:09,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10641396,2022-12-27 12:16:15,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10641397,2022-12-27 12:16:15,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10641398,2022-12-27 12:16:23,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10641399,2022-12-27 12:16:23,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10641400,2022-12-27 12:16:27,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10641401,2022-12-27 12:16:27,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10641402,2022-12-27 12:16:32,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10641403,2022-12-27 12:16:32,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10641404,2022-12-27 12:16:39,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10641405,2022-12-27 12:16:39,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10641406,2022-12-27 12:17:06,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10641407,2022-12-27 12:17:06,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '***'}
+10671299,2023-01-01 18:59:48,\core\event\course_user_report_viewed,viewed,course_user_report,9152,670,{'mode': '*****'}
+10671319,2023-01-01 19:00:29,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671320,2023-01-01 19:00:29,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671368,2023-01-01 19:01:21,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671369,2023-01-01 19:01:21,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '***'}
+10671379,2023-01-01 19:02:21,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671380,2023-01-01 19:02:21,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671382,2023-01-01 19:02:34,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671383,2023-01-01 19:02:35,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671384,2023-01-01 19:02:35,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671385,2023-01-01 19:02:35,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671449,2023-01-01 19:07:37,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671450,2023-01-01 19:07:38,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671454,2023-01-01 19:07:45,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671455,2023-01-01 19:07:45,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '**'}
+10671456,2023-01-01 19:07:49,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671457,2023-01-01 19:07:49,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '**'}
+10671459,2023-01-01 19:07:55,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671460,2023-01-01 19:07:55,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671468,2023-01-01 19:08:42,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671469,2023-01-01 19:08:42,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671473,2023-01-01 19:08:57,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671474,2023-01-01 19:08:57,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671482,2023-01-01 19:09:11,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671483,2023-01-01 19:09:11,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671484,2023-01-01 19:09:17,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671485,2023-01-01 19:09:17,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671487,2023-01-01 19:09:22,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671488,2023-01-01 19:09:22,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671489,2023-01-01 19:09:26,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671490,2023-01-01 19:09:26,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671492,2023-01-01 19:09:35,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671493,2023-01-01 19:09:36,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671531,2023-01-01 19:13:29,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671532,2023-01-01 19:13:29,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671539,2023-01-01 19:13:46,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671540,2023-01-01 19:13:47,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671549,2023-01-01 19:14:23,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671550,2023-01-01 19:14:23,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671612,2023-01-01 19:19:53,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671613,2023-01-01 19:19:53,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671632,2023-01-01 19:21:51,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671633,2023-01-01 19:21:51,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '***'}
+10671635,2023-01-01 19:21:59,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671636,2023-01-01 19:21:59,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671639,2023-01-01 19:22:11,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671640,2023-01-01 19:22:11,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671641,2023-01-01 19:22:15,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671642,2023-01-01 19:22:16,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671643,2023-01-01 19:22:18,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671644,2023-01-01 19:22:18,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671646,2023-01-01 19:22:20,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671647,2023-01-01 19:22:20,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671648,2023-01-01 19:22:23,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671649,2023-01-01 19:22:23,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671650,2023-01-01 19:22:24,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671651,2023-01-01 19:22:25,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671652,2023-01-01 19:22:27,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671653,2023-01-01 19:22:27,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '**'}
+10671654,2023-01-01 19:22:28,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671655,2023-01-01 19:22:28,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '***'}
+10671657,2023-01-01 19:22:37,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671658,2023-01-01 19:22:37,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671660,2023-01-01 19:22:41,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671661,2023-01-01 19:22:41,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671662,2023-01-01 19:22:43,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671663,2023-01-01 19:22:43,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671664,2023-01-01 19:22:46,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671665,2023-01-01 19:22:46,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671682,2023-01-01 19:24:41,\core\event\course_viewed,viewed,course,9152,670,
+10671685,2023-01-01 19:24:58,\mod_folder\event\course_module_viewed,viewed,course_module,9152,670,
+10671687,2023-01-01 19:25:06,\core\event\course_viewed,viewed,course,9152,670,
+10671689,2023-01-01 19:25:10,\mod_folder\event\course_module_viewed,viewed,course_module,9152,670,
+10671798,2023-01-01 19:32:05,\core\event\course_user_report_viewed,viewed,course_user_report,9152,670,{'mode': '*****'}
+10671801,2023-01-01 19:32:26,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10671802,2023-01-01 19:32:26,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10671812,2023-01-01 19:33:21,\core\event\course_viewed,viewed,course,9152,670,
+10671813,2023-01-01 19:33:23,\mod_folder\event\course_module_viewed,viewed,course_module,9152,670,
+10671815,2023-01-01 19:33:32,\core\event\course_viewed,viewed,course,9152,670,
+10671816,2023-01-01 19:33:34,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+10675378,2023-01-02 09:10:20,\core\event\course_user_report_viewed,viewed,course_user_report,9152,670,{'mode': '*****'}
+10695254,2023-01-03 11:31:29,\core\event\course_viewed,viewed,course,9152,670,
+10702904,2023-01-03 17:39:41,\core\event\course_viewed,viewed,course,9152,670,
+10702905,2023-01-03 17:39:49,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10702906,2023-01-03 17:39:49,\mod_assign\event\feedback_viewed,viewed,feedback,9152,670,{'assignid': '****'}
+10702907,2023-01-03 17:39:49,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10702915,2023-01-03 17:39:54,\core\event\course_viewed,viewed,course,9152,670,
+10702947,2023-01-03 17:40:57,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10702948,2023-01-03 17:40:57,\mod_assign\event\feedback_viewed,viewed,feedback,9152,670,{'assignid': '****'}
+10702949,2023-01-03 17:40:57,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10755811,2023-01-06 15:16:24,\core\event\course_user_report_viewed,viewed,course_user_report,9152,670,{'mode': '*****'}
+10755815,2023-01-06 15:16:39,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10755816,2023-01-06 15:16:39,\mod_assign\event\feedback_viewed,viewed,feedback,9152,670,{'assignid': '****'}
+10755817,2023-01-06 15:16:39,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10755821,2023-01-06 15:16:58,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10755822,2023-01-06 15:16:58,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '***'}
+10755823,2023-01-06 15:17:29,\core\event\course_user_report_viewed,viewed,course_user_report,9152,670,{'mode': '*****'}
+10768688,2023-01-07 17:09:27,\core\event\course_user_report_viewed,viewed,course_user_report,9152,670,{'mode': '*****'}
+10768689,2023-01-07 17:09:28,\core\event\course_user_report_viewed,viewed,course_user_report,9152,670,{'mode': '*****'}
+10768702,2023-01-07 17:10:09,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10768703,2023-01-07 17:10:09,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10768724,2023-01-07 17:12:46,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10768725,2023-01-07 17:12:47,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '***'}
+10768744,2023-01-07 17:14:53,\core\event\course_user_report_viewed,viewed,course_user_report,9152,670,{'mode': '*****'}
+10768776,2023-01-07 17:16:16,\core\event\course_user_report_viewed,viewed,course_user_report,9152,670,{'mode': '*****'}
+10768778,2023-01-07 17:16:21,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10768779,2023-01-07 17:16:21,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '***'}
+10768782,2023-01-07 17:16:37,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10768783,2023-01-07 17:16:38,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '***'}
+10768784,2023-01-07 17:16:40,\core\event\course_viewed,viewed,course,9152,670,
+10768801,2023-01-07 17:18:03,\core\event\course_user_report_viewed,viewed,course_user_report,9152,670,{'mode': '*****'}
+10768804,2023-01-07 17:18:14,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10768805,2023-01-07 17:18:14,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10768806,2023-01-07 17:18:20,\core\event\course_viewed,viewed,course,9152,670,
+10768808,2023-01-07 17:18:32,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 0}"
+10768809,2023-01-07 17:18:34,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10768812,2023-01-07 17:18:36,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 0}"
+10768813,2023-01-07 17:18:37,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10768814,2023-01-07 17:18:37,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10774721,2023-01-08 10:34:51,\core\event\course_viewed,viewed,course,9152,670,
+10774727,2023-01-08 10:34:59,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10774728,2023-01-08 10:35:00,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10781200,2023-01-08 16:22:50,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10781201,2023-01-08 16:22:50,\mod_assign\event\submission_form_viewed,viewed,submission_form,9152,670,{'assignid': '****'}
+10781202,2023-01-08 16:22:57,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10781203,2023-01-08 16:22:57,\assignsubmission_onlinetext\event\assessable_uploaded,uploaded,assessable,9152,670,"{'pathnamehashes': {}, 'content': '', 'format': '*'}"
+10781204,2023-01-08 16:22:57,\assignsubmission_onlinetext\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'onlinetextwordcount': 0, 'groupid': 0, 'groupname': None}"
+10781205,2023-01-08 16:22:57,\assignsubmission_file\event\assessable_uploaded,uploaded,assessable,9152,670,"{'content': '', 'pathnamehashes': {'0': 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'}}"
+10781206,2023-01-08 16:22:57,\assignsubmission_file\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'filesubmissioncount': 1, 'groupid': 0, 'groupname': None}"
+10781207,2023-01-08 16:22:57,\core\event\course_module_completion_updated,updated,course_module_completion,9152,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}"
+10781208,2023-01-08 16:22:57,\mod_assign\event\assessable_submitted,submitted,assessable,9152,670,{'submission_editable': True}
+10781209,2023-01-08 16:22:57,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10781210,2023-01-08 16:22:58,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10802634,2023-01-09 15:29:59,\core\event\course_user_report_viewed,viewed,course_user_report,9152,670,{'mode': '*****'}
+10802635,2023-01-09 15:30:05,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10802636,2023-01-09 15:30:06,\mod_assign\event\feedback_viewed,viewed,feedback,9152,670,{'assignid': '****'}
+10802637,2023-01-09 15:30:06,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10802674,2023-01-09 15:31:10,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10802675,2023-01-09 15:31:10,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10847251,2023-01-11 17:41:02,\core\event\course_viewed,viewed,course,9152,670,
+10847261,2023-01-11 17:41:15,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10847262,2023-01-11 17:41:16,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '***'}
+10847263,2023-01-11 17:41:17,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10847264,2023-01-11 17:41:17,\mod_assign\event\submission_form_viewed,viewed,submission_form,9152,670,{'assignid': '***'}
+10847280,2023-01-11 17:41:52,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10847281,2023-01-11 17:41:52,\assignsubmission_onlinetext\event\assessable_uploaded,uploaded,assessable,9152,670,"{'pathnamehashes': {}, 'content': '***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************', 'format': '*'}"
+10847282,2023-01-11 17:41:52,\assignsubmission_onlinetext\event\submission_created,created,submission,9152,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'onlinetextwordcount': 164, 'groupid': 0, 'groupname': None}"
+10847283,2023-01-11 17:41:52,\mod_assign\event\assessable_submitted,submitted,assessable,9152,670,{'submission_editable': True}
+10847284,2023-01-11 17:41:52,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10847285,2023-01-11 17:41:52,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '***'}
+10847959,2023-01-11 18:37:14,\core\event\course_user_report_viewed,viewed,course_user_report,9152,670,{'mode': '*****'}
+10847962,2023-01-11 18:37:24,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10847963,2023-01-11 18:37:24,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10935603,2023-01-16 22:40:41,\core\event\course_viewed,viewed,course,9152,670,
+10935606,2023-01-16 22:40:47,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10935607,2023-01-16 22:40:48,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10935610,2023-01-16 22:41:01,\core\event\course_viewed,viewed,course,9152,670,
+10937630,2023-01-17 06:50:42,\core\event\course_viewed,viewed,course,9152,670,
+10937637,2023-01-17 06:51:06,\mod_quiz\event\course_module_viewed,viewed,course_module,9152,670,
+10937655,2023-01-17 06:52:49,\core\event\course_user_report_viewed,viewed,course_user_report,9152,670,{'mode': '*****'}
+10937672,2023-01-17 06:53:04,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10937673,2023-01-17 06:53:04,\mod_assign\event\feedback_viewed,viewed,feedback,9152,670,{'assignid': '****'}
+10937674,2023-01-17 06:53:04,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10937676,2023-01-17 06:53:14,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10937677,2023-01-17 06:53:14,\mod_assign\event\feedback_viewed,viewed,feedback,9152,670,{'assignid': '***'}
+10937678,2023-01-17 06:53:14,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '***'}
+10937689,2023-01-17 06:53:39,\core\event\course_viewed,viewed,course,9152,670,
+10937695,2023-01-17 06:53:53,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10937696,2023-01-17 06:53:53,\mod_assign\event\feedback_viewed,viewed,feedback,9152,670,{'assignid': '****'}
+10937697,2023-01-17 06:53:53,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10938235,2023-01-17 07:22:03,\core\event\course_viewed,viewed,course,9152,670,
+10938238,2023-01-17 07:22:09,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+10938241,2023-01-17 07:22:11,\mod_data\event\course_module_viewed,viewed,course_module,9152,670,
+10938244,2023-01-17 07:22:31,\mod_data\event\course_module_viewed,viewed,course_module,9152,670,
+10938271,2023-01-17 07:23:53,\core\event\course_viewed,viewed,course,9152,670,
+10938272,2023-01-17 07:23:55,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+10938381,2023-01-17 07:27:33,\mod_resource\event\course_module_viewed,viewed,course_module,9152,670,
+10938642,2023-01-17 07:46:15,\mod_quiz\event\course_module_viewed,viewed,course_module,9152,670,
+10938649,2023-01-17 07:46:20,\mod_quiz\event\attempt_started,started,attempt,9152,670,
+10938650,2023-01-17 07:46:20,\mod_quiz\event\attempt_viewed,viewed,attempt,9152,670,{'quizid': '****'}
+10939472,2023-01-17 08:30:19,\mod_quiz\event\attempt_viewed,viewed,attempt,9152,670,{'quizid': '****'}
+10939492,2023-01-17 08:31:19,\mod_quiz\event\attempt_viewed,viewed,attempt,9152,670,{'quizid': '****'}
+10939494,2023-01-17 08:31:36,\mod_quiz\event\attempt_viewed,viewed,attempt,9152,670,{'quizid': '****'}
+10939713,2023-01-17 08:40:17,\mod_quiz\event\attempt_viewed,viewed,attempt,9152,670,{'quizid': '****'}
+10939772,2023-01-17 08:41:24,\mod_quiz\event\attempt_viewed,viewed,attempt,9152,670,{'quizid': '****'}
+10939899,2023-01-17 08:45:39,\mod_quiz\event\attempt_viewed,viewed,attempt,9152,670,{'quizid': '****'}
+10939931,2023-01-17 08:46:19,\mod_quiz\event\attempt_viewed,viewed,attempt,9152,670,{'quizid': '****'}
+10939937,2023-01-17 08:46:26,\mod_quiz\event\attempt_viewed,viewed,attempt,9152,670,{'quizid': '****'}
+10939957,2023-01-17 08:46:57,\mod_quiz\event\attempt_viewed,viewed,attempt,9152,670,{'quizid': '****'}
+10940041,2023-01-17 08:48:19,\mod_quiz\event\attempt_viewed,viewed,attempt,9152,670,{'quizid': '****'}
+10940173,2023-01-17 08:53:30,\mod_quiz\event\attempt_viewed,viewed,attempt,9152,670,{'quizid': '****'}
+10940176,2023-01-17 08:54:16,\mod_quiz\event\attempt_viewed,viewed,attempt,9152,670,{'quizid': '****'}
+10940204,2023-01-17 08:55:39,\core\event\course_user_report_viewed,viewed,course_user_report,9152,670,{'mode': '*****'}
+10940334,2023-01-17 09:05:01,\core\event\course_viewed,viewed,course,9152,670,
+10940336,2023-01-17 09:05:07,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+10940337,2023-01-17 09:05:07,\mod_assign\event\feedback_viewed,viewed,feedback,9152,670,{'assignid': '****'}
+10940338,2023-01-17 09:05:07,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
+10940497,2023-01-17 09:12:36,\mod_quiz\event\attempt_summary_viewed,viewed,attempt_summary,9152,670,{'quizid': '****'}
+10940498,2023-01-17 09:12:42,\mod_quiz\event\attempt_submitted,submitted,attempt,9152,670,"{'submitterid': '****', 'quizid': '****'}"
+10940499,2023-01-17 09:12:42,\mod_quiz\event\course_module_viewed,viewed,course_module,9152,670,
+10942308,2023-01-17 10:12:14,\core\event\course_viewed,viewed,course,9152,670,
+10942310,2023-01-17 10:12:17,\mod_quiz\event\course_module_viewed,viewed,course_module,9152,670,
+10942311,2023-01-17 10:12:20,\mod_quiz\event\attempt_reviewed,reviewed,attempt,9152,670,{'quizid': '****'}
+10960199,2023-01-18 09:28:32,\core\event\course_user_report_viewed,viewed,course_user_report,9152,670,{'mode': '*****'}
+10960263,2023-01-18 09:33:15,\core\event\course_user_report_viewed,viewed,course_user_report,9152,670,{'mode': '*****'}
+10960265,2023-01-18 09:33:21,\mod_quiz\event\course_module_viewed,viewed,course_module,9152,670,
+10960268,2023-01-18 09:33:25,\mod_quiz\event\attempt_reviewed,reviewed,attempt,9152,670,{'quizid': '****'}
+11033534,2023-01-22 14:13:51,\core\event\course_user_report_viewed,viewed,course_user_report,9152,670,{'mode': '*****'}
+11071096,2023-01-24 10:22:01,\core\event\course_user_report_viewed,viewed,course_user_report,9152,670,{'mode': '*****'}
+11071102,2023-01-24 10:22:11,\mod_assign\event\course_module_viewed,viewed,course_module,9152,670,
+11071103,2023-01-24 10:22:12,\mod_assign\event\submission_status_viewed,viewed,submission_status,9152,670,{'assignid': '****'}
