@@ -10,7 +10,7 @@ class GeminiService:
     
     def __init__(self):
         self.api_key = getattr(Config, 'GEMINI_API_KEY', None)
-        self.api_url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent"
+        self.api_url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
     
     def generate_explanation(self, prompt: str) -> dict:
         """Generate explanation using Gemini AI"""
