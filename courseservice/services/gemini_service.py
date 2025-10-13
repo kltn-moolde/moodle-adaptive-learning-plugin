@@ -27,9 +27,10 @@ class GeminiService:
             # Shorter, more focused prompt to avoid MAX_TOKENS
             focused_prompt = f"""Tạo gợi ý học tập ngắn gọn. Trả lời JSON format:
 {{
-  "explanation": "Giải thích ngắn gọn tại sao gợi ý này phù hợp",
-  "reasoning": "Lý do chính", 
-  "benefits": ["Lợi ích 1", "Lợi ích 2"],
+  "reason": "Giải thích ngắn gọn tại sao gợi ý này phù hợp",
+  "current_status": "Ngắn gọn tình trạng học tập hiện tại",
+  "benefit": "Lợi ích chính",
+  "motivation": "Động lực chính",
   "next_steps": ["Bước tiếp theo 1", "Bước tiếp theo 2"]
 }}
 
@@ -95,8 +96,10 @@ Context: {prompt[:200]}..."""
                             # If no JSON found, create structured response
                             return {
                                 "explanation": generated_text,
-                                "reasoning": "AI đã phân tích tình trạng học tập của bạn",
-                                "benefits": ["Phù hợp với năng lực hiện tại", "Tối ưu hóa quá trình học tập"],
+                                "reason": "AI đã phân tích tình trạng học tập của bạn",
+                                "current_status": "Bạn đang tiến bộ đều đặn",
+                                "benefit": "Phù hợp với năng lực hiện tại",
+                                "motivation": "Vì tương lai tốt đẹp hơn",
                                 "next_steps": ["Thực hiện theo gợi ý", "Theo dõi tiến độ"]
                             }
                         
@@ -105,9 +108,11 @@ Context: {prompt[:200]}..."""
                         # Return text as explanation if JSON parsing fails
                         return {
                             "explanation": generated_text,
-                            "reasoning": "AI đã phân tích và đưa ra gợi ý phù hợp",
-                            "benefits": ["Cải thiện hiệu quả học tập"],
-                            "next_steps": ["Làm theo hướng dẫn"]
+                            "reason": "AI đã phân tích tình trạng học tập của bạn",
+                            "current_status": "Bạn đang tiến bộ đều đặn",
+                            "benefit": "Phù hợp với năng lực hiện tại",
+                            "motivation": "Vì tương lai tốt đẹp hơn",
+                            "next_steps": ["Thực hiện theo gợi ý", "Theo dõi tiến độ"]
                         }
                 else:
                     logger.error("No candidates in Gemini response")
@@ -123,13 +128,10 @@ Context: {prompt[:200]}..."""
     def _get_fallback_explanation(self) -> dict:
         """Fallback explanation when AI is not available"""
         return {
-            "explanation": "Hệ thống AI tạm thời không khả dụng. Gợi ý này dựa trên phân tích dữ liệu học tập của bạn.",
-            "reasoning": "Dựa trên tiến độ học tập và kết quả đánh giá, hệ thống đề xuất bạn nên tiếp tục với hoạt động phù hợp.",
-            "benefits": [
-                "Duy trì momentum học tập",
-                "Củng cố kiến thức đã học",
-                "Chuẩn bị tốt cho các bước tiếp theo"
-            ],
+            "reason": "Không thể kết nối với dịch vụ AI, sử dụng gợi ý mặc định",
+            "current_status": "Bạn đang tiến bộ đều đặn",
+            "benefit": "Duy trì momentum học tập",
+            "motivation": "Chuẩn bị tốt cho các bước tiếp theo",
             "next_steps": [
                 "Hoàn thành các bài tập được giao",
                 "Ôn tập kiến thức cơ bản",
