@@ -1,122 +1,173 @@
-# Q-Learning Adaptive Learning Path Recommendation System
+# Q-Learning Adaptive Learning System
 
-## 📋 Mô tả
+## � Overview
 
-Hệ thống gợi ý lộ trình học tập sử dụng Q-Learning, được thiết kế để hoạt động với **BẤT KỲ khóa học nào** thông qua abstract state representation.
+Hệ thống gợi ý học tập thích ứng sử dụng **Q-Learning** để học policy tối ưu cho từng student dựa trên:
+- **State**: Behavioral features từ Moodle logs (12 dimensions)
+- **Action**: Specific resources từ course structure (quiz, video, PDF, ...)
+- **Reward**: Learning outcomes (grades, completion, engagement)
 
-## 🏗️ Kiến trúc
+**Key Features:**
+- ✅ State từ real Moodle data (`features_scaled_report.json`)
+- ✅ Action space động từ course structure JSON
+- ✅ Support multiple difficulty levels (easy/medium/hard)
+- ✅ Course-agnostic design
+- ✅ Modular & extensible
+
+---
+
+## 🏗️ Architecture
 
 ```
 step7_qlearning/
-├── README.md                          # Hướng dẫn này
+├── README.md                          # This file
+├── README_NEW_DESIGN.md               # Detailed design doc
 ├── requirements.txt                   # Dependencies
 │
-├── models/                            # Core models
-│   ├── __init__.py
-│   ├── course_structure.py            # CourseStructure, Activity, Module
-│   ├── student_profile.py             # StudentProfile, LearningHistory
-│   └── outcome.py                     # LearningOutcome
+├── core/                              # Q-Learning engine
+│   ├── moodle_state_builder.py        # State từ Moodle logs (12 dims)
+│   ├── action_space.py                # Action space từ course JSON
+│   ├── qlearning_agent.py             # Q-Learning agent (cần refactor)
+│   └── reward_calculator.py           # Reward calculation
 │
-├── core/                              # Q-Learning core
-│   ├── __init__.py
-│   ├── state_builder.py               # AbstractStateBuilder
-│   ├── action_space.py                # ActionSpace
-│   ├── reward_calculator.py           # RewardCalculator
-│   └── qlearning_agent.py             # QLearningAgent
+├── models/                            # Data models (legacy, cần cleanup)
+│   ├── course_structure.py            # CourseStructure class
+│   ├── student_profile.py             # StudentProfile class
+│   └── outcome.py                     # LearningOutcome class
 │
-├── data/                              # Data loaders
-│   ├── __init__.py
-│   ├── course_loader.py               # CourseLoader (JSON, Database)
-│   └── student_data_loader.py         # StudentDataLoader
-│
-├── training/                          # Training pipeline
-│   ├── __init__.py
-│   ├── trajectory_generator.py        # TrajectoryGenerator
-│   └── trainer.py                     # QLearningTrainer
-│
-├── utils/                             # Utilities
-│   ├── __init__.py
-│   ├── feature_extractor.py           # FeatureExtractor
-│   └── validators.py                  # DataValidator, LogicValidator
-│
-├── examples/                          # Example usage
-│   ├── course_structure_example.json  # Example course
-│   ├── train_example.py               # Training example
-│   └── inference_example.py           # Inference example
-│
-└── tests/                             # Unit tests
-    ├── __init__.py
-    ├── test_state_builder.py
-    └── test_qlearning_agent.py
+└── examples/                          # Demo scripts
+    ├── demo_moodle_integration.py     # ⭐ Main demo
+    ├── course_structure_example.json  # Example course
+    └── quick_demo.py                  # Old demo (legacy)
 ```
 
-## 🎯 Đặc điểm
+## 🎯 Key Concepts
 
-### 1. **Tổng quát hóa (Generalization)**
-- State representation không phụ thuộc vào khóa học cụ thể
-- Dùng features tương đối thay vì absolute values
-- Q-table dựa trên abstract features
+### 1. **State (12 dimensions)**
+Trích xuất từ Moodle `features_scaled_report.json`:
+- Student Performance: knowledge_level, engagement, struggle
+- Activity Patterns: submission, review, resource usage, assessment, collaboration
+- Completion Metrics: progress, completion rate, diversity, consistency
 
-### 2. **Dễ mở rộng (Extensibility)**
-- Interface-based design
-- Plugin architecture cho reward functions
-- Customizable state features
+### 2. **Action (Dynamic)**
+Mỗi action = 1 Moodle resource cụ thể:
+- `take_quiz_easy`, `take_quiz_medium`, `take_quiz_hard`
+- `watch_video`, `study_resource`, `participate_forum`
+- Dynamic từ course structure JSON
 
-### 3. **Dễ bảo trì (Maintainability)**
-- Clear separation of concerns
-- Comprehensive documentation
-- Unit tests
+### 3. **Reward**
+Based on learning outcomes:
+- Grade improvement
+- Completion rate
+- Time efficiency
+- Engagement quality
 
 ## 🚀 Quick Start
 
-### 1. Cài đặt
+### 1. Install Dependencies
 
 ```bash
-cd step7_qlearning
+cd demo_pineline/step7_qlearning
 pip install -r requirements.txt
 ```
 
-### 2. Chuẩn bị course structure
+### 2. Run Demo
+
+```bash
+cd examples
+python3 demo_moodle_integration.py
+```
+
+**Output:**
+- State extraction từ Moodle logs
+- Action space từ course structure
+- Recommendation logic demo
+
+### 3. Usage Example
 
 ```python
-# Tạo file course_structure.json theo schema
-{
-  "course_id": "course_123",
-  "modules": [...],
-  "activities": [...]
+from core.moodle_state_builder import MoodleStateBuilder
+from core.action_space import ActionSpace
+
+# Load student data
+student_data = {
+    'userid': 8609,
+    'mean_module_grade': 0.75,
+    'total_events': 0.6,
+    'engagement': 0.8,
+    # ... more features
 }
+
+# Build state
+state_builder = MoodleStateBuilder()
+state = state_builder.build_state(student_data)
+print(f"State: {state}")  # 12-dim vector
+
+# Load course structure
+action_space = ActionSpace.load_from_file('course_structure.json')
+print(f"Total actions: {action_space.get_action_space_size()}")
+
+# Get recommendations (rule-based for now)
+if state[2] > 0.6:  # High struggle
+    recommendations = action_space.get_actions_by_difficulty('easy')
+else:
+    recommendations = action_space.get_actions_by_difficulty('medium')
+
+for action in recommendations[:3]:
+    print(f"  {action}")
 ```
 
-### 3. Training
+---
 
-```python
-from core.qlearning_agent import QLearningAgent
-from training.trainer import QLearningTrainer
-from data.course_loader import CourseLoader
+## 📚 Documentation
 
-# Load course
-course = CourseLoader.from_json('course_structure.json')
+- **[README_NEW_DESIGN.md](README_NEW_DESIGN.md)** - Chi tiết thiết kế mới
+- **[CHANGELOG.md](CHANGELOG.md)** - Lịch sử thay đổi
+- **[TODO.md](TODO.md)** - Công việc còn lại
 
-# Create agent
-agent = QLearningAgent(course)
+---
 
-# Train
-trainer = QLearningTrainer(agent, course)
-trainer.train_from_logs(db_connection, userids=[...])
+## 🎯 Next Steps
 
-# Save
-agent.save('models/qlearning_course_123.pkl')
-```
+### Phase 1: Core Refactoring ✅ (Completed)
+- [x] Design new State (12 dims từ Moodle)
+- [x] Design new Action (resource IDs)
+- [x] Implement MoodleStateBuilder
+- [x] Implement ActionSpace
+- [x] Demo script
 
-### 4. Inference
+### Phase 2: Integration (In Progress)
+- [ ] Refactor QLearningAgent
+- [ ] Create training pipeline
+- [ ] Test với real data
+- [ ] Validate recommendations
 
-```python
-# Load trained model
-agent = QLearningAgent.load('models/qlearning_course_123.pkl')
+### Phase 3: Deployment (Future)
+- [ ] API endpoint
+- [ ] Moodle plugin integration
+- [ ] Monitoring
+- [ ] A/B testing
 
-# Get recommendation
-student_profile = {...}
-recommendation = agent.recommend(student_profile)
+---
+
+## 🤝 Contributing
+
+1. Check [TODO.md](TODO.md) for open tasks
+2. Follow existing code style
+3. Add tests for new features
+4. Update documentation
+
+---
+
+## 📄 License
+
+MIT License
+
+---
+
+## 📞 Contact
+
+Issues: [GitHub Issues](https://github.com/kltn-moolde/moodle-adaptive-learning-plugin/issues)
 
 print(f"Recommended: {recommendation['activity_name']}")
 print(f"Confidence: {recommendation['q_value']:.2f}")
