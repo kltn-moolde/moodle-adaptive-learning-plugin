@@ -226,8 +226,8 @@ def generate_teacher_recommendations(course_id):
         # Tạo prompt cho teacher recommendations
         prompt = create_teacher_recommendations_prompt(explanations, course_id)
         
-        # Gọi Gemini AI
-        recommendations = gemini_service.generate_explanation(prompt)
+        # Gọi Gemini AI cho teacher recommendations
+        recommendations = gemini_service.generate_teacher_recommendations(prompt)
         
         if recommendations:
             # Lưu teacher recommendations

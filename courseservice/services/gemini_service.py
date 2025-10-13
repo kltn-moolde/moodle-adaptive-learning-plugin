@@ -124,6 +124,94 @@ Context: {prompt[:200]}..."""
         except Exception as e:
             logger.error(f"Error calling Gemini API: {e}")
             return self._get_fallback_explanation()
+
+    def generate_teacher_recommendations(self, prompt: str) -> dict:
+        """Generate teacher recommendations using Gemini AI - separate method for teachers"""
+        try:
+            if not self.api_key:
+                logger.warning("Gemini API key not found")
+                return self._get_teacher_fallback()
+            
+            headers = {
+                'x-goog-api-key': self.api_key,
+                'Content-Type': 'application/json'
+            }
+            
+            # Use original prompt without modification for teachers
+            payload = {
+                "contents": [
+                    {
+                        "role": "user",
+                        "parts": [
+                            {"text": prompt}
+                        ]
+                    }
+                ],
+                "generationConfig": {
+                    "temperature": 0.7,
+                    "topK": 40,
+                    "topP": 0.95,
+                    "maxOutputTokens": 2048,
+                    "candidateCount": 1
+                }
+            }
+            
+            response = requests.post(
+                self.api_url,
+                headers=headers,
+                json=payload,
+                timeout=25
+            )
+            
+            if response.status_code == 200:
+                result = response.json()
+                
+                if 'candidates' in result and len(result['candidates']) > 0:
+                    candidate = result['candidates'][0]
+                    
+                    # Check finish reason
+                    finish_reason = candidate.get('finishReason', '')
+                    if finish_reason == 'MAX_TOKENS':
+                        logger.warning("Teacher recommendations response was truncated due to MAX_TOKENS")
+                    
+                    # Extract text with better error handling
+                    generated_text = None
+                    if 'content' in candidate:
+                        content = candidate['content']
+                        if 'parts' in content and len(content['parts']) > 0:
+                            generated_text = content['parts'][0].get('text', '')
+                    
+                    if not generated_text:
+                        logger.error("No text found in teacher recommendations response")
+                        return self._get_teacher_fallback()
+                    
+                    # Extract JSON from response
+                    try:
+                        json_start = generated_text.find('{')
+                        json_end = generated_text.rfind('}') + 1
+                        
+                        if json_start >= 0 and json_end > json_start:
+                            json_str = generated_text[json_start:json_end]
+                            teacher_data = json.loads(json_str)
+                            return teacher_data
+                        else:
+                            # If no JSON found, return fallback
+                            logger.warning("No JSON found in teacher recommendations response")
+                            return self._get_teacher_fallback()
+                        
+                    except json.JSONDecodeError as e:
+                        logger.error(f"Failed to parse JSON from teacher recommendations: {e}")
+                        return self._get_teacher_fallback()
+                else:
+                    logger.error("No candidates in teacher recommendations response")
+                    return self._get_teacher_fallback()
+            else:
+                logger.error(f"Teacher recommendations API error: {response.status_code} - {response.text}")
+                return self._get_teacher_fallback()
+                
+        except Exception as e:
+            logger.error(f"Error calling Gemini API for teacher recommendations: {e}")
+            return self._get_teacher_fallback()
     
     def _get_fallback_explanation(self) -> dict:
         """Fallback explanation when AI is not available"""
@@ -137,6 +225,23 @@ Context: {prompt[:200]}..."""
                 "Ôn tập kiến thức cơ bản",
                 "Tham gia thảo luận với giáo viên"
             ]
+        }
+
+    def _get_teacher_fallback(self) -> dict:
+        """Fallback teacher recommendations when AI is not available"""
+        return {
+            "class_overview": "Lớp học có tình hình đa dạng, cần điều chỉnh phương pháp giảng dạy phù hợp.",
+            "main_challenges": "Học sinh có trình độ không đồng đều, cần hỗ trợ cá nhân hóa.",
+            "teaching_suggestions": [
+                "Tạo nhóm học tập theo trình độ",
+                "Cung cấp bài tập bổ sung cho học sinh yếu",
+                "Thiết kế thử thách cho học sinh giỏi"
+            ],
+            "priority_actions": [
+                "Xác định học sinh cần hỗ trợ thêm",
+                "Tăng cường feedback trong quá trình học"
+            ],
+            "motivation": "Hãy kiên nhẫn! Mỗi học sinh đều có tiềm năng phát triển."
         }
 
 # Singleton instance
