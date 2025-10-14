@@ -1,0 +1,19 @@
+# Q-Learning Recommendation API Requirements
+# ============================================
+
+# Core dependencies
+numpy>=1.21.0
+pickle5>=0.0.11
+
+# API Framework
+Flask>=2.3.0
+flask-cors>=4.0.0
+
+# Optional: Production server
+gunicorn>=21.0.0
+
+# Optional: API documentation
+flasgger>=0.9.7
+
+# Optional: Request validation
+marshmallow>=3.20.0
