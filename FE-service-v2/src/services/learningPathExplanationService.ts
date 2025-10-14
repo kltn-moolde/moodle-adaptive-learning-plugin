@@ -90,13 +90,16 @@ class LearningPathExplanationService {
     }
   }
 
-  async generateTeacherRecommendations(courseId: string): Promise<any> {
+  async generateTeacherRecommendations(courseId: string, classAnalytics?: any): Promise<any> {
     try {
       const response = await fetch(`${this.baseUrl}/learning-path/generate-teacher-recommendations/${courseId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        body: JSON.stringify({
+          analytics: classAnalytics
+        }),
       });
 
       if (!response.ok) {

@@ -5,12 +5,14 @@ interface DashboardAnalyticsProps {
   userId: number;
   courseId: number;
   isTeacher?: boolean;
+  onAnalyticsLoaded?: (analytics: DashboardAnalytics) => void;
 }
 
 const DashboardAnalyticsComponent: React.FC<DashboardAnalyticsProps> = ({ 
   userId, 
   courseId, 
-  isTeacher = false 
+  isTeacher = false,
+  onAnalyticsLoaded
 }) => {
   const [analytics, setAnalytics] = useState<DashboardAnalytics | null>(null);
   const [loading, setLoading] = useState(true);
@@ -25,6 +27,11 @@ const DashboardAnalyticsComponent: React.FC<DashboardAnalyticsProps> = ({
         setError(null);
         const data = await moodleApiService.getDashboardAnalytics(userId, courseId, isTeacher);
         setAnalytics(data);
+        
+        // Callback để truyền dữ liệu lên parent component
+        if (onAnalyticsLoaded && data) {
+          onAnalyticsLoaded(data);
+        }
       } catch (err) {
         console.error('Error fetching dashboard analytics:', err);
         setError('Failed to load dashboard analytics. Please try again.');

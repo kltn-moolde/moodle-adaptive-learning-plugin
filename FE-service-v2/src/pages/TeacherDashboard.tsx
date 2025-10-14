@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { learningPathExplanationService } from '../services/learningPathExplanationService';
 import DashboardAnalytics from '../components/DashboardAnalytics';
 import StudentsLearningPaths from '../components/StudentsLearningPaths';
+import { type DashboardAnalytics as DashboardAnalyticsType } from '../services/moodleApiService';
 
 interface TeacherDashboardProps {
   userId: number;
@@ -21,6 +22,7 @@ const TeacherDashboard: React.FC<TeacherDashboardProps> = ({ userId, courseId })
   const [loading, setLoading] = useState(true);
   const [loadingAI, setLoadingAI] = useState(false);
   const [showAIRecommendations, setShowAIRecommendations] = useState(false);
+  const [classAnalytics, setClassAnalytics] = useState<DashboardAnalyticsType | null>(null);
 
   useEffect(() => {
     const loadTeacherData = async () => {
@@ -52,7 +54,8 @@ const TeacherDashboard: React.FC<TeacherDashboardProps> = ({ userId, courseId })
       setLoadingAI(true);
       
       const recommendations = await learningPathExplanationService.generateTeacherRecommendations(
-        courseId.toString()
+        courseId.toString(),
+        classAnalytics
       );
 
       if (recommendations) {
@@ -221,6 +224,7 @@ const TeacherDashboard: React.FC<TeacherDashboardProps> = ({ userId, courseId })
           userId={userId} 
           courseId={courseId} 
           isTeacher={true}
+          onAnalyticsLoaded={setClassAnalytics}
         />
       </div>
 

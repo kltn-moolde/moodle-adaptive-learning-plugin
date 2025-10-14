@@ -212,19 +212,27 @@ def get_teacher_explanations(course_id):
 def generate_teacher_recommendations(course_id):
     """Generate AI recommendations cho teacher về class"""
     try:
-        # Lấy tất cả explanations của course
-        explanations = list(mongo.db.learning_path_explanations.find(
-            {'course_id': course_id}
-        ))
+        # Lấy dữ liệu analytics từ request body
+        data = request.get_json() or {}
+        class_analytics = data.get('analytics')
         
-        if not explanations:
-            return jsonify({
-                'success': False,
-                'message': 'No student data available for recommendations'
-            }), 404
-        
-        # Tạo prompt cho teacher recommendations
-        prompt = create_teacher_recommendations_prompt(explanations, course_id)
+        # Nếu có analytics data, sử dụng nó thay vì explanations
+        if class_analytics:
+            prompt = create_teacher_recommendations_from_analytics(class_analytics, course_id)
+        else:
+            # Fallback: Lấy tất cả explanations của course
+            explanations = list(mongo.db.learning_path_explanations.find(
+                {'course_id': course_id}
+            ))
+            
+            if not explanations:
+                return jsonify({
+                    'success': False,
+                    'message': 'No student data available for recommendations'
+                }), 404
+            
+            # Tạo prompt cho teacher recommendations từ explanations
+            prompt = create_teacher_recommendations_prompt(explanations, course_id)
         
         # Gọi Gemini AI cho teacher recommendations
         recommendations = gemini_service.generate_teacher_recommendations(prompt)
@@ -235,7 +243,7 @@ def generate_teacher_recommendations(course_id):
                 'course_id': course_id,
                 'type': 'teacher_recommendations',
                 'recommendations': recommendations,
-                'student_count': len(explanations),
+                'student_count': len(explanations) if not class_analytics else len(class_analytics.get('enrolledUsers', [])),
                 'created_at': datetime.now(),
                 'source': 'gemini_ai'
             }
@@ -253,15 +261,16 @@ def generate_teacher_recommendations(course_id):
             return jsonify({
                 'success': True,
                 'data': recommendations,
-                'student_count': len(explanations)
+                'student_count': len(explanations) if not class_analytics else len(class_analytics.get('enrolledUsers', []))
             }), 200
         else:
             # Fallback recommendations
-            fallback = get_teacher_fallback_recommendations(course_id, len(explanations))
+            student_count = len(explanations) if not class_analytics else len(class_analytics.get('enrolledUsers', []))
+            fallback = get_teacher_fallback_recommendations(course_id, student_count)
             return jsonify({
                 'success': True,
                 'data': fallback,
-                'student_count': len(explanations),
+                'student_count': student_count,
                 'note': 'AI service unavailable, using fallback recommendations'
             }), 200
             
@@ -304,6 +313,76 @@ Trả về JSON format:
 }}
 
 Viết bằng tiếng Việt, tập trung vào hành động cụ thể.
+"""
+    return prompt
+
+def create_teacher_recommendations_from_analytics(class_analytics, course_id):
+    """Tạo prompt dựa trên analytics thực tế của học sinh"""
+    enrolled_users = class_analytics.get('enrolledUsers', [])
+    student_count = len(enrolled_users)
+    
+    # Lấy thông tin tổng quan khóa học
+    course_completion = class_analytics.get('courseCompletion', {})
+    course_progress = course_completion.get('progress', 0)
+    
+    # Phân tích activities completion
+    activities = class_analytics.get('activitiesCompletion', [])
+    completed_activities = sum(1 for activity in activities if activity.get('state', 0) >= 1)
+    total_activities = len(activities)
+    activity_completion_rate = (completed_activities / total_activities * 100) if total_activities > 0 else 0
+    
+    # Phân tích grades
+    grade_items = class_analytics.get('gradeItems', [])
+    grades_with_data = [item for item in grade_items if item.get('grade')]
+    avg_grade = 0
+    if grades_with_data:
+        total_grades = sum(float(item['grade'].get('grade', 0)) for item in grades_with_data)
+        avg_grade = total_grades / len(grades_with_data)
+    
+    # Phân loại performance dựa trên completion và grades
+    low_performers = 0
+    high_performers = 0
+    
+    if course_progress < 50 or avg_grade < 60:
+        low_performers = max(1, int(student_count * 0.3))  # Giả định 30% cần hỗ trợ
+    elif course_progress > 80 and avg_grade > 85:
+        high_performers = max(1, int(student_count * 0.2))  # Giả định 20% giỏi
+    
+    prompt = f"""
+Bạn là AI mentor cho giáo viên. Phân tích dữ liệu thực tế của lớp học và đưa ra gợi ý.
+
+THÔNG TIN LỚP HỌC:
+- Course ID: {course_id}
+- Tổng số học sinh: {student_count}
+- Tiến độ khóa học trung bình: {course_progress}%
+- Tỷ lệ hoàn thành activities: {activity_completion_rate:.1f}%
+- Điểm trung bình: {avg_grade:.1f}
+- Học sinh cần hỗ trợ (ước tính): {low_performers}
+- Học sinh giỏi (ước tính): {high_performers}
+- Học sinh trung bình: {student_count - low_performers - high_performers}
+
+DỮ LIỆU CHI TIẾT:
+- Tổng số activities: {total_activities}
+- Activities đã hoàn thành: {completed_activities}
+- Số grade items có dữ liệu: {len(grades_with_data)}
+
+Trả về JSON format:
+{{
+  "class_overview": "Tổng quan tình hình lớp học dựa trên dữ liệu thực tế (50-80 từ)",
+  "main_challenges": "Thách thức chính dựa trên completion rate và grades (40-60 từ)",
+  "teaching_suggestions": [
+    "Gợi ý cụ thể dựa trên performance data",
+    "Gợi ý về cách cải thiện completion rate",
+    "Gợi ý hỗ trợ học sinh yếu"
+  ],
+  "priority_actions": [
+    "Hành động ưu tiên dựa trên phân tích dữ liệu",
+    "Kế hoạch cải thiện performance lớp"
+  ],
+  "motivation": "Lời động viên dựa trên tình hình thực tế (20-30 từ)"
+}}
+
+Viết bằng tiếng Việt, dựa trên dữ liệu thực tế được cung cấp.
 """
     return prompt
 
