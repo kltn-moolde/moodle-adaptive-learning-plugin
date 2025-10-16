@@ -1,0 +1,20 @@
+{
+  "train": {
+    "n_students": 80,
+    "total_records": 800,
+    "avg_reward": 0.7465207101636178,
+    "avg_grade": 0.6922414203272355,
+    "completion_rate": 0.83375,
+    "recommendation_accuracy": 0.19,
+    "avg_q_value": 0.739046673418114
+  },
+  "test": {
+    "n_students": 20,
+    "total_records": 200,
+    "avg_reward": 0.7636481763598525,
+    "avg_grade": 0.7142296860530383,
+    "completion_rate": 0.86,
+    "recommendation_accuracy": 0.14,
+    "avg_q_value": 0.6732229243869284
+  }
+}
