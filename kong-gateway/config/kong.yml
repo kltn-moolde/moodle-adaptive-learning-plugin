@@ -53,6 +53,21 @@ services:
           exposed_headers: ["X-Auth-Token"]
           credentials: true
           max_age: 3600
+  - name: course-service
+    url: http://course-service:5001
+    connect_timeout: 60000
+    read_timeout: 60000
+    write_timeout: 60000
+    retries: 3
+    plugins:
+      - name: cors
+        config:
+          origins: ["*"]
+          methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
+          headers: ["Accept", "Accept-Version", "Content-Length", "Content-MD5", "Content-Type", "Date", "Authorization"]
+          exposed_headers: ["X-Auth-Token"]
+          credentials: true
+          max_age: 3600
 
 routes:
   - name: auth-route
@@ -89,6 +104,13 @@ routes:
   - name: recommend-route
     service: recommend-service
     paths: ["/api/suggest-action"]
+    strip_path: false
+    preserve_host: false
+    protocols: ["http", "https"]
+
+  - name: course-route
+    service: course-service
+    paths: ["/api/learning-path"]
     strip_path: false
     preserve_host: false
     protocols: ["http", "https"]
