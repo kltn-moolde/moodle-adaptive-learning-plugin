@@ -30,7 +30,7 @@ class Settings(BaseSettings):
     JWT_EXPIRATION: int = 3600
     
     # LTI 1.3
-    LTI_CLIENT_ID: str = "8gSjDiDrD4x2ZpS"
+    LTI_CLIENT_ID: str = "sUYDFmOAV3VjcA1"
     LTI_DEPLOYMENT_ID: str = "1"
     # External (public) URLs used by the user's browser during LTI redirects
     LTI_ISSUER: str = "http://139.99.103.223:9090"

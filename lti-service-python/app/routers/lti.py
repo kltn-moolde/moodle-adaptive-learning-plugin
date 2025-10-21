@@ -15,6 +15,7 @@ from app.database import get_db
 from app.models.lti_launch import LTILaunch
 from app.services.lti_service import lti_service
 from app.services.moodle_service import moodle_service
+from app.services.key_service import key_service
 from app.config import settings
 from loguru import logger
 
@@ -78,6 +79,14 @@ async def lti_launch(
                 form = await request.form()
                 # Log received form keys (not values)
                 logger.info(f"Form keys received: {list(form.keys())}")
+
+                # If Moodle posts an error instead of id_token, surface it clearly
+                if "error" in form:
+                    error_code = form.get("error")
+                    error_description = form.get("error_description") or form.get("error_message")
+                    logger.error(f"OIDC/LTI error returned by platform: {error_code} - {error_description}")
+                    raise HTTPException(status_code=400, detail=f"LTI platform error: {error_code} - {error_description}")
+
                 id_token = form.get("id_token")
                 state = state or form.get("state")
             except Exception as e:
@@ -158,6 +167,10 @@ async def lti_launch(
         #     "course_id": course_id
         # })
         
+    except HTTPException as he:
+        # Propagate controlled HTTP errors (e.g., missing id_token, OIDC error)
+        logger.error(f"LTI launch HTTP error: {he.detail}")
+        raise
     except Exception as e:
         logger.error(f"LTI launch error: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Launch failed: {str(e)}")
@@ -301,14 +314,9 @@ async def get_tool_configuration():
 async def get_jwks():
     """
     JWKS Endpoint (JSON Web Key Set)
-    In production, you should implement proper key management
+    Now serves a real public key via KeyService for Moodle to consume.
     """
-    # Simplified JWKS response - implement proper key management in production
-    jwks = {
-        "keys": []
-    }
-    
-    return jwks
+    return key_service.get_jwks()
 
 
 # New API endpoints for Frontend integration
