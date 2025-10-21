@@ -118,14 +118,37 @@ JWT_EXPIRATION=3600
 # LTI 1.3
 LTI_CLIENT_ID=your-client-id
 LTI_DEPLOYMENT_ID=your-deployment-id
-LTI_ISSUER=https://your-moodle-instance.com
-LTI_AUTH_URL=https://your-moodle-instance.com/mod/lti/auth.php
-LTI_TOKEN_URL=https://your-moodle-instance.com/mod/lti/token.php
+## External (public) endpoints used by the user's browser
+## Must be a URL the user's browser can reach (public IP/hostname)
+LTI_ISSUER=http://139.99.103.223:9090
+LTI_AUTH_URL=http://139.99.103.223:9090/mod/lti/auth.php
+LTI_TOKEN_URL=http://139.99.103.223:9090/mod/lti/token.php
+
+## Internal (container) endpoint for fetching Moodle JWKS (faster, no firewall)
+## Use the Docker service name and internal port
+LTI_KEYSET_URL=http://moodle502:8080/mod/lti/certs.php
+ADDRESS_MOODLE=moodle502:8080
 
 # Tool Configuration
-TOOL_TARGET_LINK_URI=http://localhost:8082/lti/launch
-TOOL_OIDC_INITIATION_URL=http://localhost:8082/lti/login
+TOOL_TARGET_LINK_URI=http://139.99.103.223:8082/lti/launch
+TOOL_OIDC_INITIATION_URL=http://139.99.103.223:8082/lti/login
+TOOL_PUBLIC_JWK_URL=http://139.99.103.223:8082/lti/jwks
+
+# Moodle API
+# If this service runs inside the same Docker network as Moodle, prefer the internal URL below for better performance
+# MOODLE_API_URL=http://moodle502:8080/webservice/rest/server.php
+MOODLE_API_URL=http://139.99.103.223:9090/webservice/rest/server.php
+MOODLE_API_TOKEN=your-moodle-api-token
 ```
+
+### External vs Internal URLs
+
+- External (public) URLs are used when the user's browser is redirected during the LTI 1.3 flow. These must be reachable over the Internet, e.g. `http://139.99.103.223:9090`.
+- Internal (container) URLs are used for server-to-server calls from this service to Moodle within the same Docker network. Use the Docker DNS name (service/container name), e.g. `http://moodle502:8080` for faster, direct access.
+- Typical mapping:
+    - LTI_ISSUER, LTI_AUTH_URL, LTI_TOKEN_URL → External (public) URLs
+    - LTI_KEYSET_URL (JWKS fetch) → Internal Docker URL
+    - MOODLE_API_URL → Internal if co-located in Docker; otherwise external
 
 ## API Documentation
 

@@ -19,7 +19,7 @@ class Settings(BaseSettings):
     PORT: int = 8082
     
     # Frontend Configuration
-    FRONTEND_URL: str = "http://51.68.124.207:5173"  # React Frontend URL
+    FRONTEND_URL: str = "http://139.99.103.223:5173"  # React Frontend URL
     
     # Database
     DATABASE_URL: str = "sqlite:///./lti_service.db"
@@ -32,26 +32,38 @@ class Settings(BaseSettings):
     # LTI 1.3
     LTI_CLIENT_ID: str = "8gSjDiDrD4x2ZpS"
     LTI_DEPLOYMENT_ID: str = "1"
-    LTI_ISSUER: str = "http://51.68.124.207:9090"
-    LTI_AUTH_URL: str = "http://51.68.124.207:9090/mod/lti/auth.php"
-    LTI_TOKEN_URL: str = "http://51.68.124.207:9090/mod/lti/token.php"
-    LTI_KEYSET_URL: str = "http://127.0.0.1:8100/mod/lti/certs.php"
+    # External (public) URLs used by the user's browser during LTI redirects
+    LTI_ISSUER: str = "http://139.99.103.223:9090"
+    LTI_AUTH_URL: str = "http://139.99.103.223:9090/mod/lti/auth.php"
+    LTI_TOKEN_URL: str = "http://139.99.103.223:9090/mod/lti/token.php"
+    # Internal (container) URL used by services inside the Docker network (faster, no external routing)
+    # moodle502 is the Moodle container name; 8080 is its internal port
+    LTI_KEYSET_URL: str = "http://moodle502:8080/mod/lti/certs.php"
     
     # Tool Configuration
     TOOL_TITLE: str = "User Log Viewer"
     TOOL_DESCRIPTION: str = "View user activity logs from Moodle"
-    TOOL_TARGET_LINK_URI: str = "http://51.68.124.207:8082/lti/launch"
-    TOOL_OIDC_INITIATION_URL: str = "http://51.68.124.207:8082/lti/login"
-    TOOL_PUBLIC_JWK_URL: str = "http://51.68.124.207:8082/lti/jwks"
+    TOOL_TARGET_LINK_URI: str = "http://139.99.103.223:8082/lti/launch"
+    TOOL_OIDC_INITIATION_URL: str = "http://139.99.103.223:8082/lti/login"
+    TOOL_PUBLIC_JWK_URL: str = "http://139.99.103.223:8082/lti/jwks"
     
     # Moodle API
-    MOODLE_API_URL: str = "http://51.68.124.207:9090/webservice/rest/server.php"
+    # Depending on where this service runs, you can point to the public or internal Moodle endpoint.
+    # If this service is in the same Docker network as Moodle, prefer the internal DNS name for performance.
+    # MOODLE_API_URL: str = "http://moodle502:8080/webservice/rest/server.php"  # internal
+    MOODLE_API_URL: str = "http://139.99.103.223:9090/webservice/rest/server.php"  # public
     MOODLE_API_TOKEN: str = "9b13f135bae7ba27d67e609c414b70df"
-    ADDRESS_MOODLE: str = "127.0.0.1:8100"
+    # Host header to use when calling internal Moodle endpoints (used in JWKS fetch). Should match Moodle host:port.
+    ADDRESS_MOODLE: str = "moodle502:8080"
     
     # Security
-    ALLOWED_HOSTS: List[str] = ["localhost", "127.0.0.1", "51.68.124.207"]
-    CORS_ORIGINS: List[str] = ["http://localhost:5173", "http://localhost:8085", "http://51.68.124.207:5173", "http://51.68.124.207:8085"]
+    ALLOWED_HOSTS: List[str] = ["localhost", "127.0.0.1", "139.99.103.223"]
+    CORS_ORIGINS: List[str] = [
+        "http://localhost:5173",
+        "http://localhost:8085",
+        "http://139.99.103.223:5173",
+        "http://139.99.103.223:8085"
+    ]
     
     # Logging
     LOG_LEVEL: str = "INFO"
