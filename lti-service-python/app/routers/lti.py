@@ -57,14 +57,42 @@ async def lti_login(
 async def lti_launch(
     request: Request,
     db: Session = Depends(get_db),
-    id_token: str = Form(...),
+    id_token: Optional[str] = Form(None),
     state: Optional[str] = Form(None)
 ):
     """
     Handle LTI 1.3 launch request and redirect to Frontend
     """
     try:
-        logger.info(f"id_token received: {id_token}")
+        # Attempt to read id_token from multiple sources to avoid 422 when Content-Type is unusual
+        content_type = request.headers.get("content-type")
+        logger.info(f"Content-Type: {content_type}")
+
+        # If id_token wasn't bound via Form, try to extract manually
+        if not id_token:
+            # Try query params (for debug/testing)
+            id_token = request.query_params.get("id_token")
+
+        if not id_token:
+            try:
+                form = await request.form()
+                # Log received form keys (not values)
+                logger.info(f"Form keys received: {list(form.keys())}")
+                id_token = form.get("id_token")
+                state = state or form.get("state")
+            except Exception as e:
+                logger.warning(f"Unable to parse form body: {e}")
+
+        if not id_token:
+            # As a last resort, log a truncated raw body for diagnostics
+            try:
+                raw = await request.body()
+                logger.warning(f"No id_token found. Raw body (truncated 512): {raw[:512] if raw else b''}")
+            except Exception:
+                pass
+            raise HTTPException(status_code=400, detail="Missing id_token in launch request")
+
+        logger.info("id_token received (truncated): %s...", id_token[:50])
         # Validate LTI id_token from Moodle (RS256)
         is_valid = lti_service.validate_token(id_token)
         if not is_valid:
