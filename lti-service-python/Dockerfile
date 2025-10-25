@@ -1,8 +1,13 @@
 # Dockerfile for LTI Service Python
 FROM python:3.11-slim
 
-# Set working directory
 WORKDIR /app
+
+# 🧩 Fix missing sources.list (use fast mirror)
+RUN echo "deb http://mirror.sjtu.edu.cn/debian bookworm main contrib non-free non-free-firmware\n\
+deb http://mirror.sjtu.edu.cn/debian bookworm-updates main contrib non-free non-free-firmware\n\
+deb http://mirror.sjtu.edu.cn/debian-security bookworm-security main contrib non-free non-free-firmware" \
+> /etc/apt/sources.list
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -35,12 +40,9 @@ RUN adduser --disabled-password --gecos '' appuser \
     && chown -R appuser:appuser /app
 USER appuser
 
-# Expose port
 EXPOSE 8082
 
-# Health check
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:8082/health || exit 1
+  CMD curl -f http://localhost:8082/health || exit 1
 
-# Run the application
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8082"]
