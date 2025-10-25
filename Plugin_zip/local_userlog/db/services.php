@@ -10,6 +10,15 @@ $functions = [
         'ajax'        => true,
         'capabilities' => 'moodle/logstore:read',
     ],
+    'local_userlog_get_logs_course' => [
+        'classname'   => 'local_userlog\external\get_user_logs_course',
+        'methodname'  => 'execute',
+        'classpath'   => 'local/userlog/classes/external/get_user_logs_course.php',
+        'description' => 'Get recent logs by course id',
+        'type'        => 'read',
+        'ajax'        => true,
+        'capabilities' => 'moodle/logstore:read',
+    ],
     'local_userlog_get_module_logs' => [
         'classname'   => 'local_userlog\external\get_module_logs',
         'methodname'  => 'execute',
@@ -197,8 +206,9 @@ $functions = [
 $services = [
     'User Log API Service' => [
         'functions' => [
-            'local_userlog_get_logs', 
-            'local_userlog_get_module_logs', 
+            'local_userlog_get_logs',  // ok
+            'local_userlog_get_logs_course', // ok
+            'local_userlog_get_module_logs',    
             'local_userlog_get_access_count', 
             'local_userlog_get_completion_rate',
             'local_userlog_get_time_diffs',
