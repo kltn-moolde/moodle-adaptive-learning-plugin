@@ -52,20 +52,21 @@ services:
     image: ${DOCKER_REGISTRY_LOC}/adaptive-learning-lti-service:${IMAGE_TAG:-latest}
     restart: unless-stopped
     ports:
-      - "${LTI_SERVICE_PORT:-8082}:8082"
+      - "${LTI_SERVICE_PORT}:8082"
     environment:
       - HOST=0.0.0.0
       - PORT=8082
       - DEBUG=${DEBUG:-False}
-      - FRONTEND_URL=${FRONTEND_URL:-http://localhost:5173}
-      - USER_SERVICE_URL=${USER_SERVICE_URL:-http://user-service:8085}
-      - LTI_ISSUER=${LTI_ISSUER:-http://51.68.124.207}
-      - LTI_AUTH_URL=${LTI_AUTH_URL:-http://51.68.124.207:9090/mod/lti/auth.php}
-      - LTI_TOKEN_URL=${LTI_TOKEN_URL:-http://51.68.124.207:9090/mod/lti/token.php}
-      - LTI_KEYSET_URL=${LTI_KEYSET_URL:-http://51.68.124.207:9090/mod/lti/certs.php}
-      - MOODLE_API_URL=${MOODLE_API_URL:-http://51.68.124.207:9090/webservice/rest/server.php}
-      - MOODLE_API_TOKEN=${MOODLE_API_TOKEN:-81a9b0ee5932a556056b43fda60e9520}
+      - FRONTEND_URL=${FRONTEND_URL}
+      - USER_SERVICE_URL=${USER_SERVICE_URL}
+      - LTI_ISSUER=${LTI_ISSUER}
+      - LTI_AUTH_URL=${LTI_AUTH_URL}
+      - LTI_TOKEN_URL=${LTI_TOKEN_URL}
+      - LTI_KEYSET_URL=${LTI_KEYSET_URL}
+      - MOODLE_API_URL=${MOODLE_API_URL}
+      - MOODLE_API_TOKEN=${MOODLE_API_TOKEN}
       - ADDRESS_MOODLE=${ADDRESS_MOODLE}
+      
     networks:
       - app-network
       - moodle_project_default
@@ -81,7 +82,7 @@ services:
     image: ${DOCKER_REGISTRY_LOC}/adaptive-learning-frontend:${IMAGE_TAG:-latest}
     restart: unless-stopped
     ports:
-      - "${FRONTEND_PORT:-5173}:5173"
+      - "${FRONTEND_PORT}:5173"
     environment:
       - VITE_API_BASE_URL=${API_BASE_URL:-http://localhost:8000}
       - VITE_LTI_SERVICE_URL=${LTI_SERVICE_URL:-http://localhost:8082}

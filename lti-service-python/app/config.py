@@ -11,6 +11,7 @@ import os
 class Settings(BaseSettings):
     """Application settings"""
     
+    
     # Application
     APP_NAME: str = "LTI Service Python"
     APP_VERSION: str = "1.0.0"
