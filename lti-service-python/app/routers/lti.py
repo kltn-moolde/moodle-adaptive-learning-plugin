@@ -15,7 +15,6 @@ from app.database import get_db
 from app.models.lti_launch import LTILaunch
 from app.services.lti_service import lti_service
 from app.services.moodle_service import moodle_service
-from app.services.key_service import key_service
 from app.config import settings
 from loguru import logger
 
@@ -58,50 +57,14 @@ async def lti_login(
 async def lti_launch(
     request: Request,
     db: Session = Depends(get_db),
-    id_token: Optional[str] = Form(None),
+    id_token: str = Form(...),
     state: Optional[str] = Form(None)
 ):
     """
     Handle LTI 1.3 launch request and redirect to Frontend
     """
     try:
-        # Attempt to read id_token from multiple sources to avoid 422 when Content-Type is unusual
-        content_type = request.headers.get("content-type")
-        logger.info(f"Content-Type: {content_type}")
-
-        # If id_token wasn't bound via Form, try to extract manually
-        if not id_token:
-            # Try query params (for debug/testing)
-            id_token = request.query_params.get("id_token")
-
-        if not id_token:
-            try:
-                form = await request.form()
-                # Log received form keys (not values)
-                logger.info(f"Form keys received: {list(form.keys())}")
-
-                # If Moodle posts an error instead of id_token, surface it clearly
-                if "error" in form:
-                    error_code = form.get("error")
-                    error_description = form.get("error_description") or form.get("error_message")
-                    logger.error(f"OIDC/LTI error returned by platform: {error_code} - {error_description}")
-                    raise HTTPException(status_code=400, detail=f"LTI platform error: {error_code} - {error_description}")
-
-                id_token = form.get("id_token")
-                state = state or form.get("state")
-            except Exception as e:
-                logger.warning(f"Unable to parse form body: {e}")
-
-        if not id_token:
-            # As a last resort, log a truncated raw body for diagnostics
-            try:
-                raw = await request.body()
-                logger.warning(f"No id_token found. Raw body (truncated 512): {raw[:512] if raw else b''}")
-            except Exception:
-                pass
-            raise HTTPException(status_code=400, detail="Missing id_token in launch request")
-
-        logger.info("id_token received (truncated): %s...", id_token[:50])
+        logger.info(f"id_token received: {id_token}")
         # Validate LTI id_token from Moodle (RS256)
         is_valid = lti_service.validate_token(id_token)
         if not is_valid:
@@ -167,10 +130,6 @@ async def lti_launch(
         #     "course_id": course_id
         # })
         
-    except HTTPException as he:
-        # Propagate controlled HTTP errors (e.g., missing id_token, OIDC error)
-        logger.error(f"LTI launch HTTP error: {he.detail}")
-        raise
     except Exception as e:
         logger.error(f"LTI launch error: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Launch failed: {str(e)}")
@@ -314,9 +273,14 @@ async def get_tool_configuration():
 async def get_jwks():
     """
     JWKS Endpoint (JSON Web Key Set)
-    Now serves a real public key via KeyService for Moodle to consume.
+    In production, you should implement proper key management
     """
-    return key_service.get_jwks()
+    # Simplified JWKS response - implement proper key management in production
+    jwks = {
+        "keys": []
+    }
+    
+    return jwks
 
 
 # New API endpoints for Frontend integration
