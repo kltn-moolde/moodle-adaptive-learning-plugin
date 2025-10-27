@@ -51,7 +51,6 @@ class Settings(BaseSettings):
     # Moodle API
     # Depending on where this service runs, you can point to the public or internal Moodle endpoint.
     # If this service is in the same Docker network as Moodle, prefer the internal DNS name for performance.
-    # MOODLE_API_URL: str = "http://moodle502:8080/webservice/rest/server.php"  # internal
     MOODLE_API_URL: str = "http://139.99.103.223:9090/webservice/rest/server.php"  # public
     MOODLE_API_TOKEN: str = "9b13f135bae7ba27d67e609c414b70df"
     # Host header to use when calling internal Moodle endpoints (used in JWKS fetch). Should match Moodle host:port.
