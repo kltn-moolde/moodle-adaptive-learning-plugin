@@ -220,11 +220,15 @@ class LTIService:
         try:
             url = settings.LTI_KEYSET_URL
             headers = {"Host": settings.ADDRESS_MOODLE}
-
-            logger.info(f"Fetching JWKS from {url} with Host header")
-            response = requests.get(url, headers=headers, timeout=10)
-            response.raise_for_status()
-            logger.info("JWKS fetched successfully")
+            if "localhost" in settings.ADDRESS_MOODLE:
+                logger.info(f"Fetching JWKS from {url} without Host header")
+                response = requests.get(url, timeout=10)
+            else:
+                logger.info(f"Fetching JWKS from {url} with Host header , headers: {headers}")
+                response = requests.get(url, headers=headers, timeout=10)
+                response.raise_for_status()
+                logger.info("JWKS fetched successfully")
+                logger.debug(f"JWKS response: {response.json()}")
             return response.json()
         except Exception as e:
             logger.error(f"Error fetching JWKS: {str(e)}")

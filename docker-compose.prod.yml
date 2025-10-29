@@ -29,7 +29,7 @@ services:
   # User Service
   user-service:
     container_name: user-service
-    image: ${DOCKER_REGISTRY_LOC}/adaptive-learning-user-service:${IMAGE_TAG:-latest}
+    image: ${DOCKER_REGISTRY_LOC}/adaptive-learning-user-service:latest
     restart: unless-stopped
     ports:
       - "${USER_SERVICE_PORT:-8085}:8085"
@@ -49,23 +49,33 @@ services:
   # LTI Service
   lti-service:
     container_name: lti-service
-    image: ${DOCKER_REGISTRY_LOC}/adaptive-learning-lti-service:${IMAGE_TAG:-latest}
+    image: ${DOCKER_REGISTRY_LOC}/adaptive-learning-lti-service:latest
     restart: unless-stopped
     ports:
-      - "${LTI_SERVICE_PORT:-8082}:8082"
+      - "${LTI_SERVICE_PORT}:8082"
     environment:
       - HOST=0.0.0.0
       - PORT=8082
       - DEBUG=${DEBUG:-False}
-      - FRONTEND_URL=${FRONTEND_URL:-http://localhost:5173}
-      - USER_SERVICE_URL=${USER_SERVICE_URL:-http://user-service:8085}
-      - LTI_ISSUER=${LTI_ISSUER:-http://51.68.124.207}
-      - LTI_AUTH_URL=${LTI_AUTH_URL:-http://51.68.124.207:9090/mod/lti/auth.php}
-      - LTI_TOKEN_URL=${LTI_TOKEN_URL:-http://51.68.124.207:9090/mod/lti/token.php}
-      - LTI_KEYSET_URL=${LTI_KEYSET_URL:-http://51.68.124.207:9090/mod/lti/certs.php}
-      - MOODLE_API_URL=${MOODLE_API_URL:-http://51.68.124.207:9090/webservice/rest/server.php}
-      - MOODLE_API_TOKEN=${MOODLE_API_TOKEN:-81a9b0ee5932a556056b43fda60e9520}
+      - FRONTEND_URL=${FRONTEND_URL}
+      - USER_SERVICE_URL=${USER_SERVICE_URL}
+      - LTI_ISSUER=${LTI_ISSUER}
+      - LTI_AUTH_URL=${LTI_AUTH_URL}
+      - LTI_TOKEN_URL=${LTI_TOKEN_URL}
+      - LTI_KEYSET_URL=${LTI_KEYSET_URL}
+      - MOODLE_API_URL=${MOODLE_API_URL}
+      - MOODLE_API_TOKEN=${MOODLE_API_TOKEN}
       - ADDRESS_MOODLE=${ADDRESS_MOODLE}
+      - LTI_CLIENT_ID=${LTI_CLIENT_ID}
+      - LTI_DEPLOYMENT_ID=${LTI_DEPLOYMENT_ID}
+      - APP_NAME=${APP_NAME}
+      - APP_VERSION=${APP_VERSION}
+      - JWT_ALGORITHM=${JWT_ALGORITHM}
+      - JWT_EXPIRATION=${JWT_EXPIRATION}
+      - TOOL_TARGET_LINK_URI=${TOOL_TARGET_LINK_URI}
+      - TOOL_OIDC_INITIATION_URL=${TOOL_OIDC_INITIATION_URL}
+      - TOOL_PUBLIC_JWK_URL=${TOOL_PUBLIC_JWK_URL}
+
     networks:
       - app-network
       - moodle_project_default
@@ -78,19 +88,22 @@ services:
   # Frontend Service
   frontend-service:
     container_name: frontend-service
-    image: ${DOCKER_REGISTRY_LOC}/adaptive-learning-frontend:${IMAGE_TAG:-latest}
+    image: ${DOCKER_REGISTRY_LOC}/adaptive-learning-frontend:latest
     restart: unless-stopped
     ports:
-      - "${FRONTEND_PORT:-5173}:5173"
+      - "${FRONTEND_PORT}:5173"
     environment:
-      - VITE_API_BASE_URL=${API_BASE_URL:-http://localhost:8000}
-      - VITE_LTI_SERVICE_URL=${LTI_SERVICE_URL:-http://localhost:8082}
+      - VITE_API_BASE_URL=${API_BASE_URL}
+      - VITE_LTI_SERVICE_URL=${LTI_SERVICE_URL}
+      - VITE_KONG_GATEWAY_URL=${VITE_KONG_GATEWAY_URL}
+      - VITE_MOODLE_URL=${VITE_MOODLE_URL}
+      - VITE_MOODLE_TOKEN=${VITE_MOODLE_TOKEN}
     networks:
       - app-network
 
   course-service:
     container_name: course-service
-    image: ${DOCKER_REGISTRY_LOC}/course_service:${IMAGE_TAG:-latest}
+    image: ${DOCKER_REGISTRY_LOC}/course_service:latest
     restart: unless-stopped
     ports:
       - "5001:5001"
@@ -110,7 +123,7 @@ services:
 
   recommend-service:
     container_name: recommend-service
-    image: ${DOCKER_REGISTRY_LOC}/recommend_service:${IMAGE_TAG:-latest}
+    image: ${DOCKER_REGISTRY_LOC}/recommend_service:latest
     restart: unless-stopped
     ports:
       - "8088:8088"

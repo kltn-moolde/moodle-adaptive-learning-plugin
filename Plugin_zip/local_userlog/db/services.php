@@ -10,6 +10,15 @@ $functions = [
         'ajax'        => true,
         'capabilities' => 'moodle/logstore:read',
     ],
+    'local_userlog_get_logs_course' => [
+        'classname'   => 'local_userlog\external\get_user_logs_course',
+        'methodname'  => 'execute',
+        'classpath'   => 'local/userlog/classes/external/get_user_logs_course.php',
+        'description' => 'Get recent logs by course id',
+        'type'        => 'read',
+        'ajax'        => true,
+        'capabilities' => 'moodle/logstore:read',
+    ],
     'local_userlog_get_module_logs' => [
         'classname'   => 'local_userlog\external\get_module_logs',
         'methodname'  => 'execute',
@@ -168,6 +177,14 @@ $functions = [
         'type'        => 'read',
         'ajax'        => true,
     ],
+    'local_userlog_get_grade_course' => [ // ok
+        'classname'   => 'local_userlog\external\get_grade_course',
+        'methodname'  => 'execute',
+        'classpath'   => 'local/userlog/classes/external/get_grade_course.php',
+        'description' => 'Get grade information for all users in a course',
+        'type'        => 'read',
+        'ajax'        => true,
+    ],
     'local_userlog_get_grade_status' => [
         'classname'   => 'local_userlog\external\get_grade_status',
         'methodname'  => 'execute',
@@ -197,8 +214,9 @@ $functions = [
 $services = [
     'User Log API Service' => [
         'functions' => [
-            'local_userlog_get_logs', 
-            'local_userlog_get_module_logs', 
+            'local_userlog_get_logs',  // ok
+            'local_userlog_get_logs_course', // ok
+            'local_userlog_get_module_logs',    
             'local_userlog_get_access_count', 
             'local_userlog_get_completion_rate',
             'local_userlog_get_time_diffs',
@@ -218,6 +236,7 @@ $services = [
             'local_userlog_get_user_section_avg_grade', // ok
             'local_userlog_get_section_completion', // ok
             'local_userlog_get_grade_status',
+            'local_userlog_get_grade_course', // ok
             'local_userlog_get_total_study_time',
             'local_userlog_get_user_object_activity_summary'
         ],

@@ -152,7 +152,14 @@ export class KongApiService {
     // LTI Authentication method
     async authenticateWithLTI(ltiUserData: Partial<UserData>): Promise<AuthResponse> {
         try {
-            const response = await fetch(`${this.baseURL}/auth/lti`, {
+            console.log("🚀 [KONG DEBUG] Gọi authenticateWithLTI()...");
+            console.log("🌐 [KONG DEBUG] Base URL:", this.baseURL);
+            console.log("📦 [KONG DEBUG] Dữ liệu gửi đi:", ltiUserData);
+
+            const url = `${this.baseURL}/auth/lti`;
+            console.log("🔗 [KONG DEBUG] Endpoint:", url);
+
+            const response = await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -160,22 +167,41 @@ export class KongApiService {
                 body: JSON.stringify(ltiUserData)
             });
 
-            if (!response.ok) {
-                const errorData = await response.json().catch(() => ({}));
-                throw new Error(errorData.message || `LTI authentication failed: ${response.status}`);
+            console.log("📡 [KONG DEBUG] Status code:", response.status);
+
+            // Log nội dung thô trước khi parse
+            const rawText = await response.text();
+            console.log("📜 [KONG DEBUG] Raw response:", rawText);
+
+            // Parse JSON (nếu có thể)
+            let data: any;
+            try {
+                data = JSON.parse(rawText);
+            } catch {
+                data = {};
+                console.warn("⚠️ [KONG DEBUG] Phản hồi không phải JSON hợp lệ");
             }
 
-            const data: AuthResponse = await response.json();
-            
+            if (!response.ok) {
+                console.error("❌ [KONG DEBUG] Lỗi từ server:", data);
+                throw new Error(data.message || `LTI authentication failed: ${response.status}`);
+            }
+
+            console.log("✅ [KONG DEBUG] Response parsed:", data);
+
+            // Kiểm tra token và user
             if (data.token && typeof window !== 'undefined') {
+                console.log("🔑 [KONG DEBUG] Nhận được token, lưu vào localStorage...");
                 this.token = data.token;
                 localStorage.setItem('auth_token', data.token);
                 localStorage.setItem('user_data', JSON.stringify(data.user));
+            } else {
+                console.warn("⚠️ [KONG DEBUG] Không có token hoặc user trong phản hồi:", data);
             }
 
             return data;
         } catch (error) {
-            console.error('LTI authentication error:', error);
+            console.error("🔥 [KONG DEBUG] LTI authentication error:", error);
             throw error;
         }
     }
