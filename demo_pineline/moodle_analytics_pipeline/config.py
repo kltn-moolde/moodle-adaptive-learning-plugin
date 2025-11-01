@@ -32,37 +32,49 @@ MIN_FEATURE_VARIANCE = 0.0  # Minimum variance threshold (0 = keep all)
 MAX_FEATURES = None  # Maximum number of features (None = use all)
 
 # ============================================================================
-# CLUSTERING SETTINGS
+# FEATURE SELECTION SETTINGS (NEW)
 # ============================================================================
-# Number of clusters (None = auto-detect)
-N_CLUSTERS = None
+# Variance threshold (features with variance below this are removed)
+VARIANCE_THRESHOLD = 0.01
 
-# Auto-detection settings
+# Correlation threshold (highly correlated features are removed)
+CORRELATION_THRESHOLD = 0.95
+
+# Maximum number of features to select (None = no limit)
+MAX_SELECTED_FEATURES = 15
+
+# ============================================================================
+# GMM CLUSTERING SETTINGS (NEW)
+# ============================================================================
+# Optimal K detection range
 MIN_CLUSTERS = 2
 MAX_CLUSTERS = 10
-USE_ELBOW_METHOD = True
-USE_SILHOUETTE_SCORE = True
-USE_DAVIES_BOULDIN = True
 
-# KMeans parameters
-KMEANS_RANDOM_STATE = 42
-KMEANS_N_INIT = 10
-KMEANS_MAX_ITER = 300
+# GMM parameters
+GMM_COVARIANCE_TYPE = 'full'  # Options: 'full', 'tied', 'diag', 'spherical'
+GMM_MAX_ITER = 200
+GMM_RANDOM_STATE = 42
 
 # ============================================================================
-# SIMULATION SETTINGS
+# GMM DATA GENERATION SETTINGS (NEW)
 # ============================================================================
-# Number of students to simulate
-N_SIMULATED_STUDENTS = 100
+# Number of synthetic students to generate
+N_SYNTHETIC_STUDENTS = 200
 
-# Noise level for simulation (0.0 = no noise, 1.0 = high noise)
-SIMULATION_NOISE_LEVEL = 0.1
+# Random state for reproducibility
+GENERATION_RANDOM_STATE = 42
 
-# Simulation random state
-SIMULATION_RANDOM_STATE = 42
+# ============================================================================
+# VALIDATION SETTINGS (NEW)
+# ============================================================================
+# Statistical test significance level
+KS_TEST_ALPHA = 0.05
+CHI_SQUARE_ALPHA = 0.05
 
-# Cluster distribution (None = use real distribution)
-CLUSTER_DISTRIBUTION = None  # Example: [0.3, 0.3, 0.4] for 3 clusters
+# Minimum quality score thresholds
+MIN_QUALITY_SCORE_EXCELLENT = 85
+MIN_QUALITY_SCORE_GOOD = 70
+MIN_QUALITY_SCORE_FAIR = 50
 
 # ============================================================================
 # COMPARISON & VISUALIZATION SETTINGS
@@ -134,7 +146,7 @@ EXPORT_PLOTS = True
 # ============================================================================
 
 def get_config_dict():
-    """Return all configuration as dictionary"""
+    """Return all configuration as dictionary (GMM-based)"""
     return {
         'input': {
             'grades_path': INPUT_GRADES_PATH,
@@ -152,19 +164,28 @@ def get_config_dict():
             'min_variance': MIN_FEATURE_VARIANCE,
             'max_features': MAX_FEATURES
         },
-        'clustering': {
-            'n_clusters': N_CLUSTERS,
+        'feature_selection': {
+            'variance_threshold': VARIANCE_THRESHOLD,
+            'correlation_threshold': CORRELATION_THRESHOLD,
+            'max_selected_features': MAX_SELECTED_FEATURES
+        },
+        'gmm_clustering': {
             'min_clusters': MIN_CLUSTERS,
             'max_clusters': MAX_CLUSTERS,
-            'random_state': KMEANS_RANDOM_STATE,
-            'n_init': KMEANS_N_INIT,
-            'max_iter': KMEANS_MAX_ITER
+            'covariance_type': GMM_COVARIANCE_TYPE,
+            'max_iter': GMM_MAX_ITER,
+            'random_state': GMM_RANDOM_STATE
         },
-        'simulation': {
-            'n_students': N_SIMULATED_STUDENTS,
-            'noise_level': SIMULATION_NOISE_LEVEL,
-            'random_state': SIMULATION_RANDOM_STATE,
-            'cluster_distribution': CLUSTER_DISTRIBUTION
+        'gmm_generation': {
+            'n_students': N_SYNTHETIC_STUDENTS,
+            'random_state': GENERATION_RANDOM_STATE
+        },
+        'validation': {
+            'ks_alpha': KS_TEST_ALPHA,
+            'chi_square_alpha': CHI_SQUARE_ALPHA,
+            'min_quality_excellent': MIN_QUALITY_SCORE_EXCELLENT,
+            'min_quality_good': MIN_QUALITY_SCORE_GOOD,
+            'min_quality_fair': MIN_QUALITY_SCORE_FAIR
         },
         'comparison': {
             'max_features': MAX_FEATURES_TO_COMPARE,

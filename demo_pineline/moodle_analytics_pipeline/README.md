@@ -1,399 +1,328 @@
-# Moodle Analytics Pipeline
+# Moodle Analytics Pipeline - GMM-Based
 
-Complete end-to-end pipeline for Moodle learning analytics: Feature Extraction → Clustering → Data Simulation → Comparison Visualization
+## 🎯 Overview
 
-## 📋 Overview
+**Moodle Analytics Pipeline** là hệ thống phân tích và sinh dữ liệu học sinh **dựa trên Gaussian Mixture Model (GMM)** - thay thế hoàn toàn phương pháp rule-based simulation trước đây.
 
-This pipeline analyzes Moodle student data to:
-1. **Extract features** from grades and log files
-2. **Cluster students** into learning behavior groups
-3. **Simulate synthetic student data** based on real patterns
-4. **Compare** real vs simulated data with statistical tests
+### ✨ Điểm mới so với phiên bản cũ
 
-## 🗂️ Project Structure
+- ✅ **Feature Selection tự động**: Loại bỏ features không cần thiết dựa trên variance và correlation
+- ✅ **Optimal Clustering với GMM**: Tự động tìm số cụm tối ưu (BIC, AIC, Silhouette)
+- ✅ **GMM-based Data Generation**: Sinh dữ liệu synthetic từ GMM (không còn rule-based)
+- ✅ **Comprehensive Validation**: Statistical tests (KS test, Chi-square) và comparison
+- ✅ **Tự động hóa hoàn toàn**: Không cần can thiệp thủ công
+- ✅ **Khoa học và minh bạch**: Mọi quyết định đều có metrics và visualizations
+
+---
+
+## 🔄 Pipeline Flow
 
 ```
-moodle_analytics_pipeline/
-├── main.py                         # Main pipeline orchestrator
-├── core/
-│   ├── __init__.py
-│   ├── feature_extractor.py        # Feature extraction & normalization
-│   ├── clustering_analyzer.py      # KMeans clustering & visualization
-│   ├── data_simulator.py           # Synthetic data generation
-│   └── comparison_visualizer.py    # Real vs Simulated comparison
-└── outputs/                        # All pipeline outputs
-    ├── features/                   # Extracted features
-    ├── clustering/                 # Clustering results
-    ├── simulation/                 # Simulated data
-    └── comparison/                 # Comparison reports
+┌─────────────────────────────────────────────────────────────────┐
+│                   MOODLE ANALYTICS PIPELINE                      │
+│                        (GMM-BASED)                               │
+└─────────────────────────────────────────────────────────────────┘
+
+📊 PHASE 1: Feature Extraction
+   ├─ Load grades & logs data
+   ├─ Extract features (events, actions, grades, etc.)
+   └─ Normalize features (MinMax/Z-score)
+   
+🔍 PHASE 2: Feature Selection
+   ├─ Calculate variance scores
+   ├─ Filter low-variance features
+   ├─ Detect high-correlation features
+   ├─ Rank and select optimal features
+   └─ Output: Selected features list
+   
+🎯 PHASE 3: Optimal Clustering (GMM)
+   ├─ Test k from 2 to 10
+   ├─ Calculate BIC, AIC, Silhouette for each k
+   ├─ Select optimal k (composite score)
+   ├─ Fit GMM with optimal k
+   └─ Output: Optimal k, GMM model, clusters
+   
+🔮 PHASE 4: GMM Data Generation
+   ├─ Load real data with selected features
+   ├─ Sample synthetic data from GMM
+   ├─ Assign cluster labels and quality groups
+   ├─ Visualize real vs synthetic (PCA, distributions)
+   └─ Output: Synthetic students dataset
+   
+✅ PHASE 5: Validation
+   ├─ Statistical tests (KS test for each feature)
+   ├─ Distribution comparison (mean, std, skewness)
+   ├─ Correlation matrix similarity
+   ├─ Cluster distribution comparison (Chi-square)
+   ├─ Calculate overall quality score
+   └─ Output: Validation report + visualizations
+   
+📈 PHASE 6: Additional Comparison
+   └─ Generate additional comparison plots
 ```
+
+---
 
 ## 🚀 Quick Start
 
 ### Installation
 
 ```bash
-# Clone or download this module
-cd moodle_analytics_pipeline
+# Clone repository
+cd demo_pineline/moodle_analytics_pipeline
 
 # Install dependencies
-pip install pandas numpy scikit-learn matplotlib seaborn scipy
+pip install -r requirements.txt
 ```
 
-### Basic Usage
+### Run Pipeline
+
+```bash
+python main.py
+```
+
+Hoặc tùy chỉnh parameters:
 
 ```python
-from main import MoodleAnalyticsPipeline
+from core import MoodleAnalyticsPipeline
 
-# Initialize pipeline
 pipeline = MoodleAnalyticsPipeline(base_output_dir='outputs')
 
-# Run complete pipeline
 results = pipeline.run_full_pipeline(
-    grades_path='path/to/grades.csv',
-    logs_path='path/to/logs.csv',
-    n_clusters=None,              # Auto-detect optimal K
-    n_simulated_students=100,
-    simulation_noise=0.1
+    grades_path='../data/udk_moodle_grades_course_670.filtered.csv',
+    logs_path='../data/udk_moodle_log_course_670.filtered.csv',
+    n_synthetic_students=200,         # Số học sinh synthetic
+    variance_threshold=0.01,          # Threshold lọc variance
+    correlation_threshold=0.95,       # Threshold lọc correlation
+    max_features=15,                  # Max số features chọn
+    k_range=range(2, 11)             # Range k để test
 )
 ```
-
-### Command Line
-
-```bash
-# Run with default settings
-python main.py
-
-# Customize by editing main() function in main.py
-```
-
-## 📊 Pipeline Stages
-
-### Stage 1: Feature Extraction
-
-**Input:** Raw CSV files
-- `udk_moodle_grades_course_670.filtered.csv`
-- `udk_moodle_log_course_670.filtered.csv`
-
-**Process:**
-- Pivot event logs into feature matrix
-- Extract interaction patterns (events, actions, targets)
-- Normalize features to [0, 1] using MinMaxScaler
-
-**Output:**
-- `features_scaled.json` - Normalized feature matrix
-- Feature statistics
-
-### Stage 2: Clustering Analysis
-
-**Input:** `features_scaled.json`
-
-**Process:**
-- Find optimal K using Elbow + Silhouette + Davies-Bouldin
-- Perform KMeans clustering
-- Generate cluster profiles and statistics
-
-**Output:**
-- `clustered_students.csv` - Students with cluster assignments
-- `cluster_statistics.json` - Mean/std for each cluster
-- `cluster_analysis.png` - Elbow & Silhouette plots
-- `clusters_pca.png` - PCA visualization
-- `cluster_profiles.png` - Radar charts
-
-### Stage 3: Data Simulation
-
-**Input:** `cluster_statistics.json`
-
-**Process:**
-- Sample cluster assignments from real distribution
-- Generate features using Gaussian distribution
-- Add configurable noise level
-
-**Output:**
-- `simulated_students.csv` - Synthetic student data
-- `simulated_students.json` - JSON format
-- `simulated_cluster_visualization.png` - PCA visualization of simulated clusters ⭐ NEW
-- `simulation_summary.json` - Simulation statistics
-
-### Stage 4: Comparison & Validation
-
-**Input:**
-- `clustered_students.csv` (real data)
-- `simulated_students.csv` (simulated data)
-
-**Process:**
-- Compare feature distributions (KS test)
-- Compare cluster proportions (Chi-square test)
-- Calculate statistical summaries
-
-**Output:**
-- `comparison_dashboard.png` - 9-panel visualization
-- `comparison_report.json` - Statistical test results
-- `comparison_report.txt` - Human-readable report
-
-### Stage 5: Cluster Comparison Analysis ⭐ NEW
-
-**Input:**
-- `clustered_students.csv` (real data with clusters)
-- `simulated_students.csv` (simulated data)
-
-**Process:**
-- Re-cluster simulated data using KMeans
-- Compare cluster quality metrics (Silhouette, Davies-Bouldin, Calinski-Harabasz)
-- Calculate cluster center distances
-- Compare cluster size distributions
-- Compute overall similarity score (0-100%)
-
-**Output:**
-- `cluster_pca_comparison.png` - Side-by-side PCA visualizations
-- `cluster_sizes_comparison.png` - Cluster size bar charts
-- `cluster_profiles_comparison.png` - Radar chart comparisons
-- `feature_distributions_comparison.png` - Feature histogram overlays
-- `similarity_metrics_dashboard.png` - Comprehensive metrics dashboard
-- `cluster_comparison_report.json` - Detailed similarity metrics
-- `cluster_comparison_report.txt` - Human-readable analysis
-
-**Key Metrics:**
-- **Overall Similarity Score**: 0-100% with letter grade (A+ to D)
-- **Silhouette Score**: Cluster cohesion and separation
-- **Davies-Bouldin Index**: Cluster quality (lower = better)
-- **Calinski-Harabasz Score**: Cluster definition (higher = better)
-- **Cluster Center Distance**: Euclidean distance between centroids
-- **Wasserstein Distance**: Distribution similarity
-- **Feature Distribution Similarity**: Per-feature comparison
-
-## 📈 Key Features
-
-### Statistical Validation
-- **Kolmogorov-Smirnov Test**: Compare feature distributions
-- **Chi-Square Test**: Validate cluster proportions
-- **Summary Statistics**: Mean, std, median comparison
-
-### Visualizations
-- Distribution histograms with overlays
-- PCA scatter plots
-- Radar charts for cluster profiles
-- Comprehensive comparison dashboard
-
-### Configurable Parameters
-```python
-pipeline.run_full_pipeline(
-    grades_path='grades.csv',
-    logs_path='logs.csv',
-    n_clusters=5,                    # Fixed K or None for auto
-    n_simulated_students=200,        # Simulation size
-    simulation_noise=0.15            # Noise level (0-1)
-)
-```
-
-## 🔧 Individual Module Usage
-
-### Feature Extraction Only
-
-```python
-from core import FeatureExtractor
-
-extractor = FeatureExtractor()
-features = extractor.process_pipeline(
-    grades_path='grades.csv',
-    logs_path='logs.csv',
-    output_dir='outputs/features'
-)
-```
-
-### Clustering Only
-
-```python
-from core import ClusteringAnalyzer
-
-analyzer = ClusteringAnalyzer()
-clustered, stats = analyzer.process_pipeline(
-    features_path='features_scaled.json',
-    output_dir='outputs/clustering',
-    n_clusters=5
-)
-```
-
-### Simulation Only
-
-```python
-from core import DataSimulator
-
-simulator = DataSimulator('cluster_statistics.json')
-simulated = simulator.process_pipeline(
-    n_students=100,
-    output_dir='outputs/simulation',
-    noise_level=0.1
-)
-```
-
-### Comparison Only
-
-```python
-from core import ComparisonVisualizer
-
-visualizer = ComparisonVisualizer()
-visualizer.process_pipeline(
-    real_path='real_students.csv',
-    simulated_path='simulated_students.csv',
-    features=['feature1', 'feature2'],
-    output_dir='outputs/comparison'
-)
-```
-
-### Cluster Comparison Only ⭐ NEW
-
-```python
-from core import ClusterComparison
-
-comparison = ClusterComparison()
-metrics = comparison.process_pipeline(
-    real_path='clustered_students.csv',
-    simulated_path='simulated_students.csv',
-    n_clusters=5,
-    output_dir='outputs/cluster_comparison'
-)
-
-# Access similarity score
-print(f"Similarity: {metrics['overall_similarity_score']['score']:.2f}%")
-print(f"Grade: {metrics['overall_similarity_score']['grade']}")
-```
-
-## 📝 Input Data Format
-
-### Grades CSV
-```csv
-userid,course,grade
-123,670,85.5
-124,670,92.0
-...
-```
-
-### Logs CSV
-```csv
-userid,eventname,action,target
-123,course_viewed,view,course
-123,quiz_started,start,quiz
-...
-```
-
-## 📊 Output Examples
-
-### Clustering Analysis
-- **Elbow Plot**: Helps identify optimal K
-- **Silhouette Score**: Cluster quality metric
-- **PCA Visualization**: 2D projection of clusters
-- **Radar Charts**: Multi-dimensional cluster profiles
-
-### Comparison Dashboard (9 panels)
-1-6. Feature distribution comparisons (real vs simulated)
-7. Cluster proportion comparison
-8-9. Statistical summaries
-
-### Cluster Comparison ⭐ NEW
-- **Side-by-side PCA**: Visual cluster comparison
-- **Cluster Size Charts**: Distribution comparison
-- **Profile Radar Charts**: Multi-dimensional comparison per cluster
-- **Feature Distributions**: Histogram overlays
-- **Metrics Dashboard**: Overall similarity gauge + detailed metrics
-- **Similarity Score**: 0-100% with grade (A+ to D)
-
-### Reports
-```json
-{
-  "feature1": {
-    "ks_statistic": 0.12,
-    "ks_pvalue": 0.34,
-    "distributions_similar": true
-  },
-  "clusters": {
-    "chi2_statistic": 2.45,
-    "chi2_pvalue": 0.78,
-    "distributions_similar": true
-  }
-}
-```
-
-## 🧪 Testing
-
-Each module includes test functions:
-
-```bash
-# Test feature extraction
-python core/feature_extractor.py
-
-# Test clustering
-python core/clustering_analyzer.py
-
-# Test simulation
-python core/data_simulator.py
-
-# Test comparison
-python core/comparison_visualizer.py
-
-# Test cluster comparison ⭐ NEW
-python core/cluster_comparison.py
-
-# Standalone cluster comparison demo
-python demo_cluster_comparison.py
-```
-
-## 🔍 Troubleshooting
-
-### Module not found
-```bash
-# Ensure you're in the correct directory
-cd moodle_analytics_pipeline
-export PYTHONPATH="${PYTHONPATH}:$(pwd)"
-```
-
-### Input file not found
-```bash
-# Use absolute paths or verify relative paths
-import os
-print(os.path.abspath('data/grades.csv'))
-```
-
-### Memory errors with large datasets
-```python
-# Reduce feature count or sample data
-features = features.sample(frac=0.5)  # Use 50% of data
-```
-
-## 📚 Dependencies
-
-- **pandas**: Data manipulation
-- **numpy**: Numerical operations
-- **scikit-learn**: Machine learning (KMeans, PCA, MinMaxScaler)
-- **matplotlib**: Visualization
-- **seaborn**: Statistical plots
-- **scipy**: Statistical tests
-
-## 🎯 Use Cases
-
-1. **Student Behavior Analysis**: Identify learning patterns
-2. **Data Augmentation**: Generate synthetic training data
-3. **Privacy-Preserving Research**: Share simulated instead of real data
-4. **Model Validation**: Test ML models with realistic synthetic data
-5. **What-If Analysis**: Simulate different student populations
-
-## 📄 License
-
-MIT License - Feel free to use and modify
-
-## 👥 Contributing
-
-Contributions welcome! Areas for improvement:
-- Additional clustering algorithms (DBSCAN, Hierarchical)
-- More sophisticated simulation (GANs, VAEs)
-- Real-time pipeline execution
-- Web dashboard interface
-
-## 📧 Contact
-
-For questions or issues, please open a GitHub issue or contact the maintainer.
 
 ---
 
-**Version**: 1.0.0  
-**Last Updated**: 2024
+## 📊 Output Structure
+
+```
+outputs/
+├── features/                          # PHASE 1
+│   ├── features_raw.csv
+│   ├── features_scaled.json
+│   └── feature_statistics.json
+│
+├── feature_selection/                 # PHASE 2
+│   ├── feature_selection_analysis.png
+│   ├── feature_selection_report.json
+│   └── feature_selection_report.txt
+│
+├── optimal_clusters/                  # PHASE 3
+│   ├── optimal_clusters_evaluation.png
+│   ├── optimal_clusters_report.json
+│   └── optimal_clusters_report.txt
+│
+├── gmm_generation/                    # PHASE 4
+│   ├── synthetic_students_gmm.csv
+│   ├── synthetic_students_gmm.json
+│   ├── gmm_generation_summary.json
+│   ├── real_vs_synthetic_pca.png
+│   ├── feature_distributions_comparison.png
+│   └── correlation_comparison.png
+│
+├── validation/                        # PHASE 5
+│   ├── validation_report.json
+│   ├── validation_report.txt
+│   ├── ks_test_results.png
+│   └── distribution_boxplots.png
+│
+└── comparison/                        # PHASE 6
+    └── (additional comparison plots)
+```
+
+---
+
+## 🧪 Core Modules
+
+### 1. FeatureExtractor
+Trích xuất features từ Moodle logs và grades.
+
+### 2. FeatureSelector ⭐ NEW
+- Tính variance và correlation scores
+- Loại bỏ low-variance features
+- Loại bỏ highly-correlated features (redundant)
+- Rank features theo importance
+
+### 3. OptimalClusterFinder ⭐ NEW
+- Test multiple k values (2-10)
+- Calculate BIC, AIC, Silhouette
+- Automated optimal k selection
+- Comprehensive evaluation plots
+
+### 4. GMMDataGenerator ⭐ NEW
+- Fit GMM on real data
+- Sample synthetic data from GMM distribution
+- Assign cluster labels và quality groups
+- Validate distribution similarity
+
+### 5. ValidationMetrics ⭐ NEW
+- Kolmogorov-Smirnov tests
+- Distribution comparisons
+- Correlation matrix similarity
+- Overall quality scoring
+
+---
+
+## 📈 Key Metrics
+
+### Feature Selection Metrics
+- **Variance score**: Độ biến thiên của feature
+- **Correlation score**: Độ tương quan giữa features
+- **Composite score**: Tổng hợp variance + stability
+
+### Clustering Metrics
+- **BIC (Bayesian Information Criterion)**: Lower is better
+- **AIC (Akaike Information Criterion)**: Lower is better
+- **Silhouette Score**: 0-1, higher is better (>0.5: good)
+- **Composite Score**: Weighted combination (0-1)
+
+### Validation Metrics
+- **KS Test p-value**: >0.05 → distributions are similar
+- **Chi-square p-value**: >0.05 → cluster distributions are similar
+- **Correlation Similarity**: 0-1, higher is better
+- **Overall Quality Score**: 0-100% (Excellent: >85%, Good: >70%)
+
+---
+
+## 🎓 Scientific Approach
+
+### 1. Feature Selection
+- **Variance threshold**: Loại bỏ features có variance < 0.01 (ít thông tin)
+- **Correlation threshold**: Loại bỏ features có correlation > 0.95 (redundant)
+- **Ranking**: Composite score = 0.7 × variance + 0.3 × stability
+
+### 2. Optimal Clustering
+- **Strategy**: Test k từ 2-10, tính BIC/AIC/Silhouette cho mỗi k
+- **Selection**: Chọn k có composite score cao nhất (0.5×BIC + 0.5×Silhouette)
+- **Validation**: Kiểm tra convergence và iteration count
+
+### 3. GMM Data Generation
+- **Model**: Gaussian Mixture Model với covariance_type='full'
+- **Sampling**: Sample từ GMM distribution (không dùng mean+noise như cũ)
+- **Labeling**: Tự động map clusters sang quality labels (giỏi/khá/yếu)
+
+### 4. Validation
+- **Statistical tests**: KS test (mỗi feature), Chi-square test (cluster distribution)
+- **Quality score**: 0.4×KS_pass_rate + 0.3×corr_similarity + 0.3×(1-mean_error)
+
+---
+
+## 🔧 Configuration
+
+Edit `config.py` để tùy chỉnh:
+
+```python
+# Feature Selection
+VARIANCE_THRESHOLD = 0.01
+CORRELATION_THRESHOLD = 0.95
+MAX_SELECTED_FEATURES = 15
+
+# GMM Clustering
+MIN_CLUSTERS = 2
+MAX_CLUSTERS = 10
+GMM_COVARIANCE_TYPE = 'full'
+
+# Generation
+N_SYNTHETIC_STUDENTS = 200
+
+# Validation
+KS_TEST_ALPHA = 0.05
+MIN_QUALITY_SCORE_EXCELLENT = 85
+MIN_QUALITY_SCORE_GOOD = 70
+```
+
+---
+
+## 📝 Example Usage
+
+### Basic Usage
+```python
+from core import MoodleAnalyticsPipeline
+
+pipeline = MoodleAnalyticsPipeline()
+results = pipeline.run_full_pipeline(
+    grades_path='data/grades.csv',
+    logs_path='data/logs.csv'
+)
+
+print(f"Optimal k: {results['optimal_k']}")
+print(f"Quality Score: {results['validation_results']['overall_quality_score']['score']:.1f}%")
+```
+
+### Advanced Usage - Custom Modules
+```python
+from core import (
+    FeatureExtractor,
+    FeatureSelector,
+    OptimalClusterFinder,
+    GMMDataGenerator,
+    ValidationMetrics
+)
+
+# 1. Extract features
+extractor = FeatureExtractor()
+features = extractor.process_pipeline(grades_path, logs_path, output_dir)
+
+# 2. Select features
+selector = FeatureSelector(variance_threshold=0.01, correlation_threshold=0.95)
+selected = selector.process_pipeline(features, output_dir)
+
+# 3. Find optimal k
+finder = OptimalClusterFinder(k_range=range(2, 11))
+optimal_k, gmm = finder.process_pipeline(features[selected].values, output_dir)
+
+# 4. Generate synthetic data
+generator = GMMDataGenerator(optimal_gmm=gmm)
+synthetic = generator.process_pipeline(
+    features_path, selected, optimal_k, n_synthetic=200, output_dir
+)
+
+# 5. Validate
+validator = ValidationMetrics()
+results = validator.process_pipeline(real_path, synthetic_path, selected, output_dir)
+
+print(f"Quality: {results['overall_quality_score']['grade']}")
+```
+
+---
+
+## 📚 References
+
+- **GMM**: Gaussian Mixture Models for clustering
+- **BIC/AIC**: Model selection criteria
+- **Silhouette Score**: Cluster quality metric
+- **KS Test**: Distribution similarity test
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first.
+
+---
+
+## 📄 License
+
+MIT License
+
+---
+
+## 🔗 Related Files
+
+- `QUICKSTART.md`: Quick start guide with examples
+- `MODULE_SUMMARY.md`: Detailed module documentation
+- `METRICS_GUIDE.md`: Metrics explanation
+- `config.py`: Configuration parameters
+
+---
+
+**Last Updated**: November 2025  
+**Version**: 3.0 (GMM-based)
