@@ -1,185 +1,412 @@
-from itertools import count
-from flask import Blueprint, request, jsonify
-from database import mongo
-from services.moodle_client import *
-from bson.objectid import ObjectId
-import requests
-import json
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Course Routes - Restructured
+=============================
+Clean API endpoints for course operations
+"""
 
+from flask import Blueprint, request, jsonify
+from bson.objectid import ObjectId
+from database import mongo
+from services.moodle_client import get_moodle_client
+from utils.moodle_converter import MoodleStructureConverter
+from utils.logger import setup_logger, log_request
+from utils.exceptions import (
+    CourseServiceError, 
+    MoodleAPIError, 
+    DatabaseError,
+    NotFoundError,
+    ValidationError
+)
+
+logger = setup_logger('course_routes')
 course_bp = Blueprint("course", __name__)
 
 
+def error_response(error: Exception, status_code: int = 500):
+    """Standardized error response"""
+    if isinstance(error, CourseServiceError):
+        return jsonify(error.to_dict()), status_code
+    
+    return jsonify({
+        'error': 'InternalServerError',
+        'message': str(error)
+    }), status_code
+
+
+@course_bp.route("/health", methods=["GET"])
 def health():
+    """Health check endpoint"""
     try:
-        # 1. Kiểm tra kết nối MongoDB
+        # Check MongoDB
         mongo.db.command("ping")
-        if not mongo:
+        
+        # Check Moodle API
+        client = get_moodle_client()
+        moodle_ok = client.health_check()
+        
+        if not moodle_ok:
             return jsonify({
-                "status": "DOWN",
-                "reason": "MongoDB connection failed"
-            }), 500
-
-        # 2. Thử gọi Moodle API
-        moodle_courses = get_courses_from_moodle()
-        if not moodle_courses:
-            return jsonify({
-                "status": "DOWN",
-                "reason": "Moodle API did not return data"
-            }), 500
-
-        return jsonify({"status": "UP"}), 200
-
+                "status": "DEGRADED",
+                "mongodb": "UP",
+                "moodle": "DOWN"
+            }), 200
+        
+        return jsonify({
+            "status": "UP",
+            "mongodb": "UP",
+            "moodle": "UP"
+        }), 200
+        
     except Exception as e:
+        logger.error(f"Health check failed: {str(e)}")
         return jsonify({
             "status": "DOWN",
             "error": str(e)
         }), 500
 
-# GET all
+
+# ==================== MongoDB CRUD ====================
+
 @course_bp.route("/courses", methods=["GET"])
+@log_request
 def get_courses():
-    courses = list(mongo.db.courses.find())
-    for c in courses:
-        c["_id"] = str(c["_id"])
-    return jsonify(courses)
-
-# POST
-@course_bp.route("/courses", methods=["POST"])
-def create_course():
-    data = request.json
-    new_course = {
-        "moodle_id": data.get("moodle_id"),
-        "name": data["name"],
-        "description": data.get("description", "")
-    }
-    inserted = mongo.db.courses.insert_one(new_course)
-    return jsonify({"message": "Course created", "id": str(inserted.inserted_id)})
-
-# PUT
-@course_bp.route("/courses/<id>", methods=["PUT"])
-def update_course(id):
-    data = request.json
-    update_data = {k: v for k, v in data.items() if v is not None}
-    mongo.db.courses.update_one({"_id": ObjectId(id)}, {"$set": update_data})
-    return jsonify({"message": "Course updated"})
-
-# DELETE
-@course_bp.route("/courses/<id>", methods=["DELETE"])
-def delete_course(id):
-    mongo.db.courses.delete_one({"_id": ObjectId(id)})
-    return jsonify({"message": "Course deleted"})
-
-
-# get danh sách khóa học từ Moodle
-@course_bp.route("/moodle/courses", methods=["GET"])
-def get_moodle_courses():
-    moodle_courses = get_courses_from_moodle()
-    return jsonify({"message": "Retrieved courses from Moodle", "courses": moodle_courses})
-
-
-# get nội dung khóa học từ Moodle
-@course_bp.route("/moodle/courses/<course_id>/contents", methods=["GET"])
-def get_moodle_course_contents(course_id):
-    course_contents = get_course_contents(course_id)
-    return jsonify({"message": "Retrieved course contents from Moodle", "contents": course_contents})
-
-
-@course_bp.route("/moodle/courses/<course_id>/contents/structure", methods=["GET"])
-def get_course_structure_json(course_id):
-    """
-    Lấy dữ liệu course từ Moodle, chuyển đổi sang cấu trúc phân cấp
-    và trả về JSON string.
-    """
-    raw_data = get_course_contents(course_id)   # đã có sẵn trong service của bạn
-    transformed_data = convert_course_structure(raw_data)  # dữ liệu đã chuẩn hóa
-
-    return json.dumps(transformed_data, indent=2, ensure_ascii=False)
-
-
-# Lấy chi tiết 1 khóa học trong Moodle
-@course_bp.route("/moodle/courses/<course_id>", methods=["GET"])
-def get_moodle_course_detail(course_id):
+    """Lấy tất cả courses từ MongoDB"""
     try:
-        # get_course_by_id trả về JSON từ Moodle (thường chứa key "courses")
-        course_detail = get_course_by_id(course_id)
-        return jsonify({"message": "Retrieved course detail from Moodle", "course": course_detail})
-    except requests.RequestException as e:
-        return jsonify({"message": "Failed to retrieve course detail", "error": str(e)}), 500
-
-
-# Lấy danh sách học viên (người dùng) của một khóa học từ Moodle
-@course_bp.route("/moodle/courses/<course_id>/users", methods=["GET"])
-def get_moodle_course_users_route(course_id):
-    try:
-        users = get_moodle_course_users(course_id)
-        return jsonify({"message": "Retrieved enrolled users from Moodle", "users": users})
-    except requests.RequestException as e:
-        return jsonify({"message": "Failed to retrieve enrolled users", "error": str(e)}), 500
-
-
-# Lấy chi tiết 1 user từ Moodle
-@course_bp.route("/moodle/users/<user_id>", methods=["GET"])
-def get_moodle_user_detail_route(user_id):
-    try:
-        user_detail = get_moodle_user_detail(user_id)
-        return jsonify({"message": "Retrieved user detail from Moodle", "user": user_detail})
-    except requests.RequestException as e:
-        return jsonify({"message": "Failed to retrieve user detail", "error": str(e)}), 500
-
-
-@course_bp.route("/moodle/courses/<course_id>/contents/sync", methods=["POST"])
-def sync_course_to_db(course_id):
-    """
-    Lấy dữ liệu course từ Moodle, chuyển đổi sang cấu trúc phân cấp,
-    lưu (insert/update) vào MongoDB, và trả về dữ liệu đã lưu.
-    """
-    try:
-        # 1. Lấy dữ liệu thô từ Moodle
-        raw_data = get_course_contents(course_id)
-
-        # 2. Convert sang cấu trúc phân cấp
-        transformed_data = convert_course_structure(raw_data)
-
-        # 3. Lưu hoặc cập nhật vào MongoDB
-        course_doc = {
-            "course_id": course_id,
-            "contents": transformed_data
-        }
-
-        result = mongo.db.courses.update_one(
-            {"course_id": course_id},         # tìm course theo course_id
-            {"$set": course_doc},             # update dữ liệu
-            upsert=True                       # nếu chưa có thì insert
-        )
-
-        # 4. Xác định là update hay insert
-        if result.matched_count > 0:
-            action = "updated"
-        else:
-            action = "inserted"
-
-        return jsonify({
-            "status": "success",
-            "action": action,
-            "course_id": course_id,
-            "contents": transformed_data
-        }), 200
-
+        courses = list(mongo.db.courses.find())
+        for c in courses:
+            c["_id"] = str(c["_id"])
+        
+        logger.info(f"Retrieved {len(courses)} courses from database")
+        return jsonify(courses), 200
+        
     except Exception as e:
-        return jsonify({"status": "error", "message": str(e)}), 500
+        logger.error(f"Failed to get courses: {str(e)}")
+        return error_response(DatabaseError(str(e)), 500)
 
-@course_bp.route("/test/external", methods=["GET"])
-def test_external_call():
+
+@course_bp.route("/courses", methods=["POST"])
+@log_request
+def create_course():
+    """Tạo course mới trong MongoDB"""
     try:
-        # Gọi một trang bên ngoài, ví dụ Google
-        response = requests.get("https://www.google.com", timeout=5)
+        data = request.get_json(force=True, silent=True)
+        
+        if not data or "name" not in data:
+            raise ValidationError("Missing required field: name")
+        
+        new_course = {
+            "moodle_id": data.get("moodle_id"),
+            "name": data["name"],
+            "description": data.get("description", "")
+        }
+        
+        inserted = mongo.db.courses.insert_one(new_course)
+        logger.info(f"Created course: {new_course['name']} (ID: {inserted.inserted_id})")
+        
         return jsonify({
-            "message": "External call successful",
-            "status_code": response.status_code,
-            "content_snippet": response.text[:200]  # chỉ lấy 200 ký tự đầu
-        })
-    except requests.RequestException as e:
+            "message": "Course created successfully",
+            "id": str(inserted.inserted_id),
+            "course": new_course
+        }), 201
+        
+    except ValidationError as e:
+        return error_response(e, 400)
+    except Exception as e:
+        logger.error(f"Failed to create course: {str(e)}")
+        return error_response(DatabaseError(str(e)), 500)
+
+
+@course_bp.route("/courses/<id>", methods=["GET"])
+@log_request
+def get_course(id):
+    """Lấy 1 course từ MongoDB"""
+    try:
+        course = mongo.db.courses.find_one({"_id": ObjectId(id)})
+        
+        if not course:
+            raise NotFoundError(f"Course not found: {id}")
+        
+        course["_id"] = str(course["_id"])
+        logger.info(f"Retrieved course: {course.get('name', 'N/A')}")
+        
+        return jsonify(course), 200
+        
+    except NotFoundError as e:
+        return error_response(e, 404)
+    except Exception as e:
+        logger.error(f"Failed to get course: {str(e)}")
+        return error_response(DatabaseError(str(e)), 500)
+
+
+@course_bp.route("/courses/<id>", methods=["PUT"])
+@log_request
+def update_course(id):
+    """Cập nhật course trong MongoDB"""
+    try:
+        data = request.get_json(force=True, silent=True)
+        
+        if not data:
+            raise ValidationError("No data provided")
+        
+        update_data = {k: v for k, v in data.items() if v is not None}
+        
+        result = mongo.db.courses.update_one(
+            {"_id": ObjectId(id)},
+            {"$set": update_data}
+        )
+        
+        if result.matched_count == 0:
+            raise NotFoundError(f"Course not found: {id}")
+        
+        logger.info(f"Updated course: {id}")
+        return jsonify({"message": "Course updated successfully"}), 200
+        
+    except NotFoundError as e:
+        return error_response(e, 404)
+    except ValidationError as e:
+        return error_response(e, 400)
+    except Exception as e:
+        logger.error(f"Failed to update course: {str(e)}")
+        return error_response(DatabaseError(str(e)), 500)
+
+
+@course_bp.route("/courses/<id>", methods=["DELETE"])
+@log_request
+def delete_course(id):
+    """Xóa course từ MongoDB"""
+    try:
+        result = mongo.db.courses.delete_one({"_id": ObjectId(id)})
+        
+        if result.deleted_count == 0:
+            raise NotFoundError(f"Course not found: {id}")
+        
+        logger.info(f"Deleted course: {id}")
+        return jsonify({"message": "Course deleted successfully"}), 200
+        
+    except NotFoundError as e:
+        return error_response(e, 404)
+    except Exception as e:
+        logger.error(f"Failed to delete course: {str(e)}")
+        return error_response(DatabaseError(str(e)), 500)
+
+
+# ==================== Moodle Integration ====================
+
+@course_bp.route("/moodle/courses", methods=["GET"])
+@log_request
+def get_moodle_courses():
+    """Lấy danh sách courses từ Moodle"""
+    try:
+        client = get_moodle_client()
+        courses = client.get_courses()
+        
         return jsonify({
-            "message": "External call failed",
-            "error": str(e)
-        }), 500
+            "message": "Retrieved courses from Moodle",
+            "total": len(courses),
+            "courses": courses
+        }), 200
+        
+    except MoodleAPIError as e:
+        return error_response(e, 502)
+    except Exception as e:
+        logger.error(f"Failed to get Moodle courses: {str(e)}")
+        return error_response(CourseServiceError(str(e)), 500)
+
+
+@course_bp.route("/moodle/courses/<int:course_id>", methods=["GET"])
+@log_request
+def get_moodle_course_detail(course_id):
+    """Lấy chi tiết 1 course từ Moodle"""
+    try:
+        client = get_moodle_client()
+        course = client.get_course_by_id(course_id)
+        
+        if not course:
+            raise NotFoundError(f"Course not found in Moodle: {course_id}")
+        
+        return jsonify({
+            "message": "Retrieved course from Moodle",
+            "course": course
+        }), 200
+        
+    except NotFoundError as e:
+        return error_response(e, 404)
+    except MoodleAPIError as e:
+        return error_response(e, 502)
+    except Exception as e:
+        logger.error(f"Failed to get Moodle course: {str(e)}")
+        return error_response(CourseServiceError(str(e)), 500)
+
+
+@course_bp.route("/moodle/courses/<int:course_id>/contents", methods=["GET"])
+@log_request
+def get_moodle_course_contents(course_id):
+    """Lấy nội dung course từ Moodle (raw structure)"""
+    try:
+        client = get_moodle_client()
+        contents = client.get_course_contents(course_id)
+        
+        return jsonify({
+            "message": "Retrieved course contents from Moodle",
+            "course_id": course_id,
+            "total_sections": len(contents),
+            "contents": contents
+        }), 200
+        
+    except MoodleAPIError as e:
+        return error_response(e, 502)
+    except Exception as e:
+        logger.error(f"Failed to get course contents: {str(e)}")
+        return error_response(CourseServiceError(str(e)), 500)
+
+
+@course_bp.route("/moodle/courses/<int:course_id>/hierarchy", methods=["GET"])
+@log_request
+def get_course_hierarchy(course_id):
+    """
+    Lấy cấu trúc phân cấp của course (NEW - recommended)
+    Sử dụng MoodleStructureConverter để chuyển đổi sang deep hierarchy
+    """
+    try:
+        # Get course info
+        client = get_moodle_client()
+        course = client.get_course_by_id(course_id)
+        
+        if not course:
+            raise NotFoundError(f"Course not found: {course_id}")
+        
+        # Get contents
+        contents = client.get_course_contents(course_id)
+        
+        # Convert to hierarchy
+        course_name = course.get('fullname', 'Unknown Course')
+        converter = MoodleStructureConverter(course_name=course_name)
+        converter.convert(contents)
+        
+        # Get analysis
+        analysis = converter.analyze_structure()
+        
+        return jsonify({
+            "message": "Course hierarchy generated successfully",
+            "course_id": course_id,
+            "course_name": course_name,
+            "analysis": analysis,
+            "hierarchy": converter.to_dict()
+        }), 200
+        
+    except NotFoundError as e:
+        return error_response(e, 404)
+    except MoodleAPIError as e:
+        return error_response(e, 502)
+    except Exception as e:
+        logger.error(f"Failed to generate hierarchy: {str(e)}")
+        return error_response(CourseServiceError(str(e)), 500)
+
+
+@course_bp.route("/moodle/courses/<int:course_id>/users", methods=["GET"])
+@log_request
+def get_course_users(course_id):
+    """Lấy danh sách users enrolled trong course"""
+    try:
+        client = get_moodle_client()
+        users = client.get_enrolled_users(course_id)
+        
+        return jsonify({
+            "message": "Retrieved enrolled users",
+            "course_id": course_id,
+            "total": len(users),
+            "users": users
+        }), 200
+        
+    except MoodleAPIError as e:
+        return error_response(e, 502)
+    except Exception as e:
+        logger.error(f"Failed to get course users: {str(e)}")
+        return error_response(CourseServiceError(str(e)), 500)
+
+
+# ==================== Analysis Endpoints ====================
+
+@course_bp.route("/moodle/courses/<int:course_id>/analysis", methods=["GET"])
+@log_request
+def analyze_course_structure(course_id):
+    """Phân tích cấu trúc course (activities, resources, completion rate, etc.)"""
+    try:
+        client = get_moodle_client()
+        course = client.get_course_by_id(course_id)
+        
+        if not course:
+            raise NotFoundError(f"Course not found: {course_id}")
+        
+        contents = client.get_course_contents(course_id)
+        
+        # Convert and analyze
+        converter = MoodleStructureConverter(course.get('fullname', 'Unknown'))
+        converter.convert(contents)
+        analysis = converter.analyze_structure()
+        
+        # Additional stats
+        activities = converter.get_all_activities()
+        resources = converter.get_all_resources()
+        
+        return jsonify({
+            "message": "Course analysis completed",
+            "course_id": course_id,
+            "course_name": course.get('fullname'),
+            "analysis": analysis,
+            "breakdown": {
+                "activities": len(activities),
+                "resources": len(resources),
+                "sections": len(converter.root.children) if converter.root else 0
+            }
+        }), 200
+        
+    except NotFoundError as e:
+        return error_response(e, 404)
+    except MoodleAPIError as e:
+        return error_response(e, 502)
+    except Exception as e:
+        logger.error(f"Failed to analyze course: {str(e)}")
+        return error_response(CourseServiceError(str(e)), 500)
+
+
+@course_bp.route("/moodle/courses/<int:course_id>/learning-path/<int:node_id>", methods=["GET"])
+@log_request
+def get_learning_path(course_id, node_id):
+    """Lấy learning path từ root đến một node cụ thể"""
+    try:
+        client = get_moodle_client()
+        course = client.get_course_by_id(course_id)
+        
+        if not course:
+            raise NotFoundError(f"Course not found: {course_id}")
+        
+        contents = client.get_course_contents(course_id)
+        
+        # Convert
+        converter = MoodleStructureConverter(course.get('fullname'))
+        converter.convert(contents)
+        
+        # Get path
+        path = converter.get_learning_path(node_id)
+        
+        if not path:
+            raise NotFoundError(f"Node not found: {node_id}")
+        
+        return jsonify({
+            "message": "Learning path retrieved",
+            "course_id": course_id,
+            "node_id": node_id,
+            "path": path,
+            "depth": len(path) - 1  # Exclude root
+        }), 200
+        
+    except NotFoundError as e:
+        return error_response(e, 404)
+    except MoodleAPIError as e:
+        return error_response(e, 502)
+    except Exception as e:
+        logger.error(f"Failed to get learning path: {str(e)}")
+        return error_response(CourseServiceError(str(e)), 500)
