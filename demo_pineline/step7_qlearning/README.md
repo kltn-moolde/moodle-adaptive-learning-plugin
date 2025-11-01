@@ -1,188 +1,244 @@
-# Q-Learning Adaptive Learning System
+# Q-Learning for Moodle Adaptive Learning v2.0
 
-## � Overview
+Clean, modular implementation of Q-learning system for personalized learning recommendations.
 
-Hệ thống gợi ý học tập thích ứng sử dụng **Q-Learning** để học policy tối ưu cho từng student dựa trên:
-- **State**: Behavioral features từ Moodle logs (12 dimensions)
-- **Action**: Specific resources từ course structure (quiz, video, PDF, ...)
-- **Reward**: Learning outcomes (grades, completion, engagement)
-
-**Key Features:**
-- ✅ State từ real Moodle data (`features_scaled_report.json`)
-- ✅ Action space động từ course structure JSON
-- ✅ Support multiple difficulty levels (easy/medium/hard)
-- ✅ Course-agnostic design
-- ✅ Modular & extensible
-
----
-
-## 🏗️ Architecture
+## 📁 Structure
 
 ```
 step7_qlearning/
-├── README.md                          # This file
-├── README_NEW_DESIGN.md               # Detailed design doc
-├── requirements.txt                   # Dependencies
+├── core_v2/                    # Core modules
+│   ├── __init__.py
+│   ├── state_builder.py        # State representation (12 dims)
+│   ├── action_space.py         # Learning actions from course
+│   ├── reward_calculator.py    # Cluster-based rewards
+│   ├── qlearning_agent.py      # Tabular Q-learning
+│   └── simulator.py            # Learning behavior simulator
 │
-├── core/                              # Q-Learning engine
-│   ├── moodle_state_builder.py        # State từ Moodle logs (12 dims)
-│   ├── action_space.py                # Action space từ course JSON
-│   ├── qlearning_agent.py             # Q-Learning agent (cần refactor)
-│   └── reward_calculator.py           # Reward calculation
+├── data/                       # Data files
+│   ├── course_structure.json   # Moodle course structure
+│   ├── cluster_profiles.json   # Student cluster profiles
+│   └── simulated/              # Simulated training data
 │
-├── models/                            # Data models (legacy, cần cleanup)
-│   ├── course_structure.py            # CourseStructure class
-│   ├── student_profile.py             # StudentProfile class
-│   └── outcome.py                     # LearningOutcome class
+├── models/                     # Trained models
+│   └── qlearning_model.pkl     # Q-table + params
 │
-└── examples/                          # Demo scripts
-    ├── demo_moodle_integration.py     # ⭐ Main demo
-    ├── course_structure_example.json  # Example course
-    └── quick_demo.py                  # Old demo (legacy)
+├── simulate_learning_data.py   # Generate simulated data
+├── train_qlearning_v2.py       # Train Q-learning model
+└── update_daily_qtable.py      # Daily update pipeline
 ```
-
-## 🎯 Key Concepts
-
-### 1. **State (12 dimensions)**
-Trích xuất từ Moodle `features_scaled_report.json`:
-- Student Performance: knowledge_level, engagement, struggle
-- Activity Patterns: submission, review, resource usage, assessment, collaboration
-- Completion Metrics: progress, completion rate, diversity, consistency
-
-### 2. **Action (Dynamic)**
-Mỗi action = 1 Moodle resource cụ thể:
-- `take_quiz_easy`, `take_quiz_medium`, `take_quiz_hard`
-- `watch_video`, `study_resource`, `participate_forum`
-- Dynamic từ course structure JSON
-
-### 3. **Reward**
-Based on learning outcomes:
-- Grade improvement
-- Completion rate
-- Time efficiency
-- Engagement quality
 
 ## 🚀 Quick Start
 
-### 1. Install Dependencies
+### 1. Generate Simulated Data
 
 ```bash
-cd demo_pineline/step7_qlearning
-pip install -r requirements.txt
+python simulate_learning_data.py --n-students 100 --n-actions 30
 ```
 
-### 2. Run Demo
+**Output:** `data/simulated/latest_simulation.json`
+
+### 2. Train Q-Learning Model
 
 ```bash
-cd examples
-python3 demo_moodle_integration.py
+python train_qlearning_v2.py --data data/simulated/latest_simulation.json \
+                              --output models/qlearning_model.pkl \
+                              --epochs 10
 ```
 
-**Output:**
-- State extraction từ Moodle logs
-- Action space từ course structure
-- Recommendation logic demo
+**Output:** `models/qlearning_model.pkl`
 
-### 3. Usage Example
+### 3. Daily Update (Production)
 
+```bash
+# Run daily at 12AM
+python update_daily_qtable.py --model models/qlearning_model.pkl
+```
+
+**Output:** 
+- Updated Q-table
+- Daily recommendations in `data/recommendations/`
+
+## 🔧 Core Components
+
+### 1. State Builder (`state_builder.py`)
+
+**12-dimensional state representation:**
+- Performance (3): knowledge, engagement, struggle
+- Activity patterns (5): submission, review, resources, assessment, collaboration
+- Completion metrics (4): progress, completion rate, diversity, consistency
+
+**Usage:**
 ```python
-from core.moodle_state_builder import MoodleStateBuilder
-from core.action_space import ActionSpace
+from core_v2 import MoodleStateBuilder
 
-# Load student data
-student_data = {
-    'userid': 8609,
-    'mean_module_grade': 0.75,
-    'total_events': 0.6,
-    'engagement': 0.8,
-    # ... more features
-}
-
-# Build state
-state_builder = MoodleStateBuilder()
-state = state_builder.build_state(student_data)
-print(f"State: {state}")  # 12-dim vector
-
-# Load course structure
-action_space = ActionSpace.load_from_file('course_structure.json')
-print(f"Total actions: {action_space.get_action_space_size()}")
-
-# Get recommendations (rule-based for now)
-if state[2] > 0.6:  # High struggle
-    recommendations = action_space.get_actions_by_difficulty('easy')
-else:
-    recommendations = action_space.get_actions_by_difficulty('medium')
-
-for action in recommendations[:3]:
-    print(f"  {action}")
+builder = MoodleStateBuilder()
+state = builder.build_state(student_features)  # Returns np.array (12,)
 ```
 
----
+### 2. Action Space (`action_space.py`)
 
-## 📚 Documentation
+**Extract learning actions from course:**
+- Quiz, Assignment (assessment)
+- Resource, Page, URL (content)
+- Video, H5P (interactive)
+- Forum (collaboration)
 
-- **[README_NEW_DESIGN.md](README_NEW_DESIGN.md)** - Chi tiết thiết kế mới
-- **[CHANGELOG.md](CHANGELOG.md)** - Lịch sử thay đổi
-- **[TODO.md](TODO.md)** - Công việc còn lại
+**Usage:**
+```python
+from core_v2 import ActionSpace
 
----
-
-## 🎯 Next Steps
-
-### Phase 1: Core Refactoring ✅ (Completed)
-- [x] Design new State (12 dims từ Moodle)
-- [x] Design new Action (resource IDs)
-- [x] Implement MoodleStateBuilder
-- [x] Implement ActionSpace
-- [x] Demo script
-
-### Phase 2: Integration (In Progress)
-- [ ] Refactor QLearningAgent
-- [ ] Create training pipeline
-- [ ] Test với real data
-- [ ] Validate recommendations
-
-### Phase 3: Deployment (Future)
-- [ ] API endpoint
-- [ ] Moodle plugin integration
-- [ ] Monitoring
-- [ ] A/B testing
-
----
-
-## 🤝 Contributing
-
-1. Check [TODO.md](TODO.md) for open tasks
-2. Follow existing code style
-3. Add tests for new features
-4. Update documentation
-
----
-
-## 📄 License
-
-MIT License
-
----
-
-## 📞 Contact
-
-Issues: [GitHub Issues](https://github.com/kltn-moolde/moodle-adaptive-learning-plugin/issues)
-
-print(f"Recommended: {recommendation['activity_name']}")
-print(f"Confidence: {recommendation['q_value']:.2f}")
+action_space = ActionSpace('data/course_structure.json')
+actions = action_space.get_actions()  # List[LearningAction]
 ```
 
-## 📚 Chi tiết
+### 3. Reward Calculator (`reward_calculator.py`)
 
-Xem documentation trong từng module để biết thêm chi tiết.
+**Cluster-specific reward strategies:**
+- **Weak (0-1):** High reward for completing assessments
+- **Medium (2-3):** Balanced rewards
+- **Strong (4-5):** Reward for speed and high scores
+
+**Usage:**
+```python
+from core_v2 import RewardCalculator
+
+calculator = RewardCalculator('data/cluster_profiles.json')
+reward = calculator.calculate_reward(cluster_id, action, outcome, state)
+```
+
+### 4. Q-Learning Agent (`qlearning_agent.py`)
+
+**Tabular Q-learning:**
+- ε-greedy exploration
+- Q-value updates: `Q(s,a) ← Q(s,a) + α[r + γ max Q(s',a') - Q(s,a)]`
+- State hashing for continuous states
+
+**Usage:**
+```python
+from core_v2 import QLearningAgent
+
+agent = QLearningAgent(n_actions=50, learning_rate=0.1)
+action = agent.select_action(state, available_actions)
+agent.update(state, action, reward, next_state)
+```
+
+### 5. Simulator (`simulator.py`)
+
+**Simulate learning behaviors:**
+- Cluster-based behavior patterns
+- Realistic outcomes (score, time, attempts)
+- State transitions
+
+**Usage:**
+```python
+from core_v2 import LearningSimulator
+
+simulator = LearningSimulator(state_builder, action_space, reward_calc)
+interactions = simulator.simulate_batch(n_students=100, n_actions_per_student=30)
+```
+
+## 📊 Data Flow
+
+```
+1. SIMULATION (offline)
+   course_structure.json + cluster_profiles.json
+   → simulator.simulate_batch()
+   → simulated_data.json
+
+2. TRAINING (offline)
+   simulated_data.json
+   → agent.train_episode()
+   → qlearning_model.pkl
+
+3. DAILY UPDATE (online)
+   Moodle logs (12AM)
+   → extract_features()
+   → state_builder.build_state()
+   → agent.update()
+   → updated qlearning_model.pkl
+   → recommendations.json
+```
+
+## 🔄 Daily Pipeline
+
+**Automated workflow (runs at 12AM):**
+
+1. **Fetch logs:** Get yesterday's Moodle logs
+2. **Extract features:** Run feature extraction pipeline
+3. **Build states:** Convert features → state vectors
+4. **Identify interactions:** Map logs → (s, a, r, s')
+5. **Update Q-table:** Apply Q-learning updates
+6. **Save model:** Backup old + save new
+7. **Generate recommendations:** Top-k actions per student
+
+## 📈 Hyperparameters
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `learning_rate` (α) | 0.1 | Q-value update rate |
+| `discount_factor` (γ) | 0.95 | Future reward importance |
+| `epsilon` (ε) | 0.1 | Exploration rate |
+| `state_decimals` | 1 | State rounding (reduce sparsity) |
 
 ## 🧪 Testing
 
 ```bash
-pytest tests/
+# Test individual components
+cd core_v2
+python state_builder.py
+python action_space.py
+python reward_calculator.py
+python qlearning_agent.py
+python simulator.py
 ```
 
-## 📄 License
+## 📦 Dependencies
 
-MIT
+```
+numpy
+pickle (built-in)
+json (built-in)
+dataclasses (built-in)
+```
+
+## 🎯 Extension Points
+
+### Add new reward strategies:
+Edit `reward_calculator.py` → `_cluster_bonus()`
+
+### Add new state features:
+Edit `state_builder.py` → `build_state()`
+
+### Add new action types:
+Edit `action_space.py` → `MODULE_TYPE_MAPPING`
+
+### Change exploration strategy:
+Edit `qlearning_agent.py` → `select_action()`
+
+## 📝 Notes
+
+- **State hashing:** Rounds to 1 decimal to reduce Q-table sparsity
+- **Cluster distribution:** Can customize in `simulator.simulate_batch()`
+- **Action filtering:** Simulator filters by difficulty/purpose based on cluster
+- **Reward clipping:** Rewards clipped to [-2, 5] range
+
+## 🐛 Troubleshooting
+
+**Q-table too large?**
+- Increase `state_decimals` in QLearningAgent
+- Reduce state dimensions
+
+**Low rewards?**
+- Check reward calculation in `reward_calculator.py`
+- Adjust cluster bonuses
+
+**Poor recommendations?**
+- Increase training data (more students/actions)
+- Tune hyperparameters (α, γ, ε)
+- Check cluster assignment accuracy
+
+## 📚 References
+
+- Q-Learning: Watkins & Dayan (1992)
+- Moodle State Builder: Original implementation
+- Cluster Profiles: From KMeans + GMM pipeline

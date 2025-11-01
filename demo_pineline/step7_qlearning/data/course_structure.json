@@ -1,536 +1,2073 @@
-[
-    {
-        "_id": "68a3e5aec5815672bdc6660e",
-        "_class": "com.example.courseservice.entity.Course"
-    },
-    {
-        "_id": "68a3e963c5815672bdc66610",
-        "courseCode": "CS101",
-        "title": "Tin học 12 - Định hướng Khoa học Máy tính",
-        "sections": [
-            {
-                "name": "General",
-                "lessons": [],
-                "resources": [
-                    {
-                        "id": 52,
-                        "name": "Announcements",
-                        "modname": "forum"
+{
+    "message": "Retrieved course contents from Moodle",
+    "course_id": 2,
+    "total_sections": 10,
+    "contents": [
+        {
+            "id": 12,
+            "name": "General",
+            "visible": 1,
+            "summary": "",
+            "summaryformat": 1,
+            "section": 0,
+            "hiddenbynumsections": 0,
+            "uservisible": true,
+            "component": null,
+            "itemid": null,
+            "modules": [
+                {
+                    "id": 46,
+                    "url": "http://139.99.103.223:9090/mod/forum/view.php?id=46",
+                    "name": "Announcements",
+                    "instance": 2,
+                    "contextid": 278,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/forum/1761665386/monologo?filtericon=1",
+                    "modname": "forum",
+                    "purpose": "collaboration",
+                    "branded": false,
+                    "modplural": "Forums",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "activitybadge": [],
+                    "customdata": "{\"trackingtype\":\"1\"}",
+                    "noviewlink": false,
+                    "completion": 0,
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 47,
+                    "url": "http://139.99.103.223:9090/mod/qbank/view.php?id=47",
+                    "name": "Tin 12 - Định hướng Khoa học Máy tính course question bank",
+                    "instance": 2,
+                    "contextid": 279,
+                    "visible": 0,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/qbank/1761665386/monologo?filtericon=1",
+                    "modname": "qbank",
+                    "purpose": "content",
+                    "branded": false,
+                    "modplural": "Question banks",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "\"\"",
+                    "noviewlink": false,
+                    "completion": 0,
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 48,
+                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=48",
+                    "name": "Bài kiểm tra cuối kỳ môn Tin học - 120825 - 10",
+                    "instance": 23,
+                    "contextid": 280,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/quiz/1761665386/monologo?filtericon=1",
+                    "modname": "quiz",
+                    "purpose": "assessment",
+                    "branded": false,
+                    "modplural": "Quizzes",
+                    "availability": "{\"op\":\"&\",\"showc\":[false],\"c\":[{\"type\":\"group\",\"id\":4}]}",
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "\"\"",
+                    "noviewlink": false,
+                    "completion": 0,
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 49,
+                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=49",
+                    "name": "Bài kiểm tra cuối kỳ môn Tin học - 120825 - 11",
+                    "instance": 24,
+                    "contextid": 281,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/quiz/1761665386/monologo?filtericon=1",
+                    "modname": "quiz",
+                    "purpose": "assessment",
+                    "branded": false,
+                    "modplural": "Quizzes",
+                    "availability": "{\"op\":\"&\",\"showc\":[false],\"c\":[{\"type\":\"group\",\"id\":4}]}",
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "\"\"",
+                    "noviewlink": false,
+                    "completion": 0,
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 50,
+                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=50",
+                    "name": "Bài kiểm tra cuối kỳ môn Tin học - 120825 - 20",
+                    "instance": 25,
+                    "contextid": 282,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/quiz/1761665386/monologo?filtericon=1",
+                    "modname": "quiz",
+                    "purpose": "assessment",
+                    "branded": false,
+                    "modplural": "Quizzes",
+                    "availability": "{\"op\":\"&\",\"showc\":[false],\"c\":[{\"type\":\"group\",\"id\":5}]}",
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "\"\"",
+                    "noviewlink": false,
+                    "completion": 0,
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 51,
+                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=51",
+                    "name": "Bài kiểm tra cuối kỳ môn Tin học - 120825 - 200",
+                    "instance": 26,
+                    "contextid": 283,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/quiz/1761665386/monologo?filtericon=1",
+                    "modname": "quiz",
+                    "purpose": "assessment",
+                    "branded": false,
+                    "modplural": "Quizzes",
+                    "availability": "{\"op\":\"&\",\"showc\":[false],\"c\":[{\"type\":\"group\",\"id\":6}]}",
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "\"\"",
+                    "noviewlink": false,
+                    "completion": 0,
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 91,
+                    "url": "http://139.99.103.223:9090/mod/lti/view.php?id=91",
+                    "name": "adaptive learning",
+                    "instance": 6,
+                    "contextid": 323,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/lti/1761665386/monologo?filtericon=1",
+                    "modname": "lti",
+                    "purpose": "other",
+                    "branded": false,
+                    "modplural": "External tools",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "window.open('http://139.99.103.223:9090/mod/lti/launch.php?id=91', 'lti-91'); return false;",
+                    "afterlink": null,
+                    "customdata": "\"\"",
+                    "noviewlink": false,
+                    "completion": 0,
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "name": "Chủ đề 1: MÁY TÍNH VÀ XÃ HỘI TRI THỨC",
+            "visible": 1,
+            "summary": "",
+            "summaryformat": 1,
+            "section": 1,
+            "hiddenbynumsections": 0,
+            "uservisible": true,
+            "component": null,
+            "itemid": null,
+            "modules": [
+                {
+                    "id": 53,
+                    "name": "Bài 1: Làm quen với Trí tuệ nhân tạo",
+                    "instance": 7,
+                    "contextid": 285,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/subsection/1761665386/monologo?filtericon=1",
+                    "modname": "subsection",
+                    "purpose": "content",
+                    "branded": false,
+                    "modplural": "Subsections",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "{\"sectionid\":\"14\"}",
+                    "noviewlink": false,
+                    "completion": 0,
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 59,
+                    "name": "Bài 2: Trí tuệ nhân tạo trong khoa học và đời sống",
+                    "instance": 8,
+                    "contextid": 291,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/subsection/1761665386/monologo?filtericon=1",
+                    "modname": "subsection",
+                    "purpose": "content",
+                    "branded": false,
+                    "modplural": "Subsections",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "{\"sectionid\":\"15\"}",
+                    "noviewlink": false,
+                    "completion": 0,
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "name": "Chủ đề 2: MẠNG MÁY TÍNH VÀ INTERNET",
+            "visible": 1,
+            "summary": "",
+            "summaryformat": 1,
+            "section": 2,
+            "hiddenbynumsections": 0,
+            "uservisible": true,
+            "component": null,
+            "itemid": null,
+            "modules": [
+                {
+                    "id": 65,
+                    "name": "Bài 3: Một số thiết bị mạng thông dụng",
+                    "instance": 9,
+                    "contextid": 297,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/subsection/1761665386/monologo?filtericon=1",
+                    "modname": "subsection",
+                    "purpose": "content",
+                    "branded": false,
+                    "modplural": "Subsections",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "{\"sectionid\":\"17\"}",
+                    "noviewlink": false,
+                    "completion": 0,
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 71,
+                    "name": "Bài 4: Giao thức mạng",
+                    "instance": 10,
+                    "contextid": 303,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/subsection/1761665386/monologo?filtericon=1",
+                    "modname": "subsection",
+                    "purpose": "content",
+                    "branded": false,
+                    "modplural": "Subsections",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "{\"sectionid\":\"18\"}",
+                    "noviewlink": false,
+                    "completion": 0,
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 77,
+                    "name": "Bài 5: Thực hành chia sẽ tài nguyên trên mạng",
+                    "instance": 11,
+                    "contextid": 309,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/subsection/1761665386/monologo?filtericon=1",
+                    "modname": "subsection",
+                    "purpose": "content",
+                    "branded": false,
+                    "modplural": "Subsections",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "{\"sectionid\":\"19\"}",
+                    "noviewlink": false,
+                    "completion": 0,
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "name": "Chủ đề 3: ĐẠO ĐỨC, PHÁT LUẬT VÀ VĂN HOÁ TRONG MÔI TRƯỜNG SỐ",
+            "visible": 1,
+            "summary": "",
+            "summaryformat": 1,
+            "section": 3,
+            "hiddenbynumsections": 0,
+            "uservisible": true,
+            "component": null,
+            "itemid": null,
+            "modules": [
+                {
+                    "id": 83,
+                    "name": "Bài 6: Giao tiếp và ứng xử trong không gian mạng",
+                    "instance": 12,
+                    "contextid": 315,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/subsection/1761665386/monologo?filtericon=1",
+                    "modname": "subsection",
+                    "purpose": "content",
+                    "branded": false,
+                    "modplural": "Subsections",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "{\"sectionid\":\"21\"}",
+                    "noviewlink": false,
+                    "completion": 0,
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "name": "Bài 6: Giao tiếp và ứng xử trong không gian mạng",
+            "visible": 1,
+            "summary": "",
+            "summaryformat": 1,
+            "section": 4,
+            "hiddenbynumsections": 0,
+            "uservisible": true,
+            "component": "mod_subsection",
+            "itemid": 12,
+            "modules": [
+                {
+                    "id": 84,
+                    "url": "http://139.99.103.223:9090/mod/hvp/view.php?id=84",
+                    "name": "Video bài giảng bài 6",
+                    "instance": 12,
+                    "contextid": 316,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/hvp/1761665386/monologo?filtericon=1",
+                    "modname": "hvp",
+                    "purpose": "other",
+                    "branded": false,
+                    "modplural": "Interactive Content",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "\"\"",
+                    "noviewlink": false,
+                    "completion": 1,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": false,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [],
+                        "isoverallcomplete": false
                     },
-                    {
-                        "id": 60,
-                        "name": "Tin 12 - Định hướng Khoa học Máy tính course question bank",
-                        "modname": "qbank"
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 85,
+                    "url": "http://139.99.103.223:9090/mod/resource/view.php?id=85",
+                    "name": "SGK_CS_Bai6",
+                    "instance": 12,
+                    "contextid": 317,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/core/1761665386/f/pdf?filtericon=1",
+                    "modname": "resource",
+                    "purpose": "content",
+                    "branded": false,
+                    "modplural": "Files",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "activitybadge": {
+                        "badgecontent": "PDF",
+                        "badgestyle": "badge-none"
                     },
-                    {
-                        "id": 102,
-                        "name": "Bài kiểm tra cuối kỳ môn Tin học - 120825 - 10",
-                        "modname": "quiz"
+                    "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:10:\\\"printintro\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:3:{s:4:\\\"type\\\";s:12:\\\"PDF document\\\";s:8:\\\"mimetype\\\";s:15:\\\"application\/pdf\\\";s:9:\\\"extension\\\";s:3:\\\"PDF\\\";}}\",\"display\":5}",
+                    "noviewlink": false,
+                    "completion": 1,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": false,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [],
+                        "isoverallcomplete": false
                     },
-                    {
-                        "id": 103,
-                        "name": "Bài kiểm tra cuối kỳ môn Tin học - 120825 - 11",
-                        "modname": "quiz"
-                    },
-                    {
-                        "id": 104,
-                        "name": "Bài kiểm tra cuối kỳ môn Tin học - 120825 - 20",
-                        "modname": "quiz"
-                    },
-                    {
-                        "id": 105,
-                        "name": "Bài kiểm tra cuối kỳ môn Tin học - 120825 - 200",
-                        "modname": "quiz"
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0,
+                    "contents": [
+                        {
+                            "type": "file",
+                            "filename": "SGK_CS_Bai6.pdf",
+                            "filepath": "/",
+                            "filesize": 2717822,
+                            "fileurl": "http://139.99.103.223:9090/webservice/pluginfile.php/317/mod_resource/content/2/SGK_CS_Bai6.pdf?forcedownload=1",
+                            "timecreated": 1761447459,
+                            "timemodified": 1761447459,
+                            "sortorder": 1,
+                            "mimetype": "application/pdf",
+                            "isexternalfile": false,
+                            "userid": 2,
+                            "author": "Nguyen Loc",
+                            "license": "unknown"
+                        }
+                    ],
+                    "contentsinfo": {
+                        "filescount": 1,
+                        "filessize": 2717822,
+                        "lastmodified": 1761447459,
+                        "mimetypes": [
+                            "application/pdf"
+                        ],
+                        "repositorytype": ""
                     }
-                ]
-            },
-            {
-                "sectionId_old": 34,
-                "name": "Chủ đề 1: MÁY TÍNH VÀ XÃ HỘI TRI THỨC",
-                "lessons": [
-                    {
-                        "sectionId_old": 53,
-                        "sectionId_new": 38,
-                        "name": "Bài 1: Làm quen với Trí tuệ nhân tạo",
-                        "resources": [
+                },
+                {
+                    "id": 86,
+                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=86",
+                    "name": "Trắc nghiệm bài 6 - easy",
+                    "instance": 42,
+                    "contextid": 318,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/quiz/1761665386/monologo?filtericon=1",
+                    "modname": "quiz",
+                    "purpose": "assessment",
+                    "branded": false,
+                    "modplural": "Quizzes",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
+                    "noviewlink": false,
+                    "completion": 2,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": true,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [
                             {
-                                "id": 62,
-                                "name": "SGK_CS_Bai1",
-                                "modname": "resource"
-                            },
-                            {
-                                "id": 63,
-                                "name": "Video bài giảng bài 1",
-                                "modname": "hvp"
-                            },
-                            {
-                                "id": 61,
-                                "name": "bài kiểm tra bài 1 - easy",
-                                "modname": "quiz"
-                            },
-                            {
-                                "id": 106,
-                                "name": "bài kiểm tra bài 1 - medium",
-                                "modname": "quiz"
-                            },
-                            {
-                                "id": 107,
-                                "name": "bài kiểm tra bài 1 - hard",
-                                "modname": "quiz"
+                                "rulename": "completionusegrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a grade"
+                                }
                             }
-                        ]
+                        ],
+                        "isoverallcomplete": false
                     },
-                    {
-                        "sectionId_old": 54,
-                        "sectionId_new": 39,
-                        "name": "Bài 2: Trí tuệ nhân tạo trong khoa học và đời sống",
-                        "resources": [
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 87,
+                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=87",
+                    "name": "Bài kiểm tra bài 6 - medium",
+                    "instance": 43,
+                    "contextid": 319,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/quiz/1761665386/monologo?filtericon=1",
+                    "modname": "quiz",
+                    "purpose": "assessment",
+                    "branded": false,
+                    "modplural": "Quizzes",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
+                    "noviewlink": false,
+                    "completion": 2,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": true,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [
                             {
-                                "id": 64,
-                                "name": "SGK_CS_Bai2",
-                                "modname": "resource"
+                                "rulename": "completionusegrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a grade"
+                                }
                             },
                             {
-                                "id": 65,
-                                "name": "Video bài giảng bài 2",
-                                "modname": "hvp"
-                            },
-                            {
-                                "id": 66,
-                                "name": "bài kiểm tra bài 2 - easy",
-                                "modname": "quiz"
-                            },
-                            {
-                                "id": 108,
-                                "name": "bài kiểm tra bài 2 - medium",
-                                "modname": "quiz"
-                            },
-                            {
-                                "id": 109,
-                                "name": "bài kiểm tra bài 2 - hard",
-                                "modname": "quiz"
+                                "rulename": "completionpassgrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a passing grade"
+                                }
                             }
-                        ]
+                        ],
+                        "isoverallcomplete": false
+                    },
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 88,
+                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=88",
+                    "name": "Bài kiểm tra bài 6 - hard",
+                    "instance": 44,
+                    "contextid": 320,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/quiz/1761665386/monologo?filtericon=1",
+                    "modname": "quiz",
+                    "purpose": "assessment",
+                    "branded": false,
+                    "modplural": "Quizzes",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
+                    "noviewlink": false,
+                    "completion": 2,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": true,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [
+                            {
+                                "rulename": "completionusegrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a grade"
+                                }
+                            },
+                            {
+                                "rulename": "completionpassgrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a passing grade"
+                                }
+                            }
+                        ],
+                        "isoverallcomplete": false
+                    },
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "name": "Bài 5: Thực hành chia sẽ tài nguyên trên mạng",
+            "visible": 1,
+            "summary": "",
+            "summaryformat": 1,
+            "section": 5,
+            "hiddenbynumsections": 0,
+            "uservisible": true,
+            "component": "mod_subsection",
+            "itemid": 11,
+            "modules": [
+                {
+                    "id": 78,
+                    "url": "http://139.99.103.223:9090/mod/hvp/view.php?id=78",
+                    "name": "Video bài giảng bài 5",
+                    "instance": 11,
+                    "contextid": 310,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/hvp/1761665386/monologo?filtericon=1",
+                    "modname": "hvp",
+                    "purpose": "other",
+                    "branded": false,
+                    "modplural": "Interactive Content",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "\"\"",
+                    "noviewlink": false,
+                    "completion": 1,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": false,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [],
+                        "isoverallcomplete": false
+                    },
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 79,
+                    "url": "http://139.99.103.223:9090/mod/resource/view.php?id=79",
+                    "name": "SGK_CS_Bai5",
+                    "instance": 11,
+                    "contextid": 311,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/core/1761665386/f/pdf?filtericon=1",
+                    "modname": "resource",
+                    "purpose": "content",
+                    "branded": false,
+                    "modplural": "Files",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "activitybadge": {
+                        "badgecontent": "PDF",
+                        "badgestyle": "badge-none"
+                    },
+                    "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:10:\\\"printintro\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:3:{s:4:\\\"type\\\";s:12:\\\"PDF document\\\";s:8:\\\"mimetype\\\";s:15:\\\"application\/pdf\\\";s:9:\\\"extension\\\";s:3:\\\"PDF\\\";}}\",\"display\":5}",
+                    "noviewlink": false,
+                    "completion": 1,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": false,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [],
+                        "isoverallcomplete": false
+                    },
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0,
+                    "contents": [
+                        {
+                            "type": "file",
+                            "filename": "SGK_CS_Bai5.pdf",
+                            "filepath": "/",
+                            "filesize": 3619697,
+                            "fileurl": "http://139.99.103.223:9090/webservice/pluginfile.php/311/mod_resource/content/2/SGK_CS_Bai5.pdf?forcedownload=1",
+                            "timecreated": 1761447458,
+                            "timemodified": 1761447458,
+                            "sortorder": 1,
+                            "mimetype": "application/pdf",
+                            "isexternalfile": false,
+                            "userid": 2,
+                            "author": "Nguyen Loc",
+                            "license": "unknown"
+                        }
+                    ],
+                    "contentsinfo": {
+                        "filescount": 1,
+                        "filessize": 3619697,
+                        "lastmodified": 1761447458,
+                        "mimetypes": [
+                            "application/pdf"
+                        ],
+                        "repositorytype": ""
                     }
-                ]
-            },
-            {
-                "sectionId_old": 35,
-                "name": "Chủ đề 2: MẠNG MÁY TÍNH VÀ INTERNET",
-                "lessons": [
-                    {
-                        "sectionId_old": 55,
-                        "sectionId_new": 40,
-                        "name": "Bài 3: Một số thiết bị mạng thông dụng",
-                        "resources": [
+                },
+                {
+                    "id": 80,
+                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=80",
+                    "name": "Trắc nghiệm bài 5 - easy",
+                    "instance": 39,
+                    "contextid": 312,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/quiz/1761665386/monologo?filtericon=1",
+                    "modname": "quiz",
+                    "purpose": "assessment",
+                    "branded": false,
+                    "modplural": "Quizzes",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
+                    "noviewlink": false,
+                    "completion": 2,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": true,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [
                             {
-                                "id": 67,
-                                "name": "Video bài giảng bài 3",
-                                "modname": "hvp"
+                                "rulename": "completionusegrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a grade"
+                                }
                             },
                             {
-                                "id": 68,
-                                "name": "SGK_CS_Bai3",
-                                "modname": "resource"
-                            },
-                            {
-                                "id": 75,
-                                "name": "Trắc nghiệm bài 3 - easy",
-                                "modname": "quiz"
-                            },
-                            {
-                                "id": 110,
-                                "name": "bài kiểm tra bài 3 - medium",
-                                "modname": "quiz"
-                            },
-                            {
-                                "id": 111,
-                                "name": "bài kiểm tra bài 3 - hard",
-                                "modname": "quiz"
+                                "rulename": "completionpassgrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a passing grade"
+                                }
                             }
-                        ]
+                        ],
+                        "isoverallcomplete": false
                     },
-                    {
-                        "sectionId_old": 56,
-                        "sectionId_new": 41,
-                        "name": "Bài 4: Giao thức mạng",
-                        "resources": [
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 81,
+                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=81",
+                    "name": "Bài kiểm tra bài 5 - medium",
+                    "instance": 40,
+                    "contextid": 313,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/quiz/1761665386/monologo?filtericon=1",
+                    "modname": "quiz",
+                    "purpose": "assessment",
+                    "branded": false,
+                    "modplural": "Quizzes",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
+                    "noviewlink": false,
+                    "completion": 2,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": true,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [
                             {
-                                "id": 69,
-                                "name": "Video bài giảng bài 4",
-                                "modname": "hvp"
+                                "rulename": "completionusegrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a grade"
+                                }
                             },
                             {
-                                "id": 70,
-                                "name": "SGK_CS_Bai4",
-                                "modname": "resource"
-                            },
-                            {
-                                "id": 76,
-                                "name": "Trắc nghiệm bài 4 - easy",
-                                "modname": "quiz"
-                            },
-                            {
-                                "id": 112,
-                                "name": "Bài kiểm tra bài 4 - medium",
-                                "modname": "quiz"
-                            },
-                            {
-                                "id": 113,
-                                "name": "Bài kiểm tra bài 4 - hard",
-                                "modname": "quiz"
+                                "rulename": "completionpassgrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a passing grade"
+                                }
                             }
-                        ]
+                        ],
+                        "isoverallcomplete": false
                     },
-                    {
-                        "sectionId_old": 57,
-                        "sectionId_new": 42,
-                        "name": "Bài 5: Thực hành chia sẽ tài nguyên trên mạng",
-                        "resources": [
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 82,
+                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=82",
+                    "name": "Bài kiểm tra bài 5 - hard",
+                    "instance": 41,
+                    "contextid": 314,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/quiz/1761665386/monologo?filtericon=1",
+                    "modname": "quiz",
+                    "purpose": "assessment",
+                    "branded": false,
+                    "modplural": "Quizzes",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"1\"}}",
+                    "noviewlink": false,
+                    "completion": 2,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": true,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [
                             {
-                                "id": 71,
-                                "name": "Video bài giảng bài 5",
-                                "modname": "hvp"
+                                "rulename": "completionminattempts",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Make attempts: 1"
+                                }
                             },
                             {
-                                "id": 72,
-                                "name": "SGK_CS_Bai5",
-                                "modname": "resource"
+                                "rulename": "completionusegrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a grade"
+                                }
                             },
                             {
-                                "id": 77,
-                                "name": "Trắc nghiệm bài 5 - easy",
-                                "modname": "quiz"
-                            },
-                            {
-                                "id": 114,
-                                "name": "Bài kiểm tra bài 5 - medium",
-                                "modname": "quiz"
-                            },
-                            {
-                                "id": 115,
-                                "name": "Bài kiểm tra bài 5 - hard",
-                                "modname": "quiz"
+                                "rulename": "completionpassgrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a passing grade"
+                                }
                             }
-                        ]
+                        ],
+                        "isoverallcomplete": false
+                    },
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "name": "Bài 4: Giao thức mạng",
+            "visible": 1,
+            "summary": "",
+            "summaryformat": 1,
+            "section": 6,
+            "hiddenbynumsections": 0,
+            "uservisible": true,
+            "component": "mod_subsection",
+            "itemid": 10,
+            "modules": [
+                {
+                    "id": 72,
+                    "url": "http://139.99.103.223:9090/mod/hvp/view.php?id=72",
+                    "name": "Video bài giảng bài 4",
+                    "instance": 10,
+                    "contextid": 304,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/hvp/1761665386/monologo?filtericon=1",
+                    "modname": "hvp",
+                    "purpose": "other",
+                    "branded": false,
+                    "modplural": "Interactive Content",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "\"\"",
+                    "noviewlink": false,
+                    "completion": 1,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": false,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [],
+                        "isoverallcomplete": false
+                    },
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 73,
+                    "url": "http://139.99.103.223:9090/mod/resource/view.php?id=73",
+                    "name": "SGK_CS_Bai4",
+                    "instance": 10,
+                    "contextid": 305,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/core/1761665386/f/pdf?filtericon=1",
+                    "modname": "resource",
+                    "purpose": "content",
+                    "branded": false,
+                    "modplural": "Files",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "activitybadge": {
+                        "badgecontent": "PDF",
+                        "badgestyle": "badge-none"
+                    },
+                    "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:10:\\\"printintro\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:3:{s:4:\\\"type\\\";s:12:\\\"PDF document\\\";s:8:\\\"mimetype\\\";s:15:\\\"application\/pdf\\\";s:9:\\\"extension\\\";s:3:\\\"PDF\\\";}}\",\"display\":5}",
+                    "noviewlink": false,
+                    "completion": 1,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": false,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [],
+                        "isoverallcomplete": false
+                    },
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0,
+                    "contents": [
+                        {
+                            "type": "file",
+                            "filename": "SGK_CS_Bai4.pdf",
+                            "filepath": "/",
+                            "filesize": 2741972,
+                            "fileurl": "http://139.99.103.223:9090/webservice/pluginfile.php/305/mod_resource/content/2/SGK_CS_Bai4.pdf?forcedownload=1",
+                            "timecreated": 1761447458,
+                            "timemodified": 1761447458,
+                            "sortorder": 1,
+                            "mimetype": "application/pdf",
+                            "isexternalfile": false,
+                            "userid": 2,
+                            "author": "Nguyen Loc",
+                            "license": "unknown"
+                        }
+                    ],
+                    "contentsinfo": {
+                        "filescount": 1,
+                        "filessize": 2741972,
+                        "lastmodified": 1761447458,
+                        "mimetypes": [
+                            "application/pdf"
+                        ],
+                        "repositorytype": ""
                     }
-                ]
-            },
-            {
-                "sectionId_old": 36,
-                "name": "Chủ đề 3: ĐẠO ĐỨC, PHÁT LUẬT VÀ VĂN HOÁ TRONG MÔI TRƯỜNG SỐ",
-                "lessons": [
-                    {
-                        "sectionId_old": 58,
-                        "sectionId_new": 43,
-                        "name": "Bài 6: Giao tiếp và ứng xử trong không gian mạng",
-                        "resources": [
+                },
+                {
+                    "id": 74,
+                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=74",
+                    "name": "Trắc nghiệm bài 4 - easy",
+                    "instance": 36,
+                    "contextid": 306,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/quiz/1761665386/monologo?filtericon=1",
+                    "modname": "quiz",
+                    "purpose": "assessment",
+                    "branded": false,
+                    "modplural": "Quizzes",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
+                    "noviewlink": false,
+                    "completion": 2,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": true,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [
                             {
-                                "id": 73,
-                                "name": "Video bài giảng bài 6",
-                                "modname": "hvp"
+                                "rulename": "completionusegrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a grade"
+                                }
                             },
                             {
-                                "id": 74,
-                                "name": "SGK_CS_Bai6",
-                                "modname": "resource"
-                            },
-                            {
-                                "id": 78,
-                                "name": "Trắc nghiệm bài 6 - easy",
-                                "modname": "quiz"
-                            },
-                            {
-                                "id": 116,
-                                "name": "Bài kiểm tra bài 6 - medium",
-                                "modname": "quiz"
-                            },
-                            {
-                                "id": 117,
-                                "name": "Bài kiểm tra bài 6 - hard",
-                                "modname": "quiz"
+                                "rulename": "completionpassgrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a passing grade"
+                                }
                             }
-                        ]
+                        ],
+                        "isoverallcomplete": false
+                    },
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 75,
+                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=75",
+                    "name": "Bài kiểm tra bài 4 - medium",
+                    "instance": 37,
+                    "contextid": 307,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/quiz/1761665386/monologo?filtericon=1",
+                    "modname": "quiz",
+                    "purpose": "assessment",
+                    "branded": false,
+                    "modplural": "Quizzes",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
+                    "noviewlink": false,
+                    "completion": 2,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": true,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [
+                            {
+                                "rulename": "completionusegrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a grade"
+                                }
+                            },
+                            {
+                                "rulename": "completionpassgrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a passing grade"
+                                }
+                            }
+                        ],
+                        "isoverallcomplete": false
+                    },
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 76,
+                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=76",
+                    "name": "Bài kiểm tra bài 4 - hard",
+                    "instance": 38,
+                    "contextid": 308,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/quiz/1761665386/monologo?filtericon=1",
+                    "modname": "quiz",
+                    "purpose": "assessment",
+                    "branded": false,
+                    "modplural": "Quizzes",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
+                    "noviewlink": false,
+                    "completion": 2,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": true,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [
+                            {
+                                "rulename": "completionusegrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a grade"
+                                }
+                            },
+                            {
+                                "rulename": "completionpassgrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a passing grade"
+                                }
+                            }
+                        ],
+                        "isoverallcomplete": false
+                    },
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "name": "Bài 3: Một số thiết bị mạng thông dụng",
+            "visible": 1,
+            "summary": "",
+            "summaryformat": 1,
+            "section": 7,
+            "hiddenbynumsections": 0,
+            "uservisible": true,
+            "component": "mod_subsection",
+            "itemid": 9,
+            "modules": [
+                {
+                    "id": 66,
+                    "url": "http://139.99.103.223:9090/mod/hvp/view.php?id=66",
+                    "name": "Video bài giảng bài 3",
+                    "instance": 9,
+                    "contextid": 298,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/hvp/1761665386/monologo?filtericon=1",
+                    "modname": "hvp",
+                    "purpose": "other",
+                    "branded": false,
+                    "modplural": "Interactive Content",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "\"\"",
+                    "noviewlink": false,
+                    "completion": 1,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": false,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [],
+                        "isoverallcomplete": false
+                    },
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 67,
+                    "url": "http://139.99.103.223:9090/mod/resource/view.php?id=67",
+                    "name": "SGK_CS_Bai3",
+                    "instance": 9,
+                    "contextid": 299,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/core/1761665386/f/pdf?filtericon=1",
+                    "modname": "resource",
+                    "purpose": "content",
+                    "branded": false,
+                    "modplural": "Files",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "activitybadge": {
+                        "badgecontent": "PDF",
+                        "badgestyle": "badge-none"
+                    },
+                    "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:10:\\\"printintro\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:3:{s:4:\\\"type\\\";s:12:\\\"PDF document\\\";s:8:\\\"mimetype\\\";s:15:\\\"application\/pdf\\\";s:9:\\\"extension\\\";s:3:\\\"PDF\\\";}}\",\"display\":5}",
+                    "noviewlink": false,
+                    "completion": 1,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": false,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [],
+                        "isoverallcomplete": false
+                    },
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0,
+                    "contents": [
+                        {
+                            "type": "file",
+                            "filename": "SGK_CS_Bai3.pdf",
+                            "filepath": "/",
+                            "filesize": 3374342,
+                            "fileurl": "http://139.99.103.223:9090/webservice/pluginfile.php/299/mod_resource/content/2/SGK_CS_Bai3.pdf?forcedownload=1",
+                            "timecreated": 1761447458,
+                            "timemodified": 1761447458,
+                            "sortorder": 1,
+                            "mimetype": "application/pdf",
+                            "isexternalfile": false,
+                            "userid": 2,
+                            "author": "Nguyen Loc",
+                            "license": "unknown"
+                        }
+                    ],
+                    "contentsinfo": {
+                        "filescount": 1,
+                        "filessize": 3374342,
+                        "lastmodified": 1761447458,
+                        "mimetypes": [
+                            "application/pdf"
+                        ],
+                        "repositorytype": ""
                     }
-                ]
-            }
-        ],
-        "_class": "com.example.courseservice.entity.Course"
-    },
-    {
-        "_id": "68bd437b6f5122e4342199f3",
-        "moodle_id": 1,
-        "name": "Nguyen Huu Loc",
-        "description": ""
-    },
-    {
-        "_id": "68bd437b6f5122e4342199f4",
-        "moodle_id": 4,
-        "name": "NGÔN NGỮ LẬP TRÌNH JAVA",
-        "description": ""
-    },
-    {
-        "_id": "68bd437b6f5122e4342199f5",
-        "moodle_id": 5,
-        "name": "Tin 12 - Định hướng Khoa học Máy tính",
-        "description": ""
-    },
-    {
-        "_id": "68ce061478e901d5d50ed426",
-        "course_id": "5",
-        "contents": [
-            {
-                "sectionid": 33,
-                "name": "General",
-                "lessons": [],
-                "resources": [
-                    {
-                        "id": 52,
-                        "name": "Announcements",
-                        "modname": "forum"
+                },
+                {
+                    "id": 68,
+                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=68",
+                    "name": "Trắc nghiệm bài 3 - easy",
+                    "instance": 33,
+                    "contextid": 300,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/quiz/1761665386/monologo?filtericon=1",
+                    "modname": "quiz",
+                    "purpose": "assessment",
+                    "branded": false,
+                    "modplural": "Quizzes",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
+                    "noviewlink": false,
+                    "completion": 2,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": true,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [
+                            {
+                                "rulename": "completionusegrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a grade"
+                                }
+                            },
+                            {
+                                "rulename": "completionpassgrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a passing grade"
+                                }
+                            }
+                        ],
+                        "isoverallcomplete": false
                     },
-                    {
-                        "id": 60,
-                        "name": "Tin 12 - Định hướng Khoa học Máy tính course question bank",
-                        "modname": "qbank"
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 69,
+                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=69",
+                    "name": "bài kiểm tra bài 3 - medium",
+                    "instance": 34,
+                    "contextid": 301,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/quiz/1761665386/monologo?filtericon=1",
+                    "modname": "quiz",
+                    "purpose": "assessment",
+                    "branded": false,
+                    "modplural": "Quizzes",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
+                    "noviewlink": false,
+                    "completion": 2,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": true,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [
+                            {
+                                "rulename": "completionusegrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a grade"
+                                }
+                            }
+                        ],
+                        "isoverallcomplete": false
                     },
-                    {
-                        "id": 102,
-                        "name": "Bài kiểm tra cuối kỳ môn Tin học - 120825 - 10",
-                        "modname": "quiz"
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 70,
+                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=70",
+                    "name": "bài kiểm tra bài 3 - hard",
+                    "instance": 35,
+                    "contextid": 302,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/quiz/1761665386/monologo?filtericon=1",
+                    "modname": "quiz",
+                    "purpose": "assessment",
+                    "branded": false,
+                    "modplural": "Quizzes",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
+                    "noviewlink": false,
+                    "completion": 2,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": true,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [
+                            {
+                                "rulename": "completionusegrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a grade"
+                                }
+                            },
+                            {
+                                "rulename": "completionpassgrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a passing grade"
+                                }
+                            }
+                        ],
+                        "isoverallcomplete": false
                     },
-                    {
-                        "id": 103,
-                        "name": "Bài kiểm tra cuối kỳ môn Tin học - 120825 - 11",
-                        "modname": "quiz"
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "name": "Bài 2: Trí tuệ nhân tạo trong khoa học và đời sống",
+            "visible": 1,
+            "summary": "",
+            "summaryformat": 1,
+            "section": 8,
+            "hiddenbynumsections": 0,
+            "uservisible": true,
+            "component": "mod_subsection",
+            "itemid": 8,
+            "modules": [
+                {
+                    "id": 60,
+                    "url": "http://139.99.103.223:9090/mod/resource/view.php?id=60",
+                    "name": "SGK_CS_Bai2",
+                    "instance": 8,
+                    "contextid": 292,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/core/1761665386/f/pdf?filtericon=1",
+                    "modname": "resource",
+                    "purpose": "content",
+                    "branded": false,
+                    "modplural": "Files",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "activitybadge": {
+                        "badgecontent": "PDF",
+                        "badgestyle": "badge-none"
                     },
-                    {
-                        "id": 104,
-                        "name": "Bài kiểm tra cuối kỳ môn Tin học - 120825 - 20",
-                        "modname": "quiz"
+                    "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:10:\\\"printintro\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:3:{s:4:\\\"type\\\";s:12:\\\"PDF document\\\";s:8:\\\"mimetype\\\";s:15:\\\"application\/pdf\\\";s:9:\\\"extension\\\";s:3:\\\"PDF\\\";}}\",\"display\":5}",
+                    "noviewlink": false,
+                    "completion": 2,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": true,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [
+                            {
+                                "rulename": "completionview",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "View"
+                                }
+                            }
+                        ],
+                        "isoverallcomplete": false
                     },
-                    {
-                        "id": 105,
-                        "name": "Bài kiểm tra cuối kỳ môn Tin học - 120825 - 200",
-                        "modname": "quiz"
-                    },
-                    {
-                        "id": 119,
-                        "name": "user log viewer",
-                        "modname": "lti"
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0,
+                    "contents": [
+                        {
+                            "type": "file",
+                            "filename": "SGK_CS_Bai2.pdf",
+                            "filepath": "/",
+                            "filesize": 6429034,
+                            "fileurl": "http://139.99.103.223:9090/webservice/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf?forcedownload=1",
+                            "timecreated": 1761447458,
+                            "timemodified": 1761447458,
+                            "sortorder": 1,
+                            "mimetype": "application/pdf",
+                            "isexternalfile": false,
+                            "userid": 2,
+                            "author": "Nguyen Loc",
+                            "license": "unknown"
+                        }
+                    ],
+                    "contentsinfo": {
+                        "filescount": 1,
+                        "filessize": 6429034,
+                        "lastmodified": 1761447458,
+                        "mimetypes": [
+                            "application/pdf"
+                        ],
+                        "repositorytype": ""
                     }
-                ]
-            },
-            {
-                "sectionIdOld": 34,
-                "name": "Chủ đề 1: MÁY TÍNH VÀ XÃ HỘI TRI THỨC",
-                "lessons": [
-                    {
-                        "sectionIdOld": 53,
-                        "sectionIdNew": 38,
-                        "name": "Bài 1: Làm quen với Trí tuệ nhân tạo",
-                        "resources": [
+                },
+                {
+                    "id": 61,
+                    "url": "http://139.99.103.223:9090/mod/hvp/view.php?id=61",
+                    "name": "Video bài giảng bài 2",
+                    "instance": 8,
+                    "contextid": 293,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/hvp/1761665386/monologo?filtericon=1",
+                    "modname": "hvp",
+                    "purpose": "other",
+                    "branded": false,
+                    "modplural": "Interactive Content",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "\"\"",
+                    "noviewlink": false,
+                    "completion": 2,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": true,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [
                             {
-                                "id": 62,
-                                "name": "SGK_CS_Bai1",
-                                "modname": "resource"
-                            },
-                            {
-                                "id": 63,
-                                "name": "Video bài giảng bài 1",
-                                "modname": "hvp"
-                            },
-                            {
-                                "id": 61,
-                                "name": "bài kiểm tra bài 1 - easy",
-                                "modname": "quiz"
-                            },
-                            {
-                                "id": 106,
-                                "name": "bài kiểm tra bài 1 - medium",
-                                "modname": "quiz"
-                            },
-                            {
-                                "id": 107,
-                                "name": "bài kiểm tra bài 1 - hard",
-                                "modname": "quiz"
+                                "rulename": "completionview",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "View"
+                                }
                             }
-                        ]
+                        ],
+                        "isoverallcomplete": false
                     },
-                    {
-                        "sectionIdOld": 54,
-                        "sectionIdNew": 39,
-                        "name": "Bài 2: Trí tuệ nhân tạo trong khoa học và đời sống",
-                        "resources": [
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 62,
+                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=62",
+                    "name": "bài kiểm tra bài 2 - easy",
+                    "instance": 30,
+                    "contextid": 294,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/quiz/1761665386/monologo?filtericon=1",
+                    "modname": "quiz",
+                    "purpose": "assessment",
+                    "branded": false,
+                    "modplural": "Quizzes",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
+                    "noviewlink": false,
+                    "completion": 2,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": true,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [
                             {
-                                "id": 64,
-                                "name": "SGK_CS_Bai2",
-                                "modname": "resource"
+                                "rulename": "completionview",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "View"
+                                }
                             },
                             {
-                                "id": 65,
-                                "name": "Video bài giảng bài 2",
-                                "modname": "hvp"
+                                "rulename": "completionusegrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a grade"
+                                }
                             },
                             {
-                                "id": 66,
-                                "name": "bài kiểm tra bài 2 - easy",
-                                "modname": "quiz"
-                            },
-                            {
-                                "id": 108,
-                                "name": "bài kiểm tra bài 2 - medium",
-                                "modname": "quiz"
-                            },
-                            {
-                                "id": 109,
-                                "name": "bài kiểm tra bài 2 - hard",
-                                "modname": "quiz"
+                                "rulename": "completionpassgrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a passing grade"
+                                }
                             }
-                        ]
-                    }
-                ]
-            },
-            {
-                "sectionIdOld": 35,
-                "name": "Chủ đề 2: MẠNG MÁY TÍNH VÀ INTERNET",
-                "lessons": [
-                    {
-                        "sectionIdOld": 55,
-                        "sectionIdNew": 40,
-                        "name": "Bài 3: Một số thiết bị mạng thông dụng",
-                        "resources": [
-                            {
-                                "id": 67,
-                                "name": "Video bài giảng bài 3",
-                                "modname": "hvp"
-                            },
-                            {
-                                "id": 68,
-                                "name": "SGK_CS_Bai3",
-                                "modname": "resource"
-                            },
-                            {
-                                "id": 75,
-                                "name": "Trắc nghiệm bài 3 - easy",
-                                "modname": "quiz"
-                            },
-                            {
-                                "id": 110,
-                                "name": "bài kiểm tra bài 3 - medium",
-                                "modname": "quiz"
-                            },
-                            {
-                                "id": 111,
-                                "name": "bài kiểm tra bài 3 - hard",
-                                "modname": "quiz"
-                            }
-                        ]
+                        ],
+                        "isoverallcomplete": false
                     },
-                    {
-                        "sectionIdOld": 56,
-                        "sectionIdNew": 41,
-                        "name": "Bài 4: Giao thức mạng",
-                        "resources": [
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 63,
+                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=63",
+                    "name": "bài kiểm tra bài 2 - medium",
+                    "instance": 31,
+                    "contextid": 295,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/quiz/1761665386/monologo?filtericon=1",
+                    "modname": "quiz",
+                    "purpose": "assessment",
+                    "branded": false,
+                    "modplural": "Quizzes",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
+                    "noviewlink": false,
+                    "completion": 2,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": true,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [
                             {
-                                "id": 69,
-                                "name": "Video bài giảng bài 4",
-                                "modname": "hvp"
+                                "rulename": "completionusegrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a grade"
+                                }
                             },
                             {
-                                "id": 70,
-                                "name": "SGK_CS_Bai4",
-                                "modname": "resource"
-                            },
-                            {
-                                "id": 76,
-                                "name": "Trắc nghiệm bài 4 - easy",
-                                "modname": "quiz"
-                            },
-                            {
-                                "id": 112,
-                                "name": "Bài kiểm tra bài 4 - medium",
-                                "modname": "quiz"
-                            },
-                            {
-                                "id": 113,
-                                "name": "Bài kiểm tra bài 4 - hard",
-                                "modname": "quiz"
+                                "rulename": "completionpassgrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a passing grade"
+                                }
                             }
-                        ]
+                        ],
+                        "isoverallcomplete": false
                     },
-                    {
-                        "sectionIdOld": 57,
-                        "sectionIdNew": 42,
-                        "name": "Bài 5: Thực hành chia sẽ tài nguyên trên mạng",
-                        "resources": [
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 64,
+                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=64",
+                    "name": "bài kiểm tra bài 2 - hard",
+                    "instance": 32,
+                    "contextid": 296,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/quiz/1761665386/monologo?filtericon=1",
+                    "modname": "quiz",
+                    "purpose": "assessment",
+                    "branded": false,
+                    "modplural": "Quizzes",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
+                    "noviewlink": false,
+                    "completion": 2,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": true,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [
                             {
-                                "id": 71,
-                                "name": "Video bài giảng bài 5",
-                                "modname": "hvp"
+                                "rulename": "completionusegrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a grade"
+                                }
                             },
                             {
-                                "id": 72,
-                                "name": "SGK_CS_Bai5",
-                                "modname": "resource"
-                            },
-                            {
-                                "id": 77,
-                                "name": "Trắc nghiệm bài 5 - easy",
-                                "modname": "quiz"
-                            },
-                            {
-                                "id": 114,
-                                "name": "Bài kiểm tra bài 5 - medium",
-                                "modname": "quiz"
-                            },
-                            {
-                                "id": 115,
-                                "name": "Bài kiểm tra bài 5 - hard",
-                                "modname": "quiz"
+                                "rulename": "completionpassgrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a passing grade"
+                                }
                             }
-                        ]
-                    }
-                ]
-            },
-            {
-                "sectionIdOld": 36,
-                "name": "Chủ đề 3: ĐẠO ĐỨC, PHÁT LUẬT VÀ VĂN HOÁ TRONG MÔI TRƯỜNG SỐ",
-                "lessons": [
-                    {
-                        "sectionIdOld": 58,
-                        "sectionIdNew": 43,
-                        "name": "Bài 6: Giao tiếp và ứng xử trong không gian mạng",
-                        "resources": [
+                        ],
+                        "isoverallcomplete": false
+                    },
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "name": "Bài 1: Làm quen với Trí tuệ nhân tạo",
+            "visible": 1,
+            "summary": "",
+            "summaryformat": 1,
+            "section": 9,
+            "hiddenbynumsections": 0,
+            "uservisible": true,
+            "component": "mod_subsection",
+            "itemid": 7,
+            "modules": [
+                {
+                    "id": 54,
+                    "url": "http://139.99.103.223:9090/mod/resource/view.php?id=54",
+                    "name": "SGK_CS_Bai1",
+                    "instance": 7,
+                    "contextid": 286,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/core/1761665386/f/pdf?filtericon=1",
+                    "modname": "resource",
+                    "purpose": "content",
+                    "branded": false,
+                    "modplural": "Files",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "activitybadge": {
+                        "badgecontent": "PDF",
+                        "badgestyle": "badge-none"
+                    },
+                    "customdata": "{\"filtericon\":true,\"displayoptions\":\"a:3:{s:10:\\\"printintro\\\";i:1;s:8:\\\"showtype\\\";i:1;s:11:\\\"filedetails\\\";a:3:{s:4:\\\"type\\\";s:12:\\\"PDF document\\\";s:8:\\\"mimetype\\\";s:15:\\\"application\/pdf\\\";s:9:\\\"extension\\\";s:3:\\\"PDF\\\";}}\",\"display\":5}",
+                    "noviewlink": false,
+                    "completion": 2,
+                    "completiondata": {
+                        "state": 1,
+                        "timecompleted": 1761447476,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": true,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [
                             {
-                                "id": 73,
-                                "name": "Video bài giảng bài 6",
-                                "modname": "hvp"
-                            },
-                            {
-                                "id": 74,
-                                "name": "SGK_CS_Bai6",
-                                "modname": "resource"
-                            },
-                            {
-                                "id": 78,
-                                "name": "Trắc nghiệm bài 6 - easy",
-                                "modname": "quiz"
-                            },
-                            {
-                                "id": 116,
-                                "name": "Bài kiểm tra bài 6 - medium",
-                                "modname": "quiz"
-                            },
-                            {
-                                "id": 117,
-                                "name": "Bài kiểm tra bài 6 - hard",
-                                "modname": "quiz"
+                                "rulename": "completionview",
+                                "rulevalue": {
+                                    "status": 1,
+                                    "description": "View"
+                                }
                             }
-                        ]
+                        ],
+                        "isoverallcomplete": true
+                    },
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0,
+                    "contents": [
+                        {
+                            "type": "file",
+                            "filename": "SGK_CS_Bai1.pdf",
+                            "filepath": "/",
+                            "filesize": 5633933,
+                            "fileurl": "http://139.99.103.223:9090/webservice/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf?forcedownload=1",
+                            "timecreated": 1761447454,
+                            "timemodified": 1761447454,
+                            "sortorder": 1,
+                            "mimetype": "application/pdf",
+                            "isexternalfile": false,
+                            "userid": 2,
+                            "author": "Nguyen Loc",
+                            "license": "unknown"
+                        }
+                    ],
+                    "contentsinfo": {
+                        "filescount": 1,
+                        "filessize": 5633933,
+                        "lastmodified": 1761447454,
+                        "mimetypes": [
+                            "application/pdf"
+                        ],
+                        "repositorytype": ""
                     }
-                ]
-            }
-        ]
-    }
-]
+                },
+                {
+                    "id": 55,
+                    "url": "http://139.99.103.223:9090/mod/hvp/view.php?id=55",
+                    "name": "Video bài giảng bài 1",
+                    "instance": 7,
+                    "contextid": 287,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/hvp/1761665386/monologo?filtericon=1",
+                    "modname": "hvp",
+                    "purpose": "other",
+                    "branded": false,
+                    "modplural": "Interactive Content",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "\"\"",
+                    "noviewlink": false,
+                    "completion": 2,
+                    "completiondata": {
+                        "state": 1,
+                        "timecompleted": 1761447540,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": true,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [
+                            {
+                                "rulename": "completionview",
+                                "rulevalue": {
+                                    "status": 1,
+                                    "description": "View"
+                                }
+                            }
+                        ],
+                        "isoverallcomplete": true
+                    },
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 56,
+                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=56",
+                    "name": "bài kiểm tra bài 1 - easy",
+                    "instance": 27,
+                    "contextid": 288,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/quiz/1761665386/monologo?filtericon=1",
+                    "modname": "quiz",
+                    "purpose": "assessment",
+                    "branded": false,
+                    "modplural": "Quizzes",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":{\"completionpassgrade\":\"1\",\"completionattemptsexhausted\":\"1\"},\"completionminattempts\":\"0\"}}",
+                    "noviewlink": false,
+                    "completion": 2,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": true,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [
+                            {
+                                "rulename": "completionview",
+                                "rulevalue": {
+                                    "status": 1,
+                                    "description": "View"
+                                }
+                            },
+                            {
+                                "rulename": "completionusegrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a grade"
+                                }
+                            },
+                            {
+                                "rulename": "completionpassgrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a passing grade"
+                                }
+                            },
+                            {
+                                "rulename": "completionpassorattemptsexhausted",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a pass grade or complete all available attempts"
+                                }
+                            }
+                        ],
+                        "isoverallcomplete": false
+                    },
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 57,
+                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=57",
+                    "name": "bài kiểm tra bài 1 - medium",
+                    "instance": 28,
+                    "contextid": 289,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/quiz/1761665386/monologo?filtericon=1",
+                    "modname": "quiz",
+                    "purpose": "assessment",
+                    "branded": false,
+                    "modplural": "Quizzes",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
+                    "noviewlink": false,
+                    "completion": 2,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": true,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [
+                            {
+                                "rulename": "completionusegrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a grade"
+                                }
+                            },
+                            {
+                                "rulename": "completionpassgrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a passing grade"
+                                }
+                            }
+                        ],
+                        "isoverallcomplete": false
+                    },
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                },
+                {
+                    "id": 58,
+                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=58",
+                    "name": "bài kiểm tra bài 1 - hard",
+                    "instance": 29,
+                    "contextid": 290,
+                    "visible": 1,
+                    "uservisible": true,
+                    "visibleoncoursepage": 1,
+                    "modicon": "http://139.99.103.223:9090/theme/image.php/boost/quiz/1761665386/monologo?filtericon=1",
+                    "modname": "quiz",
+                    "purpose": "assessment",
+                    "branded": false,
+                    "modplural": "Quizzes",
+                    "availability": null,
+                    "indent": 0,
+                    "onclick": "",
+                    "afterlink": null,
+                    "customdata": "{\"customcompletionrules\":{\"completionpassorattemptsexhausted\":[],\"completionminattempts\":\"0\"}}",
+                    "noviewlink": false,
+                    "completion": 2,
+                    "completiondata": {
+                        "state": 0,
+                        "timecompleted": 0,
+                        "overrideby": null,
+                        "valueused": false,
+                        "hascompletion": true,
+                        "isautomatic": true,
+                        "istrackeduser": true,
+                        "uservisible": true,
+                        "details": [
+                            {
+                                "rulename": "completionusegrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a grade"
+                                }
+                            },
+                            {
+                                "rulename": "completionpassgrade",
+                                "rulevalue": {
+                                    "status": 0,
+                                    "description": "Receive a passing grade"
+                                }
+                            }
+                        ],
+                        "isoverallcomplete": false
+                    },
+                    "downloadcontent": 1,
+                    "dates": [],
+                    "groupmode": 0
+                }
+            ]
+        }
+    ]
+}
