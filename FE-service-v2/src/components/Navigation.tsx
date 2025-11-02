@@ -11,6 +11,7 @@ const Navigation: React.FC<NavigationProps> = ({ userRole, currentPage, onNaviga
   const getMenuItems = () => {
     const commonItems = [
       { id: 'profile', label: 'Profile', icon: 'fas fa-user' },
+      { id: 'qlearning', label: 'Q-Learning AI', icon: 'fas fa-brain' },
     ];
 
     switch (userRole) {

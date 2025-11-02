@@ -1,0 +1,1152 @@
+[
+  {
+    "rank": 1,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.0,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 88.83611831972264,
+      "best_action_id": 51,
+      "num_actions": 37,
+      "avg_q_value": 81.07744244536325
+    }
+  },
+  {
+    "rank": 2,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 88.66612090727779,
+      "best_action_id": 50,
+      "num_actions": 37,
+      "avg_q_value": 79.86888980196632
+    }
+  },
+  {
+    "rank": 3,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.5,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 87.46941583726296,
+      "best_action_id": 70,
+      "num_actions": 37,
+      "avg_q_value": 82.04125985717488
+    }
+  },
+  {
+    "rank": 4,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.5,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 87.29696439061283,
+      "best_action_id": 80,
+      "num_actions": 37,
+      "avg_q_value": 85.13553528863379
+    }
+  },
+  {
+    "rank": 5,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.5,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 86.40199882715848,
+      "best_action_id": 70,
+      "num_actions": 37,
+      "avg_q_value": 81.85855091762224
+    }
+  },
+  {
+    "rank": 6,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.5,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 86.07918522808504,
+      "best_action_id": 58,
+      "num_actions": 37,
+      "avg_q_value": 84.43264696554704
+    }
+  },
+  {
+    "rank": 7,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 86.04117151194286,
+      "best_action_id": 76,
+      "num_actions": 37,
+      "avg_q_value": 78.26093805603618
+    }
+  },
+  {
+    "rank": 8,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.5,
+      "collaborative_activity": 0.0,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 86.03518392333496,
+      "best_action_id": 82,
+      "num_actions": 37,
+      "avg_q_value": 82.91093320587201
+    }
+  },
+  {
+    "rank": 9,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.5,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.5,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 85.1289940795966,
+      "best_action_id": 70,
+      "num_actions": 37,
+      "avg_q_value": 79.95622859298267
+    }
+  },
+  {
+    "rank": 10,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.25,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 84.83715313831922,
+      "best_action_id": 64,
+      "num_actions": 37,
+      "avg_q_value": 77.43436128985523
+    }
+  },
+  {
+    "rank": 11,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.5,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 84.48949838735633,
+      "best_action_id": 51,
+      "num_actions": 37,
+      "avg_q_value": 77.62927378339795
+    }
+  },
+  {
+    "rank": 12,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.5,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 84.21401784026475,
+      "best_action_id": 87,
+      "num_actions": 37,
+      "avg_q_value": 77.65468530492522
+    }
+  },
+  {
+    "rank": 13,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.5,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.5,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 83.95450691498392,
+      "best_action_id": 86,
+      "num_actions": 36,
+      "avg_q_value": 69.49501415275996
+    }
+  },
+  {
+    "rank": 14,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.25,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 83.94651915205176,
+      "best_action_id": 68,
+      "num_actions": 37,
+      "avg_q_value": 72.28244343389383
+    }
+  },
+  {
+    "rank": 15,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.5,
+      "resource_usage": 0.5,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 83.70807769760961,
+      "best_action_id": 64,
+      "num_actions": 37,
+      "avg_q_value": 80.5076385973913
+    }
+  },
+  {
+    "rank": 16,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.5,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 83.51028872976812,
+      "best_action_id": 75,
+      "num_actions": 37,
+      "avg_q_value": 75.79093837750221
+    }
+  },
+  {
+    "rank": 17,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.5,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.5,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 83.18028025139122,
+      "best_action_id": 49,
+      "num_actions": 31,
+      "avg_q_value": 67.09333896162826
+    }
+  },
+  {
+    "rank": 18,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.5,
+      "resource_usage": 0.5,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 82.94492685806958,
+      "best_action_id": 70,
+      "num_actions": 37,
+      "avg_q_value": 80.04010892142314
+    }
+  },
+  {
+    "rank": 19,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.5,
+      "collaborative_activity": 0.5,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 82.92648009951739,
+      "best_action_id": 56,
+      "num_actions": 37,
+      "avg_q_value": 79.12342924190035
+    }
+  },
+  {
+    "rank": 20,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.5,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.5,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 82.87052256545459,
+      "best_action_id": 48,
+      "num_actions": 37,
+      "avg_q_value": 76.67985298931694
+    }
+  },
+  {
+    "rank": 21,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.5,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.5,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 81.94847472227332,
+      "best_action_id": 75,
+      "num_actions": 36,
+      "avg_q_value": 60.237822959219635
+    }
+  },
+  {
+    "rank": 22,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.5,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.5,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 81.87617671294666,
+      "best_action_id": 58,
+      "num_actions": 37,
+      "avg_q_value": 67.68856560515499
+    }
+  },
+  {
+    "rank": 23,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.5,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.5,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 81.76982950619822,
+      "best_action_id": 47,
+      "num_actions": 37,
+      "avg_q_value": 71.03683493826435
+    }
+  },
+  {
+    "rank": 24,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.5,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.5,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 81.15889263115133,
+      "best_action_id": 54,
+      "num_actions": 33,
+      "avg_q_value": 63.91545782858934
+    }
+  },
+  {
+    "rank": 25,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.0,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 80.27814903611623,
+      "best_action_id": 82,
+      "num_actions": 29,
+      "avg_q_value": 54.28652357804926
+    }
+  },
+  {
+    "rank": 26,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.5,
+      "resource_usage": 0.5,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.5,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 80.15304301299558,
+      "best_action_id": 60,
+      "num_actions": 37,
+      "avg_q_value": 76.39742785072767
+    }
+  },
+  {
+    "rank": 27,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.5,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.0,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 79.60210042481285,
+      "best_action_id": 86,
+      "num_actions": 37,
+      "avg_q_value": 74.7852921622746
+    }
+  },
+  {
+    "rank": 28,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.5,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.5,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 79.48634351075253,
+      "best_action_id": 64,
+      "num_actions": 36,
+      "avg_q_value": 70.81551986585514
+    }
+  },
+  {
+    "rank": 29,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.5,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.0,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 79.44764037840119,
+      "best_action_id": 86,
+      "num_actions": 32,
+      "avg_q_value": 64.92268788926297
+    }
+  },
+  {
+    "rank": 30,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.5,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.5,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 79.07318317891341,
+      "best_action_id": 50,
+      "num_actions": 37,
+      "avg_q_value": 74.06644567432788
+    }
+  },
+  {
+    "rank": 31,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.75,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 78.9832137511272,
+      "best_action_id": 50,
+      "num_actions": 37,
+      "avg_q_value": 73.2201422519743
+    }
+  },
+  {
+    "rank": 32,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.0,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 78.97090966998856,
+      "best_action_id": 48,
+      "num_actions": 37,
+      "avg_q_value": 72.22507588072125
+    }
+  },
+  {
+    "rank": 33,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.25,
+      "collaborative_activity": 0.5,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 78.82874428426801,
+      "best_action_id": 48,
+      "num_actions": 36,
+      "avg_q_value": 61.26667855103455
+    }
+  },
+  {
+    "rank": 34,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.5,
+      "resource_usage": 0.5,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.5,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 78.82065364368884,
+      "best_action_id": 62,
+      "num_actions": 37,
+      "avg_q_value": 63.76884744730049
+    }
+  },
+  {
+    "rank": 35,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.5,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.5,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.5,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 78.06072270352136,
+      "best_action_id": 56,
+      "num_actions": 35,
+      "avg_q_value": 58.842308875381136
+    }
+  },
+  {
+    "rank": 36,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.75,
+      "resource_usage": 0.5,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 78.05119170265361,
+      "best_action_id": 67,
+      "num_actions": 29,
+      "avg_q_value": 45.76704029478133
+    }
+  },
+  {
+    "rank": 37,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.5,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 78.01652802429052,
+      "best_action_id": 76,
+      "num_actions": 37,
+      "avg_q_value": 71.78237576164305
+    }
+  },
+  {
+    "rank": 38,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.75,
+      "resource_usage": 0.5,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.5,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 77.64467159790654,
+      "best_action_id": 67,
+      "num_actions": 15,
+      "avg_q_value": 40.10296588629717
+    }
+  },
+  {
+    "rank": 39,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.5,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.25,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 77.40945613320277,
+      "best_action_id": 80,
+      "num_actions": 26,
+      "avg_q_value": 54.26634035212582
+    }
+  },
+  {
+    "rank": 40,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.5,
+      "resource_usage": 0.5,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.0,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 76.39375814164438,
+      "best_action_id": 73,
+      "num_actions": 37,
+      "avg_q_value": 71.98653360479233
+    }
+  },
+  {
+    "rank": 41,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.5,
+      "collaborative_activity": 0.5,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 76.39107445673052,
+      "best_action_id": 80,
+      "num_actions": 37,
+      "avg_q_value": 72.52830052127706
+    }
+  },
+  {
+    "rank": 42,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.5,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.5,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.5,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 76.11111200258634,
+      "best_action_id": 88,
+      "num_actions": 31,
+      "avg_q_value": 56.300234966541105
+    }
+  },
+  {
+    "rank": 43,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.25,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.5,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 75.72536031552382,
+      "best_action_id": 63,
+      "num_actions": 32,
+      "avg_q_value": 57.10346904800444
+    }
+  },
+  {
+    "rank": 44,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.5,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.5,
+      "resource_usage": 0.5,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.5,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 75.58356155048705,
+      "best_action_id": 56,
+      "num_actions": 37,
+      "avg_q_value": 71.35129740080974
+    }
+  },
+  {
+    "rank": 45,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.25,
+      "collaborative_activity": 0.0,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 75.05327907595007,
+      "best_action_id": 82,
+      "num_actions": 33,
+      "avg_q_value": 57.79699504114358
+    }
+  },
+  {
+    "rank": 46,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.5,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.5,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.5,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 74.92600842149362,
+      "best_action_id": 74,
+      "num_actions": 26,
+      "avg_q_value": 54.40392468254584
+    }
+  },
+  {
+    "rank": 47,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.5,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.5,
+      "resource_usage": 0.5,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 74.69764981824166,
+      "best_action_id": 72,
+      "num_actions": 33,
+      "avg_q_value": 60.18775886342899
+    }
+  },
+  {
+    "rank": 48,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.5,
+      "collaborative_activity": 0.0,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.5,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 74.58793674066595,
+      "best_action_id": 85,
+      "num_actions": 30,
+      "avg_q_value": 52.831015622658576
+    }
+  },
+  {
+    "rank": 49,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.5,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.5,
+      "resource_usage": 0.5,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 74.538497799458,
+      "best_action_id": 67,
+      "num_actions": 30,
+      "avg_q_value": 50.84276809790354
+    }
+  },
+  {
+    "rank": 50,
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.5,
+      "collaborative_activity": 0.0,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "q_info": {
+      "max_q_value": 74.49718166631305,
+      "best_action_id": 86,
+      "num_actions": 37,
+      "avg_q_value": 66.51221607749002
+    }
+  }
+]

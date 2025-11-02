@@ -1,0 +1,172 @@
+[
+  {
+    "test_case": "Case 1",
+    "state_in_qtable": [
+      0.2,
+      0.0,
+      0.0,
+      0.2,
+      0.2,
+      0.3,
+      1.0,
+      0.5,
+      0.5,
+      0.5,
+      0.3,
+      0.9
+    ],
+    "api_input": {
+      "student_id": 12345,
+      "features": {
+        "mean_module_grade": 0.2,
+        "total_events": 0.0,
+        "viewed": 0.3,
+        "attempt": 1.0,
+        "feedback_viewed": 1.0,
+        "module_count": 0.5,
+        "course_module_completion": 0.5,
+        "submitted": 0.2,
+        "assessable_submitted": 0.16,
+        "comment": 0.5,
+        "\\mod_forum\\event\\course_module_viewed": 0.3
+      },
+      "top_k": 5
+    }
+  },
+  {
+    "test_case": "Case 2",
+    "state_in_qtable": [
+      0.4,
+      0.1,
+      0.0,
+      0.1,
+      0.1,
+      0.3,
+      1.0,
+      0.7,
+      0.3,
+      0.3,
+      0.3,
+      0.9
+    ],
+    "api_input": {
+      "student_id": 12345,
+      "features": {
+        "mean_module_grade": 0.4,
+        "total_events": 0.0,
+        "viewed": 0.3,
+        "attempt": 1.0,
+        "feedback_viewed": 1.0,
+        "module_count": 0.3,
+        "course_module_completion": 0.3,
+        "submitted": 0.1,
+        "assessable_submitted": 0.08,
+        "comment": 0.7,
+        "\\mod_forum\\event\\course_module_viewed": 0.42
+      },
+      "top_k": 5
+    }
+  },
+  {
+    "test_case": "Case 3",
+    "state_in_qtable": [
+      1.0,
+      0.9,
+      0.0,
+      0.5,
+      0.9,
+      1.0,
+      0.5,
+      0.3,
+      1.0,
+      1.0,
+      0.3,
+      0.5
+    ],
+    "api_input": {
+      "student_id": 12345,
+      "features": {
+        "mean_module_grade": 1.0,
+        "total_events": 1.7,
+        "viewed": 1.0,
+        "attempt": 0.5,
+        "feedback_viewed": 0.9,
+        "module_count": 1.0,
+        "course_module_completion": 1.0,
+        "submitted": 0.5,
+        "assessable_submitted": 0.4,
+        "comment": 0.3,
+        "\\mod_forum\\event\\course_module_viewed": 0.18
+      },
+      "top_k": 5
+    }
+  },
+  {
+    "test_case": "Case 4",
+    "state_in_qtable": [
+      0.9,
+      0.1,
+      0.0,
+      0.7,
+      0.5,
+      0.5,
+      1.0,
+      0.5,
+      0.9,
+      0.6,
+      0.3,
+      0.8
+    ],
+    "api_input": {
+      "student_id": 12345,
+      "features": {
+        "mean_module_grade": 0.9,
+        "total_events": 0.0,
+        "viewed": 0.5,
+        "attempt": 1.0,
+        "feedback_viewed": 1.0,
+        "module_count": 0.9,
+        "course_module_completion": 0.6,
+        "submitted": 0.7,
+        "assessable_submitted": 0.56,
+        "comment": 0.5,
+        "\\mod_forum\\event\\course_module_viewed": 0.3
+      },
+      "top_k": 5
+    }
+  },
+  {
+    "test_case": "Case 5",
+    "state_in_qtable": [
+      0.4,
+      0.1,
+      0.0,
+      0.3,
+      0.1,
+      0.5,
+      0.3,
+      0.2,
+      0.5,
+      0.2,
+      0.3,
+      0.9
+    ],
+    "api_input": {
+      "student_id": 12345,
+      "features": {
+        "mean_module_grade": 0.4,
+        "total_events": 0.0,
+        "viewed": 0.5,
+        "attempt": 0.3,
+        "feedback_viewed": 1.0,
+        "module_count": 0.5,
+        "course_module_completion": 0.2,
+        "submitted": 0.3,
+        "assessable_submitted": 0.24,
+        "comment": 0.2,
+        "\\mod_forum\\event\\course_module_viewed": 0.12
+      },
+      "top_k": 5
+    }
+  }
+]

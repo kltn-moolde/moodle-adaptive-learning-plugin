@@ -1,0 +1,362 @@
+[
+  {
+    "test_id": 1,
+    "description": "Test case 1 - High Q-value state (q=88.836)",
+    "expected_max_q_value": 88.83611831972264,
+    "best_action_id": 51,
+    "state_hash": [
+      0.75,
+      0.75,
+      0.0,
+      0.5,
+      0.75,
+      0.75,
+      0.75,
+      0.0,
+      0.75,
+      0.75,
+      0.25,
+      0.5
+    ],
+    "api_request": {
+      "student_id": 1,
+      "features": {
+        "knowledge_level": 0.75,
+        "engagement_score": 0.75,
+        "struggle_indicator": 0.0,
+        "progress_rate": 0.75,
+        "completion_rate": 0.75,
+        "resource_diversity": 0.25,
+        "assessment_performance": 0.75,
+        "time_spent_avg": 0.5,
+        "submitted_activities": 10,
+        "comments_count": 0
+      },
+      "top_k": 3
+    }
+  },
+  {
+    "test_id": 2,
+    "description": "Test case 2 - High Q-value state (q=88.666)",
+    "expected_max_q_value": 88.66612090727779,
+    "best_action_id": 50,
+    "state_hash": [
+      0.75,
+      0.75,
+      0.0,
+      0.25,
+      0.75,
+      0.75,
+      0.75,
+      0.25,
+      0.75,
+      0.75,
+      0.25,
+      0.5
+    ],
+    "api_request": {
+      "student_id": 2,
+      "features": {
+        "knowledge_level": 0.75,
+        "engagement_score": 0.75,
+        "struggle_indicator": 0.0,
+        "progress_rate": 0.75,
+        "completion_rate": 0.75,
+        "resource_diversity": 0.25,
+        "assessment_performance": 0.75,
+        "time_spent_avg": 0.5,
+        "submitted_activities": 5,
+        "comments_count": 2
+      },
+      "top_k": 3
+    }
+  },
+  {
+    "test_id": 3,
+    "description": "Test case 3 - High Q-value state (q=87.469)",
+    "expected_max_q_value": 87.46941583726296,
+    "best_action_id": 70,
+    "state_hash": [
+      0.75,
+      0.75,
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      0.75,
+      0.25,
+      0.75,
+      0.75,
+      0.25,
+      0.5
+    ],
+    "api_request": {
+      "student_id": 3,
+      "features": {
+        "knowledge_level": 0.75,
+        "engagement_score": 0.75,
+        "struggle_indicator": 0.0,
+        "progress_rate": 0.75,
+        "completion_rate": 0.75,
+        "resource_diversity": 0.25,
+        "assessment_performance": 0.75,
+        "time_spent_avg": 0.5,
+        "submitted_activities": 5,
+        "comments_count": 2
+      },
+      "top_k": 3
+    }
+  },
+  {
+    "test_id": 4,
+    "description": "Test case 4 - High Q-value state (q=87.297)",
+    "expected_max_q_value": 87.29696439061283,
+    "best_action_id": 80,
+    "state_hash": [
+      0.75,
+      0.75,
+      0.0,
+      0.25,
+      0.75,
+      0.75,
+      0.5,
+      0.25,
+      0.75,
+      0.75,
+      0.25,
+      0.5
+    ],
+    "api_request": {
+      "student_id": 4,
+      "features": {
+        "knowledge_level": 0.75,
+        "engagement_score": 0.75,
+        "struggle_indicator": 0.0,
+        "progress_rate": 0.75,
+        "completion_rate": 0.75,
+        "resource_diversity": 0.25,
+        "assessment_performance": 0.5,
+        "time_spent_avg": 0.5,
+        "submitted_activities": 5,
+        "comments_count": 2
+      },
+      "top_k": 3
+    }
+  },
+  {
+    "test_id": 5,
+    "description": "Test case 5 - High Q-value state (q=86.402)",
+    "expected_max_q_value": 86.40199882715848,
+    "best_action_id": 70,
+    "state_hash": [
+      0.75,
+      0.75,
+      0.0,
+      0.5,
+      0.5,
+      0.75,
+      0.75,
+      0.25,
+      0.75,
+      0.75,
+      0.25,
+      0.5
+    ],
+    "api_request": {
+      "student_id": 5,
+      "features": {
+        "knowledge_level": 0.75,
+        "engagement_score": 0.75,
+        "struggle_indicator": 0.0,
+        "progress_rate": 0.75,
+        "completion_rate": 0.75,
+        "resource_diversity": 0.25,
+        "assessment_performance": 0.75,
+        "time_spent_avg": 0.5,
+        "submitted_activities": 10,
+        "comments_count": 2
+      },
+      "top_k": 3
+    }
+  },
+  {
+    "test_id": 6,
+    "description": "Test case 6 - High Q-value state (q=86.079)",
+    "expected_max_q_value": 86.07918522808504,
+    "best_action_id": 58,
+    "state_hash": [
+      0.75,
+      0.75,
+      0.0,
+      0.5,
+      0.75,
+      0.75,
+      0.5,
+      0.25,
+      0.75,
+      0.75,
+      0.25,
+      0.5
+    ],
+    "api_request": {
+      "student_id": 6,
+      "features": {
+        "knowledge_level": 0.75,
+        "engagement_score": 0.75,
+        "struggle_indicator": 0.0,
+        "progress_rate": 0.75,
+        "completion_rate": 0.75,
+        "resource_diversity": 0.25,
+        "assessment_performance": 0.5,
+        "time_spent_avg": 0.5,
+        "submitted_activities": 10,
+        "comments_count": 2
+      },
+      "top_k": 3
+    }
+  },
+  {
+    "test_id": 7,
+    "description": "Test case 7 - High Q-value state (q=86.041)",
+    "expected_max_q_value": 86.04117151194286,
+    "best_action_id": 76,
+    "state_hash": [
+      0.75,
+      0.75,
+      0.0,
+      0.5,
+      0.75,
+      0.75,
+      0.75,
+      0.25,
+      0.75,
+      0.75,
+      0.25,
+      0.5
+    ],
+    "api_request": {
+      "student_id": 7,
+      "features": {
+        "knowledge_level": 0.75,
+        "engagement_score": 0.75,
+        "struggle_indicator": 0.0,
+        "progress_rate": 0.75,
+        "completion_rate": 0.75,
+        "resource_diversity": 0.25,
+        "assessment_performance": 0.75,
+        "time_spent_avg": 0.5,
+        "submitted_activities": 10,
+        "comments_count": 2
+      },
+      "top_k": 3
+    }
+  },
+  {
+    "test_id": 8,
+    "description": "Test case 8 - High Q-value state (q=86.035)",
+    "expected_max_q_value": 86.03518392333496,
+    "best_action_id": 82,
+    "state_hash": [
+      0.75,
+      0.75,
+      0.0,
+      0.5,
+      0.75,
+      0.75,
+      0.5,
+      0.0,
+      0.75,
+      0.75,
+      0.25,
+      0.5
+    ],
+    "api_request": {
+      "student_id": 8,
+      "features": {
+        "knowledge_level": 0.75,
+        "engagement_score": 0.75,
+        "struggle_indicator": 0.0,
+        "progress_rate": 0.75,
+        "completion_rate": 0.75,
+        "resource_diversity": 0.25,
+        "assessment_performance": 0.5,
+        "time_spent_avg": 0.5,
+        "submitted_activities": 10,
+        "comments_count": 0
+      },
+      "top_k": 3
+    }
+  },
+  {
+    "test_id": 9,
+    "description": "Test case 9 - High Q-value state (q=85.129)",
+    "expected_max_q_value": 85.1289940795966,
+    "best_action_id": 70,
+    "state_hash": [
+      0.75,
+      0.75,
+      0.0,
+      0.5,
+      0.5,
+      0.75,
+      0.75,
+      0.5,
+      0.75,
+      0.75,
+      0.25,
+      0.5
+    ],
+    "api_request": {
+      "student_id": 9,
+      "features": {
+        "knowledge_level": 0.75,
+        "engagement_score": 0.75,
+        "struggle_indicator": 0.0,
+        "progress_rate": 0.75,
+        "completion_rate": 0.75,
+        "resource_diversity": 0.25,
+        "assessment_performance": 0.75,
+        "time_spent_avg": 0.5,
+        "submitted_activities": 10,
+        "comments_count": 5
+      },
+      "top_k": 3
+    }
+  },
+  {
+    "test_id": 10,
+    "description": "Test case 10 - High Q-value state (q=84.837)",
+    "expected_max_q_value": 84.83715313831922,
+    "best_action_id": 64,
+    "state_hash": [
+      0.75,
+      0.75,
+      0.0,
+      0.5,
+      0.75,
+      0.75,
+      0.25,
+      0.25,
+      0.75,
+      0.75,
+      0.25,
+      0.5
+    ],
+    "api_request": {
+      "student_id": 10,
+      "features": {
+        "knowledge_level": 0.75,
+        "engagement_score": 0.75,
+        "struggle_indicator": 0.0,
+        "progress_rate": 0.75,
+        "completion_rate": 0.75,
+        "resource_diversity": 0.25,
+        "assessment_performance": 0.25,
+        "time_spent_avg": 0.5,
+        "submitted_activities": 10,
+        "comments_count": 2
+      },
+      "top_k": 3
+    }
+  }
+]

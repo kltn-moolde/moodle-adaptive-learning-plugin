@@ -30,7 +30,8 @@ class QLearningAgent:
         learning_rate: float = 0.1,
         discount_factor: float = 0.95,
         epsilon: float = 0.1,
-        state_decimals: int = 1
+        state_decimals: int = 1,
+        state_bins: Optional[List[float]] = None
     ):
         """
         Initialize Q-Learning Agent
@@ -40,13 +41,15 @@ class QLearningAgent:
             learning_rate: Learning rate (α)
             discount_factor: Discount factor (γ)
             epsilon: Exploration rate (ε)
-            state_decimals: Decimal places for state hashing
+            state_decimals: Decimal places for state hashing (used if state_bins=None)
+            state_bins: Custom bin edges for state discretization (e.g., [0, 0.25, 0.5, 0.75, 1.0])
         """
         self.n_actions = n_actions
         self.learning_rate = learning_rate
         self.discount_factor = discount_factor
         self.epsilon = epsilon
         self.state_decimals = state_decimals
+        self.state_bins = state_bins  # ✅ New: Support custom bins
         
         # Q-table: {state_hash: {action_id: q_value}}
         self.q_table: Dict[Tuple, Dict[int, float]] = defaultdict(
@@ -71,7 +74,25 @@ class QLearningAgent:
         Returns:
             Tuple (hashable)
         """
-        return tuple(np.round(state, decimals=self.state_decimals))
+        # ✅ Use custom bins if provided, otherwise use decimals
+        if self.state_bins is not None:
+            # Custom binning - find which bin interval each value belongs to
+            discretized = []
+            for val in state:
+                # Handle edge case: val >= max bin
+                if val >= self.state_bins[-1]:
+                    discretized.append(self.state_bins[-2])  # Second to last bin
+                else:
+                    # Find the bin: bins[i] <= val < bins[i+1]
+                    bin_value = self.state_bins[0]
+                    for i in range(len(self.state_bins)-1):
+                        if self.state_bins[i] <= val < self.state_bins[i+1]:
+                            bin_value = self.state_bins[i]
+                            break
+                    discretized.append(bin_value)
+            return tuple(discretized)
+        else:
+            return tuple(np.round(state, decimals=self.state_decimals))
     
     def get_q_value(self, state: np.ndarray, action_id: int) -> float:
         """
@@ -229,7 +250,8 @@ class QLearningAgent:
         self,
         state: np.ndarray,
         available_actions: List[int],
-        top_k: int = 3
+        top_k: int = 3,
+        fallback_random: bool = True
     ) -> List[Tuple[int, float]]:
         """
         Recommend top-k actions for a state
@@ -238,6 +260,7 @@ class QLearningAgent:
             state: Current state
             available_actions: List of available action IDs
             top_k: Number of recommendations
+            fallback_random: If no learned Q-values, return random actions
         
         Returns:
             List of (action_id, q_value) sorted by Q-value
@@ -252,6 +275,13 @@ class QLearningAgent:
         
         # Sort by Q-value (descending)
         q_values.sort(key=lambda x: x[1], reverse=True)
+        
+        # If all Q-values are 0 and fallback enabled, return random sample
+        if fallback_random and all(q == 0 for _, q in q_values):
+            # Sample random actions
+            import random
+            random_actions = random.sample(available_actions, min(top_k, len(available_actions)))
+            return [(action_id, 0.0) for action_id in random_actions]
         
         return q_values[:top_k]
     
@@ -269,6 +299,7 @@ class QLearningAgent:
             'discount_factor': self.discount_factor,
             'epsilon': self.epsilon,
             'state_decimals': self.state_decimals,
+            'state_bins': self.state_bins,  # ✅ Save bins for discretization
             'training_stats': self.training_stats
         }
         
@@ -295,6 +326,7 @@ class QLearningAgent:
         self.discount_factor = data['discount_factor']
         self.epsilon = data['epsilon']
         self.state_decimals = data['state_decimals']
+        self.state_bins = data.get('state_bins', None)  # ✅ Load bins (with backward compat)
         self.training_stats = data.get('training_stats', self.training_stats)
     
     def get_statistics(self) -> Dict:

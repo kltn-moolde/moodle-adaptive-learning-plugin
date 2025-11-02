@@ -34,30 +34,45 @@ def convert_features_to_state(features: Dict, state_builder: MoodleStateBuilder)
     """
     Convert feature dict to state vector
     
+    ⚠️ IMPORTANT: Features MUST match what moodle_log_processor.calculate_state_features() returns:
+    - knowledge_level
+    - engagement_level
+    - struggle_indicator
+    - submission_activity
+    - review_activity
+    - resource_usage
+    - assessment_engagement
+    - collaborative_activity
+    - overall_progress
+    - module_completion_rate
+    - activity_diversity
+    - completion_consistency
+    
     Args:
-        features: Dict with 12 features
+        features: Dict with 12 features (from moodle_log_processor)
         state_builder: State builder instance
     
     Returns:
-        State vector (12D)
+        State vector (12D) - same order as state_builder.build_state()
     """
-    # Build state from features
+    # Extract 12 features in EXACT order matching state_builder
     state = np.array([
-        features.get('avg_grade', 0.5),
-        features.get('completion_rate', 0.0),
-        features.get('activity_count', 0) / 100.0,  # Normalize
-        features.get('forum_posts', 0) / 10.0,
-        features.get('quiz_attempts', 0) / 20.0,
-        features.get('resource_views', 0) / 50.0,
-        features.get('avg_time_per_activity', 0.0) / 3600.0,  # Normalize to hours
-        1.0 / (features.get('days_since_last_activity', 1) + 1),  # Inverse
-        features.get('session_count', 0) / 30.0,
-        features.get('avg_session_duration', 0.0) / 7200.0,  # Normalize to 2 hours
-        features.get('late_submissions', 0) / 5.0,
-        features.get('streak_days', 0) / 30.0
+        features.get('knowledge_level', 0.5),
+        features.get('engagement_level', 0.0),
+        features.get('struggle_indicator', 0.0),
+        features.get('submission_activity', 0.0),
+        features.get('review_activity', 0.0),
+        features.get('resource_usage', 0.0),
+        features.get('assessment_engagement', 0.0),
+        features.get('collaborative_activity', 0.0),
+        features.get('overall_progress', 0.0),
+        features.get('module_completion_rate', 0.0),
+        features.get('activity_diversity', 0.0),
+        features.get('completion_consistency', 0.0)
     ], dtype=np.float32)
     
-    # Clip to [0, 1]
+    # All values should already be in [0, 1] from moodle_log_processor
+    # But clip just in case
     state = np.clip(state, 0.0, 1.0)
     
     return state

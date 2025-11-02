@@ -1,0 +1,362 @@
+[
+  {
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.0,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.75,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "max_q_value": 88.83611831972264,
+    "percentile": "top"
+  },
+  {
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.5,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.75,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.5,
+      "collaborative_activity": 0.0,
+      "overall_progress": 0.25,
+      "module_completion_rate": 0.5,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "max_q_value": 6.528370943295419,
+    "percentile": "75th"
+  },
+  {
+    "features": {
+      "knowledge_level": 0.25,
+      "engagement_level": 0.25,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.0,
+      "resource_usage": 0.25,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.5,
+      "overall_progress": 0.0,
+      "module_completion_rate": 0.25,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.75
+    },
+    "max_q_value": 3.5131218003748903,
+    "percentile": "50th"
+  },
+  {
+    "features": {
+      "knowledge_level": 0.0,
+      "engagement_level": 0.25,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.0,
+      "review_activity": 0.25,
+      "resource_usage": 0.25,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.75,
+      "overall_progress": 0.25,
+      "module_completion_rate": 0.5,
+      "activity_diversity": 0.0,
+      "completion_consistency": 0.75
+    },
+    "max_q_value": 2.1726376273525085,
+    "percentile": "25th"
+  },
+  {
+    "features": {
+      "knowledge_level": 0.5,
+      "engagement_level": 0.0,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.25,
+      "resource_usage": 0.5,
+      "assessment_engagement": 0.25,
+      "collaborative_activity": 0.0,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.0,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "max_q_value": 1.946860234682056,
+    "percentile": "random"
+  },
+  {
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.25,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.5,
+      "resource_usage": 0.25,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.0,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.25,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "max_q_value": 1.5246849473489004,
+    "percentile": "random"
+  },
+  {
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.25,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.5,
+      "resource_usage": 0.5,
+      "assessment_engagement": 0.25,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.25,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "max_q_value": 16.945959905306513,
+    "percentile": "random"
+  },
+  {
+    "features": {
+      "knowledge_level": 0.0,
+      "engagement_level": 0.0,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.25,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.25,
+      "collaborative_activity": 0.0,
+      "overall_progress": 0.0,
+      "module_completion_rate": 0.5,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.75
+    },
+    "max_q_value": 1.4763568473803859,
+    "percentile": "random"
+  },
+  {
+    "features": {
+      "knowledge_level": 0.5,
+      "engagement_level": 0.0,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.0,
+      "resource_usage": 0.25,
+      "assessment_engagement": 0.5,
+      "collaborative_activity": 0.0,
+      "overall_progress": 0.25,
+      "module_completion_rate": 0.0,
+      "activity_diversity": 0.0,
+      "completion_consistency": 0.75
+    },
+    "max_q_value": 0.9172111351932204,
+    "percentile": "random"
+  },
+  {
+    "features": {
+      "knowledge_level": 0.0,
+      "engagement_level": 0.0,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.0,
+      "resource_usage": 0.75,
+      "assessment_engagement": 0.25,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.5,
+      "module_completion_rate": 0.0,
+      "activity_diversity": 0.0,
+      "completion_consistency": 0.75
+    },
+    "max_q_value": 2.1408894956290667,
+    "percentile": "random"
+  },
+  {
+    "features": {
+      "knowledge_level": 0.5,
+      "engagement_level": 0.25,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.0,
+      "resource_usage": 0.25,
+      "assessment_engagement": 0.5,
+      "collaborative_activity": 0.75,
+      "overall_progress": 0.0,
+      "module_completion_rate": 0.25,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.75
+    },
+    "max_q_value": 2.382970512574624,
+    "percentile": "random"
+  },
+  {
+    "features": {
+      "knowledge_level": 0.0,
+      "engagement_level": 0.0,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.0,
+      "resource_usage": 0.25,
+      "assessment_engagement": 0.0,
+      "collaborative_activity": 0.0,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.0,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "max_q_value": 1.911768663512391,
+    "percentile": "random"
+  },
+  {
+    "features": {
+      "knowledge_level": 0.0,
+      "engagement_level": 0.0,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.0,
+      "resource_usage": 0.0,
+      "assessment_engagement": 0.25,
+      "collaborative_activity": 0.0,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.25,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "max_q_value": 1.432918322877715,
+    "percentile": "random"
+  },
+  {
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.25,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.25,
+      "resource_usage": 0.5,
+      "assessment_engagement": 0.5,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.25,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "max_q_value": 19.92487077145108,
+    "percentile": "random"
+  },
+  {
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.75,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.25,
+      "resource_usage": 0.5,
+      "assessment_engagement": 0.5,
+      "collaborative_activity": 0.5,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.25,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.5
+    },
+    "max_q_value": 12.154451864788479,
+    "percentile": "random"
+  },
+  {
+    "features": {
+      "knowledge_level": 0.5,
+      "engagement_level": 0.0,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.25,
+      "resource_usage": 0.5,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.5,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.5,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.75
+    },
+    "max_q_value": 3.2555691664693014,
+    "percentile": "random"
+  },
+  {
+    "features": {
+      "knowledge_level": 0.5,
+      "engagement_level": 0.0,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.5,
+      "review_activity": 0.25,
+      "resource_usage": 0.5,
+      "assessment_engagement": 0.75,
+      "collaborative_activity": 0.0,
+      "overall_progress": 0.5,
+      "module_completion_rate": 0.25,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.75
+    },
+    "max_q_value": 3.241397368068833,
+    "percentile": "random"
+  },
+  {
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.0,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.75,
+      "review_activity": 0.0,
+      "resource_usage": 0.25,
+      "assessment_engagement": 0.25,
+      "collaborative_activity": 0.25,
+      "overall_progress": 0.75,
+      "module_completion_rate": 0.0,
+      "activity_diversity": 0.0,
+      "completion_consistency": 0.5
+    },
+    "max_q_value": 3.190306337533728,
+    "percentile": "random"
+  },
+  {
+    "features": {
+      "knowledge_level": 0.75,
+      "engagement_level": 0.25,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.75,
+      "review_activity": 0.25,
+      "resource_usage": 0.25,
+      "assessment_engagement": 0.25,
+      "collaborative_activity": 0.5,
+      "overall_progress": 0.25,
+      "module_completion_rate": 0.25,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.75
+    },
+    "max_q_value": 1.375235831979172,
+    "percentile": "random"
+  },
+  {
+    "features": {
+      "knowledge_level": 0.5,
+      "engagement_level": 0.25,
+      "struggle_indicator": 0.0,
+      "submission_activity": 0.25,
+      "review_activity": 0.0,
+      "resource_usage": 0.25,
+      "assessment_engagement": 0.25,
+      "collaborative_activity": 0.5,
+      "overall_progress": 0.25,
+      "module_completion_rate": 0.0,
+      "activity_diversity": 0.25,
+      "completion_consistency": 0.75
+    },
+    "max_q_value": 3.4857050344812457,
+    "percentile": "random"
+  }
+]

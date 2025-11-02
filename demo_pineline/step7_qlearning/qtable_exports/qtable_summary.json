@@ -1,0 +1,131 @@
+{
+  "model_info": {
+    "n_actions": 37,
+    "state_decimals": 1,
+    "learning_rate": 0.1,
+    "discount_factor": 0.95,
+    "epsilon": 0.1
+  },
+  "training_stats": {
+    "episodes": 50000,
+    "total_updates": 1500000,
+    "avg_reward": 69.21787654991239,
+    "states_visited": 6577
+  },
+  "qtable_stats": {
+    "total_states": 6577,
+    "states_with_nonzero_q": 6577,
+    "state_dimension": 12,
+    "total_q_values": 52659,
+    "q_value_distribution": {
+      "zero_count": 0,
+      "zero_percentage": 0.0,
+      "positive_count": 52659,
+      "positive_percentage": 100.0,
+      "negative_count": 0,
+      "negative_percentage": 0.0,
+      "min": 0.0018166067037036291,
+      "max": 88.83611831972264,
+      "mean": 10.508739382050031,
+      "std": 16.335327484195155
+    }
+  },
+  "dimension_stats": [
+    {
+      "dimension": 0,
+      "unique_values": 4,
+      "min": 0.0,
+      "max": 0.75,
+      "mean": 0.43621712026759923,
+      "std": 0.30153252117756085
+    },
+    {
+      "dimension": 1,
+      "unique_values": 4,
+      "min": 0.0,
+      "max": 0.75,
+      "mean": 0.1973544169074046,
+      "std": 0.2608330903020774
+    },
+    {
+      "dimension": 2,
+      "unique_values": 4,
+      "min": 0.0,
+      "max": 0.75,
+      "mean": 0.0034210126197354415,
+      "std": 0.03125042731301205
+    },
+    {
+      "dimension": 3,
+      "unique_values": 4,
+      "min": 0.0,
+      "max": 0.75,
+      "mean": 0.3107799908772997,
+      "std": 0.24711831612228544
+    },
+    {
+      "dimension": 4,
+      "unique_values": 4,
+      "min": 0.0,
+      "max": 0.75,
+      "mean": 0.21537175003801126,
+      "std": 0.22979418972686627
+    },
+    {
+      "dimension": 5,
+      "unique_values": 4,
+      "min": 0.0,
+      "max": 0.75,
+      "mean": 0.4012087577923065,
+      "std": 0.2380639724438719
+    },
+    {
+      "dimension": 6,
+      "unique_values": 4,
+      "min": 0.0,
+      "max": 0.75,
+      "mean": 0.3848639197202372,
+      "std": 0.28440824487058186
+    },
+    {
+      "dimension": 7,
+      "unique_values": 4,
+      "min": 0.0,
+      "max": 0.75,
+      "mean": 0.20818762353656683,
+      "std": 0.22807595265902578
+    },
+    {
+      "dimension": 8,
+      "unique_values": 4,
+      "min": 0.0,
+      "max": 0.75,
+      "mean": 0.5172190968526684,
+      "std": 0.26076851522272293
+    },
+    {
+      "dimension": 9,
+      "unique_values": 4,
+      "min": 0.0,
+      "max": 0.75,
+      "mean": 0.2693857381785008,
+      "std": 0.2296626153502131
+    },
+    {
+      "dimension": 10,
+      "unique_values": 2,
+      "min": 0.0,
+      "max": 0.25,
+      "mean": 0.19313516800973088,
+      "std": 0.10479789540007828
+    },
+    {
+      "dimension": 11,
+      "unique_values": 2,
+      "min": 0.5,
+      "max": 0.75,
+      "mean": 0.6450889463281131,
+      "std": 0.1233751767391893
+    }
+  ]
+}

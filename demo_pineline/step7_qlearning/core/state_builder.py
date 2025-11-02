@@ -60,6 +60,87 @@ class MoodleStateBuilder:
             'comment', '\\mod_forum\\event\\course_module_viewed'
         ]
     
+    def build_state_from_api_features(self, features: Dict[str, float]) -> np.ndarray:
+        """
+        Build state from API-friendly features (used by API endpoint)
+        
+        Args:
+            features: Dict with structure matching state_description:
+                {
+                    'performance': {
+                        'knowledge_level': float,
+                        'engagement_level': float,
+                        'struggle_indicator': float
+                    },
+                    'activity_patterns': {
+                        'submission_activity': float,
+                        'review_activity': float,
+                        'resource_usage': float,
+                        'assessment_engagement': float,
+                        'collaborative_activity': float
+                    },
+                    'completion_metrics': {
+                        'overall_progress': float,
+                        'module_completion_rate': float,
+                        'activity_diversity': float,
+                        'completion_consistency': float
+                    }
+                }
+                OR flat dict with direct key names (backward compatible)
+        
+        Returns:
+            State vector (12 dims) directly without Moodle key mapping
+        """
+        # Check if features is nested (new format) or flat (old format)
+        if 'performance' in features:
+            # New nested format - extract values in correct order
+            perf = features.get('performance', {})
+            activity = features.get('activity_patterns', {})
+            completion = features.get('completion_metrics', {})
+            
+            state = [
+                # Performance (3 dims)
+                perf.get('knowledge_level', 0.5),
+                perf.get('engagement_level', 0.5),
+                perf.get('struggle_indicator', 0.0),
+                
+                # Activity patterns (5 dims)
+                activity.get('submission_activity', 0.0),
+                activity.get('review_activity', 0.5),
+                activity.get('resource_usage', 0.5),
+                activity.get('assessment_engagement', 0.5),
+                activity.get('collaborative_activity', 0.0),
+                
+                # Completion metrics (4 dims)
+                completion.get('overall_progress', 0.5),
+                completion.get('module_completion_rate', 0.5),
+                completion.get('activity_diversity', 0.25),
+                completion.get('completion_consistency', 0.5)
+            ]
+        else:
+            # Old flat format - backward compatible
+            state = [
+                # Performance (3 dims)
+                features.get('knowledge_level', 0.5),
+                features.get('engagement_level', features.get('engagement_score', 0.5)),  # backward compat
+                features.get('struggle_indicator', 0.0),
+                
+                # Activity patterns (5 dims)
+                features.get('submission_activity', 0.0),
+                features.get('review_activity', 0.5),
+                features.get('resource_usage', 0.5),
+                features.get('assessment_engagement', features.get('assessment_performance', 0.5)),  # backward compat
+                features.get('collaborative_activity', 0.0),
+                
+                # Completion metrics (4 dims)
+                features.get('overall_progress', features.get('progress_rate', 0.5)),  # backward compat
+                features.get('module_completion_rate', features.get('completion_rate', 0.5)),  # backward compat
+                features.get('activity_diversity', features.get('resource_diversity', 0.25)),  # backward compat
+                features.get('completion_consistency', features.get('time_spent_avg', 0.5))  # backward compat
+            ]
+        
+        return np.array(state, dtype=np.float32)
+    
     def build_state(self, student_data: Dict) -> np.ndarray:
         """
         Xây dựng state từ Moodle student data
@@ -184,20 +265,40 @@ class MoodleStateBuilder:
         """Get state dimension"""
         return 12
     
-    def hash_state(self, state: np.ndarray, decimals: int = 1) -> tuple:
+    def hash_state(self, state: np.ndarray, decimals: int = 1, bins: Optional[List[float]] = None) -> tuple:
         """
         Hash state vector thành tuple (key cho Q-table)
         
-        ⚠️ Sử dụng decimals=1 để giảm sparsity
+        Supports two strategies:
+        1. Decimal rounding: decimals=1 → 11 bins (0.0, 0.1, ..., 1.0)
+        2. Custom bins: bins=[0, 0.25, 0.5, 0.75, 1.0] → 4 bins (Quartile)
         
         Args:
             state: State vector (12 dims)
-            decimals: Số chữ số thập phân
+            decimals: Số chữ số thập phân (used if bins=None)
+            bins: Custom bin edges (e.g., [0, 0.25, 0.5, 0.75, 1.0] for quartile)
         
         Returns:
             Tuple (hashable)
         """
-        return tuple(np.round(state, decimals=decimals))
+        if bins is not None:
+            # Custom binning strategy
+            discretized = []
+            for val in state:
+                # Find which bin this value falls into
+                bin_value = bins[0]  # Default to first bin
+                for i in range(len(bins) - 1):
+                    if bins[i] <= val < bins[i+1]:
+                        bin_value = bins[i]
+                        break
+                    elif val >= bins[-1]:
+                        bin_value = bins[-2]  # Last interval
+                        break
+                discretized.append(bin_value)
+            return tuple(discretized)
+        else:
+            # Decimal rounding strategy (original)
+            return tuple(np.round(state, decimals=decimals))
     
     def extract_batch(self, json_path: str) -> Dict[int, np.ndarray]:
         """

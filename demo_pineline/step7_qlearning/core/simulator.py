@@ -64,7 +64,13 @@ class LearningSimulator:
         self.reward_calculator = reward_calculator
         
         # Simulation parameters
-        self.cluster_behaviors = self._define_cluster_behaviors()
+        # Try to derive cluster behaviors from provided cluster profiles (if loaded)
+        # Fallback to the hard-coded defaults in _define_cluster_behaviors
+        derived = self._build_behaviors_from_profiles()
+        if derived:
+            self.cluster_behaviors = derived
+        else:
+            self.cluster_behaviors = self._define_cluster_behaviors()
     
     def _define_cluster_behaviors(self) -> Dict[int, Dict]:
         """
@@ -129,6 +135,90 @@ class LearningSimulator:
                 'engagement': 0.9
             }
         }
+
+    def _build_behaviors_from_profiles(self) -> Dict[int, Dict]:
+        """
+        Attempt to derive cluster behavior parameters from loaded cluster profiles.
+
+        Mapping heuristics (if data available):
+         - avg_score <- mean_module_grade
+         - engagement <- total_events or viewed
+         - completion_rate <- module_count
+         - avg_attempts <- attempt (fallback 2.0)
+         - time_multiplier: inverse relation with avg_score
+         - prefer_easy: True if avg_score < 0.6
+
+        Returns empty dict if no usable profiles found.
+        """
+        profiles = getattr(self.reward_calculator, 'cluster_profiles', None)
+        overall = None
+        # Try to get overall stats too for fallbacks
+        try:
+            with open(getattr(self.reward_calculator, 'cluster_profiles_path'), 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                overall = data.get('overall_stats', {}).get('mean', {})
+        except Exception:
+            overall = None
+
+        if not profiles:
+            return {}
+
+        behaviors: Dict[int, Dict] = {}
+        for cid_str, info in profiles.items():
+            # cluster ids in file may be strings
+            try:
+                cid = int(cid_str)
+            except Exception:
+                continue
+
+            feature_means = info.get('feature_means', {}) if isinstance(info, dict) else {}
+
+            # Helpers to extract feature with fallbacks
+            def _get_feat(key_list, fallback=None):
+                for k in key_list:
+                    if k in feature_means:
+                        return feature_means.get(k)
+                    if overall and k in overall:
+                        return overall.get(k)
+                return fallback
+
+            avg_score = _get_feat(['mean_module_grade', 'mean_module_grade'], 0.6)
+            engagement = _get_feat(['total_events', 'viewed'], 0.5)
+            completion_rate = _get_feat(['module_count', 'module_count'], 0.5)
+            avg_attempts = _get_feat(['attempt', 'attempt'], 2.0)
+
+            # Normalize / clip and apply simple heuristics
+            try:
+                avg_score = float(avg_score)
+            except Exception:
+                avg_score = 0.6
+            try:
+                engagement = float(engagement)
+            except Exception:
+                engagement = 0.5
+            try:
+                completion_rate = float(completion_rate)
+            except Exception:
+                completion_rate = 0.5
+            try:
+                avg_attempts = float(avg_attempts)
+            except Exception:
+                avg_attempts = 2.0
+
+            # Derive time multiplier: higher skill -> less time
+            time_multiplier = max(0.5, 1.5 - (avg_score - 0.5))
+
+            behaviors[cid] = {
+                'completion_rate': float(np.clip(completion_rate, 0, 1)),
+                'avg_score': float(np.clip(avg_score, 0, 1)),
+                'avg_attempts': max(1.0, avg_attempts),
+                'time_multiplier': float(np.clip(time_multiplier, 0.5, 2.0)),
+                'prefer_easy': bool(avg_score < 0.6),
+                'engagement': float(np.clip(engagement, 0, 1))
+            }
+
+        # If we got at least one behavior, return it
+        return behaviors if behaviors else {}
     
     def simulate_student_learning(
         self,

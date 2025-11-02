@@ -348,19 +348,25 @@ class MoodleLogProcessor:
         """
         Calculate student state features BEFORE timestamp
         
-        Features (12 dimensions cho MoodleStateBuilder):
-        1. avg_grade: Điểm trung bình
-        2. completion_rate: Tỷ lệ hoàn thành
-        3. activity_count: Số hoạt động
-        4. forum_posts: Số bài post
-        5. quiz_attempts: Số lần làm quiz
-        6. resource_views: Số lần xem tài liệu
-        7. avg_time_per_activity: Thời gian trung bình/hoạt động
-        8. days_since_last_activity: Số ngày kể từ hoạt động cuối
-        9. session_count: Số session
-        10. avg_session_duration: Thời gian trung bình/session
-        11. late_submissions: Số bài nộp trễ
-        12. streak_days: Số ngày học liên tục
+        Features (12 dimensions - MATCH với MoodleStateBuilder):
+        
+        === 1. STUDENT PERFORMANCE (3 dims) ===
+        1. knowledge_level: mean grade (0-1)
+        2. engagement_level: normalized total events
+        3. struggle_indicator: high attempts + low feedback
+        
+        === 2. ACTIVITY PATTERNS (5 dims) ===
+        4. submission_activity: submit events normalized
+        5. review_activity: review + feedback events
+        6. resource_usage: resource/page views
+        7. assessment_engagement: quiz/assign events
+        8. collaborative_activity: forum/comment events
+        
+        === 3. COMPLETION METRICS (4 dims) ===
+        9. overall_progress: module count normalized
+        10. module_completion_rate: completion rate
+        11. activity_diversity: diversity of activity types
+        12. completion_consistency: consistency across modules
         
         Args:
             student_id: Student ID
@@ -368,78 +374,103 @@ class MoodleLogProcessor:
             window_days: Look back window (days)
         
         Returns:
-            Dict of features
+            Dict of features (12 keys matching state_builder.py)
         """
         # Get logs in time window
         start_time = before_timestamp - timedelta(days=window_days)
         logs = self.get_student_logs(student_id, start_time, before_timestamp)
         
         if len(logs) == 0:
-            # Return default values for new student
+            # Return default values for new student (12 dims matching state_builder.py)
             return {
-                'avg_grade': 0.5,
-                'completion_rate': 0.0,
-                'activity_count': 0,
-                'forum_posts': 0,
-                'quiz_attempts': 0,
-                'resource_views': 0,
-                'avg_time_per_activity': 0.0,
-                'days_since_last_activity': 999,
-                'session_count': 0,
-                'avg_session_duration': 0.0,
-                'late_submissions': 0,
-                'streak_days': 0
+                'knowledge_level': 0.5,
+                'engagement_level': 0.0,
+                'struggle_indicator': 0.0,
+                'submission_activity': 0.0,
+                'review_activity': 0.0,
+                'resource_usage': 0.0,
+                'assessment_engagement': 0.0,
+                'collaborative_activity': 0.0,
+                'overall_progress': 0.0,
+                'module_completion_rate': 0.0,
+                'activity_diversity': 0.0,
+                'completion_consistency': 0.0
             }
         
         # Calculate features
         features = {}
         
-        # 1. avg_grade (from grade.csv if available)
-        features['avg_grade'] = self._calculate_avg_grade(student_id, before_timestamp)
+        # Normalize factor (for scaling event counts to 0-1)
+        max_events = max(len(logs), 100)  # Use 100 as baseline
         
-        # 2. completion_rate
+        # === 1. STUDENT PERFORMANCE (3 dims) ===
+        
+        # 1.1 Knowledge level (from grades)
+        features['knowledge_level'] = self._calculate_avg_grade(student_id, before_timestamp)
+        
+        # 1.2 Engagement level (normalized total events)
+        features['engagement_level'] = min(len(logs) / max_events, 1.0)
+        
+        # 1.3 Struggle indicator
+        quiz_attempts = len(logs[logs['eventname'].str.contains('mod_quiz.*attempt', na=False)])
+        feedback_views = len(logs[logs['eventname'].str.contains('feedback_viewed', na=False)])
+        attempt_norm = min(quiz_attempts / 10, 1.0)  # Normalize by 10 attempts
+        feedback_norm = min(feedback_views / 5, 1.0)  # Normalize by 5 feedbacks
+        struggle = attempt_norm * (1 - feedback_norm) * (1 - features['knowledge_level'])
+        features['struggle_indicator'] = np.clip(struggle, 0.0, 1.0)
+        
+        # === 2. ACTIVITY PATTERNS (5 dims) ===
+        
+        # 2.1 Submission activity
+        submit_events = len(logs[logs['eventname'].str.contains('submitted|assessable_submitted|submission_created', na=False)])
+        features['submission_activity'] = min(submit_events / 10, 1.0)
+        
+        # 2.2 Review activity
+        review_events = len(logs[logs['eventname'].str.contains('reviewed|feedback_viewed|attempt_reviewed', na=False)])
+        features['review_activity'] = min(review_events / 10, 1.0)
+        
+        # 2.3 Resource usage
+        resource_patterns = ['mod_resource', 'mod_page', 'mod_url', 'course_module_viewed']
+        resource_events = len(logs[logs['eventname'].str.contains('|'.join(resource_patterns), na=False)])
+        features['resource_usage'] = min(resource_events / 20, 1.0)
+        
+        # 2.4 Assessment engagement
+        assessment_patterns = ['mod_quiz.*attempt', 'mod_assign.*submitted']
+        assessment_events = len(logs[logs['eventname'].str.contains('|'.join(assessment_patterns), na=False)])
+        features['assessment_engagement'] = min(assessment_events / 10, 1.0)
+        
+        # 2.5 Collaborative activity
+        collab_patterns = ['mod_forum', 'comment']
+        collab_events = len(logs[logs['eventname'].str.contains('|'.join(collab_patterns), na=False)])
+        features['collaborative_activity'] = min(collab_events / 10, 1.0)
+        
+        # === 3. COMPLETION METRICS (4 dims) ===
+        
+        # 3.1 Overall progress (module count)
+        module_views = logs['eventname'].str.contains('course_module_viewed', na=False).sum()
+        features['overall_progress'] = min(module_views / 30, 1.0)  # Normalize by 30 modules
+        
+        # 3.2 Module completion rate
         completion_events = logs[logs['eventname'].str.contains('completion_updated', na=False)]
-        completed_count = len(completion_events[completion_events['other'].str.contains('completionstate.*1', na=False)])
-        total_modules = logs['eventname'].str.contains('course_module_viewed', na=False).sum()
-        features['completion_rate'] = completed_count / max(total_modules, 1)
+        completed = len(completion_events[completion_events['other'].str.contains('completionstate.*1', na=False)])
+        total_modules = max(module_views, 1)
+        features['module_completion_rate'] = completed / total_modules
         
-        # 3. activity_count
-        features['activity_count'] = len(logs)
+        # 3.3 Activity diversity
+        activity_types = ['submitted', 'viewed', 'created', 'updated', 'downloaded', 'reviewed', 'uploaded']
+        active_types = sum([
+            1 for activity in activity_types
+            if logs['action'].str.contains(activity, na=False).sum() > 0
+        ])
+        features['activity_diversity'] = active_types / len(activity_types)
         
-        # 4. forum_posts
-        features['forum_posts'] = len(logs[logs['eventname'].str.contains('mod_forum.*created', na=False)])
-        
-        # 5. quiz_attempts
-        features['quiz_attempts'] = len(logs[logs['eventname'].str.contains('mod_quiz.*submitted', na=False)])
-        
-        # 6. resource_views
-        resource_events = ['mod_resource', 'mod_page', 'mod_hvp', 'mod_folder']
-        features['resource_views'] = len(logs[logs['eventname'].str.contains('|'.join(resource_events), na=False)])
-        
-        # 7. avg_time_per_activity (estimate from session duration)
-        sessions = self._group_into_sessions(logs, gap_minutes=30)
-        total_time = 0
-        for session_logs in sessions.values():
-            if len(session_logs) > 1:
-                duration = (session_logs.iloc[-1]['timestamp'] - session_logs.iloc[0]['timestamp']).total_seconds()
-                total_time += duration
-        features['avg_time_per_activity'] = total_time / max(len(logs), 1)
-        
-        # 8. days_since_last_activity
-        last_activity = logs.iloc[-1]['timestamp']
-        features['days_since_last_activity'] = (before_timestamp - last_activity).days
-        
-        # 9. session_count
-        features['session_count'] = len(sessions)
-        
-        # 10. avg_session_duration
-        features['avg_session_duration'] = total_time / max(len(sessions), 1)
-        
-        # 11. late_submissions (estimate from submission events)
-        features['late_submissions'] = 0  # TODO: Need due date info
-        
-        # 12. streak_days
-        features['streak_days'] = self._calculate_streak_days(logs)
+        # 3.4 Completion consistency
+        # Check consistency across different modules
+        unique_modules = logs['contextinstanceid'].nunique() if 'contextinstanceid' in logs.columns else 1
+        events_per_module = len(logs) / max(unique_modules, 1)
+        # High consistency = similar events per module (std close to mean)
+        consistency = 1.0 - min(events_per_module / max_events, 1.0)
+        features['completion_consistency'] = np.clip(consistency, 0.0, 1.0)
         
         return features
     

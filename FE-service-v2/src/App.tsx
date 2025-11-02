@@ -6,6 +6,7 @@ import StudentDashboard from './pages/StudentDashboard';
 import TeacherDashboard from './pages/TeacherDashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import Profile from './pages/Profile';
+import QLearningDashboard from './pages/QLearningDashboard';
 import { useLTIAuth, LTILoader, LTIError, LTIContext } from './components/lti';
 import {
   mockUsers,
@@ -93,6 +94,9 @@ function App() {
     switch (currentPage) {
       case 'profile':
         return <Profile user={currentUser} onUpdateUser={handleUpdateUser} />;
+      
+      case 'qlearning':
+        return <QLearningDashboard />;
 
       // Student pages
       case 'roadmap':

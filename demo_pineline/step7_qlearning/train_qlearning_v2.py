@@ -11,17 +11,189 @@ import argparse
 import json
 import numpy as np
 from typing import List, Dict
+import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg')  # Use non-interactive backend
 
 from core.state_builder import MoodleStateBuilder
 from core.action_space import ActionSpace
 from core.reward_calculator import RewardCalculator
 from core.qlearning_agent import QLearningAgent
+from config import BINNING_STRATEGY, QUARTILE_BINS  # ✅ Import config
 
 
 def load_simulated_data(filepath: str) -> List[Dict]:
     """Load simulated interaction data"""
     with open(filepath, 'r', encoding='utf-8') as f:
         return json.load(f)
+
+
+def plot_training_metrics(
+    epoch_rewards: List[float],
+    epoch_qtable_sizes: List[int],
+    epoch_avg_qvalues: List[float],
+    epoch_max_qvalues: List[float],
+    output_dir: str
+):
+    """
+    Generate comprehensive training plots
+    
+    Args:
+        epoch_rewards: List of average rewards per epoch
+        epoch_qtable_sizes: List of Q-table sizes per epoch
+        epoch_avg_qvalues: List of average Q-values per epoch
+        epoch_max_qvalues: List of max Q-values per epoch
+        output_dir: Directory to save plots
+    """
+    epochs = list(range(1, len(epoch_rewards) + 1))
+    
+    # Create figure with 4 subplots
+    fig, axes = plt.subplots(2, 2, figsize=(15, 10))
+    fig.suptitle('Q-Learning Training Metrics', fontsize=16, fontweight='bold')
+    
+    # 1. Average Reward per Epoch
+    ax1 = axes[0, 0]
+    ax1.plot(epochs, epoch_rewards, 'b-', linewidth=2, marker='o', markersize=4)
+    ax1.set_xlabel('Epoch', fontsize=11)
+    ax1.set_ylabel('Average Reward', fontsize=11)
+    ax1.set_title('Average Reward per Epoch', fontsize=12, fontweight='bold')
+    ax1.grid(True, alpha=0.3)
+    ax1.set_xlim(1, len(epochs))
+    
+    # Add value labels on peaks
+    if epoch_rewards:
+        max_idx = np.argmax(epoch_rewards)
+        min_idx = np.argmin(epoch_rewards)
+        ax1.annotate(f'{epoch_rewards[max_idx]:.2f}',
+                    xy=(max_idx + 1, epoch_rewards[max_idx]),
+                    xytext=(5, 5), textcoords='offset points',
+                    fontsize=9, color='green')
+        if min_idx != max_idx:
+            ax1.annotate(f'{epoch_rewards[min_idx]:.2f}',
+                        xy=(min_idx + 1, epoch_rewards[min_idx]),
+                        xytext=(5, -15), textcoords='offset points',
+                        fontsize=9, color='red')
+    
+    # 2. Q-table Size Growth
+    ax2 = axes[0, 1]
+    ax2.plot(epochs, epoch_qtable_sizes, 'g-', linewidth=2, marker='s', markersize=4)
+    ax2.set_xlabel('Epoch', fontsize=11)
+    ax2.set_ylabel('Number of States', fontsize=11)
+    ax2.set_title('Q-table Size Growth', fontsize=12, fontweight='bold')
+    ax2.grid(True, alpha=0.3)
+    ax2.set_xlim(1, len(epochs))
+    
+    # Add final size annotation
+    if epoch_qtable_sizes:
+        final_size = epoch_qtable_sizes[-1]
+        ax2.annotate(f'Final: {final_size}',
+                    xy=(len(epochs), final_size),
+                    xytext=(-40, 10), textcoords='offset points',
+                    fontsize=9, color='darkgreen',
+                    bbox=dict(boxstyle='round,pad=0.3', facecolor='yellow', alpha=0.3))
+    
+    # 3. Average Q-value Evolution
+    ax3 = axes[1, 0]
+    ax3.plot(epochs, epoch_avg_qvalues, 'r-', linewidth=2, marker='^', markersize=4)
+    ax3.set_xlabel('Epoch', fontsize=11)
+    ax3.set_ylabel('Average Q-value', fontsize=11)
+    ax3.set_title('Average Q-value Evolution', fontsize=12, fontweight='bold')
+    ax3.grid(True, alpha=0.3)
+    ax3.set_xlim(1, len(epochs))
+    
+    # 4. Max Q-value Evolution
+    ax4 = axes[1, 1]
+    ax4.plot(epochs, epoch_max_qvalues, 'm-', linewidth=2, marker='D', markersize=4)
+    ax4.set_xlabel('Epoch', fontsize=11)
+    ax4.set_ylabel('Max Q-value', fontsize=11)
+    ax4.set_title('Max Q-value Evolution', fontsize=12, fontweight='bold')
+    ax4.grid(True, alpha=0.3)
+    ax4.set_xlim(1, len(epochs))
+    
+    # Add final value annotation
+    if epoch_max_qvalues:
+        final_max = epoch_max_qvalues[-1]
+        ax4.annotate(f'Max: {final_max:.2f}',
+                    xy=(len(epochs), final_max),
+                    xytext=(-40, 10), textcoords='offset points',
+                    fontsize=9, color='darkmagenta',
+                    bbox=dict(boxstyle='round,pad=0.3', facecolor='yellow', alpha=0.3))
+    
+    plt.tight_layout()
+    
+    # Save plot
+    plot_path = os.path.join(output_dir, 'training_metrics.png')
+    plt.savefig(plot_path, dpi=150, bbox_inches='tight')
+    print(f"  ✓ Training plot saved: {plot_path}")
+    
+    # Create additional detailed plot for Q-value distribution
+    fig2, ax = plt.subplots(figsize=(12, 6))
+    
+    # Plot both avg and max Q-values together
+    ax.plot(epochs, epoch_avg_qvalues, 'b-', linewidth=2, marker='o', 
+            markersize=5, label='Average Q-value', alpha=0.8)
+    ax.plot(epochs, epoch_max_qvalues, 'r-', linewidth=2, marker='s', 
+            markersize=5, label='Max Q-value', alpha=0.8)
+    
+    ax.set_xlabel('Epoch', fontsize=12)
+    ax.set_ylabel('Q-value', fontsize=12)
+    ax.set_title('Q-value Statistics Over Training', fontsize=14, fontweight='bold')
+    ax.legend(loc='best', fontsize=11)
+    ax.grid(True, alpha=0.3)
+    ax.set_xlim(1, len(epochs))
+    
+    # Add shaded area between avg and max
+    ax.fill_between(epochs, epoch_avg_qvalues, epoch_max_qvalues, 
+                    alpha=0.2, color='gray', label='Q-value range')
+    
+    plt.tight_layout()
+    qvalue_plot_path = os.path.join(output_dir, 'qvalue_evolution.png')
+    plt.savefig(qvalue_plot_path, dpi=150, bbox_inches='tight')
+    print(f"  ✓ Q-value evolution plot saved: {qvalue_plot_path}")
+    
+    # Generate summary statistics
+    summary_path = os.path.join(output_dir, 'training_summary.txt')
+    with open(summary_path, 'w', encoding='utf-8') as f:
+        f.write("=" * 70 + "\n")
+        f.write("TRAINING SUMMARY\n")
+        f.write("=" * 70 + "\n\n")
+        
+        f.write(f"Total Epochs: {len(epochs)}\n\n")
+        
+        f.write("REWARD STATISTICS:\n")
+        f.write(f"  Initial reward: {epoch_rewards[0]:.3f}\n")
+        f.write(f"  Final reward: {epoch_rewards[-1]:.3f}\n")
+        f.write(f"  Max reward: {max(epoch_rewards):.3f} (epoch {np.argmax(epoch_rewards) + 1})\n")
+        f.write(f"  Min reward: {min(epoch_rewards):.3f} (epoch {np.argmin(epoch_rewards) + 1})\n")
+        f.write(f"  Average reward: {np.mean(epoch_rewards):.3f}\n\n")
+        
+        f.write("Q-TABLE GROWTH:\n")
+        f.write(f"  Initial size: {epoch_qtable_sizes[0]}\n")
+        f.write(f"  Final size: {epoch_qtable_sizes[-1]}\n")
+        f.write(f"  Growth: +{epoch_qtable_sizes[-1] - epoch_qtable_sizes[0]} states\n")
+        f.write(f"  Growth rate: {(epoch_qtable_sizes[-1] - epoch_qtable_sizes[0]) / epoch_qtable_sizes[0] * 100:.1f}%\n\n")
+        
+        f.write("Q-VALUE STATISTICS:\n")
+        f.write(f"  Initial avg Q-value: {epoch_avg_qvalues[0]:.3f}\n")
+        f.write(f"  Final avg Q-value: {epoch_avg_qvalues[-1]:.3f}\n")
+        f.write(f"  Initial max Q-value: {epoch_max_qvalues[0]:.3f}\n")
+        f.write(f"  Final max Q-value: {epoch_max_qvalues[-1]:.3f}\n\n")
+        
+        # Check convergence
+        if len(epoch_rewards) >= 3:
+            last_3_rewards = epoch_rewards[-3:]
+            reward_variance = np.var(last_3_rewards)
+            converged = reward_variance < 0.01
+            
+            f.write("CONVERGENCE:\n")
+            f.write(f"  Last 3 epochs variance: {reward_variance:.6f}\n")
+            f.write(f"  Converged: {'Yes ✓' if converged else 'No (still learning)'}\n")
+        
+        f.write("\n" + "=" * 70 + "\n")
+    
+    print(f"  ✓ Training summary saved: {summary_path}")
+    
+    plt.close('all')
 
 
 def prepare_training_episodes(
@@ -103,16 +275,28 @@ def train_qlearning(
     
     # Initialize agent
     print("\n[2/5] Initializing Q-learning agent...")
+    
+    # ✅ Use Quartile binning from config
+    state_bins = QUARTILE_BINS if BINNING_STRATEGY == 'quartile' else None
+    
     agent = QLearningAgent(
         n_actions=n_actions,
         learning_rate=learning_rate,
         discount_factor=discount_factor,
-        epsilon=epsilon
+        epsilon=epsilon,
+        state_bins=state_bins  # ✅ Pass bins for discretization
     )
     print(f"  ✓ Agent initialized")
     print(f"    - Learning rate: {learning_rate}")
     print(f"    - Discount factor: {discount_factor}")
     print(f"    - Epsilon: {epsilon}")
+    if state_bins is not None:
+        print(f"    - Binning strategy: {BINNING_STRATEGY}")
+        print(f"    - Bins: {state_bins}")
+        expected_states = len(state_bins) ** 12
+        print(f"    - Expected state space: {expected_states:,} ({expected_states/1e6:.1f}M)")
+    else:
+        print(f"    - State decimals: {agent.state_decimals}")
     
     # Load training data
     print(f"\n[3/5] Loading training data...")
@@ -132,6 +316,12 @@ def train_qlearning(
     # Training loop
     print(f"\n[5/5] Training for {n_epochs} epochs...")
     
+    # Track metrics for plotting
+    epoch_rewards = []
+    epoch_qtable_sizes = []
+    epoch_avg_qvalues = []
+    epoch_max_qvalues = []
+    
     for epoch in range(n_epochs):
         total_reward = 0.0
         n_episodes = 0
@@ -149,6 +339,22 @@ def train_qlearning(
             n_episodes += 1
         
         avg_reward = total_reward / n_episodes if n_episodes > 0 else 0
+        
+        # Collect metrics
+        epoch_rewards.append(avg_reward)
+        epoch_qtable_sizes.append(len(agent.q_table))
+        
+        # Calculate average and max Q-values
+        all_qvalues = []
+        for state_actions in agent.q_table.values():
+            all_qvalues.extend(state_actions.values())
+        
+        if all_qvalues:
+            epoch_avg_qvalues.append(np.mean(all_qvalues))
+            epoch_max_qvalues.append(np.max(all_qvalues))
+        else:
+            epoch_avg_qvalues.append(0.0)
+            epoch_max_qvalues.append(0.0)
         
         print(f"  Epoch {epoch+1}/{n_epochs}: "
               f"Avg reward = {avg_reward:.3f}, "
@@ -172,6 +378,19 @@ def train_qlearning(
     os.makedirs(os.path.dirname(model_output), exist_ok=True)
     agent.save(model_output)
     print(f"  ✓ Model saved to: {model_output}")
+    
+    # Generate training plots
+    print(f"\n[6/6] Generating training plots...")
+    plots_dir = 'plots'
+    os.makedirs(plots_dir, exist_ok=True)
+    
+    plot_training_metrics(
+        epoch_rewards,
+        epoch_qtable_sizes,
+        epoch_avg_qvalues,
+        epoch_max_qvalues,
+        plots_dir
+    )
     
     print("\n" + "=" * 70)
     print("✅ TRAINING SUCCESSFUL")

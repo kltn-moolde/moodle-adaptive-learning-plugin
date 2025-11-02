@@ -251,7 +251,7 @@ def main():
     results = pipeline.run_full_pipeline(
         grades_path='../data/udk_moodle_grades_course_670.csv',
         logs_path='../data/udk_moodle_log_course_670.csv',
-        n_synthetic_students=200,
+        n_synthetic_students=5000,
         variance_threshold=0.01,
         correlation_threshold=0.95,
         max_features=15,

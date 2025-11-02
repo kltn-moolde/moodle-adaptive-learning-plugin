@@ -1,244 +1,278 @@
-# Q-Learning for Moodle Adaptive Learning v2.0
+# Q-Learning Adaptive Learning System
 
-Clean, modular implementation of Q-learning system for personalized learning recommendations.
+Hệ thống gợi ý học tập thích ứng sử dụng Q-Learning, dựa trên dữ liệu logs từ Moodle.
 
-## 📁 Structure
+## 🆕 BREAKING CHANGE: New API Input Format
+
+**API hiện hỗ trợ 2 formats:**
+1. ✅ **Structured Format (NEW - RECOMMENDED)** - Nested structure matching state dimensions
+2. ⚙️ **Flat Format (OLD - BACKWARD COMPATIBLE)** - Legacy support
+
+📘 **Chi tiết**: Xem [API_INPUT_FORMAT_GUIDE.md](./API_INPUT_FORMAT_GUIDE.md)
+
+🧪 **Testing**: Chạy `python test_api_structured.py` để test cả 2 formats
+
+## 📁 Cấu trúc thư mục
 
 ```
 step7_qlearning/
-├── core_v2/                    # Core modules
-│   ├── __init__.py
-│   ├── state_builder.py        # State representation (12 dims)
-│   ├── action_space.py         # Learning actions from course
-│   ├── reward_calculator.py    # Cluster-based rewards
-│   ├── qlearning_agent.py      # Tabular Q-learning
-│   └── simulator.py            # Learning behavior simulator
+├── api_service.py              # 🚀 API chính - Chạy server FastAPI
+├── train_qlearning_from_logs.py  # 🎓 Train model từ logs
+├── test_api.py                 # ✅ Test API
+├── quick_test.py               # 🧪 Test nhanh
+├── requirements.txt            # 📦 Dependencies
 │
-├── data/                       # Data files
-│   ├── course_structure.json   # Moodle course structure
-│   ├── cluster_profiles.json   # Student cluster profiles
-│   └── simulated/              # Simulated training data
+├── core/                       # 📚 Core modules
+│   ├── qlearning_agent.py     # Q-Learning agent
+│   ├── state_builder.py       # Xây dựng state từ features
+│   ├── action_space.py        # Định nghĩa actions
+│   ├── reward_calculator.py   # Tính reward
+│   └── moodle_log_processor.py # Xử lý Moodle logs
 │
-├── models/                     # Trained models
-│   └── qlearning_model.pkl     # Q-table + params
+├── data/                       # 💾 Data files
+│   ├── course_structure.json  # Cấu trúc khóa học
+│   ├── log/                   # Raw logs từ Moodle
+│   │   ├── log.csv
+│   │   └── grade.csv
+│   └── training_episodes_real.json  # Episodes đã xử lý
 │
-├── simulate_learning_data.py   # Generate simulated data
-├── train_qlearning_v2.py       # Train Q-learning model
-└── update_daily_qtable.py      # Daily update pipeline
+└── models/                     # 🤖 Trained models
+    └── qlearning_from_real_logs.pkl  # Model đã train
 ```
 
-## 🚀 Quick Start
+## 🚀 Hướng dẫn sử dụng
 
-### 1. Generate Simulated Data
+### 1. Cài đặt dependencies
 
 ```bash
-python simulate_learning_data.py --n-students 100 --n-actions 30
+pip install -r requirements.txt
 ```
 
-**Output:** `data/simulated/latest_simulation.json`
-
-### 2. Train Q-Learning Model
+### 2. Train model (nếu chưa có hoặc muốn train lại)
 
 ```bash
-python train_qlearning_v2.py --data data/simulated/latest_simulation.json \
-                              --output models/qlearning_model.pkl \
-                              --epochs 10
+python train_qlearning_from_logs.py
 ```
 
-**Output:** `models/qlearning_model.pkl`
+Model sẽ được lưu tại: `models/qlearning_from_real_logs.pkl`
 
-### 3. Daily Update (Production)
+### 3. Chạy API server
 
 ```bash
-# Run daily at 12AM
-python update_daily_qtable.py --model models/qlearning_model.pkl
+python api_service.py
 ```
 
-**Output:** 
-- Updated Q-table
-- Daily recommendations in `data/recommendations/`
+Server sẽ chạy tại: `http://localhost:8000`
 
-## 🔧 Core Components
-
-### 1. State Builder (`state_builder.py`)
-
-**12-dimensional state representation:**
-- Performance (3): knowledge, engagement, struggle
-- Activity patterns (5): submission, review, resources, assessment, collaboration
-- Completion metrics (4): progress, completion rate, diversity, consistency
-
-**Usage:**
-```python
-from core_v2 import MoodleStateBuilder
-
-builder = MoodleStateBuilder()
-state = builder.build_state(student_features)  # Returns np.array (12,)
-```
-
-### 2. Action Space (`action_space.py`)
-
-**Extract learning actions from course:**
-- Quiz, Assignment (assessment)
-- Resource, Page, URL (content)
-- Video, H5P (interactive)
-- Forum (collaboration)
-
-**Usage:**
-```python
-from core_v2 import ActionSpace
-
-action_space = ActionSpace('data/course_structure.json')
-actions = action_space.get_actions()  # List[LearningAction]
-```
-
-### 3. Reward Calculator (`reward_calculator.py`)
-
-**Cluster-specific reward strategies:**
-- **Weak (0-1):** High reward for completing assessments
-- **Medium (2-3):** Balanced rewards
-- **Strong (4-5):** Reward for speed and high scores
-
-**Usage:**
-```python
-from core_v2 import RewardCalculator
-
-calculator = RewardCalculator('data/cluster_profiles.json')
-reward = calculator.calculate_reward(cluster_id, action, outcome, state)
-```
-
-### 4. Q-Learning Agent (`qlearning_agent.py`)
-
-**Tabular Q-learning:**
-- ε-greedy exploration
-- Q-value updates: `Q(s,a) ← Q(s,a) + α[r + γ max Q(s',a') - Q(s,a)]`
-- State hashing for continuous states
-
-**Usage:**
-```python
-from core_v2 import QLearningAgent
-
-agent = QLearningAgent(n_actions=50, learning_rate=0.1)
-action = agent.select_action(state, available_actions)
-agent.update(state, action, reward, next_state)
-```
-
-### 5. Simulator (`simulator.py`)
-
-**Simulate learning behaviors:**
-- Cluster-based behavior patterns
-- Realistic outcomes (score, time, attempts)
-- State transitions
-
-**Usage:**
-```python
-from core_v2 import LearningSimulator
-
-simulator = LearningSimulator(state_builder, action_space, reward_calc)
-interactions = simulator.simulate_batch(n_students=100, n_actions_per_student=30)
-```
-
-## 📊 Data Flow
-
-```
-1. SIMULATION (offline)
-   course_structure.json + cluster_profiles.json
-   → simulator.simulate_batch()
-   → simulated_data.json
-
-2. TRAINING (offline)
-   simulated_data.json
-   → agent.train_episode()
-   → qlearning_model.pkl
-
-3. DAILY UPDATE (online)
-   Moodle logs (12AM)
-   → extract_features()
-   → state_builder.build_state()
-   → agent.update()
-   → updated qlearning_model.pkl
-   → recommendations.json
-```
-
-## 🔄 Daily Pipeline
-
-**Automated workflow (runs at 12AM):**
-
-1. **Fetch logs:** Get yesterday's Moodle logs
-2. **Extract features:** Run feature extraction pipeline
-3. **Build states:** Convert features → state vectors
-4. **Identify interactions:** Map logs → (s, a, r, s')
-5. **Update Q-table:** Apply Q-learning updates
-6. **Save model:** Backup old + save new
-7. **Generate recommendations:** Top-k actions per student
-
-## 📈 Hyperparameters
-
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| `learning_rate` (α) | 0.1 | Q-value update rate |
-| `discount_factor` (γ) | 0.95 | Future reward importance |
-| `epsilon` (ε) | 0.1 | Exploration rate |
-| `state_decimals` | 1 | State rounding (reduce sparsity) |
-
-## 🧪 Testing
+### 4. Test API
 
 ```bash
-# Test individual components
-cd core_v2
-python state_builder.py
-python action_space.py
-python reward_calculator.py
-python qlearning_agent.py
-python simulator.py
+# Test cơ bản
+python quick_test.py
+
+# Hoặc test đầy đủ
+python test_api.py
 ```
 
-## 📦 Dependencies
+## 📡 API Endpoints
 
-```
-numpy
-pickle (built-in)
-json (built-in)
-dataclasses (built-in)
+### 1. **GET /** - Service info
+```bash
+curl http://localhost:8000/
 ```
 
-## 🎯 Extension Points
+### 2. **GET /health** - Health check
+```bash
+curl http://localhost:8000/health
+```
 
-### Add new reward strategies:
-Edit `reward_calculator.py` → `_cluster_bonus()`
+### 3. **GET /model-info** - Thông tin model
+```bash
+curl http://localhost:8000/model-info
+```
 
-### Add new state features:
-Edit `state_builder.py` → `build_state()`
+### 4. **POST /recommend** - Lấy gợi ý học tập ⭐
 
-### Add new action types:
-Edit `action_space.py` → `MODULE_TYPE_MAPPING`
+**Request:**
+```json
+{
+  "student_features": {
+    "userid": 8670,
+    "mean_module_grade": 0.75,
+    "total_events": 0.6,
+    "course_module": 0.5,
+    "viewed": 0.7,
+    "attempt": 0.3,
+    "feedback_viewed": 0.4,
+    "submitted": 0.6,
+    "reviewed": 0.3,
+    "course_module_viewed": 0.5,
+    "module_count": 0.4,
+    "course_module_completion": 0.5,
+    "created": 0.2,
+    "updated": 0.1,
+    "downloaded": 0.3
+  },
+  "top_k": 5
+}
+```
 
-### Change exploration strategy:
-Edit `qlearning_agent.py` → `select_action()`
+**Response:**
+```json
+{
+  "student_id": 8670,
+  "state_vector": [0.75, 0.58, ...],
+  "state_description": {
+    "knowledge_level": "good",
+    "engagement_level": "high",
+    ...
+  },
+  "recommendations": [
+    {
+      "action_id": 12,
+      "action_name": "Complete Quiz 3",
+      "action_type": "assessment",
+      "module_type": "quiz",
+      "q_value": 0.85,
+      "url": null
+    }
+  ],
+  "model_info": {
+    "n_states_in_qtable": 1500,
+    "total_training_updates": 50000,
+    "episodes_trained": 1000
+  }
+}
+```
 
-## 📝 Notes
+## 🧪 Test nhanh
 
-- **State hashing:** Rounds to 1 decimal to reduce Q-table sparsity
-- **Cluster distribution:** Can customize in `simulator.simulate_batch()`
-- **Action filtering:** Simulator filters by difficulty/purpose based on cluster
-- **Reward clipping:** Rewards clipped to [-2, 5] range
+```bash
+# Test với curl
+curl -X POST "http://localhost:8000/recommend" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "student_features": {
+      "userid": 8670,
+      "mean_module_grade": 0.75,
+      "total_events": 0.6,
+      "viewed": 0.7
+    },
+    "top_k": 3
+  }'
+```
+
+## 🎯 State Features
+
+Hệ thống sử dụng **12 features** để xây dựng state:
+
+### Performance (3 dims)
+- `knowledge_level`: Điểm trung bình (0-1)
+- `engagement_level`: Mức độ tương tác
+- `struggle_indicator`: Chỉ số gặp khó khăn
+
+### Activity Patterns (5 dims)
+- `submission_activity`: Hoạt động nộp bài
+- `review_activity`: Xem lại và feedback
+- `resource_usage`: Sử dụng tài nguyên
+- `assessment_engagement`: Tham gia đánh giá
+- `collaborative_activity`: Hoạt động nhóm
+
+### Completion Metrics (4 dims)
+- `overall_progress`: Tiến độ tổng thể
+- `module_completion_rate`: Tỷ lệ hoàn thành
+- `activity_diversity`: Đa dạng hoạt động
+- `completion_consistency`: Tính nhất quán
+
+## 📊 Input Features từ Moodle
+
+Các features cần cung cấp (normalized 0-1):
+
+```python
+{
+    "mean_module_grade": float,      # Điểm TB module (0-1)
+    "total_events": float,           # Tổng số events (normalized)
+    "course_module": float,          # Course module interactions
+    "viewed": float,                 # View events
+    "attempt": float,                # Quiz attempts
+    "feedback_viewed": float,        # Feedback views
+    "submitted": float,              # Submissions
+    "reviewed": float,               # Reviews
+    "course_module_viewed": float,   # Module views
+    "module_count": float,           # Số lượng modules
+    "course_module_completion": float, # Tỷ lệ hoàn thành
+    "created": float,                # Create events
+    "updated": float,                # Update events
+    "downloaded": float              # Download events
+}
+```
+
+## 🔧 Cấu hình
+
+Trong `api_service.py`:
+
+```python
+API_HOST = "0.0.0.0"
+API_PORT = 8800
+MODEL_PATH = "models/qlearning_from_real_logs.pkl"
+COURSE_STRUCTURE_PATH = "data/course_structure.json"
+```
+
+## 📚 Documentation
+
+- **Swagger UI**: http://localhost:8080/docs
+- **ReDoc**: http://localhost:8080/redoc
+
+## ⚠️ Lưu ý
+
+1. **Model phải được train trước** khi chạy API:
+   ```bash
+   python train_qlearning_from_logs.py
+   ```
+
+2. **Features phải được normalized** (0-1) trước khi gửi đến API
+
+3. **Course structure** phải có sẵn trong `data/course_structure.json`
+
+## 🔄 Workflow hoàn chỉnh
+
+```
+1. Chuẩn bị dữ liệu
+   → data/log/log.csv
+   → data/log/grade.csv
+   → data/course_structure.json
+
+2. Train model
+   → python train_qlearning_from_logs.py
+   → models/qlearning_from_real_logs.pkl
+
+3. Chạy API
+   → python api_service.py
+
+4. Test
+   → python test_api.py
+   → Hoặc call API từ frontend/service khác
+```
 
 ## 🐛 Troubleshooting
 
-**Q-table too large?**
-- Increase `state_decimals` in QLearningAgent
-- Reduce state dimensions
+### Model not found
+```bash
+python train_qlearning_from_logs.py
+```
 
-**Low rewards?**
-- Check reward calculation in `reward_calculator.py`
-- Adjust cluster bonuses
+### Course structure not found
+Đảm bảo file `data/course_structure.json` tồn tại
 
-**Poor recommendations?**
-- Increase training data (more students/actions)
-- Tune hyperparameters (α, γ, ε)
-- Check cluster assignment accuracy
+### Port đã được sử dụng
+Thay đổi port trong `api_service.py` hoặc:
+```bash
+API_PORT=8001 python api_service.py
+```
 
-## 📚 References
+## 📞 Support
 
-- Q-Learning: Watkins & Dayan (1992)
-- Moodle State Builder: Original implementation
-- Cluster Profiles: From KMeans + GMM pipeline
+Nếu có vấn đề, kiểm tra:
+1. Log file: `api.log`
+2. Test basic: `python quick_test.py`
+3. Health check: `curl http://localhost:8080/health`

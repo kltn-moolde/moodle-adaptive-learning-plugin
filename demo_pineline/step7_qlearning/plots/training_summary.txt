@@ -1,0 +1,30 @@
+======================================================================
+TRAINING SUMMARY
+======================================================================
+
+Total Epochs: 10
+
+REWARD STATISTICS:
+  Initial reward: 69.218
+  Final reward: 69.218
+  Max reward: 69.218 (epoch 1)
+  Min reward: 69.218 (epoch 1)
+  Average reward: 69.218
+
+Q-TABLE GROWTH:
+  Initial size: 6577
+  Final size: 6577
+  Growth: +0 states
+  Growth rate: 0.0%
+
+Q-VALUE STATISTICS:
+  Initial avg Q-value: 0.885
+  Final avg Q-value: 10.509
+  Initial max Q-value: 43.673
+  Final max Q-value: 88.836
+
+CONVERGENCE:
+  Last 3 epochs variance: 0.000000
+  Converged: Yes ✓
+
+======================================================================
