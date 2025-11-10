@@ -323,38 +323,81 @@ class QTableService:
         """
         Convert state tuple to flat feature dict
         
-        State indices (12 dimensions):
-        0: knowledge_level
-        1: engagement_level
-        2: struggle_indicator
-        3: submission_activity
-        4: review_activity
-        5: resource_usage
-        6: assessment_engagement
-        7: collaborative_activity
-        8: overall_progress
-        9: module_completion_rate
-        10: activity_diversity
-        11: completion_consistency
-        """
-        if len(state_tuple) != 12:
-            # Handle different dimensions gracefully
-            return {}
+        V2 State (6 dimensions):
+        0: cluster_id (0-4)
+        1: module_idx (0-35)
+        2: progress_bin (0.25, 0.5, 0.75, 1.0)
+        3: score_bin (0.25, 0.5, 0.75, 1.0)
+        4: action_id (0-5)
+        5: is_stuck (0 or 1)
         
-        return {
-            "knowledge_level": float(state_tuple[0]),
-            "engagement_level": float(state_tuple[1]),
-            "struggle_indicator": float(state_tuple[2]),
-            "submission_activity": float(state_tuple[3]),
-            "review_activity": float(state_tuple[4]),
-            "resource_usage": float(state_tuple[5]),
-            "assessment_engagement": float(state_tuple[6]),
-            "collaborative_activity": float(state_tuple[7]),
-            "overall_progress": float(state_tuple[8]),
-            "module_completion_rate": float(state_tuple[9]),
-            "activity_diversity": float(state_tuple[10]),
-            "completion_consistency": float(state_tuple[11])
-        }
+        V1 State (12 dimensions) - deprecated:
+        0: knowledge_level, 1: engagement_level, 2: struggle_indicator, ...
+        """
+        if len(state_tuple) == 6:
+            # V2 format
+            cluster_id = int(state_tuple[0])
+            module_idx = int(state_tuple[1])
+            progress_bin = float(state_tuple[2])
+            score_bin = float(state_tuple[3])
+            action_id = int(state_tuple[4])
+            is_stuck = int(state_tuple[5])
+            
+            # Map to human-readable format
+            cluster_names = {
+                0: "Học sinh cần hỗ trợ tương tác",
+                1: "Học sinh Tự giác và Theo dõi Tiến độ",
+                2: "Học sinh Chủ động Hoàn thành Nhiệm vụ",
+                3: "Học sinh theo dõi hiệu suất và thành tích",
+                4: "Học sinh Nghiên cứu Chủ động"
+            }
+            
+            action_names = {
+                0: "watch_video",
+                1: "do_quiz",
+                2: "mod_forum",
+                3: "review_quiz",
+                4: "read_resource",
+                5: "do_assignment"
+            }
+            
+            return {
+                "cluster_id": cluster_id,
+                "cluster_name": cluster_names.get(cluster_id, f"Cluster {cluster_id}"),
+                "module_index": module_idx,
+                "progress_bin": progress_bin,
+                "progress_percent": int(progress_bin * 100),
+                "score_bin": score_bin,
+                "score_percent": int(score_bin * 100),
+                "recent_action_id": action_id,
+                "recent_action": action_names.get(action_id, f"action_{action_id}"),
+                "is_stuck": bool(is_stuck),
+                "stuck_label": "STUCK" if is_stuck else "OK"
+            }
+        
+        elif len(state_tuple) == 12:
+            # V1 format (deprecated)
+            return {
+                "knowledge_level": float(state_tuple[0]),
+                "engagement_level": float(state_tuple[1]),
+                "struggle_indicator": float(state_tuple[2]),
+                "submission_activity": float(state_tuple[3]),
+                "review_activity": float(state_tuple[4]),
+                "resource_usage": float(state_tuple[5]),
+                "assessment_engagement": float(state_tuple[6]),
+                "collaborative_activity": float(state_tuple[7]),
+                "overall_progress": float(state_tuple[8]),
+                "module_completion_rate": float(state_tuple[9]),
+                "activity_diversity": float(state_tuple[10]),
+                "completion_consistency": float(state_tuple[11])
+            }
+        
+        else:
+            # Unknown format
+            return {
+                "error": f"Unknown state format with {len(state_tuple)} dimensions",
+                "state_tuple": list(state_tuple)
+            }
     
     def get_statistics(self) -> Dict:
         """

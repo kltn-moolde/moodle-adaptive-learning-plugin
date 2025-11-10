@@ -1,172 +1,112 @@
 [
   {
     "test_case_1": {
-      "knowledge_level": 0.75,
-      "engagement_level": 0.75,
-      "struggle_indicator": 0.0,
-      "submission_activity": 0.5,
-      "review_activity": 0.75,
-      "resource_usage": 0.75,
-      "assessment_engagement": 0.75,
-      "collaborative_activity": 0.0,
-      "overall_progress": 0.75,
-      "module_completion_rate": 0.75,
-      "activity_diversity": 0.25,
-      "completion_consistency": 0.5
+      "cluster_id": 2,
+      "module_index": 0,
+      "progress_bin": 1.0,
+      "score_bin": 1.0,
+      "recent_action_type": "forum",
+      "is_stuck": false
     },
-    "expected_q_value": 88.83611831972264
+    "expected_q_value": 65.08103660766909
   },
   {
     "test_case_2": {
-      "knowledge_level": 0.75,
-      "engagement_level": 0.75,
-      "struggle_indicator": 0.0,
-      "submission_activity": 0.25,
-      "review_activity": 0.75,
-      "resource_usage": 0.75,
-      "assessment_engagement": 0.75,
-      "collaborative_activity": 0.25,
-      "overall_progress": 0.75,
-      "module_completion_rate": 0.75,
-      "activity_diversity": 0.25,
-      "completion_consistency": 0.5
+      "cluster_id": 2,
+      "module_index": 0,
+      "progress_bin": 1.0,
+      "score_bin": 1.0,
+      "recent_action_type": "read_resource",
+      "is_stuck": false
     },
-    "expected_q_value": 88.66612090727779
+    "expected_q_value": 64.60081440557052
   },
   {
     "test_case_3": {
-      "knowledge_level": 0.75,
-      "engagement_level": 0.75,
-      "struggle_indicator": 0.0,
-      "submission_activity": 0.25,
-      "review_activity": 0.5,
-      "resource_usage": 0.75,
-      "assessment_engagement": 0.75,
-      "collaborative_activity": 0.25,
-      "overall_progress": 0.75,
-      "module_completion_rate": 0.75,
-      "activity_diversity": 0.25,
-      "completion_consistency": 0.5
+      "cluster_id": 2,
+      "module_index": 5,
+      "progress_bin": 1.0,
+      "score_bin": 1.0,
+      "recent_action_type": "forum",
+      "is_stuck": false
     },
-    "expected_q_value": 87.46941583726296
+    "expected_q_value": 64.31318472109508
   },
   {
     "test_case_4": {
-      "knowledge_level": 0.75,
-      "engagement_level": 0.75,
-      "struggle_indicator": 0.0,
-      "submission_activity": 0.25,
-      "review_activity": 0.75,
-      "resource_usage": 0.75,
-      "assessment_engagement": 0.5,
-      "collaborative_activity": 0.25,
-      "overall_progress": 0.75,
-      "module_completion_rate": 0.75,
-      "activity_diversity": 0.25,
-      "completion_consistency": 0.5
+      "cluster_id": 2,
+      "module_index": 0,
+      "progress_bin": 1.0,
+      "score_bin": 1.0,
+      "recent_action_type": "other",
+      "is_stuck": false
     },
-    "expected_q_value": 87.29696439061283
+    "expected_q_value": 64.21883399768694
   },
   {
     "test_case_5": {
-      "knowledge_level": 0.75,
-      "engagement_level": 0.75,
-      "struggle_indicator": 0.0,
-      "submission_activity": 0.5,
-      "review_activity": 0.5,
-      "resource_usage": 0.75,
-      "assessment_engagement": 0.75,
-      "collaborative_activity": 0.25,
-      "overall_progress": 0.75,
-      "module_completion_rate": 0.75,
-      "activity_diversity": 0.25,
-      "completion_consistency": 0.5
+      "cluster_id": 2,
+      "module_index": 5,
+      "progress_bin": 1.0,
+      "score_bin": 1.0,
+      "recent_action_type": "other",
+      "is_stuck": false
     },
-    "expected_q_value": 86.40199882715848
+    "expected_q_value": 63.88361060986519
   },
   {
     "test_case_6": {
-      "knowledge_level": 0.75,
-      "engagement_level": 0.75,
-      "struggle_indicator": 0.0,
-      "submission_activity": 0.5,
-      "review_activity": 0.75,
-      "resource_usage": 0.75,
-      "assessment_engagement": 0.5,
-      "collaborative_activity": 0.25,
-      "overall_progress": 0.75,
-      "module_completion_rate": 0.75,
-      "activity_diversity": 0.25,
-      "completion_consistency": 0.5
+      "cluster_id": 2,
+      "module_index": 5,
+      "progress_bin": 1.0,
+      "score_bin": 1.0,
+      "recent_action_type": "read_resource",
+      "is_stuck": false
     },
-    "expected_q_value": 86.07918522808504
+    "expected_q_value": 63.68179699062193
   },
   {
     "test_case_7": {
-      "knowledge_level": 0.75,
-      "engagement_level": 0.75,
-      "struggle_indicator": 0.0,
-      "submission_activity": 0.5,
-      "review_activity": 0.75,
-      "resource_usage": 0.75,
-      "assessment_engagement": 0.75,
-      "collaborative_activity": 0.25,
-      "overall_progress": 0.75,
-      "module_completion_rate": 0.75,
-      "activity_diversity": 0.25,
-      "completion_consistency": 0.5
+      "cluster_id": 2,
+      "module_index": 0,
+      "progress_bin": 1.0,
+      "score_bin": 0.75,
+      "recent_action_type": "forum",
+      "is_stuck": false
     },
-    "expected_q_value": 86.04117151194286
+    "expected_q_value": 63.00914357433977
   },
   {
     "test_case_8": {
-      "knowledge_level": 0.75,
-      "engagement_level": 0.75,
-      "struggle_indicator": 0.0,
-      "submission_activity": 0.5,
-      "review_activity": 0.75,
-      "resource_usage": 0.75,
-      "assessment_engagement": 0.5,
-      "collaborative_activity": 0.0,
-      "overall_progress": 0.75,
-      "module_completion_rate": 0.75,
-      "activity_diversity": 0.25,
-      "completion_consistency": 0.5
+      "cluster_id": 2,
+      "module_index": 0,
+      "progress_bin": 1.0,
+      "score_bin": 0.75,
+      "recent_action_type": "other",
+      "is_stuck": false
     },
-    "expected_q_value": 86.03518392333496
+    "expected_q_value": 62.44751687860254
   },
   {
     "test_case_9": {
-      "knowledge_level": 0.75,
-      "engagement_level": 0.75,
-      "struggle_indicator": 0.0,
-      "submission_activity": 0.5,
-      "review_activity": 0.5,
-      "resource_usage": 0.75,
-      "assessment_engagement": 0.75,
-      "collaborative_activity": 0.5,
-      "overall_progress": 0.75,
-      "module_completion_rate": 0.75,
-      "activity_diversity": 0.25,
-      "completion_consistency": 0.5
+      "cluster_id": 2,
+      "module_index": 0,
+      "progress_bin": 1.0,
+      "score_bin": 0.75,
+      "recent_action_type": "read_resource",
+      "is_stuck": false
     },
-    "expected_q_value": 85.1289940795966
+    "expected_q_value": 62.29076148561916
   },
   {
     "test_case_10": {
-      "knowledge_level": 0.75,
-      "engagement_level": 0.75,
-      "struggle_indicator": 0.0,
-      "submission_activity": 0.5,
-      "review_activity": 0.75,
-      "resource_usage": 0.75,
-      "assessment_engagement": 0.25,
-      "collaborative_activity": 0.25,
-      "overall_progress": 0.75,
-      "module_completion_rate": 0.75,
-      "activity_diversity": 0.25,
-      "completion_consistency": 0.5
+      "cluster_id": 2,
+      "module_index": 5,
+      "progress_bin": 1.0,
+      "score_bin": 0.75,
+      "recent_action_type": "forum",
+      "is_stuck": false
     },
-    "expected_q_value": 84.83715313831922
+    "expected_q_value": 62.22582941626029
   }
 ]

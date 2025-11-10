@@ -119,6 +119,9 @@ class FeatureSelector:
         """
         logger.info(f"Filtering by correlation (threshold={self.correlation_threshold})...")
         
+        # Log số features đầu vào
+        logger.info(f"  Input features: {len(corr_matrix.columns)}")
+        
         # Upper triangle of correlation matrix
         upper_tri = corr_matrix.where(
             np.triu(np.ones(corr_matrix.shape), k=1).astype(bool)
@@ -136,13 +139,15 @@ class FeatureSelector:
             if correlated:
                 # Giữ feature này, drop các features correlated
                 to_drop.update(correlated)
-                self.removed_features['high_correlation'].extend(correlated)
+        
+        # ✅ FIX: Chỉ lưu unique features (convert set → list)
+        self.removed_features['high_correlation'] = list(to_drop)
         
         # Features còn lại
         retained_features = [f for f in corr_matrix.columns if f not in to_drop]
         
         logger.info(f"  ✓ Retained: {len(retained_features)} features")
-        logger.info(f"  ✗ Removed: {len(to_drop)} highly-correlated features")
+        logger.info(f"  ✗ Removed: {len(to_drop)} unique highly-correlated features")
         
         return retained_features
     
@@ -286,8 +291,8 @@ class FeatureSelector:
         
         summary_text = "FEATURE SELECTION SUMMARY\n" + "="*50 + "\n\n"
         summary_text += f"Total features (input):           {len(df.columns) - 1}\n"
-        summary_text += f"Removed (low variance):           {len(self.removed_features['low_variance'])}\n"
-        summary_text += f"Removed (high correlation):       {len(self.removed_features['high_correlation'])}\n"
+        summary_text += f"Removed (low variance):           {len(set(self.removed_features['low_variance']))}\n"
+        summary_text += f"Removed (high correlation):       {len(set(self.removed_features['high_correlation']))}\n"
         summary_text += f"Final selected:                   {len(self.selected_features)}\n\n"
         summary_text += "="*50 + "\n"
         summary_text += "THRESHOLDS:\n"
@@ -326,15 +331,18 @@ class FeatureSelector:
         report = {
             'selected_features': self.selected_features,
             'feature_scores': self.feature_scores,
-            'removed_features': self.removed_features,
+            'removed_features': {
+                'low_variance': list(set(self.removed_features['low_variance'])),
+                'high_correlation': list(set(self.removed_features['high_correlation']))
+            },
             'thresholds': {
                 'variance_threshold': self.variance_threshold,
                 'correlation_threshold': self.correlation_threshold
             },
             'summary': {
                 'total_selected': len(self.selected_features),
-                'removed_low_variance': len(self.removed_features['low_variance']),
-                'removed_high_correlation': len(self.removed_features['high_correlation'])
+                'removed_low_variance': len(set(self.removed_features['low_variance'])),
+                'removed_high_correlation': len(set(self.removed_features['high_correlation']))
             }
         }
         
@@ -350,8 +358,8 @@ class FeatureSelector:
         text_report.append("FEATURE SELECTION REPORT")
         text_report.append("="*70)
         text_report.append(f"\nTotal Selected Features: {len(self.selected_features)}")
-        text_report.append(f"Removed (Low Variance): {len(self.removed_features['low_variance'])}")
-        text_report.append(f"Removed (High Correlation): {len(self.removed_features['high_correlation'])}")
+        text_report.append(f"Removed (Low Variance): {len(set(self.removed_features['low_variance']))}")
+        text_report.append(f"Removed (High Correlation): {len(set(self.removed_features['high_correlation']))}")
         text_report.append(f"\nThresholds:")
         text_report.append(f"  - Variance: {self.variance_threshold}")
         text_report.append(f"  - Correlation: {self.correlation_threshold}")

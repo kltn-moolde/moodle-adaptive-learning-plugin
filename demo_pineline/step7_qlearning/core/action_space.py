@@ -110,8 +110,14 @@ class ActionSpace:
         return self.actions
     
     def get_action_by_id(self, action_id: int) -> Optional[LearningAction]:
-        """Get action by ID"""
+        """Get action by module ID (from Moodle)"""
         return self.action_map.get(action_id)
+    
+    def get_action_by_index(self, index: int) -> Optional[LearningAction]:
+        """Get action by index in action list (0-based)"""
+        if 0 <= index < len(self.actions):
+            return self.actions[index]
+        return None
     
     def get_actions_by_type(self, action_type: str) -> List[LearningAction]:
         """Get actions filtered by type"""
@@ -182,7 +188,7 @@ if __name__ == '__main__':
     print("=" * 70)
     
     # Show sample actions
-    for action in action_space.get_actions()[:5]:
+    for action in action_space.get_actions()[:10]:
         print(f"\nID: {action.id}")
         print(f"  Name: {action.name}")
         print(f"  Type: {action.type}")

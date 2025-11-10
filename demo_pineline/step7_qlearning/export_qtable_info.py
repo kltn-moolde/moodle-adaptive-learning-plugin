@@ -14,7 +14,7 @@ from collections import Counter
 from typing import Dict, List, Tuple
 
 HERE = Path(__file__).resolve().parent
-MODEL_PATH = HERE / 'models' / 'qlearning_model.pkl'
+MODEL_PATH = HERE / 'models' / 'qtable_best.pkl'  # ✅ Updated to trained model
 OUTPUT_DIR = HERE / 'qtable_exports'
 
 
@@ -32,16 +32,21 @@ def load_qtable():
 
 def get_qtable_summary(data: Dict) -> Dict:
     """
-    Tạo summary đầy đủ của Q-table
+    Tạo summary đầy đủ của Q-table (Updated for new format)
     """
     q_table = data['q_table']
-    training_stats = data.get('training_stats', {})
+    config = data.get('config', {})
+    stats = data.get('stats', {})
     
     # Collect all Q-values
     all_q_values = []
     states_with_nonzero_q = 0
-    for state_actions in q_table.values():
-        q_vals = list(state_actions.values())
+    for state_key, state_actions in q_table.items():
+        # Convert string keys to tuples if needed
+        if isinstance(state_actions, dict):
+            q_vals = list(state_actions.values())
+        else:
+            q_vals = []
         all_q_values.extend(q_vals)
         if any(abs(q) > 0.0001 for q in q_vals):
             states_with_nonzero_q += 1
@@ -52,35 +57,49 @@ def get_qtable_summary(data: Dict) -> Dict:
     negative_count = sum(1 for q in all_q_values if q < -0.0001)
     
     # State space analysis
-    sample_state = list(q_table.keys())[0] if q_table else tuple()
-    state_dim = len(sample_state)
+    sample_state_key = list(q_table.keys())[0] if q_table else "(0,0,0,0,0,0)"
+    # Parse state from string if needed
+    if isinstance(sample_state_key, str):
+        sample_state = eval(sample_state_key)
+    else:
+        sample_state = sample_state_key
+    state_dim = len(sample_state) if isinstance(sample_state, (list, tuple)) else 0
     
     dimension_stats = []
     if state_dim > 0:
         for dim in range(state_dim):
-            values = [state[dim] for state in q_table.keys()]
-            dimension_stats.append({
-                'dimension': dim,
-                'unique_values': len(set(values)),
-                'min': float(min(values)),
-                'max': float(max(values)),
-                'mean': float(np.mean(values)),
-                'std': float(np.std(values))
-            })
+            values = []
+            for state_key in q_table.keys():
+                if isinstance(state_key, str):
+                    state = eval(state_key)
+                else:
+                    state = state_key
+                if isinstance(state, (list, tuple)) and len(state) > dim:
+                    values.append(state[dim])
+            if values:
+                dimension_stats.append({
+                    'dimension': dim,
+                    'unique_values': len(set(values)),
+                    'min': float(min(values)),
+                    'max': float(max(values)),
+                    'mean': float(np.mean(values)),
+                    'std': float(np.std(values))
+                })
     
     summary = {
         'model_info': {
-            'n_actions': data['n_actions'],
-            'state_decimals': data['state_decimals'],
-            'learning_rate': data['learning_rate'],
-            'discount_factor': data['discount_factor'],
-            'epsilon': data['epsilon']
+            'n_actions': config.get('n_actions', 0),
+            'learning_rate': config.get('learning_rate', 0.1),
+            'discount_factor': config.get('discount_factor', 0.95),
+            'epsilon': config.get('epsilon', 0.01),
+            'cluster_adaptive': config.get('cluster_adaptive', True),
+            'cluster_learning_rates': config.get('cluster_learning_rates', {})
         },
         'training_stats': {
-            'episodes': training_stats.get('episodes', 0),
-            'total_updates': training_stats.get('total_updates', 0),
-            'avg_reward': float(training_stats.get('avg_reward', 0.0)),
-            'states_visited': training_stats.get('states_visited', 0)
+            'episodes': stats.get('episodes_trained', 0),
+            'total_updates': stats.get('total_updates', 0),
+            'avg_reward': 0.0,  # Not available in new format
+            'states_visited': len(q_table)
         },
         'qtable_stats': {
             'total_states': len(q_table),
@@ -108,38 +127,28 @@ def get_qtable_summary(data: Dict) -> Dict:
 
 def state_tuple_to_features(state_tuple: Tuple) -> Dict:
     """
-    Convert state tuple (12 dims) to flat feature dict for API testing
+    Convert state tuple (6 dims V2) to description for API testing
     
-    State indices:
-    0: knowledge_level
-    1: engagement_level
-    2: struggle_indicator
-    3: submission_activity
-    4: review_activity
-    5: resource_usage
-    6: assessment_engagement
-    7: collaborative_activity
-    8: overall_progress
-    9: module_completion_rate
-    10: activity_diversity
-    11: completion_consistency
+    State V2 indices:
+    0: cluster_id (0-4 mapped from original 0,1,2,4,5)
+    1: module_idx (0-35 for 36 modules)
+    2: progress_bin (0, 0.25, 0.5, 0.75, 1.0)
+    3: score_bin (0, 0.25, 0.5, 0.75, 1.0)
+    4: action_type (0-5: submit, read, review, forum, quiz, other)
+    5: is_stuck (0=False, 1=True)
     """
-    if len(state_tuple) != 12:
-        raise ValueError(f"Expected 12 dimensions, got {len(state_tuple)}")
+    if len(state_tuple) != 6:
+        raise ValueError(f"Expected 6 dimensions (V2 format), got {len(state_tuple)}")
+    
+    action_type_names = ['submit', 'read_resource', 'review', 'forum', 'quiz', 'other']
     
     return {
-        "knowledge_level": float(state_tuple[0]),
-        "engagement_level": float(state_tuple[1]),
-        "struggle_indicator": float(state_tuple[2]),
-        "submission_activity": float(state_tuple[3]),
-        "review_activity": float(state_tuple[4]),
-        "resource_usage": float(state_tuple[5]),
-        "assessment_engagement": float(state_tuple[6]),
-        "collaborative_activity": float(state_tuple[7]),
-        "overall_progress": float(state_tuple[8]),
-        "module_completion_rate": float(state_tuple[9]),
-        "activity_diversity": float(state_tuple[10]),
-        "completion_consistency": float(state_tuple[11])
+        "cluster_id": int(state_tuple[0]),
+        "module_index": int(state_tuple[1]),
+        "progress_bin": float(state_tuple[2]),
+        "score_bin": float(state_tuple[3]),
+        "recent_action_type": action_type_names[int(state_tuple[4])] if 0 <= int(state_tuple[4]) < len(action_type_names) else 'unknown',
+        "is_stuck": bool(state_tuple[5])
     }
 
 
@@ -155,7 +164,13 @@ def export_states_with_positive_q(data: Dict, top_n: int = 50) -> List[Dict]:
     # Find states with positive Q-values
     states_with_q = []
     
-    for state_tuple, actions in q_table.items():
+    for state_key, actions in q_table.items():
+        # Convert string key to tuple if needed
+        if isinstance(state_key, str):
+            state_tuple = eval(state_key)
+        else:
+            state_tuple = state_key
+            
         max_q = max(actions.values()) if actions else 0
         
         if max_q > 0.0001:  # Only positive Q-values
@@ -204,7 +219,13 @@ def export_diverse_states(data: Dict, n_samples: int = 20) -> List[Dict]:
     
     # Find states with positive Q-values
     positive_q_states = []
-    for state_tuple, actions in q_table.items():
+    for state_key, actions in q_table.items():
+        # Convert string key to tuple if needed
+        if isinstance(state_key, str):
+            state_tuple = eval(state_key)
+        else:
+            state_tuple = state_key
+            
         max_q = max(actions.values()) if actions else 0
         if max_q > 0.0001:
             positive_q_states.append((state_tuple, max_q))

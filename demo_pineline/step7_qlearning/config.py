@@ -57,7 +57,7 @@ EXPECTED_QTABLE_SIZE = 50000   # ~50k states with 150k interactions
 # PATHS
 # ===================================================================
 
-MODEL_PATH = 'models/qlearning_model.pkl'
+MODEL_PATH = 'models/qtable_best.pkl'  # Updated to use trained model
 DATA_PATH = 'data/simulated/latest_simulation.json'
 COURSE_STRUCTURE_PATH = 'data/course_structure.json'
 CLUSTER_PROFILES_PATH = 'data/cluster_profiles.json'
@@ -81,8 +81,3 @@ LLM_PROVIDER = 'gemini'
 # Priority: Environment Variable > Config File
 GEMINI_API_KEY = 'AIzaSyAPkT1V0fUCq1dqPaWk4qLHcD1GSFyXawU'  # Set your Gemini API key here if not using env var
 OPENAI_API_KEY = ''  # Set your OpenAI API key here if not using env var
-
-# Note: For security, it's recommended to use environment variables instead:
-#   export GOOGLE_API_KEY='your-key'
-#   export GEMINI_API_KEY='your-key'
-#   export OPENAI_API_KEY='your-key'
