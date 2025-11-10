@@ -128,7 +128,7 @@ export function TeacherDashboard() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, delay: 0.1 }}
       >
-        <Card className="rounded-2xl border-primary/20">
+        <Card className="rounded-2xl border-primary/20 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950 dark:to-emerald-950">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Brain className="h-5 w-5 text-primary" />
@@ -137,12 +137,7 @@ export function TeacherDashboard() {
             <CardDescription>Personalized recommendations for your class</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="dark:bg-slate-900 p-4 rounded-xl" style={{
-              backgroundColor:
-                window.matchMedia("(prefers-color-scheme: dark)").matches
-                  ? "#0f172a" // slate-900
-                  : "#f0fdf4", // green-50
-            }}>
+            <div className="bg-white dark:bg-slate-900 p-4 rounded-xl">
               <div className="flex gap-3">
                 <div className="text-2xl">🎯</div>
                 <div className="flex-1">
@@ -159,12 +154,7 @@ export function TeacherDashboard() {
               </div>
             </div>
 
-            <div className="dark:bg-slate-900 p-4 rounded-xl" style={{
-              backgroundColor:
-                window.matchMedia("(prefers-color-scheme: dark)").matches
-                  ? "#0f172a" // slate-900
-                  : "#f0fdf4", // green-50
-            }}>
+            <div className="bg-white dark:bg-slate-900 p-4 rounded-xl">
               <div className="flex gap-3">
                 <div className="text-2xl">📈</div>
                 <div className="flex-1">
@@ -178,12 +168,7 @@ export function TeacherDashboard() {
               </div>
             </div>
 
-            <div className="dark:bg-slate-900 p-4 rounded-xl" style={{
-              backgroundColor:
-                window.matchMedia("(prefers-color-scheme: dark)").matches
-                  ? "#0f172a" // slate-900
-                  : "#f0fdf4", // green-50
-            }}>
+            <div className="bg-white dark:bg-slate-900 p-4 rounded-xl">
               <div className="flex gap-3">
                 <div className="text-2xl">👥</div>
                 <div className="flex-1">
