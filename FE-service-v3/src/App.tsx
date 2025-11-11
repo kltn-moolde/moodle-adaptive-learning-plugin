@@ -13,6 +13,7 @@ export default function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [userRole, setUserRole] = useState<"student" | "teacher">("student");
   const [currentPage, setCurrentPage] = useState("dashboard");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     if (darkMode) {
@@ -29,6 +30,11 @@ export default function App() {
   const toggleUserRole = () => {
     setUserRole(userRole === "student" ? "teacher" : "student");
     setCurrentPage("dashboard");
+    setSidebarOpen(false);
+  };
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
   };
 
   const renderContent = () => {
@@ -78,6 +84,7 @@ export default function App() {
         toggleDarkMode={toggleDarkMode}
         userRole={userRole}
         userName={userRole === "student" ? "Hoàng Sinh" : "Giáo viên Nguyễn"}
+        onMenuClick={toggleSidebar}
       />
       
       <div className="flex-1 flex overflow-hidden">
@@ -85,6 +92,8 @@ export default function App() {
           userRole={userRole}
           currentPage={currentPage}
           onNavigate={setCurrentPage}
+          isOpen={sidebarOpen}
+          onClose={() => setSidebarOpen(false)}
         />
         
         <main className="flex-1 overflow-y-auto bg-background">
@@ -105,7 +114,7 @@ export default function App() {
       {/* Demo Role Toggle Button */}
       <Button
         onClick={toggleUserRole}
-        className="fixed bottom-6 right-6 rounded-full h-14 px-6 shadow-2xl bg-primary hover:bg-primary/90 z-50"
+        className="fixed bottom-6 right-6 rounded-full h-14 px-6 shadow-2xl bg-primary hover:bg-primary z-50"
       >
         {userRole === "student" ? (
           <>

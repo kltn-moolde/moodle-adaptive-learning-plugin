@@ -1,4 +1,4 @@
-import { Bell, Moon, Sun, User } from "lucide-react";
+import { Bell, Moon, Sun, User, Menu } from "lucide-react";
 import { Button } from "./ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import {
@@ -17,6 +17,7 @@ interface HeaderProps {
   userRole: "student" | "teacher";
   userName: string;
   userAvatar?: string;
+  onMenuClick?: () => void;
 }
 
 export function Header({
@@ -25,14 +26,23 @@ export function Header({
   userRole,
   userName,
   userAvatar,
+  onMenuClick,
 }: HeaderProps) {
   return (
     <header className="h-16 border-b bg-card px-6 flex items-center justify-between sticky top-0 z-50">
       <div className="flex items-center gap-3">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={onMenuClick}
+          className="md:hidden rounded-xl"
+        >
+          <Menu className="h-5 w-5" />
+        </Button>
         <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-primary to-green-400 flex items-center justify-center">
           <span className="text-white text-xl">🎓</span>
         </div>
-        <div>
+        <div className="hidden sm:block">
           <h1 className="text-lg text-foreground">Smart Learning Path</h1>
           <p className="text-xs text-muted-foreground">Learn Smarter with AI</p>
         </div>
