@@ -1,0 +1,1006 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz>
+  <!--Câu 1-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 1: Trí tuệ nhân tạo (AI) là gì?</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Trí tuệ nhân tạo (AI) là gì?</p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>Khả năng máy tính xử lý dữ liệu thông thường</text>
+      <feedback>
+        <text>Sai. Xử lý dữ liệu thông thường không phải là AI.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>Khả năng máy tính học và suy luận như con người</text>
+      <feedback>
+        <text>Đúng! AI mô phỏng khả năng học và suy luận của con người.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Khả năng máy tính lưu trữ dữ liệu lớn</text>
+      <feedback>
+        <text>Sai. Lưu trữ dữ liệu là chức năng của cơ sở dữ liệu, không phải AI.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Khả năng máy tính kết nối Internet</text>
+      <feedback>
+        <text>Sai. Kết nối Internet là chức năng mạng, không liên quan đến AI.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+      <tag>
+        <text>ai</text>
+      </tag>
+      <tag>
+        <text>definition</text>
+      </tag>
+      <tag>
+        <text>AI Basics</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 2-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 2: Ứng dụng nào sau đây không sử dụng AI?</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Ứng dụng nào sau đây không sử dụng AI?</p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>Nhận dạng khuôn mặt trên điện thoại</text>
+      <feedback>
+        <text>Sai. Nhận dạng khuôn mặt sử dụng AI (học máy).</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Tìm đường đi trên bản đồ số</text>
+      <feedback>
+        <text>Sai. Tìm đường tối ưu thường dùng AI.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>Soạn thảo văn bản trong Word</text>
+      <feedback>
+        <text>Đúng! Word cơ bản không cần AI (trừ tính năng gợi ý nâng cao).</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Xe tự lái</text>
+      <feedback>
+        <text>Sai. Xe tự lái phụ thuộc hoàn toàn vào AI.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+      <tag>
+        <text>ai</text>
+      </tag>
+      <tag>
+        <text>applications</text>
+      </tag>
+      <tag>
+        <text>AI Applications</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 3-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 3: AI được ứng dụng trong lĩnh vực nào dưới đây?</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>AI được ứng dụng trong lĩnh vực nào dưới đây?</p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>Điều khiển tự động</text>
+      <feedback>
+        <text>Đúng nhưng chưa đầy đủ.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Thiết kế trang web</text>
+      <feedback>
+        <text>Đúng nhưng chưa đầy đủ (công cụ AI hỗ trợ thiết kế).</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Gửi email</text>
+      <feedback>
+        <text>Sai. Gửi email cơ bản không cần AI.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>Cả A và B đúng</text>
+      <feedback>
+        <text>Đúng! AI được dùng trong điều khiển tự động và hỗ trợ thiết kế web.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+      <tag>
+        <text>ai</text>
+      </tag>
+      <tag>
+        <text>fields</text>
+      </tag>
+      <tag>
+        <text>AI Applications</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 4-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 4: Hệ thống AI có đặc điểm:</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Hệ thống AI có đặc điểm:</p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Có tri thức, có khả năng học và suy luận</text>
+      <feedback>
+        <text>Đúng! Đây là đặc trưng cốt lõi của AI.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chỉ thực hiện theo lập trình sẵn</text>
+      <feedback>
+        <text>Sai. Đây là đặc điểm của phần mềm truyền thống.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Không có khả năng tự cập nhật</text>
+      <feedback>
+        <text>Sai. AI có thể học và tự cập nhật qua dữ liệu mới.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Không xử lý dữ liệu</text>
+      <feedback>
+        <text>Sai. AI xử lý dữ liệu để học và đưa ra quyết định.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+      <tag>
+        <text>ai</text>
+      </tag>
+      <tag>
+        <text>features</text>
+      </tag>
+      <tag>
+        <text>AI Characteristics</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 5-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 5: Khi AI ngày càng phát triển, điều nào sau đây cần được chú ý nhất?</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>(Thông hiểu) Khi AI ngày càng phát triển, điều nào sau đây cần được chú ý nhất?</p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>Mở rộng dung lượng bộ nhớ</text>
+      <feedback>
+        <text>Sai. Đây là vấn đề kỹ thuật, không phải ưu tiên hàng đầu.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Giảm tốc độ xử lý</text>
+      <feedback>
+        <text>Sai. Mục tiêu là tăng tốc độ xử lý.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>Đạo đức và quyền riêng tư dữ liệu</text>
+      <feedback>
+        <text>Đúng! Đây là vấn đề cốt lõi khi AI phát triển mạnh.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Giảm giá phần cứng</text>
+      <feedback>
+        <text>Sai. Giá phần cứng không phải mối quan tâm chính về mặt xã hội.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+      <tag>
+        <text>ai</text>
+      </tag>
+      <tag>
+        <text>ethics</text>
+      </tag>
+      <tag>
+        <text>AI Ethics</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 6-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 6: Hãy chọn ví dụ thể hiện AI hỗ trợ y học:</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>(Vận dụng) Hãy chọn ví dụ thể hiện AI hỗ trợ y học:</p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Ứng dụng dự báo bệnh qua ảnh X-quang</text>
+      <feedback>
+        <text>Đúng! AI phân tích hình ảnh y tế để chẩn đoán.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Bảng tính Excel</text>
+      <feedback>
+        <text>Sai. Excel là công cụ tính toán, không phải AI.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Trình duyệt Chrome</text>
+      <feedback>
+        <text>Sai. Chrome là trình duyệt web.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Phần mềm vẽ Paint</text>
+      <feedback>
+        <text>Sai. Paint là công cụ vẽ đơn giản.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+      <tag>
+        <text>ai</text>
+      </tag>
+      <tag>
+        <text>healthcare</text>
+      </tag>
+      <tag>
+        <text>AI Applications</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 7-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 7: Theo em, AI có thể giúp ích gì cho học sinh trong học tập?</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>(Vận dụng) Theo em, AI có thể giúp ích gì cho học sinh trong học tập?</p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>Tự động tìm kiếm và tóm tắt kiến thức</text>
+      <feedback>
+        <text>Đúng nhưng chưa đầy đủ.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chấm điểm bài luận tự động</text>
+      <feedback>
+        <text>Đúng nhưng chưa đầy đủ.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Gợi ý bài học phù hợp</text>
+      <feedback>
+        <text>Đúng nhưng chưa đầy đủ.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>Cả 3 đáp án đều đúng</text>
+      <feedback>
+        <text>Đúng! AI hỗ trợ toàn diện trong học tập.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+      <tag>
+        <text>ai</text>
+      </tag>
+      <tag>
+        <text>education</text>
+      </tag>
+      <tag>
+        <text>AI in Education</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 8-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 8: Trong tương lai, AI có thể ảnh hưởng thế nào đến việc làm của con người?</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>(Vận dụng cao) Trong tương lai, AI có thể ảnh hưởng thế nào đến việc làm của con người?</p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>Thay thế hoàn toàn lao động</text>
+      <feedback>
+        <text>Sai. AI thay thế một phần, không hoàn toàn.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>Hỗ trợ công việc lặp lại, mở ra nghề mới</text>
+      <feedback>
+        <text>Đúng! AI tự động hóa công việc lặp lại và tạo cơ hội nghề nghiệp mới.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Làm giảm sáng tạo</text>
+      <feedback>
+        <text>Sai. AI hỗ trợ sáng tạo, không làm giảm.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Không ảnh hưởng gì</text>
+      <feedback>
+        <text>Sai. AI chắc chắn sẽ thay đổi thị trường lao động.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>hard</text>
+      </tag>
+      <tag>
+        <text>ai</text>
+      </tag>
+      <tag>
+        <text>future</text>
+      </tag>
+      <tag>
+        <text>jobs</text>
+      </tag>
+      <tag>
+        <text>AI Impact</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 9-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 9: Giao thức TCP/IP dùng để:</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Giao thức TCP/IP dùng để:</p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Truyền dữ liệu giữa các thiết bị mạng</text>
+      <feedback>
+        <text>Đúng! TCP/IP là nền tảng của Internet.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Lưu trữ dữ liệu trong máy tính</text>
+      <feedback>
+        <text>Sai. Lưu trữ là chức năng của ổ cứng.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Đặt mật khẩu cho máy tính</text>
+      <feedback>
+        <text>Sai. Mật khẩu thuộc về hệ điều hành.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Sao lưu tệp tin</text>
+      <feedback>
+        <text>Sai. Sao lưu là chức năng của phần mềm backup.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+      <tag>
+        <text>network</text>
+      </tag>
+      <tag>
+        <text>tcp/ip</text>
+      </tag>
+      <tag>
+        <text>Computer Networks</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 10-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 10: Mạng LAN thường được dùng trong:</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Mạng LAN thường được dùng trong:</p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>Một quốc gia</text>
+      <feedback>
+        <text>Sai. Đây là phạm vi WAN.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>Một tòa nhà hoặc trường học</text>
+      <feedback>
+        <text>Đúng! LAN là mạng cục bộ trong phạm vi nhỏ.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Nhiều quốc gia</text>
+      <feedback>
+        <text>Sai. Đây là phạm vi mạng toàn cầu.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Kết nối qua vệ tinh</text>
+      <feedback>
+        <text>Sai. Kết nối vệ tinh thường dùng cho WAN.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+      <tag>
+        <text>network</text>
+      </tag>
+      <tag>
+        <text>lan</text>
+      </tag>
+      <tag>
+        <text>Computer Networks</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 11-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 11: Thiết bị nào không phải là thiết bị mạng?</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Thiết bị nào không phải là thiết bị mạng?</p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>Switch</text>
+      <feedback>
+        <text>Sai. Switch là thiết bị mạng.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Router</text>
+      <feedback>
+        <text>Sai. Router là thiết bị mạng.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>CPU</text>
+      <feedback>
+        <text>Đúng! CPU là bộ xử lý trung tâm, không phải thiết bị mạng.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Modem</text>
+      <feedback>
+        <text>Sai. Modem là thiết bị mạng.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+      <tag>
+        <text>network</text>
+      </tag>
+      <tag>
+        <text>devices</text>
+      </tag>
+      <tag>
+        <text>Computer Networks</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 12-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 12: Khi nói “mạng không dây”, ta đang nói đến loại kết nối nào?</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>(Thông hiểu) Khi nói “mạng không dây”, ta đang nói đến loại kết nối nào?</p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>Kết nối qua dây đồng</text>
+      <feedback>
+        <text>Sai. Đây là mạng có dây.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>Kết nối qua sóng vô tuyến (Wi-Fi)</text>
+      <feedback>
+        <text>Đúng! Wi-Fi là mạng không dây phổ biến.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Kết nối qua  Bluetooth</text>
+      <feedback>
+        <text>Sai. Bluetooth là kết nối cá nhân, không phải mạng LAN.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Kết nối bằng cáp quang</text>
+      <feedback>
+        <text>Sai. Cáp quang là mạng có dây.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+      <tag>
+        <text>network</text>
+      </tag>
+      <tag>
+        <text>wireless</text>
+      </tag>
+      <tag>
+        <text>Computer Networks</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 13-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 13: Chức năng chính của Switch là:</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>(Thông hiểu) Chức năng chính của Switch là:</p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Kết nối các thiết bị trong cùng mạng LAN</text>
+      <feedback>
+        <text>Đúng! Switch chuyển tiếp gói tin trong LAN.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Kết nối mạng LAN với Internet</text>
+      <feedback>
+        <text>Sai. Đây là chức năng của Router.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Lưu trữ dữ liệu</text>
+      <feedback>
+        <text>Sai. Switch không lưu trữ dữ liệu.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Quản lý mật khẩu</text>
+      <feedback>
+        <text>Sai. Switch không quản lý mật khẩu.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+      <tag>
+        <text>network</text>
+      </tag>
+      <tag>
+        <text>switch</text>
+      </tag>
+      <tag>
+        <text>Computer Networks</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 14-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 14: Access Point (AP) dùng để:</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>(Thông hiểu) Access Point (AP) dùng để:</p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Phát Wi-Fi cho các thiết bị</text>
+      <feedback>
+        <text>Đúng! AP tạo điểm truy cập không dây.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Lưu trữ tệp tin</text>
+      <feedback>
+        <text>Sai. AP không có chức năng lưu trữ.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Định tuyến dữ liệu</text>
+      <feedback>
+        <text>Sai. Định tuyến là chức năng của Router.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Mã hóa thông tin</text>
+      <feedback>
+        <text>Sai. Mã hóa do giao thức bảo mật đảm nhận.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+      <tag>
+        <text>network</text>
+      </tag>
+      <tag>
+        <text>access-point</text>
+      </tag>
+      <tag>
+        <text>Computer Networks</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 15-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 15: Khi muốn chia sẻ dữ liệu giữa 2 máy trong cùng mạng LAN, em cần:</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>(Vận dụng) Khi muốn chia sẻ dữ liệu giữa 2 máy trong cùng mạng LAN, em cần:</p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>Cài đặt trình duyệt</text>
+      <feedback>
+        <text>Sai. Trình duyệt không liên quan đến chia sẻ file LAN.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>Kích hoạt chia sẻ file qua hệ điều hành</text>
+      <feedback>
+        <text>Đúng! Cần bật File Sharing trong Windows/macOS.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Gắn USB sang máy khác</text>
+      <feedback>
+        <text>Sai. Đây là cách truyền thủ công, không dùng mạng.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Đặt IP giống nhau hoàn toàn</text>
+      <feedback>
+        <text>Sai. IP phải khác nhau trong cùng subnet.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+      <tag>
+        <text>network</text>
+      </tag>
+      <tag>
+        <text>file-sharing</text>
+      </tag>
+      <tag>
+        <text>Computer Networks</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 16-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 16: Một phòng học có 20 máy tính cần kết nối Internet. Em sẽ chọn thiết bị nào là trung tâm mạng?</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>(Vận dụng cao) Một phòng học có 20 máy tính cần kết nối Internet. Em sẽ chọn thiết bị nào là trung tâm mạng?</p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>Switch</text>
+      <feedback>
+        <text>Sai. Switch chỉ kết nối nội bộ.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>Router</text>
+      <feedback>
+        <text>Đúng! Router kết nối LAN với Internet và quản lý mạng.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Modem</text>
+      <feedback>
+        <text>Sai. Modem chỉ chuyển đổi tín hiệu, không quản lý nhiều thiết bị.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Access Point</text>
+      <feedback>
+        <text>Sai. AP chỉ phát Wi-Fi, không kết nối Internet.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>hard</text>
+      </tag>
+      <tag>
+        <text>network</text>
+      </tag>
+      <tag>
+        <text>design</text>
+      </tag>
+      <tag>
+        <text>Computer Networks</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 17-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 17: Khi thiết lập mạng trên điện thoại, em cần thao tác gì đầu tiên?</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>(Vận dụng) Khi thiết lập mạng trên điện thoại, em cần thao tác gì đầu tiên?</p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>Cài lại hệ điều hành</text>
+      <feedback>
+        <text>Sai. Không cần cài lại hệ điều hành.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>Mở cài đặt Wi-Fi</text>
+      <feedback>
+        <text>Đúng! Bước đầu tiên là vào Settings &gt; Wi-Fi.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chạy ứng dụng bất kỳ</text>
+      <feedback>
+        <text>Sai. Cần cấu hình mạng trước.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Tháo SIM ra</text>
+      <feedback>
+        <text>Sai. Tháo SIM không liên quan đến Wi-Fi.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+      <tag>
+        <text>network</text>
+      </tag>
+      <tag>
+        <text>mobile</text>
+      </tag>
+      <tag>
+        <text>Computer Networks</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 18-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 18: Kết nối thiết bị di động vào mạng LAN yêu cầu:</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>(Vận dụng) Kết nối thiết bị di động vào mạng LAN yêu cầu:</p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Địa chỉ IP và mật khẩu Wi-Fi đúng</text>
+      <feedback>
+        <text>Đúng! Cần mật khẩu và IP sẽ tự động cấp (DHCP).</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Gắn dây mạng trực tiếp</text>
+      <feedback>
+        <text>Sai. Thiết bị di động thường dùng Wi-Fi.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Chạy phần mềm đặc biệt</text>
+      <feedback>
+        <text>Sai. Không cần phần mềm đặc biệt.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Không cần mật khẩu</text>
+      <feedback>
+        <text>Sai. Mạng bảo mật cần mật khẩu.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+      <tag>
+        <text>network</text>
+      </tag>
+      <tag>
+        <text>mobile</text>
+      </tag>
+      <tag>
+        <text>Computer Networks</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 19-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 19: Giao thức nào dùng để truyền tải email?</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>(Thông hiểu) Giao thức nào dùng để truyền tải email?</p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>HTTP</text>
+      <feedback>
+        <text>Sai. HTTP dùng cho web.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>FTP</text>
+      <feedback>
+        <text>Sai. FTP dùng để truyền file.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>SMTP</text>
+      <feedback>
+        <text>Đúng! SMTP gửi email, POP3/IMAP nhận email.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>DNS</text>
+      <feedback>
+        <text>Sai. DNS chuyển đổi tên miền.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+      <tag>
+        <text>network</text>
+      </tag>
+      <tag>
+        <text>protocols</text>
+      </tag>
+      <tag>
+        <text>Computer Networks</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 20-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 20: Khi thiết kế mạng cho lớp học, nên dùng loại dây nào để đảm bảo tốc độ cao và ổn định?</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>(Vận dụng cao) Khi thiết kế mạng cho lớp học, nên dùng loại dây nào để đảm bảo tốc độ cao và ổn định?</p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>Cáp đồng trục</text>
+      <feedback>
+        <text>Sai. Dùng cho truyền hình cáp, không tối ưu cho LAN.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Dây điện thoại</text>
+      <feedback>
+        <text>Sai. Tốc độ thấp, chỉ phù hợp cho thoại.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>Cáp xoắn đôi (UTP Cat5e hoặc Cat6)</text>
+      <feedback>
+        <text>Đúng! Cat5e hỗ trợ 1 Gbps, Cat6 hỗ trợ 10 Gbps.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Dây USB</text>
+      <feedback>
+        <text>Sai. USB dùng kết nối thiết bị ngoại vi, không phải mạng.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>hard</text>
+      </tag>
+      <tag>
+        <text>network</text>
+      </tag>
+      <tag>
+        <text>cabling</text>
+      </tag>
+      <tag>
+        <text>Computer Networks</text>
+      </tag>
+    </tags>
+  </question>
+</quiz>

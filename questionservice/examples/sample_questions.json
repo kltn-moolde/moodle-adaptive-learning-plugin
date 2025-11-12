@@ -1,0 +1,154 @@
+{
+  "questions": [
+    {
+      "name": "Câu hỏi 1: Python là gì?",
+      "question_type": "multichoice",
+      "question_text": "<p>Python là gì?</p>",
+      "difficulty": "easy",
+      "category": "Python Basics",
+      "tags": ["python", "programming"],
+      "answers": [
+        {
+          "text": "Một ngôn ngữ lập trình",
+          "fraction": 100,
+          "feedback": "Chính xác! Python là một ngôn ngữ lập trình bậc cao."
+        },
+        {
+          "text": "Một loài rắn",
+          "fraction": 0,
+          "feedback": "Không đúng. Đây là câu hỏi về lập trình Python."
+        },
+        {
+          "text": "Một hệ điều hành",
+          "fraction": 0,
+          "feedback": "Không đúng. Python là ngôn ngữ lập trình, không phải hệ điều hành."
+        },
+        {
+          "text": "Một framework web",
+          "fraction": 0,
+          "feedback": "Không đúng. Python là ngôn ngữ lập trình, Django mới là framework web."
+        }
+      ]
+    },
+    {
+      "name": "Câu hỏi 2: Biến trong Python",
+      "question_type": "multichoice",
+      "question_text": "<p>Cách nào sau đây là đúng để khai báo biến trong Python?</p>",
+      "difficulty": "easy",
+      "category": "Python Basics",
+      "tags": ["python", "variables"],
+      "answers": [
+        {
+          "text": "x = 10",
+          "fraction": 100,
+          "feedback": "Đúng rồi! Python không cần khai báo kiểu dữ liệu."
+        },
+        {
+          "text": "int x = 10;",
+          "fraction": 0,
+          "feedback": "Sai. Đây là cú pháp của Java/C++, không phải Python."
+        },
+        {
+          "text": "var x = 10;",
+          "fraction": 0,
+          "feedback": "Sai. Đây là cú pháp của JavaScript."
+        },
+        {
+          "text": "dim x as integer",
+          "fraction": 0,
+          "feedback": "Sai. Đây là cú pháp của VB."
+        }
+      ]
+    },
+    {
+      "name": "Câu hỏi 3: List trong Python",
+      "question_type": "multichoice",
+      "question_text": "<p>Cách nào để tạo một list trong Python?</p>",
+      "difficulty": "medium",
+      "category": "Python Data Structures",
+      "tags": ["python", "list", "data-structures"],
+      "answers": [
+        {
+          "text": "my_list = []",
+          "fraction": 100,
+          "feedback": "Đúng! Đây là cách tạo list trống trong Python."
+        },
+        {
+          "text": "my_list = ()",
+          "fraction": 0,
+          "feedback": "Sai. Đây là cách tạo tuple, không phải list."
+        },
+        {
+          "text": "my_list = {}",
+          "fraction": 0,
+          "feedback": "Sai. Đây là cách tạo dictionary, không phải list."
+        },
+        {
+          "text": "my_list = new List()",
+          "fraction": 0,
+          "feedback": "Sai. Python không dùng từ khóa 'new'."
+        }
+      ]
+    },
+    {
+      "name": "Câu hỏi 4: Vòng lặp for",
+      "question_type": "multichoice",
+      "question_text": "<p>Kết quả của đoạn code sau là gì?<br><code>for i in range(3):<br>&nbsp;&nbsp;print(i)</code></p>",
+      "difficulty": "medium",
+      "category": "Python Control Flow",
+      "tags": ["python", "loops", "for-loop"],
+      "answers": [
+        {
+          "text": "0 1 2",
+          "fraction": 100,
+          "feedback": "Đúng! range(3) tạo ra chuỗi 0, 1, 2."
+        },
+        {
+          "text": "1 2 3",
+          "fraction": 0,
+          "feedback": "Sai. range(3) bắt đầu từ 0, không phải 1."
+        },
+        {
+          "text": "0 1 2 3",
+          "fraction": 0,
+          "feedback": "Sai. range(3) không bao gồm số 3."
+        },
+        {
+          "text": "3",
+          "fraction": 0,
+          "feedback": "Sai. Vòng lặp sẽ chạy 3 lần, in ra các giá trị từ 0 đến 2."
+        }
+      ]
+    },
+    {
+      "name": "Câu hỏi 5: Dictionary",
+      "question_type": "multichoice",
+      "question_text": "<p>Cách nào để truy cập giá trị của key 'name' trong dictionary <code>person = {'name': 'John', 'age': 30}</code>?</p>",
+      "difficulty": "hard",
+      "category": "Python Data Structures",
+      "tags": ["python", "dictionary"],
+      "answers": [
+        {
+          "text": "person['name']",
+          "fraction": 100,
+          "feedback": "Đúng! Đây là cách truy cập giá trị theo key trong dictionary."
+        },
+        {
+          "text": "person.name",
+          "fraction": 0,
+          "feedback": "Sai. Cú pháp này dùng cho object attributes, không phải dictionary."
+        },
+        {
+          "text": "person(name)",
+          "fraction": 0,
+          "feedback": "Sai. Đây không phải cú pháp hợp lệ trong Python."
+        },
+        {
+          "text": "person->name",
+          "fraction": 0,
+          "feedback": "Sai. Đây là cú pháp của C/C++, không phải Python."
+        }
+      ]
+    }
+  ]
+}

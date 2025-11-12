@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  questionservice:
+    build: .
+    container_name: questionservice
+    ports:
+      - "5003:5003"
+    environment:
+      - MONGO_URI=${MONGO_URI}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - FLASK_ENV=production
+    restart: unless-stopped
+    networks:
+      - adaptive-learning
+
+  # Optional: MongoDB (if not using cloud MongoDB)
+  # mongo:
+  #   image: mongo:7.0
+  #   container_name: questionservice-mongo
+  #   ports:
+  #     - "27017:27017"
+  #   volumes:
+  #     - mongo-data:/data/db
+  #   environment:
+  #     - MONGO_INITDB_ROOT_USERNAME=admin
+  #     - MONGO_INITDB_ROOT_PASSWORD=password
+  #   networks:
+  #     - adaptive-learning
+
+networks:
+  adaptive-learning:
+    external: true
+
+# volumes:
+#   mongo-data:
