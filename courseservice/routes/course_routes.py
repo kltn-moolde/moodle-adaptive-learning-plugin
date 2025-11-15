@@ -327,6 +327,30 @@ def get_course_users(course_id):
         return error_response(CourseServiceError(str(e)), 500)
 
 
+@course_bp.route("/moodle/quiz/<int:quiz_id>/questions", methods=["GET"])
+@log_request
+def get_quiz_questions(quiz_id):
+    """Lấy danh sách câu hỏi của quiz"""
+    try:
+        client = get_moodle_client()
+        questions = client.get_quiz_questions(quiz_id)
+        
+        return jsonify({
+            "message": "Retrieved quiz questions",
+            "quiz_id": quiz_id,
+            "total": len(questions),
+            "questions": questions
+        }), 200
+        
+    except MoodleAPIError as e:
+        return error_response(e, 502)
+    except ValidationError as e:
+        return error_response(e, 400)
+    except Exception as e:
+        logger.error(f"Failed to get quiz questions: {str(e)}")
+        return error_response(CourseServiceError(str(e)), 500)
+
+
 # ==================== Analysis Endpoints ====================
 
 @course_bp.route("/moodle/courses/<int:course_id>/analysis", methods=["GET"])

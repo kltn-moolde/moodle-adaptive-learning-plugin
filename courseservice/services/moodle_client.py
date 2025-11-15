@@ -179,6 +179,34 @@ class MoodleClient:
         logger.info(f"✓ Retrieved {len(users)} enrolled users")
         return users
     
+    @log_execution_time
+    def get_quiz_questions(self, quiz_id: int) -> List[Dict[str, Any]]:
+        """
+        Lấy danh sách câu hỏi của quiz
+        
+        Args:
+            quiz_id: ID của quiz
+            
+        Returns:
+            List of question objects
+        """
+        if not isinstance(quiz_id, int) or quiz_id <= 0:
+            raise ValidationError(f"Invalid quiz_id: {quiz_id}")
+        
+        logger.info(f"Fetching quiz questions: {quiz_id}")
+        
+        questions = self._make_request(
+            "local_userlog_get_quiz_questions",
+            {"quizid": quiz_id}
+        )
+        
+        # Handle both list and dict responses
+        if isinstance(questions, dict):
+            questions = questions.get('questions', [])
+        
+        logger.info(f"✓ Retrieved {len(questions)} questions")
+        return questions
+    
     def health_check(self) -> bool:
         """
         Kiểm tra kết nối Moodle API

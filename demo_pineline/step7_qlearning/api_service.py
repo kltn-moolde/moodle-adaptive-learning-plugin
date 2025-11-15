@@ -31,7 +31,7 @@ from services.recommendation_service import RecommendationService
 # Configuration
 # =============================================================================
 
-MODEL_PATH = HERE / 'models' / 'qtable_best.pkl'
+MODEL_PATH = HERE / 'models' / 'qtable_best.pkl'  # Best trained model
 COURSE_PATH = HERE / 'data' / 'course_structure.json'
 CLUSTER_PROFILES_PATH = HERE / 'data' / 'cluster_profiles.json'
 
@@ -65,6 +65,7 @@ class RecommendRequest(BaseModel):
     state: Optional[List[float]] = None
     top_k: int = 3
     exclude_action_ids: Optional[List[int]] = None
+    lo_mastery: Optional[Dict[str, float]] = None  # LO mastery scores for activity recommendation
 
 
 class RecommendResponse(BaseModel):
@@ -97,7 +98,8 @@ cluster_service = ClusterService(cluster_profiles=model_loader.cluster_profiles)
 recommendation_service = RecommendationService(
     agent=model_loader.agent,
     action_space=model_loader.action_space,
-    state_builder=model_loader.state_builder
+    state_builder=model_loader.state_builder,
+    course_structure_path=str(COURSE_PATH)
 )
 
 # =============================================================================
@@ -138,19 +140,63 @@ def recommend_learning_path(request: RecommendRequest):
         cluster_name = f'Cluster {cluster_id}'
         
     elif request.features:
-        # Predict cluster from features
-        cluster_id, cluster_name = cluster_service.find_closest_cluster(request.features)
+        # Use cluster_id from features if provided, otherwise predict
+        if 'cluster_id' in request.features:
+            cluster_id = int(request.features['cluster_id'])
+            # Get cluster name from cluster service
+            cluster_info = cluster_service.get_cluster_info(cluster_id)
+            cluster_name = cluster_info.get('cluster_name')
+            
+            # Fallback to default names if not found
+            if not cluster_name or cluster_name == f'Cluster {cluster_id}':
+                cluster_names = {
+                    0: 'Weak',
+                    1: 'Medium', 
+                    2: 'Medium',
+                    3: 'Strong',
+                    4: 'Strong'
+                }
+                cluster_name = cluster_names.get(cluster_id, f'Cluster {cluster_id}')
+        else:
+            # Predict cluster from features
+            cluster_id, cluster_name = cluster_service.find_closest_cluster(request.features)
+            
+            # Fallback if name is unknown
+            if not cluster_name or cluster_name == 'unknown':
+                cluster_names = {
+                    0: 'Weak',
+                    1: 'Medium',
+                    2: 'Medium', 
+                    3: 'Strong',
+                    4: 'Strong'
+                }
+                cluster_name = cluster_names.get(cluster_id, f'Cluster {cluster_id}')
         
-        # Build state from features
-        state = recommendation_service.build_state_from_features(
-            features=request.features,
-            cluster_id=cluster_id
-        )
-        
-        if state is None:
+        # Validate and build state from features
+        try:
+            state = recommendation_service.build_state_from_features(
+                features=request.features,
+                cluster_id=cluster_id,
+                validate=True,
+                strict_validation=True
+            )
+            
+            if state is None:
+                raise HTTPException(
+                    status_code=400,
+                    detail='Failed to build state from features'
+                )
+        except ValueError as e:
+            # Validation error
             raise HTTPException(
                 status_code=400,
-                detail='Failed to build state from features'
+                detail=str(e)
+            )
+        except Exception as e:
+            # Other errors
+            raise HTTPException(
+                status_code=500,
+                detail=f'Error building state: {str(e)}'
             )
     else:
         raise HTTPException(
@@ -158,12 +204,29 @@ def recommend_learning_path(request: RecommendRequest):
             detail='Either features or state must be provided'
         )
     
-    # Get recommendations
+    # Get LO mastery (use provided or create default)
+    lo_mastery = request.lo_mastery
+    if lo_mastery is None:
+        # Create default LO mastery (all LOs at 0.4 = 40%)
+        # Try to get LO list from ActivityRecommender if available
+        if hasattr(recommendation_service, 'activity_recommender') and recommendation_service.activity_recommender:
+            lo_mastery = {lo_id: 0.4 for lo_id in recommendation_service.activity_recommender.lo_to_activities.keys()}
+        else:
+            # Fallback: use common LO IDs
+            lo_mastery = {f'LO{i//10}.{i%10}' for i in range(1, 16)}  # LO1.1 to LO2.5
+            lo_mastery = {lo_id: 0.4 for lo_id in lo_mastery}
+    
+    # Get module_idx from state
+    module_idx = int(state[1]) if len(state) > 1 else 0
+    
+    # Get recommendations with activity details
     recommendations = recommendation_service.get_recommendations(
         state=state,
         cluster_id=cluster_id,
         top_k=request.top_k,
-        exclude_action_ids=request.exclude_action_ids
+        exclude_action_ids=request.exclude_action_ids,
+        lo_mastery=lo_mastery,
+        module_idx=module_idx
     )
     
     # Get state description
