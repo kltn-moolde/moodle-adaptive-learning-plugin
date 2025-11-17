@@ -370,6 +370,9 @@ class QLearningAgentV2:
         """
         print(f"\nSaving agent to: {filepath}")
         
+        # Update q_table_size before saving
+        self.stats['q_table_size'] = len(self.q_table)
+        
         # Convert Q-table to serializable format
         q_table_serializable = {}
         for state, actions in self.q_table.items():

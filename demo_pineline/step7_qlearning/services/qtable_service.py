@@ -6,26 +6,54 @@ Q-Table Service
 Service layer for Q-table analysis and export
 """
 
+import sys
+from pathlib import Path
 import numpy as np
 from typing import Dict, List, Tuple, Optional
 from collections import defaultdict
+
+# Add parent directory to path for imports
+HERE = Path(__file__).resolve().parent.parent
+if str(HERE) not in sys.path:
+    sys.path.insert(0, str(HERE))
+
+from core.action_space import ActionSpace
 
 
 class QTableService:
     """Service for Q-table analysis and information extraction"""
     
-    def __init__(self, agent=None):
+    def __init__(self, agent=None, action_space=None):
         """
         Initialize Q-Table Service
         
         Args:
             agent: QLearningAgent instance with loaded Q-table
+            action_space: ActionSpace instance for action name lookup
         """
         self.agent = agent
+        self.action_space = action_space if action_space else ActionSpace()
+        self.action_space = action_space if action_space else ActionSpace()
+    
+    def _get_action_name(self, action_id: int) -> str:
+        """
+        Get human-readable action name from action ID
+        
+        Args:
+            action_id: Action index (0-based)
+        
+        Returns:
+            Action name string
+        """
+        if self.action_space:
+            action = self.action_space.get_action_by_index(action_id)
+            if action:
+                return f"{action.action_type} ({action.time_context})"
+        return f"action_{action_id}"
     
     def get_qtable_info(self) -> Dict:
         """
-        Get Q-table metadata and structure information
+        Get Q-table metadata and structure information (6D state space)
         
         Returns:
             Dict with Q-table info including dimensions, actions, hyperparameters
@@ -34,7 +62,6 @@ class QTableService:
             return {'error': 'No agent loaded'}
         
         q_table = self.agent.q_table
-        training_stats = self.agent.training_stats
         
         # Get unique states and actions
         all_states = list(q_table.keys())
@@ -48,27 +75,27 @@ class QTableService:
         # Get action space info
         action_list = sorted(list(all_actions))
         
+        # Create action mapping with names
+        action_mapping = {}
+        for action_id in action_list:
+            action_mapping[action_id] = self._get_action_name(action_id)
+        
         # Get hyperparameters
         hyperparams = {
             'learning_rate': self.agent.learning_rate,
             'discount_factor': self.agent.discount_factor,
-            'epsilon': self.agent.epsilon,
-            'state_decimals': self.agent.state_decimals
+            'epsilon': self.agent.epsilon
         }
         
-        # Get training info
+        # Get training info from stats
         training_info = {
-            'episodes': training_stats.get('episodes', 0),
-            'total_updates': training_stats.get('total_updates', 0),
-            'avg_reward': round(training_stats.get('avg_reward', 0), 4),
-            'final_epsilon': training_stats.get('final_epsilon', hyperparams['epsilon'])
+            'episodes_trained': self.agent.stats.get('episodes_trained', 0),
+            'total_updates': self.agent.stats.get('total_updates', 0),
+            'q_table_size': self.agent.stats.get('q_table_size', len(q_table))
         }
         
         # Get Q-table size info
         total_state_action_pairs = sum(len(actions) for actions in q_table.values())
-        memory_estimate_mb = (
-            len(all_states) * len(action_list) * 8  # 8 bytes per float64
-        ) / (1024 * 1024)
         
         return {
             'qtable_metadata': {
@@ -79,33 +106,26 @@ class QTableService:
                 'sparsity': round(
                     1 - (total_state_action_pairs / (len(all_states) * len(action_list))),
                     4
-                ) if all_states and action_list else 0,
-                'estimated_memory_mb': round(memory_estimate_mb, 2)
+                ) if all_states and action_list else 0
             },
             'state_space': {
                 'dimension': state_dim,
                 'total_states': len(all_states),
-                'state_format': 'tuple of floats (normalized 0-1)',
-                'discretization': f'{hyperparams["state_decimals"]} decimal places',
+                'state_format': '6D tuple: (cluster_id, module_idx, progress_bin, score_bin, learning_phase, engagement_level)',
                 'features': [
-                    'knowledge_level',
-                    'engagement_level', 
-                    'struggle_indicator',
-                    'submission_activity',
-                    'review_activity',
-                    'resource_usage',
-                    'assessment_engagement',
-                    'collaborative_activity',
-                    'overall_progress',
-                    'module_completion_rate',
-                    'activity_diversity',
-                    'completion_consistency'
+                    'cluster_id (0-4: weak/medium/strong)',
+                    'module_idx (0-5: current module)',
+                    'progress_bin (0.25/0.5/0.75/1.0: module progress quartiles)',
+                    'score_bin (0.25/0.5/0.75/1.0: score quartiles)',
+                    'learning_phase (0-2: pre/active/reflective)',
+                    'engagement_level (0-2: low/medium/high)'
                 ]
             },
             'action_space': {
                 'total_actions': len(action_list),
                 'action_ids': action_list,
-                'action_format': 'integer ID representing course module/activity'
+                'action_mapping': action_mapping,
+                'action_format': 'integer ID (0-14) representing action types'
             },
             'hyperparameters': hyperparams,
             'training_info': training_info
@@ -122,7 +142,6 @@ class QTableService:
             return {'error': 'No agent loaded'}
         
         q_table = self.agent.q_table
-        training_stats = self.agent.training_stats
         
         # Collect all Q-values
         all_q_values = []
@@ -139,16 +158,26 @@ class QTableService:
         positive_count = sum(1 for q in all_q_values if q > 0.0001)
         negative_count = sum(1 for q in all_q_values if q < -0.0001)
         
-        # State space analysis
+        # State space analysis (6D)
         dimension_stats = []
         if q_table:
             sample_state = next(iter(q_table.keys()))
             state_dim = len(sample_state)
             
+            dimension_names = [
+                'cluster_id',
+                'module_idx', 
+                'progress_bin',
+                'score_bin',
+                'learning_phase',
+                'engagement_level'
+            ]
+            
             for dim in range(state_dim):
                 values = [state[dim] for state in q_table.keys()]
                 dimension_stats.append({
                     'dimension': dim,
+                    'name': dimension_names[dim] if dim < len(dimension_names) else f'dim_{dim}',
                     'unique_values': len(set(values)),
                     'min': float(min(values)),
                     'max': float(max(values)),
@@ -161,14 +190,12 @@ class QTableService:
                 'n_actions': self.agent.n_actions,
                 'learning_rate': self.agent.learning_rate,
                 'discount_factor': self.agent.discount_factor,
-                'epsilon': self.agent.epsilon,
-                'state_decimals': self.agent.state_decimals
+                'epsilon': self.agent.epsilon
             },
             'training_stats': {
-                'episodes': training_stats.get('episodes', 0),
-                'total_updates': training_stats.get('total_updates', 0),
-                'avg_reward': float(training_stats.get('avg_reward', 0.0)),
-                'states_visited': training_stats.get('states_visited', 0)
+                'episodes_trained': self.agent.stats.get('episodes_trained', 0),
+                'total_updates': self.agent.stats.get('total_updates', 0),
+                'q_table_size': self.agent.stats.get('q_table_size', len(q_table))
             },
             'qtable_stats': {
                 'total_states': len(q_table),
@@ -241,6 +268,7 @@ class QTableService:
                 'q_info': {
                     'max_q_value': state_info['max_q_value'],
                     'best_action_id': state_info['best_action_id'],
+                    'best_action_name': self._get_action_name(state_info['best_action_id']),
                     'num_actions': state_info['num_actions'],
                     'avg_q_value': state_info['avg_q_value']
                 }

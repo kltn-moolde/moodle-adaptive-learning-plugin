@@ -21,17 +21,21 @@ if str(HERE) not in sys.path:
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from services.qtable_service import QTableService
+
+# Initialize QTableService
 
 # Import services
 from services.model_loader import ModelLoader
 from services.cluster_service import ClusterService
 from services.recommendation_service import RecommendationService
 
+
 # =============================================================================
 # Configuration
 # =============================================================================
 
-MODEL_PATH = HERE / 'models' / 'qtable_best.pkl'  # Best trained model
+MODEL_PATH = HERE / 'models' / 'qtable.pkl'  # Trained model
 COURSE_PATH = HERE / 'data' / 'course_structure.json'
 CLUSTER_PROFILES_PATH = HERE / 'data' / 'cluster_profiles.json'
 
@@ -92,6 +96,8 @@ model_loader = ModelLoader(
 
 # Load all components
 model_loader.load_all(verbose=True)
+qtable_service = QTableService(agent=model_loader.agent, action_space=model_loader.action_space)
+
 
 # Initialize other services
 cluster_service = ClusterService(cluster_profiles=model_loader.cluster_profiles)
@@ -121,6 +127,38 @@ def health_check():
 def get_model_info():
     """Get detailed model information"""
     return model_loader.get_model_info()
+
+
+@app.get('/api/qtable/info')
+def get_qtable_info():
+    """
+    Get Q-table metadata and structure information
+    
+    Returns:
+        Dict with total states, actions, state dimensions, sparsity, etc.
+    """
+    if not qtable_service.agent:
+        raise HTTPException(status_code=503, detail="Q-learning agent not loaded")
+    
+    info = qtable_service.get_qtable_info()
+    return info
+
+
+@app.get('/api/qtable/summary')
+def get_qtable_summary():
+    """
+    Get comprehensive Q-table summary including Q-value distribution
+    and state dimension statistics
+    
+    Returns:
+        Dict with summary of Q-table
+    """
+    if not qtable_service.agent:
+        raise HTTPException(status_code=503, detail="Q-learning agent not loaded")
+    
+    summary = qtable_service.get_summary()
+    return summary
+
 
 
 @app.post('/api/recommend', response_model=RecommendResponse)

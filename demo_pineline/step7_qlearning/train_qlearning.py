@@ -262,7 +262,13 @@ def train_qlearning(
             
             episode_reward += student_reward
         
-        # Decay epsilon (QLearningAgentV2 tự động decay trong update)
+        # Decay epsilon after each episode
+        agent.epsilon = max(agent.epsilon_min, agent.epsilon * agent.epsilon_decay)
+        
+        # Update episode statistics
+        agent.stats['episodes_trained'] += 1
+        agent.stats['epsilon_history'].append(agent.epsilon)
+        agent.stats['q_table_size'] = len(agent.q_table)
         
         # Track statistics
         avg_reward = episode_reward / len(students)

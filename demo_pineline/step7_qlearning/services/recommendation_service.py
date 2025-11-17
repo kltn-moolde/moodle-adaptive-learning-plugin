@@ -8,7 +8,6 @@ import random
 from core.qlearning_agent_v2 import QLearningAgentV2
 from core.action_space import ActionSpace
 from core.state_builder_v2 import StateBuilderV2
-from core.qtable_adapter import QTableAdapter
 from core.activity_recommender import ActivityRecommender
 
 
@@ -26,27 +25,6 @@ class RecommendationService:
         self.agent = agent
         self.action_space = action_space
         self.state_builder = state_builder
-        
-        # Initialize adapter for Q-table compatibility
-        # Check if Q-table uses module IDs (old format) or action indices (new format)
-        self.use_module_ids = False
-        self.adapter = None
-        
-        if agent and agent.q_table:
-            # Check first state to determine format
-            sample_state = list(agent.q_table.keys())[0] if agent.q_table else None
-            if sample_state:
-                sample_actions = list(agent.q_table[sample_state].keys())
-                # If actions are > 20, likely module IDs (46-83), not indices (0-14)
-                if sample_actions and max(sample_actions) > 20:
-                    self.use_module_ids = True
-                    if course_structure_path:
-                        self.adapter = QTableAdapter(course_structure_path)
-                    else:
-                        from pathlib import Path
-                        default_path = Path(__file__).parent.parent / 'data' / 'course_structure.json'
-                        if default_path.exists():
-                            self.adapter = QTableAdapter(str(default_path))
         
         # Initialize activity recommender for LO-based activity selection
         if activity_recommender:
@@ -99,30 +77,14 @@ class RecommendationService:
         if exclude_action_ids:
             available_indices = [i for i in all_action_indices if i not in exclude_action_ids]
         
-        # Convert action indices to module IDs if Q-table uses module IDs
-        if self.use_module_ids and self.adapter:
-            available_actions_for_qtable = self.adapter.convert_available_actions(
-                available_indices,
-                to_module_ids=True
-            )
-        else:
-            available_actions_for_qtable = available_indices
-        
-        # Get recommendations from agent
+        # Get recommendations from agent (Q-table uses action indices directly)
         try:
             recommendations = self.agent.recommend_action(
                 state=state,
-                available_actions=available_actions_for_qtable,  # May be module IDs or indices
+                available_actions=available_indices,
                 top_k=top_k,
                 fallback_random=True
             )
-            
-            # Convert back to action indices if needed
-            if self.use_module_ids and self.adapter:
-                recommendations = self.adapter.convert_recommendations(
-                    recommendations,
-                    from_module_ids=True
-                )
         except Exception as e:
             print(f"Warning: Agent recommendation failed: {e}")
             return self._get_random_recommendations(top_k, exclude_action_ids)

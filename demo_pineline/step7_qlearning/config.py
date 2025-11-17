@@ -57,7 +57,7 @@ EXPECTED_QTABLE_SIZE = 50000   # ~50k states with 150k interactions
 # PATHS
 # ===================================================================
 
-MODEL_PATH = 'models/qtable_best.pkl'  # Updated to use trained model
+MODEL_PATH = 'models/qtable.pkl'  # Updated to use trained model
 DATA_PATH = 'data/simulated/latest_simulation.json'
 COURSE_STRUCTURE_PATH = 'data/course_structure.json'
 CLUSTER_PROFILES_PATH = 'data/cluster_profiles.json'

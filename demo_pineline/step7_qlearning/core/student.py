@@ -18,7 +18,8 @@ class Student:
     Features:
     - 6D state space (cluster, module, progress, score, phase, engagement)
     - LO mastery tracking
-    - Linear progression through modules
+    - Linear progression through modules (70%)
+    - Non-linear learning styles (30%): practice-first, video-first, reading-first
     - Cluster-specific learning behavior
     """
     
@@ -26,7 +27,8 @@ class Student:
         self,
         student_id: int,
         cluster: str,  # 'weak', 'medium', 'strong'
-        n_modules: int = 6
+        n_modules: int = 6,
+        learning_style: str = None  # Auto-assign if None
     ):
         """
         Initialize student
@@ -35,10 +37,25 @@ class Student:
             student_id: Student ID
             cluster: 'weak', 'medium', 'strong'
             n_modules: Number of modules in course
+            learning_style: 'linear', 'practice_first', 'video_first', 'reading_first'
         """
         self.id = student_id
         self.cluster = cluster
         self.n_modules = n_modules
+        
+        # Assign learning style (30% non-linear, 70% linear)
+        if learning_style is None:
+            rand = np.random.random()
+            if rand < 0.70:
+                self.learning_style = 'linear'
+            elif rand < 0.80:
+                self.learning_style = 'practice_first'  # 10%
+            elif rand < 0.90:
+                self.learning_style = 'video_first'     # 10%
+            else:
+                self.learning_style = 'reading_first'   # 10%
+        else:
+            self.learning_style = learning_style
         
         # State variables
         self.cluster_id = {'weak': 0, 'medium': 2, 'strong': 4}[cluster]
@@ -49,8 +66,12 @@ class Student:
         # Learning behavior (cluster-specific)
         self.learning_params = self._init_learning_params()
         
-        # LO mastery (15 LOs)
-        self.lo_mastery = defaultdict(lambda: 0.4)  # Start at 40%
+        # Learning style preferences (modify success rates based on action types)
+        self.style_preferences = self._init_style_preferences()
+        
+        # LO mastery (15 LOs) - Initialize based on cluster strength
+        initial_mastery = {'weak': 0.35, 'medium': 0.50, 'strong': 0.65}[cluster]
+        self.lo_mastery = defaultdict(lambda: initial_mastery)
         
         # Learning history
         self.action_history = []  # Recent actions for phase/engagement
@@ -65,24 +86,74 @@ class Student:
         """Initialize cluster-specific learning parameters"""
         if self.cluster == 'weak':
             return {
-                'learning_rate': 0.15,  # Slow learning
-                'success_rate': 0.55,   # 55% success on activities
+                'learning_rate': 0.12,  # Slow learning
+                'success_rate': 0.50,   # 50% success on activities
                 'progress_speed': 0.12, # Slow progress per action
-                'score_variance': 0.15  # More variance in scores
+                'score_variance': 0.18  # More variance in scores
             }
         elif self.cluster == 'medium':
             return {
-                'learning_rate': 0.20,
-                'success_rate': 0.70,
+                'learning_rate': 0.22,  # Good learning rate
+                'success_rate': 0.75,   # 75% success
                 'progress_speed': 0.15,
                 'score_variance': 0.10
             }
         else:  # strong
             return {
-                'learning_rate': 0.25,
-                'success_rate': 0.85,
+                'learning_rate': 0.30,  # Fast learning
+                'success_rate': 0.90,   # 90% success rate
                 'progress_speed': 0.18,
-                'score_variance': 0.08
+                'score_variance': 0.05  # Very consistent
+            }
+    
+    def _init_style_preferences(self) -> Dict:
+        """
+        Initialize learning style preferences
+        Modifies success rates and learning effectiveness based on action types
+        More subtle modifiers to avoid extreme variations
+        """
+        if self.learning_style == 'practice_first':
+            # Prefer quizzes and assignments first, then theory
+            return {
+                'attempt_quiz': 1.10,        # +10% success on quizzes
+                'submit_quiz': 1.10,
+                'submit_assignment': 1.12,   # +12% success on assignments
+                'view_content': 0.95,        # -5% effectiveness on passive learning
+                'view_assignment': 0.97,
+                'review_quiz': 1.08,
+                'post_forum': 1.00
+            }
+        elif self.learning_style == 'video_first':
+            # Prefer video content and visual materials
+            return {
+                'view_content': 1.12,        # +12% effectiveness on viewing
+                'view_assignment': 1.10,
+                'attempt_quiz': 0.97,        # -3% on assessments (need prep first)
+                'submit_quiz': 0.97,
+                'submit_assignment': 0.95,
+                'review_quiz': 1.08,
+                'post_forum': 1.05
+            }
+        elif self.learning_style == 'reading_first':
+            # Prefer reading materials and documents
+            return {
+                'view_content': 1.10,        # +10% on reading materials
+                'view_assignment': 1.12,     # +12% on reading assignments
+                'attempt_quiz': 0.95,        # -5% on assessments (need time to process)
+                'submit_quiz': 0.95,
+                'submit_assignment': 0.97,
+                'review_quiz': 1.10,         # +10% on review (thorough readers)
+                'post_forum': 1.08
+            }
+        else:  # linear (balanced)
+            return {
+                'attempt_quiz': 1.00,
+                'submit_quiz': 1.00,
+                'submit_assignment': 1.00,
+                'view_content': 1.00,
+                'view_assignment': 1.00,
+                'review_quiz': 1.00,
+                'post_forum': 1.00
             }
     
     def get_state(self) -> Tuple[int, int, float, float, int, int]:
@@ -221,22 +292,43 @@ class Student:
         }
     
     def _simulate_outcome(self, action_type: str, time_context: str) -> Dict:
-        """Simulate realistic action outcome"""
+        """Simulate realistic action outcome with learning style modifiers"""
         params = self.learning_params
         
+        # Get base success rate and apply learning style modifier
+        base_success_rate = params['success_rate']
+        style_modifier = self.style_preferences.get(action_type, 1.0)
+        adjusted_success_rate = base_success_rate * style_modifier
+        adjusted_success_rate = np.clip(adjusted_success_rate, 0.1, 0.95)
+        
         # Success probability
-        success = np.random.random() < params['success_rate']
+        success = np.random.random() < adjusted_success_rate
         
         # Score for assessment actions
         if action_type in ['attempt_quiz', 'submit_quiz', 'submit_assignment']:
             if success:
-                # Good score with variance
-                base_score = 0.7 if self.cluster == 'weak' else 0.8 if self.cluster == 'medium' else 0.9
+                # Good score with variance, influenced by style
+                if self.cluster == 'weak':
+                    base_score = 0.65  # 65% for weak
+                elif self.cluster == 'medium':
+                    base_score = 0.80  # 80% for medium
+                else:
+                    base_score = 0.92  # 92% for strong (high baseline)
+                
+                # Apply style bonus to score (smaller impact)
+                style_bonus = (style_modifier - 1.0) * 0.05  # ±5% max
+                base_score += style_bonus
+                
                 score = base_score + np.random.uniform(-params['score_variance'], params['score_variance'])
                 score = np.clip(score, 0.0, 1.0)
             else:
-                # Failed attempt
-                score = np.random.uniform(0.2, 0.5)
+                # Failed attempt (cluster-dependent floor)
+                if self.cluster == 'weak':
+                    score = np.random.uniform(0.2, 0.4)
+                elif self.cluster == 'medium':
+                    score = np.random.uniform(0.3, 0.5)
+                else:
+                    score = np.random.uniform(0.4, 0.6)  # Strong students fail less badly
             
             completed = action_type in ['submit_quiz', 'submit_assignment']
         else:
@@ -252,21 +344,22 @@ class Student:
         }
     
     def _update_state(self, action_type: str, outcome: Dict):
-        """Update student state after action"""
+        """Update student state after action with learning style influence"""
         params = self.learning_params
+        style_modifier = self.style_preferences.get(action_type, 1.0)
         
-        # Update progress
+        # Update progress (influenced by learning style)
         if action_type in ['view_content', 'view_assignment']:
-            progress_gain = params['progress_speed'] * 0.8
+            progress_gain = params['progress_speed'] * 0.8 * style_modifier
         elif action_type in ['attempt_quiz', 'submit_quiz', 'submit_assignment']:
             if outcome['success']:
-                progress_gain = params['progress_speed'] * 1.2
+                progress_gain = params['progress_speed'] * 1.2 * style_modifier
             else:
-                progress_gain = params['progress_speed'] * 0.5
+                progress_gain = params['progress_speed'] * 0.5 * style_modifier
         elif action_type in ['review_quiz', 'post_forum']:
-            progress_gain = params['progress_speed'] * 0.6
+            progress_gain = params['progress_speed'] * 0.6 * style_modifier
         else:
-            progress_gain = params['progress_speed']
+            progress_gain = params['progress_speed'] * style_modifier
         
         self.progress = min(1.0, self.progress + progress_gain)
         
@@ -278,17 +371,36 @@ class Student:
             self.score = np.mean(recent_scores)
     
     def _update_lo_mastery(self, lo_ids: List[str], outcome: Dict):
-        """Update LO mastery using exponential moving average"""
+        """Update LO mastery using exponential moving average with style influence"""
         params = self.learning_params
-        alpha = params['learning_rate']
         
-        # Target mastery from outcome
+        # Get action type from recent history
+        action_type = self.action_history[-1] if self.action_history else 'view_content'
+        style_modifier = self.style_preferences.get(action_type, 1.0)
+        
+        # Adjust learning rate based on style (smaller impact)
+        alpha = params['learning_rate'] * ((style_modifier - 1.0) * 0.5 + 1.0)  # Dampen style effect
+        alpha = np.clip(alpha, 0.08, 0.40)  # Keep within reasonable bounds
+        
+        # Target mastery from outcome (cluster-aware)
         if outcome['score'] is not None:
             target = outcome['score']
         elif outcome['success']:
-            target = 0.75
+            # Success targets based on cluster
+            if self.cluster == 'weak':
+                target = 0.70
+            elif self.cluster == 'medium':
+                target = 0.80
+            else:
+                target = 0.90  # Strong students reach higher mastery
         else:
-            target = 0.45
+            # Failure targets
+            if self.cluster == 'weak':
+                target = 0.40
+            elif self.cluster == 'medium':
+                target = 0.50
+            else:
+                target = 0.60
         
         # Update each LO
         for lo_id in lo_ids:
@@ -310,8 +422,12 @@ class Student:
         """Reset student to initial state"""
         self.module_idx = 0
         self.progress = 0.0
-        self.score = 0.5
-        self.lo_mastery = defaultdict(lambda: 0.4)
+        # Initial score based on cluster
+        initial_scores = {'weak': 0.40, 'medium': 0.55, 'strong': 0.70}
+        self.score = initial_scores[self.cluster]
+        # Reset mastery to cluster-based initial value
+        initial_mastery = {'weak': 0.35, 'medium': 0.50, 'strong': 0.65}[self.cluster]
+        self.lo_mastery = defaultdict(lambda: initial_mastery)
         self.action_history = []
         self.activity_history = []  # Reset activity history
         self.score_history = []
@@ -323,6 +439,7 @@ class Student:
         return {
             'id': self.id,
             'cluster': self.cluster,
+            'learning_style': self.learning_style,
             'module_idx': self.module_idx,
             'progress': self.progress,
             'score': self.score,
