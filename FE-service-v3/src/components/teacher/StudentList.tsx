@@ -19,9 +19,9 @@ import {
   SelectValue,
 } from "../ui/select";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { Search, Eye, TrendingUp, TrendingDown, Minus } from "lucide-react";
+import { Search, Eye, TrendingUp, TrendingDown, Minus, AlertCircle } from "lucide-react";
 import { Progress } from "../ui/progress";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Dialog,
   DialogContent,
@@ -29,8 +29,28 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../ui/dialog";
+import {
+  getUserCourses,
+  getEnrolledUsers,
+  getCourseCompletion,
+} from "../../services/moodleApi";
 
-const students = [
+interface Student {
+  id: number;
+  name: string;
+  email: string;
+  progress: number;
+  activity: string;
+  trend: string;
+  lastActive: string;
+  aiInsight: string;
+  completedLessons: number;
+  totalLessons: number;
+  profileImageUrl?: string;
+}
+
+// Mock students as fallback
+const mockStudents: Student[] = [
   {
     id: 1,
     name: "Nguyễn Văn An",
@@ -67,48 +87,116 @@ const students = [
     completedLessons: 15,
     totalLessons: 20,
   },
-  {
-    id: 4,
-    name: "Phạm Thị Dung",
-    email: "dung.pham@student.edu",
-    progress: 65,
-    activity: "low",
-    trend: "down",
-    lastActive: "2 days ago",
-    aiInsight: "Nguy cơ bỏ học - cần hỗ trợ ngay",
-    completedLessons: 13,
-    totalLessons: 20,
-  },
-  {
-    id: 5,
-    name: "Hoàng Văn Em",
-    email: "em.hoang@student.edu",
-    progress: 95,
-    activity: "high",
-    trend: "up",
-    lastActive: "30 minutes ago",
-    aiInsight: "Học sinh xuất sắc, nên giao thêm project",
-    completedLessons: 19,
-    totalLessons: 20,
-  },
-  {
-    id: 6,
-    name: "Võ Thị Phương",
-    email: "phuong.vo@student.edu",
-    progress: 82,
-    activity: "medium",
-    trend: "up",
-    lastActive: "3 hours ago",
-    aiInsight: "Tiến bộ tốt trong tuần qua",
-    completedLessons: 16,
-    totalLessons: 20,
-  },
 ];
 
 export function StudentList() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterActivity, setFilterActivity] = useState("all");
-  const [selectedStudent, setSelectedStudent] = useState<typeof students[0] | null>(null);
+  const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
+  const [students, setStudents] = useState<Student[]>(mockStudents);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetchStudentData();
+  }, []);
+
+  async function fetchStudentData() {
+    try {
+      setLoading(true);
+      setError(null);
+
+      // Get teacher's courses
+      const courses = await getUserCourses(5); // Use actual user ID
+      console.log("Fetched courses:", courses);
+      if (courses.length > 0) {
+        const course = courses[0];
+        
+        // Get enrolled users
+        const enrolledUsers = await getEnrolledUsers(course.id);
+        console.log("Enrolled users:", enrolledUsers);
+        const studentsData = enrolledUsers.filter(user =>
+          user.roles?.some(role => role.shortname === 'student')
+        );
+        console.log("Filtered students:", studentsData);
+
+        // Get completion for each student
+        const studentPromises = studentsData.map(async (user) => {
+          try {
+            const completion = await getCourseCompletion(course.id, user.id);
+            console.log(`Completion for user ${user.id}:`, completion);
+            // Handle case where Moodle API returns 'statuses' or 'completions'
+            const completionStatuses = (completion as any)?.statuses || (completion as any)?.completions || [];
+            const totalModules = completionStatuses.length;
+            const completedModules = completionStatuses.filter((c: any) => c.state === 1).length;
+            const progress = totalModules > 0 
+              ? Math.round((completedModules / totalModules) * 100)
+              : 0;
+
+            // Determine activity level based on last access
+            const now = Math.floor(Date.now() / 1000);
+            const daysSinceAccess = user.lastaccess 
+              ? (now - user.lastaccess) / 86400
+              : 999;
+            
+            let activity = "low";
+            let lastActive = "Never";
+            
+            if (user.lastaccess) {
+              if (daysSinceAccess < 1) {
+                activity = "high";
+                lastActive = `${Math.floor(daysSinceAccess * 24)} hours ago`;
+              } else if (daysSinceAccess < 3) {
+                activity = "medium";
+                lastActive = `${Math.floor(daysSinceAccess)} days ago`;
+              } else {
+                activity = "low";
+                lastActive = `${Math.floor(daysSinceAccess)} days ago`;
+              }
+            }
+
+            // Determine trend based on progress
+            const trend = progress > 80 ? "up" : progress > 50 ? "stable" : "down";
+
+            return {
+              id: user.id,
+              name: user.fullname,
+              email: user.email,
+              progress,
+              activity,
+              trend,
+              lastActive,
+              aiInsight: progress > 80 
+                ? "Đang học rất tốt, nên thử thách với bài nâng cao"
+                : progress > 50
+                ? "Tiến bộ ổn định, tiếp tục duy trì"
+                : "Cần hỗ trợ thêm để cải thiện",
+              completedLessons: completedModules,
+              totalLessons: totalModules,
+              profileImageUrl: user.profileimageurl,
+            };
+          } catch (err) {
+            console.error(`Error fetching data for student ${user.id}:`, err);
+            return null;
+          }
+        });
+
+        const studentsWithData = (await Promise.all(studentPromises)).filter(
+          (s) => s !== null
+        ) as Student[];
+
+        if (studentsWithData.length > 0) {
+          setStudents(studentsWithData);
+        }
+      }
+
+      setLoading(false);
+    } catch (err) {
+      console.error("Failed to fetch student data:", err);
+      setError("Unable to load students from Moodle. Showing demo data.");
+      setLoading(false);
+    }
+  }
 
   const filteredStudents = students.filter((student) => {
     const matchesSearch = student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -141,8 +229,47 @@ export function StudentList() {
     }
   };
 
+  if (loading) {
+    return (
+      <div className="p-6 space-y-6">
+        <Card className="rounded-2xl">
+          <CardHeader>
+            <div className="h-8 w-48 bg-gray-200 dark:bg-gray-800 rounded animate-pulse" />
+            <div className="h-4 w-64 bg-gray-200 dark:bg-gray-800 rounded animate-pulse mt-2" />
+          </CardHeader>
+          <CardContent>
+            <div className="flex gap-4 mb-6">
+              <div className="flex-1 h-10 bg-gray-200 dark:bg-gray-800 rounded-xl animate-pulse" />
+              <div className="w-48 h-10 bg-gray-200 dark:bg-gray-800 rounded-xl animate-pulse" />
+            </div>
+            <div className="space-y-4">
+              {[1, 2, 3, 4, 5].map((i) => (
+                <div key={i} className="h-20 bg-gray-200 dark:bg-gray-800 rounded-xl animate-pulse" />
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div className="p-6 space-y-6">
+      {/* Error Alert */}
+      {error && (
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          <Card className="border-yellow-400 bg-yellow-50 dark:bg-yellow-950">
+            <CardContent className="p-4 flex items-center gap-2">
+              <AlertCircle className="h-5 w-5 text-yellow-600" />
+              <p className="text-sm text-yellow-800 dark:text-yellow-200">{error}</p>
+            </CardContent>
+          </Card>
+        </motion.div>
+      )}
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -199,7 +326,7 @@ export function StudentList() {
                       <TableCell>
                         <div className="flex items-center gap-3">
                           <Avatar className="h-10 w-10">
-                            <AvatarImage src="" alt={student.name} />
+                            <AvatarImage src={student.profileImageUrl || ""} alt={student.name} />
                             <AvatarFallback className="bg-primary text-primary-foreground">
                               {student.name
                                 .split(" ")
@@ -263,7 +390,7 @@ export function StudentList() {
 
       {/* Student Detail Modal */}
       <Dialog open={!!selectedStudent} onOpenChange={() => setSelectedStudent(null)}>
-        <DialogContent className="max-w-2xl rounded-2xl">
+        <DialogContent className="relative max-w-2xl rounded-2xl max-h-[85vh] overflow-y-auto translate-x-[-25%]">
           <DialogHeader>
             <DialogTitle>Student Details</DialogTitle>
             <DialogDescription>

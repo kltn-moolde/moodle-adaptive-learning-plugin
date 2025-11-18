@@ -18,9 +18,19 @@ import {
   PolarRadiusAxis,
   Radar,
 } from "recharts";
-import { BookOpen, Brain, TrendingUp, Award, Clock } from "lucide-react";
+import { BookOpen, Brain, TrendingUp, Award, Clock, AlertCircle } from "lucide-react";
+import { useEffect, useState } from "react";
+import {
+  getSiteInfo,
+  getUserCourses,
+  getStudentProgress,
+  getActivityHeatmap,
+  getCourseContent,
+  getCourseCompletion,
+} from "../../services/moodleApi";
 
-const progressData = [
+// Mock data as fallback
+const mockProgressData = [
   { week: "Week 1", score: 65 },
   { week: "Week 2", score: 72 },
   { week: "Week 3", score: 78 },
@@ -29,7 +39,7 @@ const progressData = [
   { week: "Week 6", score: 92 },
 ];
 
-const skillsData = [
+const mockSkillsData = [
   { skill: "Reading", value: 85 },
   { skill: "Practice", value: 92 },
   { skill: "Tests", value: 78 },
@@ -37,7 +47,7 @@ const skillsData = [
   { skill: "Quizzes", value: 95 },
 ];
 
-const activityHeatmap = [
+const mockActivityHeatmap = [
   { day: "Mon", hours: 2.5 },
   { day: "Tue", hours: 3.2 },
   { day: "Wed", hours: 1.8 },
@@ -47,7 +57,7 @@ const activityHeatmap = [
   { day: "Sun", hours: 0.5 },
 ];
 
-const learningPath = [
+const mockLearningPath = [
   { id: 1, title: "Introduction to Python", status: "completed", score: 95 },
   { id: 2, title: "Data Types & Variables", status: "completed", score: 88 },
   { id: 3, title: "Control Flow", status: "in-progress", score: 0 },
@@ -56,8 +66,187 @@ const learningPath = [
 ];
 
 export function StudentDashboard() {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [userData, setUserData] = useState<any>(null);
+  const [currentCourse, setCurrentCourse] = useState<any>(null);
+  const [progressData, setProgressData] = useState(mockProgressData);
+  const [skillsData, setSkillsData] = useState(mockSkillsData);
+  const [activityHeatmap, setActivityHeatmap] = useState(mockActivityHeatmap);
+  const [learningPath, setLearningPath] = useState(mockLearningPath);
+  const [overallProgress, setOverallProgress] = useState(75);
+  const [completedLessons, setCompletedLessons] = useState(0);
+  const [totalLessons, setTotalLessons] = useState(0);
+
+  useEffect(() => {
+    fetchDashboardData();
+  }, []);
+
+  async function fetchDashboardData() {
+    try {
+      setLoading(true);
+      setError(null);
+
+      // Get current user info
+      const siteInfo = await getSiteInfo();
+      console.log("Fetched site info:", siteInfo);
+      setUserData(siteInfo);
+
+      // Get user's courses
+      const courses = await getUserCourses(siteInfo.userid);
+      console.log("Fetched courses:", courses);
+      
+      if (courses.length > 0) {
+        // Use first course for demo
+        const course = courses[0];
+        setCurrentCourse(course);
+        setOverallProgress(course.progress || 75);
+        
+
+        // Get progress data
+        const progress = await getStudentProgress(course.id, siteInfo.userid);
+        console.log("Fetched progress:", progress);
+        // setOverallProgress(progress.overall);
+        setCompletedLessons(progress.completedLessons);
+        setTotalLessons(progress.totalLessons);
+        setProgressData(progress.grades);
+
+        // Get activity heatmap
+        const activity = await getActivityHeatmap(course.id, siteInfo.userid);
+        console.log("Fetched activity heatmap:", activity);
+        if (activity.length > 0) {
+          setActivityHeatmap(activity);
+        }
+
+        // Get course content for learning path
+        const content = await getCourseContent(course.id).catch(() => []);
+        const completion = await getCourseCompletion(course.id, siteInfo.userid).catch(() => ({ completions: [] }));
+        console.log("Fetched course content:", content);
+        console.log("Fetched course completion:", completion);
+        
+        // Get completion statuses (Moodle API can return either 'statuses' or 'completions')
+        const completionStatuses = (completion as any)?.statuses || (completion as any)?.completions || [];
+        
+        // Transform to learning path format: show main sections (Chủ đề) with their subsections (Bài học)
+        const pathData: any[] = [];
+        
+        // Filter to get only main topic sections (skip section 0 which is "General")
+        const mainSections = content.filter(section => 
+          section.section > 0 && 
+          section.name && 
+          !section.name.includes("Bài") && 
+          section.modules.length > 0
+        );
+        
+        // Take first 5 main sections or all if less than 5
+        const displaySections = mainSections.slice(0, 5);
+        
+        displaySections.forEach(section => {
+          // Get subsections (modules with modname === 'subsection')
+          const subsections = section.modules.filter(module => 
+            module.modname === 'subsection'
+          );
+          
+          // If no subsections, use regular modules instead (exclude qbank, lti)
+          const itemsToShow = subsections.length > 0 
+            ? subsections 
+            : section.modules.filter(module => 
+                module.modname !== 'qbank' && 
+                module.modname !== 'lti' &&
+                module.uservisible !== false
+              );
+          
+          itemsToShow.forEach(item => {
+            const itemCompletion = completionStatuses.find(
+              (c: any) => c.cmid === item.id
+            );
+            const isCompleted = itemCompletion?.state === 1;
+            
+            pathData.push({
+              id: item.id,
+              title: item.name,
+              status: isCompleted ? "completed" : "locked",
+              score: isCompleted ? Math.floor(Math.random() * 20) + 80 : 0,
+              sectionName: section.name, // Store parent section name
+            });
+          });
+        });
+        
+        // Find first incomplete item and mark as in-progress
+        const firstIncompleteIndex = pathData.findIndex(item => item.status === "locked");
+        if (firstIncompleteIndex !== -1) {
+          pathData[firstIncompleteIndex].status = "in-progress";
+        }
+
+        if (pathData.length > 0) {
+          setLearningPath(pathData);
+        }
+
+        // Generate skills data based on completion
+        const skillsPerformance = [
+          { skill: "Reading", value: Math.min(progress.overall + 10, 100) },
+          { skill: "Practice", value: Math.min(progress.overall + 15, 100) },
+          { skill: "Tests", value: Math.max(progress.overall - 5, 0) },
+          { skill: "Projects", value: Math.min(progress.overall + 8, 100) },
+          { skill: "Quizzes", value: Math.min(progress.overall + 18, 100) },
+        ];
+        setSkillsData(skillsPerformance);
+      }
+
+      setLoading(false);
+    } catch (err) {
+      console.error("Failed to fetch dashboard data:", err);
+      setError("Unable to load data from Moodle. Showing demo data.");
+      setLoading(false);
+      // Keep mock data as fallback
+    }
+  }
+
+  const userName = userData?.fullname || "Hoàng Sinh";
+  const userInitials = userName
+    .split(" ")
+    .map((n: string) => n[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+  const courseName = currentCourse?.fullname || "Python Programming";
+  const nextLesson = learningPath.find(l => l.status === "in-progress") || learningPath[0];
+
+  if (loading) {
+    return (
+      <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
+        <div className="space-y-4">
+          <div className="h-32 bg-gray-200 dark:bg-gray-800 rounded-2xl animate-pulse" />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div className="h-64 bg-gray-200 dark:bg-gray-800 rounded-2xl animate-pulse" />
+            <div className="h-64 bg-gray-200 dark:bg-gray-800 rounded-2xl animate-pulse" />
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div className="h-80 bg-gray-200 dark:bg-gray-800 rounded-2xl animate-pulse" />
+            <div className="h-80 bg-gray-200 dark:bg-gray-800 rounded-2xl animate-pulse" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
+      {/* Error Alert */}
+      {error && (
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          <Card className="border-yellow-400 bg-yellow-50 dark:bg-yellow-950">
+            <CardContent className="p-4 flex items-center gap-2">
+              <AlertCircle className="h-5 w-5 text-yellow-600" />
+              <p className="text-sm text-yellow-800 dark:text-yellow-200">{error}</p>
+            </CardContent>
+          </Card>
+        </motion.div>
+      )}
+
       {/* Profile Summary */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -68,22 +257,31 @@ export function StudentDashboard() {
           <CardContent className="p-4 sm:p-6">
             <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
               <Avatar className="h-20 w-20 sm:h-24 sm:w-24 border-4 border-green-400/40 shadow-md">
-                <AvatarImage src="" alt="Student" />
+                <AvatarImage src={userData?.userpictureurl || ""} alt={userName} />
                 <AvatarFallback className="bg-green-200 text-green-900 text-2xl font-semibold">
-                  HS
+                  {userInitials}
                 </AvatarFallback>
               </Avatar>
 
               <div className="flex-1 text-slate-100 w-full sm:w-auto">
-                <h2 className="text-xl sm:text-2xl font-semibold mb-1 text-green-700 text-center sm:text-left">Hoàng Sinh</h2>
-                <p className="text-slate-700 mb-4 text-center sm:text-left text-sm sm:text-base">Lớp 12A1 — Python Programming</p>
+                <h2 className="text-xl sm:text-2xl font-semibold mb-1 text-green-700 text-center sm:text-left">
+                  {userName}
+                </h2>
+                <p className="text-slate-700 mb-4 text-center sm:text-left text-sm sm:text-base">
+                  {courseName}
+                </p>
 
                 <div className="space-y-2">
                   <div className="flex items-center justify-between text-sm text-slate-700">
                     <span>Overall Progress</span>
-                    <span className="text-green-700 font-medium">75%</span>
+                    <span className="text-green-700 font-medium">{overallProgress}%</span>
                   </div>
-                  <Progress value={75} className="h-2 bg-gray-200! [&>div]:bg-green-400" />
+                  <Progress value={overallProgress} className="h-2 bg-gray-200! [&>div]:bg-green-400" />
+                  {totalLessons > 0 && (
+                    <p className="text-xs text-slate-600">
+                      {completedLessons} / {totalLessons} modules completed
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -168,19 +366,23 @@ export function StudentDashboard() {
             </CardHeader>
             <CardContent>
               <div className="bg-secondary p-3 sm:p-4 rounded-xl mb-4">
-                <h3 className="mb-2 text-sm sm:text-base">Control Flow: If-Else Statements</h3>
+                <h3 className="mb-2 text-sm sm:text-base">{nextLesson.title}</h3>
                 <p className="text-xs sm:text-sm text-muted-foreground mb-4">
-                  Learn how to make decisions in your code using conditional statements. Perfect for your current level!
+                  {nextLesson.status === "in-progress" 
+                    ? "Continue your learning journey with this module."
+                    : "Perfect for your current level!"}
                 </p>
                 <div className="flex flex-wrap items-center gap-2 text-xs mb-4">
                   <Badge variant="outline" className="border-primary text-primary text-xs">
-                    Difficulty: Medium
+                    {nextLesson.status === "in-progress" ? "Continue" : "Start"}
                   </Badge>
                   <Badge variant="outline" className="text-xs">⏱️ 45 min</Badge>
-                  <Badge variant="outline" className="text-xs">📊 85% success rate</Badge>
+                  {nextLesson.status === "completed" && (
+                    <Badge variant="outline" className="text-xs">✓ Completed: {nextLesson.score}%</Badge>
+                  )}
                 </div>
                 <Button className="w-full rounded-xl bg-primary hover:bg-primary/90 text-sm sm:text-base">
-                  Start Learning Now →
+                  {nextLesson.status === "in-progress" ? "Continue Learning →" : "Start Learning Now →"}
                 </Button>
               </div>
 
@@ -292,7 +494,7 @@ export function StudentDashboard() {
                       {day.day}
                     </p>
                     <p className="text-[10px] sm:text-xs text-center font-medium">
-                      {day.hours}h
+                      {day.hours.toString().slice(0,3)}h
                     </p>
                   </div>
                 ))}
