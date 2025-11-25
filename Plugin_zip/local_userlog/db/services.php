@@ -185,6 +185,22 @@ $functions = [
         'type'        => 'read',
         'ajax'        => true,
     ],
+    'local_userlog_get_quiz_questions' => [ // ok
+        'classname'   => 'local_userlog\external\get_quiz_questions',
+        'methodname'  => 'execute',
+        'classpath'   => 'local/userlog/classes/external/get_quiz_questions.php',
+        'description' => 'Get questions of a quiz by quiz ID',
+        'type'        => 'read',
+        'ajax'        => true,
+    ],
+    "local_userlog_get_score_section" => [
+        'classname'   => 'local_userlog\external\get_score_section',
+        'methodname'  => 'execute',
+        'classpath'   => 'local/userlog/classes/external/get_score_section.php',
+        'description' => 'Get user scores for quizzes in a course, optionally filtered by section',
+        'type'        => 'read',
+        'ajax'        => true,
+    ],
     'local_userlog_get_grade_status' => [
         'classname'   => 'local_userlog\external\get_grade_status',
         'methodname'  => 'execute',
@@ -238,7 +254,9 @@ $services = [
             'local_userlog_get_grade_status',
             'local_userlog_get_grade_course', // ok
             'local_userlog_get_total_study_time',
-            'local_userlog_get_user_object_activity_summary'
+            'local_userlog_get_user_object_activity_summary',
+            'local_userlog_get_quiz_questions',
+            'local_userlog_get_score_section'
         ],
         'enabled' => 1,
         'restrictedusers' => 0

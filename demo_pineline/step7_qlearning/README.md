@@ -1,278 +1,468 @@
-# Q-Learning Adaptive Learning System
+# 🎓 Adaptive Learning System - Q-Learning Recommendation Engine
 
-Hệ thống gợi ý học tập thích ứng sử dụng Q-Learning, dựa trên dữ liệu logs từ Moodle.
+**Version**: 2.0  
+**Status**: ✅ Production Ready
 
-## 🆕 BREAKING CHANGE: New API Input Format
+## 📋 Tổng quan
 
-**API hiện hỗ trợ 2 formats:**
-1. ✅ **Structured Format (NEW - RECOMMENDED)** - Nested structure matching state dimensions
-2. ⚙️ **Flat Format (OLD - BACKWARD COMPATIBLE)** - Legacy support
+Hệ thống gợi ý lộ trình học tập thích ứng sử dụng **Q-Learning**, được huấn luyện từ dữ liệu mô phỏng hành vi học sinh, phân cụm theo năng lực học tập. Hệ thống phân tích trạng thái học tập hiện tại của sinh viên (cluster, module, tiến độ, điểm số, hành động gần nhất, trạng thái stuck) để gợi ý **top-K actions** tối ưu.
 
-📘 **Chi tiết**: Xem [API_INPUT_FORMAT_GUIDE.md](./API_INPUT_FORMAT_GUIDE.md)
+### ✨ Tính năng chính
 
-🧪 **Testing**: Chạy `python test_api_structured.py` để test cả 2 formats
+- **State 6D**: (cluster, module, progress, score, phase, engagement)
+- **15 Actions**: Từ action space với time context (past/current/future)
+- **37+ Learning Activities**: Từ course structure thực tế
+- **Cluster-Adaptive**: Chiến lược reward khác nhau cho từng cluster
+- **LO Mastery Tracking**: Track và dự đoán điểm midterm dựa trên Learning Outcomes
+- **Intelligent Activity Selection**: Gợi ý activity cụ thể dựa trên LO yếu với XAI explanations
+- **LO Improvement Prediction**: Dự đoán % cải thiện LO sau khi hoàn thành activity
+- **QTableAdapter**: Tự động convert giữa module IDs và action indices
+- **REST API**: FastAPI với activity recommendations và explanations
+- **Detailed Logging**: State transitions, reward breakdown, LO tracking
 
-## 📁 Cấu trúc thư mục
+### 🎯 Cải tiến V2
 
-```
-step7_qlearning/
-├── api_service.py              # 🚀 API chính - Chạy server FastAPI
-├── train_qlearning_from_logs.py  # 🎓 Train model từ logs
-├── test_api.py                 # ✅ Test API
-├── quick_test.py               # 🧪 Test nhanh
-├── requirements.txt            # 📦 Dependencies
-│
-├── core/                       # 📚 Core modules
-│   ├── qlearning_agent.py     # Q-Learning agent
-│   ├── state_builder.py       # Xây dựng state từ features
-│   ├── action_space.py        # Định nghĩa actions
-│   ├── reward_calculator.py   # Tính reward
-│   └── moodle_log_processor.py # Xử lý Moodle logs
-│
-├── data/                       # 💾 Data files
-│   ├── course_structure.json  # Cấu trúc khóa học
-│   ├── log/                   # Raw logs từ Moodle
-│   │   ├── log.csv
-│   │   └── grade.csv
-│   └── training_episodes_real.json  # Episodes đã xử lý
-│
-└── models/                     # 🤖 Trained models
-    └── qlearning_from_real_logs.pkl  # Model đã train
-```
+| Metric | V1 | V2 | Cải thiện |
+|--------|----|----|-----------|
+| **Q-table States** | 415 | 7,779+ | **18.7×** ⬆️ |
+| **Coverage** | 1.2% | 18.2%+ | **15.2×** ⬆️ |
+| **Training Episodes** | 500 | 1,000+ | **2×** ⬆️ |
+| **State Dimensions** | ~10+ | 6 | Đơn giản hơn |
+| **LO Integration** | ❌ | ✅ | Mới |
 
-## 🚀 Hướng dẫn sử dụng
+---
 
-### 1. Cài đặt dependencies
+## 🚀 Quick Start
+
+### 1. Cài đặt Dependencies
 
 ```bash
+cd step7_qlearning
 pip install -r requirements.txt
 ```
 
-### 2. Train model (nếu chưa có hoặc muốn train lại)
-
-```bash
-python train_qlearning_from_logs.py
+**Requirements:**
+```
+fastapi>=0.104.0
+uvicorn>=0.24.0
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
 ```
 
-Model sẽ được lưu tại: `models/qlearning_from_real_logs.pkl`
-
-### 3. Chạy API server
+### 2. Training Model
 
 ```bash
-python api_service.py
+# Training cơ bản
+python3 train_qlearning.py --episodes 100 --students 5 --steps 30
+
+# Training với detailed logging
+python3 train_qlearning.py \
+    --episodes 100 \
+    --students 5 \
+    --steps 30 \
+    --detailed-logging \
+    --log-interval 10
 ```
 
-Server sẽ chạy tại: `http://localhost:8000`
+### 3. Khởi động API Server
+
+```bash
+# Development mode
+uvicorn api_service:app --reload --port 8080
+
+# Production mode
+uvicorn api_service:app --host 0.0.0.0 --port 8080 --workers 4
+```
 
 ### 4. Test API
 
 ```bash
-# Test cơ bản
-python quick_test.py
+# 1. Health check
+curl http://localhost:8080/api/health
 
-# Hoặc test đầy đủ
-python test_api.py
+# 2. Get recommendations với LO mastery (recommended)
+# Note: Chỉ cần 5 trường trong features để tạo 6D state:
+#   - cluster_id, current_module_id, module_progress, avg_score, recent_action_type
+#   - recent_action_type được dùng để tính cả learning_phase và engagement_level
+# Validation: API sẽ validate input và trả về lỗi nếu giá trị không hợp lệ
+curl -X POST http://localhost:8080/api/recommend \
+  -H "Content-Type: application/json" \
+  -d '{
+    "student_id": 123,
+    "features": {
+      "cluster_id": 2,
+      "current_module_id": 67,
+      "module_progress": 0.75,
+      "avg_score": 0.85,
+      "recent_action_type": 1
+    },
+    "lo_mastery": {
+      "LO1.1": 0.4,
+      "LO1.2": 0.35,
+      "LO2.2": 0.25,
+      "LO2.4": 0.4
+    },
+    "top_k": 3
+  }'
+
+# 3. Get recommendations không có LO mastery (sẽ dùng default)
+# Note: 5 trường features → 6D state (recent_action_type tính 2 dimensions)
+curl -X POST http://localhost:8080/api/recommend \
+  -H "Content-Type: application/json" \
+  -d '{
+    "student_id": 456,
+    "features": {
+      "cluster_id": 0,
+      "current_module_id": 65,
+      "module_progress": 0.5,
+      "avg_score": 0.6,
+      "recent_action_type": 0
+    },
+    "top_k": 5
+  }'
+
+# 4. Get model info
+curl http://localhost:8080/api/model-info
 ```
 
-## 📡 API Endpoints
-
-### 1. **GET /** - Service info
-```bash
-curl http://localhost:8000/
-```
-
-### 2. **GET /health** - Health check
-```bash
-curl http://localhost:8000/health
-```
-
-### 3. **GET /model-info** - Thông tin model
-```bash
-curl http://localhost:8000/model-info
-```
-
-### 4. **POST /recommend** - Lấy gợi ý học tập ⭐
-
-**Request:**
+**Expected Response:**
 ```json
 {
-  "student_features": {
-    "userid": 8670,
-    "mean_module_grade": 0.75,
-    "total_events": 0.6,
-    "course_module": 0.5,
-    "viewed": 0.7,
-    "attempt": 0.3,
-    "feedback_viewed": 0.4,
-    "submitted": 0.6,
-    "reviewed": 0.3,
-    "course_module_viewed": 0.5,
-    "module_count": 0.4,
-    "course_module_completion": 0.5,
-    "created": 0.2,
-    "updated": 0.1,
-    "downloaded": 0.3
-  },
-  "top_k": 5
-}
-```
-
-**Response:**
-```json
-{
-  "student_id": 8670,
-  "state_vector": [0.75, 0.58, ...],
+  "success": true,
+  "student_id": 123,
+  "cluster_id": 2,
+  "cluster_name": "Medium",
+  "state_vector": [2.0, 2.0, 0.75, 1.0, 1, 1],
   "state_description": {
-    "knowledge_level": "good",
-    "engagement_level": "high",
-    ...
+    "cluster_id": 2,
+    "cluster_name": "Medium",
+    "module_index": 2,
+    "progress_label": "75%",
+    "score_label": "100%",
+    "learning_phase": 1,
+    "learning_phase_name": "active",
+    "engagement_level": 1,
+    "engagement_name": "medium",
+    "state_format": "6D"
   },
   "recommendations": [
     {
-      "action_id": 12,
-      "action_name": "Complete Quiz 3",
-      "action_type": "assessment",
-      "module_type": "quiz",
-      "q_value": 0.85,
-      "url": null
+      "action_id": 2,
+      "action_type": "attempt_quiz",
+      "time_context": "past",
+      "module_name": "attempt_quiz (past)",
+      "q_value": 42.182,
+      "activity_id": 63,
+      "activity_name": "bài kiểm tra bài 2 - medium",
+      "target_los": [["LO1.5", 0.4]],
+      "explanation": "Cải thiện LO1.5 (hiện tại 40.0%) → dự kiến tăng 5.0% (lên 45.0%): ...",
+      "alternatives": []
     }
   ],
   "model_info": {
-    "n_states_in_qtable": 1500,
-    "total_training_updates": 50000,
-    "episodes_trained": 1000
+    "model_version": "V2",
+    "n_states_in_qtable": 7779
   }
 }
 ```
 
-## 🧪 Test nhanh
+### 5. Simulation
 
 ```bash
-# Test với curl
-curl -X POST "http://localhost:8000/recommend" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "student_features": {
-      "userid": 8670,
-      "mean_module_grade": 0.75,
-      "total_events": 0.6,
-      "viewed": 0.7
-    },
-    "top_k": 3
-  }'
+# Simulate learning path với trained model
+python3 simulate_learning_path.py \
+    --qtable models/qtable_best.pkl \
+    --students 3 \
+    --steps 30 \
+    --verbose
 ```
 
-## 🎯 State Features
+---
 
-Hệ thống sử dụng **12 features** để xây dựng state:
+## 📊 Cấu trúc Dự án
 
-### Performance (3 dims)
-- `knowledge_level`: Điểm trung bình (0-1)
-- `engagement_level`: Mức độ tương tác
-- `struggle_indicator`: Chỉ số gặp khó khăn
+```
+step7_qlearning/
+├── 📂 core/                          # Core components
+│   ├── qlearning_agent_v2.py        # Q-Learning agent
+│   ├── state_builder_v2.py          # State builder (7D) với convert_7d_to_6d()
+│   ├── reward_calculator_v2.py      # Cluster-adaptive rewards + LO tracking
+│   ├── action_space.py              # Action definitions (15 actions)
+│   ├── activity_recommender.py      # Intelligent activity selection + LO prediction
+│   ├── lo_mastery_tracker.py       # LO mastery tracking & midterm prediction
+│   ├── learning_path_simulator.py   # Complete simulation system
+│   ├── state_transition_logger.py   # Detailed logging
+│   ├── qtable_adapter.py          # Convert module IDs ↔ action indices
+│   └── student.py                   # Student model
+│
+├── 📂 services/                      # Services
+│   ├── model_loader.py              # Load models
+│   ├── cluster_service.py           # Cluster prediction
+│   ├── qtable_service.py            # Q-table inspection
+│   └── recommendation_service.py   # Recommendation engine
+│
+├── 📂 models/                        # Trained models
+│   └── qtable_best.pkl             # V2 model (7,779+ states) ⭐
+│
+├── 📂 data/                          # Data files
+│   ├── course_structure.json        # Moodle course structure
+│   ├── cluster_profiles.json        # Cluster profiles
+│   ├── Po_Lo.json                   # LO → Activity mappings
+│   ├── midterm_lo_weights.json      # Midterm LO weights
+│   └── log/, simulated/             # Logs and simulations
+│
+├── 📄 api_service.py                # FastAPI service ⭐
+├── 📄 train_qlearning.py            # Training script ⭐
+├── 📄 simulate_learning_path.py     # Simulation script ⭐
+└── 📄 requirements.txt               # Dependencies
+```
 
-### Activity Patterns (5 dims)
-- `submission_activity`: Hoạt động nộp bài
-- `review_activity`: Xem lại và feedback
-- `resource_usage`: Sử dụng tài nguyên
-- `assessment_engagement`: Tham gia đánh giá
-- `collaborative_activity`: Hoạt động nhóm
+---
 
-### Completion Metrics (4 dims)
-- `overall_progress`: Tiến độ tổng thể
-- `module_completion_rate`: Tỷ lệ hoàn thành
-- `activity_diversity`: Đa dạng hoạt động
-- `completion_consistency`: Tính nhất quán
+## 📈 Performance Metrics
 
-## 📊 Input Features từ Moodle
+### Model Performance
+- **Training episodes**: 1,000+
+- **Average reward**: 195.66+
+- **Q-table coverage**: 18.2%+
+- **State space**: 7,779+ trained states
+- **Actions**: 15 action types → 37 learning activities
 
-Các features cần cung cấp (normalized 0-1):
+### API Performance
+- **Response time**: < 50ms
+- **Success rate**: > 95%
+- **Concurrent requests**: Supports multiple students
 
+---
+
+## 🎯 State Representation
+
+### State Vector (6D)
+
+**6D Format**:
 ```python
+state = (cluster_id, module_idx, progress_bin, score_bin, 
+         learning_phase, engagement_level)
+```
+
+| Dimension | Values | Description |
+|-----------|--------|-------------|
+| **cluster_id** | 0-4 | Student cluster (exclude teacher) |
+| **module_idx** | 0-5 | Current module index |
+| **progress_bin** | 0.25, 0.5, 0.75, 1.0 | Quartile binned progress |
+| **score_bin** | 0.25, 0.5, 0.75, 1.0 | Quartile binned score |
+| **learning_phase** | 0, 1, 2 | pre/active/reflective |
+| **engagement_level** | 0, 1, 2 | low/medium/high |
+
+**Note**: State được build từ `features` với **5 trường input** tạo ra **6D state**:
+
+**Input Features (5 trường)**:
+1. `cluster_id` (int): Cluster ID của học sinh (0-4, sau khi map và exclude teacher cluster) → **dim 0**
+2. `current_module_id` (int): Module ID từ course structure → **dim 1** (map thành `module_idx` 0-5)
+3. `module_progress` (float): Tiến độ module (0-1) → **dim 2** (bin thành `progress_bin`: 0.25, 0.5, 0.75, 1.0)
+4. `avg_score` (float): Điểm trung bình (0-1) → **dim 3** (bin thành `score_bin`: 0.25, 0.5, 0.75, 1.0)
+5. `recent_action_type` (int, optional, default=0): Loại hành động gần nhất (0-5) → **dim 4 + dim 5**:
+   - **dim 4**: `learning_phase` (0=pre-learning, 1=active-learning, 2=reflective-learning)
+   - **dim 5**: `engagement_level` (0=low, 1=medium, 2=high, dựa trên action weights và consistency)
+
+**💡 Lưu ý**: `recent_action_type` (1 trường) được dùng để tính **2 dimensions** (`learning_phase` và `engagement_level`), nên 5 trường input → 6D state.
+
+**Mapping `recent_action_type`**:
+- 0 → `view_content` (weight: 1)
+- 1 → `submit_quiz` (weight: 5)
+- 2 → `post_forum` (weight: 3)
+- 3 → `review_quiz` (weight: 3)
+- 4 → `read_resource` (weight: 1)
+- 5 → `submit_assignment` (weight: 5)
+
+Các trường khác trong `features` (như `quiz_attempts`, `quiz_failures`, `time_on_module`) là optional và không được sử dụng trong state building. Các trường không hợp lệ sẽ bị bỏ qua và có cảnh báo.
+
+### Input Validation
+
+API sẽ validate các trường input và trả về lỗi nếu:
+
+**Required fields** (bắt buộc):
+- `current_module_id`: int, phải là module ID hợp lệ trong course structure
+- `module_progress`: float, phải trong range [0.0, 1.0]
+- `avg_score`: float, phải trong range [0.0, 1.0]
+
+**Optional fields** (tùy chọn):
+- `cluster_id`: int, phải trong range 0-4 (nếu không có sẽ predict từ features)
+- `recent_action_type`: int, phải trong range 0-5:
+  - 0 = view_content
+  - 1 = submit_quiz
+  - 2 = post_forum
+  - 3 = review_quiz
+  - 4 = read_resource
+  - 5 = submit_assignment
+
+**Validation errors**:
+- Nếu `recent_action_type` ngoài range 0-5 → API trả về lỗi 400
+- Nếu `cluster_id` ngoài range 0-4 → API trả về lỗi 400
+- Nếu `module_progress` hoặc `avg_score` ngoài range [0.0, 1.0] → API trả về lỗi 400
+- Nếu `current_module_id` không tồn tại trong course structure → API trả về lỗi 400
+- Các trường không hợp lệ (như `bac`, `xyz`) → Cảnh báo và bị bỏ qua
+
+### Action Types (15)
+```python
+# Past actions (5)
+- view_assignment (past)
+- view_content (past)
+- attempt_quiz (past)
+- review_quiz (past)
+- post_forum (past)
+
+# Current actions (7)
+- view_assignment (current)
+- view_content (current)
+- submit_assignment (current)
+- attempt_quiz (current)
+- submit_quiz (current)
+- review_quiz (current)
+- post_forum (current)
+
+# Future actions (3)
+- view_content (future)
+- attempt_quiz (future)
+- post_forum (future)
+```
+
+---
+
+## 💡 Use Cases
+
+### 1. Real-time Recommendations với Activity Details
+```python
+from services.model_loader import ModelLoader
+from services.recommendation_service import RecommendationService
+from pathlib import Path
+
+# Load model
+loader = ModelLoader(
+    model_path=Path('models/qtable_best.pkl'),
+    course_path=Path('data/course_structure.json'),
+    cluster_profiles_path=Path('data/cluster_profiles.json')
+)
+loader.load_all(verbose=False)
+
+# Create service
+service = RecommendationService(
+    agent=loader.agent,
+    action_space=loader.action_space,
+    state_builder=loader.state_builder,
+    course_structure_path=str(Path('data/course_structure.json'))
+)
+
+# Get recommendations với LO mastery
+features = {
+    'cluster_id': 2,
+    'current_module_id': 67,
+    'module_progress': 0.75,
+    'avg_score': 0.85,
+    'recent_action_type': 1
+}
+
+state = service.build_state_from_features(features, cluster_id=2)
+lo_mastery = {'LO1.1': 0.4, 'LO2.2': 0.25, 'LO2.4': 0.4}
+
+recommendations = service.get_recommendations(
+    state=state,
+    cluster_id=2,
+    top_k=5,
+    lo_mastery=lo_mastery,
+    module_idx=int(state[1])
+)
+
+# Mỗi recommendation có:
+for rec in recommendations:
+    print(f"{rec['module_name']} (Q={rec['q_value']:.3f})")
+    print(f"  Activity: {rec.get('activity_name')} (ID: {rec.get('activity_id')})")
+    print(f"  Explanation: {rec.get('explanation')}")
+    print(f"  Target LOs: {rec.get('target_los')}")
+```
+
+### 2. Training với Detailed Logging
+```bash
+python3 train_qlearning.py \
+    --episodes 100 \
+    --detailed-logging \
+    --log-interval 10
+```
+
+### 3. Learning Path Simulation
+```bash
+python3 simulate_learning_path.py \
+    --qtable models/qtable_best.pkl \
+    --students 5 \
+    --steps 50 \
+    --verbose
+```
+
+---
+
+## 🔧 Configuration
+
+### config/reward_config.json
+```json
 {
-    "mean_module_grade": float,      # Điểm TB module (0-1)
-    "total_events": float,           # Tổng số events (normalized)
-    "course_module": float,          # Course module interactions
-    "viewed": float,                 # View events
-    "attempt": float,                # Quiz attempts
-    "feedback_viewed": float,        # Feedback views
-    "submitted": float,              # Submissions
-    "reviewed": float,               # Reviews
-    "course_module_viewed": float,   # Module views
-    "module_count": float,           # Số lượng modules
-    "course_module_completion": float, # Tỷ lệ hoàn thành
-    "created": float,                # Create events
-    "updated": float,                # Update events
-    "downloaded": float              # Download events
+  "reward_components": {
+    "completion": {"weak": 5.0, "medium": 3.5, "strong": 2.0},
+    "score_improvement": {"multiplier": 5.0},
+    "high_score_bonus": {"threshold": 0.9},
+    "progression": {...},
+    "lo_mastery_improvement": {...}
+  }
 }
 ```
 
-## 🔧 Cấu hình
-
-Trong `api_service.py`:
-
+### Q-Learning Hyperparameters
 ```python
-API_HOST = "0.0.0.0"
-API_PORT = 8800
-MODEL_PATH = "models/qlearning_from_real_logs.pkl"
-COURSE_STRUCTURE_PATH = "data/course_structure.json"
+LEARNING_RATE = 0.1      # α
+DISCOUNT_FACTOR = 0.95   # γ
+EPSILON = 0.1            # ε (exploration)
+EPSILON_DECAY = 0.995
+EPSILON_MIN = 0.01
 ```
+
+---
 
 ## 📚 Documentation
 
-- **Swagger UI**: http://localhost:8080/docs
-- **ReDoc**: http://localhost:8080/redoc
+- **README.md** (this file) - Tổng quan và quick start
+- **ARCHITECTURE.md** - Kiến trúc hệ thống chi tiết
+- **USAGE_GUIDE.md** - API, Training, Simulation guides
 
-## ⚠️ Lưu ý
-
-1. **Model phải được train trước** khi chạy API:
-   ```bash
-   python train_qlearning_from_logs.py
-   ```
-
-2. **Features phải được normalized** (0-1) trước khi gửi đến API
-
-3. **Course structure** phải có sẵn trong `data/course_structure.json`
-
-## 🔄 Workflow hoàn chỉnh
-
-```
-1. Chuẩn bị dữ liệu
-   → data/log/log.csv
-   → data/log/grade.csv
-   → data/course_structure.json
-
-2. Train model
-   → python train_qlearning_from_logs.py
-   → models/qlearning_from_real_logs.pkl
-
-3. Chạy API
-   → python api_service.py
-
-4. Test
-   → python test_api.py
-   → Hoặc call API từ frontend/service khác
-```
+---
 
 ## 🐛 Troubleshooting
 
-### Model not found
+### Issue: API returns q_values=0
+**Solution**: Retrain model
 ```bash
-python train_qlearning_from_logs.py
+python3 train_qlearning.py --episodes 1000
 ```
 
-### Course structure not found
-Đảm bảo file `data/course_structure.json` tồn tại
-
-### Port đã được sử dụng
-Thay đổi port trong `api_service.py` hoặc:
+### Issue: Module not found errors
+**Solution**: Check course_structure.json
 ```bash
-API_PORT=8001 python api_service.py
+python3 -c "import json; print(len(json.load(open('data/course_structure.json'))['modules']))"
 ```
 
-## 📞 Support
+### Issue: Cluster mapping errors
+**Solution**: Verify cluster_profiles.json
+```bash
+python3 -c "import json; print(json.load(open('data/cluster_profiles.json'))['n_clusters'])"
+```
 
-Nếu có vấn đề, kiểm tra:
-1. Log file: `api.log`
-2. Test basic: `python quick_test.py`
-3. Health check: `curl http://localhost:8080/health`
+---
+
+## 👥 Contributors
+
+Developed for Adaptive Learning Research Project
+
+## 📄 License
+
+Internal Research Project

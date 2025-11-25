@@ -1,0 +1,1804 @@
+{
+    "message": "Course hierarchy generated successfully",
+    "course_id": 2,
+    "course_name": "Tin 12 - Định hướng Khoa học Máy tính",
+    "analysis": {
+        "total_nodes": 58,
+        "max_depth": 3,
+        "node_type_counts": {
+            "course": 1,
+            "section": 6,
+            "subsection": 6,
+            "module": 0,
+            "activity": 38,
+            "resource": 7
+        },
+        "activity_types": {
+            "forum": 6,
+            "qbank": 2,
+            "lti": 1,
+            "quiz": 20,
+            "hvp": 6,
+            "assign": 3
+        },
+        "activities_with_completion": 18,
+        "completion_rate": 47.368421052631575
+    },
+    "hierarchy": {
+        "id": 0,
+        "name": "Tin 12 - Định hướng Khoa học Máy tính",
+        "type": "course",
+        "level": 0,
+        "metadata": {
+            "total_sections": 12
+        },
+        "children": [
+            {
+                "id": 12,
+                "name": "General",
+                "type": "section",
+                "level": 1,
+                "metadata": {
+                    "section": 0,
+                    "visible": 1,
+                    "summary": "",
+                    "component": null,
+                    "itemid": null,
+                    "hiddenbynumsections": 0
+                },
+                "children": [
+                    {
+                        "id": 46,
+                        "name": "Announcements",
+                        "type": "activity",
+                        "level": 2,
+                        "metadata": {
+                            "modname": "forum",
+                            "instance": 2,
+                            "url": "http://139.99.103.223:9090/mod/forum/view.php?id=46",
+                            "visible": 1,
+                            "purpose": "collaboration",
+                            "completion": 0,
+                            "availability": null,
+                            "indent": 0,
+                            "contextid": 278,
+                            "contents": [],
+                            "completiondata": {}
+                        },
+                        "children": []
+                    },
+                    {
+                        "id": 47,
+                        "name": "Tin 12 - Định hướng Khoa học Máy tính course question bank",
+                        "type": "activity",
+                        "level": 2,
+                        "metadata": {
+                            "modname": "qbank",
+                            "instance": 2,
+                            "url": "http://139.99.103.223:9090/mod/qbank/view.php?id=47",
+                            "visible": 0,
+                            "purpose": "content",
+                            "completion": 0,
+                            "availability": null,
+                            "indent": 0,
+                            "contextid": 279,
+                            "contents": [],
+                            "completiondata": {}
+                        },
+                        "children": []
+                    },
+                    {
+                        "id": 91,
+                        "name": "adaptive learning",
+                        "type": "activity",
+                        "level": 2,
+                        "metadata": {
+                            "modname": "lti",
+                            "instance": 6,
+                            "url": "http://139.99.103.223:9090/mod/lti/view.php?id=91",
+                            "visible": 1,
+                            "purpose": "other",
+                            "completion": 0,
+                            "availability": null,
+                            "indent": 0,
+                            "contextid": 323,
+                            "contents": [],
+                            "completiondata": {}
+                        },
+                        "children": []
+                    },
+                    {
+                        "id": 106,
+                        "name": "Kiểm tra GK",
+                        "type": "activity",
+                        "level": 2,
+                        "metadata": {
+                            "modname": "qbank",
+                            "instance": 3,
+                            "url": "http://139.99.103.223:9090/mod/qbank/view.php?id=106",
+                            "visible": 1,
+                            "purpose": "content",
+                            "completion": 0,
+                            "availability": null,
+                            "indent": 0,
+                            "contextid": 636,
+                            "contents": [],
+                            "completiondata": {}
+                        },
+                        "children": []
+                    },
+                    {
+                        "id": 112,
+                        "name": "Chat bot",
+                        "type": "resource",
+                        "level": 2,
+                        "metadata": {
+                            "modname": "page",
+                            "instance": 1,
+                            "url": "http://139.99.103.223:9090/mod/page/view.php?id=112",
+                            "visible": 1,
+                            "purpose": "content",
+                            "completion": 0,
+                            "availability": null,
+                            "indent": 0,
+                            "contextid": 642,
+                            "contents": [
+                                {
+                                    "type": "file",
+                                    "filename": "index.html",
+                                    "filepath": "/",
+                                    "filesize": 0,
+                                    "fileurl": "http://139.99.103.223:9090/webservice/pluginfile.php/642/mod_page/content/index.html?forcedownload=1",
+                                    "timecreated": null,
+                                    "timemodified": 1762963092,
+                                    "sortorder": 1,
+                                    "userid": null,
+                                    "author": null,
+                                    "license": null
+                                }
+                            ],
+                            "completiondata": {}
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 13,
+                "name": "Chủ đề 1: MÁY TÍNH VÀ XÃ HỘI TRI THỨC",
+                "type": "section",
+                "level": 1,
+                "metadata": {
+                    "section": 1,
+                    "visible": 1,
+                    "summary": "",
+                    "component": null,
+                    "itemid": null,
+                    "hiddenbynumsections": 0
+                },
+                "children": [
+                    {
+                        "id": 14,
+                        "name": "Bài 1: Làm quen với Trí tuệ nhân tạo",
+                        "type": "subsection",
+                        "level": 2,
+                        "metadata": {
+                            "section": 11,
+                            "visible": 1,
+                            "summary": "",
+                            "component": "mod_subsection",
+                            "itemid": 7,
+                            "hiddenbynumsections": 0
+                        },
+                        "children": [
+                            {
+                                "id": 54,
+                                "name": "SGK_CS_Bai1",
+                                "type": "resource",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "resource",
+                                    "instance": 7,
+                                    "url": "http://139.99.103.223:9090/mod/resource/view.php?id=54",
+                                    "visible": 1,
+                                    "purpose": "content",
+                                    "completion": 2,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 286,
+                                    "contents": [
+                                        {
+                                            "type": "file",
+                                            "filename": "SGK_CS_Bai1.pdf",
+                                            "filepath": "/",
+                                            "filesize": 5633933,
+                                            "fileurl": "http://139.99.103.223:9090/webservice/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf?forcedownload=1",
+                                            "timecreated": 1761447454,
+                                            "timemodified": 1761447454,
+                                            "sortorder": 1,
+                                            "mimetype": "application/pdf",
+                                            "isexternalfile": false,
+                                            "userid": 2,
+                                            "author": "Nguyen Loc",
+                                            "license": "unknown"
+                                        }
+                                    ],
+                                    "completiondata": {
+                                        "state": 1,
+                                        "timecompleted": 1761447476,
+                                        "overrideby": null,
+                                        "valueused": false,
+                                        "hascompletion": true,
+                                        "isautomatic": true,
+                                        "istrackeduser": true,
+                                        "uservisible": true,
+                                        "details": [
+                                            {
+                                                "rulename": "completionview",
+                                                "rulevalue": {
+                                                    "status": 1,
+                                                    "description": "View"
+                                                }
+                                            }
+                                        ],
+                                        "isoverallcomplete": true
+                                    }
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 56,
+                                "name": "bài kiểm tra bài 1 - easy",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "quiz",
+                                    "instance": 27,
+                                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=56",
+                                    "visible": 1,
+                                    "purpose": "assessment",
+                                    "completion": 2,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 288,
+                                    "contents": [],
+                                    "completiondata": {
+                                        "state": 0,
+                                        "timecompleted": 0,
+                                        "overrideby": null,
+                                        "valueused": false,
+                                        "hascompletion": true,
+                                        "isautomatic": true,
+                                        "istrackeduser": true,
+                                        "uservisible": true,
+                                        "details": [
+                                            {
+                                                "rulename": "completionview",
+                                                "rulevalue": {
+                                                    "status": 1,
+                                                    "description": "View"
+                                                }
+                                            },
+                                            {
+                                                "rulename": "completionusegrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a grade"
+                                                }
+                                            },
+                                            {
+                                                "rulename": "completionpassgrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a passing grade"
+                                                }
+                                            },
+                                            {
+                                                "rulename": "completionpassorattemptsexhausted",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a pass grade or complete all available attempts"
+                                                }
+                                            }
+                                        ],
+                                        "isoverallcomplete": false
+                                    }
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 57,
+                                "name": "bài kiểm tra bài 1 - medium",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "quiz",
+                                    "instance": 28,
+                                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=57",
+                                    "visible": 1,
+                                    "purpose": "assessment",
+                                    "completion": 2,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 289,
+                                    "contents": [],
+                                    "completiondata": {
+                                        "state": 0,
+                                        "timecompleted": 0,
+                                        "overrideby": null,
+                                        "valueused": false,
+                                        "hascompletion": true,
+                                        "isautomatic": true,
+                                        "istrackeduser": true,
+                                        "uservisible": true,
+                                        "details": [
+                                            {
+                                                "rulename": "completionusegrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a grade"
+                                                }
+                                            },
+                                            {
+                                                "rulename": "completionpassgrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a passing grade"
+                                                }
+                                            }
+                                        ],
+                                        "isoverallcomplete": false
+                                    }
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 58,
+                                "name": "bài kiểm tra bài 1 - hard",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "quiz",
+                                    "instance": 29,
+                                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=58",
+                                    "visible": 1,
+                                    "purpose": "assessment",
+                                    "completion": 2,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 290,
+                                    "contents": [],
+                                    "completiondata": {
+                                        "state": 0,
+                                        "timecompleted": 0,
+                                        "overrideby": null,
+                                        "valueused": false,
+                                        "hascompletion": true,
+                                        "isautomatic": true,
+                                        "istrackeduser": true,
+                                        "uservisible": true,
+                                        "details": [
+                                            {
+                                                "rulename": "completionusegrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a grade"
+                                                }
+                                            },
+                                            {
+                                                "rulename": "completionpassgrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a passing grade"
+                                                }
+                                            }
+                                        ],
+                                        "isoverallcomplete": false
+                                    }
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 98,
+                                "name": "Video bài giảng 1",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "hvp",
+                                    "instance": 1,
+                                    "url": "http://139.99.103.223:9090/mod/hvp/view.php?id=98",
+                                    "visible": 1,
+                                    "purpose": "other",
+                                    "completion": 0,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 628,
+                                    "contents": [],
+                                    "completiondata": {}
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 15,
+                        "name": "Bài 2: Trí tuệ nhân tạo trong khoa học và đời sống",
+                        "type": "subsection",
+                        "level": 2,
+                        "metadata": {
+                            "section": 10,
+                            "visible": 1,
+                            "summary": "",
+                            "component": "mod_subsection",
+                            "itemid": 8,
+                            "hiddenbynumsections": 0
+                        },
+                        "children": [
+                            {
+                                "id": 60,
+                                "name": "SGK_CS_Bai2",
+                                "type": "resource",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "resource",
+                                    "instance": 8,
+                                    "url": "http://139.99.103.223:9090/mod/resource/view.php?id=60",
+                                    "visible": 1,
+                                    "purpose": "content",
+                                    "completion": 2,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 292,
+                                    "contents": [
+                                        {
+                                            "type": "file",
+                                            "filename": "SGK_CS_Bai2.pdf",
+                                            "filepath": "/",
+                                            "filesize": 6429034,
+                                            "fileurl": "http://139.99.103.223:9090/webservice/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf?forcedownload=1",
+                                            "timecreated": 1761447458,
+                                            "timemodified": 1761447458,
+                                            "sortorder": 1,
+                                            "mimetype": "application/pdf",
+                                            "isexternalfile": false,
+                                            "userid": 2,
+                                            "author": "Nguyen Loc",
+                                            "license": "unknown"
+                                        }
+                                    ],
+                                    "completiondata": {
+                                        "state": 1,
+                                        "timecompleted": 1762873467,
+                                        "overrideby": null,
+                                        "valueused": false,
+                                        "hascompletion": true,
+                                        "isautomatic": true,
+                                        "istrackeduser": true,
+                                        "uservisible": true,
+                                        "details": [
+                                            {
+                                                "rulename": "completionview",
+                                                "rulevalue": {
+                                                    "status": 1,
+                                                    "description": "View"
+                                                }
+                                            }
+                                        ],
+                                        "isoverallcomplete": true
+                                    }
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 99,
+                                "name": "Video bài giảng 2",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "hvp",
+                                    "instance": 2,
+                                    "url": "http://139.99.103.223:9090/mod/hvp/view.php?id=99",
+                                    "visible": 1,
+                                    "purpose": "other",
+                                    "completion": 0,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 629,
+                                    "contents": [],
+                                    "completiondata": {}
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 62,
+                                "name": "bài kiểm tra bài 2 - easy",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "quiz",
+                                    "instance": 30,
+                                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=62",
+                                    "visible": 1,
+                                    "purpose": "assessment",
+                                    "completion": 2,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 294,
+                                    "contents": [],
+                                    "completiondata": {
+                                        "state": 0,
+                                        "timecompleted": 0,
+                                        "overrideby": null,
+                                        "valueused": false,
+                                        "hascompletion": true,
+                                        "isautomatic": true,
+                                        "istrackeduser": true,
+                                        "uservisible": true,
+                                        "details": [
+                                            {
+                                                "rulename": "completionview",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "View"
+                                                }
+                                            },
+                                            {
+                                                "rulename": "completionusegrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a grade"
+                                                }
+                                            },
+                                            {
+                                                "rulename": "completionpassgrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a passing grade"
+                                                }
+                                            }
+                                        ],
+                                        "isoverallcomplete": false
+                                    }
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 63,
+                                "name": "bài kiểm tra bài 2 - medium",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "quiz",
+                                    "instance": 31,
+                                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=63",
+                                    "visible": 1,
+                                    "purpose": "assessment",
+                                    "completion": 2,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 295,
+                                    "contents": [],
+                                    "completiondata": {
+                                        "state": 0,
+                                        "timecompleted": 0,
+                                        "overrideby": null,
+                                        "valueused": false,
+                                        "hascompletion": true,
+                                        "isautomatic": true,
+                                        "istrackeduser": true,
+                                        "uservisible": true,
+                                        "details": [
+                                            {
+                                                "rulename": "completionusegrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a grade"
+                                                }
+                                            },
+                                            {
+                                                "rulename": "completionpassgrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a passing grade"
+                                                }
+                                            }
+                                        ],
+                                        "isoverallcomplete": false
+                                    }
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 64,
+                                "name": "bài kiểm tra bài 2 - hard",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "quiz",
+                                    "instance": 32,
+                                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=64",
+                                    "visible": 1,
+                                    "purpose": "assessment",
+                                    "completion": 2,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 296,
+                                    "contents": [],
+                                    "completiondata": {
+                                        "state": 0,
+                                        "timecompleted": 0,
+                                        "overrideby": null,
+                                        "valueused": false,
+                                        "hascompletion": true,
+                                        "isautomatic": true,
+                                        "istrackeduser": true,
+                                        "uservisible": true,
+                                        "details": [
+                                            {
+                                                "rulename": "completionusegrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a grade"
+                                                }
+                                            },
+                                            {
+                                                "rulename": "completionpassgrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a passing grade"
+                                                }
+                                            }
+                                        ],
+                                        "isoverallcomplete": false
+                                    }
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 92,
+                        "name": "AI có thay thế con người không?",
+                        "type": "activity",
+                        "level": 2,
+                        "metadata": {
+                            "modname": "forum",
+                            "instance": 3,
+                            "url": "http://139.99.103.223:9090/mod/forum/view.php?id=92",
+                            "visible": 1,
+                            "purpose": "collaboration",
+                            "completion": 0,
+                            "availability": null,
+                            "indent": 0,
+                            "contextid": 622,
+                            "contents": [],
+                            "completiondata": {}
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 16,
+                "name": "Chủ đề 2: MẠNG MÁY TÍNH VÀ INTERNET",
+                "type": "section",
+                "level": 1,
+                "metadata": {
+                    "section": 2,
+                    "visible": 1,
+                    "summary": "",
+                    "component": null,
+                    "itemid": null,
+                    "hiddenbynumsections": 0
+                },
+                "children": [
+                    {
+                        "id": 17,
+                        "name": "Bài 3: Một số thiết bị mạng thông dụng",
+                        "type": "subsection",
+                        "level": 2,
+                        "metadata": {
+                            "section": 9,
+                            "visible": 1,
+                            "summary": "",
+                            "component": "mod_subsection",
+                            "itemid": 9,
+                            "hiddenbynumsections": 0
+                        },
+                        "children": [
+                            {
+                                "id": 67,
+                                "name": "SGK_CS_Bai3",
+                                "type": "resource",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "resource",
+                                    "instance": 9,
+                                    "url": "http://139.99.103.223:9090/mod/resource/view.php?id=67",
+                                    "visible": 1,
+                                    "purpose": "content",
+                                    "completion": 1,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 299,
+                                    "contents": [
+                                        {
+                                            "type": "file",
+                                            "filename": "SGK_CS_Bai3.pdf",
+                                            "filepath": "/",
+                                            "filesize": 3374342,
+                                            "fileurl": "http://139.99.103.223:9090/webservice/pluginfile.php/299/mod_resource/content/2/SGK_CS_Bai3.pdf?forcedownload=1",
+                                            "timecreated": 1761447458,
+                                            "timemodified": 1761447458,
+                                            "sortorder": 1,
+                                            "mimetype": "application/pdf",
+                                            "isexternalfile": false,
+                                            "userid": 2,
+                                            "author": "Nguyen Loc",
+                                            "license": "unknown"
+                                        }
+                                    ],
+                                    "completiondata": {
+                                        "state": 0,
+                                        "timecompleted": 0,
+                                        "overrideby": null,
+                                        "valueused": false,
+                                        "hascompletion": true,
+                                        "isautomatic": false,
+                                        "istrackeduser": true,
+                                        "uservisible": true,
+                                        "details": [],
+                                        "isoverallcomplete": false
+                                    }
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 100,
+                                "name": "Video bài giảng 3",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "hvp",
+                                    "instance": 3,
+                                    "url": "http://139.99.103.223:9090/mod/hvp/view.php?id=100",
+                                    "visible": 1,
+                                    "purpose": "other",
+                                    "completion": 0,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 630,
+                                    "contents": [],
+                                    "completiondata": {}
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 68,
+                                "name": "Trắc nghiệm bài 3 - easy",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "quiz",
+                                    "instance": 33,
+                                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=68",
+                                    "visible": 1,
+                                    "purpose": "assessment",
+                                    "completion": 2,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 300,
+                                    "contents": [],
+                                    "completiondata": {
+                                        "state": 0,
+                                        "timecompleted": 0,
+                                        "overrideby": null,
+                                        "valueused": false,
+                                        "hascompletion": true,
+                                        "isautomatic": true,
+                                        "istrackeduser": true,
+                                        "uservisible": true,
+                                        "details": [
+                                            {
+                                                "rulename": "completionusegrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a grade"
+                                                }
+                                            },
+                                            {
+                                                "rulename": "completionpassgrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a passing grade"
+                                                }
+                                            }
+                                        ],
+                                        "isoverallcomplete": false
+                                    }
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 69,
+                                "name": "bài kiểm tra bài 3 - medium",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "quiz",
+                                    "instance": 34,
+                                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=69",
+                                    "visible": 1,
+                                    "purpose": "assessment",
+                                    "completion": 2,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 301,
+                                    "contents": [],
+                                    "completiondata": {
+                                        "state": 0,
+                                        "timecompleted": 0,
+                                        "overrideby": null,
+                                        "valueused": false,
+                                        "hascompletion": true,
+                                        "isautomatic": true,
+                                        "istrackeduser": true,
+                                        "uservisible": true,
+                                        "details": [
+                                            {
+                                                "rulename": "completionusegrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a grade"
+                                                }
+                                            }
+                                        ],
+                                        "isoverallcomplete": false
+                                    }
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 70,
+                                "name": "bài kiểm tra bài 3 - hard",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "quiz",
+                                    "instance": 35,
+                                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=70",
+                                    "visible": 1,
+                                    "purpose": "assessment",
+                                    "completion": 2,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 302,
+                                    "contents": [],
+                                    "completiondata": {
+                                        "state": 0,
+                                        "timecompleted": 0,
+                                        "overrideby": null,
+                                        "valueused": false,
+                                        "hascompletion": true,
+                                        "isautomatic": true,
+                                        "istrackeduser": true,
+                                        "uservisible": true,
+                                        "details": [
+                                            {
+                                                "rulename": "completionusegrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a grade"
+                                                }
+                                            },
+                                            {
+                                                "rulename": "completionpassgrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a passing grade"
+                                                }
+                                            }
+                                        ],
+                                        "isoverallcomplete": false
+                                    }
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 94,
+                                "name": "Ở nhà em có những thiết bị mạng nào?",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "forum",
+                                    "instance": 5,
+                                    "url": "http://139.99.103.223:9090/mod/forum/view.php?id=94",
+                                    "visible": 1,
+                                    "purpose": "collaboration",
+                                    "completion": 0,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 624,
+                                    "contents": [],
+                                    "completiondata": {}
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 18,
+                        "name": "Bài 4: Giao thức mạng",
+                        "type": "subsection",
+                        "level": 2,
+                        "metadata": {
+                            "section": 8,
+                            "visible": 1,
+                            "summary": "",
+                            "component": "mod_subsection",
+                            "itemid": 10,
+                            "hiddenbynumsections": 0
+                        },
+                        "children": [
+                            {
+                                "id": 73,
+                                "name": "SGK_CS_Bai4",
+                                "type": "resource",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "resource",
+                                    "instance": 10,
+                                    "url": "http://139.99.103.223:9090/mod/resource/view.php?id=73",
+                                    "visible": 1,
+                                    "purpose": "content",
+                                    "completion": 1,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 305,
+                                    "contents": [
+                                        {
+                                            "type": "file",
+                                            "filename": "SGK_CS_Bai4.pdf",
+                                            "filepath": "/",
+                                            "filesize": 2741972,
+                                            "fileurl": "http://139.99.103.223:9090/webservice/pluginfile.php/305/mod_resource/content/2/SGK_CS_Bai4.pdf?forcedownload=1",
+                                            "timecreated": 1761447458,
+                                            "timemodified": 1761447458,
+                                            "sortorder": 1,
+                                            "mimetype": "application/pdf",
+                                            "isexternalfile": false,
+                                            "userid": 2,
+                                            "author": "Nguyen Loc",
+                                            "license": "unknown"
+                                        }
+                                    ],
+                                    "completiondata": {
+                                        "state": 0,
+                                        "timecompleted": 0,
+                                        "overrideby": null,
+                                        "valueused": false,
+                                        "hascompletion": true,
+                                        "isautomatic": false,
+                                        "istrackeduser": true,
+                                        "uservisible": true,
+                                        "details": [],
+                                        "isoverallcomplete": false
+                                    }
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 74,
+                                "name": "Trắc nghiệm bài 4 - easy",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "quiz",
+                                    "instance": 36,
+                                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=74",
+                                    "visible": 1,
+                                    "purpose": "assessment",
+                                    "completion": 2,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 306,
+                                    "contents": [],
+                                    "completiondata": {
+                                        "state": 0,
+                                        "timecompleted": 0,
+                                        "overrideby": null,
+                                        "valueused": false,
+                                        "hascompletion": true,
+                                        "isautomatic": true,
+                                        "istrackeduser": true,
+                                        "uservisible": true,
+                                        "details": [
+                                            {
+                                                "rulename": "completionusegrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a grade"
+                                                }
+                                            },
+                                            {
+                                                "rulename": "completionpassgrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a passing grade"
+                                                }
+                                            }
+                                        ],
+                                        "isoverallcomplete": false
+                                    }
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 75,
+                                "name": "Bài kiểm tra bài 4 - medium",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "quiz",
+                                    "instance": 37,
+                                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=75",
+                                    "visible": 1,
+                                    "purpose": "assessment",
+                                    "completion": 2,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 307,
+                                    "contents": [],
+                                    "completiondata": {
+                                        "state": 0,
+                                        "timecompleted": 0,
+                                        "overrideby": null,
+                                        "valueused": false,
+                                        "hascompletion": true,
+                                        "isautomatic": true,
+                                        "istrackeduser": true,
+                                        "uservisible": true,
+                                        "details": [
+                                            {
+                                                "rulename": "completionusegrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a grade"
+                                                }
+                                            },
+                                            {
+                                                "rulename": "completionpassgrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a passing grade"
+                                                }
+                                            }
+                                        ],
+                                        "isoverallcomplete": false
+                                    }
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 76,
+                                "name": "Bài kiểm tra bài 4 - hard",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "quiz",
+                                    "instance": 38,
+                                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=76",
+                                    "visible": 1,
+                                    "purpose": "assessment",
+                                    "completion": 2,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 308,
+                                    "contents": [],
+                                    "completiondata": {
+                                        "state": 0,
+                                        "timecompleted": 0,
+                                        "overrideby": null,
+                                        "valueused": false,
+                                        "hascompletion": true,
+                                        "isautomatic": true,
+                                        "istrackeduser": true,
+                                        "uservisible": true,
+                                        "details": [
+                                            {
+                                                "rulename": "completionusegrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a grade"
+                                                }
+                                            },
+                                            {
+                                                "rulename": "completionpassgrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a passing grade"
+                                                }
+                                            }
+                                        ],
+                                        "isoverallcomplete": false
+                                    }
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 101,
+                                "name": "Video bài giảng 4",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "hvp",
+                                    "instance": 4,
+                                    "url": "http://139.99.103.223:9090/mod/hvp/view.php?id=101",
+                                    "visible": 1,
+                                    "purpose": "other",
+                                    "completion": 0,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 631,
+                                    "contents": [],
+                                    "completiondata": {}
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 19,
+                        "name": "Bài 5: Thực hành chia sẽ tài nguyên trên mạng",
+                        "type": "subsection",
+                        "level": 2,
+                        "metadata": {
+                            "section": 7,
+                            "visible": 1,
+                            "summary": "",
+                            "component": "mod_subsection",
+                            "itemid": 11,
+                            "hiddenbynumsections": 0
+                        },
+                        "children": [
+                            {
+                                "id": 79,
+                                "name": "SGK_CS_Bai5",
+                                "type": "resource",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "resource",
+                                    "instance": 11,
+                                    "url": "http://139.99.103.223:9090/mod/resource/view.php?id=79",
+                                    "visible": 1,
+                                    "purpose": "content",
+                                    "completion": 1,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 311,
+                                    "contents": [
+                                        {
+                                            "type": "file",
+                                            "filename": "SGK_CS_Bai5.pdf",
+                                            "filepath": "/",
+                                            "filesize": 3619697,
+                                            "fileurl": "http://139.99.103.223:9090/webservice/pluginfile.php/311/mod_resource/content/2/SGK_CS_Bai5.pdf?forcedownload=1",
+                                            "timecreated": 1761447458,
+                                            "timemodified": 1761447458,
+                                            "sortorder": 1,
+                                            "mimetype": "application/pdf",
+                                            "isexternalfile": false,
+                                            "userid": 2,
+                                            "author": "Nguyen Loc",
+                                            "license": "unknown"
+                                        }
+                                    ],
+                                    "completiondata": {
+                                        "state": 0,
+                                        "timecompleted": 0,
+                                        "overrideby": null,
+                                        "valueused": false,
+                                        "hascompletion": true,
+                                        "isautomatic": false,
+                                        "istrackeduser": true,
+                                        "uservisible": true,
+                                        "details": [],
+                                        "isoverallcomplete": false
+                                    }
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 103,
+                                "name": "Video bài giảng 5",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "hvp",
+                                    "instance": 6,
+                                    "url": "http://139.99.103.223:9090/mod/hvp/view.php?id=103",
+                                    "visible": 1,
+                                    "purpose": "other",
+                                    "completion": 0,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 633,
+                                    "contents": [],
+                                    "completiondata": {}
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 80,
+                                "name": "Trắc nghiệm bài 5 - easy",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "quiz",
+                                    "instance": 39,
+                                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=80",
+                                    "visible": 1,
+                                    "purpose": "assessment",
+                                    "completion": 2,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 312,
+                                    "contents": [],
+                                    "completiondata": {
+                                        "state": 0,
+                                        "timecompleted": 0,
+                                        "overrideby": null,
+                                        "valueused": false,
+                                        "hascompletion": true,
+                                        "isautomatic": true,
+                                        "istrackeduser": true,
+                                        "uservisible": true,
+                                        "details": [
+                                            {
+                                                "rulename": "completionusegrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a grade"
+                                                }
+                                            },
+                                            {
+                                                "rulename": "completionpassgrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a passing grade"
+                                                }
+                                            }
+                                        ],
+                                        "isoverallcomplete": false
+                                    }
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 81,
+                                "name": "Bài kiểm tra bài 5 - medium",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "quiz",
+                                    "instance": 40,
+                                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=81",
+                                    "visible": 1,
+                                    "purpose": "assessment",
+                                    "completion": 2,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 313,
+                                    "contents": [],
+                                    "completiondata": {
+                                        "state": 0,
+                                        "timecompleted": 0,
+                                        "overrideby": null,
+                                        "valueused": false,
+                                        "hascompletion": true,
+                                        "isautomatic": true,
+                                        "istrackeduser": true,
+                                        "uservisible": true,
+                                        "details": [
+                                            {
+                                                "rulename": "completionusegrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a grade"
+                                                }
+                                            },
+                                            {
+                                                "rulename": "completionpassgrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a passing grade"
+                                                }
+                                            }
+                                        ],
+                                        "isoverallcomplete": false
+                                    }
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 82,
+                                "name": "Bài kiểm tra bài 5 - hard",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "quiz",
+                                    "instance": 41,
+                                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=82",
+                                    "visible": 1,
+                                    "purpose": "assessment",
+                                    "completion": 2,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 314,
+                                    "contents": [],
+                                    "completiondata": {
+                                        "state": 0,
+                                        "timecompleted": 0,
+                                        "overrideby": null,
+                                        "valueused": false,
+                                        "hascompletion": true,
+                                        "isautomatic": true,
+                                        "istrackeduser": true,
+                                        "uservisible": true,
+                                        "details": [
+                                            {
+                                                "rulename": "completionminattempts",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Make attempts: 1"
+                                                }
+                                            },
+                                            {
+                                                "rulename": "completionusegrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a grade"
+                                                }
+                                            },
+                                            {
+                                                "rulename": "completionpassgrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a passing grade"
+                                                }
+                                            }
+                                        ],
+                                        "isoverallcomplete": false
+                                    }
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 95,
+                                "name": "chia sẻ bản vẽ",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "forum",
+                                    "instance": 6,
+                                    "url": "http://139.99.103.223:9090/mod/forum/view.php?id=95",
+                                    "visible": 1,
+                                    "purpose": "collaboration",
+                                    "completion": 0,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 625,
+                                    "contents": [],
+                                    "completiondata": {}
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 24,
+                "name": "Kiểm tra giữa kỳ",
+                "type": "section",
+                "level": 1,
+                "metadata": {
+                    "section": 3,
+                    "visible": 1,
+                    "summary": "",
+                    "component": null,
+                    "itemid": null,
+                    "hiddenbynumsections": 0
+                },
+                "children": [
+                    {
+                        "id": 107,
+                        "name": "Kiểm tra giữa kỳ, 45 phút",
+                        "type": "activity",
+                        "level": 2,
+                        "metadata": {
+                            "modname": "quiz",
+                            "instance": 46,
+                            "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=107",
+                            "visible": 1,
+                            "purpose": "assessment",
+                            "completion": 0,
+                            "availability": null,
+                            "indent": 0,
+                            "contextid": 637,
+                            "contents": [],
+                            "completiondata": {}
+                        },
+                        "children": []
+                    },
+                    {
+                        "id": 109,
+                        "name": "Câu 1",
+                        "type": "activity",
+                        "level": 2,
+                        "metadata": {
+                            "modname": "assign",
+                            "instance": 2,
+                            "url": "http://139.99.103.223:9090/mod/assign/view.php?id=109",
+                            "visible": 1,
+                            "purpose": "assessment",
+                            "completion": 0,
+                            "availability": null,
+                            "indent": 0,
+                            "contextid": 639,
+                            "contents": [],
+                            "completiondata": {}
+                        },
+                        "children": []
+                    },
+                    {
+                        "id": 110,
+                        "name": "Câu 2",
+                        "type": "activity",
+                        "level": 2,
+                        "metadata": {
+                            "modname": "assign",
+                            "instance": 3,
+                            "url": "http://139.99.103.223:9090/mod/assign/view.php?id=110",
+                            "visible": 1,
+                            "purpose": "assessment",
+                            "completion": 0,
+                            "availability": null,
+                            "indent": 0,
+                            "contextid": 640,
+                            "contents": [],
+                            "completiondata": {}
+                        },
+                        "children": []
+                    },
+                    {
+                        "id": 111,
+                        "name": "Câu 3",
+                        "type": "activity",
+                        "level": 2,
+                        "metadata": {
+                            "modname": "assign",
+                            "instance": 4,
+                            "url": "http://139.99.103.223:9090/mod/assign/view.php?id=111",
+                            "visible": 1,
+                            "purpose": "assessment",
+                            "completion": 0,
+                            "availability": null,
+                            "indent": 0,
+                            "contextid": 641,
+                            "contents": [],
+                            "completiondata": {}
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 20,
+                "name": "Chủ đề 3: ĐẠO ĐỨC, PHÁT LUẬT VÀ VĂN HOÁ TRONG MÔI TRƯỜNG SỐ",
+                "type": "section",
+                "level": 1,
+                "metadata": {
+                    "section": 4,
+                    "visible": 1,
+                    "summary": "",
+                    "component": null,
+                    "itemid": null,
+                    "hiddenbynumsections": 0
+                },
+                "children": [
+                    {
+                        "id": 21,
+                        "name": "Bài 6: Giao tiếp và ứng xử trong không gian mạng",
+                        "type": "subsection",
+                        "level": 2,
+                        "metadata": {
+                            "section": 6,
+                            "visible": 1,
+                            "summary": "",
+                            "component": "mod_subsection",
+                            "itemid": 12,
+                            "hiddenbynumsections": 0
+                        },
+                        "children": [
+                            {
+                                "id": 85,
+                                "name": "SGK_CS_Bai6",
+                                "type": "resource",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "resource",
+                                    "instance": 12,
+                                    "url": "http://139.99.103.223:9090/mod/resource/view.php?id=85",
+                                    "visible": 1,
+                                    "purpose": "content",
+                                    "completion": 1,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 317,
+                                    "contents": [
+                                        {
+                                            "type": "file",
+                                            "filename": "SGK_CS_Bai6.pdf",
+                                            "filepath": "/",
+                                            "filesize": 2717822,
+                                            "fileurl": "http://139.99.103.223:9090/webservice/pluginfile.php/317/mod_resource/content/2/SGK_CS_Bai6.pdf?forcedownload=1",
+                                            "timecreated": 1761447459,
+                                            "timemodified": 1761447459,
+                                            "sortorder": 1,
+                                            "mimetype": "application/pdf",
+                                            "isexternalfile": false,
+                                            "userid": 2,
+                                            "author": "Nguyen Loc",
+                                            "license": "unknown"
+                                        }
+                                    ],
+                                    "completiondata": {
+                                        "state": 0,
+                                        "timecompleted": 0,
+                                        "overrideby": null,
+                                        "valueused": false,
+                                        "hascompletion": true,
+                                        "isautomatic": false,
+                                        "istrackeduser": true,
+                                        "uservisible": true,
+                                        "details": [],
+                                        "isoverallcomplete": false
+                                    }
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 104,
+                                "name": "Video bài giảng 6",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "hvp",
+                                    "instance": 7,
+                                    "url": "http://139.99.103.223:9090/mod/hvp/view.php?id=104",
+                                    "visible": 1,
+                                    "purpose": "other",
+                                    "completion": 0,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 634,
+                                    "contents": [],
+                                    "completiondata": {}
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 86,
+                                "name": "Trắc nghiệm bài 6 - easy",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "quiz",
+                                    "instance": 42,
+                                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=86",
+                                    "visible": 1,
+                                    "purpose": "assessment",
+                                    "completion": 2,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 318,
+                                    "contents": [],
+                                    "completiondata": {
+                                        "state": 0,
+                                        "timecompleted": 0,
+                                        "overrideby": null,
+                                        "valueused": false,
+                                        "hascompletion": true,
+                                        "isautomatic": true,
+                                        "istrackeduser": true,
+                                        "uservisible": true,
+                                        "details": [
+                                            {
+                                                "rulename": "completionusegrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a grade"
+                                                }
+                                            }
+                                        ],
+                                        "isoverallcomplete": false
+                                    }
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 87,
+                                "name": "Bài kiểm tra bài 6 - medium",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "quiz",
+                                    "instance": 43,
+                                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=87",
+                                    "visible": 1,
+                                    "purpose": "assessment",
+                                    "completion": 2,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 319,
+                                    "contents": [],
+                                    "completiondata": {
+                                        "state": 0,
+                                        "timecompleted": 0,
+                                        "overrideby": null,
+                                        "valueused": false,
+                                        "hascompletion": true,
+                                        "isautomatic": true,
+                                        "istrackeduser": true,
+                                        "uservisible": true,
+                                        "details": [
+                                            {
+                                                "rulename": "completionusegrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a grade"
+                                                }
+                                            },
+                                            {
+                                                "rulename": "completionpassgrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a passing grade"
+                                                }
+                                            }
+                                        ],
+                                        "isoverallcomplete": false
+                                    }
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 88,
+                                "name": "Bài kiểm tra bài 6 - hard",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "quiz",
+                                    "instance": 44,
+                                    "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=88",
+                                    "visible": 1,
+                                    "purpose": "assessment",
+                                    "completion": 2,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 320,
+                                    "contents": [],
+                                    "completiondata": {
+                                        "state": 0,
+                                        "timecompleted": 0,
+                                        "overrideby": null,
+                                        "valueused": false,
+                                        "hascompletion": true,
+                                        "isautomatic": true,
+                                        "istrackeduser": true,
+                                        "uservisible": true,
+                                        "details": [
+                                            {
+                                                "rulename": "completionusegrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a grade"
+                                                }
+                                            },
+                                            {
+                                                "rulename": "completionpassgrade",
+                                                "rulevalue": {
+                                                    "status": 0,
+                                                    "description": "Receive a passing grade"
+                                                }
+                                            }
+                                        ],
+                                        "isoverallcomplete": false
+                                    }
+                                },
+                                "children": []
+                            },
+                            {
+                                "id": 93,
+                                "name": "thảo luận tình huống đạo đức số",
+                                "type": "activity",
+                                "level": 3,
+                                "metadata": {
+                                    "modname": "forum",
+                                    "instance": 4,
+                                    "url": "http://139.99.103.223:9090/mod/forum/view.php?id=93",
+                                    "visible": 1,
+                                    "purpose": "collaboration",
+                                    "completion": 0,
+                                    "availability": null,
+                                    "indent": 0,
+                                    "contextid": 623,
+                                    "contents": [],
+                                    "completiondata": {}
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 23,
+                "name": "Chủ đề 4: GIẢI QUYẾT VẤN ĐỀ VỚI SỰ TRỢ GIÚP CỦA MÁY TÍNH",
+                "type": "section",
+                "level": 1,
+                "metadata": {
+                    "section": 5,
+                    "visible": 1,
+                    "summary": "",
+                    "component": null,
+                    "itemid": null,
+                    "hiddenbynumsections": 0
+                },
+                "children": [
+                    {
+                        "id": 96,
+                        "name": "ML ứng dụng trong y tế, nông nghiệp",
+                        "type": "activity",
+                        "level": 2,
+                        "metadata": {
+                            "modname": "forum",
+                            "instance": 7,
+                            "url": "http://139.99.103.223:9090/mod/forum/view.php?id=96",
+                            "visible": 1,
+                            "purpose": "collaboration",
+                            "completion": 0,
+                            "availability": null,
+                            "indent": 0,
+                            "contextid": 626,
+                            "contents": [],
+                            "completiondata": {}
+                        },
+                        "children": []
+                    },
+                    {
+                        "id": 105,
+                        "name": "quiz test",
+                        "type": "activity",
+                        "level": 2,
+                        "metadata": {
+                            "modname": "quiz",
+                            "instance": 45,
+                            "url": "http://139.99.103.223:9090/mod/quiz/view.php?id=105",
+                            "visible": 1,
+                            "purpose": "assessment",
+                            "completion": 0,
+                            "availability": null,
+                            "indent": 0,
+                            "contextid": 635,
+                            "contents": [],
+                            "completiondata": {}
+                        },
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    }
+}

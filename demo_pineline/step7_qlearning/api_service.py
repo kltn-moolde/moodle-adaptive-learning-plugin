@@ -12,28 +12,22 @@ Run: uvicorn api_service:app --reload --port 8080
 """
 import sys
 from pathlib import Path
-from typing import Any, Dict, List, Optional
 
 HERE = Path(__file__).resolve().parent
 if str(HERE) not in sys.path:
     sys.path.insert(0, str(HERE))
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
 
-# Import services
-from services.model_loader import ModelLoader
-from services.cluster_service import ClusterService
-from services.recommendation_service import RecommendationService
+# Import dependencies to initialize services
+from api import dependencies  # noqa: F401
 
-# =============================================================================
-# Configuration
-# =============================================================================
+# Import routes
+from api.routes import health, qtable, recommendations, webhook, po_lo, midterm_weights
 
-MODEL_PATH = HERE / 'models' / 'qtable_best.pkl'
-COURSE_PATH = HERE / 'data' / 'course_structure.json'
-CLUSTER_PROFILES_PATH = HERE / 'data' / 'cluster_profiles.json'
+# Import config for startup message
+from api.config import MODEL_PATH
 
 # =============================================================================
 # FastAPI App Setup
@@ -55,206 +49,19 @@ app.add_middleware(
 )
 
 # =============================================================================
-# Request/Response Models
+# Register Routes
 # =============================================================================
 
-class RecommendRequest(BaseModel):
-    """Request model for recommendations"""
-    student_id: Optional[int] = None
-    features: Optional[Dict[str, Any]] = None
-    state: Optional[List[float]] = None
-    top_k: int = 3
-    exclude_action_ids: Optional[List[int]] = None
-
-
-class RecommendResponse(BaseModel):
-    """Response model for recommendations"""
-    success: bool
-    student_id: Optional[int]
-    cluster_id: Optional[int]
-    cluster_name: Optional[str]
-    state_vector: List[float]
-    state_description: Dict[str, Any]
-    recommendations: List[Dict[str, Any]]
-    model_info: Dict[str, Any]
+app.include_router(health.router)
+app.include_router(qtable.router)
+app.include_router(recommendations.router)
+app.include_router(webhook.router)
+app.include_router(po_lo.router)
+app.include_router(midterm_weights.router)
 
 # =============================================================================
-# Initialize Services (on startup)
+# Root Endpoint
 # =============================================================================
-
-# Model loader service
-model_loader = ModelLoader(
-    model_path=MODEL_PATH,
-    course_path=COURSE_PATH,
-    cluster_profiles_path=CLUSTER_PROFILES_PATH
-)
-
-# Load all components
-model_loader.load_all(verbose=True)
-
-# Initialize other services
-cluster_service = ClusterService(cluster_profiles=model_loader.cluster_profiles)
-recommendation_service = RecommendationService(
-    agent=model_loader.agent,
-    action_space=model_loader.action_space,
-    state_builder=model_loader.state_builder
-)
-
-# =============================================================================
-# API Endpoints
-# =============================================================================
-
-@app.get('/api/health')
-def health_check():
-    """Health check endpoint"""
-    return {
-        'status': 'ok',
-        'model_loaded': model_loader.agent is not None,
-        'n_actions': model_loader.agent.n_actions if model_loader.agent else 0,
-        'n_states_in_qtable': len(model_loader.agent.q_table) if model_loader.agent else 0
-    }
-
-
-@app.get('/api/model-info')
-def get_model_info():
-    """Get detailed model information"""
-    return model_loader.get_model_info()
-
-
-@app.post('/api/recommend', response_model=RecommendResponse)
-def recommend_learning_path(request: RecommendRequest):
-    """
-    Generate learning path recommendations
-    
-    Accepts either:
-    1. features dict (will predict cluster and build state)
-    2. state vector (will use directly)
-    """
-    # Determine state
-    if request.state:
-        # Use provided state directly
-        state = tuple(request.state)
-        cluster_id = int(state[0])
-        cluster_name = f'Cluster {cluster_id}'
-        
-    elif request.features:
-        # Predict cluster from features
-        cluster_id, cluster_name = cluster_service.find_closest_cluster(request.features)
-        
-        # Build state from features
-        state = recommendation_service.build_state_from_features(
-            features=request.features,
-            cluster_id=cluster_id
-        )
-        
-        if state is None:
-            raise HTTPException(
-                status_code=400,
-                detail='Failed to build state from features'
-            )
-    else:
-        raise HTTPException(
-            status_code=400,
-            detail='Either features or state must be provided'
-        )
-    
-    # Get recommendations
-    recommendations = recommendation_service.get_recommendations(
-        state=state,
-        cluster_id=cluster_id,
-        top_k=request.top_k,
-        exclude_action_ids=request.exclude_action_ids
-    )
-    
-    # Get state description
-    state_description = recommendation_service.get_state_description(state)
-    
-    # Get model info
-    model_info = {
-        'model_version': 'V2',
-        'n_states_in_qtable': len(model_loader.agent.q_table) if model_loader.agent else 0
-    }
-    
-    return RecommendResponse(
-        success=True,
-        student_id=request.student_id,
-        cluster_id=cluster_id,
-        cluster_name=cluster_name,
-        state_vector=list(state),
-        state_description=state_description,
-        recommendations=recommendations,
-        model_info=model_info
-    )
-
-
-@app.get('/api/qtable/states/positive')
-def get_top_positive_states(top_n: int = 10):
-    """
-    Get top N states with highest Q-values from Q-table
-    
-    Args:
-        top_n: Number of top states to return (default: 10)
-    
-    Returns:
-        List of states with their max Q-values and recommendations
-    """
-    if not model_loader.agent or not model_loader.agent.q_table:
-        raise HTTPException(status_code=503, detail="Model not loaded")
-    
-    # Get all states with their max Q-values
-    state_q_values = []
-    for state, q_values in model_loader.agent.q_table.items():
-        if isinstance(q_values, dict):
-            max_q = max(q_values.values())
-            avg_q = sum(q_values.values()) / len(q_values)
-        else:
-            # Fallback for unexpected format
-            max_q = float(q_values) if hasattr(q_values, '__float__') else 0.0
-            avg_q = max_q
-            
-        if max_q > 0:  # Only positive Q-values
-            state_q_values.append({
-                'state': list(state),
-                'max_q_value': float(max_q),
-                'avg_q_value': float(avg_q)
-            })
-    
-    # Sort by max Q-value descending
-    state_q_values.sort(key=lambda x: x['max_q_value'], reverse=True)
-    
-    # Get top N
-    top_states = state_q_values[:top_n]
-    
-    # Add state descriptions and recommendations for each
-    results = []
-    for item in top_states:
-        state = tuple(item['state'])
-        
-        # Get state description
-        state_desc = recommendation_service.get_state_description(state)
-        
-        # Get top 3 recommendations for this state
-        recommendations = recommendation_service.get_recommendations(
-            state=state,
-            cluster_id=int(state[0]),
-            top_k=3,
-            exclude_action_ids=None
-        )
-        
-        results.append({
-            'state': item['state'],
-            'max_q_value': item['max_q_value'],
-            'avg_q_value': item['avg_q_value'],
-            'state_description': state_desc,
-            'top_recommendations': recommendations
-        })
-    
-    return {
-        'total_positive_states': len(state_q_values),
-        'returned': len(results),
-        'top_states': results
-    }
-
 
 @app.get('/')
 def root():
@@ -266,7 +73,11 @@ def root():
             'health': '/api/health',
             'model_info': '/api/model-info',
             'recommend': '/api/recommend (POST)',
-            'top_states': '/api/qtable/states/positive?top_n=N'
+            'top_states': '/api/qtable/states/positive?top_n=N',
+            'webhook': '/webhook/moodle-events (POST) - NEW',
+            'get_recommendations': '/api/recommendations/{user_id}/{module_id} (GET) - NEW',
+            'po_lo': '/api/po-lo',
+            'midterm_weights': '/api/midterm-weights'
         }
     }
 
@@ -278,12 +89,13 @@ def root():
 if __name__ == '__main__':
     import uvicorn
     print("\n" + "="*70)
-    print("🚀 Starting Adaptive Learning API Server")
+    print("🚀 Starting Adaptive Learning API Server (with Webhook)")
     print("="*70)
     print(f"📊 Model: {MODEL_PATH}")
-    print(f"🎯 Q-table states: {len(model_loader.agent.q_table) if model_loader.agent else 0}")
+    print(f"🎯 Q-table states: {len(dependencies.model_loader.agent.q_table) if dependencies.model_loader.agent else 0}")
     print(f"🌐 Server: http://localhost:8080")
     print(f"📖 Docs: http://localhost:8080/docs")
+    print(f"🔗 Webhook: http://localhost:8080/webhook/moodle-events")
     print("="*70 + "\n")
     
     uvicorn.run(app, host='0.0.0.0', port=8080)

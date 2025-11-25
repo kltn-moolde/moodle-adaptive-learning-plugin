@@ -1,0 +1,259 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz>
+  <!--Câu 1-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 1: Python là gì?</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Python là gì?</p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>Một ngôn ngữ lập trình</text>
+      <feedback>
+        <text>Chính xác! Python là một ngôn ngữ lập trình bậc cao.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Một loài rắn</text>
+      <feedback>
+        <text>Không đúng. Đây là câu hỏi về lập trình Python.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Một hệ điều hành</text>
+      <feedback>
+        <text>Không đúng. Python là ngôn ngữ lập trình, không phải hệ điều hành.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Một framework web</text>
+      <feedback>
+        <text>Không đúng. Python là ngôn ngữ lập trình, Django mới là framework web.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+      <tag>
+        <text>python</text>
+      </tag>
+      <tag>
+        <text>programming</text>
+      </tag>
+      <tag>
+        <text>Python Basics</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 2-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 2: Biến trong Python</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Cách nào sau đây là đúng để khai báo biến trong Python?</p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>x = 10</text>
+      <feedback>
+        <text>Đúng rồi! Python không cần khai báo kiểu dữ liệu.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>int x = 10;</text>
+      <feedback>
+        <text>Sai. Đây là cú pháp của Java/C++, không phải Python.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>var x = 10;</text>
+      <feedback>
+        <text>Sai. Đây là cú pháp của JavaScript.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>dim x as integer</text>
+      <feedback>
+        <text>Sai. Đây là cú pháp của VB.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>easy</text>
+      </tag>
+      <tag>
+        <text>python</text>
+      </tag>
+      <tag>
+        <text>variables</text>
+      </tag>
+      <tag>
+        <text>Python Basics</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 3-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 3: List trong Python</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Cách nào để tạo một list trong Python?</p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>my_list = []</text>
+      <feedback>
+        <text>Đúng! Đây là cách tạo list trống trong Python.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>my_list = ()</text>
+      <feedback>
+        <text>Sai. Đây là cách tạo tuple, không phải list.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>my_list = {}</text>
+      <feedback>
+        <text>Sai. Đây là cách tạo dictionary, không phải list.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>my_list = new List()</text>
+      <feedback>
+        <text>Sai. Python không dùng từ khóa 'new'.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+      <tag>
+        <text>python</text>
+      </tag>
+      <tag>
+        <text>list</text>
+      </tag>
+      <tag>
+        <text>data-structures</text>
+      </tag>
+      <tag>
+        <text>Python Data Structures</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 4-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 4: Vòng lặp for</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Kết quả của đoạn code sau là gì?<br><code>for i in range(3):<br>&nbsp;&nbsp;print(i)</code></p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>0 1 2</text>
+      <feedback>
+        <text>Đúng! range(3) tạo ra chuỗi 0, 1, 2.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>1 2 3</text>
+      <feedback>
+        <text>Sai. range(3) bắt đầu từ 0, không phải 1.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>0 1 2 3</text>
+      <feedback>
+        <text>Sai. range(3) không bao gồm số 3.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>3</text>
+      <feedback>
+        <text>Sai. Vòng lặp sẽ chạy 3 lần, in ra các giá trị từ 0 đến 2.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>medium</text>
+      </tag>
+      <tag>
+        <text>python</text>
+      </tag>
+      <tag>
+        <text>loops</text>
+      </tag>
+      <tag>
+        <text>for-loop</text>
+      </tag>
+      <tag>
+        <text>Python Control Flow</text>
+      </tag>
+    </tags>
+  </question>
+  <!--Câu 5-->
+  <question type="multichoice">
+    <name>
+      <text>Câu hỏi 5: Dictionary</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Cách nào để truy cập giá trị của key 'name' trong dictionary <code>person = {'name': 'John', 'age': 30}</code>?</p>]]></text>
+    </questiontext>
+    <shuffleanswers>0</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>person['name']</text>
+      <feedback>
+        <text>Đúng! Đây là cách truy cập giá trị theo key trong dictionary.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>person.name</text>
+      <feedback>
+        <text>Sai. Cú pháp này dùng cho object attributes, không phải dictionary.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>person(name)</text>
+      <feedback>
+        <text>Sai. Đây không phải cú pháp hợp lệ trong Python.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>person-&gt;name</text>
+      <feedback>
+        <text>Sai. Đây là cú pháp của C/C++, không phải Python.</text>
+      </feedback>
+    </answer>
+    <tags>
+      <tag>
+        <text>hard</text>
+      </tag>
+      <tag>
+        <text>python</text>
+      </tag>
+      <tag>
+        <text>dictionary</text>
+      </tag>
+      <tag>
+        <text>Python Data Structures</text>
+      </tag>
+    </tags>
+  </question>
+</quiz>

@@ -1,0 +1,317 @@
+{
+  "simulation_metadata": {
+    "total_students": 3,
+    "students_config": [
+      {
+        "student_id": 1000,
+        "cluster": "weak",
+        "n_steps": 5
+      },
+      {
+        "student_id": 1001,
+        "cluster": "medium",
+        "n_steps": 5
+      },
+      {
+        "student_id": 1002,
+        "cluster": "strong",
+        "n_steps": 5
+      }
+    ],
+    "avg_reward": 8.492905705959883,
+    "avg_midterm_score": 8.583607016361622
+  },
+  "students": [
+    {
+      "student_id": 1000,
+      "cluster": "weak",
+      "total_steps": 5,
+      "total_reward": -0.8491374999999999,
+      "final_state": {
+        "module_idx": 0,
+        "progress": 0.45599999999999996,
+        "score": 0.5,
+        "avg_lo_mastery": 0.455021875
+      },
+      "lo_summary": {
+        "student_id": 1000,
+        "current_mastery": {
+          "LO1.1": 0.45754375,
+          "LO1.2": 0.4525,
+          "LO1.3": 0.4,
+          "LO2.1": 0.4,
+          "LO2.2": 0.4,
+          "LO2.3": 0.4,
+          "LO2.4": 0.4
+        },
+        "weak_los": [
+          {
+            "lo_id": "LO2.2",
+            "mastery": 0.4,
+            "weight": 0.25,
+            "description": "Thực hành và đánh giá kiến thức thiết bị mạng qua trắc nghiệm ở các mức độ."
+          },
+          {
+            "lo_id": "LO2.4",
+            "mastery": 0.4,
+            "weight": 0.25,
+            "description": "Đánh giá kỹ năng chia sẻ tài nguyên qua trắc nghiệm và diễn đàn."
+          },
+          {
+            "lo_id": "LO1.2",
+            "mastery": 0.4525,
+            "weight": 0.15,
+            "description": "Áp dụng kiến thức AI để đánh giá qua các bài kiểm tra ở mức độ easy, medium, hard."
+          },
+          {
+            "lo_id": "LO2.1",
+            "mastery": 0.4,
+            "weight": 0.1,
+            "description": "Mô tả các thiết bị mạng thông dụng qua tài liệu và video bài giảng."
+          },
+          {
+            "lo_id": "LO2.3",
+            "mastery": 0.4,
+            "weight": 0.1,
+            "description": "Hiểu và thực hành chia sẻ tài nguyên trên mạng qua tài liệu và video."
+          },
+          {
+            "lo_id": "LO1.1",
+            "mastery": 0.45754375,
+            "weight": 0.1,
+            "description": "Nhận biết và giải thích các khái niệm cơ bản về trí tuệ nhân tạo qua tài liệu SGK và video bài giảng."
+          },
+          {
+            "lo_id": "LO1.3",
+            "mastery": 0.4,
+            "weight": 0.05,
+            "description": "Thảo luận về tác động của AI đến con người qua diễn đàn."
+          }
+        ],
+        "midterm_prediction": {
+          "predicted_score": 8.2725875,
+          "predicted_percentage": 41.3629375,
+          "total_marks": 20,
+          "lo_breakdown": {
+            "LO1.1": {
+              "mastery": 0.45754375,
+              "weight": 0.1,
+              "score": 0.9150875000000002,
+              "description": "Nhận biết và giải thích các khái niệm cơ bản về trí tuệ nhân tạo qua tài liệu SGK và video bài giảng."
+            },
+            "LO1.2": {
+              "mastery": 0.4525,
+              "weight": 0.15,
+              "score": 1.3575000000000002,
+              "description": "Áp dụng kiến thức AI để đánh giá qua các bài kiểm tra ở mức độ easy, medium, hard."
+            },
+            "LO1.3": {
+              "mastery": 0.4,
+              "weight": 0.05,
+              "score": 0.4000000000000001,
+              "description": "Thảo luận về tác động của AI đến con người qua diễn đàn."
+            },
+            "LO2.1": {
+              "mastery": 0.4,
+              "weight": 0.1,
+              "score": 0.8000000000000002,
+              "description": "Mô tả các thiết bị mạng thông dụng qua tài liệu và video bài giảng."
+            },
+            "LO2.2": {
+              "mastery": 0.4,
+              "weight": 0.25,
+              "score": 2.0,
+              "description": "Thực hành và đánh giá kiến thức thiết bị mạng qua trắc nghiệm ở các mức độ."
+            },
+            "LO2.3": {
+              "mastery": 0.4,
+              "weight": 0.1,
+              "score": 0.8000000000000002,
+              "description": "Hiểu và thực hành chia sẻ tài nguyên trên mạng qua tài liệu và video."
+            },
+            "LO2.4": {
+              "mastery": 0.4,
+              "weight": 0.25,
+              "score": 2.0,
+              "description": "Đánh giá kỹ năng chia sẻ tài nguyên qua trắc nghiệm và diễn đàn."
+            }
+          },
+          "weak_los_count": 7,
+          "potential_improvement": 7.727412500000001,
+          "potential_score": 16.0,
+          "potential_percentage": 80.0
+        },
+        "comparison": {
+          "student_id": 1000,
+          "mastery_groups": {
+            "excellent": [],
+            "good": [],
+            "weak": [
+              {
+                "lo_id": "LO2.2",
+                "mastery": 0.4,
+                "weight": 0.25,
+                "priority": 0.15,
+                "description": "Thực hành và đánh giá kiến thức thiết bị mạng qua trắc nghiệm ở các mức độ."
+              },
+              {
+                "lo_id": "LO2.4",
+                "mastery": 0.4,
+                "weight": 0.25,
+                "priority": 0.15,
+                "description": "Đánh giá kỹ năng chia sẻ tài nguyên qua trắc nghiệm và diễn đàn."
+              },
+              {
+                "lo_id": "LO1.2",
+                "mastery": 0.4525,
+                "weight": 0.15,
+                "priority": 0.08212499999999999,
+                "description": "Áp dụng kiến thức AI để đánh giá qua các bài kiểm tra ở mức độ easy, medium, hard."
+              },
+              {
+                "lo_id": "LO2.1",
+                "mastery": 0.4,
+                "weight": 0.1,
+                "priority": 0.06,
+                "description": "Mô tả các thiết bị mạng thông dụng qua tài liệu và video bài giảng."
+              },
+              {
+                "lo_id": "LO2.3",
+                "mastery": 0.4,
+                "weight": 0.1,
+                "priority": 0.06,
+                "description": "Hiểu và thực hành chia sẻ tài nguyên trên mạng qua tài liệu và video."
+              },
+              {
+                "lo_id": "LO1.1",
+                "mastery": 0.45754375,
+                "weight": 0.1,
+                "priority": 0.054245625,
+                "description": "Nhận biết và giải thích các khái niệm cơ bản về trí tuệ nhân tạo qua tài liệu SGK và video bài giảng."
+              },
+              {
+                "lo_id": "LO1.3",
+                "mastery": 0.4,
+                "weight": 0.05,
+                "priority": 0.03,
+                "description": "Thảo luận về tác động của AI đến con người qua diễn đàn."
+              }
+            ],
+            "very_weak": []
+          },
+          "statistics": {
+            "total_los": 7,
+            "avg_mastery": 0.4157205357142857,
+            "min_mastery": 0.4,
+            "max_mastery": 0.45754375,
+            "std_mastery": 0.02489287466052878,
+            "excellent_count": 0,
+            "good_count": 0,
+            "weak_count": 7,
+            "very_weak_count": 0
+          }
+        },
+        "history_count": 4
+      },
+      "lo_comparison": {
+        "student_id": 1000,
+        "mastery_groups": {
+          "excellent": [],
+          "good": [],
+          "weak": [
+            {
+              "lo_id": "LO2.2",
+              "mastery": 0.4,
+              "weight": 0.25,
+              "priority": 0.15,
+              "description": "Thực hành và đánh giá kiến thức thiết bị mạng qua trắc nghiệm ở các mức độ."
+            },
+            {
+              "lo_id": "LO2.4",
+              "mastery": 0.4,
+              "weight": 0.25,
+              "priority": 0.15,
+              "description": "Đánh giá kỹ năng chia sẻ tài nguyên qua trắc nghiệm và diễn đàn."
+            },
+            {
+              "lo_id": "LO1.2",
+              "mastery": 0.4525,
+              "weight": 0.15,
+              "priority": 0.08212499999999999,
+              "description": "Áp dụng kiến thức AI để đánh giá qua các bài kiểm tra ở mức độ easy, medium, hard."
+            },
+            {
+              "lo_id": "LO2.1",
+              "mastery": 0.4,
+              "weight": 0.1,
+              "priority": 0.06,
+              "description": "Mô tả các thiết bị mạng thông dụng qua tài liệu và video bài giảng."
+            },
+            {
+              "lo_id": "LO2.3",
+              "mastery": 0.4,
+              "weight": 0.1,
+              "priority": 0.06,
+              "description": "Hiểu và thực hành chia sẻ tài nguyên trên mạng qua tài liệu và video."
+            },
+            {
+              "lo_id": "LO1.1",
+              "mastery": 0.45754375,
+              "weight": 0.1,
+              "priority": 0.054245625,
+              "description": "Nhận biết và giải thích các khái niệm cơ bản về trí tuệ nhân tạo qua tài liệu SGK và video bài giảng."
+            },
+            {
+              "lo_id": "LO1.3",
+              "mastery": 0.4,
+              "weight": 0.05,
+              "priority": 0.03,
+              "description": "Thảo luận về tác động của AI đến con người qua diễn đàn."
+            }
+          ],
+          "very_weak": []
+        },
+        "statistics": {
+          "total_los": 7,
+          "avg_mastery": 0.4157205357142857,
+          "min_mastery": 0.4,
+          "max_mastery": 0.45754375,
+          "std_mastery": 0.02489287466052878,
+          "excellent_count": 0,
+          "good_count": 0,
+          "weak_count": 7,
+          "very_weak_count": 0
+        }
+      },
+      "transitions": [
+        {
+          "step": 1,
+          "timestamp": 1,
+          "student_id": 1000,
+          "cluster_id": 0,
+          "state": {
+            "vector": [
+              0,
+              0,
+              0.25,
+              0.5,
+              0,
+              0,
+              0
+            ],
+            "description": {
+              "cluster": "weak",
+              "module": "module_0",
+              "progress": "25%",
+              "score": "50%",
+              "phase": "pre-learning",
+              "engagement": "low",
+              "frustration": 0
+            }
+          },
+          "action": {
+            "index": 1,
+            "type": "view_content",
+            "activity_id": 54,
+            "activity_name": "SGK_CS_Bai1",
+            "is_exploration": 
