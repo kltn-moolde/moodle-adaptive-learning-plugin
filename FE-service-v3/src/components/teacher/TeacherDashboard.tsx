@@ -151,7 +151,7 @@ export function TeacherDashboard() {
       setLoading(false);
     } catch (err) {
       console.error("Failed to fetch teacher dashboard data:", err);
-      setError("Unable to load data from Moodle. Showing demo data.");
+      setError("Không thể tải dữ liệu từ Moodle. Hiển thị dữ liệu mẫu.");
       setLoading(false);
     }
   }
@@ -201,10 +201,10 @@ export function TeacherDashboard() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Total Students</p>
+                <p className="text-sm text-muted-foreground">Tổng số học sinh</p>
                 <h3 className="text-3xl mt-1">{totalStudents}</h3>
                 <p className="text-xs text-primary mt-1">
-                  {totalStudents > 30 ? '+' : ''}{totalStudents - 29} from last month
+                  {totalStudents > 30 ? '+' : ''}{totalStudents - 29} từ tháng trước
                 </p>
               </div>
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -218,10 +218,10 @@ export function TeacherDashboard() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Today's Activity</p>
+                <p className="text-sm text-muted-foreground">Hoạt động hôm nay</p>
                 <h3 className="text-3xl mt-1">{activeToday}</h3>
                 <p className="text-xs text-primary mt-1">
-                  {Math.round((activeToday / totalStudents) * 100)}% engagement
+                  {Math.round((activeToday / totalStudents) * 100)}% tương tác
                 </p>
               </div>
               <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center">
@@ -235,10 +235,10 @@ export function TeacherDashboard() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Avg. Completion</p>
+                <p className="text-sm text-muted-foreground">Hoàn thành TB</p>
                 <h3 className="text-3xl mt-1">{avgCompletion}%</h3>
                 <p className="text-xs text-primary mt-1">
-                  {avgCompletion >= 70 ? 'On track' : 'Needs attention'}
+                  {avgCompletion >= 70 ? 'Đúng tiến độ' : 'Cần chú ý'}
                 </p>
               </div>
               <div className="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900 flex items-center justify-center">
@@ -252,9 +252,9 @@ export function TeacherDashboard() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Most Popular</p>
+                <p className="text-sm text-muted-foreground">Phổ biến nhất</p>
                 <h3 className="text-lg mt-1">{mostPopular.slice(0, 30)}</h3>
-                <p className="text-xs text-primary mt-1">Top viewed this week</p>
+                <p className="text-xs text-primary mt-1">Xem nhiều nhất tuần này</p>
               </div>
               <div className="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900 flex items-center justify-center">
                 <Award className="h-6 w-6 text-purple-600 dark:text-purple-400" />
@@ -274,12 +274,12 @@ export function TeacherDashboard() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Brain className="h-5 w-5 text-primary" />
-              AI Insights - Class Summary
+              Trợ lý AI cho lớp học của bạn
             </CardTitle>
-            <CardDescription>Personalized recommendations for your class</CardDescription>
+            <CardDescription>Xem tóm tắt kiến thức học sinh, tạo bộ câu hỏi trắc nghiệm với AI</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="bg-white dark:bg-slate-900 p-4 rounded-xl">
+            {/* <div className="bg-white dark:bg-slate-900 p-4 rounded-xl">
               <div className="flex gap-3">
                 <div className="text-2xl">🎯</div>
                 <div className="flex-1">
@@ -327,7 +327,13 @@ export function TeacherDashboard() {
                   </p>
                 </div>
               </div>
-            </div>
+            </div> */}
+            <iframe
+              src="https://udify.app/chatbot/L6SYlOVSHFBMet0i"
+              style={{ width: "100%", height: "80%", minHeight: "500px" }}
+              frameBorder="0"
+              allow="microphone"
+            />
           </CardContent>
         </Card>
       </motion.div>
@@ -341,8 +347,8 @@ export function TeacherDashboard() {
         >
           <Card className="rounded-2xl">
             <CardHeader>
-              <CardTitle>Class Performance Overview</CardTitle>
-              <CardDescription>Average scores by student</CardDescription>
+              <CardTitle>Tổng quan hiệu suất lớp học</CardTitle>
+              <CardDescription>Điểm trung bình của từng học sinh</CardDescription>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={300}>
@@ -366,8 +372,8 @@ export function TeacherDashboard() {
         >
           <Card className="rounded-2xl">
             <CardHeader>
-              <CardTitle>Activity Trend</CardTitle>
-              <CardDescription>Student engagement over 6 weeks</CardDescription>
+              <CardTitle>Xu hướng hoạt động</CardTitle>
+              <CardDescription>Mức độ tương tác của học sinh trong 6 tuần</CardDescription>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={300}>
@@ -399,8 +405,8 @@ export function TeacherDashboard() {
         >
           <Card className="rounded-2xl">
             <CardHeader>
-              <CardTitle>Course Completion Status</CardTitle>
-              <CardDescription>Distribution of student progress</CardDescription>
+              <CardTitle>Trạng thái hoàn thành khóa học</CardTitle>
+              <CardDescription>Phân bổ tiến độ học sinh</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="flex items-center justify-center">
@@ -449,9 +455,9 @@ export function TeacherDashboard() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <AlertCircle className="h-5 w-5 text-accent" />
-                Topics Requiring Attention
+                Chủ đề cần chú ý
               </CardTitle>
-              <CardDescription>Where students need more help</CardDescription>
+              <CardDescription>Nơi học sinh cần hỗ trợ thêm</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">

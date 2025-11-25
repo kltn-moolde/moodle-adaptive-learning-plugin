@@ -99,6 +99,7 @@ export function StudentDashboard() {
       if (courses.length > 0) {
         // Use first course for demo
         const course = courses[0];
+        console.log("Using course:", course);
         setCurrentCourse(course);
         setOverallProgress(course.progress || 75);
         
@@ -196,7 +197,7 @@ export function StudentDashboard() {
       setLoading(false);
     } catch (err) {
       console.error("Failed to fetch dashboard data:", err);
-      setError("Unable to load data from Moodle. Showing demo data.");
+      setError("Không thể tải dữ liệu từ Moodle. Hiển thị dữ liệu mẫu.");
       setLoading(false);
       // Keep mock data as fallback
     }
@@ -273,7 +274,7 @@ export function StudentDashboard() {
 
                 <div className="space-y-2">
                   <div className="flex items-center justify-between text-sm text-slate-700">
-                    <span>Overall Progress</span>
+                    <span>Tiến độ</span>
                     <span className="text-green-700 font-medium">{overallProgress}%</span>
                   </div>
                   <Progress value={overallProgress} className="h-2 bg-gray-200! [&>div]:bg-green-400" />
@@ -288,11 +289,11 @@ export function StudentDashboard() {
               <div className="hidden lg:flex flex-col gap-3">
                 <Badge className="bg-green-100 text-green-800 border-0 px-4 py-2 font-medium shadow-sm">
                   <Award className="h-4 w-4 mr-2 text-green-700" />
-                  12 Achievements
+                  12 Danh hiệu
                 </Badge>
                 <Badge className="bg-blue-100 text-blue-800 border-0 px-4 py-2 font-medium shadow-sm">
                   <TrendingUp className="h-4 w-4 mr-2 text-blue-700" />
-                  Rank #3 in Class
+                  Hạng #2 trong lớp
                 </Badge>
               </div>
             </div>
@@ -312,9 +313,9 @@ export function StudentDashboard() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Brain className="h-5 w-5 text-primary" />
-                AI Feedback
+                Phản hồi từ AI
               </CardTitle>
-              <CardDescription>Personalized insights for you</CardDescription>
+              <CardDescription>Gợi ý cá nhân hóa cho bạn</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950 dark:to-emerald-950 p-3 sm:p-4 rounded-xl border border-primary/20">
@@ -360,38 +361,38 @@ export function StudentDashboard() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <BookOpen className="h-5 w-5 text-primary" />
-                Next Lesson
+                Bài học tiếp theo
               </CardTitle>
-              <CardDescription>AI recommended for you</CardDescription>
+              <CardDescription>Đề xuất từ AI cho bạn</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="bg-secondary p-3 sm:p-4 rounded-xl mb-4">
                 <h3 className="mb-2 text-sm sm:text-base">{nextLesson.title}</h3>
                 <p className="text-xs sm:text-sm text-muted-foreground mb-4">
                   {nextLesson.status === "in-progress" 
-                    ? "Continue your learning journey with this module."
-                    : "Perfect for your current level!"}
+                    ? "Tiếp tục hành trình học tập với mô-đun này."
+                    : "Phù hợp với trình độ hiện tại của bạn!"}
                 </p>
                 <div className="flex flex-wrap items-center gap-2 text-xs mb-4">
                   <Badge variant="outline" className="border-primary text-primary text-xs">
-                    {nextLesson.status === "in-progress" ? "Continue" : "Start"}
+                    {nextLesson.status === "in-progress" ? "Tiếp tục" : "Bắt đầu"}
                   </Badge>
-                  <Badge variant="outline" className="text-xs">⏱️ 45 min</Badge>
+                  <Badge variant="outline" className="text-xs">⏱️ 45 phút</Badge>
                   {nextLesson.status === "completed" && (
-                    <Badge variant="outline" className="text-xs">✓ Completed: {nextLesson.score}%</Badge>
+                    <Badge variant="outline" className="text-xs">✓ Đã hoàn thành: {nextLesson.score}%</Badge>
                   )}
                 </div>
                 <Button className="w-full rounded-xl bg-primary hover:bg-primary/90 text-sm sm:text-base">
-                  {nextLesson.status === "in-progress" ? "Continue Learning →" : "Start Learning Now →"}
+                  {nextLesson.status === "in-progress" ? "Tiếp tục học →" : "Bắt đầu học ngay →"}
                 </Button>
               </div>
 
               <div className="space-y-2">
-                <p className="text-xs sm:text-sm text-muted-foreground">Learning objectives:</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">Mục tiêu học tập:</p>
                 <ul className="text-xs sm:text-sm space-y-1 ml-4">
-                  <li>✓ Understand conditional logic</li>
-                  <li>✓ Use if, elif, and else statements</li>
-                  <li>✓ Apply conditions in real scenarios</li>
+                  <li>✓ Hiểu logic điều kiện</li>
+                  <li>✓ Sử dụng câu lệnh if, elif và else</li>
+                  <li>✓ Áp dụng điều kiện trong tình huống thực tế</li>
                 </ul>
               </div>
             </CardContent>
@@ -409,8 +410,8 @@ export function StudentDashboard() {
         >
           <Card className="rounded-2xl">
             <CardHeader>
-              <CardTitle>Learning Progress</CardTitle>
-              <CardDescription>Your score over the past 6 weeks</CardDescription>
+              <CardTitle>Tiến độ học tập</CardTitle>
+              <CardDescription>Điểm số của bạn trong 6 tuần qua</CardDescription>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={250}>
@@ -441,8 +442,8 @@ export function StudentDashboard() {
         >
           <Card className="rounded-2xl">
             <CardHeader>
-              <CardTitle>Skills Analysis</CardTitle>
-              <CardDescription>Performance across different areas</CardDescription>
+              <CardTitle>Phân tích kỹ năng</CardTitle>
+              <CardDescription>Hiệu suất qua các lĩnh vực khác nhau</CardDescription>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={250}>
@@ -475,8 +476,8 @@ export function StudentDashboard() {
         >
           <Card className="rounded-2xl">
             <CardHeader>
-              <CardTitle>Weekly Activity</CardTitle>
-              <CardDescription>Study hours per day</CardDescription>
+              <CardTitle>Hoạt động hàng tuần</CardTitle>
+              <CardDescription>Số giờ học mỗi ngày</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="flex gap-2 justify-between">
@@ -511,8 +512,8 @@ export function StudentDashboard() {
         >
           <Card className="rounded-2xl">
             <CardHeader>
-              <CardTitle>Learning Path</CardTitle>
-              <CardDescription>Your personalized journey</CardDescription>
+              <CardTitle>Lộ trình học tập</CardTitle>
+              <CardDescription>Hành trình học tập cá nhân hóa của bạn</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">

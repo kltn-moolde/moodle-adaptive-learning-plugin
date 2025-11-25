@@ -188,7 +188,7 @@ export function CourseAnalytics() {
       setLoading(false);
     } catch (err) {
       console.error("Failed to fetch analytics data:", err);
-      setError("Unable to load analytics from Moodle. Showing demo data.");
+      setError("Không thể tải phân tích từ Moodle. Hiển thị dữ liệu mẫu.");
       setLoading(false);
     }
   }
@@ -238,9 +238,9 @@ export function CourseAnalytics() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Total Views</p>
+                <p className="text-sm text-muted-foreground">Tổng lượt xem</p>
                 <h3 className="text-3xl mt-1">{totalViews.toLocaleString()}</h3>
-                <p className="text-xs text-primary mt-1">All modules</p>
+                <p className="text-xs text-primary mt-1">Tất cả module</p>
               </div>
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
                 <Eye className="h-6 w-6 text-primary" />
@@ -253,9 +253,9 @@ export function CourseAnalytics() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Avg. View Time</p>
-                <h3 className="text-3xl mt-1">{avgViewTime}m</h3>
-                <p className="text-xs text-primary mt-1">Per student</p>
+                <p className="text-sm text-muted-foreground">Thời gian xem TB</p>
+                <h3 className="text-3xl mt-1">{avgViewTime}p</h3>
+                <p className="text-xs text-primary mt-1">Mỗi học sinh</p>
               </div>
               <div className="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900 flex items-center justify-center">
                 <Video className="h-6 w-6 text-purple-600 dark:text-purple-400" />
@@ -268,9 +268,9 @@ export function CourseAnalytics() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Assignments</p>
+                <p className="text-sm text-muted-foreground">Bài tập</p>
                 <h3 className="text-3xl mt-1">{assignmentsToday}</h3>
-                <p className="text-xs text-primary mt-1">Total available</p>
+                <p className="text-xs text-primary mt-1">Tổng số hiện có</p>
               </div>
               <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
                 <FileText className="h-6 w-6 text-blue-600 dark:text-blue-400" />
@@ -283,9 +283,9 @@ export function CourseAnalytics() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Quiz Pass Rate</p>
+                <p className="text-sm text-muted-foreground">Tỉ lệ đậu trắc nghiệm</p>
                 <h3 className="text-3xl mt-1">{quizPassRate}%</h3>
-                <p className="text-xs text-primary mt-1">Above threshold</p>
+                <p className="text-xs text-primary mt-1">Vượt ngưỡng</p>
               </div>
               <div className="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900 flex items-center justify-center">
                 <CheckSquare className="h-6 w-6 text-primary" />
@@ -304,8 +304,8 @@ export function CourseAnalytics() {
         >
           <Card className="rounded-2xl">
             <CardHeader>
-              <CardTitle>Module Popularity</CardTitle>
-              <CardDescription>Views per course component</CardDescription>
+              <CardTitle>Độ phổ biến của Module</CardTitle>
+              <CardDescription>Lượt xem theo từng thành phần khóa học</CardDescription>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={300}>
@@ -348,8 +348,8 @@ export function CourseAnalytics() {
         >
           <Card className="rounded-2xl">
             <CardHeader>
-              <CardTitle>Resource Distribution</CardTitle>
-              <CardDescription>Types of learning materials</CardDescription>
+              <CardTitle>Phân bố tài nguyên</CardTitle>
+              <CardDescription>Các loại tài liệu học tập</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="flex items-center justify-center">
@@ -400,8 +400,8 @@ export function CourseAnalytics() {
       >
         <Card className="rounded-2xl">
           <CardHeader>
-            <CardTitle>Weekly Engagement Pattern</CardTitle>
-            <CardDescription>Activity breakdown by resource type</CardDescription>
+            <CardTitle>Mức độ tương tác theo tuần</CardTitle>
+            <CardDescription>Phân tích hoạt động theo loại tài nguyên</CardDescription>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
@@ -444,9 +444,9 @@ export function CourseAnalytics() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Award className="h-5 w-5 text-primary" />
-                Top Performers
+                Học sinh xuất sắc
               </CardTitle>
-              <CardDescription>Students with highest scores</CardDescription>
+              <CardDescription>Học sinh có điểm số cao nhất</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
@@ -477,8 +477,8 @@ export function CourseAnalytics() {
         >
           <Card className="rounded-2xl border-primary/20 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950 dark:to-emerald-950">
             <CardHeader>
-              <CardTitle>AI Course Summary</CardTitle>
-              <CardDescription>Key insights and recommendations</CardDescription>
+              <CardTitle>Tóm tắt khóa học từ AI</CardTitle>
+              <CardDescription>Phân tích chi tiết và đề xuất</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="bg-white dark:bg-slate-900 p-4 rounded-xl">

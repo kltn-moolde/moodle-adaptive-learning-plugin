@@ -27,12 +27,12 @@ const studentMenuItems = [
 ];
 
 const teacherMenuItems = [
-  { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { id: "dashboard", label: "Bảng điều khiển", icon: LayoutDashboard },
   // { id: "class-overview", label: "Class Overview", icon: GraduationCap },
-  { id: "students", label: "Student List", icon: Users },
-  { id: "course-analytics", label: "Course Analytics", icon: BarChart3 },
+  { id: "students", label: "Danh sách học sinh", icon: Users },
+  { id: "course-analytics", label: "Phân tích khóa học", icon: BarChart3 },
   // { id: "ai-insights", label: "AI Insights", icon: Brain },
-  { id: "settings", label: "Settings", icon: Settings },
+  { id: "settings", label: "Cài đặt", icon: Settings },
 ];
 
 export function Sidebar({ userRole, currentPage, onNavigate, isOpen, onClose }: SidebarProps) {
@@ -63,7 +63,7 @@ export function Sidebar({ userRole, currentPage, onNavigate, isOpen, onClose }: 
         <div className="p-4">
           <div className="mb-6">
             <p className="text-xs text-muted-foreground uppercase tracking-wider px-3 mb-2">
-              {userRole === "student" ? "Student Portal" : "Teacher Portal"}
+              {userRole === "student" ? "Quản lý thông tin" : "Quản lý lớp học"}
             </p>
           </div>
 

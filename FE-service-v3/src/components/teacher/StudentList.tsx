@@ -193,7 +193,7 @@ export function StudentList() {
       setLoading(false);
     } catch (err) {
       console.error("Failed to fetch student data:", err);
-      setError("Unable to load students from Moodle. Showing demo data.");
+      setError("Không thể tải danh sách học sinh từ Moodle. Hiển thị dữ liệu mẫu.");
       setLoading(false);
     }
   }
@@ -208,11 +208,11 @@ export function StudentList() {
   const getActivityBadge = (activity: string) => {
     switch (activity) {
       case "high":
-        return <Badge className="bg-primary">High</Badge>;
+        return <Badge className="bg-primary">Cao</Badge>;
       case "medium":
-        return <Badge variant="secondary">Medium</Badge>;
+        return <Badge variant="secondary">Trung bình</Badge>;
       case "low":
-        return <Badge variant="destructive">Low</Badge>;
+        return <Badge variant="destructive">Thấp</Badge>;
       default:
         return null;
     }
@@ -277,9 +277,9 @@ export function StudentList() {
       >
         <Card className="rounded-2xl">
           <CardHeader>
-            <CardTitle>Student Management</CardTitle>
+            <CardTitle>Quản lý học sinh</CardTitle>
             <CardDescription>
-              Monitor and manage individual student progress
+              Theo dõi và quản lý tiến độ từng học sinh
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -288,7 +288,7 @@ export function StudentList() {
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
-                  placeholder="Search by name or email..."
+                  placeholder="Tìm kiếm theo tên hoặc email..."
                   className="pl-10 rounded-xl"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
@@ -296,13 +296,13 @@ export function StudentList() {
               </div>
               <Select value={filterActivity} onValueChange={setFilterActivity}>
                 <SelectTrigger className="w-full md:w-[200px] rounded-xl">
-                  <SelectValue placeholder="Filter by activity" />
+                  <SelectValue placeholder="Lọc theo hoạt động" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">All Activity Levels</SelectItem>
-                  <SelectItem value="high">High Activity</SelectItem>
-                  <SelectItem value="medium">Medium Activity</SelectItem>
-                  <SelectItem value="low">Low Activity</SelectItem>
+                  <SelectItem value="all">Tất cả mức độ</SelectItem>
+                  <SelectItem value="high">Hoạt động cao</SelectItem>
+                  <SelectItem value="medium">Hoạt động trung bình</SelectItem>
+                  <SelectItem value="low">Hoạt động thấp</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -312,12 +312,12 @@ export function StudentList() {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Student</TableHead>
-                    <TableHead>Progress</TableHead>
-                    <TableHead>Activity</TableHead>
-                    <TableHead>Trend</TableHead>
-                    <TableHead>Last Active</TableHead>
-                    <TableHead className="text-right">Actions</TableHead>
+                    <TableHead>Học sinh</TableHead>
+                    <TableHead>Tiến độ</TableHead>
+                    <TableHead>Hoạt động</TableHead>
+                    <TableHead>Xu hướng</TableHead>
+                    <TableHead>Hoạt động gần đây</TableHead>
+                    <TableHead className="text-right">Thao tác</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -351,7 +351,7 @@ export function StudentList() {
                           </div>
                           <Progress value={student.progress} className="h-2" />
                           <p className="text-xs text-muted-foreground mt-1">
-                            {student.completedLessons}/{student.totalLessons} lessons
+                            {student.completedLessons}/{student.totalLessons} bài học
                           </p>
                         </div>
                       </TableCell>
@@ -368,7 +368,7 @@ export function StudentList() {
                           onClick={() => setSelectedStudent(student)}
                         >
                           <Eye className="h-4 w-4 mr-2" />
-                          View Details
+                          Xem chi tiết
                         </Button>
                       </TableCell>
                     </TableRow>
@@ -380,7 +380,7 @@ export function StudentList() {
             {filteredStudents.length === 0 && (
               <div className="text-center py-12">
                 <p className="text-muted-foreground">
-                  No students found matching your criteria
+                  Không tìm thấy học sinh nào phù hợp
                 </p>
               </div>
             )}
@@ -392,9 +392,9 @@ export function StudentList() {
       <Dialog open={!!selectedStudent} onOpenChange={() => setSelectedStudent(null)}>
         <DialogContent className="relative max-w-2xl rounded-2xl max-h-[85vh] overflow-y-auto translate-x-[-25%]">
           <DialogHeader>
-            <DialogTitle>Student Details</DialogTitle>
+            <DialogTitle>Chi tiết học sinh</DialogTitle>
             <DialogDescription>
-              Detailed overview and AI insights
+              Tổng quan chi tiết và phân tích từ AI
             </DialogDescription>
           </DialogHeader>
           {selectedStudent && (
@@ -423,25 +423,25 @@ export function StudentList() {
               <div className="grid grid-cols-2 gap-4">
                 <Card>
                   <CardContent className="p-4">
-                    <p className="text-sm text-muted-foreground">Progress</p>
+                    <p className="text-sm text-muted-foreground">Tiến độ</p>
                     <p className="text-2xl mt-1">{selectedStudent.progress}%</p>
                     <Progress value={selectedStudent.progress} className="mt-2 h-2" />
                   </CardContent>
                 </Card>
                 <Card>
                   <CardContent className="p-4">
-                    <p className="text-sm text-muted-foreground">Completed</p>
+                    <p className="text-sm text-muted-foreground">Đã hoàn thành</p>
                     <p className="text-2xl mt-1">
                       {selectedStudent.completedLessons}/{selectedStudent.totalLessons}
                     </p>
-                    <p className="text-xs text-muted-foreground mt-2">lessons</p>
+                    <p className="text-xs text-muted-foreground mt-2">bài học</p>
                   </CardContent>
                 </Card>
               </div>
 
               <Card className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950 dark:to-emerald-950 border-primary/20">
                 <CardHeader>
-                  <CardTitle className="text-base">AI Insight</CardTitle>
+                  <CardTitle className="text-base">Phân tích từ AI</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="flex gap-3">
@@ -453,10 +453,10 @@ export function StudentList() {
 
               <div className="flex justify-end gap-2">
                 <Button variant="outline" className="rounded-xl">
-                  Send Message
+                  Gửi tin nhắn
                 </Button>
                 <Button className="rounded-xl bg-primary">
-                  View Full Dashboard
+                  Xem bảng điều khiển đầy đủ
                 </Button>
               </div>
             </div>

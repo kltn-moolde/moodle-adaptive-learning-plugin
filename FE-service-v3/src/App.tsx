@@ -83,7 +83,7 @@ export default function App() {
         darkMode={darkMode}
         toggleDarkMode={toggleDarkMode}
         userRole={userRole}
-        userName={userRole === "student" ? "Hoàng Sinh" : "Giáo viên Nguyễn"}
+        userName={userRole === "student" ? "Học sinh" : "Giáo viên"}
         onMenuClick={toggleSidebar}
       />
       
@@ -119,12 +119,12 @@ export default function App() {
         {userRole === "student" ? (
           <>
             <Users className="h-5 w-5 mr-2" />
-            Switch to Teacher View
+            Chế độ giáo viên
           </>
         ) : (
           <>
             <GraduationCap className="h-5 w-5 mr-2" />
-            Switch to Student View
+            Chế độ học sinh
           </>
         )}
       </Button>
