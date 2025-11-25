@@ -15,16 +15,16 @@ import sys
 
 # Support both relative and absolute imports
 try:
-    from core.log_to_state_builder import LogToStateBuilder
-    from services.state_repository import StateRepository
-    from services.moodle_api_client import MoodleAPIClient
-    from services.qtable_update_service import QTableUpdateService
+    from core.log_processing.state_builder import LogToStateBuilder
+    from services.repository.state_repository import StateRepository
+    from services.clients.moodle_client import MoodleAPIClient
+    from services.model.qtable_update import QTableUpdateService
 except ImportError:
     sys.path.insert(0, str(Path(__file__).parent.parent))
-    from core.log_to_state_builder import LogToStateBuilder
-    from services.state_repository import StateRepository
-    from services.moodle_api_client import MoodleAPIClient
-    from services.qtable_update_service import QTableUpdateService
+    from core.log_processing.state_builder import LogToStateBuilder
+    from services.repository.state_repository import StateRepository
+    from services.clients.moodle_client import MoodleAPIClient
+    from services.model.qtable_update import QTableUpdateService
 
 
 class LogProcessingPipeline:

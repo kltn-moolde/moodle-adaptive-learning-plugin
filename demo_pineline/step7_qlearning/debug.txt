@@ -5380,3 +5380,503 @@ Received: userid=5, courseid=5, sectionid=39
         "timecompleted": 0
     }
 ]
+FILE LOADED: /Users/nguyenhuuloc/Documents/MyComputer/moodle/local/userlog/classes/external/get_score_section.php at 2025-11-25 03:24:48
+
+==== FUNCTION CALLED ====
+Received: userid=5, courseid=5, sectionid=38
+✓ Validation passed
+--- SQL ---
+
+            SELECT 
+                cm.id AS moduleid,
+                q.id AS quizid,
+                q.name AS activityname,
+                'quiz' AS activitytype,
+                COALESCE(qg.grade / gi.grademax, 0) AS score,
+                COALESCE(qg.grade, 0) AS rawscore,
+                gi.grademax AS maxscore,
+                COALESCE(qa.max_attempt, 0) AS attempt,
+                COALESCE(cmc.timemodified, 0) AS timecompleted
+            FROM {course_modules} AS cm
+            JOIN {modules} AS modn 
+                ON modn.id = cm.module
+            JOIN {quiz} AS q 
+                ON q.id = cm.instance 
+                AND modn.name = 'quiz'
+            LEFT JOIN {grade_items} AS gi 
+                ON gi.iteminstance = q.id 
+                AND gi.itemmodule = 'quiz'
+            LEFT JOIN {quiz_grades} AS qg 
+                ON qg.quiz = q.id 
+                AND qg.userid = :userid1
+            LEFT JOIN (
+                SELECT quiz, userid, MAX(attempt) AS max_attempt
+                FROM {quiz_attempts}
+                WHERE userid = :userid2
+                GROUP BY quiz, userid
+            ) qa 
+                ON qa.quiz = q.id 
+                AND qa.userid = :userid3
+            LEFT JOIN {course_modules_completion} AS cmc 
+                ON cmc.coursemoduleid = cm.id 
+                AND cmc.userid = :userid4
+            WHERE cm.course = :courseid
+              AND modn.name = 'quiz'
+              AND cm.section = :sectionid
+        
+--- PARAMS ---
+{
+    "userid1": 5,
+    "userid2": 5,
+    "userid3": 5,
+    "userid4": 5,
+    "courseid": 5,
+    "sectionid": 38
+}
+--- RAW DB RESULT ---
+{
+    "61": {
+        "moduleid": "61",
+        "quizid": "3",
+        "activityname": "b\u00e0i ki\u1ec3m tra b\u00e0i 1 - easy",
+        "activitytype": "quiz",
+        "score": "0.666667000",
+        "rawscore": "6.66667",
+        "maxscore": "10.00000",
+        "attempt": "3",
+        "timecompleted": "1755309512"
+    },
+    "106": {
+        "moduleid": "106",
+        "quizid": "35",
+        "activityname": "b\u00e0i ki\u1ec3m tra b\u00e0i 1 - medium",
+        "activitytype": "quiz",
+        "score": "0.666667000",
+        "rawscore": "6.66667",
+        "maxscore": "10.00000",
+        "attempt": "1",
+        "timecompleted": "1763900610"
+    },
+    "107": {
+        "moduleid": "107",
+        "quizid": "36",
+        "activityname": "b\u00e0i ki\u1ec3m tra b\u00e0i 1 - hard",
+        "activitytype": "quiz",
+        "score": "1.000000000",
+        "rawscore": "10.00000",
+        "maxscore": "10.00000",
+        "attempt": "1",
+        "timecompleted": "1763900641"
+    }
+}
+--- FINAL RESULT ---
+[
+    {
+        "moduleid": 61,
+        "activityid": 3,
+        "activityname": "b\u00e0i ki\u1ec3m tra b\u00e0i 1 - easy",
+        "activitytype": "quiz",
+        "score": 0.666667,
+        "rawscore": 6.66667,
+        "maxscore": 10,
+        "attempt": 3,
+        "timecompleted": 1755309512
+    },
+    {
+        "moduleid": 106,
+        "activityid": 35,
+        "activityname": "b\u00e0i ki\u1ec3m tra b\u00e0i 1 - medium",
+        "activitytype": "quiz",
+        "score": 0.666667,
+        "rawscore": 6.66667,
+        "maxscore": 10,
+        "attempt": 1,
+        "timecompleted": 1763900610
+    },
+    {
+        "moduleid": 107,
+        "activityid": 36,
+        "activityname": "b\u00e0i ki\u1ec3m tra b\u00e0i 1 - hard",
+        "activitytype": "quiz",
+        "score": 1,
+        "rawscore": 10,
+        "maxscore": 10,
+        "attempt": 1,
+        "timecompleted": 1763900641
+    }
+]
+FILE LOADED: /Users/nguyenhuuloc/Documents/MyComputer/moodle/local/userlog/classes/external/get_score_section.php at 2025-11-25 03:29:18
+
+==== FUNCTION CALLED ====
+Received: userid=5, courseid=5, sectionid=39
+✓ Validation passed
+--- SQL ---
+
+            SELECT 
+                cm.id AS moduleid,
+                q.id AS quizid,
+                q.name AS activityname,
+                'quiz' AS activitytype,
+                COALESCE(qg.grade / gi.grademax, 0) AS score,
+                COALESCE(qg.grade, 0) AS rawscore,
+                gi.grademax AS maxscore,
+                COALESCE(qa.max_attempt, 0) AS attempt,
+                COALESCE(cmc.timemodified, 0) AS timecompleted
+            FROM {course_modules} AS cm
+            JOIN {modules} AS modn 
+                ON modn.id = cm.module
+            JOIN {quiz} AS q 
+                ON q.id = cm.instance 
+                AND modn.name = 'quiz'
+            LEFT JOIN {grade_items} AS gi 
+                ON gi.iteminstance = q.id 
+                AND gi.itemmodule = 'quiz'
+            LEFT JOIN {quiz_grades} AS qg 
+                ON qg.quiz = q.id 
+                AND qg.userid = :userid1
+            LEFT JOIN (
+                SELECT quiz, userid, MAX(attempt) AS max_attempt
+                FROM {quiz_attempts}
+                WHERE userid = :userid2
+                GROUP BY quiz, userid
+            ) qa 
+                ON qa.quiz = q.id 
+                AND qa.userid = :userid3
+            LEFT JOIN {course_modules_completion} AS cmc 
+                ON cmc.coursemoduleid = cm.id 
+                AND cmc.userid = :userid4
+            WHERE cm.course = :courseid
+              AND modn.name = 'quiz'
+              AND cm.section = :sectionid
+        
+--- PARAMS ---
+{
+    "userid1": 5,
+    "userid2": 5,
+    "userid3": 5,
+    "userid4": 5,
+    "courseid": 5,
+    "sectionid": 39
+}
+--- RAW DB RESULT ---
+{
+    "66": {
+        "moduleid": "66",
+        "quizid": "4",
+        "activityname": "b\u00e0i ki\u1ec3m tra b\u00e0i 2 - easy",
+        "activitytype": "quiz",
+        "score": "1.000000000",
+        "rawscore": "10.00000",
+        "maxscore": "10.00000",
+        "attempt": "1",
+        "timecompleted": "1763795024"
+    },
+    "108": {
+        "moduleid": "108",
+        "quizid": "37",
+        "activityname": "b\u00e0i ki\u1ec3m tra b\u00e0i 2 - medium",
+        "activitytype": "quiz",
+        "score": "0.000000000",
+        "rawscore": "0.00000",
+        "maxscore": "10.00000",
+        "attempt": "0",
+        "timecompleted": "0"
+    },
+    "109": {
+        "moduleid": "109",
+        "quizid": "38",
+        "activityname": "b\u00e0i ki\u1ec3m tra b\u00e0i 2 - hard",
+        "activitytype": "quiz",
+        "score": "0.000000000",
+        "rawscore": "0.00000",
+        "maxscore": "10.00000",
+        "attempt": "0",
+        "timecompleted": "0"
+    }
+}
+--- FINAL RESULT ---
+[
+    {
+        "moduleid": 66,
+        "activityid": 4,
+        "activityname": "b\u00e0i ki\u1ec3m tra b\u00e0i 2 - easy",
+        "activitytype": "quiz",
+        "score": 1,
+        "rawscore": 10,
+        "maxscore": 10,
+        "attempt": 1,
+        "timecompleted": 1763795024
+    },
+    {
+        "moduleid": 108,
+        "activityid": 37,
+        "activityname": "b\u00e0i ki\u1ec3m tra b\u00e0i 2 - medium",
+        "activitytype": "quiz",
+        "score": 0,
+        "rawscore": 0,
+        "maxscore": 10,
+        "attempt": 0,
+        "timecompleted": 0
+    },
+    {
+        "moduleid": 109,
+        "activityid": 38,
+        "activityname": "b\u00e0i ki\u1ec3m tra b\u00e0i 2 - hard",
+        "activitytype": "quiz",
+        "score": 0,
+        "rawscore": 0,
+        "maxscore": 10,
+        "attempt": 0,
+        "timecompleted": 0
+    }
+]
+FILE LOADED: /Users/nguyenhuuloc/Documents/MyComputer/moodle/local/userlog/classes/external/get_score_section.php at 2025-11-25 03:51:58
+
+==== FUNCTION CALLED ====
+Received: userid=5, courseid=5, sectionid=43
+✓ Validation passed
+--- SQL ---
+
+            SELECT 
+                cm.id AS moduleid,
+                q.id AS quizid,
+                q.name AS activityname,
+                'quiz' AS activitytype,
+                COALESCE(qg.grade / gi.grademax, 0) AS score,
+                COALESCE(qg.grade, 0) AS rawscore,
+                gi.grademax AS maxscore,
+                COALESCE(qa.max_attempt, 0) AS attempt,
+                COALESCE(cmc.timemodified, 0) AS timecompleted
+            FROM {course_modules} AS cm
+            JOIN {modules} AS modn 
+                ON modn.id = cm.module
+            JOIN {quiz} AS q 
+                ON q.id = cm.instance 
+                AND modn.name = 'quiz'
+            LEFT JOIN {grade_items} AS gi 
+                ON gi.iteminstance = q.id 
+                AND gi.itemmodule = 'quiz'
+            LEFT JOIN {quiz_grades} AS qg 
+                ON qg.quiz = q.id 
+                AND qg.userid = :userid1
+            LEFT JOIN (
+                SELECT quiz, userid, MAX(attempt) AS max_attempt
+                FROM {quiz_attempts}
+                WHERE userid = :userid2
+                GROUP BY quiz, userid
+            ) qa 
+                ON qa.quiz = q.id 
+                AND qa.userid = :userid3
+            LEFT JOIN {course_modules_completion} AS cmc 
+                ON cmc.coursemoduleid = cm.id 
+                AND cmc.userid = :userid4
+            WHERE cm.course = :courseid
+              AND modn.name = 'quiz'
+              AND cm.section = :sectionid
+        
+--- PARAMS ---
+{
+    "userid1": 5,
+    "userid2": 5,
+    "userid3": 5,
+    "userid4": 5,
+    "courseid": 5,
+    "sectionid": 43
+}
+--- RAW DB RESULT ---
+{
+    "78": {
+        "moduleid": "78",
+        "quizid": "8",
+        "activityname": "Tr\u1eafc nghi\u1ec7m b\u00e0i 6 - easy",
+        "activitytype": "quiz",
+        "score": "0.000000000",
+        "rawscore": "0.00000",
+        "maxscore": "10.00000",
+        "attempt": "1",
+        "timecompleted": "0"
+    },
+    "116": {
+        "moduleid": "116",
+        "quizid": "45",
+        "activityname": "B\u00e0i ki\u1ec3m tra b\u00e0i 6 - medium",
+        "activitytype": "quiz",
+        "score": "0.000000000",
+        "rawscore": "0.00000",
+        "maxscore": "10.00000",
+        "attempt": "0",
+        "timecompleted": "0"
+    },
+    "117": {
+        "moduleid": "117",
+        "quizid": "46",
+        "activityname": "B\u00e0i ki\u1ec3m tra b\u00e0i 6 - hard",
+        "activitytype": "quiz",
+        "score": "0.000000000",
+        "rawscore": "0.00000",
+        "maxscore": "10.00000",
+        "attempt": "0",
+        "timecompleted": "0"
+    }
+}
+--- FINAL RESULT ---
+[
+    {
+        "moduleid": 78,
+        "activityid": 8,
+        "activityname": "Tr\u1eafc nghi\u1ec7m b\u00e0i 6 - easy",
+        "activitytype": "quiz",
+        "score": 0,
+        "rawscore": 0,
+        "maxscore": 10,
+        "attempt": 1,
+        "timecompleted": 0
+    },
+    {
+        "moduleid": 116,
+        "activityid": 45,
+        "activityname": "B\u00e0i ki\u1ec3m tra b\u00e0i 6 - medium",
+        "activitytype": "quiz",
+        "score": 0,
+        "rawscore": 0,
+        "maxscore": 10,
+        "attempt": 0,
+        "timecompleted": 0
+    },
+    {
+        "moduleid": 117,
+        "activityid": 46,
+        "activityname": "B\u00e0i ki\u1ec3m tra b\u00e0i 6 - hard",
+        "activitytype": "quiz",
+        "score": 0,
+        "rawscore": 0,
+        "maxscore": 10,
+        "attempt": 0,
+        "timecompleted": 0
+    }
+]
+FILE LOADED: /Users/nguyenhuuloc/Documents/MyComputer/moodle/local/userlog/classes/external/get_score_section.php at 2025-11-25 04:14:55
+
+==== FUNCTION CALLED ====
+Received: userid=5, courseid=5, sectionid=38
+✓ Validation passed
+--- SQL ---
+
+            SELECT 
+                cm.id AS moduleid,
+                q.id AS quizid,
+                q.name AS activityname,
+                'quiz' AS activitytype,
+                COALESCE(qg.grade / gi.grademax, 0) AS score,
+                COALESCE(qg.grade, 0) AS rawscore,
+                gi.grademax AS maxscore,
+                COALESCE(qa.max_attempt, 0) AS attempt,
+                COALESCE(cmc.timemodified, 0) AS timecompleted
+            FROM {course_modules} AS cm
+            JOIN {modules} AS modn 
+                ON modn.id = cm.module
+            JOIN {quiz} AS q 
+                ON q.id = cm.instance 
+                AND modn.name = 'quiz'
+            LEFT JOIN {grade_items} AS gi 
+                ON gi.iteminstance = q.id 
+                AND gi.itemmodule = 'quiz'
+            LEFT JOIN {quiz_grades} AS qg 
+                ON qg.quiz = q.id 
+                AND qg.userid = :userid1
+            LEFT JOIN (
+                SELECT quiz, userid, MAX(attempt) AS max_attempt
+                FROM {quiz_attempts}
+                WHERE userid = :userid2
+                GROUP BY quiz, userid
+            ) qa 
+                ON qa.quiz = q.id 
+                AND qa.userid = :userid3
+            LEFT JOIN {course_modules_completion} AS cmc 
+                ON cmc.coursemoduleid = cm.id 
+                AND cmc.userid = :userid4
+            WHERE cm.course = :courseid
+              AND modn.name = 'quiz'
+              AND cm.section = :sectionid
+        
+--- PARAMS ---
+{
+    "userid1": 5,
+    "userid2": 5,
+    "userid3": 5,
+    "userid4": 5,
+    "courseid": 5,
+    "sectionid": 38
+}
+--- RAW DB RESULT ---
+{
+    "61": {
+        "moduleid": "61",
+        "quizid": "3",
+        "activityname": "b\u00e0i ki\u1ec3m tra b\u00e0i 1 - easy",
+        "activitytype": "quiz",
+        "score": "0.666667000",
+        "rawscore": "6.66667",
+        "maxscore": "10.00000",
+        "attempt": "3",
+        "timecompleted": "1755309512"
+    },
+    "106": {
+        "moduleid": "106",
+        "quizid": "35",
+        "activityname": "b\u00e0i ki\u1ec3m tra b\u00e0i 1 - medium",
+        "activitytype": "quiz",
+        "score": "0.666667000",
+        "rawscore": "6.66667",
+        "maxscore": "10.00000",
+        "attempt": "1",
+        "timecompleted": "1763900610"
+    },
+    "107": {
+        "moduleid": "107",
+        "quizid": "36",
+        "activityname": "b\u00e0i ki\u1ec3m tra b\u00e0i 1 - hard",
+        "activitytype": "quiz",
+        "score": "1.000000000",
+        "rawscore": "10.00000",
+        "maxscore": "10.00000",
+        "attempt": "1",
+        "timecompleted": "1763900641"
+    }
+}
+--- FINAL RESULT ---
+[
+    {
+        "moduleid": 61,
+        "activityid": 3,
+        "activityname": "b\u00e0i ki\u1ec3m tra b\u00e0i 1 - easy",
+        "activitytype": "quiz",
+        "score": 0.666667,
+        "rawscore": 6.66667,
+        "maxscore": 10,
+        "attempt": 3,
+        "timecompleted": 1755309512
+    },
+    {
+        "moduleid": 106,
+        "activityid": 35,
+        "activityname": "b\u00e0i ki\u1ec3m tra b\u00e0i 1 - medium",
+        "activitytype": "quiz",
+        "score": 0.666667,
+        "rawscore": 6.66667,
+        "maxscore": 10,
+        "attempt": 1,
+        "timecompleted": 1763900610
+    },
+    {
+        "moduleid": 107,
+        "activityid": 36,
+        "activityname": "b\u00e0i ki\u1ec3m tra b\u00e0i 1 - hard",
+        "activitytype": "quiz",
+        "score": 1,
+        "rawscore": 10,
+        "maxscore": 10,
+        "attempt": 1,
+        "timecompleted": 1763900641
+    }
+]

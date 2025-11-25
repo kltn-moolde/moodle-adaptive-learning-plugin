@@ -23,9 +23,9 @@ from pydantic import BaseModel, Field
 
 # Import existing services
 from pipeline.log_processing_pipeline import LogProcessingPipeline
-from services.state_repository import StateRepository
-from services.recommendation_service import RecommendationService
-from services.model_loader import ModelLoader
+from services.repository.state_repository import StateRepository
+from services.business.recommendation import RecommendationService
+from services.model.loader import ModelLoader
 
 # =============================================================================
 # Configuration

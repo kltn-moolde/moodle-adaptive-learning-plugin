@@ -39,7 +39,7 @@ class ActivityRecommender:
         # Load LO mappings - support both old way and new way
         if course_id is not None:
             # Use POLOService
-            from services.po_lo_service import POLOService
+            from services.business.po_lo import POLOService
             from pathlib import Path
             
             data_dir = Path(po_lo_path).parent if Path(po_lo_path).is_absolute() else Path('data')

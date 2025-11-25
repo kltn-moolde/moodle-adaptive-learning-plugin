@@ -1,12 +1,11 @@
 """
 Recommendation endpoints
 """
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Query
 from ..models import RecommendRequest, RecommendResponse
 from ..dependencies import (
-    model_loader,
-    cluster_service,
-    recommendation_service,
+    model_manager,
+    get_services_for_course,
     state_repository
 )
 
@@ -16,12 +15,25 @@ router = APIRouter(prefix='/api', tags=['recommendations'])
 @router.post('/recommend', response_model=RecommendResponse)
 def recommend_learning_path(request: RecommendRequest):
     """
-    Generate learning path recommendations
+    Generate learning path recommendations for a specific course
     
     Accepts either:
     1. features dict (will predict cluster and build state)
     2. state vector (will use directly)
+    
+    Requires course_id for multi-course support
     """
+    # Get services for this course
+    try:
+        services = get_services_for_course(request.course_id)
+        cluster_service = services['cluster_service']
+        recommendation_service = services['recommendation_service']
+        model_loader = services['loader']
+    except Exception as e:
+        raise HTTPException(
+            status_code=400,
+            detail=f'Failed to load model for course {request.course_id}: {str(e)}'
+        )
     # Determine state
     if request.state:
         # Use provided state directly
@@ -143,11 +155,12 @@ def recommend_learning_path(request: RecommendRequest):
 @router.get('/recommendations/{user_id}/{module_id}')
 async def get_recommendations(
     user_id: int,
-    module_id: int
+    module_id: int,
+    course_id: int = Query(..., description="Course ID (required for multi-course support)")
 ):
     """Get recommendations for a user/module (called by Moodle)"""
     try:
-        rec_doc = state_repository.get_recommendations(user_id, module_id)
+        rec_doc = state_repository.get_recommendations(user_id, module_id, course_id=course_id)
         
         if rec_doc is None:
             return {

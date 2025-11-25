@@ -6133,3 +6133,159 @@ SKIP EVENT: User 2 is site admin → skipped.
 ==== EVENT TRIGGERED ====
 {}
 SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+Prepared log_data:
+{
+    "userid": "5",
+    "courseid": "5",
+    "eventname": "\\mod_quiz\\event\\course_module_viewed",
+    "component": "mod_quiz",
+    "action": "viewed",
+    "target": "course_module",
+    "objectid": "35",
+    "crud": "r",
+    "edulevel": 2,
+    "contextinstanceid": "106",
+    "timecreated": 1764040979,
+    "grade": null,
+    "success": null
+}
+Sending payload:
+{"logs":[{"userid":"5","courseid":"5","eventname":"\\mod_quiz\\event\\course_module_viewed","component":"mod_quiz","action":"viewed","target":"course_module","objectid":"35","crud":"r","edulevel":2,"contextinstanceid":"106","timecreated":1764040979,"grade":null,"success":null}],"event_id":"moodle_event_69252113c72f44.61522000","timestamp":1764040979}
+Webhook response: HTTP 200
+{"status":"accepted","message":"Events received and queued for processing","events_received":1,"processing_started":true,"event_id":"moodle_event_69252113c72f44.61522000"}
+-----------------------------
+
+==== EVENT TRIGGERED ====
+{}
+Prepared log_data:
+{
+    "userid": "5",
+    "courseid": "5",
+    "eventname": "\\mod_quiz\\event\\course_module_viewed",
+    "component": "mod_quiz",
+    "action": "viewed",
+    "target": "course_module",
+    "objectid": "3",
+    "crud": "r",
+    "edulevel": 2,
+    "contextinstanceid": "61",
+    "timecreated": 1764041082,
+    "grade": null,
+    "success": null
+}
+Sending payload:
+{"logs":[{"userid":"5","courseid":"5","eventname":"\\mod_quiz\\event\\course_module_viewed","component":"mod_quiz","action":"viewed","target":"course_module","objectid":"3","crud":"r","edulevel":2,"contextinstanceid":"61","timecreated":1764041082,"grade":null,"success":null}],"event_id":"moodle_event_6925217aa89632.08627339","timestamp":1764041082}
+Webhook response: HTTP 0
+
+-----------------------------
+⚠️ Webhook failed
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+Prepared log_data:
+{
+    "userid": "5",
+    "courseid": "5",
+    "eventname": "\\mod_quiz\\event\\course_module_viewed",
+    "component": "mod_quiz",
+    "action": "viewed",
+    "target": "course_module",
+    "objectid": "4",
+    "crud": "r",
+    "edulevel": 2,
+    "contextinstanceid": "66",
+    "timecreated": 1764041352,
+    "grade": null,
+    "success": null
+}
+Sending payload:
+{"logs":[{"userid":"5","courseid":"5","eventname":"\\mod_quiz\\event\\course_module_viewed","component":"mod_quiz","action":"viewed","target":"course_module","objectid":"4","crud":"r","edulevel":2,"contextinstanceid":"66","timecreated":1764041352,"grade":null,"success":null}],"event_id":"moodle_event_69252288c22932.61956120","timestamp":1764041352}
+Webhook response: HTTP 0
+
+-----------------------------
+⚠️ Webhook failed
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+Prepared log_data:
+{
+    "userid": "5",
+    "courseid": "5",
+    "eventname": "\\mod_quiz\\event\\course_module_viewed",
+    "component": "mod_quiz",
+    "action": "viewed",
+    "target": "course_module",
+    "objectid": "35",
+    "crud": "r",
+    "edulevel": 2,
+    "contextinstanceid": "106",
+    "timecreated": 1764042712,
+    "grade": null,
+    "success": null
+}
+Sending payload:
+{"logs":[{"userid":"5","courseid":"5","eventname":"\\mod_quiz\\event\\course_module_viewed","component":"mod_quiz","action":"viewed","target":"course_module","objectid":"35","crud":"r","edulevel":2,"contextinstanceid":"106","timecreated":1764042712,"grade":null,"success":null}],"event_id":"moodle_event_692527d8cba1b0.64914429","timestamp":1764042712}
+Webhook response: HTTP 0
+
+-----------------------------
+⚠️ Webhook failed
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+Prepared log_data:
+{
+    "userid": "5",
+    "courseid": "5",
+    "eventname": "\\mod_quiz\\event\\course_module_viewed",
+    "component": "mod_quiz",
+    "action": "viewed",
+    "target": "course_module",
+    "objectid": "3",
+    "crud": "r",
+    "edulevel": 2,
+    "contextinstanceid": "61",
+    "timecreated": 1764044090,
+    "grade": null,
+    "success": null
+}
+Sending payload:
+{"logs":[{"userid":"5","courseid":"5","eventname":"\\mod_quiz\\event\\course_module_viewed","component":"mod_quiz","action":"viewed","target":"course_module","objectid":"3","crud":"r","edulevel":2,"contextinstanceid":"61","timecreated":1764044090,"grade":null,"success":null}],"event_id":"moodle_event_69252d3a36abe3.93341043","timestamp":1764044090}
+Webhook response: HTTP 0
+
+-----------------------------
+⚠️ Webhook failed
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.

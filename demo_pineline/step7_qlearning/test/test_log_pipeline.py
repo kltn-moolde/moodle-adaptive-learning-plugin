@@ -12,10 +12,10 @@ import sys
 # Add parent directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from core.log_models import LogEvent, UserLogSummary, ActionType
-from core.log_preprocessor import LogPreprocessor
-from core.log_to_state_builder import LogToStateBuilder
-from services.state_repository import StateRepository
+from core.log_processing.models import LogEvent, UserLogSummary, ActionType
+# LogPreprocessor functionality is now part of LogToStateBuilder
+from core.log_processing.state_builder import LogToStateBuilder
+from services.repository.state_repository import StateRepository
 
 
 class TestLogModels(unittest.TestCase):
@@ -83,7 +83,9 @@ class TestLogPreprocessor(unittest.TestCase):
         self.course_structure = base_path / 'data' / 'course_structure.json'
         
         if self.course_structure.exists():
-            self.preprocessor = LogPreprocessor(
+            cluster_profiles = base_path / 'data' / 'cluster_profiles.json'
+            self.preprocessor = LogToStateBuilder(
+                cluster_profiles_path=str(cluster_profiles) if cluster_profiles.exists() else str(base_path / 'data' / 'cluster_profiles.json'),
                 course_structure_path=str(self.course_structure),
                 recent_window=10
             )

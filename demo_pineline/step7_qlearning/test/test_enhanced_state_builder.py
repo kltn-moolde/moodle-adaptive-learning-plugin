@@ -10,7 +10,7 @@ from pathlib import Path
 # Add parent directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from core.state_builder_v2 import StateBuilderV2
+from core.rl.state_builder import StateBuilderV2
 import time
 
 # Initialize

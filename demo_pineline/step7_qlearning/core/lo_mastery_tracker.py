@@ -41,8 +41,8 @@ class LOMasteryTracker:
         # Load midterm weights - support both old way and new way
         if course_id is not None:
             # Use services
-            from services.po_lo_service import POLOService
-            from services.midterm_weights_service import MidtermWeightsService
+            from services.business.po_lo import POLOService
+            from services.business.midterm_weights import MidtermWeightsService
             from pathlib import Path
             
             data_dir = Path(po_lo_path).parent if Path(po_lo_path).is_absolute() else Path('data')

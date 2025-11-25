@@ -7,6 +7,7 @@ from pydantic import BaseModel, Field
 
 class RecommendRequest(BaseModel):
     """Request model for recommendations"""
+    course_id: int = Field(..., description="Course ID (required for multi-course support)")
     student_id: Optional[int] = None
     features: Optional[Dict[str, Any]] = None
     state: Optional[List[float]] = None

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """Test module loading"""
 
-from core.state_builder_v2 import StateBuilderV2
+from core.rl.state_builder import StateBuilderV2
 
 # Initialize
 builder = StateBuilderV2(

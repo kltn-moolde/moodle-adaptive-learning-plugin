@@ -6,7 +6,7 @@ Test Action Space
 Comprehensive tests for the action space design
 """
 
-from core.action_space import ActionSpace, LearningAction
+from core.rl.action_space import ActionSpace, LearningAction
 
 
 def test_action_space_initialization():
