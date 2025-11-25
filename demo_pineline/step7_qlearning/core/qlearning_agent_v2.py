@@ -477,24 +477,42 @@ class QLearningAgentV2:
         Returns:
             List of (action_id, q_value) tuples sorted by Q-value (descending)
         """
+        print(f"         🔍 DEBUG: agent.recommend_action()")
+        print(f"            - state: {state}")
+        print(f"            - state in Q-table: {state in self.q_table}")
+        print(f"            - Q-table size: {len(self.q_table)} states")
+        
         if state not in self.q_table or not self.q_table[state]:
             # State never seen - return random or zero Q-values
+            print(f"            ⚠️  State not in Q-table or empty, using fallback")
             if fallback_random:
                 selected = np.random.choice(available_actions, size=min(top_k, len(available_actions)), replace=False)
-                return [(int(a), 0.0) for a in selected]
+                result = [(int(a), 0.0) for a in selected]
+                print(f"            → Returning random actions: {result}")
+                return result
             else:
                 # Return available actions with Q=0
-                return [(a, 0.0) for a in available_actions[:top_k]]
+                result = [(a, 0.0) for a in available_actions[:top_k]]
+                print(f"            → Returning available actions with Q=0: {result}")
+                return result
         
         # Get Q-values for available actions
         q_values = self.q_table[state]
+        print(f"            ✓ State found in Q-table, {len(q_values)} actions with Q-values")
+        print(f"            - Q-values for available actions:")
+        for a in available_actions[:5]:
+            q_val = q_values.get(a, 0.0)
+            print(f"               action {a}: Q={q_val:.3f}")
+        
         action_q_pairs = [(a, q_values.get(a, 0.0)) for a in available_actions]
         
         # Sort by Q-value (descending)
         action_q_pairs.sort(key=lambda x: x[1], reverse=True)
         
         # Return top-K
-        return action_q_pairs[:top_k]
+        result = action_q_pairs[:top_k]
+        print(f"            ← Returning top-{top_k}: {result}")
+        return result
 
 
 def test_qlearning_agent():

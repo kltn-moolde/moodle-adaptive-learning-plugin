@@ -85,33 +85,53 @@ class StateBuilderV2:
         self.original_n_clusters = data.get('n_clusters', 7)
         
     def _load_course_structure(self):
-        """Load course structure - only top-level subsections under each topic"""
-        with open(self.course_structure_path, 'r') as f:
-            data = json.load(f)
+        """Load course structure - create simple lesson index"""
+        # Import LogEvent to reuse the same course structure parsing logic
+        from pathlib import Path
+        import sys
         
+        try:
+            from .log_models import LogEvent
+        except ImportError:
+            sys.path.insert(0, str(Path(__file__).parent))
+            from log_models import LogEvent
+        
+        # Note: Course structure will be loaded dynamically per course_id
+        # This method now just ensures LogEvent is available
+        self.LogEvent = LogEvent
+        
+        # For backward compatibility, try to load default course (course_id=5)
+        # This populates lesson_id_to_idx for the default course
+        default_course_id = 5
+        try:
+            LogEvent._load_contextid_maps(default_course_id, str(self.course_structure_path))
+        except Exception as e:
+            print(f"⚠️  Warning: Could not load default course structure: {e}")
+        
+        # Build modules list from LogEvent's subsection_instance_to_name for default course
         self.modules = []
-        for section in data.get('contents', []):
-            # Skip General section (section 0) - only get topic sections
-            if section.get('section', 0) == 0:
-                continue
-            
-            # Skip subsection detail sections (those with component='mod_subsection')
-            if section.get('component') == 'mod_subsection':
-                continue
-                
-            # Get only subsection modules (first-level modules under topics)
-            for module in section.get('modules', []):
-                if module.get('modname') == 'subsection':
-                    if module.get('visible', 0) == 1 and module.get('uservisible', False):
-                        self.modules.append({
-                            'id': module['id'],
-                            'name': module['name'],
-                            'type': 'subsection',
-                            'section': section['name']
-                        })
+        self.lesson_id_to_idx = {}  # Map lesson_id (section_id) to index (for validation only)
+        self.idx_to_lesson_id = {}  # Reverse mapping: index to lesson_id
+        self.lesson_id_to_name = {}  # Map lesson_id to lesson_name (for display)
         
-        self.n_modules = len(self.modules)
-        self.module_id_to_idx = {m['id']: idx for idx, m in enumerate(self.modules)}
+        # Check if course structure is loaded for default_course_id
+        if default_course_id in LogEvent._subsection_instance_to_name:
+            subsection_names = LogEvent._subsection_instance_to_name[default_course_id]
+            for idx, (lesson_id, lesson_name) in enumerate(sorted(subsection_names.items())):
+                self.modules.append({
+                    'id': lesson_id,
+                    'name': lesson_name,
+                    'type': 'lesson',
+                })
+                self.lesson_id_to_idx[lesson_id] = idx
+                self.idx_to_lesson_id[idx] = lesson_id
+                self.lesson_id_to_name[lesson_id] = lesson_name
+        
+        self.n_modules = len(self.modules) if self.modules else 6
+        
+        print(f"\n📚 Course Structure Loaded (from LogEvent):")
+        print(f"   - Total lessons: {self.n_modules}")
+        print(f"   - Lesson IDs: {sorted(self.lesson_id_to_idx.keys())}")
         
     def _build_cluster_mapping(self):
         """Build cluster mapping - flexible to handle any excluded clusters"""
@@ -155,6 +175,12 @@ class StateBuilderV2:
             1: Active-learning (doing, practicing)  
             2: Reflective-learning (reviewing, consolidating)
         """
+        # PRIORITY 1: Nếu progress >= 0.8 (80%+), ưu tiên reflective learning
+        # Vì học viên đã hoàn thành phần lớn nội dung, nên đang ở giai đoạn review/consolidate
+        if module_progress >= 0.8:
+            print(f"      → Progress >= 0.8 ({module_progress:.2f}), prioritizing reflective learning (phase=2)")
+            return 2
+        
         if not recent_actions:
             # Fallback to progress-based if no actions
             if module_progress < 0.3:
@@ -230,7 +256,11 @@ class StateBuilderV2:
         
         # 3. Consistency bonus (if timestamps provided)
         consistency_bonus = 0
-        if action_timestamps and len(action_timestamps) >= 3:
+        n_actions = len(actions_to_consider)
+        
+        # CẢI THIỆN: Xử lý trường hợp ít data (< 3 timestamps)
+        # Với ít actions, vẫn có thể tính consistency nếu có >= 2 timestamps
+        if action_timestamps and len(action_timestamps) >= 2:
             # Check if actions are spread out (not all in one burst)
             sorted_times = sorted(action_timestamps[:self.recent_window])
             time_diffs = [sorted_times[i+1] - sorted_times[i] 
@@ -248,9 +278,23 @@ class StateBuilderV2:
         # 4. Total engagement score
         total_score = weighted_score + time_bonus + consistency_bonus
         
+        # CẢI THIỆN: Dynamic thresholds cho trường hợp ít data
+        # Nếu có ít actions (< 3), điều chỉnh threshold để phù hợp hơn
+        if n_actions < 3:
+            # Dynamic threshold: scale down theo số lượng actions
+            scale_factor = max(1, n_actions)  # Tối thiểu 1
+            adjusted_thresholds = [
+                0,
+                max(2, int(8 * scale_factor / 3)),  # Medium threshold
+                max(4, int(16 * scale_factor / 3))   # High threshold
+            ]
+            engagement_thresholds = adjusted_thresholds
+        else:
+            engagement_thresholds = self.ENGAGEMENT_THRESHOLDS
+        
         # Map to engagement level (3 levels)
-        for level in range(len(self.ENGAGEMENT_THRESHOLDS) - 1, -1, -1):
-            if total_score >= self.ENGAGEMENT_THRESHOLDS[level]:
+        for level in range(len(engagement_thresholds) - 1, -1, -1):
+            if total_score >= engagement_thresholds[level]:
                 return level
         
         return 0
@@ -298,10 +342,22 @@ class StateBuilderV2:
         # 1. Map cluster ID (exclude teacher cluster)
         mapped_cluster = self.map_cluster_id(cluster_id)
         if mapped_cluster is None:
-            raise ValueError(f"Cluster {cluster_id} is excluded")
+            raise ValueError(
+                f"❌ Cluster {cluster_id} is EXCLUDED (excluded_clusters={self.excluded_clusters}). "
+                f"Valid clusters: {list(self.cluster_mapping.keys())} -> {list(self.cluster_mapping.values())}"
+            )
         
-        # 2. Map module ID to index
-        module_idx = self.module_id_to_idx.get(current_module_id, 0)
+        # 2. Map lesson_id to index for state representation
+        # This reduces state space size (0-5 instead of large IDs like 14, 15, 17...)
+        if current_module_id not in self.lesson_id_to_idx:
+            raise ValueError(
+                f"❌ Lesson ID {current_module_id} NOT FOUND in course structure.\n"
+                f"   Available Lesson IDs: {list(self.lesson_id_to_idx.keys())}\n"
+                f"   Hint: Lesson ID comes from log_models.LogEvent.lesson_id"
+            )
+        
+        # Convert lesson_id to index for compact state representation
+        module_idx = self.lesson_id_to_idx[current_module_id]
         
         # 3. Bin module progress
         progress_bin = self.quartile_bin(module_progress, self.PROGRESS_BINS)
@@ -319,7 +375,7 @@ class StateBuilderV2:
         
         return (
             mapped_cluster,
-            module_idx,
+            module_idx,  # Use index (0-5) instead of lesson_id (14, 15, 17...)
             progress_bin,
             score_bin,
             learning_phase,
@@ -333,10 +389,12 @@ class StateBuilderV2:
         phase_names = {0: "Pre", 1: "Active", 2: "Reflective"}
         engagement_names = {0: "Low", 1: "Medium", 2: "High"}
         
+        # Get lesson_id and name from module_idx
+        lesson_id = self.idx_to_lesson_id.get(module_idx, "?")
         module_name = self.modules[module_idx]['name'] if module_idx < len(self.modules) else "?"
         
         return (
-            f"C{cluster_id} | M{module_idx}({module_name[:30]}) | "
+            f"C{cluster_id} | Idx{module_idx}(L{lesson_id}: {module_name[:25]}) | "
             f"Prog={progress:.2f} Score={score:.2f} | "
             f"Phase={phase_names.get(phase, '?')} | "
             f"Engage={engagement_names.get(engagement, '?')}"
@@ -348,7 +406,7 @@ class StateBuilderV2:
             'dimensions': 6,
             'dimension_details': {
                 'cluster_id': f'0-{self.n_clusters-1}',
-                'module_idx': f'0-{self.n_modules-1}',
+                'module_idx': f'0-{self.n_modules-1} (mapped from lesson_ids: {list(self.lesson_id_to_idx.keys())})',
                 'progress_bin': '0.25/0.5/0.75/1.0',
                 'score_bin': '0.25/0.5/0.75/1.0',
                 'learning_phase': '0=pre/1=active/2=reflective',

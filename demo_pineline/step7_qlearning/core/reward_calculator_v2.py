@@ -55,7 +55,8 @@ class RewardCalculatorV2:
         cluster_profiles_path: str,
         reward_config_path: Optional[str] = None,
         po_lo_path: Optional[str] = None,
-        midterm_weights_path: Optional[str] = None
+        midterm_weights_path: Optional[str] = None,
+        course_id: Optional[int] = None
     ):
         """
         Initialize reward calculator with LO mastery integration
@@ -63,13 +64,15 @@ class RewardCalculatorV2:
         Args:
             cluster_profiles_path: Path to cluster_profiles.json
             reward_config_path: Path to reward_config.json (optional)
-            po_lo_path: Path to Po_Lo.json (optional)
-            midterm_weights_path: Path to midterm_lo_weights.json (optional)
+            po_lo_path: Path to Po_Lo.json (optional, deprecated - use course_id instead)
+            midterm_weights_path: Path to midterm_lo_weights.json (optional, deprecated - use course_id instead)
+            course_id: Course ID để load PO/LO và weights từ file course-specific (optional)
         """
         self.cluster_profiles_path = Path(cluster_profiles_path)
         self.cluster_profiles = {}
         self.n_clusters = 0
         self.cluster_levels = {}  # cluster_id -> 'weak'/'medium'/'strong'
+        self.course_id = course_id
         
         # Load configurations
         self._load_profiles()
@@ -88,13 +91,38 @@ class RewardCalculatorV2:
         self._build_sequence_lookup()
         
         # Load LO mappings and midterm weights
-        if po_lo_path is None:
-            po_lo_path = Path(__file__).parent.parent / 'data' / 'Po_Lo.json'
-        if midterm_weights_path is None:
-            midterm_weights_path = Path(__file__).parent.parent / 'data' / 'midterm_lo_weights.json'
-        
-        self._load_lo_mappings(po_lo_path)
-        self._load_midterm_weights(midterm_weights_path)
+        # Support both old way (po_lo_path) and new way (course_id)
+        if course_id is not None:
+            # Use POLOService and MidtermWeightsService
+            from services.po_lo_service import POLOService
+            from services.midterm_weights_service import MidtermWeightsService
+            
+            data_dir = Path(__file__).parent.parent / 'data'
+            po_lo_service = POLOService(data_dir=str(data_dir))
+            midterm_weights_service = MidtermWeightsService(data_dir=str(data_dir))
+            
+            try:
+                po_lo_data = po_lo_service.get_po_lo(course_id=course_id)
+                midterm_weights_data = midterm_weights_service.get_weights(course_id=course_id)
+                self._load_lo_mappings_from_data(po_lo_data)
+                self._load_midterm_weights_from_data(midterm_weights_data)
+            except FileNotFoundError:
+                # Fallback to default files
+                if po_lo_path is None:
+                    po_lo_path = Path(__file__).parent.parent / 'data' / 'Po_Lo.json'
+                if midterm_weights_path is None:
+                    midterm_weights_path = Path(__file__).parent.parent / 'data' / 'midterm_lo_weights.json'
+                self._load_lo_mappings(po_lo_path)
+                self._load_midterm_weights(midterm_weights_path)
+        else:
+            # Old way: use file paths
+            if po_lo_path is None:
+                po_lo_path = Path(__file__).parent.parent / 'data' / 'Po_Lo.json'
+            if midterm_weights_path is None:
+                midterm_weights_path = Path(__file__).parent.parent / 'data' / 'midterm_lo_weights.json'
+            
+            self._load_lo_mappings(po_lo_path)
+            self._load_midterm_weights(midterm_weights_path)
         
         # LO mastery tracking (per student)
         self.lo_mastery_cache = {}  # student_id -> {lo_id: mastery_score}
@@ -113,10 +141,13 @@ class RewardCalculatorV2:
             return json.load(f)
     
     def _load_lo_mappings(self, po_lo_path: Path):
-        """Load LO mappings from Po_Lo.json"""
+        """Load LO mappings from Po_Lo.json file"""
         with open(po_lo_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
-        
+        self._load_lo_mappings_from_data(data)
+    
+    def _load_lo_mappings_from_data(self, data: Dict):
+        """Load LO mappings from data dict"""
         self.lo_data = {lo['id']: lo for lo in data['learning_outcomes']}
         
         # Build activity_id -> [LO_ids] mapping
@@ -126,10 +157,13 @@ class RewardCalculatorV2:
                 self.activity_to_los[activity_id].append(lo_id)
     
     def _load_midterm_weights(self, weights_path: Path):
-        """Load midterm LO weights"""
+        """Load midterm LO weights from file"""
         with open(weights_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
-        
+        self._load_midterm_weights_from_data(data)
+    
+    def _load_midterm_weights_from_data(self, data: Dict):
+        """Load midterm LO weights from data dict"""
         self.midterm_weights = data['lo_weights']
         self.midterm_quiz_id = data.get('midterm_quiz_id', 107)
     

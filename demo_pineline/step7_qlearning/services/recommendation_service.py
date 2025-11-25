@@ -2,7 +2,7 @@
 Recommendation Service
 Handles recommendation logic using Q-learning agent
 """
-from typing import Dict, List, Optional, Tuple, Any
+from typing import Dict, List, Optional, Tuple, Any, Set
 import random
 
 from core.qlearning_agent_v2 import QLearningAgentV2
@@ -52,7 +52,11 @@ class RecommendationService:
         top_k: int = 3,
         exclude_action_ids: Optional[List[int]] = None,
         lo_mastery: Optional[Dict[str, float]] = None,
-        module_idx: Optional[int] = None
+        module_idx: Optional[int] = None,
+        course_id: Optional[int] = None,
+        lesson_id: Optional[int] = None,
+        past_lesson_ids: Optional[Set[int]] = None,
+        future_lesson_ids: Optional[Set[int]] = None
     ) -> List[Dict[str, Any]]:
         """
         Get top-K recommendations for a given state
@@ -66,18 +70,26 @@ class RecommendationService:
         Returns:
             List of recommendation dicts with action info and Q-values
         """
+        print(f"\n   🔍 DEBUG: RecommendationService.get_recommendations()")
+        print(f"      Input: state={state}, cluster_id={cluster_id}, top_k={top_k}")
+        print(f"      exclude_action_ids={exclude_action_ids}, lo_mastery={lo_mastery is not None}, module_idx={module_idx}")
+        
         if not self.agent or not self.action_space:
+            print(f"      ⚠️  Agent or action_space is None, returning random recommendations")
             return self._get_random_recommendations(top_k, exclude_action_ids)
         
         # Get all action indices
         all_action_indices = list(range(self.action_space.get_action_count()))
+        print(f"      ✓ Total actions in action_space: {len(all_action_indices)}")
         
         # Exclude specified actions
         available_indices = all_action_indices
         if exclude_action_ids:
             available_indices = [i for i in all_action_indices if i not in exclude_action_ids]
+            print(f"      ✓ Excluded {len(exclude_action_ids)} actions, {len(available_indices)} available")
         
         # Get recommendations from agent (Q-table uses action indices directly)
+        print(f"      → Calling agent.recommend_action()...")
         try:
             recommendations = self.agent.recommend_action(
                 state=state,
@@ -85,12 +97,19 @@ class RecommendationService:
                 top_k=top_k,
                 fallback_random=True
             )
+            print(f"      ← Got {len(recommendations) if recommendations else 0} recommendations from agent")
+            if recommendations:
+                for i, (action_idx, q_value) in enumerate(recommendations[:3], 1):
+                    print(f"         {i}. action_idx={action_idx}, q_value={q_value:.3f}")
         except Exception as e:
-            print(f"Warning: Agent recommendation failed: {e}")
+            print(f"      ❌ Agent recommendation failed: {e}")
+            import traceback
+            traceback.print_exc()
             return self._get_random_recommendations(top_k, exclude_action_ids)
         
         # Format recommendations with action details
         # Note: recommendations contain (action_index, q_value)
+        print(f"      → Formatting recommendations with activity details...")
         results = []
         for action_index, q_value in recommendations:
             action = self.action_space.get_action_by_index(action_index)
@@ -105,22 +124,48 @@ class RecommendationService:
                     'q_value': float(q_value)
                 }
                 
+                print(f"         Processing action {action_index}: {action.action_type} ({action.time_context}), q_value={q_value:.3f}")
+                
                 # Add activity recommendation if ActivityRecommender available
-                if self.activity_recommender and lo_mastery is not None:
+                if self.activity_recommender:
                     try:
-                        # Get module_idx from state if not provided
-                        if module_idx is None:
-                            module_idx = int(state[1]) if len(state) > 1 else 0
+                        # Get lesson_id - ưu tiên từ parameter, fallback từ module_idx
+                        if lesson_id is None:
+                            # Try to map module_idx to lesson_id (nếu có mapping)
+                            if module_idx is not None and hasattr(self.state_builder, 'idx_to_lesson_id'):
+                                lesson_id = self.state_builder.idx_to_lesson_id.get(module_idx)
                         
-                        # Get activity recommendation based on LO mastery
+                        # Fallback: use module_idx as lesson_id nếu không có mapping
+                        if lesson_id is None:
+                            lesson_id = module_idx if module_idx is not None else (int(state[1]) if len(state) > 1 else 0)
+                        
+                        # Get course_id - ưu tiên từ parameter
+                        if course_id is None:
+                            course_id = 5  # Default course_id
+                        
+                        print(f"            → Calling activity_recommender.recommend_activity()...")
+                        print(f"               - action: {action.to_tuple()}")
+                        print(f"               - course_id: {course_id}")
+                        print(f"               - lesson_id: {lesson_id}")
+                        print(f"               - past_lesson_ids: {past_lesson_ids}")
+                        print(f"               - future_lesson_ids: {future_lesson_ids}")
+                        print(f"               - lo_mastery provided: {lo_mastery is not None}")
+                        print(f"               - cluster_id: {cluster_id}")
+                        
+                        # Get activity recommendation (will use fallback if lo_mastery is None)
                         activity_rec = self.activity_recommender.recommend_activity(
                             action=action.to_tuple(),
-                            module_idx=module_idx,
-                            lo_mastery=lo_mastery,
+                            course_id=course_id,
+                            lesson_id=lesson_id,
+                            past_lesson_ids=past_lesson_ids,
+                            future_lesson_ids=future_lesson_ids,
+                            lo_mastery=lo_mastery,  # Can be None, will use fallback
                             previous_activities=[],
                             top_k=1,
                             cluster_id=cluster_id
                         )
+                        
+                        print(f"            ← Activity recommendation: {activity_rec}")
                         
                         # Add activity details and explanation
                         rec_dict['activity_id'] = activity_rec.get('activity_id')
@@ -130,14 +175,17 @@ class RecommendationService:
                         rec_dict['alternatives'] = activity_rec.get('alternatives', [])
                         
                     except Exception as e:
-                        print(f"Warning: Activity recommendation failed: {e}")
+                        print(f"            ❌ Activity recommendation failed: {e}")
+                        import traceback
+                        traceback.print_exc()
                         rec_dict['activity_id'] = None
                         rec_dict['activity_name'] = 'N/A'
                         rec_dict['explanation'] = f'Activity recommendation unavailable: {str(e)}'
                 else:
+                    print(f"            ⚠️  activity_recommender is None")
                     rec_dict['activity_id'] = None
                     rec_dict['activity_name'] = 'N/A'
-                    rec_dict['explanation'] = 'LO mastery not provided for activity recommendation'
+                    rec_dict['explanation'] = 'Activity recommender not available'
                 
                 results.append(rec_dict)
             else:

@@ -7,8 +7,9 @@ Chọn activity phù hợp để cải thiện LO mastery
 """
 
 import json
-from typing import Dict, List, Tuple, Optional
+from typing import Dict, List, Tuple, Optional, Set
 from collections import defaultdict
+from pathlib import Path
 import numpy as np
 
 
@@ -24,18 +25,36 @@ class ActivityRecommender:
     def __init__(
         self,
         po_lo_path: str = 'data/Po_Lo.json',
-        course_structure_path: str = 'data/course_structure.json'
+        course_structure_path: str = 'data/course_structure.json',
+        course_id: Optional[int] = None
     ):
         """
         Initialize recommender
         
         Args:
-            po_lo_path: Path to Po_Lo.json (LO -> activities mapping)
+            po_lo_path: Path to Po_Lo.json (LO -> activities mapping) (deprecated - use course_id instead)
             course_structure_path: Path to course structure
+            course_id: Course ID để load PO/LO từ file course-specific (optional)
         """
-        # Load LO mappings
-        with open(po_lo_path, 'r', encoding='utf-8') as f:
-            po_lo_data = json.load(f)
+        # Load LO mappings - support both old way and new way
+        if course_id is not None:
+            # Use POLOService
+            from services.po_lo_service import POLOService
+            from pathlib import Path
+            
+            data_dir = Path(po_lo_path).parent if Path(po_lo_path).is_absolute() else Path('data')
+            po_lo_service = POLOService(data_dir=str(data_dir))
+            
+            try:
+                po_lo_data = po_lo_service.get_po_lo(course_id=course_id)
+            except FileNotFoundError:
+                # Fallback to default file
+                with open(po_lo_path, 'r', encoding='utf-8') as f:
+                    po_lo_data = json.load(f)
+        else:
+            # Old way: use file path
+            with open(po_lo_path, 'r', encoding='utf-8') as f:
+                po_lo_data = json.load(f)
         
         # Build mappings
         self.lo_to_activities: Dict[str, List[int]] = {}  # LO -> [activity_ids]
@@ -57,6 +76,8 @@ class ActivityRecommender:
         
         # Initialize activity_info (will be populated from course_structure or Po_Lo)
         self.activity_info: Dict[int, Dict] = {}
+        # Activity ID -> Lesson ID mapping (for time context filtering)
+        self.activity_to_lesson: Dict[int, int] = {}
         
         # Try loading from course_structure.json first
         loaded_from_course_structure = False
@@ -64,20 +85,46 @@ class ActivityRecommender:
             with open(course_structure_path, 'r', encoding='utf-8') as f:
                 course_data = json.load(f)
             
-            for module in course_data.get('modules', []):
-                module_idx = module.get('module_index', 0)
+            # Load from course_structure format (contents -> sections -> modules)
+            contents = course_data.get('contents', [])
+            for section in contents:
+                section_id = section.get('id')
+                section_component = section.get('component')
                 
-                for section in module.get('sections', []):
-                    for activity in section.get('activities', []):
-                        activity_id = activity.get('id')
+                # Chỉ xử lý section có component="mod_subsection" (đây là lesson)
+                if section_component == 'mod_subsection':
+                    modules = section.get('modules', [])
+                    for module in modules:
+                        activity_id = module.get('id')
                         if activity_id:
+                            # Map activity_id -> lesson_id (section_id)
+                            self.activity_to_lesson[activity_id] = section_id
+                            
                             self.activity_info[activity_id] = {
                                 'id': activity_id,
-                                'name': activity.get('name', f'Activity {activity_id}'),
-                                'type': activity.get('type', 'unknown'),
-                                'module_idx': module_idx,
-                                'difficulty': self._infer_difficulty(activity.get('name', ''))
+                                'name': module.get('name', f'Activity {activity_id}'),
+                                'type': module.get('modname', 'unknown'),
+                                'lesson_id': section_id,  # Thêm lesson_id vào activity_info
+                                'difficulty': self._infer_difficulty(module.get('name', ''))
                             }
+            
+            # Fallback: try old format (modules -> sections -> activities)
+            if not self.activity_info:
+                for module in course_data.get('modules', []):
+                    module_idx = module.get('module_index', 0)
+                    
+                    for section in module.get('sections', []):
+                        for activity in section.get('activities', []):
+                            activity_id = activity.get('id')
+                            if activity_id:
+                                self.activity_info[activity_id] = {
+                                    'id': activity_id,
+                                    'name': activity.get('name', f'Activity {activity_id}'),
+                                    'type': activity.get('type', 'unknown'),
+                                    'module_idx': module_idx,
+                                    'difficulty': self._infer_difficulty(activity.get('name', ''))
+                                }
+            
             loaded_from_course_structure = True
         except (FileNotFoundError, json.JSONDecodeError) as e:
             pass  # Will build from Po_Lo instead
@@ -136,8 +183,11 @@ class ActivityRecommender:
     def recommend_activity(
         self,
         action: Tuple[str, str],  # (action_type, time_context)
-        module_idx: int,
-        lo_mastery: Dict[str, float],
+        course_id: int,
+        lesson_id: int,
+        past_lesson_ids: Set[int] = None,
+        future_lesson_ids: Set[int] = None,
+        lo_mastery: Dict[str, float] = None,
         previous_activities: List[int] = None,
         top_k: int = 3,
         cluster_id: int = 2
@@ -147,10 +197,14 @@ class ActivityRecommender:
         
         Args:
             action: (action_type, time_context)
-            module_idx: Current module index
-            lo_mastery: Dict of LO mastery scores
+            course_id: Course ID
+            lesson_id: Current lesson ID
+            past_lesson_ids: Set of past lesson IDs (optional, for time context filtering)
+            future_lesson_ids: Set of future lesson IDs (optional, for time context filtering)
+            lo_mastery: Dict of LO mastery scores (optional, will use fallback if None)
             previous_activities: List of recently done activities (to avoid repetition)
             top_k: Return top-k recommendations
+            cluster_id: Student cluster ID
             
         Returns:
             Dict with:
@@ -161,6 +215,10 @@ class ActivityRecommender:
             - alternatives: List of alternative activities
         """
         action_type, time_context = action
+        
+        # If lo_mastery is None, use fallback immediately
+        if lo_mastery is None:
+            return self._fallback_recommendation(action, lesson_id, lo_mastery=None)
         
         # Find weak LOs (mastery < 0.6)
         weak_los = [(lo_id, mastery) for lo_id, mastery in lo_mastery.items() if mastery < 0.6]
@@ -181,16 +239,22 @@ class ActivityRecommender:
                 if not self._matches_action_type(activity_id, action_type):
                     continue
                 
-                # Filter by time context
-                if not self._matches_time_context(activity_id, module_idx, time_context):
+                # Filter by time context (dùng lesson_id thay vì module_idx)
+                if not self._matches_time_context(
+                    activity_id,
+                    lesson_id,
+                    time_context,
+                    past_lesson_ids=past_lesson_ids,
+                    future_lesson_ids=future_lesson_ids
+                ):
                     continue
                 
                 # Skip recent activities
                 if previous_activities and activity_id in previous_activities[-5:]:
                     continue
                 
-                # Calculate priority score
-                score = self._calculate_priority(activity_id, lo_id, mastery, module_idx)
+                # Calculate priority score (dùng lesson_id thay vì module_idx)
+                score = self._calculate_priority(activity_id, lo_id, mastery, lesson_id)
                 
                 candidates.append({
                     'activity_id': activity_id,
@@ -201,7 +265,7 @@ class ActivityRecommender:
         
         # If no candidates, use fallback
         if not candidates:
-            return self._fallback_recommendation(action, module_idx, lo_mastery)
+            return self._fallback_recommendation(action, lesson_id, lo_mastery)
         
         # Sort by score
         candidates.sort(key=lambda x: x['score'], reverse=True)
@@ -263,17 +327,51 @@ class ActivityRecommender:
         # Default: allow all
         return True
     
-    def _matches_time_context(self, activity_id: int, current_module_idx: int, time_context: str) -> bool:
-        """Check if activity matches time context"""
-        activity_info = self.activity_info.get(activity_id, {})
-        activity_module = activity_info.get('module_idx', current_module_idx)
+    def _matches_time_context(
+        self,
+        activity_id: int,
+        current_lesson_id: int,
+        time_context: str,
+        past_lesson_ids: Set[int] = None,
+        future_lesson_ids: Set[int] = None
+    ) -> bool:
+        """
+        Check if activity matches time context dựa trên lesson_id
+        
+        Args:
+            activity_id: Activity ID
+            current_lesson_id: Current lesson ID
+            time_context: 'past', 'current', or 'future'
+            past_lesson_ids: Set of past lesson IDs (optional)
+            future_lesson_ids: Set of future lesson IDs (optional)
+        
+        Returns:
+            True nếu activity thuộc lesson phù hợp với time_context
+        """
+        # Lấy lesson_id của activity
+        activity_lesson_id = self.activity_to_lesson.get(activity_id)
+        if activity_lesson_id is None:
+            # Fallback: dùng module_idx nếu không có lesson_id mapping
+            activity_info = self.activity_info.get(activity_id, {})
+            activity_module_idx = activity_info.get('module_idx', 0)
+            # Không thể xác định, return True (allow all)
+            return True
         
         if time_context == 'past':
-            return activity_module < current_module_idx
+            # Past: activity thuộc lesson đã học
+            if past_lesson_ids:
+                return activity_lesson_id in past_lesson_ids
+            # Fallback: lesson_id < current_lesson_id
+            return activity_lesson_id < current_lesson_id
         elif time_context == 'current':
-            return activity_module == current_module_idx
+            # Current: activity thuộc lesson hiện tại
+            return activity_lesson_id == current_lesson_id
         elif time_context == 'future':
-            return activity_module > current_module_idx
+            # Future: activity thuộc lesson chưa học
+            if future_lesson_ids:
+                return activity_lesson_id in future_lesson_ids
+            # Fallback: lesson_id > current_lesson_id
+            return activity_lesson_id > current_lesson_id
         
         return True
     
@@ -282,12 +380,18 @@ class ActivityRecommender:
         activity_id: int,
         lo_id: str,
         lo_mastery: float,
-        current_module_idx: int
+        current_lesson_id: int
     ) -> float:
         """
         Calculate priority score for activity
         
         Higher score = better recommendation
+        
+        Args:
+            activity_id: Activity ID
+            lo_id: Learning outcome ID
+            lo_mastery: LO mastery score (0-1)
+            current_lesson_id: Current lesson ID
         """
         score = 0.0
         
@@ -311,12 +415,18 @@ class ActivityRecommender:
             elif difficulty == 'easy':
                 score += 1.5
         
-        # Factor 3: Module relevance (prefer current module)
-        activity_module = activity_info.get('module_idx', current_module_idx)
-        if activity_module == current_module_idx:
-            score += 2.0
-        elif abs(activity_module - current_module_idx) == 1:
-            score += 1.0
+        # Factor 3: Lesson relevance (prefer current lesson)
+        activity_lesson_id = self.activity_to_lesson.get(activity_id)
+        if activity_lesson_id is not None:
+            if activity_lesson_id == current_lesson_id:
+                score += 2.0
+            # Fallback: nếu không có lesson_id mapping, dùng module_idx
+            elif 'module_idx' in activity_info:
+                activity_module_idx = activity_info.get('module_idx', 0)
+                # Try to map current_lesson_id to module_idx (nếu có)
+                # Note: This is a fallback, ideally should use lesson_id comparison
+                if abs(activity_module_idx - 0) <= 1:  # Simplified check
+                    score += 1.0
         
         # Factor 4: Number of weak LOs targeted by this activity
         n_weak_los_targeted = sum(
@@ -439,7 +549,7 @@ class ActivityRecommender:
         
         return predicted_improvement
     
-    def _fallback_recommendation(self, action: Tuple[str, str], module_idx: int, lo_mastery: Dict[str, float] = None) -> Dict:
+    def _fallback_recommendation(self, action: Tuple[str, str], lesson_id: int, lo_mastery: Dict[str, float] = None) -> Dict:
         """Fallback when no specific recommendation found"""
         action_type, time_context = action
         
@@ -470,7 +580,10 @@ class ActivityRecommender:
                         }
         
         # No suitable activity found - use simple mapping
-        base_id = 54 + module_idx * 8
+        # Try to find any activity in the lesson
+        # Fallback: use lesson_id to find activities
+        # Note: This is a simple fallback, should be improved with proper activity lookup
+        base_id = 54  # Default base ID
         
         if 'quiz' in action_type:
             activity_id = base_id + 2
@@ -494,7 +607,7 @@ class ActivityRecommender:
             ]
             targeted_los.sort(key=lambda x: x[1])
         
-        reason = f'Hoạt động tiêu chuẩn cho module {module_idx + 1}'
+        reason = f'Hoạt động tiêu chuẩn cho lesson {lesson_id}'
         if targeted_los:
             reason = self._build_reason(action_type, targeted_los, activity_info, cluster_id=2, current_lo_mastery=lo_mastery)
         

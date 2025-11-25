@@ -5,55 +5,110 @@ defined('MOODLE_INTERNAL') || die();
 
 class observer {
 
-    public static function log_learning_event(\core\event\base $event) {
-        global $DB;
+    public static function any_event(\core\event\base $event) {
+        global $CFG;
 
-        $userid = $event->userid;
-        $courseid = $event->courseid;
-        $type = $event->objecttable; // quiz, resource, hvp,...
-        $objectid = $event->objectid; // ID của resource/quiz
-        $time = $event->timecreated;
+        // Path file log
+        $logfile = '/Users/nguyenhuuloc/Documents/MyComputer/AdaptiveLearning/demo_pineline/step7_qlearning/log.txt';
 
-        // Chỉ log những loại này
-        $allowed = ['quiz_attempts', 'resource', 'hvp'];
-        if (!in_array($type, $allowed)) {
-            return true;
+        // Ghi log bước đầu để xem event có chạy không
+        file_put_contents($logfile, "\n==== EVENT TRIGGERED ====\n", FILE_APPEND);
+        file_put_contents($logfile, json_encode($event, JSON_PRETTY_PRINT) . "\n", FILE_APPEND);
+
+        $valid_components = ['mod_quiz', 'mod_scorm', 'mod_assign', 'mod_forum', 'core', 'mod_resource', 'mod_hvp'];
+        // Bỏ qua giáo viên + admin
+        if (is_siteadmin($event->userid)) {
+            file_put_contents(
+                $logfile,
+                "SKIP EVENT: User {$event->userid} is site admin → skipped.\n",
+                FILE_APPEND
+            );
+            return;
         }
 
-        // Lấy course_module.id từ event context
-        $cmid = $event->contextinstanceid;
+        if (has_capability(
+                'moodle/course:manageactivities',
+                \context_course::instance($event->courseid),
+                $event->userid
+            )) {
 
-        // Lấy sectionid từ bảng course_modules
-        $sectionid = $DB->get_field('course_modules', 'section', ['id' => $cmid]);
+            file_put_contents(
+                $logfile,
+                "SKIP EVENT: User {$event->userid} has manageactivities capability → skipped.\n",
+                FILE_APPEND
+            );
+            return;
+        }
+        
+        if (!in_array($event->component, $valid_components)) {
+            file_put_contents(
+                $logfile,
+                "SKIP EVENT: Component {$event->component} not in valid components → skipped.\n",
+                FILE_APPEND
+            );
+            return;
+        }
 
-        // ==== Gọi API bên ngoài thay vì ghi file ====
+        $log_data = [
+            'userid'           => $event->userid,
+            'courseid'         => $event->courseid,
+            'eventname'        => $event->eventname,
+            'component'        => $event->component,
+            'action'           => $event->action,
+            'target'           => $event->target,
+            'objectid'         => $event->objectid ?? null,
+            'crud'             => $event->crud,
+            'edulevel'         => $event->edulevel,
+            'contextinstanceid'=> $event->contextinstanceid,
+            'timecreated'      => $event->timecreated,
+            'grade'            => $event->other['grade'] ?? null,
+            'success'          => $event->other['success'] ?? null,
+        ];
+
+        // Log data gửi đi
+        file_put_contents($logfile, "Prepared log_data:\n" . json_encode($log_data, JSON_PRETTY_PRINT) . "\n", FILE_APPEND);
+
+        self::send_to_recommendation_engine([$log_data], $logfile);
+    }
+
+    private static function send_to_recommendation_engine($logs, $logfile) {
+        $url = 'http://localhost:8080/webhook/moodle-events';
+        $event_id = uniqid('moodle_event_', true);
+
         $payload = [
-            'userid' => $userid,
-            'courseid' => $courseid,
-            'sectionid' => $sectionid,
-            'type' => $type,
-            'objectid' => $objectid,
-            'time' => $time
+            'logs' => $logs,
+            'event_id' => $event_id,
+            'timestamp' => time()
         ];
 
-        $api_url = 'http://recommend-service:8088/api/update-learning-event';
+        $data = json_encode($payload);
 
-        $options = [
-            'http' => [
-                'header'  => "Content-Type: application/json\r\n",
-                'method'  => 'POST',
-                'content' => json_encode($payload),
-                'timeout' => 5
-            ]
-        ];
+        // Log payload trước khi gửi
+        file_put_contents($logfile, "Sending payload:\n$data\n", FILE_APPEND);
 
-        $context = stream_context_create($options);
-        $result = @file_get_contents($api_url, false, $context);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5); 
 
-        if ($result === FALSE) {
-            // Ghi lỗi nếu gửi API thất bại
-            error_log("❌ Failed to send learning event for user $userid");
+        $response = curl_exec($ch);
+        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+        // Ghi log response
+        file_put_contents(
+            $logfile,
+            "Webhook response: HTTP $http_code\n$response\n-----------------------------\n",
+            FILE_APPEND
+        );
+
+        // Log thêm khi lỗi
+        if ($http_code !== 200 && $http_code !== 202) {
+            file_put_contents($logfile, "⚠️ Webhook failed\n", FILE_APPEND);
         }
-        return true;
+
+        curl_close($ch);
     }
 }

@@ -27,27 +27,49 @@ class LOMasteryTracker:
     def __init__(
         self,
         midterm_weights_path: str = 'data/midterm_lo_weights.json',
-        po_lo_path: str = 'data/Po_Lo.json'
+        po_lo_path: str = 'data/Po_Lo.json',
+        course_id: Optional[int] = None
     ):
         """
         Initialize LO Mastery Tracker
         
         Args:
-            midterm_weights_path: Path to midterm_lo_weights.json
-            po_lo_path: Path to Po_Lo.json
+            midterm_weights_path: Path to midterm_lo_weights.json (deprecated - use course_id instead)
+            po_lo_path: Path to Po_Lo.json (deprecated - use course_id instead)
+            course_id: Course ID để load PO/LO và weights từ file course-specific (optional)
         """
-        # Load midterm weights
-        with open(midterm_weights_path, 'r', encoding='utf-8') as f:
-            midterm_data = json.load(f)
+        # Load midterm weights - support both old way and new way
+        if course_id is not None:
+            # Use services
+            from services.po_lo_service import POLOService
+            from services.midterm_weights_service import MidtermWeightsService
+            from pathlib import Path
+            
+            data_dir = Path(po_lo_path).parent if Path(po_lo_path).is_absolute() else Path('data')
+            po_lo_service = POLOService(data_dir=str(data_dir))
+            midterm_weights_service = MidtermWeightsService(data_dir=str(data_dir))
+            
+            try:
+                midterm_data = midterm_weights_service.get_weights(course_id=course_id)
+                po_lo_data = po_lo_service.get_po_lo(course_id=course_id)
+            except FileNotFoundError:
+                # Fallback to default files
+                with open(midterm_weights_path, 'r', encoding='utf-8') as f:
+                    midterm_data = json.load(f)
+                with open(po_lo_path, 'r', encoding='utf-8') as f:
+                    po_lo_data = json.load(f)
+        else:
+            # Old way: use file paths
+            with open(midterm_weights_path, 'r', encoding='utf-8') as f:
+                midterm_data = json.load(f)
+            with open(po_lo_path, 'r', encoding='utf-8') as f:
+                po_lo_data = json.load(f)
         
         self.midterm_weights = midterm_data['lo_weights']
         self.total_marks = midterm_data.get('total_marks', 20)
         self.midterm_quiz_id = midterm_data.get('midterm_quiz_id', 107)
         
         # Load LO info
-        with open(po_lo_path, 'r', encoding='utf-8') as f:
-            po_lo_data = json.load(f)
-        
         self.lo_info = {}
         for lo in po_lo_data['learning_outcomes']:
             self.lo_info[lo['id']] = {
