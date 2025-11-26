@@ -19,7 +19,7 @@ class AIQuestionGenerator:
     """Generate questions using Gemini AI"""
     
     # Free tier limits: ~15 requests/minute, 1 million tokens/day
-    MAX_QUESTIONS_PER_REQUEST = 5
+    MAX_QUESTIONS_PER_REQUEST = 15  # Increased for testing
     
     def __init__(self, api_key: str):
         """Initialize Gemini AI"""

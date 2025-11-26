@@ -20,3 +20,10 @@ class Config:
     # File Upload Configuration
     UPLOAD_FOLDER = os.getenv("UPLOAD_FOLDER", "/tmp/questionservice")
     MAX_UPLOAD_SIZE = int(os.getenv("MAX_UPLOAD_SIZE", "10485760"))  # 10MB default
+    
+    # Moodle Configuration
+    # Custom token - plugin php
+    MOODLE_URL = os.getenv("MOODLE_URL", "http://localhost:8100")
+    MOODLE_TOKEN = os.getenv("MOODLE_TOKEN", "88a6b81c5a42e694ef243aac61a0afc1")
+    MOODLE_DEFAULT_CATEGORY = os.getenv("MOODLE_DEFAULT_CATEGORY", "")
+    MOODLE_DEFAULT_COURSE_ID = int(os.getenv("MOODLE_DEFAULT_COURSE_ID", "5")) 

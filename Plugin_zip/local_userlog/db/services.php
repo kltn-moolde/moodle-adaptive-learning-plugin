@@ -1,6 +1,15 @@
 <?php
 
 $functions = [
+   'local_userlog_import_questions_from_xml' => [
+        'classname'   => 'local_userlog\external\import_questions_from_xml',
+        'methodname'  => 'execute',
+        'classpath'   => 'local/userlog/classes/external/import_questions_from_xml.php',
+        'description' => 'Import questions from XML into a category',
+        'type'        => 'write',
+        'ajax'        => true,
+        'capabilities'=> '',
+    ],
     'local_userlog_get_logs' => [
         'classname'   => 'local_userlog\external\get_user_logs',
         'methodname'  => 'execute',
@@ -224,12 +233,13 @@ $functions = [
         'description' => 'Lấy danh sách objecttable và objectid hoạt động của user trong khoá học',
         'type' => 'read',
         'capabilities' => ''
-    ]
+    ],
 ];
 
 $services = [
     'User Log API Service' => [
         'functions' => [
+            'local_userlog_import_questions_from_xml',
             'local_userlog_get_logs',  // ok
             'local_userlog_get_logs_course', // ok
             'local_userlog_get_module_logs',    

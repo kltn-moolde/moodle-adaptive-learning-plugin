@@ -40,3 +40,18 @@ class DatabaseError(QuestionServiceError):
 class AIGenerationError(QuestionServiceError):
     """AI generation error"""
     pass
+
+
+class MoodleAPIError(QuestionServiceError):
+    """Moodle API error"""
+    pass
+
+
+class MoodleConnectionError(QuestionServiceError):
+    """Moodle connection error"""
+    pass
+
+
+class MoodleImportError(QuestionServiceError):
+    """Moodle import error"""
+    pass
