@@ -77,7 +77,7 @@ def create_app():
         logger.error(f"Internal server error: {str(error)}")
         return jsonify({'error': 'Internal server error'}), 500
     
-    # Health check endpoint
+    # Health check endpoints
     @app.route('/health', methods=['GET'])
     def health_check():
         return jsonify({
@@ -85,6 +85,26 @@ def create_app():
             'service': 'question-service',
             'version': '1.0.0'
         }), 200
+    
+    @app.route('/api/health', methods=['GET'])
+    def api_health_check():
+        """API health check endpoint for Docker healthcheck"""
+        try:
+            # Check MongoDB connection
+            mongo.db.command('ping')
+            return jsonify({
+                'status': 'healthy',
+                'service': 'question-service',
+                'version': '1.0.0',
+                'mongodb': 'connected'
+            }), 200
+        except Exception as e:
+            logger.error(f"Health check failed: {str(e)}")
+            return jsonify({
+                'status': 'unhealthy',
+                'service': 'question-service',
+                'error': str(e)
+            }), 503
     
     logger.info("="*70)
     logger.info("QUESTION SERVICE - Started Successfully")
