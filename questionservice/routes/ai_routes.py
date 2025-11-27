@@ -266,7 +266,8 @@ def generate_and_import():
         view_url = None
         instance_id = import_result.get('instanceid')
         if instance_id:
-            view_url = f"{Config.MOODLE_URL}/question/edit.php?cmid={instance_id}"
+            # view_url = f"{Config.MOODLE_URL}/question/edit.php?cmid={instance_id}"
+            view_url = f"http://139.99.103.223:9090/question/edit.php?cmid={instance_id}"
         
         # Step 7: Optionally save to database
         saved_ids = []

@@ -187,3 +187,5 @@ Received: userid=5, courseid=5, sectionid=39
 [2025-11-26 09:51:29] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
 [2025-11-26 10:07:18] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=28679
 [2025-11-26 10:07:18] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-11-26 11:37:46] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=2205
+[2025-11-26 11:37:46] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8

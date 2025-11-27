@@ -8675,3 +8675,42 @@ SKIP EVENT: User 2 is site admin → skipped.
 ==== EVENT TRIGGERED ====
 {}
 SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
