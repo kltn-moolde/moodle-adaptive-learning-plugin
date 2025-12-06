@@ -1,0 +1,34 @@
+sequenceDiagram
+    autonumber
+    actor Student as Sinh viên
+    participant Moodle as Moodle LMS
+    participant Kong as Kong Gateway
+    participant React as ReactJS App
+    participant Rec as Recommend Service
+    participant Mongo as MongoDB
+
+    Note over Student, Moodle: Giai đoạn 1: Truy cập Dashboard Gợi ý
+    Student->>Moodle: Click "Smart Learning"
+    Moodle->>Kong: LTI Launch (JWT)
+    Kong->>React: Load Interface
+    React->>Rec: GET /recommend
+    Rec->>Moodle: Fetch Student Progress (API)
+    Moodle-->>Rec: Return Grades/Status
+    
+    Note right of Rec: Logic Top-k
+    Rec->>Rec: Encode State -> Ranking Actions (Q-Values)
+    Rec->>Rec: Select Top-k Best Actions
+    
+    Rec-->>React: Return JSON (List of Top-k Suggestions)
+    React-->>Student: Hiển thị Danh sách Top-k Gợi ý
+
+    Note over Student, Moodle: Giai đoạn 2: Học tập trên Moodle
+    Student->>React: Chọn 1 trong k bài tập
+    React->>Moodle: Redirect to Activity URL
+    Student->>Moodle: Làm bài & Nộp bài
+    Moodle->>Moodle: Chấm điểm & Lưu DB Moodle
+
+    Note over Moodle, Mongo: Giai đoạn 3: Cập nhật tri thức AI
+    Moodle->>Rec: Trigger Webhook (Student X finished Activity Y, Score Z)
+    Rec->>Rec: Calculate Reward & Update Q-Value
+    Rec->>Mongo: Save updated Q-Table

@@ -189,3 +189,103 @@ Received: userid=5, courseid=5, sectionid=39
 [2025-11-26 10:07:18] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
 [2025-11-26 11:37:46] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=2205
 [2025-11-26 11:37:46] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 10:58:20] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=7340
+[2025-12-01 10:58:20] [import_questions_from_xml.php:lib.php:1507] Import thất bại: Error writing to database
+[2025-12-01 11:01:53] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=8327
+[2025-12-01 11:01:53] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 12:25:27] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=7682
+[2025-12-01 12:25:27] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 12:28:11] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=19102
+[2025-12-01 12:28:11] [import_questions_from_xml.php:lib.php:1507] Import thất bại: Error writing to database
+[2025-12-01 12:31:25] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=19215
+[2025-12-01 12:31:25] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 12:33:43] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=25442
+[2025-12-01 12:33:43] [import_questions_from_xml.php:lib.php:1507] Import thất bại: Error writing to database
+[2025-12-01 12:33:46] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=25442
+[2025-12-01 12:33:46] [import_questions_from_xml.php:lib.php:1507] Import thất bại: Error writing to database
+[2025-12-01 12:33:50] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=25442
+[2025-12-01 12:33:50] [import_questions_from_xml.php:lib.php:1507] Import thất bại: Error writing to database
+[2025-12-01 12:42:58] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=6762
+[2025-12-01 12:42:58] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=2595
+[2025-12-01 12:46:39] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=4893
+[2025-12-01 12:46:39] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=4128
+[2025-12-01 12:46:39] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=4673
+[2025-12-01 12:46:39] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1700
+[2025-12-01 12:52:10] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1822
+[2025-12-01 12:52:10] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 12:52:12] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1453
+[2025-12-01 12:52:12] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 12:52:14] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1787
+[2025-12-01 12:52:14] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 12:52:16] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1589
+[2025-12-01 12:52:16] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 12:52:18] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1703
+[2025-12-01 12:52:18] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 12:52:20] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1565
+[2025-12-01 12:52:20] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 12:52:22] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1588
+[2025-12-01 12:52:22] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 12:52:24] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1466
+[2025-12-01 12:52:24] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 12:52:26] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1865
+[2025-12-01 12:52:26] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 12:52:29] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1914
+[2025-12-01 12:52:29] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 12:53:37] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1793
+[2025-12-01 12:53:37] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 12:53:39] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1916
+[2025-12-01 12:53:39] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 12:53:41] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1697
+[2025-12-01 12:53:41] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 12:53:43] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1735
+[2025-12-01 12:53:43] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 12:53:45] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1658
+[2025-12-01 12:53:45] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 12:53:47] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=2028
+[2025-12-01 12:53:47] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 12:53:49] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=2318
+[2025-12-01 12:53:49] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 12:53:51] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1795
+[2025-12-01 12:53:51] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 12:53:53] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1887
+[2025-12-01 12:53:53] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 12:53:55] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=2613
+[2025-12-01 12:53:55] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 14:06:54] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1765
+[2025-12-01 14:06:54] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 14:06:56] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1791
+[2025-12-01 14:06:56] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 14:06:58] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1725
+[2025-12-01 14:06:58] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 14:07:00] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1986
+[2025-12-01 14:07:00] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 14:07:03] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1729
+[2025-12-01 14:07:03] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 14:07:05] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=2124
+[2025-12-01 14:07:05] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 14:07:07] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1947
+[2025-12-01 14:07:07] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 14:07:09] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=2075
+[2025-12-01 14:07:09] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 14:07:11] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=2360
+[2025-12-01 14:07:11] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 14:07:13] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1932
+[2025-12-01 14:07:13] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 14:12:12] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1944
+[2025-12-01 14:12:12] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 14:12:14] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=1884
+[2025-12-01 14:12:14] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 14:12:16] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=2033
+[2025-12-01 14:12:16] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 14:12:18] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=2102
+[2025-12-01 14:12:18] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 14:54:01] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=9612
+[2025-12-01 14:54:02] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 14:55:51] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=11068
+[2025-12-01 14:55:51] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 16:15:26] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=8136
+[2025-12-01 16:15:26] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 16:15:26] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=8214
+[2025-12-01 16:15:26] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8
+[2025-12-01 16:15:26] [import_questions_from_xml.php:lib.php:1507] Import called: courseid=5, xml_length=8813
+[2025-12-01 16:15:26] [import_questions_from_xml.php:lib.php:1507] Import thành công: 0 câu hỏi vào category 8

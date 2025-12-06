@@ -94,6 +94,9 @@ Requirements:
 - Include brief feedback for each answer
 - Questions should be clear and educational
 
+### QUY TẮC HIỂN THỊ CÔNG THỨC TOÁN (BẮT BUỘC):
+- Thiết kế làm sao mà công thức toán hiển thị đúng trong hệ thống LMS (Moodle)
+
 Output ONLY valid JSON in this exact format (no markdown, no explanation):
 {{
   "questions": [
