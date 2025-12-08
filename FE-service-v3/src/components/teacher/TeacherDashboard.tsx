@@ -26,6 +26,7 @@ import {
   getStrugglingTopics,
   getCourseContent,
 } from "../../services/moodleApi";
+import { getLtiParams } from "../../utils/ltiParams";
 
 // Mock data as fallback
 const mockClassPerformanceData = [
@@ -83,11 +84,26 @@ export function TeacherDashboard() {
       setLoading(true);
       setError(null);
 
-      // Get teacher's courses (assuming teacher role)
-      const courses = await getUserCourses(5); // Use actual user ID
+      // Get LTI parameters from URL
+      const ltiParams = getLtiParams();
+      console.log("LTI Parameters:", ltiParams);
+
+      // Use LTI user ID if available, fallback to hardcoded
+      const userId = ltiParams?.userId || 5;
+      const courseId = ltiParams?.courseId;
+
+      // Get teacher's courses
+      const courses = await getUserCourses(userId);
       
-      if (courses.length > 0) {
-        const course = courses[0];
+      // If LTI provides course ID, find that specific course
+      let course;
+      if (courseId && courses.length > 0) {
+        course = courses.find(c => c.id === courseId) || courses[0];
+      } else if (courses.length > 0) {
+        course = courses[0];
+      }
+      
+      if (course) {
         setCurrentCourse(course);
 
         // Get course statistics

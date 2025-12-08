@@ -28,6 +28,7 @@ import {
   getCourseContent,
   getCourseCompletion,
 } from "../../services/moodleApi";
+import { getLtiParams } from "../../utils/ltiParams";
 
 // Mock data as fallback
 const mockProgressData = [
@@ -87,33 +88,69 @@ export function StudentDashboard() {
       setLoading(true);
       setError(null);
 
+      // Get LTI parameters from URL
+      const ltiParams = getLtiParams();
+      console.log("LTI Parameters:", ltiParams);
+
       // Get current user info
       const siteInfo = await getSiteInfo();
       console.log("Fetched site info:", siteInfo);
       setUserData(siteInfo);
 
+      // Use LTI user ID if available, fallback to site info
+      const userId = ltiParams?.userId || siteInfo.userid;
+      const courseId = ltiParams?.courseId;
+
       // Get user's courses
-      const courses = await getUserCourses(siteInfo.userid);
+      const courses = await getUserCourses(userId);
       console.log("Fetched courses:", courses);
-      
-      if (courses.length > 0) {
+
+      // If LTI provides course ID, find that specific course
+      let course;
+      if (courseId && courses.length > 0) {
+        course = courses.find(c => c.id === courseId) || courses[0];
+        console.log("Using LTI course:", course);
+      } else if (courses.length > 0) {
         // Use first course for demo
-        const course = courses[0];
-        console.log("Using course:", course);
+        course = courses[0];
+        console.log("Using first course:", course);
+      }
+
+      if (course) {
         setCurrentCourse(course);
         setOverallProgress(course.progress || 75);
-        
+
 
         // Get progress data
-        const progress = await getStudentProgress(course.id, siteInfo.userid);
+        const progress = await getStudentProgress(course.id, userId);
         console.log("Fetched progress:", progress);
         // setOverallProgress(progress.overall);
         setCompletedLessons(progress.completedLessons);
         setTotalLessons(progress.totalLessons);
-        setProgressData(progress.grades);
+        
+        // Normalize grades to 0-10 scale for better chart visualization
+        const normalizedGrades = progress.grades.map((item: any) => {
+          let normalizedScore = item.score;
+          
+          // If score is greater than 10, normalize to 10-point scale
+          if (normalizedScore > 10) {
+            normalizedScore = (normalizedScore / 100) * 10; // Assume it's on 100-point scale
+          }
+          
+          // Ensure score is between 0 and 10
+          normalizedScore = Math.max(0, Math.min(10, normalizedScore));
+          
+          return {
+            ...item,
+            score: Number(normalizedScore.toFixed(1)), // Round to 1 decimal place
+          };
+        });
+        
+        setProgressData(normalizedGrades);
+        console.log("Normalized progress data for chart:", normalizedGrades);
 
         // Get activity heatmap
-        const activity = await getActivityHeatmap(course.id, siteInfo.userid);
+        const activity = await getActivityHeatmap(course.id, userId);
         console.log("Fetched activity heatmap:", activity);
         if (activity.length > 0) {
           setActivityHeatmap(activity);
@@ -121,48 +158,48 @@ export function StudentDashboard() {
 
         // Get course content for learning path
         const content = await getCourseContent(course.id).catch(() => []);
-        const completion = await getCourseCompletion(course.id, siteInfo.userid).catch(() => ({ completions: [] }));
+        const completion = await getCourseCompletion(course.id, userId).catch(() => ({ completions: [] }));
         console.log("Fetched course content:", content);
         console.log("Fetched course completion:", completion);
-        
+
         // Get completion statuses (Moodle API can return either 'statuses' or 'completions')
         const completionStatuses = (completion as any)?.statuses || (completion as any)?.completions || [];
-        
+
         // Transform to learning path format: show main sections (Chủ đề) with their subsections (Bài học)
         const pathData: any[] = [];
-        
+
         // Filter to get only main topic sections (skip section 0 which is "General")
-        const mainSections = content.filter(section => 
-          section.section > 0 && 
-          section.name && 
-          !section.name.includes("Bài") && 
+        const mainSections = content.filter(section =>
+          section.section > 0 &&
+          section.name &&
+          !section.name.includes("Bài") &&
           section.modules.length > 0
         );
-        
+
         // Take first 5 main sections or all if less than 5
         const displaySections = mainSections.slice(0, 5);
-        
+
         displaySections.forEach(section => {
           // Get subsections (modules with modname === 'subsection')
-          const subsections = section.modules.filter(module => 
+          const subsections = section.modules.filter(module =>
             module.modname === 'subsection'
           );
-          
+
           // If no subsections, use regular modules instead (exclude qbank, lti)
-          const itemsToShow = subsections.length > 0 
-            ? subsections 
-            : section.modules.filter(module => 
-                module.modname !== 'qbank' && 
-                module.modname !== 'lti' &&
-                module.uservisible !== false
-              );
-          
+          const itemsToShow = subsections.length > 0
+            ? subsections
+            : section.modules.filter(module =>
+              module.modname !== 'qbank' &&
+              module.modname !== 'lti' &&
+              module.uservisible !== false
+            );
+
           itemsToShow.forEach(item => {
             const itemCompletion = completionStatuses.find(
               (c: any) => c.cmid === item.id
             );
             const isCompleted = itemCompletion?.state === 1;
-            
+
             pathData.push({
               id: item.id,
               title: item.name,
@@ -172,7 +209,7 @@ export function StudentDashboard() {
             });
           });
         });
-        
+
         // Find first incomplete item and mark as in-progress
         const firstIncompleteIndex = pathData.findIndex(item => item.status === "locked");
         if (firstIncompleteIndex !== -1) {
@@ -303,53 +340,70 @@ export function StudentDashboard() {
       </motion.div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-        {/* AI Feedback */}
+        {/* Learning Path Timeline */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.1 }}
+          transition={{ duration: 0.3, delay: 0.6 }}
         >
-          <Card className="rounded-2xl">
+          <Card className="rounded-2xl h-[410px] overflow-y-auto no-scrollbar">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Brain className="h-5 w-5 text-primary" />
-                Phản hồi từ AI
-              </CardTitle>
-              <CardDescription>Gợi ý cá nhân hóa cho bạn</CardDescription>
+              <CardTitle>Lộ trình học tập</CardTitle>
+              <CardDescription>Hành trình học tập cá nhân hóa của bạn</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950 dark:to-emerald-950 p-3 sm:p-4 rounded-xl border border-primary/20">
-                <div className="flex gap-2 sm:gap-3">
-                  <div className="text-xl sm:text-2xl flex-shrink-0">💬</div>
-                  <div className="min-w-0">
-                    <p className="text-xs sm:text-sm mb-2">
-                      <strong>Excellent progress!</strong> Bạn đang học rất tốt phần <strong>Probability</strong>.
-                    </p>
-                    <p className="text-xs sm:text-sm text-muted-foreground">
-                      Nên ôn lại <strong>Bayes' Theorem</strong> trước khi chuyển sang chương mới để nắm vững kiến thức nhé.
-                    </p>
+            <CardContent>
+              <div className="space-y-3">
+                {learningPath.map((lesson, index) => (
+                  <div
+                    key={lesson.id}
+                    className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl border hover:bg-secondary transition-colors"
+                  >
+                    <div
+                      className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-sm flex-shrink-0 ${lesson.status === "completed"
+                        ? "bg-primary text-white"
+                        : lesson.status === "in-progress"
+                          ? "bg-accent text-accent-foreground"
+                          : "bg-muted text-muted-foreground"
+                        }`}
+                    >
+                      {lesson.status === "completed" ? "✓" : index + 1}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs sm:text-sm truncate">{lesson.title}</p>
+                      {lesson.status === "completed" && (
+                        <p className="text-[10px] sm:text-xs text-muted-foreground">
+                          Score: {lesson.score}%
+                        </p>
+                      )}
+                    </div>
+                    <Badge
+                      variant={
+                        lesson.status === "completed"
+                          ? "default"
+                          : lesson.status === "in-progress"
+                            ? "secondary"
+                            : "outline"
+                      }
+                      className={`text-[10px] sm:text-xs flex-shrink-0 ${lesson.status === "completed"
+                          ? "bg-primary"
+                          : lesson.status === "in-progress"
+                            ? "bg-accent text-accent-foreground"
+                            : ""
+                        }`}
+                    >
+                      {lesson.status === "completed"
+                        ? "Completed"
+                        : lesson.status === "in-progress"
+                          ? "In Progress"
+                          : "Locked"}
+                    </Badge>
                   </div>
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-r from-yellow-50 to-amber-50 dark:from-yellow-950 dark:to-amber-950 p-3 sm:p-4 rounded-xl border border-accent/20">
-                <div className="flex gap-2 sm:gap-3">
-                  <div className="text-xl sm:text-2xl flex-shrink-0">💡</div>
-                  <div className="min-w-0">
-                    <p className="text-xs sm:text-sm">
-                      <strong>Suggestion:</strong> Thời gian học tốt nhất của bạn là buổi chiều. Hãy sắp xếp các bài khó vào thời điểm này!
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                <Clock className="h-3 w-3" />
-                <span>Updated 5 minutes ago</span>
+                ))}
               </div>
             </CardContent>
           </Card>
         </motion.div>
+
 
         {/* Next Lesson */}
         <motion.div
@@ -369,7 +423,7 @@ export function StudentDashboard() {
               <div className="bg-secondary p-3 sm:p-4 rounded-xl mb-4">
                 <h3 className="mb-2 text-sm sm:text-base">{nextLesson.title}</h3>
                 <p className="text-xs sm:text-sm text-muted-foreground mb-4">
-                  {nextLesson.status === "in-progress" 
+                  {nextLesson.status === "in-progress"
                     ? "Tiếp tục hành trình học tập với mô-đun này."
                     : "Phù hợp với trình độ hiện tại của bạn!"}
                 </p>
@@ -411,15 +465,22 @@ export function StudentDashboard() {
           <Card className="rounded-2xl">
             <CardHeader>
               <CardTitle>Tiến độ học tập</CardTitle>
-              <CardDescription>Điểm số của bạn trong 6 tuần qua</CardDescription>
+              <CardDescription>Điểm số của bạn theo thang 10</CardDescription>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={250}>
                 <LineChart data={progressData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" />
                   <XAxis dataKey="week" stroke="#64748B" fontSize={12} />
-                  <YAxis stroke="#64748B" fontSize={12} />
-                  <Tooltip />
+                  <YAxis 
+                    stroke="#64748B" 
+                    fontSize={12} 
+                    domain={[0, 10]}
+                    ticks={[0, 2, 4, 6, 8, 10]}
+                  />
+                  <Tooltip 
+                    formatter={(value: any) => [`${value}/10`, 'Điểm']}
+                  />
                   <Line
                     type="monotone"
                     dataKey="score"
@@ -495,7 +556,7 @@ export function StudentDashboard() {
                       {day.day}
                     </p>
                     <p className="text-[10px] sm:text-xs text-center font-medium">
-                      {day.hours.toString().slice(0,3)}h
+                      {day.hours.toString().slice(0, 3)}h
                     </p>
                   </div>
                 ))}
@@ -503,71 +564,54 @@ export function StudentDashboard() {
             </CardContent>
           </Card>
         </motion.div>
-
-        {/* Learning Path Timeline */}
+        {/* AI Feedback */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.6 }}
+          transition={{ duration: 0.3, delay: 0.1 }}
         >
           <Card className="rounded-2xl">
             <CardHeader>
-              <CardTitle>Lộ trình học tập</CardTitle>
-              <CardDescription>Hành trình học tập cá nhân hóa của bạn</CardDescription>
+              <CardTitle className="flex items-center gap-2">
+                <Brain className="h-5 w-5 text-primary" />
+                Phản hồi từ AI
+              </CardTitle>
+              <CardDescription>Gợi ý cá nhân hóa cho bạn</CardDescription>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                {learningPath.map((lesson, index) => (
-                  <div
-                    key={lesson.id}
-                    className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl border hover:bg-secondary transition-colors"
-                  >
-                    <div
-                      className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-sm flex-shrink-0 ${lesson.status === "completed"
-                          ? "bg-primary text-white"
-                          : lesson.status === "in-progress"
-                            ? "bg-accent text-accent-foreground"
-                            : "bg-muted text-muted-foreground"
-                        }`}
-                    >
-                      {lesson.status === "completed" ? "✓" : index + 1}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-xs sm:text-sm truncate">{lesson.title}</p>
-                      {lesson.status === "completed" && (
-                        <p className="text-[10px] sm:text-xs text-muted-foreground">
-                          Score: {lesson.score}%
-                        </p>
-                      )}
-                    </div>
-                    <Badge
-                      variant={
-                        lesson.status === "completed"
-                          ? "default"
-                          : lesson.status === "in-progress"
-                            ? "secondary"
-                            : "outline"
-                      }
-                      className={`text-[10px] sm:text-xs flex-shrink-0 ${
-                        lesson.status === "completed"
-                          ? "bg-primary"
-                          : lesson.status === "in-progress"
-                            ? "bg-accent text-accent-foreground"
-                            : ""
-                      }`}
-                    >
-                      {lesson.status === "completed"
-                        ? "Completed"
-                        : lesson.status === "in-progress"
-                          ? "In Progress"
-                          : "Locked"}
-                    </Badge>
+            <CardContent className="space-y-4">
+              <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950 dark:to-emerald-950 p-3 sm:p-4 rounded-xl border border-primary/20">
+                <div className="flex gap-2 sm:gap-3">
+                  <div className="text-xl sm:text-2xl flex-shrink-0">💬</div>
+                  <div className="min-w-0">
+                    <p className="text-xs sm:text-sm mb-2">
+                      <strong>Excellent progress!</strong> Bạn đang học rất tốt phần <strong>Probability</strong>.
+                    </p>
+                    <p className="text-xs sm:text-sm text-muted-foreground">
+                      Nên ôn lại <strong>Bayes' Theorem</strong> trước khi chuyển sang chương mới để nắm vững kiến thức nhé.
+                    </p>
                   </div>
-                ))}
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-yellow-50 to-amber-50 dark:from-yellow-950 dark:to-amber-950 p-3 sm:p-4 rounded-xl border border-accent/20">
+                <div className="flex gap-2 sm:gap-3">
+                  <div className="text-xl sm:text-2xl flex-shrink-0">💡</div>
+                  <div className="min-w-0">
+                    <p className="text-xs sm:text-sm">
+                      <strong>Suggestion:</strong> Thời gian học tốt nhất của bạn là buổi chiều. Hãy sắp xếp các bài khó vào thời điểm này!
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <Clock className="h-3 w-3" />
+                <span>Updated 5 minutes ago</span>
               </div>
             </CardContent>
           </Card>
         </motion.div>
+
       </div>
     </div>
   );
