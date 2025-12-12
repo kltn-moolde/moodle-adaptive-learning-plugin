@@ -26,6 +26,38 @@ from core.activity_recommender import ActivityRecommender
 from core.simulation.simulator import LearningPathSimulator
 from core.lo_mastery_tracker import LOMasteryTracker
 from core.simulation.logger import StateTransitionLogger
+import random
+
+
+def _normalize_distribution(mix: Dict[str, float]) -> Optional[Dict[str, float]]:
+    """Normalize cluster distribution to sum to 1.0"""
+    total = sum(mix.values())
+    if total <= 0:
+        return None
+    return {k: v / total for k, v in mix.items()}
+
+
+def _generate_students_by_mix(
+    n_students: int,
+    cluster_mix: Optional[Dict[str, float]] = None
+) -> List[Student]:
+    """Generate students following cluster ratio distribution"""
+    mix = cluster_mix or {'weak': 0.2, 'medium': 0.6, 'strong': 0.2}
+    mix = _normalize_distribution(mix) or {'weak': 0.2, 'medium': 0.6, 'strong': 0.2}
+    
+    students = []
+    cumulative = []
+    total = 0.0
+    for cluster, weight in mix.items():
+        total += weight
+        cumulative.append((total, cluster))
+    
+    for student_id in range(1, n_students + 1):
+        r = random.random()
+        cluster = next(c for threshold, c in cumulative if r <= threshold)
+        students.append(Student(student_id, cluster))
+    
+    return students
 
 
 def train_qlearning(
@@ -36,20 +68,24 @@ def train_qlearning(
     verbose: bool = True,
     enable_detailed_logging: bool = False,
     log_interval: int = 10,
-    log_output_path: Optional[str] = None
+    log_output_path: Optional[str] = None,
+    total_students: Optional[int] = None,
+    cluster_mix: Optional[Dict[str, float]] = None
 ):
     """
     Train Q-Learning agent với tích hợp detailed logging
     
     Args:
         n_episodes: Number of training episodes
-        n_students_per_cluster: Number of students per cluster
+        n_students_per_cluster: Number of students per cluster (used if total_students not provided)
         steps_per_episode: Max steps per student per episode
         course_id: Course ID for multi-course support (default: 5)
         verbose: Print training progress
         enable_detailed_logging: Enable detailed state transition logging
         log_interval: Log every N episodes (only if enable_detailed_logging=True)
         log_output_path: Path to save detailed logs (default: data/simulated/training_logs_episode_{episode}.json)
+        total_students: Total number of students (auto-distributes by cluster_mix). Overrides n_students_per_cluster
+        cluster_mix: Cluster distribution ratios {'weak': 0.2, 'medium': 0.6, 'strong': 0.2}
     
     Output:
         Model will be saved to: models/qtable_{course_id}.pkl
@@ -109,22 +145,37 @@ def train_qlearning(
         for activity_id in lo.get('activity_ids', []):
             lo_mappings[activity_id].append(lo['id'])
     
-    # Create students
-    students = []
-    student_id = 1
-    for cluster in ['weak', 'medium', 'strong']:
-        for _ in range(n_students_per_cluster):
-            students.append(Student(student_id, cluster))
-            student_id += 1
-    
-    if verbose:
-        print(f"\n✓ Initialized:")
-        print(f"  - Action space: {n_actions} actions")
-        print(f"  - Students: {len(students)} ({n_students_per_cluster} per cluster)")
-        print(f"  - LO mappings: {len(lo_mappings)} activities → {len(po_lo_data['learning_outcomes'])} LOs")
+    # Create students with cluster_mix support
+    if total_students is not None:
+        # Use cluster_mix to distribute students
+        if cluster_mix is None:
+            cluster_mix = {'weak': 0.2, 'medium': 0.6, 'strong': 0.2}
+        students = _generate_students_by_mix(total_students, cluster_mix)
+        if verbose:
+            print(f"\n✓ Initialized:")
+            print(f"  - Action space: {n_actions} actions")
+            print(f"  - Students: {len(students)} total")
+            print(f"  - Cluster mix (weak/medium/strong): {cluster_mix['weak']:.1%}/{cluster_mix['medium']:.1%}/{cluster_mix['strong']:.1%}")
+            print(f"  - LO mappings: {len(lo_mappings)} activities → {len(po_lo_data['learning_outcomes'])} LOs")
+    else:
+        # Use old method: n_students_per_cluster
+        students = []
+        student_id = 1
+        for cluster in ['weak', 'medium', 'strong']:
+            for _ in range(n_students_per_cluster):
+                students.append(Student(student_id, cluster))
+                student_id += 1
+        if verbose:
+            print(f"\n✓ Initialized:")
+            print(f"  - Action space: {n_actions} actions")
+            print(f"  - Students: {len(students)} ({n_students_per_cluster} per cluster)")
+            print(f"  - LO mappings: {len(lo_mappings)} activities → {len(po_lo_data['learning_outcomes'])} LOs")
     
     # Training loop
     episode_rewards = []
+    epsilon_history = []
+    q_table_size_history = []
+    total_updates_history = []
     
     for episode in range(n_episodes):
         episode_reward = 0.0
@@ -290,9 +341,15 @@ def train_qlearning(
         agent.stats['epsilon_history'].append(agent.epsilon)
         agent.stats['q_table_size'] = len(agent.q_table)
         
-        # Track statistics
+        # Track statistics for plotting
         avg_reward = episode_reward / len(students)
         episode_rewards.append(avg_reward)
+        epsilon_history.append(agent.epsilon)
+        q_table_size_history.append(len(agent.q_table))
+        
+        # Calculate total updates (n_students * steps_per_episode * (episode+1))
+        total_updates = (episode + 1) * len(students) * steps_per_episode
+        total_updates_history.append(total_updates)
         
         # Save detailed logs (if enabled and at log interval)
         if enable_detailed_logging and logger and (episode + 1) % log_interval == 0:
@@ -355,6 +412,14 @@ def train_qlearning(
     
     if verbose:
         print(f"\n✓ Training complete! Q-table saved to {save_path}")
+    
+    # Return agent with training history data
+    agent.training_history = {
+        'episode_rewards': episode_rewards,
+        'epsilon_history': epsilon_history,
+        'q_table_size_history': q_table_size_history,
+        'total_updates_history': total_updates_history
+    }
     
     return agent, episode_rewards
 
@@ -507,15 +572,34 @@ if __name__ == '__main__':
     
     parser = argparse.ArgumentParser(description='Train Q-Learning agent với optional detailed logging')
     parser.add_argument('--episodes', type=int, default=100, help='Number of training episodes')
-    parser.add_argument('--students', type=int, default=5, help='Students per cluster')
+    parser.add_argument('--students', type=int, default=5, help='Students per cluster (used if --total-students not provided)')
     parser.add_argument('--steps', type=int, default=30, help='Steps per episode')
     parser.add_argument('--course-id', type=int, default=5, help='Course ID for multi-course support (default: 5). Output will be: models/qtable_{course_id}.pkl')
     parser.add_argument('--detailed-logging', action='store_true', help='Enable detailed state transition logging')
     parser.add_argument('--log-interval', type=int, default=10, help='Log every N episodes')
     parser.add_argument('--log-output', type=str, default=None, help='Log output path pattern (use {episode} placeholder)')
     parser.add_argument('--quiet', action='store_true', help='Disable verbose output')
+    parser.add_argument('--total-students', type=int, default=None, help='Total number of students (auto-distributes by cluster-mix). Overrides --students')
+    parser.add_argument(
+        '--cluster-mix',
+        type=float,
+        nargs=3,
+        default=None,
+        metavar=('WEAK', 'MEDIUM', 'STRONG'),
+        help='Cluster distribution ratio (default: 0.2 0.6 0.2). Only used with --total-students'
+    )
+    parser.add_argument('--plot', action='store_true', help='Generate convergence plots after training')
     
     args = parser.parse_args()
+    
+    # Build cluster_mix dict if provided
+    cluster_mix = None
+    if args.cluster_mix:
+        cluster_mix = {
+            'weak': args.cluster_mix[0],
+            'medium': args.cluster_mix[1],
+            'strong': args.cluster_mix[2]
+        }
     
     # Train (save_path will be auto-generated as models/qtable_{course_id}.pkl)
     agent, rewards = train_qlearning(
@@ -526,7 +610,9 @@ if __name__ == '__main__':
         verbose=not args.quiet,
         enable_detailed_logging=args.detailed_logging,
         log_interval=args.log_interval,
-        log_output_path=args.log_output
+        log_output_path=args.log_output,
+        total_students=args.total_students,
+        cluster_mix=cluster_mix
     )
     
     # Test (qtable_path will be auto-generated as models/qtable_{course_id}.pkl)
@@ -534,6 +620,36 @@ if __name__ == '__main__':
         course_id=args.course_id,
         n_test_students=2
     )
+    
+    # Plot convergence analysis
+    if args.plot:
+        print("\n" + "="*80)
+        print("📊 GENERATING CONVERGENCE PLOTS")
+        print("="*80)
+        
+        try:
+            from scripts.utils.plot_training_convergence import plot_from_training_stats
+            
+            # Use actual training history data
+            training_history = agent.training_history if hasattr(agent, 'training_history') else {}
+            
+            epsilon_history = training_history.get('epsilon_history', [])
+            q_table_size_history = training_history.get('q_table_size_history', [])
+            total_updates_history = training_history.get('total_updates_history', [])
+            
+            # Generate plots
+            plot_from_training_stats(
+                episode_rewards=rewards,
+                epsilon_history=epsilon_history,
+                q_table_size_history=q_table_size_history,
+                total_updates_history=total_updates_history,
+                course_id=args.course_id,
+                output_dir='plots/convergence'
+            )
+        except ImportError as e:
+            print(f"  ⚠️  Could not import plotting module: {e}")
+        except Exception as e:
+            print(f"  ⚠️  Error generating plots: {e}")
     
     # Visualize (optional - uncomment to enable)
     print("\n" + "=" * 80)

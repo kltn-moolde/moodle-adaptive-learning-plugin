@@ -1,6 +1,13 @@
 {
-  "version": "2.0",
-  "description": "Reward calculator configuration for adaptive Q-Learning",
+  "version": "2.1",
+  "description": "Reward calculator configuration for adaptive Q-Learning with mastery improvement focus",
+  
+  "mastery_learning_rates": {
+    "weak": 0.75,
+    "medium": 0.68,
+    "strong": 0.50,
+    "description": "Learning rate (alpha) for mastery update: new = old + alpha*(outcome - old) - EXTREME MODE"
+  },
   
   "action_mappings": {
     "view_content": 0,
@@ -69,6 +76,12 @@
       "reflective": 1.5,
       "pre": 0.5,
       "description": "Bonus based on learning phase alignment with action"
+    },
+    "lo_mastery_improvement": {
+      "weak": 25.0,
+      "medium": 18.0,
+      "strong": 12.0,
+      "description": "NEW: Reward for improving LO mastery (per delta point) - AGGRESSIVE MODE"
     }
   },
   

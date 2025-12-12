@@ -220,8 +220,8 @@ class ActivityRecommender:
         if lo_mastery is None:
             return self._fallback_recommendation(action, lesson_id, lo_mastery=None)
         
-        # Find weak LOs (mastery < 0.6)
-        weak_los = [(lo_id, mastery) for lo_id, mastery in lo_mastery.items() if mastery < 0.6]
+        # Find weak LOs (mastery < 0.7) - aggressive threshold
+        weak_los = [(lo_id, mastery) for lo_id, mastery in lo_mastery.items() if mastery < 0.7]
         weak_los.sort(key=lambda x: x[1])  # Sort by mastery (weakest first)
         
         # If no weak LOs, target LOs with lowest mastery
@@ -230,15 +230,15 @@ class ActivityRecommender:
         
         # Find candidate activities
         candidates = []
+        candidates_relaxed = []  # Candidates without action_type filter
         
-        for lo_id, mastery in weak_los[:5]:  # Focus on 5 weakest LOs
+        # Check if student has VERY weak LOs (mastery < 0.5) - aggressive mode
+        has_very_weak_los = any(mastery < 0.5 for _, mastery in weak_los[:3])
+        
+        for lo_id, mastery in weak_los[:7]:  # Focus on 7 weakest LOs (boosted from 5)
             activity_ids = self.lo_to_activities.get(lo_id, [])
             
             for activity_id in activity_ids:
-                # Filter by action type
-                if not self._matches_action_type(activity_id, action_type):
-                    continue
-                
                 # Filter by time context (dùng lesson_id thay vì module_idx)
                 if not self._matches_time_context(
                     activity_id,
@@ -256,12 +256,23 @@ class ActivityRecommender:
                 # Calculate priority score (dùng lesson_id thay vì module_idx)
                 score = self._calculate_priority(activity_id, lo_id, mastery, lesson_id)
                 
-                candidates.append({
+                candidate = {
                     'activity_id': activity_id,
                     'lo_id': lo_id,
                     'lo_mastery': mastery,
                     'score': score
-                })
+                }
+                
+                # For VERY weak LOs (< 0.5), ignore action_type filter - prioritize mastery improvement
+                if has_very_weak_los and mastery < 0.5:
+                    candidates_relaxed.append(candidate)
+                # For normal weak LOs, apply action_type filter
+                elif self._matches_action_type(activity_id, action_type):
+                    candidates.append(candidate)
+        
+        # Prioritize relaxed candidates (weak LO improvement) over strict action_type matching
+        if candidates_relaxed:
+            candidates = candidates_relaxed + candidates
         
         # If no candidates, use fallback
         if not candidates:

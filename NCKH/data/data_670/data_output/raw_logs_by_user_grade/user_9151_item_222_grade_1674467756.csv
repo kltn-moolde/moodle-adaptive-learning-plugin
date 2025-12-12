@@ -1,0 +1,30 @@
+id,timecreated,eventname,action,target,userid,courseid,other,timestamp
+10940293,2023-01-17 09:02:22,\mod_quiz\event\attempt_submitted,submitted,attempt,9151,670,"{'submitterid': '****', 'quizid': '****'}",1673946142
+10940294,2023-01-17 09:02:22,\mod_quiz\event\course_module_viewed,viewed,course_module,9151,670,,1673946142
+10940297,2023-01-17 09:02:30,\core\event\course_viewed,viewed,course,9151,670,,1673946150
+10942247,2023-01-17 10:09:18,\core\event\course_viewed,viewed,course,9151,670,,1673950158
+10942249,2023-01-17 10:09:25,\mod_quiz\event\course_module_viewed,viewed,course_module,9151,670,,1673950165
+10942250,2023-01-17 10:09:27,\mod_quiz\event\attempt_reviewed,reviewed,attempt,9151,670,{'quizid': '****'},1673950167
+10946440,2023-01-17 12:35:30,\core\event\course_viewed,viewed,course,9151,670,,1673958930
+10946441,2023-01-17 12:35:33,\mod_quiz\event\course_module_viewed,viewed,course_module,9151,670,,1673958933
+10946493,2023-01-17 12:35:50,\mod_quiz\event\attempt_reviewed,reviewed,attempt,9151,670,{'quizid': '****'},1673958950
+10961896,2023-01-18 11:21:35,\core\event\course_viewed,viewed,course,9151,670,,1674040895
+10961898,2023-01-18 11:21:39,\mod_quiz\event\course_module_viewed,viewed,course_module,9151,670,,1674040899
+10985426,2023-01-19 14:11:32,\core\event\course_viewed,viewed,course,9151,670,,1674137492
+10985479,2023-01-19 14:12:54,\core\event\course_viewed,viewed,course,9151,670,,1674137574
+10985495,2023-01-19 14:13:09,\mod_assign\event\submission_status_viewed,viewed,submission_status,9151,670,{'assignid': '***'},1674137589
+10985494,2023-01-19 14:13:09,\mod_assign\event\feedback_viewed,viewed,feedback,9151,670,{'assignid': '***'},1674137589
+10985493,2023-01-19 14:13:09,\mod_assign\event\course_module_viewed,viewed,course_module,9151,670,,1674137589
+11039543,2023-01-22 19:33:24,\core\event\course_viewed,viewed,course,9151,670,,1674416004
+11039557,2023-01-22 19:34:03,\gradereport_user\event\grade_report_viewed,viewed,grade_report,9151,670,,1674416043
+11039565,2023-01-22 19:34:10,\mod_assign\event\course_module_viewed,viewed,course_module,9151,670,,1674416050
+11039566,2023-01-22 19:34:10,\mod_assign\event\feedback_viewed,viewed,feedback,9151,670,{'assignid': '****'},1674416050
+11039567,2023-01-22 19:34:10,\mod_assign\event\submission_status_viewed,viewed,submission_status,9151,670,{'assignid': '****'},1674416050
+11039617,2023-01-22 19:35:37,\mod_assign\event\course_module_viewed,viewed,course_module,9151,670,,1674416137
+11039618,2023-01-22 19:35:37,\mod_assign\event\feedback_viewed,viewed,feedback,9151,670,{'assignid': '****'},1674416137
+11039619,2023-01-22 19:35:37,\mod_assign\event\submission_status_viewed,viewed,submission_status,9151,670,{'assignid': '****'},1674416137
+11039625,2023-01-22 19:36:13,\mod_assign\event\course_module_viewed,viewed,course_module,9151,670,,1674416173
+11039626,2023-01-22 19:36:13,\mod_assign\event\feedback_viewed,viewed,feedback,9151,670,{'assignid': '****'},1674416173
+11039627,2023-01-22 19:36:13,\mod_assign\event\submission_status_viewed,viewed,submission_status,9151,670,{'assignid': '****'},1674416173
+11041780,2023-01-22 22:23:26,\core\event\course_viewed,viewed,course,9151,670,,1674426206
+11041782,2023-01-22 22:23:34,\gradereport_user\event\grade_report_viewed,viewed,grade_report,9151,670,,1674426214

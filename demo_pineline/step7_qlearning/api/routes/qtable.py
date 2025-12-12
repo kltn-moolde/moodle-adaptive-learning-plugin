@@ -84,12 +84,43 @@ def get_top_positive_states(top_n: int = 10):
         # Get state description
         state_desc = recommendation_service.get_state_description(state)
         
-        # Get top 3 recommendations for this state
+        # Create mock LO mastery based on cluster and score for realistic recommendations
+        cluster_id = int(state[0])
+        score_bin = float(state[3]) if len(state) > 3 else 0.5
+        
+        # Map cluster to average mastery level
+        cluster_mastery = {0: 0.45, 1: 0.60, 2: 0.60, 4: 0.75, 5: 0.60}
+        base_mastery = cluster_mastery.get(cluster_id, 0.50)
+        
+        # Adjust by score_bin
+        adjusted_mastery = base_mastery * (0.8 + 0.4 * score_bin)  # 0.8-1.2 multiplier
+        
+        # Create mock LO mastery with some weak LOs for demonstration
+        mock_lo_mastery = {
+            f'LO1.{i}': min(0.95, max(0.30, adjusted_mastery + (i-2)*0.05))
+            for i in range(1, 4)
+        }
+        mock_lo_mastery.update({
+            f'LO2.{i}': min(0.95, max(0.30, adjusted_mastery + (i-2)*0.08))
+            for i in range(1, 5)
+        })
+        
+        # Debug: Print mock LO mastery
+        print(f"🔍 DEBUG [qtable.py]: Created mock_lo_mastery for state {state[:2]}")
+        print(f"   cluster_id={cluster_id}, score_bin={score_bin:.2f}, base_mastery={base_mastery:.2f}")
+        for lo_id, mastery in sorted(mock_lo_mastery.items()):
+            status = "WEAK" if mastery < 0.6 else "OK"
+            print(f"   {lo_id}: {mastery:.3f} [{status}]")
+        
+        # Get top 3 recommendations for this state with mock LO mastery
         recommendations = recommendation_service.get_recommendations(
             state=state,
-            cluster_id=int(state[0]),
+            cluster_id=cluster_id,
             top_k=3,
-            exclude_action_ids=None
+            exclude_action_ids=None,
+            lo_mastery=mock_lo_mastery,
+            module_idx=int(state[1]) if len(state) > 1 else 0,
+            lesson_id=int(state[1]) if len(state) > 1 else 0
         )
         
         results.append({

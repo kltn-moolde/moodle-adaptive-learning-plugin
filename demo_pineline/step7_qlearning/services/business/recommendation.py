@@ -32,17 +32,31 @@ class RecommendationService:
         else:
             # Try to initialize with default paths
             from pathlib import Path
-            po_lo_path = Path(__file__).parent.parent / 'data' / 'Po_Lo.json'
+            # Fix: Get project root (step7_qlearning/) instead of services/
+            project_root = Path(__file__).parent.parent.parent
+            po_lo_path = project_root / 'data' / 'Po_Lo.json'
+            course_structure_path_default = project_root / 'data' / 'course_structure.json'
+            
+            print(f"🔍 DEBUG: Initializing ActivityRecommender")
+            print(f"   - project_root: {project_root}")
+            print(f"   - po_lo_path: {po_lo_path}")
+            print(f"   - po_lo_path.exists(): {po_lo_path.exists()}")
+            print(f"   - course_structure_path: {course_structure_path or course_structure_path_default}")
+            
             if po_lo_path.exists():
                 try:
                     self.activity_recommender = ActivityRecommender(
                         po_lo_path=str(po_lo_path),
-                        course_structure_path=course_structure_path or str(Path(__file__).parent.parent / 'data' / 'course_structure.json')
+                        course_structure_path=course_structure_path or str(course_structure_path_default)
                     )
+                    print(f"   ✓ ActivityRecommender initialized successfully")
                 except Exception as e:
-                    print(f"Warning: Failed to initialize ActivityRecommender: {e}")
+                    print(f"   ❌ Failed to initialize ActivityRecommender: {e}")
+                    import traceback
+                    traceback.print_exc()
                     self.activity_recommender = None
             else:
+                print(f"   ❌ Po_Lo.json not found at {po_lo_path}")
                 self.activity_recommender = None
     
     def get_recommendations(
@@ -161,7 +175,7 @@ class RecommendationService:
                             future_lesson_ids=future_lesson_ids,
                             lo_mastery=lo_mastery,  # Can be None, will use fallback
                             previous_activities=[],
-                            top_k=1,
+                            top_k=4,  # Get top-4 to include 3 alternatives
                             cluster_id=cluster_id
                         )
                         

@@ -37,7 +37,7 @@ class ActionSpace:
     
     New Action Space Design:
     - Actions = (action_type, time_context) tuples
-    - Total: 17 actions (5 past + 7 current + 3 future + 2 special)
+    - Total: 15 actions (5 past + 7 current + 3 future)
     
     Action Types:
     - view_assignment: Xem yêu cầu assignment

@@ -372,9 +372,12 @@ class RewardCalculatorV2:
         success = outcome.get('success', True)
         
         # Mastery update formula: new = old + α × (outcome - old)
-        # Learning rate α depends on cluster (weak=0.3, medium=0.2, strong=0.15)
+        # Learning rate α depends on cluster (from config)
         cluster_level = self.get_cluster_level(cluster_id)
-        alpha = {'weak': 0.3, 'medium': 0.2, 'strong': 0.15}.get(cluster_level, 0.2)
+        learning_rates = self.config.get('mastery_learning_rates', {
+            'weak': 0.4, 'medium': 0.3, 'strong': 0.2
+        })
+        alpha = learning_rates.get(cluster_level, 0.3)
         
         # Cluster-specific bonus multiplier for LO improvement
         # Weak clusters get more reward for any LO improvement
@@ -416,7 +419,20 @@ class RewardCalculatorV2:
             # If mastery is low (0.3), bonus = 1.7; if high (0.9), bonus = 1.1
             inverse_mastery_bonus = 2.0 - old_mastery
             
-            lo_reward = delta * midterm_weight * cluster_bonus * inverse_mastery_bonus * 10.0
+            # OLD formula (kept for compatibility)
+            lo_reward_old = delta * midterm_weight * cluster_bonus * inverse_mastery_bonus * 10.0
+            
+            # NEW formula: Explicit mastery improvement reward from config
+            # This encourages the agent to improve LO mastery directly
+            mastery_improvement_rewards = self.config.get('reward_components', {}).get('lo_mastery_improvement', {
+                'weak': 15.0,
+                'medium': 10.0,
+                'strong': 7.0
+            })
+            mastery_improvement_multiplier = mastery_improvement_rewards.get(cluster_level, 10.0)
+            
+            # Reward is: delta (mastery points improved) × multiplier per cluster
+            lo_reward = delta * mastery_improvement_multiplier
             total_reward += lo_reward
         
         return total_reward, lo_deltas

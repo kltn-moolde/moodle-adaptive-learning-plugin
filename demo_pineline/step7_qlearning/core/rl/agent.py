@@ -463,7 +463,8 @@ class QLearningAgentV2:
         state: Tuple,
         available_actions: List[int],
         top_k: int = 3,
-        fallback_random: bool = True
+        fallback_random: bool = True,
+        use_similar_state: bool = True
     ) -> List[Tuple[int, float]]:
         """
         Recommend top-K actions for a given state
@@ -473,6 +474,7 @@ class QLearningAgentV2:
             available_actions: List of available action IDs
             top_k: Number of recommendations to return
             fallback_random: If True, return random actions when state not in Q-table
+            use_similar_state: If True, find similar state when exact match not found
             
         Returns:
             List of (action_id, q_value) tuples sorted by Q-value (descending)
@@ -483,8 +485,24 @@ class QLearningAgentV2:
         print(f"            - Q-table size: {len(self.q_table)} states")
         
         if state not in self.q_table or not self.q_table[state]:
-            # State never seen - return random or zero Q-values
-            print(f"            ⚠️  State not in Q-table or empty, using fallback")
+            # State never seen - try to find similar state first
+            print(f"            ⚠️  State not in Q-table or empty")
+            
+            if use_similar_state and len(self.q_table) > 0:
+                print(f"            → Looking for similar state...")
+                similar_state = self._find_similar_state(state)
+                if similar_state is not None:
+                    print(f"            ✓ Found similar state: {similar_state}")
+                    # Use Q-values from similar state
+                    q_values = self.q_table[similar_state]
+                    action_q_pairs = [(a, q_values.get(a, 0.0)) for a in available_actions]
+                    action_q_pairs.sort(key=lambda x: x[1], reverse=True)
+                    result = action_q_pairs[:top_k]
+                    print(f"            ← Returning recommendations from similar state: {result}")
+                    return result
+            
+            # No similar state found, use fallback
+            print(f"            → Using fallback strategy")
             if fallback_random:
                 selected = np.random.choice(available_actions, size=min(top_k, len(available_actions)), replace=False)
                 result = [(int(a), 0.0) for a in selected]
@@ -513,6 +531,74 @@ class QLearningAgentV2:
         result = action_q_pairs[:top_k]
         print(f"            ← Returning top-{top_k}: {result}")
         return result
+    
+    def _find_similar_state(self, target_state: Tuple) -> Optional[Tuple]:
+        """
+        Find the most similar state in Q-table using weighted distance
+        
+        Prioritizes matching:
+        1. Cluster ID (most important)
+        2. Module Index
+        3. Progress and Score bins
+        4. Learning phase and engagement
+        
+        Args:
+            target_state: State to find match for
+            
+        Returns:
+            Most similar state or None if Q-table is empty
+        """
+        if not self.q_table:
+            return None
+        
+        target_cluster = target_state[0] if len(target_state) > 0 else 0
+        target_module = target_state[1] if len(target_state) > 1 else 0
+        
+        # First try: exact cluster and module match
+        candidates = [s for s in self.q_table.keys() 
+                     if len(s) > 1 and s[0] == target_cluster and s[1] == target_module]
+        
+        # Second try: same cluster, any module
+        if not candidates:
+            candidates = [s for s in self.q_table.keys() 
+                         if len(s) > 0 and s[0] == target_cluster]
+        
+        # Last resort: any state
+        if not candidates:
+            candidates = list(self.q_table.keys())
+        
+        # Calculate weighted distance to find best match
+        min_distance = float('inf')
+        best_state = None
+        
+        for candidate in candidates[:50]:  # Limit search for performance
+            distance = self._state_distance(target_state, candidate)
+            if distance < min_distance:
+                min_distance = distance
+                best_state = candidate
+        
+        return best_state
+    
+    def _state_distance(self, state1: Tuple, state2: Tuple) -> float:
+        """
+        Calculate weighted distance between two states
+        
+        Weights:
+        - Cluster: 10.0 (critical match)
+        - Module: 5.0 (important)
+        - Progress/Score: 1.0 each
+        - Phase/Engagement: 0.5 each
+        """
+        if len(state1) != len(state2):
+            return float('inf')
+        
+        weights = [10.0, 5.0, 1.0, 1.0, 0.5, 0.5]
+        distance = 0.0
+        
+        for i, (v1, v2, w) in enumerate(zip(state1, state2, weights)):
+            distance += w * abs(v1 - v2)
+        
+        return distance
 
 
 def test_qlearning_agent():

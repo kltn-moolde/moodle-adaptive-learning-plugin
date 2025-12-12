@@ -1,0 +1,13 @@
+id,timecreated,eventname,action,target,userid,courseid,other,timestamp
+10769536,2023-01-07 18:08:26,\mod_assign\event\course_module_viewed,viewed,course_module,8609,670,,1673114906
+10769537,2023-01-07 18:08:26,\assignsubmission_onlinetext\event\assessable_uploaded,uploaded,assessable,8609,670,"{'pathnamehashes': {}, 'content': '', 'format': '*'}",1673114906
+10769538,2023-01-07 18:08:26,\assignsubmission_onlinetext\event\submission_created,created,submission,8609,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'onlinetextwordcount': 0, 'groupid': 0, 'groupname': None}",1673114906
+10769539,2023-01-07 18:08:26,\assignsubmission_file\event\assessable_uploaded,uploaded,assessable,8609,670,"{'content': '', 'pathnamehashes': {'0': 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'}}",1673114906
+10769540,2023-01-07 18:08:26,\assignsubmission_file\event\submission_created,created,submission,8609,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'filesubmissioncount': 1, 'groupid': 0, 'groupname': None}",1673114906
+10769541,2023-01-07 18:08:26,\core\event\course_module_completion_updated,updated,course_module_completion,8609,670,"{'relateduserid': 8609, 'overrideby': None, 'completionstate': 1}",1673114906
+10769542,2023-01-07 18:08:26,\mod_assign\event\assessable_submitted,submitted,assessable,8609,670,{'submission_editable': True},1673114906
+10769543,2023-01-07 18:08:26,\mod_assign\event\course_module_viewed,viewed,course_module,8609,670,,1673114906
+10769544,2023-01-07 18:08:26,\mod_assign\event\submission_status_viewed,viewed,submission_status,8609,670,{'assignid': '****'},1673114906
+10769545,2023-01-07 18:08:32,\core\event\course_viewed,viewed,course,8609,670,,1673114912
+10769550,2023-01-07 18:08:51,\mod_assign\event\course_module_viewed,viewed,course_module,8609,670,,1673114931
+10769551,2023-01-07 18:08:51,\mod_assign\event\submission_status_viewed,viewed,submission_status,8609,670,{'assignid': '****'},1673114931

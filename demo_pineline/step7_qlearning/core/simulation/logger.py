@@ -232,10 +232,12 @@ class StateTransitionLogger:
         midterm = transition.get('midterm_prediction')
         if midterm:
             pred_score = midterm.get('predicted_score', 0)
+            pred_score_10 = pred_score / 2.0
             pred_pct = midterm.get('predicted_percentage', 0)
-            print(f"\n🎯 Midterm Prediction: {pred_score:.1f}/{midterm.get('total_marks', 20)} ({pred_pct:.1f}%)")
+            print(f"\n🎯 Midterm Prediction: {pred_score:.1f}/20 ({pred_score_10:.1f}/10) - {pred_pct:.1f}%")
             if midterm.get('potential_improvement', 0) > 0:
-                print(f"  Potential improvement: +{midterm['potential_improvement']:.1f} points")
+                potential_imp_10 = midterm['potential_improvement'] / 2.0
+                print(f"  Potential improvement: +{midterm['potential_improvement']:.1f}/20 (+{potential_imp_10:.1f}/10)")
         
         # Next state
         next_state = transition.get('next_state')

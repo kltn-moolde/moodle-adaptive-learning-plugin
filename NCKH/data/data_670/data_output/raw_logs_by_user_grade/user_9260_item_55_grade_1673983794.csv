@@ -1,0 +1,18 @@
+id,timecreated,eventname,action,target,userid,courseid,other,timestamp
+10939313,2023-01-17 08:19:34,\mod_quiz\event\attempt_submitted,submitted,attempt,9260,670,"{'submitterid': '****', 'quizid': '****'}",1673943574
+10939314,2023-01-17 08:19:35,\mod_quiz\event\course_module_viewed,viewed,course_module,9260,670,,1673943575
+10940710,2023-01-17 09:20:36,\core\event\course_viewed,viewed,course,9260,670,,1673947236
+10940711,2023-01-17 09:20:39,\gradereport_user\event\grade_report_viewed,viewed,grade_report,9260,670,,1673947239
+10940712,2023-01-17 09:20:42,\mod_quiz\event\course_module_viewed,viewed,course_module,9260,670,,1673947242
+10942131,2023-01-17 10:01:51,\core\event\course_viewed,viewed,course,9260,670,,1673949711
+10942133,2023-01-17 10:01:57,\gradereport_user\event\grade_report_viewed,viewed,grade_report,9260,670,,1673949717
+10942138,2023-01-17 10:02:04,\mod_quiz\event\course_module_viewed,viewed,course_module,9260,670,,1673949724
+10942140,2023-01-17 10:02:06,\mod_quiz\event\attempt_reviewed,reviewed,attempt,9260,670,{'quizid': '****'},1673949726
+10945026,2023-01-17 11:55:36,\core\event\course_viewed,viewed,course,9260,670,,1673956536
+10945027,2023-01-17 11:55:44,\gradereport_user\event\grade_report_viewed,viewed,grade_report,9260,670,,1673956544
+10945032,2023-01-17 11:55:50,\mod_quiz\event\course_module_viewed,viewed,course_module,9260,670,,1673956550
+10945033,2023-01-17 11:55:52,\mod_quiz\event\attempt_reviewed,reviewed,attempt,9260,670,{'quizid': '****'},1673956552
+10950738,2023-01-17 15:42:18,\core\event\course_viewed,viewed,course,9260,670,,1673970138
+10950739,2023-01-17 15:42:20,\gradereport_user\event\grade_report_viewed,viewed,grade_report,9260,670,,1673970140
+10950740,2023-01-17 15:42:22,\mod_quiz\event\course_module_viewed,viewed,course_module,9260,670,,1673970142
+10950741,2023-01-17 15:42:25,\mod_quiz\event\attempt_reviewed,reviewed,attempt,9260,670,{'quizid': '****'},1673970145

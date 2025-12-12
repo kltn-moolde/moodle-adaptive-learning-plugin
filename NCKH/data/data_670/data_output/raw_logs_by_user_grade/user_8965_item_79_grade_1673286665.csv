@@ -1,0 +1,7 @@
+id,timecreated,eventname,action,target,userid,courseid,other,timestamp
+10797493,2023-01-09 12:12:17,\assignsubmission_onlinetext\event\assessable_uploaded,uploaded,assessable,8965,670,"{'pathnamehashes': {}, 'content': '*******', 'format': 1}",1673266337
+10797494,2023-01-09 12:12:17,\assignsubmission_onlinetext\event\submission_created,created,submission,8965,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'onlinetextwordcount': 0, 'groupid': 0, 'groupname': None}",1673266337
+10797495,2023-01-09 12:12:17,\assignsubmission_file\event\assessable_uploaded,uploaded,assessable,8965,670,"{'content': '', 'pathnamehashes': {'0': 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', '1': 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', '2': 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'}}",1673266337
+10797496,2023-01-09 12:12:17,\assignsubmission_file\event\submission_created,created,submission,8965,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'filesubmissioncount': 3, 'groupid': 0, 'groupname': None}",1673266337
+10797497,2023-01-09 12:12:17,\core\event\course_module_completion_updated,updated,course_module_completion,8965,670,"{'relateduserid': '****', 'overrideby': None, 'completionstate': 1}",1673266337
+10797498,2023-01-09 12:12:17,\mod_assign\event\assessable_submitted,submitted,assessable,8965,670,{'submission_editable': True},1673266337
