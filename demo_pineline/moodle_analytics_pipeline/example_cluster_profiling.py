@@ -25,7 +25,7 @@ def example_basic_profiling():
     print("="*80)
     
     # Load real data with clusters
-    df = pd.read_csv('outputs/gmm_generation/real_students_with_clusters.csv')
+    df = pd.read_csv('outputs/optimal_clusters/real_students_with_clusters.csv')
     
     print(f"\nLoaded {len(df)} students with {df['cluster'].nunique()} clusters")
     print(f"Cluster distribution:\n{df['cluster'].value_counts().sort_index()}")

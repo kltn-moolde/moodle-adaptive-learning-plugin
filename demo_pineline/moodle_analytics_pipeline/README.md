@@ -1,8 +1,8 @@
-# Moodle Analytics Pipeline - GMM-Based
+# Moodle Analytics Pipeline (KMeans-Only)
 
-## 🎯 Overview
+## Overview
 
-**Moodle Analytics Pipeline** là hệ thống phân tích và sinh dữ liệu học sinh **dựa trên Gaussian Mixture Model (GMM)** - thay thế hoàn toàn phương pháp rule-based simulation trước đây.
+Streamlined pipeline that extracts features from Moodle logs/grades, selects optimal features, finds optimal clusters with KMeans (voting across Elbow, Silhouette, Davies-Bouldin), profiles clusters with AI, and visualizes results. GMM synthetic generation and validation phases have been removed for simplicity.
 
 ### ✨ Điểm mới so với phiên bản cũ
 
@@ -15,7 +15,7 @@
 
 ---
 
-## 🔄 Pipeline Flow
+## Pipeline Flow
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -35,27 +35,21 @@
    ├─ Rank and select optimal features
    └─ Output: Selected features list
    
-🎯 PHASE 3: Optimal Clustering (GMM)
+🎯 PHASE 3: Optimal Clustering (KMeans + Voting)
    ├─ Test k from 2 to 10
-   ├─ Calculate BIC, AIC, Silhouette for each k
-   ├─ Select optimal k (composite score)
-   ├─ Fit GMM with optimal k
-   └─ Output: Optimal k, GMM model, clusters
+   ├─ Calculate Elbow, Silhouette, Davies-Bouldin for each k
+   ├─ Select optimal k (composite voting)
+   └─ Output: Optimal k, KMeans model, clusters
    
-🔮 PHASE 4: GMM Data Generation
-   ├─ Load real data with selected features
-   ├─ Sample synthetic data from GMM
-   ├─ Assign cluster labels and quality groups
-   ├─ Visualize real vs synthetic (PCA, distributions)
-   └─ Output: Synthetic students dataset
+🤖 PHASE 4: Cluster Profiling with AI
+   ├─ Assign cluster labels to real data
+   ├─ Generate AI narratives per cluster
+   └─ Output: Cluster profiles (JSON + TXT)
    
-✅ PHASE 5: Validation
-   ├─ Statistical tests (KS test for each feature)
-   ├─ Distribution comparison (mean, std, skewness)
-   ├─ Correlation matrix similarity
-   ├─ Cluster distribution comparison (Chi-square)
-   ├─ Calculate overall quality score
-   └─ Output: Validation report + visualizations
+📈 PHASE 5: Visualization
+   ├─ Feature distributions
+   ├─ Cluster separation plots
+   └─ Output: Comparison plots
    
 📈 PHASE 6: Additional Comparison
    └─ Generate additional comparison plots
@@ -63,7 +57,7 @@
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 
@@ -78,7 +72,7 @@ pip install -r requirements.txt
 ### Run Pipeline
 
 ```bash
-python main.py
+python3 main.py
 ```
 
 Hoặc tùy chỉnh parameters:
@@ -91,11 +85,10 @@ pipeline = MoodleAnalyticsPipeline(base_output_dir='outputs')
 results = pipeline.run_full_pipeline(
     grades_path='../data/udk_moodle_grades_course_670.filtered.csv',
     logs_path='../data/udk_moodle_log_course_670.filtered.csv',
-    n_synthetic_students=200,         # Số học sinh synthetic
-    variance_threshold=0.01,          # Threshold lọc variance
-    correlation_threshold=0.95,       # Threshold lọc correlation
-    max_features=15,                  # Max số features chọn
-    k_range=range(2, 11)             # Range k để test
+   variance_threshold=0.01,          # Threshold lọc variance
+   correlation_threshold=0.95,       # Threshold lọc correlation
+   max_features=15,                  # Max số features chọn
+   k_range=range(2, 11)              # Range k để test
 )
 ```
 
@@ -120,19 +113,10 @@ outputs/
 │   ├── optimal_clusters_report.json
 │   └── optimal_clusters_report.txt
 │
-├── gmm_generation/                    # PHASE 4
-│   ├── synthetic_students_gmm.csv
-│   ├── synthetic_students_gmm.json
-│   ├── gmm_generation_summary.json
-│   ├── real_vs_synthetic_pca.png
-│   ├── feature_distributions_comparison.png
-│   └── correlation_comparison.png
-│
-├── validation/                        # PHASE 5
-│   ├── validation_report.json
-│   ├── validation_report.txt
-│   ├── ks_test_results.png
-│   └── distribution_boxplots.png
+├── comparison/                        # PHASE 5
+│   ├── feature_distributions.png
+│   ├── cluster_scatter.png
+│   └── comparison_summary.txt
 │
 └── comparison/                        # PHASE 6
     └── (additional comparison plots)
@@ -157,17 +141,11 @@ Trích xuất features từ Moodle logs và grades.
 - Automated optimal k selection
 - Comprehensive evaluation plots
 
-### 4. GMMDataGenerator ⭐ NEW
-- Fit GMM on real data
-- Sample synthetic data from GMM distribution
-- Assign cluster labels và quality groups
-- Validate distribution similarity
+### 4. ClusterProfiler
+- Generate AI-powered descriptions and recommendations per cluster
 
-### 5. ValidationMetrics ⭐ NEW
-- Kolmogorov-Smirnov tests
-- Distribution comparisons
-- Correlation matrix similarity
-- Overall quality scoring
+### 5. ComparisonVisualizer
+- Feature distributions and basic cluster visualizations
 
 ---
 
@@ -204,14 +182,11 @@ Trích xuất features từ Moodle logs và grades.
 - **Selection**: Chọn k có composite score cao nhất (0.5×BIC + 0.5×Silhouette)
 - **Validation**: Kiểm tra convergence và iteration count
 
-### 3. GMM Data Generation
-- **Model**: Gaussian Mixture Model với covariance_type='full'
-- **Sampling**: Sample từ GMM distribution (không dùng mean+noise như cũ)
-- **Labeling**: Tự động map clusters sang quality labels (giỏi/khá/yếu)
+### 3. Cluster Profiling
+- AI narratives per cluster for interpretability
 
-### 4. Validation
-- **Statistical tests**: KS test (mỗi feature), Chi-square test (cluster distribution)
-- **Quality score**: 0.4×KS_pass_rate + 0.3×corr_similarity + 0.3×(1-mean_error)
+### 4. Visualization
+- Basic plots for distributions and cluster separation
 
 ---
 
@@ -260,11 +235,11 @@ print(f"Quality Score: {results['validation_results']['overall_quality_score']['
 ### Advanced Usage - Custom Modules
 ```python
 from core import (
-    FeatureExtractor,
-    FeatureSelector,
-    OptimalClusterFinder,
-    GMMDataGenerator,
-    ValidationMetrics
+   FeatureExtractor,
+   FeatureSelector,
+   OptimalClusterFinder,
+   ClusterProfiler,
+   ComparisonVisualizer
 )
 
 # 1. Extract features
@@ -279,17 +254,10 @@ selected = selector.process_pipeline(features, output_dir)
 finder = OptimalClusterFinder(k_range=range(2, 11))
 optimal_k, gmm = finder.process_pipeline(features[selected].values, output_dir)
 
-# 4. Generate synthetic data
-generator = GMMDataGenerator(optimal_gmm=gmm)
-synthetic = generator.process_pipeline(
-    features_path, selected, optimal_k, n_synthetic=200, output_dir
-)
-
-# 5. Validate
-validator = ValidationMetrics()
-results = validator.process_pipeline(real_path, synthetic_path, selected, output_dir)
-
-print(f"Quality: {results['overall_quality_score']['grade']}")
+# 4. Profile clusters with AI
+profiler = ClusterProfiler()
+profiler.profile_all_clusters(df=features, cluster_col='cluster')
+profiler.save_profiles('outputs/cluster_profiling')
 ```
 
 ---
@@ -324,5 +292,5 @@ MIT License
 
 ---
 
-**Last Updated**: November 2025  
-**Version**: 3.0 (GMM-based)
+**Last Updated**: December 2025  
+**Version**: 4.0 (KMeans-only)

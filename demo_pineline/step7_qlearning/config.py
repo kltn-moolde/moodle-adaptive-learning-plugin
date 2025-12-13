@@ -52,7 +52,12 @@ REWARD_CONFIG_PATH = PROJECT_ROOT / 'config' / 'reward_config.json'
 # ===================================================================
 
 MOODLE_URL = os.getenv("MOODLE_URL", "http://localhost:8100")
-MOODLE_TOKEN = os.getenv("MOODLE_TOKEN", "4b46e553766600e4d15b284aec0434cb")
+# Custom API Token (for local_* APIs - custom endpoints)
+MOODLE_CUSTOM_TOKEN = os.getenv("MOODLE_CUSTOM_TOKEN", "86e86e0301d495db032da3b855180f5f")
+# Standard Moodle Web Service Token (for core_* APIs)
+MOODLE_STANDARD_TOKEN = os.getenv("MOODLE_STANDARD_TOKEN", "eb4a1ea54118eb52574ac5ede106dbd3")
+# Backward compatibility
+MOODLE_TOKEN = MOODLE_CUSTOM_TOKEN  # Default to custom token
 # NOTE: MOODLE_COURSE_ID removed - course_id should come from requests/logs
 
 # ===================================================================

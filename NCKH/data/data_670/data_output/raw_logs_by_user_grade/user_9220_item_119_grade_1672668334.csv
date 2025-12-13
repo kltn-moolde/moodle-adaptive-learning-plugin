@@ -1,0 +1,18 @@
+id,timecreated,eventname,action,target,userid,courseid,other,timestamp
+10482489,2022-12-13 00:40:20,\assignsubmission_onlinetext\event\assessable_uploaded,uploaded,assessable,9220,670,"{'pathnamehashes': {}, 'content': '', 'format': '*'}",1670892020
+10482490,2022-12-13 00:40:20,\assignsubmission_onlinetext\event\submission_created,created,submission,9220,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'onlinetextwordcount': 0, 'groupid': 0, 'groupname': None}",1670892020
+10482491,2022-12-13 00:40:20,\assignsubmission_file\event\assessable_uploaded,uploaded,assessable,9220,670,"{'content': '', 'pathnamehashes': {'0': 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'}}",1670892020
+10482492,2022-12-13 00:40:20,\assignsubmission_file\event\submission_created,created,submission,9220,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'filesubmissioncount': 1, 'groupid': 0, 'groupname': None}",1670892020
+10482493,2022-12-13 00:40:20,\core\event\course_module_completion_updated,updated,course_module_completion,9220,670,"{'relateduserid': 9220, 'overrideby': None, 'completionstate': 1}",1670892020
+10482494,2022-12-13 00:40:20,\mod_assign\event\assessable_submitted,submitted,assessable,9220,670,{'submission_editable': True},1670892020
+10482495,2022-12-13 00:40:20,\mod_assign\event\course_module_viewed,viewed,course_module,9220,670,,1670892020
+10482496,2022-12-13 00:40:20,\mod_assign\event\submission_status_viewed,viewed,submission_status,9220,670,{'assignid': '****'},1670892020
+10506419,2022-12-14 16:11:41,\core\event\course_viewed,viewed,course,9220,670,,1671034301
+10506426,2022-12-14 16:11:56,\mod_resource\event\course_module_viewed,viewed,course_module,9220,670,,1671034316
+10506427,2022-12-14 16:11:59,\core\event\course_viewed,viewed,course,9220,670,,1671034319
+10571038,2022-12-20 12:52:41,\core\event\course_viewed,viewed,course,9220,670,,1671540761
+10648329,2022-12-28 12:40:19,\core\event\course_viewed,viewed,course,9220,670,,1672231219
+10648331,2022-12-28 12:40:34,\core\event\course_viewed,viewed,course,9220,670,,1672231234
+10648332,2022-12-28 12:40:38,\gradereport_user\event\grade_report_viewed,viewed,grade_report,9220,670,,1672231238
+10648333,2022-12-28 12:40:43,\core\event\course_viewed,viewed,course,9220,670,,1672231243
+10655468,2022-12-29 13:26:26,\core\event\course_viewed,viewed,course,9220,670,,1672320386

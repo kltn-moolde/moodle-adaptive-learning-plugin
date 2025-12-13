@@ -1,0 +1,16 @@
+id,timecreated,eventname,action,target,userid,courseid,other,timestamp
+10798422,2023-01-09 12:53:28,\mod_assign\event\course_module_viewed,viewed,course_module,9260,670,,1673268808
+10798423,2023-01-09 12:53:28,\assignsubmission_onlinetext\event\assessable_uploaded,uploaded,assessable,9260,670,"{'pathnamehashes': {}, 'content': '********************************************************************************************************************************************************************************************************************************************************************************************************************************************************', 'format': '*'}",1673268808
+10798424,2023-01-09 12:53:28,\assignsubmission_onlinetext\event\submission_created,created,submission,9260,670,"{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'onlinetextwordcount': 10, 'groupid': 0, 'groupname': None}",1673268808
+10798425,2023-01-09 12:53:28,\mod_assign\event\assessable_submitted,submitted,assessable,9260,670,{'submission_editable': True},1673268808
+10798426,2023-01-09 12:53:28,\mod_assign\event\course_module_viewed,viewed,course_module,9260,670,,1673268808
+10798427,2023-01-09 12:53:28,\mod_assign\event\submission_status_viewed,viewed,submission_status,9260,670,{'assignid': '***'},1673268808
+10798429,2023-01-09 12:53:37,\gradereport_user\event\grade_report_viewed,viewed,grade_report,9260,670,,1673268817
+10798430,2023-01-09 12:53:39,\mod_assign\event\course_module_viewed,viewed,course_module,9260,670,,1673268819
+10798431,2023-01-09 12:53:39,\mod_assign\event\submission_status_viewed,viewed,submission_status,9260,670,{'assignid': '***'},1673268819
+10798438,2023-01-09 12:54:53,\mod_assign\event\course_module_viewed,viewed,course_module,9260,670,,1673268893
+10798439,2023-01-09 12:54:53,\mod_assign\event\submission_status_viewed,viewed,submission_status,9260,670,{'assignid': '****'},1673268893
+10798440,2023-01-09 12:55:07,\mod_assign\event\course_module_viewed,viewed,course_module,9260,670,,1673268907
+10798441,2023-01-09 12:55:07,\mod_assign\event\submission_status_viewed,viewed,submission_status,9260,670,{'assignid': '****'},1673268907
+10798443,2023-01-09 12:55:13,\mod_assign\event\course_module_viewed,viewed,course_module,9260,670,,1673268913
+10798444,2023-01-09 12:55:13,\mod_assign\event\submission_status_viewed,viewed,submission_status,9260,670,{'assignid': '****'},1673268913

@@ -1,0 +1,5 @@
+id,timecreated,eventname,action,target,userid,courseid,other,timestamp
+10937854,2023-01-17 07:00:22,\mod_quiz\event\attempt_started,started,attempt,8609,670,,1673938822
+10937855,2023-01-17 07:00:23,\mod_quiz\event\attempt_viewed,viewed,attempt,8609,670,{'quizid': '****'},1673938823
+10937883,2023-01-17 07:01:37,\mod_quiz\event\attempt_viewed,viewed,attempt,8609,670,{'quizid': '****'},1673938897
+10938015,2023-01-17 07:10:37,\mod_quiz\event\attempt_viewed,viewed,attempt,8609,670,{'quizid': '****'},1673939437

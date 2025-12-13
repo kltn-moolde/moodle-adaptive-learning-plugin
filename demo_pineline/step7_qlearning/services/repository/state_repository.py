@@ -79,13 +79,14 @@ class StateRepository:
         self.state_history = self.db[COLLECTION_STATE_HISTORY]
         self.log_events = self.db[COLLECTION_LOGS]
         self.recommendations = self.db[COLLECTION_RECOMMENDATIONS]
+        self.student_lo_mastery = self.db["student_lo_mastery"]  # NEW collection
         
         # Create indexes
         self._create_indexes()
         
         print(f"✓ StateRepository connected to MongoDB:")
         print(f"  - Database: {self.database_name}")
-        print(f"  - Collections: user_states, state_history, log_events, recommendations")
+        print(f"  - Collections: user_states, state_history, log_events, recommendations, student_lo_mastery")
     
     def _create_indexes(self):
         """Create indexes for efficient queries"""
@@ -125,6 +126,14 @@ class StateRepository:
             ("module_id", ASCENDING)
         ], unique=True)
         self.recommendations.create_index([("updated_at", DESCENDING)])
+        
+        # student_lo_mastery: unique index on (user_id, course_id)
+        self.student_lo_mastery.create_index([
+            ("user_id", ASCENDING),
+            ("course_id", ASCENDING)
+        ], unique=True, name="user_course_mastery_unique")
+        self.student_lo_mastery.create_index([("last_sync", DESCENDING)])
+        self.student_lo_mastery.create_index([("course_id", ASCENDING)])
     
     def save_state(
         self,
@@ -253,6 +262,35 @@ class StateRepository:
             states[module_id] = state
         
         return states
+    
+    def get_current_state(
+        self,
+        user_id: int,
+        course_id: int,
+        module_id: Optional[int] = None
+    ) -> Optional[Dict[str, Any]]:
+        """
+        Get current state for user in course
+        
+        Args:
+            user_id: User ID
+            course_id: Course ID
+            module_id: Optional - specific module (if None, get most recent)
+            
+        Returns:
+            State document or None if not found
+        """
+        query = {"user_id": user_id, "course_id": course_id}
+        if module_id is not None:
+            query["module_id"] = module_id
+        
+        # Get most recent state
+        state_doc = self.user_states.find_one(
+            query,
+            sort=[("updated_at", DESCENDING)]
+        )
+        
+        return state_doc
     
     def get_state_history(
         self,
@@ -425,9 +463,145 @@ class StateRepository:
             "state_history_count": self.state_history.count_documents({}),
             "recommendations_count": self.recommendations.count_documents({}),
             "log_events_count": self.log_events.count_documents({}),
+            "student_lo_mastery_count": self.student_lo_mastery.count_documents({}),
             "unique_users": len(self.user_states.distinct("user_id")),
             "unique_modules": len(self.user_states.distinct("module_id"))
         }
+    
+    # ===================================================================
+    # LO Mastery Methods
+    # ===================================================================
+    
+    def save_lo_mastery(
+        self,
+        user_id: int,
+        course_id: int,
+        lo_mastery: Dict[str, float],
+        po_progress: Dict[str, float],
+        metadata: Optional[Dict[str, Any]] = None
+    ) -> bool:
+        """
+        Save or update LO mastery for a student
+        
+        Args:
+            user_id: User ID
+            course_id: Course ID
+            lo_mastery: Dict of {LO_id: mastery_value}
+            po_progress: Dict of {PO_id: progress_value}
+            metadata: Additional metadata
+            
+        Returns:
+            True if successful
+        """
+        doc = {
+            "user_id": user_id,
+            "course_id": course_id,
+            "lo_mastery": lo_mastery,
+            "po_progress": po_progress,
+            "last_sync": datetime.utcnow(),
+            "metadata": metadata or {}
+        }
+        
+        # Upsert
+        self.student_lo_mastery.update_one(
+            {"user_id": user_id, "course_id": course_id},
+            {"$set": doc},
+            upsert=True
+        )
+        
+        return True
+    
+    def get_lo_mastery(
+        self,
+        user_id: int,
+        course_id: int
+    ) -> Optional[Dict]:
+        """
+        Get LO mastery for a student
+        
+        Args:
+            user_id: User ID
+            course_id: Course ID
+            
+        Returns:
+            Dict with lo_mastery, po_progress, last_sync, metadata or None
+        """
+        result = self.student_lo_mastery.find_one({
+            "user_id": user_id,
+            "course_id": course_id
+        })
+        
+        if result:
+            # Remove MongoDB _id field
+            result.pop('_id', None)
+        
+        return result
+    
+    def get_all_students_mastery(
+        self,
+        course_id: int
+    ) -> List[Dict]:
+        """
+        Get LO mastery for all students in a course
+        
+        Args:
+            course_id: Course ID
+            
+        Returns:
+            List of mastery documents
+        """
+        results = list(self.student_lo_mastery.find({"course_id": course_id}))
+        
+        # Remove MongoDB _id fields
+        for result in results:
+            result.pop('_id', None)
+        
+        return results
+    
+    def get_weak_students_by_lo(
+        self,
+        course_id: int,
+        lo_id: Optional[str] = None,
+        threshold: float = 0.6
+    ) -> List[Dict]:
+        """
+        Get students with low mastery in specific LO or overall
+        
+        Args:
+            course_id: Course ID
+            lo_id: Specific LO ID (optional)
+            threshold: Mastery threshold (default: 0.6)
+            
+        Returns:
+            List of {user_id, mastery_value, lo_id} dicts
+        """
+        all_students = self.get_all_students_mastery(course_id)
+        weak_students = []
+        
+        for student in all_students:
+            user_id = student['user_id']
+            lo_mastery = student.get('lo_mastery', {})
+            
+            if lo_id:
+                # Check specific LO
+                mastery_value = lo_mastery.get(lo_id, 0.0)
+                if mastery_value < threshold:
+                    weak_students.append({
+                        'user_id': user_id,
+                        'lo_id': lo_id,
+                        'mastery': mastery_value
+                    })
+            else:
+                # Check all LOs
+                for lo, mastery_value in lo_mastery.items():
+                    if mastery_value < threshold:
+                        weak_students.append({
+                            'user_id': user_id,
+                            'lo_id': lo,
+                            'mastery': mastery_value
+                        })
+        
+        return weak_students
     
     def close(self):
         """Close MongoDB connection"""
@@ -513,6 +687,38 @@ def test_state_repository():
         # Uncomment to delete test data
         # deleted = repo.delete_user_states(user_id=101)
         # print(f"   Deleted {deleted} states")
+        
+        print("\n9. Test LO Mastery methods:")
+        # Test save_lo_mastery
+        test_mastery = {
+            'LO1.1': 0.8,
+            'LO1.2': 0.65,
+            'LO2.1': 0.9
+        }
+        test_po_progress = {
+            'PO1': 0.75,
+            'PO2': 0.80
+        }
+        test_metadata = {
+            'total_activities_completed': 15,
+            'avg_quiz_score': 0.75
+        }
+        
+        saved = repo.save_lo_mastery(
+            user_id=101,
+            course_id=5,
+            lo_mastery=test_mastery,
+            po_progress=test_po_progress,
+            metadata=test_metadata
+        )
+        print(f"   Saved LO mastery: {saved}")
+        
+        # Test get_lo_mastery
+        mastery_data = repo.get_lo_mastery(user_id=101, course_id=5)
+        if mastery_data:
+            print(f"   Retrieved LO mastery for user 101")
+            print(f"   LOs: {len(mastery_data.get('lo_mastery', {}))}")
+            print(f"   POs: {len(mastery_data.get('po_progress', {}))}")
         
         repo.close()
         

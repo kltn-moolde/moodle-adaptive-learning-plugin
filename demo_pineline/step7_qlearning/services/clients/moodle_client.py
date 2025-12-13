@@ -48,22 +48,26 @@ class MoodleAPIClient:
         self,
         # moodle_url: str = "http://139.99.103.223:9090",
         moodle_url: str = "http://localhost:8100",
-        ws_token: str = "4b46e553766600e4d15b284aec0434cb",
+        ws_token: str = "86e86e0301d495db032da3b855180f5f",  # Custom API token (default)
+        ws_token_standard: str = "eb4a1ea54118eb52574ac5ede106dbd3",  # Standard Moodle API token
         course_id: int = 5,
         timeout: int = 30
     ):
         """
-        Initialize Moodle API client
+        Initialize Moodle API client with dual token support
         
         Args:
             moodle_url: Base Moodle URL (e.g., https://moodle.example.com)
-            ws_token: Web service token
+            ws_token: Web service token for custom APIs (local_*)
+            ws_token_standard: Web service token for standard Moodle APIs (core_*)
             course_id: Course ID
             timeout: Request timeout in seconds
         """
         self.moodle_url = moodle_url.rstrip('/')
-        self.ws_token = ws_token
-        self.course_id = course_id
+        self.ws_token_custom = ws_token  # Token for local_* APIs
+        self.ws_token_standard = ws_token_standard  # Token for core_* APIs
+        self.ws_token = ws_token  # Backward compatibility
+        self.course_id = course_id if course_id is not None else 5  # Default to 5 if None
         self.timeout = timeout
         
         # API endpoint
@@ -79,7 +83,7 @@ class MoodleAPIClient:
         params: Dict[str, Any]
     ) -> Dict:
         """
-        Call Moodle web service API
+        Call Moodle web service API with automatic token selection
         
         Args:
             function_name: Moodle function name
@@ -88,9 +92,17 @@ class MoodleAPIClient:
         Returns:
             API response as dictionary
         """
+        # Auto-select token based on API function name
+        if function_name.startswith('core_'):
+            # Standard Moodle APIs use standard token
+            selected_token = self.ws_token_standard
+        else:
+            # Custom APIs (local_*) use custom token
+            selected_token = self.ws_token_custom
+        
         # Add required parameters
         data = {
-            'wstoken': self.ws_token,
+            'wstoken': selected_token,
             'wsfunction': function_name,
             'moodlewsrestformat': 'json',
             **params
@@ -242,32 +254,95 @@ class MoodleAPIClient:
         """
         Get user scores across activities (quizzes)
         
-        Uses: local_userlog_get_user_scores
+        Uses: local_userlog_get_score_section (per section)
+        Aggregates scores from all sections if section_id not specified
         
         Args:
             user_id: User ID
-            section_id: Section ID (optional filter)
+            section_id: Section ID (optional - if None, get scores from all sections)
             
         Returns:
             List of score dictionaries with quiz scores
         """
-        params = {
-            'userid': user_id,
-            'courseid': self.course_id
-        }
-        
+        # If specific section requested, get scores for that section only
         if section_id is not None:
-            params['sectionid'] = section_id
+            params = {
+                'userid': user_id,
+                'courseid': self.course_id,
+                'sectionid': section_id
+            }
+            
+            function_name = 'local_userlog_get_score_section'
+            result = self._call_api(function_name, params)
+            
+            if 'error' in result:
+                print(f"Error fetching user scores for section {section_id}: {result['error']}")
+                return []
+            
+            return result.get('scores', [])
         
-        function_name = 'local_userlog_get_score_section'
+        # Otherwise, get scores from ALL sections
+        print(f"\n🔍 Getting scores for user {user_id} from all sections...")
         
-        result = self._call_api(function_name, params)
-        
-        if 'error' in result:
-            print(f"Error fetching user scores: {result['error']}")
+        try:
+            # Get course structure to find all sections
+            course_structure = self.get_course_structure()
+            contents = course_structure.get('contents', [])
+            
+            if not contents:
+                print("   ⚠️  No course sections found")
+                return []
+            
+            print(f"   📚 Found {len(contents)} sections in course")
+            
+            # Aggregate scores from all sections
+            all_scores = []
+            section_count = 0
+            
+            for section in contents:
+                section_id_current = section.get('id')
+                
+                # Validate section_id
+                if section_id_current is None:
+                    print(f"   ⚠️  Skipping section without ID: {section.get('name', 'Unknown')}")
+                    continue
+                
+                # Ensure section_id is integer
+                try:
+                    section_id_current = int(section_id_current)
+                except (ValueError, TypeError):
+                    print(f"   ⚠️  Invalid section ID: {section_id_current}")
+                    continue
+                
+                section_count += 1
+                
+                # Get scores for this section with all required params
+                params = {
+                    'userid': user_id,
+                    'courseid': self.course_id,
+                    'sectionid': section_id_current
+                }
+                
+                function_name = 'local_userlog_get_score_section'
+                result = self._call_api(function_name, params)
+                
+                if 'error' not in result and 'exception' not in result:
+                    section_scores = result.get('scores', [])
+                    all_scores.extend(section_scores)
+                    if section_scores:
+                        print(f"   ✓ Section {section_id_current}: {len(section_scores)} scores")
+                else:
+                    error_msg = result.get('message', result.get('error', 'Unknown error'))
+                    print(f"   ⚠️  Section {section_id_current}: {error_msg}")
+            
+            print(f"   ✅ Total: {len(all_scores)} scores from {section_count} sections")
+            return all_scores
+            
+        except Exception as e:
+            print(f"   ❌ Error getting scores from all sections: {e}")
+            import traceback
+            traceback.print_exc()
             return []
-        
-        return result.get('scores', [])
     
     def get_lesson_progression(
         self,
@@ -685,6 +760,39 @@ class MoodleAPIClient:
         
         return result.get('questions', [])
     
+    def get_enrolled_users(self, course_id: Optional[int] = None) -> List[Dict]:
+        """
+        Get list of enrolled users in a course
+        
+        Uses: core_enrol_get_enrolled_users (standard Moodle API)
+        
+        Args:
+            course_id: Course ID (default: self.course_id)
+            
+        Returns:
+            List of user dictionaries with id, username, firstname, lastname, email
+        """
+        params = {
+            'courseid': course_id or self.course_id
+        }
+        
+        function_name = 'core_enrol_get_enrolled_users'
+        
+        print(f"\n🔍 API Call: {function_name}")
+        print(f"   Params: courseid={course_id or self.course_id}")
+        
+        result = self._call_api(function_name, params)
+        
+        if 'error' in result:
+            print(f"   ❌ Error fetching enrolled users: {result['error']}")
+            return []
+        
+        # Result is array of user objects
+        users = result if isinstance(result, list) else []
+        print(f"   ✅ Found {len(users)} enrolled users")
+        
+        return users
+    
     def get_grade_course(self) -> List[Dict]:
         """
         Get grade information for all users in course
@@ -847,6 +955,15 @@ def test_moodle_api_client():
     
     print("\n" + "=" * 70)
     print("API Configuration:")
+    # Test get_enrolled_users
+    print("\n" + "=" * 70)
+    print("Test: get_enrolled_users()")
+    print("=" * 70)
+    enrolled_users = client.get_enrolled_users()
+    print(f"✓ Found {len(enrolled_users)} enrolled users")
+    if enrolled_users:
+        print(f"  Sample user: {enrolled_users[0]}")
+    
     print("=" * 70)
     print(f"Moodle URL: {client.moodle_url}")
     print(f"Course ID: {client.course_id}")

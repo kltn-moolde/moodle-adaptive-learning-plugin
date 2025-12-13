@@ -48,6 +48,21 @@ class ClusterProfiler:
                 import os
                 
                 api_key = self.api_key or os.getenv('GOOGLE_API_KEY') or os.getenv('GEMINI_API_KEY')
+                
+                # Try importing from config if available
+                if not api_key:
+                    try:
+                        import sys
+                        from pathlib import Path
+                        parent_dir = Path(__file__).parent.parent
+                        if str(parent_dir) not in sys.path:
+                            sys.path.insert(0, str(parent_dir))
+                        from config import GEMINI_API_KEY
+                        api_key = GEMINI_API_KEY
+                        logger.info("✓ Loaded API key from config.py")
+                    except (ImportError, AttributeError):
+                        pass
+                
                 if not api_key:
                     raise ValueError("Gemini API key not found. Set GOOGLE_API_KEY or GEMINI_API_KEY environment variable.")
                 
@@ -233,6 +248,94 @@ Chỉ trả về JSON, không thêm text khác.
             logger.error(f"LLM generation failed for cluster {cluster_id}: {e}")
             return self._generate_fallback_description(cluster_id)
     
+    def _generate_all_clusters_description(self) -> Dict[int, Dict]:
+        """
+        Generate descriptions for ALL clusters in ONE LLM request
+        Optimized to reduce API calls and avoid quota issues
+        
+        Returns:
+            Dict mapping cluster_id to profile dict
+        """
+        if not self.llm_client:
+            logger.warning("LLM not available, using fallback descriptions")
+            return {cid: self._generate_fallback_description(cid) 
+                    for cid in self.cluster_profiles['cluster_stats'].keys()}
+        
+        try:
+            # Build comprehensive prompt for all clusters
+            prompt_parts = [
+                "Bạn là chuyên gia phân tích dữ liệu học tập. Phân tích các nhóm học sinh sau và tạo mô tả CHI TIẾT cho TỪNG NHÓM.",
+                f"\nTổng số học sinh: {self.cluster_profiles['total_students']}",
+                f"Số nhóm: {self.cluster_profiles['n_clusters']}\n"
+            ]
+            
+            # Add info for each cluster
+            for cluster_id, stats in sorted(self.cluster_profiles['cluster_stats'].items()):
+                prompt_parts.append(f"\n--- NHÓM {cluster_id} ---")
+                prompt_parts.append(f"Số lượng: {stats['n_students']} học sinh ({stats['percentage']:.1f}%)")
+                prompt_parts.append(f"\nĐặc điểm nổi bật:")
+                prompt_parts.append(self._format_top_features(stats['top_distinguishing_features']))
+            
+            prompt_parts.append("\n\nYÊU CẦU OUTPUT (JSON):")
+            prompt_parts.append("Trả về JSON object với key là cluster_id (số nguyên), value là object có:")
+            prompt_parts.append("- name: Tên nhóm ngắn gọn, súc tích (VD: 'Học sinh tích cực')")
+            prompt_parts.append("- description: Mô tả tổng quan 2-3 câu về đặc điểm nhóm")
+            prompt_parts.append("- characteristics: Mảng 3-5 điểm đặc trưng chính (mỗi điểm 1 câu)")
+            prompt_parts.append("- recommendations: Mảng 2-3 gợi ý can thiệp/hỗ trợ (mỗi gợi ý 1 câu)")
+            prompt_parts.append("\nVí dụ format:")
+            prompt_parts.append('''{
+  "0": {
+    "name": "Học sinh chủ động",
+    "description": "Nhóm này thể hiện sự tích cực cao trong học tập với nhiều hoạt động tương tác.",
+    "characteristics": [
+      "Tham gia thường xuyên vào các bài tập và thảo luận",
+      "Có xu hướng hoàn thành bài tập trước deadline",
+      "Tương tác nhiều với tài liệu học liệu"
+    ],
+    "recommendations": [
+      "Tạo thêm bài tập nâng cao để thử thách",
+      "Khuyến khích làm mentor cho các bạn khác"
+    ]
+  }
+}''')
+            
+            prompt = '\n'.join(prompt_parts)
+            
+            # Call LLM
+            if self.llm_provider == 'gemini':
+                response = self.llm_client.generate_content(prompt)
+                result_text = response.text
+            elif self.llm_provider == 'openai':
+                response = self.llm_client.chat.completions.create(
+                    model="gpt-4",
+                    messages=[{"role": "user", "content": prompt}],
+                    temperature=0.7
+                )
+                result_text = response.choices[0].message.content
+            else:
+                raise ValueError(f"Unsupported LLM provider: {self.llm_provider}")
+            
+            # Parse JSON
+            result_text = result_text.strip()
+            if result_text.startswith('```json'):
+                result_text = result_text[7:]
+            elif result_text.startswith('```'):
+                result_text = result_text[3:]
+            if result_text.endswith('```'):
+                result_text = result_text[:-3]
+            result_text = result_text.strip()
+            
+            all_profiles = json.loads(result_text)
+            
+            # Convert string keys to int
+            return {int(k): v for k, v in all_profiles.items()}
+            
+        except Exception as e:
+            logger.error(f"LLM batch generation failed: {e}")
+            logger.warning("Falling back to individual fallback descriptions")
+            return {cid: self._generate_fallback_description(cid) 
+                    for cid in self.cluster_profiles['cluster_stats'].keys()}
+    
     def _format_top_features(self, top_features: List[Dict]) -> str:
         """Format top features cho prompt"""
         lines = []
@@ -256,17 +359,26 @@ Chỉ trả về JSON, không thêm text khác.
         else:
             name = f"Nhóm {cluster_id + 1}"
         
+        # Get top features for characteristics
+        top_features = cluster_data.get('top_distinguishing_features', [])[:3]
+        characteristics = [
+            f"{feat['feature'].replace('_', ' ').title()}: {feat['interpretation']}"
+            for feat in top_features
+        ] if top_features else ["Đặc điểm cần phân tích thêm"]
+        
         return {
             'name': name,
-            'description': f"Nhóm gồm {cluster_data['n_students']} học sinh ({pct:.1f}%).",
-            'strengths': ["Cần phân tích thêm"],
-            'weaknesses': ["Cần phân tích thêm"],
-            'recommendations': ["Cần phân tích chi tiết hơn để đưa ra đề xuất phù hợp"]
+            'description': f"Nhóm gồm {cluster_data['n_students']} học sinh ({pct:.1f}%), cần phân tích chi tiết để hiểu rõ đặc điểm.",
+            'characteristics': characteristics,
+            'recommendations': [
+                "Theo dõi hoạt động học tập của nhóm",
+                "Phân tích thêm để đưa ra can thiệp phù hợp"
+            ]
         }
     
     def profile_all_clusters(self, df: pd.DataFrame, cluster_col: str = 'cluster') -> Dict:
         """
-        Phân tích và mô tả tất cả các cluster
+        Phân tích và mô tả tất cả các cluster cùng lúc (tối ưu API calls)
         
         Args:
             df: DataFrame chứa data với cluster labels
@@ -279,26 +391,45 @@ Chỉ trả về JSON, không thêm text khác.
         logger.info("CLUSTER PROFILING WITH LLM")
         logger.info("="*70)
         
-        # Calculate statistics
-        self.calculate_cluster_statistics(df, cluster_col)
+        # Calculate statistics (already done if called externally)
+        if not self.cluster_profiles or 'cluster_stats' not in self.cluster_profiles:
+            self.calculate_cluster_statistics(df, cluster_col)
         
-        # Generate LLM descriptions
-        logger.info("\nGenerating AI-powered descriptions for each cluster...")
+        # Generate LLM descriptions for ALL clusters at once
+        logger.info("\n🤖 Generating AI-powered descriptions for all clusters in one request...")
         
-        for cluster_id in sorted(self.cluster_profiles['cluster_stats'].keys()):
-            logger.info(f"\n📊 Analyzing Cluster {cluster_id}...")
+        llm_profiles = self._generate_all_clusters_description()
+        
+        # Create structured profiles
+        profiles_dict = {}
+        for cluster_id, stats in self.cluster_profiles['cluster_stats'].items():
+            profile = llm_profiles.get(cluster_id, {
+                'name': f'Cluster {cluster_id}',
+                'description': f"Nhóm gồm {stats['n_students']} học sinh ({stats['percentage']:.1f}%).",
+                'characteristics': [],
+                'recommendations': []
+            })
             
-            llm_description = self.generate_llm_description(cluster_id)
-            self.cluster_profiles['cluster_stats'][cluster_id]['ai_profile'] = llm_description
+            profiles_dict[cluster_id] = {
+                'cluster_id': cluster_id,
+                'name': profile.get('name', f'Cluster {cluster_id}'),
+                'description': profile.get('description', ''),
+                'characteristics': profile.get('characteristics', []),
+                'recommendations': profile.get('recommendations', []),
+                'llm_description': profile  # Keep full LLM response for compatibility
+            }
             
-            logger.info(f"  ✓ Name: {llm_description.get('name', 'N/A')}")
-            logger.info(f"  ✓ Description: {llm_description.get('description', 'N/A')}")
+            logger.info(f"  ✓ Cluster {cluster_id}: {profile.get('name', 'N/A')}")
         
         logger.info("\n" + "="*70)
-        logger.info(f"✓ Profiled {len(self.cluster_profiles['cluster_stats'])} clusters")
+        logger.info(f"✓ Profiled {len(profiles_dict)} clusters")
         logger.info("="*70)
         
-        return self.cluster_profiles
+        return {
+            'cluster_stats': self.cluster_profiles['cluster_stats'],
+            'profiles': profiles_dict,
+            'n_clusters': len(profiles_dict)
+        }
     
     def save_profiles(self, output_dir: str):
         """

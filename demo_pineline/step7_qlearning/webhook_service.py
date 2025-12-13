@@ -26,20 +26,24 @@ from pipeline.log_processing_pipeline import LogProcessingPipeline
 from services.repository.state_repository import StateRepository
 from services.business.recommendation import RecommendationService
 from services.model.loader import ModelLoader
+from core.activity_recommender import ActivityRecommender
 
 # =============================================================================
 # Configuration
 # =============================================================================
 
-MODEL_PATH = HERE / 'models' / 'qtable.pkl'
+COURSE_ID = 5  # Default course ID
+MODEL_PATH = HERE / 'models' / f'qtable_{COURSE_ID}.pkl'
 COURSE_PATH = HERE / 'data' / 'course_structure.json'
 CLUSTER_PROFILES_PATH = HERE / 'data' / 'cluster_profiles.json'
+PO_LO_PATH = HERE / 'data' / f'Po_Lo_{COURSE_ID}.json'  # Course-specific PO/LO mapping
 
 # Global services (initialized on startup)
 pipeline: Optional[LogProcessingPipeline] = None
 recommendation_service: Optional[RecommendationService] = None
 state_repository: Optional[StateRepository] = None
 model_loader: Optional[ModelLoader] = None
+activity_recommender: Optional[ActivityRecommender] = None
 
 # =============================================================================
 # Lifespan Context Manager
@@ -48,7 +52,7 @@ model_loader: Optional[ModelLoader] = None
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Initialize services on startup"""
-    global pipeline, recommendation_service, state_repository, model_loader
+    global pipeline, recommendation_service, state_repository, model_loader, activity_recommender
     
     print("\n" + "="*70)
     print("🚀 Initializing Webhook Service")
@@ -57,6 +61,7 @@ async def lifespan(app: FastAPI):
     # Load model
     print("\n1. Loading Q-Learning model...")
     model_loader = ModelLoader(
+        course_id=COURSE_ID,
         model_path=MODEL_PATH,
         course_path=COURSE_PATH,
         cluster_profiles_path=CLUSTER_PROFILES_PATH
@@ -73,18 +78,32 @@ async def lifespan(app: FastAPI):
     )
     print("  ✓ Pipeline ready")
     
+    # Initialize activity recommender
+    print("\n3. Initializing activity recommender...")
+    try:
+        activity_recommender = ActivityRecommender(
+            po_lo_path=str(PO_LO_PATH),
+            course_structure_path=str(COURSE_PATH),
+            course_id=5  # Default course ID
+        )
+        print("  ✓ Activity recommender ready")
+    except Exception as e:
+        print(f"  ⚠️  Warning: Failed to initialize ActivityRecommender: {e}")
+        activity_recommender = None
+    
     # Initialize recommendation service
-    print("\n3. Initializing recommendation service...")
+    print("\n4. Initializing recommendation service...")
     recommendation_service = RecommendationService(
         agent=model_loader.agent,
         action_space=model_loader.action_space,
         state_builder=model_loader.state_builder,
-        course_structure_path=str(COURSE_PATH)
+        course_structure_path=str(COURSE_PATH),
+        activity_recommender=activity_recommender
     )
     print("  ✓ Recommendation service ready")
     
     # Initialize state repository
-    print("\n4. Connecting to MongoDB...")
+    print("\n5. Connecting to MongoDB...")
     state_repository = StateRepository()
     print("  ✓ MongoDB connected")
     

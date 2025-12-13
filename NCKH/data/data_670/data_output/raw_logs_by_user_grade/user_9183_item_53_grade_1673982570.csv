@@ -1,0 +1,8 @@
+id,timecreated,eventname,action,target,userid,courseid,other,timestamp
+10939548,2023-01-17 08:35:57,\mod_quiz\event\attempt_submitted,submitted,attempt,9183,670,"{'submitterid': '****', 'quizid': '****'}",1673944557
+10939549,2023-01-17 08:35:57,\mod_quiz\event\course_module_viewed,viewed,course_module,9183,670,,1673944557
+10939568,2023-01-17 08:36:09,\core\event\course_viewed,viewed,course,9183,670,,1673944569
+10942157,2023-01-17 10:02:42,\core\event\course_viewed,viewed,course,9183,670,,1673949762
+10943567,2023-01-17 11:06:07,\core\event\course_viewed,viewed,course,9183,670,,1673953567
+10943570,2023-01-17 11:06:11,\mod_quiz\event\course_module_viewed,viewed,course_module,9183,670,,1673953571
+10943572,2023-01-17 11:06:15,\mod_quiz\event\attempt_reviewed,reviewed,attempt,9183,670,{'quizid': '****'},1673953575

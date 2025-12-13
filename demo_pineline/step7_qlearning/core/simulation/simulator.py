@@ -8,6 +8,7 @@ action selection, reward calculation, và LO mastery tracking
 """
 
 import json
+import random
 from typing import Dict, List, Tuple, Optional, Any
 from pathlib import Path
 from collections import defaultdict
@@ -38,7 +39,9 @@ class LearningPathSimulator:
         self,
         qtable_path: Optional[str] = None,
         verbose: bool = True,
-        save_logs: bool = True
+        save_logs: bool = True,
+        sim_params_path: Optional[str] = None,
+        use_param_policy: bool = False
     ):
         """
         Initialize simulator
@@ -67,7 +70,12 @@ class LearningPathSimulator:
             po_lo_path='data/Po_Lo.json'
         )
         self.logger = StateTransitionLogger(verbose=verbose)
-        
+
+        # Optional parameterized simulator policy
+        self.use_param_policy = use_param_policy
+        self.sim_params = self._load_sim_params(sim_params_path)
+        self.action_type_to_indices = self._build_action_type_index()
+
         # Initialize Q-Learning agent
         n_actions = self.action_space.get_action_count()
         self.agent = QLearningAgentV2(
@@ -100,6 +108,87 @@ class LearningPathSimulator:
             print(f"✓ Initialized LearningPathSimulator")
             print(f"  Actions: {n_actions}")
             print(f"  LO mappings: {len(self.lo_mappings)} activities")
+            if self.sim_params:
+                print(f"  Loaded simulate params from {sim_params_path}")
+                available = list(self.sim_params.keys())
+                print(f"  Param keys: {available}")
+
+    def _load_sim_params(self, sim_params_path: Optional[str]) -> Dict[str, Any]:
+        """Load simulate parameters JSON if provided"""
+        if sim_params_path and Path(sim_params_path).exists():
+            with open(sim_params_path, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        return {}
+
+    def _build_action_type_index(self) -> Dict[str, List[int]]:
+        """Map action_type to list of action indices for quick sampling"""
+        mapping: Dict[str, List[int]] = defaultdict(list)
+        for action in self.action_space.get_actions():
+            mapping[action.action_type].append(action.index)
+        return mapping
+
+    def _normalize_distribution(self, probs: Dict[str, float]) -> Dict[str, float]:
+        total = sum(probs.values())
+        if total <= 0:
+            return {}
+        return {k: v / total for k, v in probs.items() if v > 0}
+
+    def _sample_action_from_params(self, state: Tuple[int, int, float, float, int, int]) -> Optional[int]:
+        """Sample an action index using pre-computed probability tables"""
+        if not self.sim_params:
+            return None
+
+        learning_phase = state[4]
+        engagement = state[5]
+
+        probs = {}
+        # Prefer learning phase distribution, then engagement distribution
+        phase_key = str(learning_phase)
+        engagement_key = str(engagement)
+        phase_table = self.sim_params.get('action_probs_by_learning_phase', {})
+        engage_table = self.sim_params.get('action_probs_by_engagement', {})
+
+        if phase_key in phase_table:
+            probs = self._normalize_distribution(phase_table[phase_key])
+        elif engagement_key in engage_table:
+            probs = self._normalize_distribution(engage_table[engagement_key])
+
+        if not probs:
+            return None
+
+        # Sample action type then map to an action index (prefer current context if available)
+        action_types = list(probs.keys())
+        weights = list(probs.values())
+        action_type = random.choices(action_types, weights=weights, k=1)[0]
+
+        candidates = self.action_type_to_indices.get(action_type, [])
+        if not candidates:
+            return None
+
+        current_pref = [idx for idx in candidates if self.action_space.get_action_by_index(idx).time_context == 'current']
+        pool = current_pref if current_pref else candidates
+        return random.choice(pool) if pool else None
+
+    def _generate_students_by_mix(
+        self,
+        n_students: int,
+        cluster_mix: Optional[Dict[str, float]] = None
+    ) -> List[Dict[str, Any]]:
+        """Create student configs following a cluster ratio"""
+        mix = cluster_mix or {'weak': 0.2, 'medium': 0.6, 'strong': 0.2}
+        mix = self._normalize_distribution(mix) or {'weak': 0.2, 'medium': 0.6, 'strong': 0.2}
+        configs: List[Dict[str, Any]] = []
+        cumulative = []
+        total = 0.0
+        for cluster, weight in mix.items():
+            total += weight
+            cumulative.append((total, cluster))
+
+        for sid in range(1, n_students + 1):
+            r = random.random()
+            cluster = next(c for threshold, c in cumulative if r <= threshold)
+            configs.append({'student_id': sid, 'cluster': cluster, 'n_steps': 30})
+        return configs
     
     def simulate_student(
         self,
@@ -143,24 +232,25 @@ class LearningPathSimulator:
             state = student.get_state()
             
             # Select action
-            import random
-            if use_trained_agent:
-                # Store best action to compare
-                best_action_idx = self.agent.get_best_action(state)
-                
-                # Select action (may explore or exploit)
-                # Check epsilon to determine if exploration happened
-                epsilon_check = random.random()
-                action_idx = self.agent.select_action(state)
-                
-                # Determine if this was exploration
-                # If epsilon > random value, it was exploration (unless it happened to pick best)
-                is_exploration = (epsilon_check < self.agent.epsilon) and \
-                    (self.agent.epsilon > 0) and \
-                    (action_idx != best_action_idx)
+            if self.use_param_policy and self.sim_params:
+                action_idx = self._sample_action_from_params(state)
+                # Fallback to agent if params missing
+                if action_idx is None:
+                    action_idx = self.agent.select_action(state)
+                    is_exploration = True
+                else:
+                    is_exploration = False
             else:
-                action_idx = self.agent.select_action(state)
-                is_exploration = True
+                if use_trained_agent:
+                    best_action_idx = self.agent.get_best_action(state)
+                    epsilon_check = random.random()
+                    action_idx = self.agent.select_action(state)
+                    is_exploration = (epsilon_check < self.agent.epsilon) and \
+                        (self.agent.epsilon > 0) and \
+                        (action_idx != best_action_idx)
+                else:
+                    action_idx = self.agent.select_action(state)
+                    is_exploration = True
             
             action = self.action_space.get_action_by_index(action_idx)
             if action is None:
@@ -175,11 +265,14 @@ class LearningPathSimulator:
             weak_los = self.lo_tracker.get_weak_los(student_id, threshold=0.6)
             
             # Get activity recommendation (LO-based filtering)
+            # Use simplified parameters based on student state
             recommendation = self.activity_recommender.recommend_activity(
                 action=action_tuple,
-                module_idx=student.module_idx,
+                course_id=670,  # Fixed course ID for now
+                lesson_id=student.module_idx,  # Use module_idx as lesson_id
                 lo_mastery=self.lo_tracker.get_mastery(student_id),
-                previous_activities=getattr(student, 'activity_history', [])
+                previous_activities=getattr(student, 'activity_history', []),
+                cluster_id=student.cluster_id
             )
             activity_id = recommendation['activity_id']
             activity_name = recommendation['activity_name']
@@ -296,15 +389,19 @@ class LearningPathSimulator:
             print(f"Final progress: {result['final_state']['progress']:.2f}")
             print(f"Final score: {result['final_state']['score']:.2f}")
             print(f"Avg LO mastery: {result['final_state']['avg_lo_mastery']:.2f}")
-            print(f"Predicted midterm: {lo_summary['midterm_prediction']['predicted_score']:.1f}/20 "
-                  f"({lo_summary['midterm_prediction']['predicted_percentage']:.1f}%)")
+            midterm_score = lo_summary['midterm_prediction']['predicted_score']
+            midterm_score_10 = midterm_score / 2.0
+            print(f"Predicted midterm: {midterm_score:.1f}/20 ({midterm_score_10:.1f}/10) - "
+                  f"{lo_summary['midterm_prediction']['predicted_percentage']:.1f}%")
         
         return result
     
     def simulate_multiple_students(
         self,
-        students_config: List[Dict[str, Any]],
-        output_path: Optional[str] = None
+        students_config: Optional[List[Dict[str, Any]]] = None,
+        output_path: Optional[str] = None,
+        n_students: Optional[int] = None,
+        cluster_mix: Optional[Dict[str, float]] = None
     ) -> Dict[str, Any]:
         """
         Simulate multiple students
@@ -312,13 +409,19 @@ class LearningPathSimulator:
         Args:
             students_config: List of {student_id, cluster, n_steps}
             output_path: Path to save JSON output
-            
+            n_students: If provided, auto-generate configs using cluster_mix when students_config is None
+            cluster_mix: Dict ratios for weak/medium/strong, defaults 0.2/0.6/0.2
+        
         Returns:
             Dict với results for all students
         """
         all_results = []
+
+        configs = students_config or []
+        if not configs and n_students:
+            configs = self._generate_students_by_mix(n_students, cluster_mix)
         
-        for config in students_config:
+        for config in configs:
             student_id = config['student_id']
             cluster = config['cluster']
             n_steps = config.get('n_steps', 30)
@@ -337,18 +440,20 @@ class LearningPathSimulator:
         
         # Aggregate statistics
         total_students = len(all_results)
-        avg_reward = sum(r['total_reward'] for r in all_results) / total_students
+        avg_reward = sum(r['total_reward'] for r in all_results) / total_students if total_students else 0.0
         avg_midterm = sum(
             r['lo_summary']['midterm_prediction']['predicted_score']
             for r in all_results
-        ) / total_students
+        ) / total_students if total_students else 0.0
+        avg_midterm_10 = avg_midterm / 2.0
         
         output = {
             'simulation_metadata': {
                 'total_students': int(total_students),
-                'students_config': students_config,
+                'students_config': configs,
                 'avg_reward': float(avg_reward),
-                'avg_midterm_score': float(avg_midterm)
+                'avg_midterm_score': float(avg_midterm),
+                'avg_midterm_score_10': float(avg_midterm_10)  # Hệ 10
             },
             'students': all_results
         }
@@ -356,16 +461,32 @@ class LearningPathSimulator:
         # Save to JSON (convert numpy types to native Python types)
         if output_path and self.save_logs:
             import numpy as np
+            import math
+            
             def convert_numpy_types(obj):
-                """Recursively convert numpy types to native Python types"""
-                if isinstance(obj, np.integer):
+                """Recursively convert numpy types and tuple keys to native Python types"""
+                if isinstance(obj, (np.integer, np.int32, np.int64)):
                     return int(obj)
-                elif isinstance(obj, np.floating):
-                    return float(obj)
+                elif isinstance(obj, (np.floating, np.float32, np.float64)):
+                    # Handle NaN and Inf values
+                    val = float(obj)
+                    if math.isnan(val) or math.isinf(val):
+                        return None
+                    return val
+                elif isinstance(obj, np.bool_):
+                    return bool(obj)
                 elif isinstance(obj, np.ndarray):
                     return obj.tolist()
                 elif isinstance(obj, dict):
-                    return {key: convert_numpy_types(value) for key, value in obj.items()}
+                    # Convert tuple keys to strings for JSON serialization
+                    new_dict = {}
+                    for key, value in obj.items():
+                        if isinstance(key, tuple):
+                            new_key = str(key)
+                        else:
+                            new_key = key
+                        new_dict[new_key] = convert_numpy_types(value)
+                    return new_dict
                 elif isinstance(obj, list):
                     return [convert_numpy_types(item) for item in obj]
                 elif isinstance(obj, tuple):

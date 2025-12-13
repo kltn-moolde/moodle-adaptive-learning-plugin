@@ -1,0 +1,13 @@
+id,timecreated,eventname,action,target,userid,courseid,other,timestamp
+10941005,2023-01-17 09:31:29,\mod_quiz\event\attempt_submitted,submitted,attempt,9131,670,"{'submitterid': '****', 'quizid': '****'}",1673947889
+10941006,2023-01-17 09:31:29,\mod_quiz\event\course_module_viewed,viewed,course_module,9131,670,,1673947889
+10942069,2023-01-17 10:00:28,\mod_quiz\event\course_module_viewed,viewed,course_module,9131,670,,1673949628
+10942072,2023-01-17 10:00:32,\mod_quiz\event\attempt_reviewed,reviewed,attempt,9131,670,{'quizid': '****'},1673949632
+10942110,2023-01-17 10:01:16,\mod_quiz\event\attempt_reviewed,reviewed,attempt,9131,670,{'quizid': '****'},1673949676
+10950696,2023-01-17 15:40:54,\core\event\course_viewed,viewed,course,9131,670,,1673970054
+10950708,2023-01-17 15:41:01,\mod_quiz\event\course_module_viewed,viewed,course_module,9131,670,,1673970061
+10950709,2023-01-17 15:41:03,\mod_quiz\event\attempt_reviewed,reviewed,attempt,9131,670,{'quizid': '****'},1673970063
+10954002,2023-01-17 19:05:21,\core\event\course_viewed,viewed,course,9131,670,,1673982321
+10954003,2023-01-17 19:05:23,\mod_quiz\event\course_module_viewed,viewed,course_module,9131,670,,1673982323
+10954004,2023-01-17 19:05:25,\mod_quiz\event\attempt_reviewed,reviewed,attempt,9131,670,{'quizid': '****'},1673982325
+10954072,2023-01-17 19:07:07,\core\event\course_viewed,viewed,course,9131,670,,1673982427
