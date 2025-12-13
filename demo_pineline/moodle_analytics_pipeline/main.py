@@ -13,8 +13,6 @@ from core import (
     FeatureExtractor,
     FeatureSelector,
     OptimalClusterFinder,
-    GMMDataGenerator,
-    ValidationMetrics,
     ComparisonVisualizer,
     ClusterProfiler
 )
@@ -34,15 +32,14 @@ logger = logging.getLogger(__name__)
 
 class MoodleAnalyticsPipeline:
     """
-    Complete KMeans + GMM-based analytics pipeline
+    Streamlined KMeans analytics pipeline (no GMM)
     
     Pipeline flow:
     1. Feature Extraction: Extract và normalize features từ raw data
     2. Feature Selection: Chọn features tối ưu (variance + correlation filtering)
     3. Optimal Clustering: Tìm số cụm tối ưu với KMeans + Voting (Elbow, Silhouette, Davies-Bouldin)
-    4. GMM Data Generation: Sinh data synthetic từ GMM per cluster
-    5. Validation: Validate similarity giữa real và synthetic (KS test, correlation, chi-square)
-    6. Visualization & Comparison: Tổng hợp và so sánh kết quả
+    4. Cluster Profiling with AI: Mô tả và diễn giải từng cụm
+    5. Visualization: Biểu đồ và trực quan hóa các cụm và đặc trưng
     """
     
     def __init__(self, base_output_dir: str = 'outputs'):
@@ -53,8 +50,6 @@ class MoodleAnalyticsPipeline:
         self.feature_dir = self.base_output_dir / 'features'
         self.feature_selection_dir = self.base_output_dir / 'feature_selection'
         self.optimal_clusters_dir = self.base_output_dir / 'optimal_clusters'
-        self.gmm_generation_dir = self.base_output_dir / 'gmm_generation'
-        self.validation_dir = self.base_output_dir / 'validation'
         self.comparison_dir = self.base_output_dir / 'comparison'
         self.cluster_profiling_dir = self.base_output_dir / 'cluster_profiling'
         
@@ -62,15 +57,12 @@ class MoodleAnalyticsPipeline:
         self.feature_extractor = FeatureExtractor()
         self.feature_selector = FeatureSelector()
         self.cluster_finder = OptimalClusterFinder()
-        self.gmm_generator = GMMDataGenerator()
-        self.validator = ValidationMetrics()
         self.comparison_visualizer = ComparisonVisualizer()
         self.cluster_profiler = None  # Initialize on demand
         
     def run_full_pipeline(self, 
                          grades_path: str,
                          logs_path: str,
-                         n_synthetic_students: int = 100,
                          variance_threshold: float = 0.01,
                          correlation_threshold: float = 0.95,
                          max_features: int = None,
@@ -83,7 +75,6 @@ class MoodleAnalyticsPipeline:
         Args:
             grades_path: Path to grades CSV file
             logs_path: Path to logs CSV file
-            n_synthetic_students: Number of synthetic students to generate
             variance_threshold: Variance threshold for feature selection (0-1)
             correlation_threshold: Correlation threshold for feature selection (0-1)
             max_features: Maximum features to select (None = no limit)
@@ -132,54 +123,14 @@ class MoodleAnalyticsPipeline:
             random_state=42
         )
         
-        # ========== PHASE 4: GMM DATA GENERATION ==========
-        logger.info("\n🔮 PHASE 4: GMM Data Generation (from KMeans clusters)")
-        logger.info("-"*80)
-        
-        self.gmm_generator = GMMDataGenerator(optimal_kmeans=optimal_kmeans)
-        
-        synthetic_data = self.gmm_generator.process_pipeline(
-            features_path=str(self.feature_dir / 'features_scaled.json'),
-            selected_features=selected_features,
-            optimal_k=optimal_k,
-            n_synthetic=n_synthetic_students,
-            output_dir=str(self.gmm_generation_dir),
-            random_state=42
-        )
-        
-        # ========== PHASE 5: VALIDATION ==========
-        logger.info("\n✅ PHASE 5: Validation (Real vs Synthetic)")
-        logger.info("-"*80)
-        
-        # Save real data with clusters for comparison
+        # ========== PHASE 4: CLUSTER PROFILING (LLM-POWERED) ==========
+        # Prepare real data with assigned clusters
         real_data_with_clusters = features_scaled.copy()
-        real_data_with_clusters['cluster'] = self.gmm_generator.real_data['cluster']
-        real_path = self.gmm_generation_dir / 'real_students_with_clusters.csv'
+        real_data_with_clusters['cluster'] = optimal_kmeans.labels_
+        real_path = self.optimal_clusters_dir / 'real_students_with_clusters.csv'
         real_data_with_clusters.to_csv(real_path, index=False)
         
-        validation_results = self.validator.process_pipeline(
-            real_path=str(real_path),
-            synthetic_path=str(self.gmm_generation_dir / 'synthetic_students_gmm.csv'),
-            features=selected_features,
-            output_dir=str(self.validation_dir)
-        )
-        
-        # ========== PHASE 6: ADDITIONAL COMPARISON ==========
-        logger.info("\n📈 PHASE 6: Additional Comparison & Visualization")
-        logger.info("-"*80)
-        
-        # Use comparison visualizer for additional plots
-        try:
-            self.comparison_visualizer.process_pipeline(
-                real_path=str(real_path),
-                simulated_path=str(self.gmm_generation_dir / 'synthetic_students_gmm.csv'),
-                features=selected_features[:15],  # Top 15 features
-                output_dir=str(self.comparison_dir)
-            )
-        except Exception as e:
-            logger.warning(f"Additional comparison failed: {e}")
-        
-        # ========== PHASE 7: CLUSTER PROFILING (LLM-POWERED) ==========
+        # ========== PHASE 4: CLUSTER PROFILING (LLM-POWERED) ==========
         if enable_llm_profiling:
             logger.info("\n🤖 PHASE 7: Cluster Profiling with AI")
             logger.info("-"*80)
@@ -191,7 +142,7 @@ class MoodleAnalyticsPipeline:
                 # Load real data with clusters
                 import pandas as pd
                 real_clustered = pd.read_csv(
-                    self.gmm_generation_dir / 'real_students_with_clusters.csv'
+                    real_path
                 )
                 
                 # Profile clusters
@@ -210,7 +161,19 @@ class MoodleAnalyticsPipeline:
                 logger.warning("Continuing without LLM profiling...")
         else:
             logger.info("\n⏭️ PHASE 7: Cluster Profiling (Skipped)")
-        
+        # ========== PHASE 5: VISUALIZATION ==========
+        logger.info("\n📈 PHASE 5: Visualization")
+        logger.info("-"*80)
+        try:
+            # Visualize distributions and cluster separation
+            self.comparison_visualizer.process_pipeline(
+                real_path=str(real_path),
+                features=selected_features[:15],
+                output_dir=str(self.comparison_dir)
+            )
+        except Exception as e:
+            logger.warning(f"Visualization phase encountered an issue: {e}")
+
         # ========== PIPELINE COMPLETE ==========
         logger.info("\n" + "="*80)
         logger.info("✅ PIPELINE COMPLETED SUCCESSFULLY!")
@@ -220,30 +183,20 @@ class MoodleAnalyticsPipeline:
         logger.info(f"  Features:           {self.feature_dir}")
         logger.info(f"  Feature Selection:  {self.feature_selection_dir}")
         logger.info(f"  Optimal Clusters:   {self.optimal_clusters_dir}")
-        logger.info(f"  GMM Generation:     {self.gmm_generation_dir}")
-        logger.info(f"  Validation:         {self.validation_dir}")
-        logger.info(f"  Comparison:         {self.comparison_dir}")
+        logger.info(f"  Visualization:      {self.comparison_dir}")
         if enable_llm_profiling:
             logger.info(f"  Cluster Profiling:  {self.cluster_profiling_dir}")
-        
-        # Print quality score
-        if 'overall_quality_score' in validation_results:
-            score_info = validation_results['overall_quality_score']
-            logger.info(f"\n🎯 Overall Quality Score: {score_info['score']:.1f}% (Grade: {score_info['grade']})")
-            logger.info(f"   {score_info['interpretation']}")
         
         return {
             'features': features_scaled,
             'selected_features': selected_features,
             'optimal_k': optimal_k,
-            'real_data': self.gmm_generator.real_data,
-            'synthetic_data': synthetic_data,
-            'validation_results': validation_results
+            'real_data': real_data_with_clusters
         }
 
 
 def main():
-    """Main entry point - GMM-based pipeline"""
+    """Main entry point - KMeans-only pipeline"""
     # Initialize pipeline
     pipeline = MoodleAnalyticsPipeline(base_output_dir='outputs')
     
@@ -251,7 +204,6 @@ def main():
     results = pipeline.run_full_pipeline(
         grades_path='../data/udk_moodle_grades_course_670.csv',
         logs_path='../data/udk_moodle_log_course_670.csv',
-        n_synthetic_students=5000,
         variance_threshold=0.01,
         correlation_threshold=0.95,
         max_features=15,
@@ -259,27 +211,12 @@ def main():
     )
     
     print("\n" + "="*80)
-    print("📊 PIPELINE SUMMARY (GMM-BASED)")
+    print("📊 PIPELINE SUMMARY (KMeans)")
     print("="*80)
     print(f"Real students:        {len(results['real_data'])}")
-    print(f"Synthetic students:   {len(results['synthetic_data'])}")
     print(f"Optimal clusters (k): {results['optimal_k']}")
     print(f"Features extracted:   {len(results['features'].columns) - 1}")
     print(f"Features selected:    {len(results['selected_features'])}")
-    
-    # Quality metrics
-    if 'validation_results' in results:
-        val_results = results['validation_results']
-        if 'overall_quality_score' in val_results:
-            score_info = val_results['overall_quality_score']
-            print(f"\n🎯 QUALITY ANALYSIS")
-            print(f"Overall Score:        {score_info['score']:.1f}%")
-            print(f"Grade:                {score_info['grade']}")
-            print(f"Quality:              {score_info['interpretation']}")
-        
-        if 'overall_metrics' in val_results:
-            metrics = val_results['overall_metrics']
-            print(f"\nKS Tests Passed:      {metrics['ks_tests_passed']}/{metrics['total_features_tested']} ({metrics['ks_pass_rate']*100:.1f}%)")
     
     print("\n✅ All outputs saved to 'outputs/' directory")
     print("="*80)

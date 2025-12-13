@@ -1,4 +1,4 @@
-# Moodle Analytics Pipeline - Module Summary
+# Moodle Analytics Pipeline - Module Summary (KMeans-Only)
 
 ## 📁 Complete File Structure
 
@@ -44,9 +44,10 @@ moodle_analytics_pipeline/
 | Module | Purpose | Lines | Key Methods |
 |--------|---------|-------|-------------|
 | `feature_extractor.py` | Extract & normalize features | 203 | `extract_features()`, `normalize_features()` |
-| `clustering_analyzer.py` | KMeans clustering | 388 | `find_optimal_clusters()`, `fit_clustering()` |
-| `data_simulator.py` | Generate synthetic data | 157 | `simulate_students()` |
-| `comparison_visualizer.py` | Compare real vs simulated | 470+ | `compare_distributions()`, `create_comparison_dashboard()` |
+| `feature_selector.py` | Variance/correlation filtering | 250 | `select_features()`, `filter_correlated()` |
+| `optimal_cluster_finder.py` | KMeans optimal k (voting) | 388 | `find_optimal_clusters()`, `evaluate_metrics()` |
+| `cluster_profiler.py` | AI-powered cluster profiling | 320 | `profile_all_clusters()`, `generate_narrative()` |
+| `comparison_visualizer.py` | Visualize clusters/features | 470+ | `create_visualizations()` |
 
 ### Documentation
 
@@ -78,9 +79,11 @@ pipeline = MoodleAnalyticsPipeline()
 results = pipeline.run_full_pipeline(
     grades_path='your_grades.csv',
     logs_path='your_logs.csv',
-    n_clusters=None,  # Auto-detect
-    n_simulated_students=100,
-    simulation_noise=0.1
+    variance_threshold=0.01,
+    correlation_threshold=0.95,
+    max_features=15,
+    k_range=range(2, 11),
+    enable_llm_profiling=True
 )
 ```
 
@@ -103,17 +106,17 @@ Input CSV Files
 └─────────────────────────────────┘
       ↓
 ┌─────────────────────────────────┐
-│ 3. Data Simulation              │
-│    - Sample cluster assignment  │
-│    - Gaussian generation        │
-│    - Add noise                  │
+│ 3. Cluster Profiling with AI    │
+│    - Generate AI narratives     │
+│    - Cluster characteristics    │
+│    - Recommendations            │
 └─────────────────────────────────┘
       ↓
 ┌─────────────────────────────────┐
-│ 4. Comparison & Validation      │
-│    - KS test (distributions)    │
-│    - Chi-square (proportions)   │
-│    - Visual dashboard           │
+│ 4. Visualization                │
+│    - Feature distributions      │
+│    - Cluster separation         │
+│    - Visual summaries           │
 └─────────────────────────────────┘
       ↓
 Results: Charts, Statistics, Reports
@@ -145,13 +148,13 @@ Results: Charts, Statistics, Reports
 
 ### JSON Files
 - `features_scaled.json` - Normalized features
-- `cluster_statistics.json` - Cluster profiles
-- `simulated_students.json` - Synthetic data
-- `comparison_report.json` - Statistical tests
+- `feature_selection_report.json` - Selected features
+- `optimal_clusters_report.json` - Optimal k analysis
+- `cluster_profiles.json` - AI-generated profiles
 
 ### CSV Files
-- `clustered_students.csv` - Real students with clusters
-- `simulated_students.csv` - Synthetic students
+- `features_raw.csv` - Raw extracted features
+- `real_students_with_clusters.csv` - Real students with cluster labels
 
 ### Image Files (PNG)
 - `cluster_analysis.png`

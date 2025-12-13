@@ -1,4 +1,4 @@
-# Quick Start Guide - GMM-Based Pipeline
+# Quick Start Guide - KMeans-Only Pipeline
 
 ## 🚀 Get Started in 5 Minutes
 
@@ -18,9 +18,9 @@ python main.py
 Done! Pipeline sẽ tự động:
 1. Extract features từ data
 2. Select optimal features
-3. Find optimal number of clusters
-4. Generate synthetic data using GMM
-5. Validate and compare results
+3. Find optimal number of clusters (KMeans + Voting)
+4. Profile clusters with AI
+5. Visualize results
 
 ---
 
@@ -33,8 +33,8 @@ outputs/
 ├── features/                    # ✅ Extracted features
 ├── feature_selection/           # ✅ Selected features + analysis
 ├── optimal_clusters/            # ✅ Optimal k + evaluation plots
-├── gmm_generation/              # ✅ Synthetic data + comparison
-└── validation/                  # ✅ Quality report + metrics
+├── cluster_profiling/           # ✅ AI cluster profiles
+└── comparison/                  # ✅ Visualizations
 ```
 
 ### Key Files to Check:
@@ -49,9 +49,9 @@ outputs/
    cat outputs/optimal_clusters/optimal_clusters_report.txt
    ```
 
-3. **Validation Report**:
+3. **Cluster Profiles**:
    ```bash
-   cat outputs/validation/validation_report.txt
+   cat outputs/cluster_profiling/cluster_profiles_report.txt
    ```
 
 ---
@@ -62,7 +62,7 @@ outputs/
 
 ```
 ================================================================================
-MOODLE ANALYTICS PIPELINE - GMM-BASED EXECUTION
+MOODLE ANALYTICS PIPELINE - KMEANS-ONLY EXECUTION
 ================================================================================
 
 📊 PHASE 1: Feature Extraction
@@ -77,53 +77,41 @@ MOODLE ANALYTICS PIPELINE - GMM-BASED EXECUTION
   ✗ Removed: 3 highly-correlated features
 ✅ SELECTED 15 OPTIMAL FEATURES
 
-🎯 PHASE 3: Finding Optimal Number of Clusters (GMM)
+🎯 PHASE 3: Finding Optimal Number of Clusters (KMeans + Voting)
 --------------------------------------------------------------------------------
 Testing k from 2 to 10...
-Evaluating k=2... BIC: 1245.67, Silhouette: 0.523
-Evaluating k=3... BIC: 1156.34, Silhouette: 0.612
-Evaluating k=4... BIC: 1189.45, Silhouette: 0.587
+Evaluating k=2... Elbow: 1245.67, Silhouette: 0.523, DB: 0.87
+Evaluating k=3... Elbow: 1156.34, Silhouette: 0.612, DB: 0.65
+Evaluating k=4... Elbow: 1189.45, Silhouette: 0.587, DB: 0.72
 ...
 🎯 OPTIMAL K: 3
-   BIC: 1156.34
    Silhouette: 0.612
+   Davies-Bouldin: 0.65
 
-🔮 PHASE 4: GMM Data Generation
+🤖 PHASE 4: Cluster Profiling with AI
 --------------------------------------------------------------------------------
-✓ Generated 200 synthetic students
-  Cluster distribution:
-    Cluster 0 ('giỏi'): 65 (32.5%)
-    Cluster 1 ('khá'): 75 (37.5%)
-    Cluster 2 ('yếu'): 60 (30.0%)
+✓ Generated AI-powered profiles for 3 clusters
+  Cluster 0: High performers (32.5%)
+  Cluster 1: Medium performers (37.5%)
+  Cluster 2: Struggling learners (30.0%)
 
-✅ PHASE 5: Validation (Real vs Synthetic)
+📈 PHASE 5: Visualization
 --------------------------------------------------------------------------------
-Validating 15 features...
-  total_events                   - KS p-value: 0.1234 (✓)
-  mean_module_grade              - KS p-value: 0.0987 (✓)
-  viewed                         - KS p-value: 0.2145 (✓)
-  ...
-🎯 OVERALL QUALITY SCORE: 87.3% (Excellent)
-   Synthetic data very closely matches real data distribution
+Generating visualizations...
+  ✓ Feature distributions
+  ✓ Cluster separation plots
+  ✓ Comparison summary
 
 ================================================================================
 ✅ PIPELINE COMPLETED SUCCESSFULLY!
 ================================================================================
 
-📊 PIPELINE SUMMARY (GMM-BASED)
+📊 PIPELINE SUMMARY (KMeans-Only)
 ================================================================================
 Real students:        150
-Synthetic students:   200
 Optimal clusters (k): 3
 Features extracted:   25
 Features selected:    15
-
-🎯 QUALITY ANALYSIS
-Overall Score:        87.3%
-Grade:                Excellent
-Quality:              Synthetic data very closely matches real data distribution
-
-KS Tests Passed:      14/15 (93.3%)
 
 ✅ All outputs saved to 'outputs/' directory
 ================================================================================
@@ -147,23 +135,17 @@ KS Tests Passed:      14/15 (93.3%)
 - Silhouette score (higher is better)
 - Composite score
 
-### 3. Real vs Synthetic Comparison
-![PCA Comparison](outputs/gmm_generation/real_vs_synthetic_pca.png)
+### 3. Cluster Visualizations
+![Cluster Viz](outputs/comparison/cluster_visualization.png)
 - PCA visualization of clusters
-- Distribution comparison
-- Correlation matrices
-
-### 4. Validation Results
-![KS Tests](outputs/validation/ks_test_results.png)
-- KS test p-values for each feature
-- Distribution box plots
-- Statistical comparison
+- Feature distributions per cluster
+- Cluster separation metrics
 
 ---
 
 ## ⚙️ Customization Examples
 
-### Example 1: Change Number of Synthetic Students
+### Example 1: Enable/Disable LLM Profiling
 
 ```python
 from core import MoodleAnalyticsPipeline
@@ -172,7 +154,8 @@ pipeline = MoodleAnalyticsPipeline()
 results = pipeline.run_full_pipeline(
     grades_path='../data/grades.csv',
     logs_path='../data/logs.csv',
-    n_synthetic_students=500  # ← Change this
+    enable_llm_profiling=True,  # ← Toggle AI profiling
+    llm_provider='gemini'       # ← 'gemini' or 'openai'
 )
 ```
 

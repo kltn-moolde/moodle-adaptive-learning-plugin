@@ -21114,3 +21114,5 @@ Received: userid=5, courseid=5, sectionid=43
         "timecompleted": 0
     }
 ]
+FILE LOADED: /Users/nguyenhuuloc/Documents/MyComputer/moodle/local/userlog/classes/external/get_user_logs.php at 2025-12-13 02:38:09
+FILE LOADED: /Users/nguyenhuuloc/Documents/MyComputer/moodle/local/userlog/classes/external/get_score_section.php at 2025-12-13 02:38:09

@@ -104,6 +104,21 @@ LOG_FILE = 'pipeline.log'
 LOG_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 
 # ============================================================================
+# LLM SETTINGS (for Cluster Profiling)
+# ============================================================================
+import os
+
+# LLM Provider: 'gemini' or 'openai'
+LLM_PROVIDER = 'gemini'
+
+# API Keys (will try env variable first, then these defaults)
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY') or os.getenv('GOOGLE_API_KEY') or 'AIzaSyC8e_Ua8Dv50MQN7zJhWpMBk4v_Y-okhRw'
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY') or ''
+
+# Enable/Disable LLM profiling
+ENABLE_LLM_PROFILING = True
+
+# ============================================================================
 # PERFORMANCE SETTINGS
 # ============================================================================
 # Parallel processing
