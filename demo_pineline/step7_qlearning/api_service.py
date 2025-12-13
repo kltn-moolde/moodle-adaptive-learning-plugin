@@ -24,7 +24,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from api import dependencies  # noqa: F401
 
 # Import routes
-from api.routes import health, qtable, recommendations, webhook, po_lo, midterm_weights
+from api.routes import health, qtable, recommendations, webhook, po_lo, midterm_weights, lo_mastery
 
 # Import config for startup message
 from api.config import MODEL_PATH
@@ -58,6 +58,7 @@ app.include_router(recommendations.router)
 app.include_router(webhook.router)
 app.include_router(po_lo.router)
 app.include_router(midterm_weights.router)
+app.include_router(lo_mastery.router)
 
 # =============================================================================
 # Root Endpoint
@@ -74,10 +75,11 @@ def root():
             'model_info': '/api/model-info',
             'recommend': '/api/recommend (POST)',
             'top_states': '/api/qtable/states/positive?top_n=N',
-            'webhook': '/webhook/moodle-events (POST) - NEW',
-            'get_recommendations': '/api/recommendations/{user_id}/{module_id} (GET) - NEW',
+            'webhook': '/webhook/moodle-events (POST)',
+            'get_recommendations': '/api/recommendations/{user_id}/{module_id} (GET)',
             'po_lo': '/api/po-lo',
-            'midterm_weights': '/api/midterm-weights'
+            'midterm_weights': '/api/midterm-weights',
+            'lo_mastery': '/api/lo-mastery (NEW)'
         }
     }
 

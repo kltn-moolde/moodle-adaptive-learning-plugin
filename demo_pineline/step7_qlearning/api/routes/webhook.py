@@ -211,6 +211,36 @@ async def process_events_async(
         except Exception as e:
             print(f"  ⚠️  Error saving logs: {e}")
         
+        # Step 5: Auto-sync LO mastery for affected students (grade-related events)
+        print(f"\n📚 Step 5: Checking for LO mastery updates...")
+        from ..dependencies import lo_mastery_service
+        
+        grade_events = ['quiz_submitted', 'quiz_attempt_submitted', 'assignment_submitted', 
+                       'grade_updated', 'user_graded', '\\mod_quiz\\event\\attempt_submitted']
+        
+        mastery_updates = []
+        for log in logs:
+            event_name = log.get('eventname', '')
+            if any(grade_event in event_name for grade_event in grade_events):
+                user_id = log.get('userid')
+                course_id = log.get('courseid') or log.get('course_id')
+                
+                if user_id and course_id:
+                    try:
+                        # Sync mastery for this student (non-blocking, quick)
+                        result = lo_mastery_service.sync_student_mastery(
+                            user_id=user_id,
+                            course_id=course_id,
+                            force=True
+                        )
+                        if result.get('success'):
+                            mastery_updates.append((user_id, course_id))
+                            print(f"  ✓ Updated LO mastery for user {user_id}, course {course_id}")
+                    except Exception as e:
+                        print(f"  ⚠️  Error updating mastery for user {user_id}: {e}")
+        
+        print(f"  ✓ Updated mastery for {len(mastery_updates)} students")
+        
         # Overall statistics
         print(f"\n{'='*70}")
         print(f"✅ Background Processing Complete")
@@ -218,6 +248,7 @@ async def process_events_async(
         print(f"  - Total logs received: {len(logs)}")
         print(f"  - Courses processed: {len(logs_by_course)}")
         print(f"  - Total state updates: {len(all_states_updated)}")
+        print(f"  - LO mastery updates: {len(mastery_updates)}")
         print(f"  - Total recommendations: {len(all_recommendations_generated)}")
         print(f"{'='*70}\n")
         

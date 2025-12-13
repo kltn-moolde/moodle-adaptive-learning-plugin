@@ -27,6 +27,8 @@ from .config import (
     CLUSTER_PROFILES_PATH,
     MOODLE_URL,
     MOODLE_TOKEN,
+    MOODLE_CUSTOM_TOKEN,
+    MOODLE_STANDARD_TOKEN,
     DEFAULT_COURSE_ID,
     get_course_path
 )
@@ -91,11 +93,31 @@ state_repository = StateRepository()
 po_lo_service = POLOService(data_dir=str(HERE / 'data'))
 midterm_weights_service = MidtermWeightsService(data_dir=str(HERE / 'data'))
 
-# Initialize MoodleAPIClient (course_id will be set per request)
+# Initialize MoodleAPIClient with dual token support
 moodle_client = MoodleAPIClient(
     moodle_url=MOODLE_URL,
-    ws_token=MOODLE_TOKEN,
+    ws_token=MOODLE_CUSTOM_TOKEN,  # Custom API token (local_*)
+    ws_token_standard=MOODLE_STANDARD_TOKEN,  # Standard API token (core_*)
     course_id=None  # Will be set dynamically per request
+)
+
+# Initialize LOMasteryService
+from services.business.lo_mastery_service import LOMasteryService
+
+lo_mastery_service = LOMasteryService(
+    moodle_client=moodle_client,
+    po_lo_service=po_lo_service,
+    repository=state_repository,
+    cache_ttl=300  # 5 minutes
+)
+
+# Initialize SmartRecommendationService
+from services.business.smart_recommendation_service import SmartRecommendationService
+
+smart_recommendation_service = SmartRecommendationService(
+    state_repository=state_repository,
+    lo_mastery_service=lo_mastery_service,
+    get_services_func=get_services_for_course
 )
 
 # ===================================================================
@@ -124,10 +146,11 @@ def get_state_update_manager_for_course(course_id: int) -> StateUpdateManager:
         course_id=course_id
     )
     
-    # Create Moodle client for this course
+    # Create Moodle client for this course with dual token support
     course_moodle_client = MoodleAPIClient(
         moodle_url=MOODLE_URL,
-        ws_token=MOODLE_TOKEN,
+        ws_token=MOODLE_CUSTOM_TOKEN,  # Custom API token
+        ws_token_standard=MOODLE_STANDARD_TOKEN,  # Standard API token
         course_id=course_id
     )
     

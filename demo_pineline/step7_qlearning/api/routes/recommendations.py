@@ -6,7 +6,8 @@ from ..models import RecommendRequest, RecommendResponse
 from ..dependencies import (
     model_manager,
     get_services_for_course,
-    state_repository
+    state_repository,
+    smart_recommendation_service
 )
 
 router = APIRouter(prefix='/api', tags=['recommendations'])
@@ -150,6 +151,40 @@ def recommend_learning_path(request: RecommendRequest):
         recommendations=recommendations,
         model_info=model_info
     )
+
+
+@router.get('/recommend/user_id/{user_id}/course_id/{course_id}')
+async def get_recommendations_simple(
+    user_id: int,
+    course_id: int,
+    module_id: int = Query(None, description="Optional specific module ID"),
+    top_k: int = Query(5, description="Number of recommendations")
+):
+    """
+    Simplified recommendation endpoint - auto-fetches state and LO mastery
+    
+    Only requires user_id and course_id. Backend automatically:
+    - Fetches current state from user_states collection
+    - Fetches LO mastery from student_lo_mastery collection
+    - Generates recommendations using Q-learning agent
+    
+    Returns complete state + mastery + recommendations
+    
+    Example: GET /api/recommend/user_id/4/course_id/5
+    """
+    try:
+        result = smart_recommendation_service.get_recommendations_simple(
+            user_id=user_id,
+            course_id=course_id,
+            module_id=module_id,
+            top_k=top_k
+        )
+        return result
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f'Error generating recommendations: {str(e)}'
+        )
 
 
 @router.get('/recommendations/{user_id}/{module_id}')

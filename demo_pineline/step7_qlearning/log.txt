@@ -12441,3 +12441,1705 @@ Webhook response: HTTP 0
 
 ==== EVENT TRIGGERED ====
 {}
+
+==== EVENT TRIGGERED ====
+{}
+Prepared log_data:
+{
+    "userid": 0,
+    "courseid": "1",
+    "eventname": "\\core\\event\\course_viewed",
+    "component": "core",
+    "action": "viewed",
+    "target": "course",
+    "objectid": null,
+    "crud": "r",
+    "edulevel": 2,
+    "contextinstanceid": "1",
+    "timecreated": 1765547081,
+    "grade": null,
+    "success": null
+}
+Sending payload:
+{"logs":[{"userid":0,"courseid":"1","eventname":"\\core\\event\\course_viewed","component":"core","action":"viewed","target":"course","objectid":null,"crud":"r","edulevel":2,"contextinstanceid":"1","timecreated":1765547081,"grade":null,"success":null}],"event_id":"moodle_event_693c1c49eb8501.49037688","timestamp":1765547081}
+Webhook response: HTTP 0
+
+-----------------------------
+⚠️ Webhook failed
+
+==== EVENT TRIGGERED ====
+{}
+Prepared log_data:
+{
+    "userid": 0,
+    "courseid": "1",
+    "eventname": "\\core\\event\\course_viewed",
+    "component": "core",
+    "action": "viewed",
+    "target": "course",
+    "objectid": null,
+    "crud": "r",
+    "edulevel": 2,
+    "contextinstanceid": "1",
+    "timecreated": 1765547082,
+    "grade": null,
+    "success": null
+}
+Sending payload:
+{"logs":[{"userid":0,"courseid":"1","eventname":"\\core\\event\\course_viewed","component":"core","action":"viewed","target":"course","objectid":null,"crud":"r","edulevel":2,"contextinstanceid":"1","timecreated":1765547082,"grade":null,"success":null}],"event_id":"moodle_event_693c1c4af3aac7.25483604","timestamp":1765547082}
+Webhook response: HTTP 0
+
+-----------------------------
+⚠️ Webhook failed
+
+==== EVENT TRIGGERED ====
+{}
+Prepared log_data:
+{
+    "userid": 0,
+    "courseid": "1",
+    "eventname": "\\core\\event\\course_viewed",
+    "component": "core",
+    "action": "viewed",
+    "target": "course",
+    "objectid": null,
+    "crud": "r",
+    "edulevel": 2,
+    "contextinstanceid": "1",
+    "timecreated": 1765547083,
+    "grade": null,
+    "success": null
+}
+Sending payload:
+{"logs":[{"userid":0,"courseid":"1","eventname":"\\core\\event\\course_viewed","component":"core","action":"viewed","target":"course","objectid":null,"crud":"r","edulevel":2,"contextinstanceid":"1","timecreated":1765547083,"grade":null,"success":null}],"event_id":"moodle_event_693c1c4b13e122.23566742","timestamp":1765547083}
+Webhook response: HTTP 0
+
+-----------------------------
+⚠️ Webhook failed
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+Prepared log_data:
+{
+    "userid": "4",
+    "courseid": "5",
+    "eventname": "\\core\\event\\course_viewed",
+    "component": "core",
+    "action": "viewed",
+    "target": "course",
+    "objectid": null,
+    "crud": "r",
+    "edulevel": 2,
+    "contextinstanceid": "5",
+    "timecreated": 1765550106,
+    "grade": null,
+    "success": null
+}
+Sending payload:
+{"logs":[{"userid":"4","courseid":"5","eventname":"\\core\\event\\course_viewed","component":"core","action":"viewed","target":"course","objectid":null,"crud":"r","edulevel":2,"contextinstanceid":"5","timecreated":1765550106,"grade":null,"success":null}],"event_id":"moodle_event_693c281a072353.79211742","timestamp":1765550106}
+Webhook response: HTTP 200
+{"status":"accepted","message":"Events received and queued for processing","events_received":1,"processing_started":true,"event_id":"moodle_event_693c281a072353.79211742"}
+-----------------------------
+
+==== EVENT TRIGGERED ====
+{}
+Prepared log_data:
+{
+    "userid": "4",
+    "courseid": "5",
+    "eventname": "\\mod_quiz\\event\\course_module_viewed",
+    "component": "mod_quiz",
+    "action": "viewed",
+    "target": "course_module",
+    "objectid": "4",
+    "crud": "r",
+    "edulevel": 2,
+    "contextinstanceid": "66",
+    "timecreated": 1765550109,
+    "grade": null,
+    "success": null
+}
+Sending payload:
+{"logs":[{"userid":"4","courseid":"5","eventname":"\\mod_quiz\\event\\course_module_viewed","component":"mod_quiz","action":"viewed","target":"course_module","objectid":"4","crud":"r","edulevel":2,"contextinstanceid":"66","timecreated":1765550109,"grade":null,"success":null}],"event_id":"moodle_event_693c281df29391.68779211","timestamp":1765550109}
+Webhook response: HTTP 0
+
+-----------------------------
+⚠️ Webhook failed
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+Prepared log_data:
+{
+    "userid": "4",
+    "courseid": "5",
+    "eventname": "\\core\\event\\course_viewed",
+    "component": "core",
+    "action": "viewed",
+    "target": "course",
+    "objectid": null,
+    "crud": "r",
+    "edulevel": 2,
+    "contextinstanceid": "5",
+    "timecreated": 1765550119,
+    "grade": null,
+    "success": null
+}
+Sending payload:
+{"logs":[{"userid":"4","courseid":"5","eventname":"\\core\\event\\course_viewed","component":"core","action":"viewed","target":"course","objectid":null,"crud":"r","edulevel":2,"contextinstanceid":"5","timecreated":1765550119,"grade":null,"success":null}],"event_id":"moodle_event_693c28273472b7.19969657","timestamp":1765550119}
+Webhook response: HTTP 200
+{"status":"accepted","message":"Events received and queued for processing","events_received":1,"processing_started":true,"event_id":"moodle_event_693c28273472b7.19969657"}
+-----------------------------
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+Prepared log_data:
+{
+    "userid": 0,
+    "courseid": "1",
+    "eventname": "\\core\\event\\course_viewed",
+    "component": "core",
+    "action": "viewed",
+    "target": "course",
+    "objectid": null,
+    "crud": "r",
+    "edulevel": 2,
+    "contextinstanceid": "1",
+    "timecreated": 1765550621,
+    "grade": null,
+    "success": null
+}
+Sending payload:
+{"logs":[{"userid":0,"courseid":"1","eventname":"\\core\\event\\course_viewed","component":"core","action":"viewed","target":"course","objectid":null,"crud":"r","edulevel":2,"contextinstanceid":"1","timecreated":1765550621,"grade":null,"success":null}],"event_id":"moodle_event_693c2a1d4bdf95.70832445","timestamp":1765550621}
+Webhook response: HTTP 200
+{"status":"accepted","message":"Events received and queued for processing","events_received":1,"processing_started":true,"event_id":"moodle_event_693c2a1d4bdf95.70832445"}
+-----------------------------
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+Prepared log_data:
+{
+    "userid": 0,
+    "courseid": "1",
+    "eventname": "\\core\\event\\course_viewed",
+    "component": "core",
+    "action": "viewed",
+    "target": "course",
+    "objectid": null,
+    "crud": "r",
+    "edulevel": 2,
+    "contextinstanceid": "1",
+    "timecreated": 1765553036,
+    "grade": null,
+    "success": null
+}
+Sending payload:
+{"logs":[{"userid":0,"courseid":"1","eventname":"\\core\\event\\course_viewed","component":"core","action":"viewed","target":"course","objectid":null,"crud":"r","edulevel":2,"contextinstanceid":"1","timecreated":1765553036,"grade":null,"success":null}],"event_id":"moodle_event_693c338c83b1a1.45423425","timestamp":1765553036}
+Webhook response: HTTP 200
+{"status":"accepted","message":"Events received and queued for processing","events_received":1,"processing_started":true,"event_id":"moodle_event_693c338c83b1a1.45423425"}
+-----------------------------
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+Prepared log_data:
+{
+    "userid": "4",
+    "courseid": "5",
+    "eventname": "\\core\\event\\course_viewed",
+    "component": "core",
+    "action": "viewed",
+    "target": "course",
+    "objectid": null,
+    "crud": "r",
+    "edulevel": 2,
+    "contextinstanceid": "5",
+    "timecreated": 1765553046,
+    "grade": null,
+    "success": null
+}
+Sending payload:
+{"logs":[{"userid":"4","courseid":"5","eventname":"\\core\\event\\course_viewed","component":"core","action":"viewed","target":"course","objectid":null,"crud":"r","edulevel":2,"contextinstanceid":"5","timecreated":1765553046,"grade":null,"success":null}],"event_id":"moodle_event_693c3396deebb4.76741167","timestamp":1765553046}
+Webhook response: HTTP 200
+{"status":"accepted","message":"Events received and queued for processing","events_received":1,"processing_started":true,"event_id":"moodle_event_693c3396deebb4.76741167"}
+-----------------------------
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+Prepared log_data:
+{
+    "userid": "4",
+    "courseid": "5",
+    "eventname": "\\mod_quiz\\event\\course_module_viewed",
+    "component": "mod_quiz",
+    "action": "viewed",
+    "target": "course_module",
+    "objectid": "8",
+    "crud": "r",
+    "edulevel": 2,
+    "contextinstanceid": "78",
+    "timecreated": 1765554071,
+    "grade": null,
+    "success": null
+}
+Sending payload:
+{"logs":[{"userid":"4","courseid":"5","eventname":"\\mod_quiz\\event\\course_module_viewed","component":"mod_quiz","action":"viewed","target":"course_module","objectid":"8","crud":"r","edulevel":2,"contextinstanceid":"78","timecreated":1765554071,"grade":null,"success":null}],"event_id":"moodle_event_693c3797efe6f6.46610409","timestamp":1765554071}
+Webhook response: HTTP 0
+
+-----------------------------
+⚠️ Webhook failed
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+Prepared log_data:
+{
+    "userid": "4",
+    "courseid": "5",
+    "eventname": "\\core\\event\\course_viewed",
+    "component": "core",
+    "action": "viewed",
+    "target": "course",
+    "objectid": null,
+    "crud": "r",
+    "edulevel": 2,
+    "contextinstanceid": "5",
+    "timecreated": 1765557075,
+    "grade": null,
+    "success": null
+}
+Sending payload:
+{"logs":[{"userid":"4","courseid":"5","eventname":"\\core\\event\\course_viewed","component":"core","action":"viewed","target":"course","objectid":null,"crud":"r","edulevel":2,"contextinstanceid":"5","timecreated":1765557075,"grade":null,"success":null}],"event_id":"moodle_event_693c43532288d0.05618990","timestamp":1765557075}
+Webhook response: HTTP 0
+
+-----------------------------
+⚠️ Webhook failed
+
+==== EVENT TRIGGERED ====
+{}
+Prepared log_data:
+{
+    "userid": "4",
+    "courseid": "5",
+    "eventname": "\\core\\event\\course_overview_viewed",
+    "component": "core",
+    "action": "viewed",
+    "target": "course_overview",
+    "objectid": null,
+    "crud": "r",
+    "edulevel": 2,
+    "contextinstanceid": "5",
+    "timecreated": 1765557076,
+    "grade": null,
+    "success": null
+}
+Sending payload:
+{"logs":[{"userid":"4","courseid":"5","eventname":"\\core\\event\\course_overview_viewed","component":"core","action":"viewed","target":"course_overview","objectid":null,"crud":"r","edulevel":2,"contextinstanceid":"5","timecreated":1765557076,"grade":null,"success":null}],"event_id":"moodle_event_693c4354c1a571.74094294","timestamp":1765557076}
+Webhook response: HTTP 0
+
+-----------------------------
+⚠️ Webhook failed
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: Component gradereport_user not in valid components → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+Prepared log_data:
+{
+    "userid": "4",
+    "courseid": "5",
+    "eventname": "\\core\\event\\user_list_viewed",
+    "component": "core",
+    "action": "viewed",
+    "target": "user_list",
+    "objectid": "5",
+    "crud": "r",
+    "edulevel": 0,
+    "contextinstanceid": "5",
+    "timecreated": 1765557079,
+    "grade": null,
+    "success": null
+}
+Sending payload:
+{"logs":[{"userid":"4","courseid":"5","eventname":"\\core\\event\\user_list_viewed","component":"core","action":"viewed","target":"user_list","objectid":"5","crud":"r","edulevel":0,"contextinstanceid":"5","timecreated":1765557079,"grade":null,"success":null}],"event_id":"moodle_event_693c4357d3a497.26582661","timestamp":1765557079}
+Webhook response: HTTP 0
+
+-----------------------------
+⚠️ Webhook failed
+
+==== EVENT TRIGGERED ====
+{}
+Prepared log_data:
+{
+    "userid": "4",
+    "courseid": "5",
+    "eventname": "\\core\\event\\course_viewed",
+    "component": "core",
+    "action": "viewed",
+    "target": "course",
+    "objectid": null,
+    "crud": "r",
+    "edulevel": 2,
+    "contextinstanceid": "5",
+    "timecreated": 1765557081,
+    "grade": null,
+    "success": null
+}
+Sending payload:
+{"logs":[{"userid":"4","courseid":"5","eventname":"\\core\\event\\course_viewed","component":"core","action":"viewed","target":"course","objectid":null,"crud":"r","edulevel":2,"contextinstanceid":"5","timecreated":1765557081,"grade":null,"success":null}],"event_id":"moodle_event_693c43592885c6.51936627","timestamp":1765557081}
+Webhook response: HTTP 0
+
+-----------------------------
+⚠️ Webhook failed
+
+==== EVENT TRIGGERED ====
+{}
+Prepared log_data:
+{
+    "userid": "4",
+    "courseid": "5",
+    "eventname": "\\core\\event\\course_overview_viewed",
+    "component": "core",
+    "action": "viewed",
+    "target": "course_overview",
+    "objectid": null,
+    "crud": "r",
+    "edulevel": 2,
+    "contextinstanceid": "5",
+    "timecreated": 1765557087,
+    "grade": null,
+    "success": null
+}
+Sending payload:
+{"logs":[{"userid":"4","courseid":"5","eventname":"\\core\\event\\course_overview_viewed","component":"core","action":"viewed","target":"course_overview","objectid":null,"crud":"r","edulevel":2,"contextinstanceid":"5","timecreated":1765557087,"grade":null,"success":null}],"event_id":"moodle_event_693c435f73dd79.23055216","timestamp":1765557087}
+Webhook response: HTTP 0
+
+-----------------------------
+⚠️ Webhook failed
+
+==== EVENT TRIGGERED ====
+{}
+Prepared log_data:
+{
+    "userid": "4",
+    "courseid": "5",
+    "eventname": "\\core\\event\\course_overview_viewed",
+    "component": "core",
+    "action": "viewed",
+    "target": "course_overview",
+    "objectid": null,
+    "crud": "r",
+    "edulevel": 2,
+    "contextinstanceid": "5",
+    "timecreated": 1765557089,
+    "grade": null,
+    "success": null
+}
+Sending payload:
+{"logs":[{"userid":"4","courseid":"5","eventname":"\\core\\event\\course_overview_viewed","component":"core","action":"viewed","target":"course_overview","objectid":null,"crud":"r","edulevel":2,"contextinstanceid":"5","timecreated":1765557089,"grade":null,"success":null}],"event_id":"moodle_event_693c4361be9fd9.08683284","timestamp":1765557089}
+Webhook response: HTTP 0
+
+-----------------------------
+⚠️ Webhook failed
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: Component gradereport_user not in valid components → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+Prepared log_data:
+{
+    "userid": "4",
+    "courseid": "5",
+    "eventname": "\\core\\event\\course_viewed",
+    "component": "core",
+    "action": "viewed",
+    "target": "course",
+    "objectid": null,
+    "crud": "r",
+    "edulevel": 2,
+    "contextinstanceid": "5",
+    "timecreated": 1765557092,
+    "grade": null,
+    "success": null
+}
+Sending payload:
+{"logs":[{"userid":"4","courseid":"5","eventname":"\\core\\event\\course_viewed","component":"core","action":"viewed","target":"course","objectid":null,"crud":"r","edulevel":2,"contextinstanceid":"5","timecreated":1765557092,"grade":null,"success":null}],"event_id":"moodle_event_693c4364041bd7.32161323","timestamp":1765557092}
+Webhook response: HTTP 0
+
+-----------------------------
+⚠️ Webhook failed
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: Component gradereport_user not in valid components → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+
+==== EVENT TRIGGERED ====
+{}
+Prepared log_data:
+{
+    "userid": 0,
+    "courseid": "1",
+    "eventname": "\\core\\event\\course_viewed",
+    "component": "core",
+    "action": "viewed",
+    "target": "course",
+    "objectid": null,
+    "crud": "r",
+    "edulevel": 2,
+    "contextinstanceid": "1",
+    "timecreated": 1765557099,
+    "grade": null,
+    "success": null
+}
+Sending payload:
+{"logs":[{"userid":0,"courseid":"1","eventname":"\\core\\event\\course_viewed","component":"core","action":"viewed","target":"course","objectid":null,"crud":"r","edulevel":2,"contextinstanceid":"1","timecreated":1765557099,"grade":null,"success":null}],"event_id":"moodle_event_693c436b45a389.61779215","timestamp":1765557099}
+Webhook response: HTTP 0
+
+-----------------------------
+⚠️ Webhook failed
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
+
+==== EVENT TRIGGERED ====
+{}
+SKIP EVENT: User 2 is site admin → skipped.
