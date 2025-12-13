@@ -244,37 +244,47 @@ INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/font
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/latex-fonts/lasy10.tfm
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/latex-fonts/lasy7.tfm
-INPUT ./shap_summary_beeswarm.png
-INPUT ./shap_summary_beeswarm.png
-INPUT ./shap_summary_beeswarm.png
-INPUT ./shap_summary_beeswarm.png
-INPUT ./shap_summary_beeswarm.png
-INPUT ./shap_summary_beeswarm.png
-INPUT ./shap_summary_beeswarm.png
+INPUT ./correlation.png
+INPUT ./correlation.png
+INPUT ./correlation.png
+INPUT ./correlation.png
+INPUT ./correlation.png
+INPUT ./correlation.png
+INPUT ./correlation.png
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmrc8v.tfm
-INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmr9.tfm
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmr6.tfm
-INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmmi9.tfm
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmmi6.tfm
-INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmsy9.tfm
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmsy6.tfm
-INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msam7.tfm
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
-INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/latex-fonts/lasy9.tfm
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/latex-fonts/lasy6.tfm
-INPUT ./evaluate_qlearning.png
-INPUT ./evaluate_qlearning.png
-INPUT ./evaluate_qlearning.png
-INPUT ./evaluate_qlearning.png
-INPUT ./evaluate_qlearning.png
-INPUT ./evaluate_qlearning.png
-INPUT ./evaluate_qlearning.png
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/vf/vntex/urwvn/utmrc8v.vf
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmr8v.tfm
+INPUT ./shap_summary_beeswarm.png
+INPUT ./shap_summary_beeswarm.png
+INPUT ./shap_summary_beeswarm.png
+INPUT ./shap_summary_beeswarm.png
+INPUT ./shap_summary_beeswarm.png
+INPUT ./shap_summary_beeswarm.png
+INPUT ./shap_summary_beeswarm.png
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmr9.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmmi9.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmsy9.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/latex-fonts/lasy9.tfm
+INPUT ./evaluate_qlearning.png
+INPUT ./evaluate_qlearning.png
+INPUT ./evaluate_qlearning.png
+INPUT ./evaluate_qlearning.png
+INPUT ./evaluate_qlearning.png
+INPUT ./evaluate_qlearning.png
+INPUT ./evaluate_qlearning.png
 INPUT RL_Moodle_VI.aux
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/enc/dvips/vntex/t5.enc
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb

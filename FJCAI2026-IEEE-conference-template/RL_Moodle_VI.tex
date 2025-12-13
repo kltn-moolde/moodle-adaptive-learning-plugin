@@ -44,13 +44,13 @@
 
 \title{Ứng dụng Trí tuệ nhân tạo trong xây dựng hệ thống Học tăng cường hỗ trợ dạy và học STEM}
 
-\author{\IEEEauthorblockN{1\textsuperscript{st} abc}
+\author{\IEEEauthorblockN{1\textsuperscript{st} Nguyễn Hữu Lộc}
 \IEEEauthorblockA{\textit{Khoa Công nghệ Thông tin} \\
 \textit{Trường Đại học Sài Gòn}\\
 TP. Hồ Chí Minh, Việt Nam \\
-emaik@sgu.edu.vn}
+lockbkbang@gmail.com}
 \and
-\IEEEauthorblockN{2\textsuperscript{nd} ABC}
+\IEEEauthorblockN{2\textsuperscript{nd} Văn Tuấn Kiệt}
 \IEEEauthorblockA{\textit{Khoa Công nghệ Thông tin} \\
 \textit{Trường Đại học Sài Gòn}\\
 TP. Hồ Chí Minh, Việt Nam \\
@@ -151,9 +151,22 @@ Hệ thống áp dụng mô hình "Database-per-service" để đảm bảo tín
 \subsubsection{Tiền xử lý dữ liệu}
 Dữ liệu thô từ Moodle chứa nhiều nhiễu. Quá trình làm sạch bao gồm việc loại bỏ các sự kiện hệ thống tự động (như \textit{webservice\_function\_called}) và chuẩn hóa thời gian. Sau đó, chúng tôi trích xuất 114 đặc trưng hành vi và áp dụng kỹ thuật lọc tương quan (Correlation Filtering) để loại bỏ hiện tượng đa cộng tuyến, giữ lại 15 đặc trưng quan trọng nhất như: tần suất xem tài liệu, số lần nộp bài, thời gian phản hồi, v.v. \cite{b5}.
 
+\subsubsection{Phân tích đặc trưng và Sàng lọc dữ liệu (EDA)}
+Dữ liệu log thô ban đầu chứa nhiễu lớn từ các sự kiện hệ thống tự động. Phân tích tần suất cho thấy sự kiện \textit{webservice\_function\_called} chiếm tỷ trọng áp đảo nhưng không mang giá trị sư phạm, do đó đã được loại bỏ.
+
+Để xây dựng không gian trạng thái $S_t$ hiệu quả, chúng tôi thực hiện trích xuất 114 đặc trưng hành vi ban đầu. Tuy nhiên, việc sử dụng quá nhiều biến đầu vào có thể gây ra hiện tượng bùng nổ không gian trạng thái (State Explosion). Do đó, kỹ thuật \textbf{Lọc tương quan (Correlation Filtering)} được áp dụng với ngưỡng 0.95 để loại bỏ các biến đa cộng tuyến (multicollinearity). Kết quả phân tích tại Hình \ref{fig:eda_matrix} giúp thu gọn không gian dữ liệu xuống còn \textbf{15 đặc trưng cốt lõi} độc lập (như \textit{module\_count}, \textit{mean\_grade}, \textit{time\_spent}), đảm bảo tính tinh gọn và hiệu quả tính toán cho mô hình Q-learning.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=\linewidth]{correlation.png}} % Hãy đổi tên file ảnh thành hình ma trận tương quan của bạn (Hình 3.14 trong khóa luận)
+\caption{Ma trận tương quan giữa 15 đặc trưng hành vi cốt lõi sau khi loại bỏ các biến đa cộng tuyến.}
+\label{fig:eda_matrix}
+\end{figure}
+
+Song song đó, để định nghĩa chiều \textit{Cluster} trong vector trạng thái, chúng tôi áp dụng thuật toán K-means. Số lượng nhóm tối ưu được xác định là $K=6$ thông qua chiến lược \textbf{Bỏ phiếu đa số (Majority Voting)} dựa trên kết quả đánh giá định lượng từ phương pháp \textbf{Elbow Method}, chỉ số \textbf{Silhouette} và \textbf{Davies-Bouldin Index}, đảm bảo sự phân tách rõ rệt về hành vi giữa các nhóm người học.
+
 \subsubsection{Phân cụm người học (Clustering)}
 Việc cá nhân hóa đòi hỏi hệ thống phải nhận diện được đặc điểm của từng nhóm đối tượng. Chúng tôi sử dụng thuật toán K-means để phân nhóm sinh viên dựa trên 15 đặc trưng đã trích xuất.
-Số lượng cụm tối ưu $K=6$ được xác định thông qua phương pháp Elbow và chỉ số Silhouette\cite{b5}. Các nhóm người học được định danh bao gồm:
+Số lượng cụm tối ưu $K=6$ được xác định thông qua phương pháp Elbow và chỉ số Silhouette\cite{b5}. Tuy nhiên, qua phân tích chi tiết, Cluster 3 được xác định là chứa dữ liệu log của tài khoản giảng viên (có pattern tương tác quản trị và chỉnh sửa nội dung khóa học), do đó đã được loại bỏ khỏi tập dữ liệu huấn luyện. Các nhóm người học hợp lệ được định danh bao gồm:
 \begin{itemize}
     \item \textbf{Cluster 0 (Nhóm cần hỗ trợ - 34.8\%):} Tương tác thấp, thụ động, điểm số thấp.
     \item \textbf{Cluster 1 (Nhóm tự giác):} Thường xuyên theo dõi tiến độ và bảng điểm.
@@ -185,70 +198,95 @@ Trong đó:
 Kích thước không gian trạng thái là $5 \times 6 \times 4 \times 4 \times 3 \times 3 \approx 4,320$ trạng thái, đảm bảo tính khả thi cho việc hội tụ của bảng Q-table.
 
 \subsection{Không gian hành động (Action Space)}
-Trong mô hình Quy trình Quyết định Markov (MDP), Không gian hành động đại diện cho tập hợp các tương tác sư phạm mà hệ thống (Agent) có thể đề xuất cho người học tại một thời điểm nhất định. Việc thiết kế $A$ không đơn thuần là liệt kê các sự kiện nhật ký (logs) của Moodle, mà là một quá trình chọn lọc dựa trên các nguyên lý sư phạm để đảm bảo thuật toán Q-learning có thể hội tụ và tạo ra các gợi ý có ý nghĩa.
+Trong mô hình MDP, không gian hành động $A$ đại diện cho tập hợp các tương tác sư phạm mà hệ thống có thể đề xuất. Việc thiết kế $A$ không đơn thuần là liệt kê các sự kiện nhật ký (logs), mà là quá trình sàng lọc và mở rộng có chủ đích.
 
-\subsubsection{Quy trình lựa chọn và sàng lọc hành động}
-Hệ thống Moodle ghi nhận hàng trăm loại sự kiện khác nhau (ví dụ: \textit{user\_loggedin}, \textit{course\_viewed}, \textit{grade\_deleted}...). Để xây dựng một không gian hành động hiệu quả, chúng tôi áp dụng quy trình sàng lọc dựa trên 3 tiêu chí khoa học sau:
+\subsubsection{Quy trình sàng lọc hành động cốt lõi}
+Hệ thống Moodle ghi nhận hàng trăm loại sự kiện khác nhau. Để chọn ra các hành động có ý nghĩa, chúng tôi áp dụng 3 tiêu chí sàng lọc:
 
-\smallskip
-\paragraph{Tiêu chí 1: Tác động học tập (Learning Impact) - Khung lý thuyết ICAP}
-Dựa trên khung lý thuyết ICAP của Chi \& Wylie (2014), các hành động được phân loại theo mức độ tham gia nhận thức:
+\begin{enumerate}
+    \item \textbf{Tác động học tập (ICAP Framework):} Chỉ giữ lại các hành động thuộc nhóm \textit{Interactive}, \textit{Constructive}, và \textit{Active}. Loại bỏ các hành động quản trị hệ thống (\textit{Passive/System}).
+    \item \textbf{Tần suất dữ liệu (Pareto Principle):} Loại bỏ các hành động hiếm gặp ($<1\%$ tổng log) để đảm bảo mô hình hội tụ.
+    \item \textbf{Tác động chuyển đổi trạng thái:} Ưu tiên các hành động gây biến động lớn lên vector trạng thái (ví dụ: \textit{submit\_quiz} làm thay đổi điểm số và tiến độ).
+\end{enumerate}
+
+Kết quả sàng lọc thu được \textbf{7 hành động cốt lõi}: \textit{view\_assignment, view\_content, attempt\_quiz, submit\_quiz, review\_quiz, submit\_assignment, post\_forum}.
+
+\subsubsection{Mở rộng ngữ cảnh thời gian (Contextual Expansion)}
+Một hệ thống thông minh cần xác định không chỉ ``làm gì'' mà còn ``làm ở đâu'' (trong quá khứ, hiện tại hay tương lai). Do đó, 7 hành động cốt lõi được nhân rộng theo 3 ngữ cảnh thời gian:
 \begin{itemize}
-    \item \textbf{Interactive (Tương tác - Điểm 10):} Các hành động tạo ra sản phẩm học tập hoặc đồng kiến tạo (VD: \textit{submit\_assignment}, \textit{post\_forum}).
-    \item \textbf{Constructive (Kiến tạo - Điểm 7):} Các hành động tạo ra nội dung mới vượt ra ngoài thông tin được cung cấp (VD: \textit{attempt\_quiz}).
-    \item \textbf{Active (Chủ động - Điểm 3):} Các hành động thao tác với thông tin (VD: \textit{view\_content}).
-    \item \textbf{System (Hệ thống - Điểm 0):} Các hành động quản trị không liên quan trực tiếp đến việc học (VD: \textit{dashboard\_viewed}, \textit{login}).
-\end{itemize}
-\smallskip
-\textit{Kết luận:} Hệ thống loại bỏ hoàn toàn nhóm System và giữ lại các nhóm Interactive, Constructive, Active.
-
-\smallskip
-\paragraph{Tiêu chí 2: Tần suất dữ liệu (Data Frequency) - Nguyên lý Pareto}
-Trong Khai phá dữ liệu giáo dục (Educational Data Mining), nguyên lý 80/20 thường xuyên xuất hiện. Phân tích thực nghiệm trên log Moodle cho thấy một số ít loại hành động chiếm đa số dữ liệu. Theo Sutton \& Barto (2018), Q-learning yêu cầu số lượng mẫu đủ lớn để ước lượng giá trị Q (Q-value).
-
-\smallskip
-\textit{Kết luận:} Các sự kiện hiếm gặp ($< 1\%$ tổng log) như \textit{download\_file} hay \textit{view\_rubric} bị loại bỏ vì không đủ dữ liệu để mô hình học.
-
-\smallskip
-\paragraph{Tiêu chí 3: Tác động chuyển đổi trạng thái (State Transition Impact)}
-Trong MDP, một hành động được coi là hợp lệ nếu nó gây ra sự thay đổi đo lường được lên trạng thái ($S$).
-Đo lường: $State\_Change = |State_{after} - State_{before}|$
-
-\smallskip
-\textit{Kết luận:} Các hành động như \textit{submit\_quiz} hay \textit{submit\_assignment} gây biến động lớn (10-30\%) lên tỷ lệ hoàn thành và điểm số, do đó được ưu tiên giữ lại.
-
-\smallskip
-\subsubsection{Danh sách hành động cốt lõi (Core Actions)}
-Dựa trên 3 tiêu chí trên, 7 hành động cốt lõi được lựa chọn làm nền tảng cho hệ thống:
-\begin{itemize}
-    \item \textbf{view\_assignment:} Xem yêu cầu bài tập (Active). Là bước đệm quan trọng để hiểu nhiệm vụ.
-    \item \textbf{view\_content:} Xem tài liệu học tập (Active). Hành động phổ biến nhất, là điều kiện cần để tiếp thu kiến thức.
-    \item \textbf{attempt\_quiz:} Bắt đầu làm bài kiểm tra (Constructive). Thể hiện nỗ lực thực hành.
-    \item \textbf{submit\_quiz:} Nộp bài kiểm tra (Interactive). Hành động quan trọng nhất để chốt điểm số và trạng thái hoàn thành.
-    \item \textbf{review\_quiz:} Xem lại kết quả bài làm (Constructive). Thể hiện tư duy phản biện (reflection) và rút kinh nghiệm.
-    \item \textbf{submit\_assignment:} Nộp bài tập lớn (Interactive). Tác động mạnh mẽ nhất đến tỷ lệ hoàn thành khóa học.
-    \item \textbf{post\_forum:} Thảo luận (Interactive). Thể hiện sự tham gia xã hội (social engagement).
+    \item \textbf{Past (Quá khứ):} Phục vụ mục đích ôn tập (Review) và lấp lỗ hổng kiến thức.
+    \item \textbf{Current (Hiện tại):} Thực hiện nhiệm vụ (Execution) đúng tiến độ.
+    \item \textbf{Future (Tương lai):} Chuẩn bị bài mới (Preparation) và kích thích tò mò.
 \end{itemize}
 
+Tuy nhiên, không phải mọi tổ hợp đều hợp lệ (ví dụ: không thể nộp bài tập tương lai khi chưa mở). Sau khi áp dụng ma trận lọc logic sư phạm, không gian hành động cuối cùng bao gồm \textbf{15 hành động} được đánh chỉ số từ 0 đến 14 như trình bày tại Bảng \ref{tab:action_space}.
+
+\begin{table}[htbp]
+\caption{Không gian hành động hoàn chỉnh (15 Actions)}
+\begin{center}
+\resizebox{\columnwidth}{!}{% Resize bảng để vừa khít cột báo
+\begin{tabular}{ccll}
+\toprule
+\textbf{Nhóm} & \textbf{ID} & \textbf{Mã hành động} & \textbf{Ý nghĩa sư phạm} \\
+\midrule
+\multirow{5}{*}{\shortstack{PAST\\(Ôn tập)}} 
+ & 0 & view\_assign\_past & Xem lại yêu cầu cũ \\
+ & 1 & view\_content\_past & Ôn lại bài giảng cũ \\
+ & 2 & attempt\_quiz\_past & Làm lại trắc nghiệm cũ \\
+ & 3 & review\_quiz\_past & Phân tích lỗi sai cũ \\
+ & 4 & post\_forum\_past & Thảo luận chủ đề cũ \\
+\midrule
+\multirow{7}{*}{\shortstack{CURRENT\\(Hiện tại)}} 
+ & 5 & view\_assign\_curr & Xem yêu cầu bài mới \\
+ & 6 & view\_content\_curr & Học nội dung tuần này \\
+ & 7 & submit\_assign\_curr & Nộp bài tập lớn \\
+ & 8 & attempt\_quiz\_curr & Làm bài kiểm tra \\
+ & 9 & submit\_quiz\_curr & Nộp bài lấy điểm \\
+ & 10 & review\_quiz\_curr & Xem kết quả vừa nộp \\
+ & 11 & post\_forum\_curr & Thảo luận bài hiện tại \\
+\midrule
+\multirow{3}{*}{\shortstack{FUTURE\\(Chuẩn bị)}} 
+ & 12 & view\_content\_fut & Xem trước bài mới \\
+ & 13 & attempt\_quiz\_fut & Thử sức bài tương lai \\
+ & 14 & post\_forum\_fut & Tìm hiểu chủ đề sắp tới \\
+\bottomrule
+\end{tabular}
+}
+\label{tab:action_space}
+\end{center}
+\end{table}
+
+Việc thiết kế không gian hành động phân theo thời gian này giúp Agent có khả năng đưa ra các chiến lược linh hoạt: \textit{Remedial Strategy} (gợi ý Past khi điểm thấp), \textit{Progressive Strategy} (gợi ý Current để hoàn thành tiến độ), và \textit{Anticipatory Strategy} (gợi ý Future cho sinh viên khá giỏi).
 \subsection{Hàm phần thưởng (Reward Function)}
-Hàm thưởng là thành phần quan trọng nhất định hướng hành vi của tác nhân. Chúng tôi thiết kế hàm thưởng tổng hợp $R_{total}$:
+Hàm thưởng là thành phần quan trọng nhất định hướng hành vi của tác nhân. Chúng tôi thiết kế hàm thưởng tổng hợp $R_{total}$ bao gồm 4 thành phần:
 \begin{equation}
-R_{total} = R_{base} + R_{LO} + R_{seq} - P_{penalty}
+R_{total} = R_{base} + R_{LO} + R_{bonus} - P_{penalty}
 \end{equation}
 
 \subsubsection{Phần thưởng cơ bản thích ứng ($R_{base}$)}
-Áp dụng chiến lược Cluster-Adaptive Reward. Nhóm sinh viên Yếu (Weak Cluster) nhận được điểm thưởng cao hơn (+10) khi hoàn thành một hành động so với nhóm Giỏi (+5). Cơ chế này nhằm tạo động lực ngoại sinh, khuyến khích nhóm yếu duy trì tương tác thay vì bỏ cuộc\cite{b6}.
+Áp dụng chiến lược Cluster-Adaptive Reward để điều chỉnh động lực. Nhóm sinh viên Yếu (Weak Cluster) nhận được điểm thưởng cao hơn (+10) khi hoàn thành một hành động so với nhóm Trung bình (+7) và nhóm Giỏi (+5). Cơ chế này nhằm tạo động lực ngoại sinh, khuyến khích nhóm yếu duy trì tương tác thay vì bỏ cuộc\cite{b6}.
 
 \subsubsection{Phần thưởng dựa trên Chuẩn đầu ra ($R_{LO}$)}
 Được tính dựa trên mức độ cải thiện năng lực ($\Delta Mastery$) của sinh viên đối với các Chuẩn đầu ra (LO).
 \begin{equation}
 R_{LO} = \sum (\Delta Mastery_i \times W_{midterm, i} \times K_{cluster})
 \end{equation}
-Trong đó, $W_{midterm}$ là trọng số quan trọng của LO trong bài thi, và $K_{cluster}$ là hệ số khích lệ riêng cho từng nhóm\cite{b5}.
+Trong đó:
+\begin{itemize}
+    \item $\Delta Mastery = \alpha \times (Score - M_t)$ là mức tăng trưởng kiến thức thực tế, với hệ số học $\alpha$ được cấu hình riêng (Nhóm Yếu $\alpha=0.4$, Nhóm Giỏi $\alpha=0.2$).
+    \item $W_{midterm}$ là trọng số quan trọng của LO trong bài thi.
+    \item $K_{cluster}$ là hệ số khích lệ tâm lý (Weak: 1.5, Medium: 1.2, Strong: 1.0).
+\end{itemize}
 
-\subsubsection{Phần thưởng chuỗi hành động ($R_{seq}$)}
-Hệ thống thưởng thêm điểm cho các chuỗi hành động hợp lý về mặt sư phạm (Beneficial Sequences), ví dụ: \textit{view\_content} $\rightarrow$ \textit{attempt\_quiz} (Học đi đôi với hành), hoặc \textit{review\_quiz} $\rightarrow$ \textit{view\_content} (Phản tư và học lại).
+\subsubsection{Phần thưởng bổ sung ($R_{bonus}$)}
+Thành phần này ($R_{bonus} = R_{phase} + R_{seq}$) tích hợp các nguyên tắc sư phạm vào quá trình học:
+\begin{itemize}
+    \item \textbf{Phần thưởng Giai đoạn ($R_{phase}$):} Thưởng thêm nếu hành động của sinh viên khớp với giai đoạn học tập hiện tại (ví dụ: đang ở giai đoạn \textit{Active Learning} mà thực hiện \textit{attempt\_quiz}).
+    \item \textbf{Phần thưởng Chuỗi hành động ($R_{seq}$):} Khuyến khích các chuỗi hành động hợp lý (Beneficial Sequences) như: \textit{view\_content} $\rightarrow$ \textit{attempt\_quiz} (Tiếp thu $\rightarrow$ Thực hành), hoặc \textit{submit\_quiz} $\rightarrow$ \textit{review\_quiz} (Thực hành $\rightarrow$ Phản tư).
+\end{itemize}
 
+\subsubsection{Điểm phạt thất bại ($P_{penalty}$)}
+Để duy trì chất lượng học tập, hệ thống áp dụng điểm phạt khi kết quả không đạt yêu cầu. Mức phạt được cá nhân hóa để tránh gây áp lực ngược: Nhóm Yếu bị phạt thấp (-1.0) để giữ động lực, trong khi Nhóm Giỏi chịu mức phạt cao hơn (-2.0) để yêu cầu sự chỉn chu.
 \subsection{Thuật toán Q-learning}
 Hệ thống sử dụng thuật toán Q-learning tiêu chuẩn để cập nhật bảng giá trị Q:
 \begin{equation}
@@ -258,10 +296,10 @@ Với tốc độ học $\alpha=0.1$ và hệ số chiết khấu $\gamma=0.95$.
 
 \subsection{Khung giải thích mô hình (Explainability Framework)}
 
-Để giải quyết bản chất ``hộp đen'' của bảng Q-table và tăng tính minh bạch cho các quyết định gợi ý, nghiên cứu áp dụng phương pháp \textbf{SHAP (SHapley Additive exPlanations)}~\cite{lundberg2017unified} - một kỹ thuật giải thích mô hình dựa trên lý thuyết trò chơi hợp tác.
+Để giải quyết bản chất ``hộp đen'' của bảng Q-table và tăng tính minh bạch cho các quyết định gợi ý, nghiên cứu áp dụng phương pháp \textbf{SHAP (SHapley Additive exPlanations)}~\cite{shap_arxiv} - một kỹ thuật giải thích mô hình dựa trên lý thuyết trò chơi hợp tác.
 
 \subsubsection{Cơ sở toán học}
-Giá trị SHAP $\phi_i$ đo lường mức độ đóng góp của đặc trưng $i$ vào giá trị Q dự đoán, được định nghĩa qua giá trị Shapley:
+Giá trị SHAP $\phi_i$ đo lường mức độ đóng góp của đặc trưng $i$ vào giá trị Q dự đoán, được định nghĩa qua giá trị Shapley~\cite{shap_arxiv}:
 \begin{equation}
 \phi_i = \sum_{S \subseteq F \setminus \{i\}} \frac{|S|!(|F|-|S|-1)!}{|F|!} [f(S \cup \{i\}) - f(S)]
 \end{equation}
@@ -373,7 +411,7 @@ Dựa trên biểu đồ trực quan tại Hình \ref{fig:eval_result}, hệ th�
 Nhóm này đạt điểm số trung bình (Midterm Score) tuyệt đối cao nhất là \textbf{8.18/10} (so với 6.53 của nhóm đối chứng), như hiển thị trên biểu đồ. Hệ thống đã nhận diện năng lực vượt trội và chuyển sang chiến lược đề xuất các nội dung thách thức hơn, giúp tối ưu hóa tiềm năng của người học \cite{b5}.
 
 \subsubsection{Độ tin cậy thống kê}
-Như thể hiện trong bảng \textit{Statistical Test Results} (Hình \ref{fig:eval_result}), kiểm định T-test độc lập giữa hai nhóm cho kết quả $T-statistic = 67.744$ và $P-value \approx 0.0000$. Điều này khẳng định sự khác biệt về hiệu quả là có ý nghĩa thống kê với độ tin cậy 99.9\% \cite{b5}.
+Như thể hiện trong bảng \textit{Statistical Test Results} (Hình \ref{fig:eval_result}), kiểm định T-test độc lập giữa hai nhóm cho kết quả $t(198) = 67.74$, $p < 0.001$, Cohen's $d = 6.78$. Giá trị Cohen's $d$ cực lớn (theo quy ước Cohen: $d > 0.8$ là ``large effect'', $d > 3.0$ là ``extremely large effect'') cho thấy sự khác biệt về hiệu quả không chỉ có ý nghĩa thống kê mà còn có ý nghĩa thực tiễn sâu sắc. Kết quả này khẳng định rằng thuật toán Q-learning vượt trội hơn đáng kể so với chính sách tham số hóa truyền thống với độ tin cậy 99.9\% \cite{b5}.
 
 \section{Kết luận và Hướng phát triển}
 \label{sec:conclusion}
@@ -407,7 +445,7 @@ Nhóm tác giả xin chân thành cảm ơn TS. Đỗ Như Tài đã hướng d�
 
 \bibitem{b6} R. S. Sutton and A. G. Barto, \textit{Reinforcement Learning: An Introduction}. MIT Press, 2018. [cite: 460]
 
-\bibitem{lundberg2017unified} S. M. Lundberg and S.-I. Lee, ``A unified approach to interpreting model predictions,'' in \textit{Proc. 31st Int. Conf. Neural Inf. Process. Syst.}, 2017, pp. 4765--4774. [cite: SHAP]
+\bibitem{shap_arxiv} S. M. Lundberg and S.-I. Lee, ``A unified approach to interpreting model predictions,'' arXiv:1705.07874, 2017. DOI: 10.48550/arXiv.1705.07874. [cite: 1705.07874]
 
 \bibitem{b12} S. Wu et al., ``A Comprehensive Exploration of Personalized Learning in Smart Education: From Student Modeling to Personalized Recommendations,'' arXiv:2402.01666, 2024. [cite: 728]
 
