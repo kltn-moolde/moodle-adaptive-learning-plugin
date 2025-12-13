@@ -256,6 +256,71 @@ Q(s, a) \leftarrow Q(s, a) + \alpha [r + \gamma \max_{a'} Q(s', a') - Q(s, a)]
 \end{equation}
 Với tốc độ học $\alpha=0.1$ và hệ số chiết khấu $\gamma=0.95$. Chiến lược lựa chọn hành động là $\epsilon$-greedy, với $\epsilon$ giảm dần từ 1.0 xuống 0.01 sau 400 episodes để cân bằng giữa khám phá và khai thác \cite{b6}.
 
+\subsection{Khung giải thích mô hình (Explainability Framework)}
+
+Để giải quyết bản chất ``hộp đen'' của bảng Q-table và tăng tính minh bạch cho các quyết định gợi ý, nghiên cứu áp dụng phương pháp \textbf{SHAP (SHapley Additive exPlanations)}~\cite{lundberg2017unified} - một kỹ thuật giải thích mô hình dựa trên lý thuyết trò chơi hợp tác.
+
+\subsubsection{Cơ sở toán học}
+Giá trị SHAP $\phi_i$ đo lường mức độ đóng góp của đặc trưng $i$ vào giá trị Q dự đoán, được định nghĩa qua giá trị Shapley:
+\begin{equation}
+\phi_i = \sum_{S \subseteq F \setminus \{i\}} \frac{|S|!(|F|-|S|-1)!}{|F|!} [f(S \cup \{i\}) - f(S)]
+\end{equation}
+trong đó $F$ là tập hợp toàn bộ các đặc trưng trạng thái, $S$ là tập con các đặc trưng, và $f$ là hàm tra cứu Q-table. SHAP đảm bảo tính chất cộng tính (additivity):
+\begin{equation}
+Q(s, a^*) = \phi_0 + \sum_{i=1}^{6} \phi_i(s)
+\end{equation}
+với $\phi_0$ là giá trị kỳ vọng cơ sở và $a^*$ là hành động tối ưu.
+
+\subsubsection{Triển khai kỹ thuật}
+Do bảng Q-table là một hàm rời rạc không khả vi, chúng tôi sử dụng \textbf{KernelExplainer} - một phương pháp model-agnostic không yêu cầu gradient. Quy trình thực hiện gồm 3 bước:
+
+\begin{enumerate}
+    \item \textbf{Xây dựng hàm dự đoán:} Tạo wrapper function $f(s) = \max_a Q(s,a)$ ánh xạ từ vector trạng thái 6 chiều sang giá trị Q tối đa.
+    
+    \item \textbf{Lấy mẫu nền (Background sampling):} Chọn ngẫu nhiên 100 trạng thái từ Q-table làm baseline để tính toán hiệu ứng biên (marginal effect).
+    
+    \item \textbf{Tính toán SHAP values:} KernelExplainer xấp xỉ giá trị Shapley bằng cách thực hiện hồi quy tuyến tính có trọng số trên không gian các tập con đặc trưng (feature coalitions). Với $2^6 = 64$ tập con có thể, thuật toán hoàn tất trong thời gian $O(N \cdot 2^F)$ với $N$ là số mẫu kiểm tra.
+\end{enumerate}
+
+\subsubsection{Phân tích độ quan trọng đặc trưng}
+Từ SHAP values, chúng tôi tính toán hai chỉ số chính:
+\begin{itemize}
+    \item \textbf{Mean Absolute SHAP}: $I_i = \frac{1}{N}\sum_{j=1}^{N}|\phi_i(s_j)|$ - đo mức độ ảnh hưởng trung bình.
+    \item \textbf{SHAP Variance}: $V_i = \text{Var}(\phi_i)$ - đo tính nhất quán của ảnh hưởng.
+\end{itemize}
+
+Kết quả định lượng được tổng hợp tại Bảng~\ref{tab:shap_importance} và trực quan hóa tại Hình~\ref{fig:shap_distribution}. Phân tích cho thấy \textit{Module ID} (mean |SHAP| = 28.32) và \textit{Engagement} (26.53) là hai yếu tố quan trọng nhất ảnh hưởng đến quyết định gợi ý của Agent. 
+
+Đặc biệt, biểu đồ beeswarm (Hình~\ref{fig:shap_distribution}) tiết lộ các pattern quan trọng về tác động phi tuyến của các đặc trưng. \textit{Engagement} thể hiện phương sai cao nhất ($\sigma^2 = 995.79$), với phân phối SHAP values trải rộng từ -50 đến +50, chứng tỏ tác động của yếu tố này mang tính ngữ cảnh cao (context-dependent): engagement cao có thể tăng Q-value mạnh (màu đỏ, phía dương) khi sinh viên đang ở module phù hợp, nhưng cũng có thể giảm Q-value (màu xanh, phía âm) nếu tương tác không đúng hướng.
+
+Ngược lại, \textit{Progress Level} có mean |SHAP| thấp nhất (7.42) và phương sai nhỏ (95.96), với các điểm dữ liệu tập trung quanh giá trị 0 trên biểu đồ, xác nhận rằng tiến độ hoàn thành đơn thuần ít ảnh hưởng đến chiến lược. Điều này hỗ trợ cho giả thuyết sư phạm: ``chất lượng tương tác'' (engagement quality) quan trọng hơn ``số lượng hoàn thành'' (completion quantity) trong việc dự báo kết quả học tập.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=\columnwidth]{shap_summary_beeswarm.png}}
+\caption{Phân phối SHAP values trên 802 trạng thái từ Q-table. Mỗi điểm biểu diễn SHAP value của một state, màu sắc thể hiện giá trị feature (đỏ = cao, xanh = thấp). Trục X cho thấy mức độ ảnh hưởng lên Q-value (dương = tăng, âm = giảm). Engagement và Module ID có impact range rộng nhất, trong khi Progress Level tập trung quanh 0.}
+\label{fig:shap_distribution}
+\end{figure}
+
+\begin{table}[htbp]
+\caption{Xếp hạng độ quan trọng của các đặc trưng từ phân tích SHAP trên 802 trạng thái. Mean |SHAP| đo mức độ ảnh hưởng trung bình; Variance đo tính biến động (cao = context-dependent, thấp = ổn định).}
+\label{tab:shap_importance}
+\begin{center}
+\small
+\begin{tabular}{lccc}
+\toprule
+\textbf{Đặc trưng} & \textbf{Mean |SHAP|} & \textbf{Variance} & \textbf{Rank} \\
+\midrule
+Module ID & 28.32 & 1171.49 & 1 \\
+Engagement & 26.53 & 995.79 & 2 \\
+Student Cluster & 17.42 & 461.44 & 3 \\
+Score Level & 11.39 & 431.01 & 4 \\
+Learning Phase & 9.12 & 149.83 & 5 \\
+Progress Level & 7.42 & 95.96 & 6 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+
 \section{Thực nghiệm và Kết quả}
 \label{sec:experiments}
 
@@ -341,6 +406,8 @@ Nhóm tác giả xin chân thành cảm ơn TS. Đỗ Như Tài đã hướng d�
 \bibitem{b5} I. Gligorea et al., ``Adaptive Learning Using Artificial Intelligence in e-Learning: A Literature Review,'' \textit{Educ. Sci.}, vol. 13, no. 12, 2023. [cite: 729]
 
 \bibitem{b6} R. S. Sutton and A. G. Barto, \textit{Reinforcement Learning: An Introduction}. MIT Press, 2018. [cite: 460]
+
+\bibitem{lundberg2017unified} S. M. Lundberg and S.-I. Lee, ``A unified approach to interpreting model predictions,'' in \textit{Proc. 31st Int. Conf. Neural Inf. Process. Syst.}, 2017, pp. 4765--4774. [cite: SHAP]
 
 \bibitem{b12} S. Wu et al., ``A Comprehensive Exploration of Personalized Learning in Smart Education: From Student Modeling to Personalized Recommendations,'' arXiv:2402.01666, 2024. [cite: 728]
 

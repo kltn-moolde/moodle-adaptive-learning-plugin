@@ -1,0 +1,34 @@
+{
+  "action_space": [
+    "view_course",
+    "view_assignment",
+    "view_quiz",
+    "check_grade",
+    "attempt_quiz"
+  ],
+  "cluster_distribution": {
+    "1": 1,
+    "2": 9,
+    "3": 1
+  },
+  "hyperparameters": {
+    "learning_rate": 0.1,
+    "discount_factor": 0.95,
+    "epsilon": 0.1,
+    "n_epochs": 10
+  },
+  "statistics": {
+    "total_updates": 79530,
+    "unique_states": 29,
+    "q_table_size": 29,
+    "coverage": 5.034722222222222
+  },
+  "state_space_config": {
+    "n_clusters": 4,
+    "n_progress_bins": 4,
+    "n_score_bins": 4,
+    "n_phases": 3,
+    "n_engagement": 3,
+    "total_states": 576
+  }
+}
