@@ -75,9 +75,9 @@ Học tăng cường, Q-learning, Cá nhân hóa học tập, Giáo dục STEM, 
 
 \section{Giới thiệu}
 \label{sec:intro}
-Sự phát triển mạnh mẽ của Trí tuệ nhân tạo (AI) đang định hình lại nhiều lĩnh vực, trong đó có giáo dục. [cite\_start]Theo nghiên cứu của Frey và Osborne, khoảng 47\% các công việc truyền thống có nguy cơ bị tự động hóa, đặt ra yêu cầu cấp thiết về việc trang bị các kỹ năng mới cho người lao động, đặc biệt là các kỹ năng STEM (Khoa học, Công nghệ, Kỹ thuật và Toán học)\cite{b2}. Giáo dục STEM chú trọng phát triển tư duy phản biện và khả năng giải quyết vấn đề, tuy nhiên, việc triển khai hiệu quả gặp nhiều rào cản do sự đa dạng về năng lực và tốc độ tiếp thu của học viên.
+Sự phát triển mạnh mẽ của Trí tuệ nhân tạo (AI) đang định hình lại nhiều lĩnh vực, trong đó có giáo dục. Theo nghiên cứu của Frey và Osborne, khoảng 47\% các công việc truyền thống có nguy cơ bị tự động hóa, đặt ra yêu cầu cấp thiết về việc trang bị các kỹ năng mới cho người lao động, đặc biệt là các kỹ năng STEM (Khoa học, Công nghệ, Kỹ thuật và Toán học)\cite{b2}. Giáo dục STEM chú trọng phát triển tư duy phản biện và khả năng giải quyết vấn đề, tuy nhiên, việc triển khai hiệu quả gặp nhiều rào cản do sự đa dạng về năng lực và tốc độ tiếp thu của học viên.
 
-Thách thức lớn nhất hiện nay là cá nhân hóa trải nghiệm học tập (Personalized Adaptive Learning - PAL) trên quy mô lớn. [cite\_start]Các hệ thống LMS truyền thống như Moodle, Blackboard chủ yếu đóng vai trò lưu trữ tài liệu và quản lý điểm số, thiếu khả năng phân tích hành vi để đưa ra các can thiệp sư phạm kịp thời\cite{b1}. [cite\_start]Tại Việt Nam, các nghiên cứu về ứng dụng AI trong giáo dục chủ yếu tập trung vào bài toán dự báo (prediction) - ví dụ như dự báo nguy cơ bỏ học hoặc dự đoán điểm số cuối kỳ - mà chưa chú trọng nhiều đến bài toán đưa ra khuyến nghị hành động (prescription) để cải thiện kết quả đó\cite{b4}.
+Thách thức lớn nhất hiện nay là cá nhân hóa trải nghiệm học tập (Personalized Adaptive Learning - PAL) trên quy mô lớn. Các hệ thống LMS truyền thống như Moodle, Blackboard chủ yếu đóng vai trò lưu trữ tài liệu và quản lý điểm số, thiếu khả năng phân tích hành vi để đưa ra các can thiệp sư phạm kịp thời\cite{b1}. Tại Việt Nam, các nghiên cứu về ứng dụng AI trong giáo dục chủ yếu tập trung vào bài toán dự báo (prediction) - ví dụ như dự báo nguy cơ bỏ học hoặc dự đoán điểm số cuối kỳ - mà chưa chú trọng nhiều đến bài toán đưa ra khuyến nghị hành động (prescription) để cải thiện kết quả đó\cite{b4}.
 
 Để giải quyết vấn đề này, nhu cầu về một hệ thống hỗ trợ dạy và học STEM cá nhân hóa ứng dụng Học tăng cường (Reinforcement Learning - RL) trở nên cấp thiết. RL, với cơ chế học thử-sai (trial-and-error), cho phép hệ thống tự động khám phá và tối ưu hóa chiến lược giảng dạy dựa trên phản hồi liên tục từ người học.
 
@@ -93,44 +93,73 @@ Nghiên cứu này đề xuất xây dựng một hệ thống gợi ý thông m
 \label{sec:related_work}
 
 \subsection{Hệ thống học tập thích ứng (Adaptive Learning)}
-Các hệ thống PAL điều chỉnh lộ trình học tập dựa trên nhu cầu riêng biệt của sinh viên. [cite\_start]Theo báo cáo tổng quan của du Plooy và cộng sự (2024), khảo sát 69 công trình nghiên cứu, 59\% số nghiên cứu ghi nhận sự cải thiện về kết quả học tập và 36\% chỉ ra sự gia tăng mức độ tham gia khi áp dụng PAL\cite{b1}. Các nền tảng như Moodle và McGraw-Hill’s Connect LearnSmart là những môi trường phổ biến để triển khai các giải pháp này.
+Các hệ thống PAL điều chỉnh lộ trình học tập dựa trên nhu cầu riêng biệt của sinh viên. Theo báo cáo tổng quan của du Plooy và cộng sự (2024), khảo sát 69 công trình nghiên cứu, 59\% số nghiên cứu ghi nhận sự cải thiện về kết quả học tập và 36\% chỉ ra sự gia tăng mức độ tham gia khi áp dụng PAL\cite{b1}. Các nền tảng như Moodle và McGraw-Hill’s Connect LearnSmart là những môi trường phổ biến để triển khai các giải pháp này.
 
 \subsection{Học tăng cường trong giáo dục}
-Trong những năm gần đây, Học tăng cường (RL) đã nổi lên như một phương pháp hiệu quả để xây dựng các gia sư thông minh (Intelligent Tutoring Systems). [cite\_start]Theo Riedmann (2025), xu hướng sử dụng RL trong giáo dục tăng mạnh từ năm 2018, đặc biệt trong lĩnh vực STEM\cite{b3}. [cite\_start]Về mặt thuật toán, Q-learning và Deep Q-Network (DQN) là phổ biến nhất nhờ tính linh hoạt của phương pháp Model-free, cho phép hệ thống học chiến lược tối ưu mà không cần mô hình hóa chính xác quy luật phức tạp của hành vi con người\cite{b6}.
+Trong những năm gần đây, Học tăng cường (RL) đã nổi lên như một phương pháp hiệu quả để xây dựng các gia sư thông minh (Intelligent Tutoring Systems). Theo Riedmann (2025), xu hướng sử dụng RL trong giáo dục tăng mạnh từ năm 2018, đặc biệt trong lĩnh vực STEM\cite{b3}. Về mặt thuật toán, Q-learning và Deep Q-Network (DQN) là phổ biến nhất nhờ tính linh hoạt của phương pháp Model-free, cho phép hệ thống học chiến lược tối ưu mà không cần mô hình hóa chính xác quy luật phức tạp của hành vi con người\cite{b6}.
 
-[cite\_start]Tuy nhiên, Riedmann cũng chỉ ra hạn chế lớn của các nghiên cứu hiện tại là sự phụ thuộc vào dữ liệu mô phỏng và thiếu các triển khai thực tế tại các quốc gia đang phát triển\cite{b3}.
+Tuy nhiên, Riedmann cũng chỉ ra hạn chế lớn của các nghiên cứu hiện tại là sự phụ thuộc vào dữ liệu mô phỏng và thiếu các triển khai thực tế tại các quốc gia đang phát triển\cite{b3}.
 
 \subsection{Tình hình nghiên cứu tại Việt Nam}
-Tại Việt Nam, các nghiên cứu chủ yếu tập trung vào khai phá dữ liệu (Data Mining) để dự báo. [cite\_start]Ví dụ, nghiên cứu của Trần Bá Thuấn (2021) sử dụng Random Forest để dự báo cảnh báo học vụ, hay Lưu Hoài Sang (2020) sử dụng Deep Learning để dự báo điểm số\cite{b4}. Mặc dù đạt độ chính xác cao, các mô hình này mang tính chất ``dự báo tĩnh'' và thiếu cơ chế gợi ý động theo thời gian thực. Đề tài này nhằm lấp đầy khoảng trống đó bằng cách xây dựng một hệ thống RL có khả năng tương tác và điều hướng người học.
+Tại Việt Nam, xu hướng ứng dụng công nghệ trong giáo dục đang có sự chuyển dịch mạnh mẽ từ số hóa bài giảng đơn thuần sang khai thác dữ liệu thông minh (Educational Data Mining). Các nghiên cứu trong giai đoạn 2020-2024 chủ yếu tập trung vào hai nhóm vấn đề cốt lõi:
 
+\subsubsection{Các mô hình dự báo và cảnh báo học vụ}
+Đây là hướng nghiên cứu chiếm ưu thế nhờ tận dụng nguồn dữ liệu điểm số sẵn có tại các trường đại học. Nghiên cứu của Trần Bá Thuấn (2022) đã giải quyết bài toán dữ liệu mất cân bằng để dự báo sớm nguy cơ bị cảnh báo học vụ. Tác giả đã thực nghiệm so sánh các thuật toán như kNN, Decision Tree và Naïve Bayes, kết quả cho thấy Random Forest đạt hiệu suất cao nhất nhờ khả năng giảm thiểu tình trạng học lệch (overfitting)[cite: 187, 188]. 
+
+Tại Đại học Cần Thơ, Lưu Hoài Sang và cộng sự (2020) đã đề xuất phương pháp dự báo kết quả học phần sử dụng mạng nơ-ron đa tầng (Multi-layer Perceptron - MLP). Nghiên cứu chỉ ra rằng việc áp dụng Deep Learning với cơ chế Dropout giúp mô hình xử lý tốt các mối quan hệ phi tuyến tính trong dữ liệu giáo dục, đạt độ lỗi RMSE thấp hơn so với các phương pháp thống kê truyền thống[cite: 189, 190].
+
+Tuy nhiên, hạn chế chung của các mô hình này là tính chất ``dự báo tĩnh'' (Static Prediction). Hệ thống chỉ đưa ra kết quả dự đoán (ví dụ: rớt môn) nhưng chưa tự động đề xuất được các hành động can thiệp cụ thể (Prescriptive Analytics) theo thời gian thực để giúp người học cải thiện tình hình[cite: 191, 192].
+
+\subsubsection{Hệ thống gợi ý và Tích hợp LMS}
+Về bài toán gợi ý, các nghiên cứu trong nước thường áp dụng kỹ thuật Lọc cộng tác (Collaborative Filtering). Tuy nhiên, phương pháp này phụ thuộc lớn vào lịch sử tương đồng giữa các người dùng, do đó dễ gặp vấn đề ``khởi động lạnh'' (Cold-start) khi áp dụng cho khóa học mới hoặc sinh viên mới[cite: 193, 195].
+
+Gần đây, một số nghiên cứu như của Phạm Huệ Minh (2024) đã bắt đầu tích hợp AI tạo sinh (như ChatGPT) vào Moodle để hỗ trợ tra cứu thông tin[cite: 197]. Mặc dù vậy, đa số các giải pháp này được triển khai dưới dạng Plugin cài trực tiếp lên mã nguồn LMS (kiến trúc Monolithic). Cách tiếp cận này thiếu tính linh hoạt khi mở rộng quy mô và chưa tận dụng được các chuẩn kết nối độc lập như LTI để tách biệt dữ liệu xử lý AI khỏi dữ liệu quản lý đào tạo[cite: 198, 199].
+
+\subsubsection{Khoảng trống nghiên cứu}
+Từ phân tích trên, có thể thấy tại Việt Nam vẫn thiếu vắng các giải pháp kết hợp đồng thời ba yếu tố: (1) Thuật toán Học tăng cường (RL) để tạo ra gợi ý động; (2) Kiến trúc Microservices để đảm bảo khả năng mở rộng; và (3) Chuẩn LTI 1.3 để tích hợp liền mạch. Đề tài này được thực hiện nhằm lấp đầy khoảng trống đó[cite: 204, 205].
 \section{Kiến trúc hệ thống và Xử lý dữ liệu}
 \label{sec:system}
 
-\subsection{Kiến trúc Microservices}
-Hệ thống được thiết kế theo kiến trúc Microservices để đảm bảo tính module hóa và khả năng mở rộng độc lập. Các thành phần chính bao gồm:
-\begin{itemize}
-    \item \textbf{LTI Integration Service:} Đảm nhiệm việc xác thực và kết nối an toàn với Moodle LMS thông qua chuẩn LTI 1.3 và giao thức OAuth 2.0. [cite\_start]Service này giúp hệ thống hoạt động như một công cụ độc lập (Tool Provider) mà không cần can thiệp vào mã nguồn của LMS\cite{b7}.
-    \item \textbf{Recommend Service:} Là trái tim của hệ thống, chứa thuật toán Q-learning (được viết bằng Python). [cite\_start]Service này chịu trách nhiệm tính toán giá trị Q, cập nhật bảng tri thức và trả về danh sách gợi ý\cite{b5}.
-    \item \textbf{Course Service \& User Service:} Quản lý metadata cấu trúc khóa học và thông tin người dùng, đồng bộ hóa từ LMS.
-    \item \textbf{Frontend:} Ứng dụng phía người dùng xây dựng bằng ReactJS, hiển thị dashboard cá nhân hóa.
-\end{itemize}
-[cite\_start]Dữ liệu được lưu trữ phân tán, với MongoDB được sử dụng cho Recommend Service để xử lý dữ liệu log hành vi phi cấu trúc và trạng thái người học thay đổi liên tục\cite{b5}.
+\subsection{Kiến trúc Microservices và Công nghệ nền tảng}
 
+\subsubsection{Cơ sở lựa chọn kiến trúc}
+Đa số các giải pháp tích hợp AI vào LMS hiện nay tại Việt Nam thường được triển khai dưới dạng Plugin cài đặt trực tiếp lên mã nguồn (Monolithic). Mặc dù đơn giản, cách tiếp cận này bộc lộ nhiều hạn chế về khả năng mở rộng và rủi ro bảo mật. Để khắc phục, hệ thống được thiết kế theo kiến trúc Microservices, tách biệt hoàn toàn module xử lý AI khỏi hệ thống quản lý đào tạo.
+
+\subsubsection{Các thành phần cốt lõi}
+Hệ thống được phân rã thành các dịch vụ độc lập, giao tiếp qua RESTful API và được quản lý tập trung bởi Kong API Gateway (như mô tả tại Hình \ref{fig:microservice}):
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=\linewidth]{microservice.png}}
+\caption{Sơ đồ kiến trúc Microservices và luồng dữ liệu tích hợp.}
+\label{fig:microservice}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{LTI Integration Service:} Đóng vai trò là cổng giao tiếp an toàn, thực hiện quy trình bắt tay (handshake) và xác thực OAuth 2.0 với Moodle theo chuẩn LTI 1.3.
+    \item \textbf{Recommend Service:} Trung tâm trí tuệ của hệ thống, vận hành thuật toán Q-learning để tính toán và trả về danh sách gợi ý tối ưu.
+    \item \textbf{User \& Course Service:} Quản lý đồng bộ metadata cấu trúc khóa học và hồ sơ người dùng từ LMS.
+    \item \textbf{Frontend:} Ứng dụng ReactJS hiển thị Dashboard tương tác.
+\end{itemize}
+
+Dữ liệu được lưu trữ phân tán theo mô hình "Database-per-service". Trong đó, MongoDB được sử dụng cho Recommend Service để xử lý dữ liệu log hành vi phi cấu trúc và trạng thái người học thay đổi liên tục.
+
+\subsubsection{Cơ chế lưu trữ dữ liệu}
+Hệ thống áp dụng mô hình "Database-per-service" để đảm bảo tính lỏng lẻo (loose coupling). Trong đó, MongoDB được lựa chọn làm cơ sở dữ liệu chính cho Recommend Service. Với đặc thù dữ liệu log hành vi phi cấu trúc và trạng thái người học thay đổi liên tục theo thời gian thực (Real-time State Tracking), cơ sở dữ liệu NoSQL như MongoDB cho phép truy xuất và ghi nhận vector trạng thái nhanh chóng hơn so với các RDBMS truyền thống[cite: 325].
 \subsection{Quy trình Xử lý dữ liệu và Phân cụm}
-[cite\_start]Để xây dựng không gian trạng thái cho thuật toán RL, chúng tôi thực hiện quy trình khai phá dữ liệu từ log hệ thống Moodle của một khóa học STEM thực tế (Course ID 670) với 13,995 sự kiện tương tác và 23 sinh viên tham gia đầy đủ\cite{b5}.
+Để xây dựng không gian trạng thái cho thuật toán RL, chúng tôi thực hiện quy trình khai phá dữ liệu từ log hệ thống Moodle của một khóa học STEM thực tế (Course ID 670) với 13,995 sự kiện tương tác và 23 sinh viên tham gia đầy đủ\cite{b5}.
 
 \subsubsection{Tiền xử lý dữ liệu}
-Dữ liệu thô từ Moodle chứa nhiều nhiễu. Quá trình làm sạch bao gồm việc loại bỏ các sự kiện hệ thống tự động (như \textit{webservice\_function\_called}) và chuẩn hóa thời gian. [cite\_start]Sau đó, chúng tôi trích xuất 114 đặc trưng hành vi và áp dụng kỹ thuật lọc tương quan (Correlation Filtering) để loại bỏ hiện tượng đa cộng tuyến, giữ lại 15 đặc trưng quan trọng nhất như: tần suất xem tài liệu, số lần nộp bài, thời gian phản hồi, v.v. \cite{b5}.
+Dữ liệu thô từ Moodle chứa nhiều nhiễu. Quá trình làm sạch bao gồm việc loại bỏ các sự kiện hệ thống tự động (như \textit{webservice\_function\_called}) và chuẩn hóa thời gian. Sau đó, chúng tôi trích xuất 114 đặc trưng hành vi và áp dụng kỹ thuật lọc tương quan (Correlation Filtering) để loại bỏ hiện tượng đa cộng tuyến, giữ lại 15 đặc trưng quan trọng nhất như: tần suất xem tài liệu, số lần nộp bài, thời gian phản hồi, v.v. \cite{b5}.
 
 \subsubsection{Phân cụm người học (Clustering)}
 Việc cá nhân hóa đòi hỏi hệ thống phải nhận diện được đặc điểm của từng nhóm đối tượng. Chúng tôi sử dụng thuật toán K-means để phân nhóm sinh viên dựa trên 15 đặc trưng đã trích xuất.
-[cite\_start]Số lượng cụm tối ưu $K=6$ được xác định thông qua phương pháp Elbow và chỉ số Silhouette\cite{b5}. Các nhóm người học được định danh bao gồm:
+Số lượng cụm tối ưu $K=6$ được xác định thông qua phương pháp Elbow và chỉ số Silhouette\cite{b5}. Các nhóm người học được định danh bao gồm:
 \begin{itemize}
     \item \textbf{Cluster 0 (Nhóm cần hỗ trợ - 34.8\%):} Tương tác thấp, thụ động, điểm số thấp.
     \item \textbf{Cluster 1 (Nhóm tự giác):} Thường xuyên theo dõi tiến độ và bảng điểm.
     \item \textbf{Cluster 2 (Nhóm chủ động - 30.4\%):} Tương tác cao, nộp bài đầy đủ.
     \item \textbf{Cluster 4 (Nhóm nghiên cứu):} Tập trung vào việc xem và tải tài liệu.
-    [cite\_start]\item \textbf{Cluster 5 (Nhóm thành tích):} Quan tâm đến huy hiệu và xếp hạng \cite{b5}.
+    \item \textbf{Cluster 5 (Nhóm thành tích):} Quan tâm đến huy hiệu và xếp hạng \cite{b5}.
 \end{itemize}
 Thông tin Cluster ID này sẽ được đưa vào vector trạng thái của thuật toán Q-learning.
 
@@ -151,40 +180,55 @@ Trong đó:
     \item $P$ (Progress): Mức độ hoàn thành module, được rời rạc hóa thành 4 mức (0.25, 0.5, 0.75, 1.0).
     \item $Sc$ (Score): Điểm số tích lũy, chia thành 4 mức tương ứng (Yếu, TB, Khá, Giỏi).
     \item $Ph$ (Phase): Giai đoạn học tập (0: Pre-learning, 1: Active-learning, 2: Reflective-learning).
-    [cite\_start]\item $E$ (Engagement): Mức độ tương tác (Thấp, TB, Cao), tính toán dựa trên trọng số hành động theo khung ICAP \cite{b5}.
+    \item $E$ (Engagement): Mức độ tương tác (Thấp, TB, Cao), tính toán dựa trên trọng số hành động theo khung ICAP \cite{b5}.
 \end{itemize}
 Kích thước không gian trạng thái là $5 \times 6 \times 4 \times 4 \times 3 \times 3 \approx 4,320$ trạng thái, đảm bảo tính khả thi cho việc hội tụ của bảng Q-table.
 
 \subsection{Không gian hành động (Action Space)}
-Thay vì sử dụng hàng trăm sự kiện thô của Moodle, chúng tôi thiết kế 15 hành động sư phạm cốt lõi, được phân loại theo ngữ cảnh thời gian để hỗ trợ các chiến lược học tập khác nhau (Bảng \ref{tab:actions}).
+Trong mô hình Quy trình Quyết định Markov (MDP), Không gian hành động đại diện cho tập hợp các tương tác sư phạm mà hệ thống (Agent) có thể đề xuất cho người học tại một thời điểm nhất định. Việc thiết kế $A$ không đơn thuần là liệt kê các sự kiện nhật ký (logs) của Moodle, mà là một quá trình chọn lọc dựa trên các nguyên lý sư phạm để đảm bảo thuật toán Q-learning có thể hội tụ và tạo ra các gợi ý có ý nghĩa.
 
-\begin{table}[htbp]
-\caption{Không gian hành động theo ngữ cảnh thời gian}
-\begin{center}
-\begin{tabular}{|c|l|p{4cm}|}
-\hline
-\textbf{Ngữ cảnh} & \textbf{Hành động} & \textbf{Mục tiêu sư phạm} \\
-\hline
-\textbf{PAST} & view\_content\_past & Ôn tập kiến thức cũ (Remediation) \\
-(Quá khứ) & review\_quiz\_past & Phân tích lỗi sai \\
-& attempt\_quiz\_past & Cải thiện kỹ năng còn yếu \\
-& post\_forum\_past & Thảo luận lại chủ đề cũ \\
-\hline
-\textbf{CURRENT} & view\_assignment & Hiểu yêu cầu nhiệm vụ \\
-(Hiện tại) & view\_content & Tiếp thu kiến thức mới \\
-& attempt\_quiz & Thực hành kiến tạo (Constructive) \\
-& submit\_quiz & Hoàn thành đánh giá \\
-& post\_forum & Tương tác xã hội \\
-\hline
-\textbf{FUTURE} & view\_content\_fut & Chuẩn bị bài trước (Preview) \\
-(Tương lai) & attempt\_quiz\_fut & Thử thách nâng cao (Exploration) \\
-\hline
-\end{tabular}
-\label{tab:actions}
-\end{center}
-\end{table}
+\subsubsection{Quy trình lựa chọn và sàng lọc hành động}
+Hệ thống Moodle ghi nhận hàng trăm loại sự kiện khác nhau (ví dụ: \textit{user\_loggedin}, \textit{course\_viewed}, \textit{grade\_deleted}...). Để xây dựng một không gian hành động hiệu quả, chúng tôi áp dụng quy trình sàng lọc dựa trên 3 tiêu chí khoa học sau:
 
-[cite\_start]Việc phân chia này cho phép AI đưa ra các chiến lược linh hoạt: Gợi ý hành động Past cho sinh viên yếu cần củng cố nền tảng, và hành động Future cho sinh viên giỏi muốn học vượt \cite{b5}.
+\smallskip
+\paragraph{Tiêu chí 1: Tác động học tập (Learning Impact) - Khung lý thuyết ICAP}
+Dựa trên khung lý thuyết ICAP của Chi \& Wylie (2014), các hành động được phân loại theo mức độ tham gia nhận thức:
+\begin{itemize}
+    \item \textbf{Interactive (Tương tác - Điểm 10):} Các hành động tạo ra sản phẩm học tập hoặc đồng kiến tạo (VD: \textit{submit\_assignment}, \textit{post\_forum}).
+    \item \textbf{Constructive (Kiến tạo - Điểm 7):} Các hành động tạo ra nội dung mới vượt ra ngoài thông tin được cung cấp (VD: \textit{attempt\_quiz}).
+    \item \textbf{Active (Chủ động - Điểm 3):} Các hành động thao tác với thông tin (VD: \textit{view\_content}).
+    \item \textbf{System (Hệ thống - Điểm 0):} Các hành động quản trị không liên quan trực tiếp đến việc học (VD: \textit{dashboard\_viewed}, \textit{login}).
+\end{itemize}
+\smallskip
+\textit{Kết luận:} Hệ thống loại bỏ hoàn toàn nhóm System và giữ lại các nhóm Interactive, Constructive, Active.
+
+\smallskip
+\paragraph{Tiêu chí 2: Tần suất dữ liệu (Data Frequency) - Nguyên lý Pareto}
+Trong Khai phá dữ liệu giáo dục (Educational Data Mining), nguyên lý 80/20 thường xuyên xuất hiện. Phân tích thực nghiệm trên log Moodle cho thấy một số ít loại hành động chiếm đa số dữ liệu. Theo Sutton \& Barto (2018), Q-learning yêu cầu số lượng mẫu đủ lớn để ước lượng giá trị Q (Q-value).
+
+\smallskip
+\textit{Kết luận:} Các sự kiện hiếm gặp ($< 1\%$ tổng log) như \textit{download\_file} hay \textit{view\_rubric} bị loại bỏ vì không đủ dữ liệu để mô hình học.
+
+\smallskip
+\paragraph{Tiêu chí 3: Tác động chuyển đổi trạng thái (State Transition Impact)}
+Trong MDP, một hành động được coi là hợp lệ nếu nó gây ra sự thay đổi đo lường được lên trạng thái ($S$).
+Đo lường: $State\_Change = |State_{after} - State_{before}|$
+
+\smallskip
+\textit{Kết luận:} Các hành động như \textit{submit\_quiz} hay \textit{submit\_assignment} gây biến động lớn (10-30\%) lên tỷ lệ hoàn thành và điểm số, do đó được ưu tiên giữ lại.
+
+\smallskip
+\subsubsection{Danh sách hành động cốt lõi (Core Actions)}
+Dựa trên 3 tiêu chí trên, 7 hành động cốt lõi được lựa chọn làm nền tảng cho hệ thống:
+\begin{itemize}
+    \item \textbf{view\_assignment:} Xem yêu cầu bài tập (Active). Là bước đệm quan trọng để hiểu nhiệm vụ.
+    \item \textbf{view\_content:} Xem tài liệu học tập (Active). Hành động phổ biến nhất, là điều kiện cần để tiếp thu kiến thức.
+    \item \textbf{attempt\_quiz:} Bắt đầu làm bài kiểm tra (Constructive). Thể hiện nỗ lực thực hành.
+    \item \textbf{submit\_quiz:} Nộp bài kiểm tra (Interactive). Hành động quan trọng nhất để chốt điểm số và trạng thái hoàn thành.
+    \item \textbf{review\_quiz:} Xem lại kết quả bài làm (Constructive). Thể hiện tư duy phản biện (reflection) và rút kinh nghiệm.
+    \item \textbf{submit\_assignment:} Nộp bài tập lớn (Interactive). Tác động mạnh mẽ nhất đến tỷ lệ hoàn thành khóa học.
+    \item \textbf{post\_forum:} Thảo luận (Interactive). Thể hiện sự tham gia xã hội (social engagement).
+\end{itemize}
 
 \subsection{Hàm phần thưởng (Reward Function)}
 Hàm thưởng là thành phần quan trọng nhất định hướng hành vi của tác nhân. Chúng tôi thiết kế hàm thưởng tổng hợp $R_{total}$:
@@ -193,14 +237,14 @@ R_{total} = R_{base} + R_{LO} + R_{seq} - P_{penalty}
 \end{equation}
 
 \subsubsection{Phần thưởng cơ bản thích ứng ($R_{base}$)}
-Áp dụng chiến lược Cluster-Adaptive Reward. Nhóm sinh viên Yếu (Weak Cluster) nhận được điểm thưởng cao hơn (+10) khi hoàn thành một hành động so với nhóm Giỏi (+5). [cite\_start]Cơ chế này nhằm tạo động lực ngoại sinh, khuyến khích nhóm yếu duy trì tương tác thay vì bỏ cuộc\cite{b6}.
+Áp dụng chiến lược Cluster-Adaptive Reward. Nhóm sinh viên Yếu (Weak Cluster) nhận được điểm thưởng cao hơn (+10) khi hoàn thành một hành động so với nhóm Giỏi (+5). Cơ chế này nhằm tạo động lực ngoại sinh, khuyến khích nhóm yếu duy trì tương tác thay vì bỏ cuộc\cite{b6}.
 
 \subsubsection{Phần thưởng dựa trên Chuẩn đầu ra ($R_{LO}$)}
 Được tính dựa trên mức độ cải thiện năng lực ($\Delta Mastery$) của sinh viên đối với các Chuẩn đầu ra (LO).
 \begin{equation}
 R_{LO} = \sum (\Delta Mastery_i \times W_{midterm, i} \times K_{cluster})
 \end{equation}
-[cite\_start]Trong đó, $W_{midterm}$ là trọng số quan trọng của LO trong bài thi, và $K_{cluster}$ là hệ số khích lệ riêng cho từng nhóm\cite{b5}.
+Trong đó, $W_{midterm}$ là trọng số quan trọng của LO trong bài thi, và $K_{cluster}$ là hệ số khích lệ riêng cho từng nhóm\cite{b5}.
 
 \subsubsection{Phần thưởng chuỗi hành động ($R_{seq}$)}
 Hệ thống thưởng thêm điểm cho các chuỗi hành động hợp lý về mặt sư phạm (Beneficial Sequences), ví dụ: \textit{view\_content} $\rightarrow$ \textit{attempt\_quiz} (Học đi đôi với hành), hoặc \textit{review\_quiz} $\rightarrow$ \textit{view\_content} (Phản tư và học lại).
@@ -210,7 +254,7 @@ Hệ thống sử dụng thuật toán Q-learning tiêu chuẩn để cập nh�
 \begin{equation}
 Q(s, a) \leftarrow Q(s, a) + \alpha [r + \gamma \max_{a'} Q(s', a') - Q(s, a)]
 \end{equation}
-Với tốc độ học $\alpha=0.1$ và hệ số chiết khấu $\gamma=0.95$. [cite\_start]Chiến lược lựa chọn hành động là $\epsilon$-greedy, với $\epsilon$ giảm dần từ 1.0 xuống 0.01 sau 400 episodes để cân bằng giữa khám phá và khai thác \cite{b6}.
+Với tốc độ học $\alpha=0.1$ và hệ số chiết khấu $\gamma=0.95$. Chiến lược lựa chọn hành động là $\epsilon$-greedy, với $\epsilon$ giảm dần từ 1.0 xuống 0.01 sau 400 episodes để cân bằng giữa khám phá và khai thác \cite{b6}.
 
 \section{Thực nghiệm và Kết quả}
 \label{sec:experiments}
@@ -218,29 +262,36 @@ Với tốc độ học $\alpha=0.1$ và hệ số chiết khấu $\gamma=0.95$.
 Do giới hạn về việc triển khai trên sinh viên thực tế trong thời gian ngắn, nghiên cứu sử dụng phương pháp mô phỏng dựa trên dữ liệu (Data-driven Simulation) để giải quyết vấn đề ``khởi động lạnh'' và kiểm chứng thuật toán.
 
 \subsection{Thiết lập môi trường mô phỏng}
-[cite\_start]Môi trường giả lập được xây dựng dựa trên các tham số thống kê (xác suất chuyển trạng thái, phân phối điểm số) trích xuất từ dữ liệu khóa học 670. Các tác nhân ảo (Virtual Agents) được sinh ra với phân phối năng lực mô phỏng thực tế: 20\% Yếu, 60\% Trung bình, 20\% Giỏi \cite{b5}.
+Môi trường giả lập được xây dựng dựa trên các tham số thống kê (xác suất chuyển trạng thái, phân phối điểm số) trích xuất từ dữ liệu khóa học 670. Các tác nhân ảo (Virtual Agents) được sinh ra với phân phối năng lực mô phỏng thực tế: 20\% Yếu, 60\% Trung bình, 20\% Giỏi \cite{b5}.
 Quá trình huấn luyện diễn ra qua 500 vòng lặp (episodes), mỗi vòng gồm 100 tác nhân.
 
 \subsection{Đánh giá so sánh (A/B Testing)}
-Chúng tôi so sánh hiệu quả giữa hai chính sách:
+Chúng tôi so sánh hiệu quả giữa hai chính sách trên cùng một môi trường mô phỏng:
 \begin{itemize}
     \item \textbf{Nhóm Q-learning (Thực nghiệm):} Hành động dựa trên bảng Q-table đã huấn luyện.
     \item \textbf{Nhóm Historical Policy (Đối chứng):} Hành động dựa trên xác suất ngẫu nhiên mô phỏng lại thói quen của sinh viên các khóa trước.
 \end{itemize}
 
-Kết quả định lượng (Bảng \ref{tab:results}) cho thấy sự vượt trội rõ rệt của thuật toán Q-learning trên tất cả các chỉ số đo lường.
+Kết quả định lượng tổng hợp tại Bảng \ref{tab:results} và chi tiết từng phân cụm tại Hình \ref{fig:eval_result} cho thấy sự vượt trội rõ rệt của thuật toán Q-learning.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=\columnwidth]{evaluate_qlearning.png}}
+\caption{So sánh hiệu suất giữa Q-Learning và Param Policy trên các chỉ số: Phần thưởng (Reward), Điểm số (Score), và Độ thành thạo (LO Mastery).}
+\label{fig:eval_result}
+\end{figure}
 
 \begin{table}[htbp]
-\caption{Kết quả so sánh hiệu suất giữa hai nhóm}
+\caption{Kết quả so sánh hiệu suất trung bình giữa hai nhóm}
 \begin{center}
-\begin{tabular}{lccc}
+\small
+\begin{tabular}{p{2.8cm}ccc}
 \toprule
-\textbf{Chỉ số (Metrics)} & \textbf{Đối chứng} & \textbf{Thực nghiệm} & \textbf{Cải thiện (\%)} \\
+\textbf{Chỉ số} & \textbf{Đối chứng} & \textbf{Q-learning} & \textbf{Cải thiện} \\
 \midrule
-Tổng phần thưởng tích lũy & 88.4 & 389.6 & \textbf{+340.8\%} \\
-Điểm số trung bình (thang 10) & 6.25 & 7.66 & \textbf{+22.5\%} \\
-Mức độ thành thạo LO (0-1) & 0.58 & 0.66 & \textbf{+13.9\%} \\
-Số kỹ năng yếu (Weak LOs) & 3.02 & 1.48 & \textbf{-51.0\%} \\
+Tổng phần thưởng & 88.4 & 389.6 & \textbf{+340.8\%} \\
+Điểm TB (thang 10) & 6.25 & 7.66 & \textbf{+22.5\%} \\
+Thành thạo LO (0-1) & 0.58 & 0.66 & \textbf{+13.9\%} \\
+Số kỹ năng yếu & 3.02 & 1.48 & \textbf{-51.0\%} \\
 \bottomrule
 \end{tabular}
 \label{tab:results}
@@ -248,16 +299,16 @@ Số kỹ năng yếu (Weak LOs) & 3.02 & 1.48 & \textbf{-51.0\%} \\
 \end{table}
 
 \subsection{Phân tích tác động sư phạm}
-Bên cạnh các con số thống kê, hệ thống thể hiện khả năng thích ứng thông minh với từng nhóm đối tượng, giải quyết được vấn đề ``một kích cỡ cho tất cả'':
+Dựa trên biểu đồ trực quan tại Hình \ref{fig:eval_result}, hệ thống thể hiện khả năng thích ứng thông minh với từng nhóm đối tượng, giải quyết được vấn đề ``một kích cỡ cho tất cả'':
 
-\subsubsection{Đối với nhóm sinh viên Yếu}
-Chỉ số quan trọng nhất là \textbf{Số kỹ năng yếu (Avg Weak LO Count)} đã giảm mạnh 51.0\% (từ 3.02 xuống 1.48). [cite\_start]Điều này chứng minh rằng AI đã nhận diện được các lỗ hổng kiến thức và chủ động gợi ý các hành động khắc phục (Remedial Actions) như xem lại bài giảng cũ, thay vì đẩy sinh viên vào làm các bài kiểm tra quá sức gây nản lòng\cite{b5}. Mức chênh lệch phần thưởng lớn nhất cũng được ghi nhận ở nhóm này, phản ánh chiến lược ``khích lệ'' của hàm thưởng.
+\subsubsection{Đối với nhóm sinh viên Yếu (Cluster Weak)}
+Đây là nhóm hưởng lợi nhiều nhất từ hệ thống. Chỉ số quan trọng nhất là \textbf{Số kỹ năng yếu (Avg Weak LO Count)} đã giảm mạnh 51.0\% (từ 3.02 xuống 1.48). Quan sát biểu đồ \textit{Average Reward}, ta thấy mức chênh lệch phần thưởng lớn nhất nằm ở nhóm này (316.93 so với 34.62), chứng minh AI đã áp dụng chiến lược ``khích lệ'' và gợi ý các hành động khắc phục (Remedial Actions) để giữ chân người học \cite{b5}.
 
-\subsubsection{Đối với nhóm sinh viên Giỏi}
-Nhóm này đạt điểm số trung bình tuyệt đối cao nhất (8.18/10). [cite\_start]Hệ thống đã nhận diện năng lực vượt trội và chuyển sang chiến lược đề xuất các nội dung thách thức hơn (Future Actions) hoặc các bài tập khó, giúp duy trì hứng thú học tập và tránh sự nhàm chán\cite{b5}.
+\subsubsection{Đối với nhóm sinh viên Giỏi (Cluster Strong)}
+Nhóm này đạt điểm số trung bình (Midterm Score) tuyệt đối cao nhất là \textbf{8.18/10} (so với 6.53 của nhóm đối chứng), như hiển thị trên biểu đồ. Hệ thống đã nhận diện năng lực vượt trội và chuyển sang chiến lược đề xuất các nội dung thách thức hơn, giúp tối ưu hóa tiềm năng của người học \cite{b5}.
 
 \subsubsection{Độ tin cậy thống kê}
-[cite\_start]Kiểm định T-test độc lập giữa hai nhóm cho kết quả $T-statistic = 67.74$ và $P-value \approx 0.000$, khẳng định sự khác biệt về hiệu quả là có ý nghĩa thống kê với độ tin cậy 99.9\%\cite{b5}.
+Như thể hiện trong bảng \textit{Statistical Test Results} (Hình \ref{fig:eval_result}), kiểm định T-test độc lập giữa hai nhóm cho kết quả $T-statistic = 67.744$ và $P-value \approx 0.0000$. Điều này khẳng định sự khác biệt về hiệu quả là có ý nghĩa thống kê với độ tin cậy 99.9\% \cite{b5}.
 
 \section{Kết luận và Hướng phát triển}
 \label{sec:conclusion}
@@ -270,22 +321,51 @@ Tuy nhiên, nghiên cứu vẫn còn hạn chế khi chưa được triển khai
 
 Hướng phát triển trong tương lai bao gồm:
 \begin{itemize}
-    [cite\_start]\item \textbf{Deep Reinforcement Learning (DRL):} Áp dụng mạng nơ-ron sâu (DQN, PPO) để xử lý không gian trạng thái liên tục và phức tạp hơn\cite{b6}.
+    \item \textbf{Deep Reinforcement Learning (DRL):} Áp dụng mạng nơ-ron sâu (DQN, PPO) để xử lý không gian trạng thái liên tục và phức tạp hơn\cite{b6}.
     \item \textbf{Triển khai thực tế:} Tích hợp hệ thống vào các khóa học STEM tại trường đại học để thu thập dữ liệu phản hồi thực và tinh chỉnh mô hình.
-    [cite\_start]\item \textbf{Federated Learning:} Nghiên cứu cơ chế học tập liên kết để bảo vệ quyền riêng tư dữ liệu người học khi triển khai trên nhiều cơ sở giáo dục\cite{b5}.
+    \item \textbf{Federated Learning:} Nghiên cứu cơ chế học tập liên kết để bảo vệ quyền riêng tư dữ liệu người học khi triển khai trên nhiều cơ sở giáo dục\cite{b5}.
 \end{itemize}
 
 \section*{Lời cảm ơn}
 Nhóm tác giả xin chân thành cảm ơn TS. Đỗ Như Tài đã hướng dẫn tận tình. Nghiên cứu được thực hiện tại Khoa Công nghệ Thông tin, Trường Đại học Sài Gòn.
 
 \begin{thebibliography}{00}
-\bibitem{b1} E. du Plooy et al., ``Personalized adaptive learning in higher education: A scoping review,'' \textit{Heliyon}, vol. 10, no. 21, p. e39630, 2024.
-\bibitem{b2} C. B. Frey and M. A. Osborne, ``The future of employment: How susceptible are jobs to computerisation?,'' \textit{Tech. Forecast. Soc. Change}, vol. 114, pp. 254--280, 2017.
-\bibitem{b3} A. Riedmann et al., ``Reinforcement Learning in Education: A Systematic Literature Review,'' \textit{Int. J. Artif. Intell. Educ.}, 2025.
-\bibitem{b4} T. B. Thuan, ``Ứng dụng machine learning dự báo sinh viên diện cảnh báo học tập,'' \textit{Hue Uni. Journal of Science}, 2021.
-\bibitem{b5} I. Gligorea et al., ``Adaptive Learning Using Artificial Intelligence in e-Learning,'' \textit{Educ. Sci.}, vol. 13, no. 12, 2023.
-\bibitem{b6} R. S. Sutton and A. G. Barto, \textit{Reinforcement Learning: An Introduction}. MIT Press, 2018.
-\bibitem{b7} IMS Global, ``LTI 1.3 Implementation Guide,'' [Online]. Available: https://www.imsglobal.org/spec/lti/v1p3.
+
+% --- Nhóm nghiên cứu quốc tế & Cơ sở lý thuyết ---
+\bibitem{b1} E. du Plooy et al., ``Personalized adaptive learning in higher education: A scoping review of key characteristics and impact on academic performance and engagement,'' \textit{Heliyon}, vol. 10, no. 21, p. e39630, 2024. [cite: 721]
+
+\bibitem{b2} C. B. Frey and M. A. Osborne, ``The future of employment: How susceptible are jobs to computerisation?,'' \textit{Tech. Forecast. Soc. Change}, vol. 114, pp. 254--280, 2017. [cite: 120]
+
+\bibitem{b3} A. Riedmann, P. Schaper, and B. Lugrin, ``Reinforcement Learning in Education: A Systematic Literature Review,'' \textit{Int. J. Artif. Intell. Educ.}, 2025. DOI: 10.1007/s40593-025-00494-6. [cite: 724]
+
+\bibitem{b5} I. Gligorea et al., ``Adaptive Learning Using Artificial Intelligence in e-Learning: A Literature Review,'' \textit{Educ. Sci.}, vol. 13, no. 12, 2023. [cite: 729]
+
+\bibitem{b6} R. S. Sutton and A. G. Barto, \textit{Reinforcement Learning: An Introduction}. MIT Press, 2018. [cite: 460]
+
+\bibitem{b12} S. Wu et al., ``A Comprehensive Exploration of Personalized Learning in Smart Education: From Student Modeling to Personalized Recommendations,'' arXiv:2402.01666, 2024. [cite: 728]
+
+\bibitem{b13} W. Villegas-Ch et al., ``Adaptive intelligent tutoring systems for STEM education: analysis of the learning impact and effectiveness of personalized feedback,'' \textit{Int. J. Educ. Technol. High. Educ.}, 2025. [cite: 730]
+
+\bibitem{b14} V. Aleven et al., ``Adaptive Learning Technologies,'' in \textit{Handbook of Learning Analytics}, 2016. [cite: 726]
+
+% --- Nhóm nghiên cứu tại Việt Nam (Quan trọng cho phần Related Work) ---
+\bibitem{b8} P. L. Nguyen, ``Vietnam’s STEM Education Landscape: Evolution, Challenges, and Policy Interventions,'' \textit{Vietnam J. Educ.}, vol. 8, no. 2, pp. 177--189, 2024. [cite: 723]
+
+\bibitem{b4} T. B. Thuan, ``Ứng dụng machine learning dự báo sinh viên diện cảnh báo học tập tại trường đại học kinh tế Huế,'' \textit{Hue Uni. Journal of Science}, 2022. [cite: 736]
+
+\bibitem{b9} L. H. Sang, N. T. Hai, T. T. Dien, and N. T. Nghe, ``Dự báo kết quả học tập bằng kỹ thuật học sâu với mạng nơ-ron đa tầng,'' \textit{Can Tho Univ. J. Sci.}, vol. 56, 2020. DOI: 10.22144/ctu.jvn.2020.049. [cite: 737]
+
+\bibitem{b10} ``Ứng dụng AI trong thiết kế Khóa học trực tuyến tại Khoa Công nghệ số và Kỹ thuật Trường Đại học Đồng Tháp,'' \textit{Tạp chí Thiết bị Giáo dục}, 2024. [cite: 735]
+
+% --- Nhóm Kỹ thuật & Microservices ---
+\bibitem{b7} IMS Global, ``LTI 1.3 Implementation Guide,'' [Online]. Available: https://www.imsglobal.org/spec/lti/v1p3. [cite: 733]
+
+\bibitem{b15} Kong Gateway Developer Documentation. [Online]. Available: https://developer.konghq.com/index/gateway/. [cite: 733]
+
+\bibitem{b16} MoodleDev, ``Update LTI tool provider feature to support 1.3.'' [Online]. Available: https://moodledev.io/general/releases/4.0. [cite: 725]
+
+\bibitem{b17} R. W. Bybee, \textit{The Case for STEM Education: Challenges and Opportunities}. NSTA Press, 2013. [cite: 738]
+
 \end{thebibliography}
 
 \end{document}
