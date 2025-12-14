@@ -33,27 +33,38 @@
 \newlabel{sec:experiments}{{III}{3}{}{section.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Thiết lập Môi trường Giả lập (Simulation Setup)}{3}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-A}1}Mô hình hóa Phong cách học tập}{3}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-A}2}Tham số hành vi theo Phân cụm}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-A}2}Cấu hình Ngẫu nhiên và Tham số Mô phỏng (Simulation Settings \& Stochasticity)}{3}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Tổng hợp tham số cấu hình mô phỏng}}{3}{}\protected@file@percent }
+\newlabel{tab:sim_params}{{I}{3}{}{table.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Thiết lập thực nghiệm (Experimental Setup)}{3}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-B}1}Dữ liệu huấn luyện (Dataset Ground Truth)}{3}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-B}2}Tiền xử lý và Trích xuất đặc trưng}{3}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Ma trận tương quan Pearson giữa 15 đặc trưng hành vi cốt lõi. Các cặp biến có $|r| > 0.95$ đã được loại bỏ, đảm bảo không có đa cộng tuyến trong mô hình Q-learning.}}{3}{}\protected@file@percent }
-\newlabel{fig:correlation}{{4}{3}{}{figure.4}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-B}3}Tham số mô hình (Model Parameters)}{3}{}\protected@file@percent }
-\citation{b5}
-\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Không gian hành động hoàn chỉnh (15 Actions)}}{4}{}\protected@file@percent }
-\newlabel{tab:action_space_compact}{{I}{4}{}{table.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Ma trận tương quan Pearson giữa 15 đặc trưng hành vi cốt lõi. Các cặp biến có $|r| > 0.95$ đã được loại bỏ, đảm bảo không có đa cộng tuyến trong mô hình Q-learning.}}{4}{}\protected@file@percent }
+\newlabel{fig:correlation}{{4}{4}{}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-B}3}Tham số mô hình (Model Parameters)}{4}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Độ đo đánh giá (Evaluation Metrics)}{4}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Kết quả so sánh (A/B Testing)}{4}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Kết quả so sánh hiệu suất trung bình}}{4}{}\protected@file@percent }
-\newlabel{tab:results}{{II}{4}{}{table.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-E}}Phân tích độ quan trọng đặc trưng}{4}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces So sánh hiệu suất giữa Q-Learning và Param Policy trên các chỉ số: Phần thưởng (Reward), Điểm số (Score), và Độ thành thạo (LO Mastery).}}{4}{}\protected@file@percent }
-\newlabel{fig:eval_result}{{5}{4}{}{figure.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Phân phối giá trị SHAP từ thực nghiệm. Module ID và Engagement có dải tác động rộng nhất đến quyết định của Agent.}}{4}{}\protected@file@percent }
-\newlabel{fig:shap_distribution}{{6}{4}{}{figure.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-F}}Phân tích tác động sư phạm}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Quy trình Sinh dữ liệu và Phân tích Hội tụ}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-D}1}Quy trình Sinh dữ liệu (Simulation Loop)}{4}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Không gian hành động hoàn chỉnh (15 Actions)}}{4}{}\protected@file@percent }
+\newlabel{tab:action_space_compact}{{II}{4}{}{table.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-D}2}Phân tích Hội tụ và Độ bao phủ}{4}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Biểu đồ hội tụ phần thưởng tích lũy (Cumulative Reward) qua 500 episodes. Sự ổn định bắt đầu xuất hiện rõ rệt sau episode 350.}}{4}{}\protected@file@percent }
+\newlabel{fig:convergence}{{5}{4}{}{figure.5}{}}
+\citation{b5}
 \citation{b6}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Chiến lược giảm dần tham số Epsilon ($\epsilon $) qua 3 giai đoạn: Khám phá, Chuyển đổi và Khai thác.}}{5}{}\protected@file@percent }
+\newlabel{fig:epsilon}{{6}{5}{}{figure.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-E}}Kết quả so sánh (A/B Testing)}{5}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces So sánh hiệu suất giữa Q-Learning và Param Policy trên các chỉ số: Phần thưởng (Reward), Điểm số (Score), và Độ thành thạo (LO Mastery).}}{5}{}\protected@file@percent }
+\newlabel{fig:eval_result}{{7}{5}{}{figure.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Kết quả so sánh hiệu suất trung bình}}{5}{}\protected@file@percent }
+\newlabel{tab:results}{{III}{5}{}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-F}}Phân tích độ quan trọng đặc trưng}{5}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Phân phối giá trị SHAP từ thực nghiệm. Module ID và Engagement có dải tác động rộng nhất đến quyết định của Agent.}}{5}{}\protected@file@percent }
+\newlabel{fig:shap_distribution}{{8}{5}{}{figure.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-G}}Phân tích tác động sư phạm}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Kết luận và Hướng phát triển}{5}{}\protected@file@percent }
+\newlabel{sec:conclusion}{{IV}{5}{}{section.4}{}}
 \citation{b5}
 \bibcite{b1}{1}
 \bibcite{b2}{2}
@@ -73,7 +84,5 @@
 \bibcite{b16}{16}
 \bibcite{b17}{17}
 \bibcite{dataset_kaggle}{18}
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Kết luận và Hướng phát triển}{5}{}\protected@file@percent }
-\newlabel{sec:conclusion}{{IV}{5}{}{section.4}{}}
-\@writefile{toc}{\contentsline {section}{References}{5}{}\protected@file@percent }
-\gdef \@abspage@last{5}
+\@writefile{toc}{\contentsline {section}{References}{6}{}\protected@file@percent }
+\gdef \@abspage@last{6}

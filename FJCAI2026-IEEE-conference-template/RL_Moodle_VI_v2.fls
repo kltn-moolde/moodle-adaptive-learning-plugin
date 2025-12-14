@@ -258,13 +258,7 @@ INPUT ./fig3_qlearning_diagram.png
 INPUT ./fig3_qlearning_diagram.png
 INPUT ./fig3_qlearning_diagram.png
 INPUT ./fig3_qlearning_diagram.png
-INPUT ./correlation.png
-INPUT ./correlation.png
-INPUT ./correlation.png
-INPUT ./correlation.png
-INPUT ./correlation.png
-INPUT ./correlation.png
-INPUT ./correlation.png
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmrc8v.tfm
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmr6.tfm
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmmi6.tfm
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmsy6.tfm
@@ -275,7 +269,29 @@ INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/font
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/latex-fonts/lasy6.tfm
-INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmrc8v.tfm
+INPUT ./correlation.png
+INPUT ./correlation.png
+INPUT ./correlation.png
+INPUT ./correlation.png
+INPUT ./correlation.png
+INPUT ./correlation.png
+INPUT ./correlation.png
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/vf/vntex/urwvn/utmrc8v.vf
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmr8v.tfm
+INPUT ./fig4_convergence.png
+INPUT ./fig4_convergence.png
+INPUT ./fig4_convergence.png
+INPUT ./fig4_convergence.png
+INPUT ./fig4_convergence.png
+INPUT ./fig4_convergence.png
+INPUT ./fig4_convergence.png
+INPUT ./fig5_epsilon.png
+INPUT ./fig5_epsilon.png
+INPUT ./fig5_epsilon.png
+INPUT ./fig5_epsilon.png
+INPUT ./fig5_epsilon.png
+INPUT ./fig5_epsilon.png
+INPUT ./fig5_epsilon.png
 INPUT ./evaluate_qlearning.png
 INPUT ./evaluate_qlearning.png
 INPUT ./evaluate_qlearning.png
@@ -297,14 +313,14 @@ INPUT ./shap_summary_beeswarm.png
 INPUT ./shap_summary_beeswarm.png
 INPUT ./shap_summary_beeswarm.png
 INPUT ./shap_summary_beeswarm.png
-INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/vf/vntex/urwvn/utmrc8v.vf
-INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmr8v.tfm
 INPUT RL_Moodle_VI_v2.aux
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/enc/dvips/vntex/t5.enc
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi6.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi6.pfb
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi7.pfb
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi7.pfb
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb

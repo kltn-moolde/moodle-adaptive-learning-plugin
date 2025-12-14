@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1765749094.39788 "/Users/nguyenhuuloc/Documents/MyComputer/AdaptiveLearning/FJCAI2026-IEEE-conference-template/RL_Moodle_VI_v2.tex" "RL_Moodle_VI_v2.pdf" "RL_Moodle_VI_v2" 1765749097.2313 0
-  "/Users/nguyenhuuloc/Documents/MyComputer/AdaptiveLearning/FJCAI2026-IEEE-conference-template/RL_Moodle_VI_v2.tex" 1765749088.64865 30113 0e4ac7840b43a9e9be5fee72f7d69e20 ""
+["pdflatex"] 1765752127.82953 "/Users/nguyenhuuloc/Documents/MyComputer/AdaptiveLearning/FJCAI2026-IEEE-conference-template/RL_Moodle_VI_v2.tex" "RL_Moodle_VI_v2.pdf" "RL_Moodle_VI_v2" 1765752130.85659 0
+  "/Users/nguyenhuuloc/Documents/MyComputer/AdaptiveLearning/FJCAI2026-IEEE-conference-template/RL_Moodle_VI_v2.tex" 1765752123.51728 35210 45416bfccda211bc901c7c384d430587 ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/data/fonts/map/pdftex/pdftex.map" 1765644262.39852 483841 8b30d5035ff272656a610e79bf5b8299 ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1741234274.26514 8799587 3b302ba410b8ef9dbba30436c29c2e74 ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/enc/dvips/vntex/t5.enc" 1741234482.42641 7824 21ade6c3c7fd67cb4ace8dbc91c53118 ""
@@ -43,6 +43,7 @@
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmri8v.tfm" 1741234482.4569 9008 70b98210bab02ff42c73a48e822f618f ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1741233845.39369 30251 6afa5cb1d0204815a708a080681d4674 ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1741233845.40574 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
+  "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi6.pfb" 1741233845.41337 37166 8ab3487cbe3ab49ebce74c29ea2418db ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1741233845.41652 36281 c355509802a035cadc5f15869451dcee ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1741233845.41855 35469 70d41d2b9ea31d5d813066df7c99281c ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1741233845.42552 35752 024fb6c41858982481f6968b5fc26508 ""
@@ -108,13 +109,15 @@
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/vntex/vncaps.tex" 1741234482.87784 3273 a55ebdb07413d2fea580f210e3c0b252 ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/xcolor/xcolor.sty" 1741233944.94784 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "IEEEtran.cls" 1765546255.1068 281957 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
-  "RL_Moodle_VI_v2.aux" 1765749096.94749 7476 a00fa5bcdc8e49f2cb5810e36e1f8a8d "pdflatex"
-  "RL_Moodle_VI_v2.tex" 1765749088.64865 30113 0e4ac7840b43a9e9be5fee72f7d69e20 ""
+  "RL_Moodle_VI_v2.aux" 1765752130.52633 8776 1440f048d03b46bae51cf57a3c65a867 "pdflatex"
+  "RL_Moodle_VI_v2.tex" 1765752123.51728 35210 45416bfccda211bc901c7c384d430587 ""
   "correlation.png" 1765655274.11012 209551 75639e442aa3abdccf50f09320e5e021 ""
   "evaluate_qlearning.png" 1765636094.84962 129175 d2079b344f241b0b959f8c323877b0e6 ""
   "fig1_problem_concept.png" 1765732309.76772 5286630 5eb90bf7382ba9a975e862b173621987 ""
   "fig2_method_overview.png" 1765734333.19749 4639809 8d25b9ddf52c0a982b93fab7bc06e5ef ""
   "fig3_qlearning_diagram.png" 1765736033.34697 4900470 9352744e1c9ada2619c406614eeca507 ""
+  "fig4_convergence.png" 1765751982.23636 66884 b6f884d5cc83c0cf02936dd2897457ca ""
+  "fig5_epsilon.png" 1765752102.03228 87988 093fdc9f96946ff459e2886fa3ec851f ""
   "shap_summary_beeswarm.png" 1765644960.26326 307176 c35e69d17119baba171dbd5b48e5d25f ""
   (generated)
   "RL_Moodle_VI_v2.aux"

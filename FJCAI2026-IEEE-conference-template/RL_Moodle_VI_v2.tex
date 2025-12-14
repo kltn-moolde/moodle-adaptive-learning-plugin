@@ -188,12 +188,50 @@ Các tác nhân ảo (Virtual Agents) không hành động ngẫu nhiên mà s�
     \item \textbf{Video/Reading-first (20\%):} Ưu tiên tiêu thụ nội dung thụ động trước khi tương tác.
 \end{itemize}
 
-\subsubsection{Tham số hành vi theo Phân cụm}
-Hành vi của tác nhân được tham số hóa chi tiết dựa trên cụm (Cluster):
+% \subsubsection{Tham số hành vi theo Phân cụm}
+% Hành vi của tác nhân được tham số hóa chi tiết dựa trên cụm (Cluster):
+% \begin{itemize}
+%     \item \textbf{Nhóm Weak:} Tốc độ học thấp ($\alpha \approx 0.22$) và độ biến động điểm số cao ($\sigma=0.18$).
+%     \item \textbf{Nhóm Strong:} Tốc độ học cao ($\alpha \approx 0.30$), tỷ lệ thành công cao ($0.90$) và độ biến động thấp.
+% \end{itemize}
+
+\subsubsection{Cấu hình Ngẫu nhiên và Tham số Mô phỏng (Simulation Settings \& Stochasticity)}
+Để đảm bảo tính khách quan và khả năng tái lập (reproducibility) của thực nghiệm, môi trường mô phỏng được thiết lập với các tham số chi tiết về nhiễu (noise) và quy mô mẫu như sau:
+
+\textbf{1) Quy mô và Tái lập:}
+Quá trình huấn luyện được thực hiện trên tổng số 500 episodes, tương ứng với 500 tác nhân người học ảo (Student Agents) được khởi tạo ngẫu nhiên. Hạt giống ngẫu nhiên (Random Seed) được cố định ở giá trị $42$ để đảm bảo sự nhất quán giữa các lần chạy thử nghiệm.
+
+\textbf{2) Mô hình Nhiễu (Noise Modeling):}
+Mô phỏng tích hợp tính ngẫu nhiên để phản ánh sự biến thiên trong hành vi thực tế của sinh viên.
 \begin{itemize}
-    \item \textbf{Nhóm Weak:} Tốc độ học thấp ($\alpha \approx 0.22$) và độ biến động điểm số cao ($\sigma=0.18$).
-    \item \textbf{Nhóm Strong:} Tốc độ học cao ($\alpha \approx 0.30$), tỷ lệ thành công cao ($0.90$) và độ biến động thấp.
+    \item \textbf{Biến thiên Điểm số ($\sigma$):} Điểm số đạt được sau mỗi hành động không cố định mà chịu tác động của nhiễu phân phối đều (Uniform Noise). Công thức tính điểm thực tế $S_{real}$ được định nghĩa:
+    \begin{equation}
+        S_{real} = \text{clip}(S_{base} + \mathcal{U}(-\sigma_c, \sigma_c), 0, 1)
+    \end{equation}
+    Trong đó $\sigma_c$ là độ biến thiên đặc trưng cho từng cụm: Nhóm Yếu có độ biến động cao nhất ($\sigma=0.18$), tiếp theo là Trung bình ($\sigma=0.10$) và Thấp nhất ở nhóm Giỏi ($\sigma=0.05$).
+    
+    \item \textbf{Biến thiên Thời gian:} Thời gian hoàn thành một hành động được lấy mẫu ngẫu nhiên trong khoảng từ 5 đến 30 phút để mô phỏng sự chênh lệch về tốc độ xử lý thông tin: $T \sim \mathcal{U}(5, 30)$[cite: 1441].
 \end{itemize}
+
+\textbf{3) Điều kiện dừng (Termination):}
+Mỗi episode kết thúc khi tác nhân người học hoàn thành toàn bộ $N=6$ module của khóa học hoặc khi đạt giới hạn bước tối đa (max steps = 100) để ngăn chặn các vòng lặp vô tận trong giai đoạn đầu của quá trình thăm dò (exploration)[cite: 1183, 1516].
+
+\begin{table}[htbp]
+\caption{Tổng hợp tham số cấu hình mô phỏng}\label{tab:sim_params}
+\begin{center}
+\begin{tabular}{llc}
+\toprule
+\textbf{Tham số} & \textbf{Mô tả} & \textbf{Giá trị} \\
+\midrule
+$N_{episodes}$ & Số lượng vòng lặp huấn luyện & 500 \\
+$Seed$ & Hạt giống ngẫu nhiên & 42 \\
+$N_{modules}$ & Số module trong khóa học & 6 \\
+$P_{success}$ & Xác suất thành công cơ sở (Weak/Med/Strong) & 0.72 / 0.78 / 0.90 \\
+$\alpha_{learn}$ & Tốc độ học tập (Weak/Med/Strong) & 0.22 / 0.32 / 0.30 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
 
 \subsection{Thiết lập thực nghiệm (Experimental Setup)}
 
@@ -278,6 +316,32 @@ Hiệu quả của mô hình được đánh giá qua các chỉ số:
     \item \textbf{Điểm số trung bình (Average Score):} Điểm kết thúc khóa học (thang 10).
     \item \textbf{Số kỹ năng yếu (Weak Skills Count):} Số lượng Chuẩn đầu ra (LO) có độ thông thạo $< 0.5$.
 \end{itemize}
+
+\subsection{Quy trình Sinh dữ liệu và Phân tích Hội tụ}
+
+\subsubsection{Quy trình Sinh dữ liệu (Simulation Loop)}
+Quy trình mô phỏng được thực hiện trên quy mô 500 vòng lặp (episodes). Trong mỗi episode, hệ thống khởi tạo 100 tác nhân ảo (Virtual Agents) với phân phối năng lực mô phỏng lớp học thực tế: 20\% Yếu, 60\% Trung bình, và 20\% Giỏi. Tổng cộng, mô hình đã huấn luyện trên tương tác của 50,000 lượt sinh viên ảo.
+
+\subsubsection{Phân tích Hội tụ và Độ bao phủ}
+Kết quả huấn luyện cho thấy dung lượng Q-table đạt xấp xỉ 219KB. Trong không gian lý thuyết 4,320 trạng thái, tác nhân đã khám phá và tối ưu hóa được 802 trạng thái cốt lõi (Core States). Đây là các trạng thái bao phủ hầu hết các kịch bản học tập thực tế, trong khi các trạng thái hiếm (Rare States) được xử lý thông qua cơ chế tổng quát hóa của Epsilon trong giai đoạn đầu.
+
+\begin{figure}[htbp]
+    \centering
+    % Thay thế tên file ảnh của bạn vào đây (ví dụ: convergence_reward.png)
+    \includegraphics[width=\linewidth]{fig4_convergence.png} 
+    \caption{Biểu đồ hội tụ phần thưởng tích lũy (Cumulative Reward) qua 500 episodes. Sự ổn định bắt đầu xuất hiện rõ rệt sau episode 350.}
+    \label{fig:convergence}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    % Thay thế tên file ảnh của bạn vào đây (ví dụ: epsilon_decay.png)
+    \includegraphics[width=\linewidth]{fig5_epsilon.png} 
+    \caption{Chiến lược giảm dần tham số Epsilon ($\epsilon$) qua 3 giai đoạn: Khám phá, Chuyển đổi và Khai thác.}
+    \label{fig:epsilon}
+\end{figure}
+
+Biểu đồ tại Hình \ref{fig:convergence} và Hình \ref{fig:epsilon} minh họa mối tương quan nghịch biến giữa giá trị Epsilon và Phần thưởng tích lũy. Khi $\epsilon$ giảm dần về 0.01 (Giai đoạn khai thác), phần thưởng trung bình tăng trưởng ổn định, chứng tỏ tác nhân đã học được chiến lược tối ưu để tối đa hóa kết quả học tập.
 
 \subsection{Kết quả so sánh (A/B Testing)}
 Quá trình huấn luyện diễn ra qua 500 episodes với tham số $\alpha=0.1$, $\gamma=0.95$. Kết quả định lượng tổng hợp tại Bảng \ref{tab:results} và chi tiết từng phân cụm tại Hình \ref{fig:eval_result} cho thấy sự vượt trội rõ rệt của thuật toán Q-learning.
