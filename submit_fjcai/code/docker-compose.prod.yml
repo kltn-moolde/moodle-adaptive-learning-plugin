@@ -1,0 +1,156 @@
+services:
+  # Kong Gateway
+  kong-gateway:
+    container_name: kong-gateway
+    image: kong/kong-gateway:3.7.1.1
+    restart: unless-stopped
+    ports:
+      - "${KONG_PROXY_PORT:-8000}:8000"
+      - "${KONG_ADMIN_PORT:-8001}:8001"
+    environment:
+      KONG_DATABASE: "off"
+      KONG_DECLARATIVE_CONFIG: /kong/declarative/kong.yml
+      KONG_PROXY_ACCESS_LOG: /dev/stdout
+      KONG_ADMIN_ACCESS_LOG: /dev/stdout
+      KONG_PROXY_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_LISTEN: 0.0.0.0:8001
+      KONG_PROXY_LISTEN: 0.0.0.0:8000
+    volumes:
+      - ./kong-gateway/config:/kong/declarative
+    networks:
+      - app-network
+      - moodle_project_default
+    depends_on:
+      - user-service
+      - lti-service
+      - frontend-service
+
+  # User Service
+  user-service:
+    container_name: user-service
+    image: ${DOCKER_REGISTRY_LOC}/adaptive-learning-user-service:latest
+    restart: unless-stopped
+    ports:
+      - "${USER_SERVICE_PORT:-8085}:8085"
+    environment:
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILE:-production}
+      - SERVER_ADDRESS=0.0.0.0
+      - SERVER_PORT=8085
+      - DATABASE_URL=jdbc:mysql://mysql8.4:3306/user_service?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root_pass
+      - JWT_SECRET=${JWT_SECRET:-default-jwt-secret-change-in-production}
+      - FRONTEND_URL=${FRONTEND_URL:-http://localhost:5173}
+    networks:
+      - app-network
+      - moodle_project_default
+
+  # LTI Service
+  lti-service:
+    container_name: lti-service
+    image: ${DOCKER_REGISTRY_LOC}/adaptive-learning-lti-service:latest
+    restart: unless-stopped
+    ports:
+      - "${LTI_SERVICE_PORT}:8082"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8082
+      - DEBUG=${DEBUG:-False}
+      - FRONTEND_URL=${FRONTEND_URL}
+      - USER_SERVICE_URL=${USER_SERVICE_URL}
+      - LTI_ISSUER=${LTI_ISSUER}
+      - LTI_AUTH_URL=${LTI_AUTH_URL}
+      - LTI_TOKEN_URL=${LTI_TOKEN_URL}
+      - LTI_KEYSET_URL=${LTI_KEYSET_URL}
+      - MOODLE_API_URL=${MOODLE_API_URL}
+      - MOODLE_API_TOKEN=${MOODLE_API_TOKEN}
+      - ADDRESS_MOODLE=${ADDRESS_MOODLE}
+      - LTI_CLIENT_ID=${LTI_CLIENT_ID}
+      - LTI_DEPLOYMENT_ID=${LTI_DEPLOYMENT_ID}
+      - APP_NAME=${APP_NAME}
+      - APP_VERSION=${APP_VERSION}
+      - JWT_ALGORITHM=${JWT_ALGORITHM}
+      - JWT_EXPIRATION=${JWT_EXPIRATION}
+      - TOOL_TARGET_LINK_URI=${TOOL_TARGET_LINK_URI}
+      - TOOL_OIDC_INITIATION_URL=${TOOL_OIDC_INITIATION_URL}
+      - TOOL_PUBLIC_JWK_URL=${TOOL_PUBLIC_JWK_URL}
+
+    networks:
+      - app-network
+      - moodle_project_default
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8082/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Frontend Service
+  frontend-service:
+    container_name: frontend-service
+    image: ${DOCKER_REGISTRY_LOC}/adaptive-learning-frontend:latest
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT}:5173"
+    environment:
+      - VITE_API_BASE_URL=${API_BASE_URL}
+      - VITE_LTI_SERVICE_URL=${LTI_SERVICE_URL}
+      - VITE_KONG_GATEWAY_URL=${VITE_KONG_GATEWAY_URL}
+      - VITE_MOODLE_URL=${VITE_MOODLE_URL}
+      - VITE_MOODLE_TOKEN=${VITE_MOODLE_TOKEN}
+    networks:
+      - app-network
+
+  course-service:
+    container_name: course-service
+    image: ${DOCKER_REGISTRY_LOC}/course_service:latest
+    restart: unless-stopped
+    ports:
+      - "5001:5001"
+    environment:
+      - MONGO_URI=${MONGO_URI}
+      - MOODLE_API_BASE=${MOODLE_API_BASE}
+      - MOODLE_TOKEN=${MOODLE_TOKEN}
+      - ADDRESS_MOODLE=${ADDRESS_MOODLE}
+    networks:
+      - app-network
+      - moodle_project_default
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  recommend-service:
+    container_name: recommend-service
+    image: ${DOCKER_REGISTRY_LOC}/recommend_service:latest
+    restart: unless-stopped
+    ports:
+      - "8088:8088"
+    environment:
+      - MOODLE_API_BASE=${MOODLE_API_BASE}
+      - TOKEN_PLUGIN_PHP_MOODLE=${TOKEN_PLUGIN_PHP_MOODLE}
+      - ADDRESS_COURSE_SERVICE_BASE=${ADDRESS_COURSE_SERVICE_BASE}
+      - COURSE_ID=${COURSE_ID}
+      - USER_CLUSTERS_CSV=${USER_CLUSTERS_CSV}
+      - DEFAULT_QTABLE_PATH=${DEFAULT_QTABLE_PATH}
+      - DEFAULT_STATE_PATH=${DEFAULT_STATE_PATH}
+      - ADDRESS_MOODLE=${ADDRESS_MOODLE}
+    volumes:
+      - /home/ubuntu/data:/data
+    networks:
+      - app-network
+      - moodle_project_default
+    depends_on:
+      - course-service
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8088/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  app-network:
+    driver: bridge
+  moodle_project_default:
+    external: true

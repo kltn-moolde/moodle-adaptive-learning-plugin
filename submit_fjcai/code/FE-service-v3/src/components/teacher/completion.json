@@ -1,0 +1,689 @@
+{
+    "statuses": [
+        {
+            "cmid": 85,
+            "modname": "resource",
+            "instance": 12,
+            "state": 0,
+            "timecompleted": 0,
+            "tracking": 1,
+            "overrideby": null,
+            "valueused": false,
+            "hascompletion": true,
+            "isautomatic": false,
+            "istrackeduser": true,
+            "uservisible": true,
+            "details": [],
+            "isoverallcomplete": false
+        },
+        {
+            "cmid": 86,
+            "modname": "quiz",
+            "instance": 42,
+            "state": 0,
+            "timecompleted": 0,
+            "tracking": 2,
+            "overrideby": null,
+            "valueused": false,
+            "hascompletion": true,
+            "isautomatic": true,
+            "istrackeduser": true,
+            "uservisible": true,
+            "details": [
+                {
+                    "rulename": "completionusegrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a grade"
+                    }
+                }
+            ],
+            "isoverallcomplete": false
+        },
+        {
+            "cmid": 87,
+            "modname": "quiz",
+            "instance": 43,
+            "state": 0,
+            "timecompleted": 0,
+            "tracking": 2,
+            "overrideby": null,
+            "valueused": false,
+            "hascompletion": true,
+            "isautomatic": true,
+            "istrackeduser": true,
+            "uservisible": true,
+            "details": [
+                {
+                    "rulename": "completionusegrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a grade"
+                    }
+                },
+                {
+                    "rulename": "completionpassgrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a passing grade"
+                    }
+                }
+            ],
+            "isoverallcomplete": false
+        },
+        {
+            "cmid": 88,
+            "modname": "quiz",
+            "instance": 44,
+            "state": 0,
+            "timecompleted": 0,
+            "tracking": 2,
+            "overrideby": null,
+            "valueused": false,
+            "hascompletion": true,
+            "isautomatic": true,
+            "istrackeduser": true,
+            "uservisible": true,
+            "details": [
+                {
+                    "rulename": "completionusegrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a grade"
+                    }
+                },
+                {
+                    "rulename": "completionpassgrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a passing grade"
+                    }
+                }
+            ],
+            "isoverallcomplete": false
+        },
+        {
+            "cmid": 79,
+            "modname": "resource",
+            "instance": 11,
+            "state": 0,
+            "timecompleted": 0,
+            "tracking": 1,
+            "overrideby": null,
+            "valueused": false,
+            "hascompletion": true,
+            "isautomatic": false,
+            "istrackeduser": true,
+            "uservisible": true,
+            "details": [],
+            "isoverallcomplete": false
+        },
+        {
+            "cmid": 80,
+            "modname": "quiz",
+            "instance": 39,
+            "state": 0,
+            "timecompleted": 0,
+            "tracking": 2,
+            "overrideby": null,
+            "valueused": false,
+            "hascompletion": true,
+            "isautomatic": true,
+            "istrackeduser": true,
+            "uservisible": true,
+            "details": [
+                {
+                    "rulename": "completionusegrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a grade"
+                    }
+                },
+                {
+                    "rulename": "completionpassgrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a passing grade"
+                    }
+                }
+            ],
+            "isoverallcomplete": false
+        },
+        {
+            "cmid": 81,
+            "modname": "quiz",
+            "instance": 40,
+            "state": 0,
+            "timecompleted": 0,
+            "tracking": 2,
+            "overrideby": null,
+            "valueused": false,
+            "hascompletion": true,
+            "isautomatic": true,
+            "istrackeduser": true,
+            "uservisible": true,
+            "details": [
+                {
+                    "rulename": "completionusegrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a grade"
+                    }
+                },
+                {
+                    "rulename": "completionpassgrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a passing grade"
+                    }
+                }
+            ],
+            "isoverallcomplete": false
+        },
+        {
+            "cmid": 82,
+            "modname": "quiz",
+            "instance": 41,
+            "state": 0,
+            "timecompleted": 0,
+            "tracking": 2,
+            "overrideby": null,
+            "valueused": false,
+            "hascompletion": true,
+            "isautomatic": true,
+            "istrackeduser": true,
+            "uservisible": true,
+            "details": [
+                {
+                    "rulename": "completionminattempts",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Make attempts: 1"
+                    }
+                },
+                {
+                    "rulename": "completionusegrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a grade"
+                    }
+                },
+                {
+                    "rulename": "completionpassgrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a passing grade"
+                    }
+                }
+            ],
+            "isoverallcomplete": false
+        },
+        {
+            "cmid": 73,
+            "modname": "resource",
+            "instance": 10,
+            "state": 0,
+            "timecompleted": 0,
+            "tracking": 1,
+            "overrideby": null,
+            "valueused": false,
+            "hascompletion": true,
+            "isautomatic": false,
+            "istrackeduser": true,
+            "uservisible": true,
+            "details": [],
+            "isoverallcomplete": false
+        },
+        {
+            "cmid": 74,
+            "modname": "quiz",
+            "instance": 36,
+            "state": 0,
+            "timecompleted": 0,
+            "tracking": 2,
+            "overrideby": null,
+            "valueused": false,
+            "hascompletion": true,
+            "isautomatic": true,
+            "istrackeduser": true,
+            "uservisible": true,
+            "details": [
+                {
+                    "rulename": "completionusegrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a grade"
+                    }
+                },
+                {
+                    "rulename": "completionpassgrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a passing grade"
+                    }
+                }
+            ],
+            "isoverallcomplete": false
+        },
+        {
+            "cmid": 75,
+            "modname": "quiz",
+            "instance": 37,
+            "state": 0,
+            "timecompleted": 0,
+            "tracking": 2,
+            "overrideby": null,
+            "valueused": false,
+            "hascompletion": true,
+            "isautomatic": true,
+            "istrackeduser": true,
+            "uservisible": true,
+            "details": [
+                {
+                    "rulename": "completionusegrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a grade"
+                    }
+                },
+                {
+                    "rulename": "completionpassgrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a passing grade"
+                    }
+                }
+            ],
+            "isoverallcomplete": false
+        },
+        {
+            "cmid": 76,
+            "modname": "quiz",
+            "instance": 38,
+            "state": 0,
+            "timecompleted": 0,
+            "tracking": 2,
+            "overrideby": null,
+            "valueused": false,
+            "hascompletion": true,
+            "isautomatic": true,
+            "istrackeduser": true,
+            "uservisible": true,
+            "details": [
+                {
+                    "rulename": "completionusegrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a grade"
+                    }
+                },
+                {
+                    "rulename": "completionpassgrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a passing grade"
+                    }
+                }
+            ],
+            "isoverallcomplete": false
+        },
+        {
+            "cmid": 67,
+            "modname": "resource",
+            "instance": 9,
+            "state": 0,
+            "timecompleted": 0,
+            "tracking": 1,
+            "overrideby": null,
+            "valueused": false,
+            "hascompletion": true,
+            "isautomatic": false,
+            "istrackeduser": true,
+            "uservisible": true,
+            "details": [],
+            "isoverallcomplete": false
+        },
+        {
+            "cmid": 68,
+            "modname": "quiz",
+            "instance": 33,
+            "state": 0,
+            "timecompleted": 0,
+            "tracking": 2,
+            "overrideby": null,
+            "valueused": false,
+            "hascompletion": true,
+            "isautomatic": true,
+            "istrackeduser": true,
+            "uservisible": true,
+            "details": [
+                {
+                    "rulename": "completionusegrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a grade"
+                    }
+                },
+                {
+                    "rulename": "completionpassgrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a passing grade"
+                    }
+                }
+            ],
+            "isoverallcomplete": false
+        },
+        {
+            "cmid": 69,
+            "modname": "quiz",
+            "instance": 34,
+            "state": 0,
+            "timecompleted": 0,
+            "tracking": 2,
+            "overrideby": null,
+            "valueused": false,
+            "hascompletion": true,
+            "isautomatic": true,
+            "istrackeduser": true,
+            "uservisible": true,
+            "details": [
+                {
+                    "rulename": "completionusegrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a grade"
+                    }
+                }
+            ],
+            "isoverallcomplete": false
+        },
+        {
+            "cmid": 70,
+            "modname": "quiz",
+            "instance": 35,
+            "state": 0,
+            "timecompleted": 0,
+            "tracking": 2,
+            "overrideby": null,
+            "valueused": false,
+            "hascompletion": true,
+            "isautomatic": true,
+            "istrackeduser": true,
+            "uservisible": true,
+            "details": [
+                {
+                    "rulename": "completionusegrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a grade"
+                    }
+                },
+                {
+                    "rulename": "completionpassgrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a passing grade"
+                    }
+                }
+            ],
+            "isoverallcomplete": false
+        },
+        {
+            "cmid": 60,
+            "modname": "resource",
+            "instance": 8,
+            "state": 1,
+            "timecompleted": 1761557865,
+            "tracking": 2,
+            "overrideby": null,
+            "valueused": false,
+            "hascompletion": true,
+            "isautomatic": true,
+            "istrackeduser": true,
+            "uservisible": true,
+            "details": [
+                {
+                    "rulename": "completionview",
+                    "rulevalue": {
+                        "status": 1,
+                        "description": "View"
+                    }
+                }
+            ],
+            "isoverallcomplete": true
+        },
+        {
+            "cmid": 62,
+            "modname": "quiz",
+            "instance": 30,
+            "state": 0,
+            "timecompleted": 0,
+            "tracking": 2,
+            "overrideby": null,
+            "valueused": false,
+            "hascompletion": true,
+            "isautomatic": true,
+            "istrackeduser": true,
+            "uservisible": true,
+            "details": [
+                {
+                    "rulename": "completionview",
+                    "rulevalue": {
+                        "status": 1,
+                        "description": "View"
+                    }
+                },
+                {
+                    "rulename": "completionusegrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a grade"
+                    }
+                },
+                {
+                    "rulename": "completionpassgrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a passing grade"
+                    }
+                }
+            ],
+            "isoverallcomplete": false
+        },
+        {
+            "cmid": 63,
+            "modname": "quiz",
+            "instance": 31,
+            "state": 0,
+            "timecompleted": 0,
+            "tracking": 2,
+            "overrideby": null,
+            "valueused": false,
+            "hascompletion": true,
+            "isautomatic": true,
+            "istrackeduser": true,
+            "uservisible": true,
+            "details": [
+                {
+                    "rulename": "completionusegrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a grade"
+                    }
+                },
+                {
+                    "rulename": "completionpassgrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a passing grade"
+                    }
+                }
+            ],
+            "isoverallcomplete": false
+        },
+        {
+            "cmid": 64,
+            "modname": "quiz",
+            "instance": 32,
+            "state": 0,
+            "timecompleted": 0,
+            "tracking": 2,
+            "overrideby": null,
+            "valueused": false,
+            "hascompletion": true,
+            "isautomatic": true,
+            "istrackeduser": true,
+            "uservisible": true,
+            "details": [
+                {
+                    "rulename": "completionusegrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a grade"
+                    }
+                },
+                {
+                    "rulename": "completionpassgrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a passing grade"
+                    }
+                }
+            ],
+            "isoverallcomplete": false
+        },
+        {
+            "cmid": 54,
+            "modname": "resource",
+            "instance": 7,
+            "state": 1,
+            "timecompleted": 1761557853,
+            "tracking": 2,
+            "overrideby": null,
+            "valueused": false,
+            "hascompletion": true,
+            "isautomatic": true,
+            "istrackeduser": true,
+            "uservisible": true,
+            "details": [
+                {
+                    "rulename": "completionview",
+                    "rulevalue": {
+                        "status": 1,
+                        "description": "View"
+                    }
+                }
+            ],
+            "isoverallcomplete": true
+        },
+        {
+            "cmid": 56,
+            "modname": "quiz",
+            "instance": 27,
+            "state": 0,
+            "timecompleted": 0,
+            "tracking": 2,
+            "overrideby": null,
+            "valueused": false,
+            "hascompletion": true,
+            "isautomatic": true,
+            "istrackeduser": true,
+            "uservisible": true,
+            "details": [
+                {
+                    "rulename": "completionview",
+                    "rulevalue": {
+                        "status": 1,
+                        "description": "View"
+                    }
+                },
+                {
+                    "rulename": "completionusegrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a grade"
+                    }
+                },
+                {
+                    "rulename": "completionpassgrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a passing grade"
+                    }
+                },
+                {
+                    "rulename": "completionpassorattemptsexhausted",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a pass grade or complete all available attempts"
+                    }
+                }
+            ],
+            "isoverallcomplete": false
+        },
+        {
+            "cmid": 57,
+            "modname": "quiz",
+            "instance": 28,
+            "state": 0,
+            "timecompleted": 0,
+            "tracking": 2,
+            "overrideby": null,
+            "valueused": false,
+            "hascompletion": true,
+            "isautomatic": true,
+            "istrackeduser": true,
+            "uservisible": true,
+            "details": [
+                {
+                    "rulename": "completionusegrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a grade"
+                    }
+                },
+                {
+                    "rulename": "completionpassgrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a passing grade"
+                    }
+                }
+            ],
+            "isoverallcomplete": false
+        },
+        {
+            "cmid": 58,
+            "modname": "quiz",
+            "instance": 29,
+            "state": 0,
+            "timecompleted": 0,
+            "tracking": 2,
+            "overrideby": null,
+            "valueused": false,
+            "hascompletion": true,
+            "isautomatic": true,
+            "istrackeduser": true,
+            "uservisible": true,
+            "details": [
+                {
+                    "rulename": "completionusegrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a grade"
+                    }
+                },
+                {
+                    "rulename": "completionpassgrade",
+                    "rulevalue": {
+                        "status": 0,
+                        "description": "Receive a passing grade"
+                    }
+                }
+            ],
+            "isoverallcomplete": false
+        }
+    ],
+    "warnings": []
+}

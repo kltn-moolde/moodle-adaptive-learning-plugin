@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block title %}LTI Service - Home{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="jumbotron bg-primary text-white rounded p-5 mb-4">
+            <div class="text-center">
+                <h1 class="display-4">
+                    <i class="fas fa-link me-3"></i>
+                    LTI 1.3 Service
+                </h1>
+                <p class="lead">Python-based Learning Tools Interoperability service for Moodle integration</p>
+                <hr class="my-4" style="border-color: rgba(255,255,255,0.3);">
+                <p>This service provides LTI 1.3 authentication and user activity logging capabilities.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-key me-2"></i>
+                    LTI Authentication
+                </h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    Secure LTI 1.3 OIDC authentication flow with JWT token validation and user session management.
+                </p>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-check text-success me-2"></i>OIDC Login Initiation</li>
+                    <li><i class="fas fa-check text-success me-2"></i>JWT Token Processing</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Session Management</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-chart-line me-2"></i>
+                    User Activity Logs
+                </h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    View and analyze user activity data from Moodle courses with detailed event tracking.
+                </p>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-check text-success me-2"></i>Activity Tracking</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Event Analysis</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Progress Monitoring</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-api me-2"></i>
+                    API Integration
+                </h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    RESTful API endpoints for integration with external systems and custom applications.
+                </p>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-check text-success me-2"></i>REST API</li>
+                    <li><i class="fas fa-check text-success me-2"></i>JSON Responses</li>
+                    <li><i class="fas fa-check text-success me-2"></i>Token Authentication</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-cogs me-2"></i>
+                    Service Endpoints
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6><i class="fas fa-sign-in-alt me-2"></i>LTI Endpoints</h6>
+                        <ul class="list-unstyled">
+                            <li><code>POST /lti/login</code> - OIDC Login Initiation</li>
+                            <li><code>POST /lti/launch</code> - LTI Launch Processing</li>
+                            <li><code>GET /lti/dashboard</code> - User Dashboard</li>
+                            <li><code>GET /lti/logs</code> - Activity Logs Page</li>
+                            <li><code>GET /lti/config</code> - Tool Configuration</li>
+                            <li><code>GET /lti/jwks</code> - JSON Web Key Set</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6><i class="fas fa-code me-2"></i>API Endpoints</h6>
+                        <ul class="list-unstyled">
+                            <li><code>GET /api/health</code> - Health Check</li>
+                            <li><code>GET /api/launches</code> - LTI Launches</li>
+                            <li><code>GET /api/user/{id}/launches</code> - User Launches</li>
+                            <li><code>GET /api/course/{id}/participants</code> - Participants</li>
+                            <li><code>POST /api/validate-token</code> - Token Validation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12 text-center">
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle me-2"></i>
+            <strong>Getting Started:</strong> 
+            This service is ready to be integrated with your Moodle instance as an LTI 1.3 tool.
+            <a href="https://docs.moodle.org/en/LTI_and_Moodle" target="_blank" class="alert-link">
+                Learn more about LTI integration
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

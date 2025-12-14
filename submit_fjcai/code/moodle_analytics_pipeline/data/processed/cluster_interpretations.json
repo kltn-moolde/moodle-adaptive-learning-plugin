@@ -1,0 +1,34 @@
+[
+  {
+    "cluster_id": 0,
+    "n_students": 12,
+    "percentage": 80.0,
+    "description": "Cluster 0: low academic performance, highly engaged",
+    "key_strengths": [
+      "\\mod_quiz\\event\\attempt_started",
+      "\\mod_quiz\\event\\attempt_reviewed",
+      "\\mod_data\\event\\record_created"
+    ],
+    "key_weaknesses": [
+      "\\gradereport_user\\event\\grade_report_viewed",
+      "\\mod_assign\\event\\feedback_viewed",
+      "\\core\\event\\recent_activity_viewed"
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "n_students": 3,
+    "percentage": 20.0,
+    "description": "Cluster 1: low academic performance, highly engaged",
+    "key_strengths": [
+      "\\core\\event\\user_profile_viewed",
+      "\\core\\event\\user_list_viewed",
+      "\\mod_data\\event\\record_updated"
+    ],
+    "key_weaknesses": [
+      "mean_module_grade",
+      "\\mod_resource\\event\\course_module_viewed",
+      "\\mod_quiz\\event\\attempt_summary_viewed"
+    ]
+  }
+]

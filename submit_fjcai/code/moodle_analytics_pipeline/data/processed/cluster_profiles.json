@@ -1,0 +1,340 @@
+{
+  "0": {
+    "n_students": 12,
+    "percentage": 80.0,
+    "mean": {
+      "total_events": 0.6755689424333334,
+      "\\assignsubmission_comments\\event\\comment_created": 0.08333333333333333,
+      "\\assignsubmission_file\\event\\assessable_uploaded": 0.5208333333333334,
+      "\\assignsubmission_file\\event\\submission_created": 0.891025641025,
+      "\\core\\event\\badge_listing_viewed": 0.08333333333333333,
+      "\\core\\event\\course_module_completion_updated": 0.37870370370833334,
+      "\\core\\event\\course_user_report_viewed": 0.166666666675,
+      "\\core\\event\\recent_activity_viewed": 0.16666666666666666,
+      "\\core\\event\\user_list_viewed": 0.08333333333333333,
+      "\\core\\event\\user_profile_viewed": 0.0,
+      "\\gradereport_overview\\event\\grade_report_viewed": 0.125,
+      "\\gradereport_user\\event\\grade_report_viewed": 0.2967171717166667,
+      "\\mod_assign\\event\\feedback_viewed": 0.30929487179166665,
+      "\\mod_data\\event\\course_module_viewed": 0.32624113474166666,
+      "\\mod_data\\event\\record_created": 0.8333333333333334,
+      "\\mod_data\\event\\record_updated": 0.08333333333333333,
+      "\\mod_folder\\event\\course_module_viewed": 0.38414634144166676,
+      "\\mod_page\\event\\course_module_viewed": 0.44444444444166664,
+      "\\mod_quiz\\event\\attempt_reviewed": 0.6666666666666666,
+      "\\mod_quiz\\event\\attempt_started": 1.0,
+      "\\mod_quiz\\event\\attempt_summary_viewed": 0.4722222222166666,
+      "\\mod_quiz\\event\\course_module_viewed": 0.5722222222166667,
+      "\\mod_resource\\event\\course_module_viewed": 0.5704225352083333,
+      "\\mod_url\\event\\course_module_viewed": 0.3125,
+      "mean_module_grade": 0.6992992992916666
+    },
+    "std": {
+      "total_events": 0.21192326476832152,
+      "\\assignsubmission_comments\\event\\comment_created": 0.28867513459481287,
+      "\\assignsubmission_file\\event\\assessable_uploaded": 0.17789373570190428,
+      "\\assignsubmission_file\\event\\submission_created": 0.20863121970501344,
+      "\\core\\event\\badge_listing_viewed": 0.28867513459481287,
+      "\\core\\event\\course_module_completion_updated": 0.3018632127027579,
+      "\\core\\event\\course_user_report_viewed": 0.33700705344502874,
+      "\\core\\event\\recent_activity_viewed": 0.3256694736394648,
+      "\\core\\event\\user_list_viewed": 0.28867513459481287,
+      "\\core\\event\\user_profile_viewed": 0.0,
+      "\\gradereport_overview\\event\\grade_report_viewed": 0.3107907802540305,
+      "\\gradereport_user\\event\\grade_report_viewed": 0.3271692988614675,
+      "\\mod_assign\\event\\feedback_viewed": 0.28125715977497173,
+      "\\mod_data\\event\\course_module_viewed": 0.2690280511362549,
+      "\\mod_data\\event\\record_created": 0.3892494720807615,
+      "\\mod_data\\event\\record_updated": 0.28867513459481287,
+      "\\mod_folder\\event\\course_module_viewed": 0.26476720168406975,
+      "\\mod_page\\event\\course_module_viewed": 0.3301616785870332,
+      "\\mod_quiz\\event\\attempt_reviewed": 0.2741377667369368,
+      "\\mod_quiz\\event\\attempt_started": 0.0,
+      "\\mod_quiz\\event\\attempt_summary_viewed": 0.26432048705139033,
+      "\\mod_quiz\\event\\course_module_viewed": 0.21734547898933712,
+      "\\mod_resource\\event\\course_module_viewed": 0.2985661816244154,
+      "\\mod_url\\event\\course_module_viewed": 0.37119279479684264,
+      "mean_module_grade": 0.11137364365309714
+    },
+    "z_scores": {
+      "total_events": 0.3379573191575053,
+      "\\assignsubmission_comments\\event\\comment_created": 0.06454972241179026,
+      "\\assignsubmission_file\\event\\assessable_uploaded": 0.31111938842586495,
+      "\\assignsubmission_file\\event\\submission_created": 0.3299532068978541,
+      "\\core\\event\\badge_listing_viewed": 0.06454972241179026,
+      "\\core\\event\\course_module_completion_updated": 0.2094482886963245,
+      "\\core\\event\\course_user_report_viewed": 0.1087222558472687,
+      "\\core\\event\\recent_activity_viewed": 0.11230588855493635,
+      "\\core\\event\\user_list_viewed": -0.14209963997431668,
+      "\\core\\event\\user_profile_viewed": -0.2581988896471611,
+      "\\gradereport_overview\\event\\grade_report_viewed": 0.08918825846976626,
+      "\\gradereport_user\\event\\grade_report_viewed": 0.1269639066545331,
+      "\\mod_assign\\event\\feedback_viewed": 0.12496964171695983,
+      "\\mod_data\\event\\course_module_viewed": 0.23807413621101614,
+      "\\mod_data\\event\\record_created": 0.3415650254619867,
+      "\\mod_data\\event\\record_updated": 0.06454972241179026,
+      "\\mod_folder\\event\\course_module_viewed": 0.2406287820892737,
+      "\\mod_page\\event\\course_module_viewed": 0.2449489742096772,
+      "\\mod_quiz\\event\\attempt_reviewed": 0.3625677853719778,
+      "\\mod_quiz\\event\\attempt_started": 0.48304589142298104,
+      "\\mod_quiz\\event\\attempt_summary_viewed": 0.3094931094168122,
+      "\\mod_quiz\\event\\course_module_viewed": 0.32141603421028375,
+      "\\mod_resource\\event\\course_module_viewed": 0.26744634302425,
+      "\\mod_url\\event\\course_module_viewed": 0.17677669524663686,
+      "mean_module_grade": 0.25569426354020425
+    },
+    "top_strengths": {
+      "\\mod_quiz\\event\\attempt_started": {
+        "value": 1.0,
+        "z_score": 0.48304589142298104
+      },
+      "\\mod_quiz\\event\\attempt_reviewed": {
+        "value": 0.6666666666666666,
+        "z_score": 0.3625677853719778
+      },
+      "\\mod_data\\event\\record_created": {
+        "value": 0.8333333333333334,
+        "z_score": 0.3415650254619867
+      },
+      "total_events": {
+        "value": 0.6755689424333334,
+        "z_score": 0.3379573191575053
+      },
+      "\\assignsubmission_file\\event\\submission_created": {
+        "value": 0.891025641025,
+        "z_score": 0.3299532068978541
+      },
+      "\\mod_quiz\\event\\course_module_viewed": {
+        "value": 0.5722222222166667,
+        "z_score": 0.32141603421028375
+      },
+      "\\assignsubmission_file\\event\\assessable_uploaded": {
+        "value": 0.5208333333333334,
+        "z_score": 0.31111938842586495
+      },
+      "\\mod_quiz\\event\\attempt_summary_viewed": {
+        "value": 0.4722222222166666,
+        "z_score": 0.3094931094168122
+      },
+      "\\mod_resource\\event\\course_module_viewed": {
+        "value": 0.5704225352083333,
+        "z_score": 0.26744634302425
+      },
+      "mean_module_grade": {
+        "value": 0.6992992992916666,
+        "z_score": 0.25569426354020425
+      }
+    },
+    "top_weaknesses": {
+      "\\gradereport_user\\event\\grade_report_viewed": {
+        "value": 0.2967171717166667,
+        "z_score": 0.1269639066545331
+      },
+      "\\mod_assign\\event\\feedback_viewed": {
+        "value": 0.30929487179166665,
+        "z_score": 0.12496964171695983
+      },
+      "\\core\\event\\recent_activity_viewed": {
+        "value": 0.16666666666666666,
+        "z_score": 0.11230588855493635
+      },
+      "\\core\\event\\course_user_report_viewed": {
+        "value": 0.166666666675,
+        "z_score": 0.1087222558472687
+      },
+      "\\gradereport_overview\\event\\grade_report_viewed": {
+        "value": 0.125,
+        "z_score": 0.08918825846976626
+      },
+      "\\assignsubmission_comments\\event\\comment_created": {
+        "value": 0.08333333333333333,
+        "z_score": 0.06454972241179026
+      },
+      "\\mod_data\\event\\record_updated": {
+        "value": 0.08333333333333333,
+        "z_score": 0.06454972241179026
+      },
+      "\\core\\event\\badge_listing_viewed": {
+        "value": 0.08333333333333333,
+        "z_score": 0.06454972241179026
+      },
+      "\\core\\event\\user_list_viewed": {
+        "value": 0.08333333333333333,
+        "z_score": -0.14209963997431668
+      },
+      "\\core\\event\\user_profile_viewed": {
+        "value": 0.0,
+        "z_score": -0.2581988896471611
+      }
+    }
+  },
+  "1": {
+    "n_students": 3,
+    "percentage": 20.0,
+    "mean": {
+      "total_events": 0.19812583666666664,
+      "\\assignsubmission_comments\\event\\comment_created": 0.0,
+      "\\assignsubmission_file\\event\\assessable_uploaded": 0.17857142856666666,
+      "\\assignsubmission_file\\event\\submission_created": 0.38461538463333333,
+      "\\core\\event\\badge_listing_viewed": 0.0,
+      "\\core\\event\\course_module_completion_updated": 0.06666666666666667,
+      "\\core\\event\\course_user_report_viewed": 0.0,
+      "\\core\\event\\recent_activity_viewed": 0.0,
+      "\\core\\event\\user_list_viewed": 0.3333333333333333,
+      "\\core\\event\\user_profile_viewed": 0.3333333333333333,
+      "\\gradereport_overview\\event\\grade_report_viewed": 0.0,
+      "\\gradereport_user\\event\\grade_report_viewed": 0.101010101,
+      "\\mod_assign\\event\\feedback_viewed": 0.14102564103333334,
+      "\\mod_data\\event\\course_module_viewed": 0.0,
+      "\\mod_data\\event\\record_created": 0.0,
+      "\\mod_data\\event\\record_updated": 0.0,
+      "\\mod_folder\\event\\course_module_viewed": 0.0569105691,
+      "\\mod_page\\event\\course_module_viewed": 0.027777777766666668,
+      "\\mod_quiz\\event\\attempt_reviewed": 0.0,
+      "\\mod_quiz\\event\\attempt_started": 0.0,
+      "\\mod_quiz\\event\\attempt_summary_viewed": 0.0,
+      "\\mod_quiz\\event\\course_module_viewed": 0.13333333333333333,
+      "\\mod_resource\\event\\course_module_viewed": 0.13145539906666667,
+      "\\mod_url\\event\\course_module_viewed": 0.0,
+      "mean_module_grade": 0.3423423423333333
+    },
+    "std": {
+      "total_events": 0.19563193968160336,
+      "\\assignsubmission_comments\\event\\comment_created": 0.0,
+      "\\assignsubmission_file\\event\\assessable_uploaded": 0.15567496226439373,
+      "\\assignsubmission_file\\event\\submission_created": 0.33529991874801585,
+      "\\core\\event\\badge_listing_viewed": 0.0,
+      "\\core\\event\\course_module_completion_updated": 0.05879447357711332,
+      "\\core\\event\\course_user_report_viewed": 0.0,
+      "\\core\\event\\recent_activity_viewed": 0.0,
+      "\\core\\event\\user_list_viewed": 0.5773502691896258,
+      "\\core\\event\\user_profile_viewed": 0.5773502691896258,
+      "\\gradereport_overview\\event\\grade_report_viewed": 0.0,
+      "\\gradereport_user\\event\\grade_report_viewed": 0.17495462700966385,
+      "\\mod_assign\\event\\feedback_viewed": 0.196430172392341,
+      "\\mod_data\\event\\course_module_viewed": 0.0,
+      "\\mod_data\\event\\record_created": 0.0,
+      "\\mod_data\\event\\record_updated": 0.0,
+      "\\mod_folder\\event\\course_module_viewed": 0.06138076776029078,
+      "\\mod_page\\event\\course_module_viewed": 0.048112522413223814,
+      "\\mod_quiz\\event\\attempt_reviewed": 0.0,
+      "\\mod_quiz\\event\\attempt_started": 0.0,
+      "\\mod_quiz\\event\\attempt_summary_viewed": 0.0,
+      "\\mod_quiz\\event\\course_module_viewed": 0.17638342071244173,
+      "\\mod_resource\\event\\course_module_viewed": 0.18110142272719282,
+      "\\mod_url\\event\\course_module_viewed": 0.0,
+      "mean_module_grade": 0.569708531674592
+    },
+    "z_scores": {
+      "total_events": -1.3518292766300197,
+      "\\assignsubmission_comments\\event\\comment_created": -0.2581988896471611,
+      "\\assignsubmission_file\\event\\assessable_uploaded": -1.2444775537034598,
+      "\\assignsubmission_file\\event\\submission_created": -1.3198128275914165,
+      "\\core\\event\\badge_listing_viewed": -0.2581988896471611,
+      "\\core\\event\\course_module_completion_updated": -0.837793154785297,
+      "\\core\\event\\course_user_report_viewed": -0.43488902338907487,
+      "\\core\\event\\recent_activity_viewed": -0.4492235542197455,
+      "\\core\\event\\user_list_viewed": 0.5683985598972666,
+      "\\core\\event\\user_profile_viewed": 1.0327955585886444,
+      "\\gradereport_overview\\event\\grade_report_viewed": -0.35675303387906515,
+      "\\gradereport_user\\event\\grade_report_viewed": -0.5078556266181318,
+      "\\mod_assign\\event\\feedback_viewed": -0.4998785668678392,
+      "\\mod_data\\event\\course_module_viewed": -0.9522965448440648,
+      "\\mod_data\\event\\record_created": -1.366260101847946,
+      "\\mod_data\\event\\record_updated": -0.2581988896471611,
+      "\\mod_folder\\event\\course_module_viewed": -0.9625151283570952,
+      "\\mod_page\\event\\course_module_viewed": -0.9797958968387082,
+      "\\mod_quiz\\event\\attempt_reviewed": -1.4502711414879115,
+      "\\mod_quiz\\event\\attempt_started": -1.9321835656919248,
+      "\\mod_quiz\\event\\attempt_summary_viewed": -1.2379724376672485,
+      "\\mod_quiz\\event\\course_module_viewed": -1.285664136841135,
+      "\\mod_resource\\event\\course_module_viewed": -1.069785372097,
+      "\\mod_url\\event\\course_module_viewed": -0.7071067809865474,
+      "mean_module_grade": -1.0227770541608177
+    },
+    "top_strengths": {
+      "\\core\\event\\user_profile_viewed": {
+        "value": 0.3333333333333333,
+        "z_score": 1.0327955585886444
+      },
+      "\\core\\event\\user_list_viewed": {
+        "value": 0.3333333333333333,
+        "z_score": 0.5683985598972666
+      },
+      "\\mod_data\\event\\record_updated": {
+        "value": 0.0,
+        "z_score": -0.2581988896471611
+      },
+      "\\core\\event\\badge_listing_viewed": {
+        "value": 0.0,
+        "z_score": -0.2581988896471611
+      },
+      "\\assignsubmission_comments\\event\\comment_created": {
+        "value": 0.0,
+        "z_score": -0.2581988896471611
+      },
+      "\\gradereport_overview\\event\\grade_report_viewed": {
+        "value": 0.0,
+        "z_score": -0.35675303387906515
+      },
+      "\\core\\event\\course_user_report_viewed": {
+        "value": 0.0,
+        "z_score": -0.43488902338907487
+      },
+      "\\core\\event\\recent_activity_viewed": {
+        "value": 0.0,
+        "z_score": -0.4492235542197455
+      },
+      "\\mod_assign\\event\\feedback_viewed": {
+        "value": 0.14102564103333334,
+        "z_score": -0.4998785668678392
+      },
+      "\\gradereport_user\\event\\grade_report_viewed": {
+        "value": 0.101010101,
+        "z_score": -0.5078556266181318
+      }
+    },
+    "top_weaknesses": {
+      "mean_module_grade": {
+        "value": 0.3423423423333333,
+        "z_score": -1.0227770541608177
+      },
+      "\\mod_resource\\event\\course_module_viewed": {
+        "value": 0.13145539906666667,
+        "z_score": -1.069785372097
+      },
+      "\\mod_quiz\\event\\attempt_summary_viewed": {
+        "value": 0.0,
+        "z_score": -1.2379724376672485
+      },
+      "\\assignsubmission_file\\event\\assessable_uploaded": {
+        "value": 0.17857142856666666,
+        "z_score": -1.2444775537034598
+      },
+      "\\mod_quiz\\event\\course_module_viewed": {
+        "value": 0.13333333333333333,
+        "z_score": -1.285664136841135
+      },
+      "\\assignsubmission_file\\event\\submission_created": {
+        "value": 0.38461538463333333,
+        "z_score": -1.3198128275914165
+      },
+      "total_events": {
+        "value": 0.19812583666666664,
+        "z_score": -1.3518292766300197
+      },
+      "\\mod_data\\event\\record_created": {
+        "value": 0.0,
+        "z_score": -1.366260101847946
+      },
+      "\\mod_quiz\\event\\attempt_reviewed": {
+        "value": 0.0,
+        "z_score": -1.4502711414879115
+      },
+      "\\mod_quiz\\event\\attempt_started": {
+        "value": 0.0,
+        "z_score": -1.9321835656919248
+      }
+    }
+  }
+}

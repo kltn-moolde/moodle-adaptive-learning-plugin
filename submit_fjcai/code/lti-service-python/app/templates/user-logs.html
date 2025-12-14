@@ -1,0 +1,267 @@
+{% extends "base.html" %}
+
+{% block title %}User Activity Logs - LTI Service{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h4 class="mb-0">
+                    <i class="fas fa-list-alt me-2"></i>
+                    User Activity Logs
+                </h4>
+                <div>
+                    <a href="/lti/dashboard?token={{ token }}" class="btn btn-secondary btn-sm">
+                        <i class="fas fa-arrow-left me-1"></i>
+                        Back to Dashboard
+                    </a>
+                    <button class="btn btn-primary btn-sm" onclick="exportLogs()">
+                        <i class="fas fa-download me-1"></i>
+                        Export
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <!-- User Info -->
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="alert alert-info">
+                            <strong><i class="fas fa-user me-2"></i>User ID:</strong> {{ user_id }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-info">
+                            <strong><i class="fas fa-book me-2"></i>Course ID:</strong> {{ course_id }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filters -->
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="actionFilter" class="form-label">Filter by Action:</label>
+                        <select id="actionFilter" class="form-select" onchange="filterLogs()">
+                            <option value="">All Actions</option>
+                            <option value="view">View</option>
+                            <option value="submit">Submit</option>
+                            <option value="update">Update</option>
+                            <option value="delete">Delete</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="componentFilter" class="form-label">Filter by Component:</label>
+                        <select id="componentFilter" class="form-select" onchange="filterLogs()">
+                            <option value="">All Components</option>
+                            <option value="mod_page">Page</option>
+                            <option value="mod_assign">Assignment</option>
+                            <option value="mod_quiz">Quiz</option>
+                            <option value="core">Core</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="searchLogs" class="form-label">Search:</label>
+                        <input type="text" id="searchLogs" class="form-control" placeholder="Search in event names..." onkeyup="filterLogs()">
+                    </div>
+                </div>
+
+                <!-- Logs Table -->
+                <div class="table-responsive">
+                    {% if logs and logs|length > 0 %}
+                    <table class="table table-striped table-hover" id="logsTable">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Time</th>
+                                <th>Action</th>
+                                <th>Target</th>
+                                <th>Component</th>
+                                <th>Event Name</th>
+                                <th>CRUD</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for log in logs %}
+                            <tr data-action="{{ log.action }}" data-component="{{ log.component }}" data-event="{{ log.event_name }}">
+                                <td>
+                                    <small class="text-muted">
+                                        {{ log.time_created }}
+                                    </small>
+                                </td>
+                                <td>
+                                    <span class="badge bg-primary">{{ log.action }}</span>
+                                </td>
+                                <td>{{ log.target or '-' }}</td>
+                                <td>
+                                    <small class="text-muted">{{ log.component or '-' }}</small>
+                                </td>
+                                <td>
+                                    <small>{{ log.event_name or '-' }}</small>
+                                </td>
+                                <td>
+                                    {% if log.crud %}
+                                        {% if log.crud == 'c' %}
+                                            <span class="badge bg-success">Create</span>
+                                        {% elif log.crud == 'r' %}
+                                            <span class="badge bg-info">Read</span>
+                                        {% elif log.crud == 'u' %}
+                                            <span class="badge bg-warning">Update</span>
+                                        {% elif log.crud == 'd' %}
+                                            <span class="badge bg-danger">Delete</span>
+                                        {% else %}
+                                            <span class="badge bg-secondary">{{ log.crud }}</span>
+                                        {% endif %}
+                                    {% else %}
+                                        -
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <div class="text-center py-5">
+                        <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                        <h5 class="text-muted">No activity logs found</h5>
+                        <p class="text-muted">There are no activity logs for this user and course.</p>
+                        <button class="btn btn-primary" onclick="loadSampleData()">
+                            <i class="fas fa-plus me-2"></i>
+                            Load Sample Data
+                        </button>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Log Details Modal -->
+<div class="modal fade" id="logDetailsModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Log Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="logDetailsContent">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hidden data for JavaScript -->
+<script type="application/json" id="logsData">{{ logs | tojson }}</script>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Get logs data
+const logsData = JSON.parse(document.getElementById('logsData').textContent);
+
+function filterLogs() {
+    const actionFilter = document.getElementById('actionFilter').value.toLowerCase();
+    const componentFilter = document.getElementById('componentFilter').value.toLowerCase();
+    const searchText = document.getElementById('searchLogs').value.toLowerCase();
+    
+    const rows = document.querySelectorAll('#logsTable tbody tr');
+    
+    rows.forEach(row => {
+        const action = row.getAttribute('data-action').toLowerCase();
+        const component = row.getAttribute('data-component').toLowerCase();
+        const eventName = row.getAttribute('data-event').toLowerCase();
+        
+        const matchesAction = !actionFilter || action.includes(actionFilter);
+        const matchesComponent = !componentFilter || component.includes(componentFilter);
+        const matchesSearch = !searchText || eventName.includes(searchText);
+        
+        if (matchesAction && matchesComponent && matchesSearch) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+
+function showLogDetails(index) {
+    const log = logsData[index];
+    const content = document.getElementById('logDetailsContent');
+    
+    content.innerHTML = `
+        <div class="row">
+            <div class="col-md-6">
+                <strong>ID:</strong> ${log.id}<br>
+                <strong>User ID:</strong> ${log.user_id}<br>
+                <strong>Course ID:</strong> ${log.course_id}<br>
+                <strong>Action:</strong> ${log.action}<br>
+                <strong>Target:</strong> ${log.target || 'N/A'}<br>
+                <strong>Object Table:</strong> ${log.object_table || 'N/A'}<br>
+            </div>
+            <div class="col-md-6">
+                <strong>Object ID:</strong> ${log.object_id || 'N/A'}<br>
+                <strong>CRUD:</strong> ${log.crud || 'N/A'}<br>
+                <strong>Component:</strong> ${log.component || 'N/A'}<br>
+                <strong>Time Created:</strong> ${log.time_created}<br>
+                <strong>IP Address:</strong> ${log.ip || 'N/A'}<br>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                <strong>Event Name:</strong><br>
+                <code>${log.event_name || 'N/A'}</code>
+            </div>
+        </div>
+        ${log.user_agent ? `
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                <strong>User Agent:</strong><br>
+                <small class="text-muted">${log.user_agent}</small>
+            </div>
+        </div>
+        ` : ''}
+    `;
+    
+    const modal = new bootstrap.Modal(document.getElementById('logDetailsModal'));
+    modal.show();
+}
+
+function exportLogs() {
+    // Create CSV content
+    const headers = ['Time', 'Action', 'Target', 'Component', 'Event Name', 'CRUD', 'IP'];
+    const csvContent = [
+        headers.join(','),
+        ...logsData.map(log => [
+            log.time_created,
+            log.action,
+            log.target || '',
+            log.component || '',
+            log.event_name || '',
+            log.crud || '',
+            log.ip || ''
+        ].map(field => `"${field}"`).join(','))
+    ].join('\n');
+    
+    // Create download link
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `user_logs_${new Date().toISOString().split('T')[0]}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+}
+
+function loadSampleData() {
+    // Redirect to refresh with sample data
+    window.location.reload();
+}
+</script>
+{% endblock %}

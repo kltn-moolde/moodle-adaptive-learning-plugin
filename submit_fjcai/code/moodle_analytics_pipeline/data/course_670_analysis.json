@@ -1,0 +1,183 @@
+{
+    "course_id": 670,
+    "summary": {
+        "num_students": 21,
+        "num_events": 13995,
+        "num_event_types": 65,
+        "analysis_date": "2025-10-08 06:44:10"
+    },
+    "grades": {
+        "statistics": {
+            "count": 21.0,
+            "mean": 3.4761904761904763,
+            "std": 4.41156488809864,
+            "min": -1.0,
+            "25%": -1.0,
+            "50%": 6.0,
+            "75%": 8.0,
+            "max": 9.0
+        },
+        "top_5_students_highest": [
+            {
+                "userid": 8609,
+                "finalgrade": 9
+            },
+            {
+                "userid": 9169,
+                "finalgrade": 8
+            },
+            {
+                "userid": 9152,
+                "finalgrade": 8
+            },
+            {
+                "userid": 9109,
+                "finalgrade": 8
+            },
+            {
+                "userid": 9151,
+                "finalgrade": 8
+            }
+        ],
+        "top_5_students_lowest": [
+            {
+                "userid": 9227,
+                "finalgrade": -1
+            },
+            {
+                "userid": 7267,
+                "finalgrade": -1
+            },
+            {
+                "userid": 9453,
+                "finalgrade": -1
+            },
+            {
+                "userid": 9452,
+                "finalgrade": -1
+            },
+            {
+                "userid": 9183,
+                "finalgrade": -1
+            }
+        ]
+    },
+    "logs": {
+        "top_10_events": {
+            "\\core\\event\\course_viewed": 3509,
+            "\\mod_assign\\event\\course_module_viewed": 2873,
+            "\\mod_assign\\event\\submission_status_viewed": 2115,
+            "\\mod_resource\\event\\course_module_viewed": 667,
+            "\\core\\event\\course_module_completion_updated": 451,
+            "\\gradereport_user\\event\\grade_report_viewed": 290,
+            "\\core\\event\\course_module_updated": 283,
+            "\\mod_folder\\event\\course_module_viewed": 264,
+            "\\mod_assign\\event\\submission_form_viewed": 253,
+            "\\core\\event\\user_graded": 249
+        },
+        "top_10_actions": {
+            "viewed": 11206,
+            "updated": 947,
+            "graded": 529,
+            "uploaded": 397,
+            "created": 392,
+            "submitted": 245,
+            "reviewed": 149,
+            "deleted": 55,
+            "downloaded": 40,
+            "luis": 20
+        },
+        "example_log_records": [
+            {
+                "id": 9206091,
+                "timecreated": "2022-09-03 13:04:58",
+                "eventname": "\\mod_assign\\event\\course_module_viewed",
+                "action": "viewed",
+                "target": "course_module",
+                "userid": 8670,
+                "courseid": 670,
+                "other": NaN
+            },
+            {
+                "id": 9206092,
+                "timecreated": "2022-09-03 13:04:59",
+                "eventname": "\\mod_assign\\event\\submission_form_viewed",
+                "action": "viewed",
+                "target": "submission_form",
+                "userid": 8670,
+                "courseid": 670,
+                "other": "{'assignid': '****'}"
+            },
+            {
+                "id": 9206093,
+                "timecreated": "2022-09-03 13:05:36",
+                "eventname": "\\mod_assign\\event\\course_module_viewed",
+                "action": "viewed",
+                "target": "course_module",
+                "userid": 8670,
+                "courseid": 670,
+                "other": NaN
+            },
+            {
+                "id": 9206094,
+                "timecreated": "2022-09-03 13:05:36",
+                "eventname": "\\assignsubmission_onlinetext\\event\\assessable_uploaded",
+                "action": "uploaded",
+                "target": "assessable",
+                "userid": 8670,
+                "courseid": 670,
+                "other": "{'pathnamehashes': {}, 'content': '', 'format': '*'}"
+            },
+            {
+                "id": 9206095,
+                "timecreated": "2022-09-03 13:05:36",
+                "eventname": "\\assignsubmission_onlinetext\\event\\submission_created",
+                "action": "created",
+                "target": "submission",
+                "userid": 8670,
+                "courseid": 670,
+                "other": "{'submissionid': '*****', 'submissionattempt': '*', 'submissionstatus': '*********', 'onlinetextwordcount': 0, 'groupid': 0, 'groupname': None}"
+            }
+        ]
+    },
+    "activity_analysis": {
+        "students_activity_summary": {
+            "userid": {
+                "count": 20.0,
+                "mean": 9009.3,
+                "std": 461.50156525936296,
+                "min": 7267.0,
+                "25%": 8964.75,
+                "50%": 9148.5,
+                "75%": 9192.25,
+                "max": 9453.0
+            },
+            "event_count": {
+                "count": 20.0,
+                "mean": 584.8,
+                "std": 393.67961860536184,
+                "min": 2.0,
+                "25%": 277.75,
+                "50%": 560.0,
+                "75%": 898.0,
+                "max": 1245.0
+            },
+            "finalgrade": {
+                "count": 20.0,
+                "mean": 3.7,
+                "std": 4.402152583500605,
+                "min": -1.0,
+                "25%": -1.0,
+                "50%": 6.5,
+                "75%": 8.0,
+                "max": 9.0
+            }
+        },
+        "correlation_event_vs_grade": 0.7628163169535059
+    },
+    "insights": {
+        "high_activity_high_grade": true,
+        "low_activity_low_grade": false,
+        "notes": "Hệ số tương quan dương cho thấy sinh viên hoạt động nhiều có xu hướng đạt điểm cao hơn."
+    }
+}

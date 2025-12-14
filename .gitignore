@@ -81,3 +81,4 @@ demo_pineline/data/simulated
 
 # Large data files
 demo_pineline/step7_qlearning/data/*.csv
+ submit_fjcai/*.csv

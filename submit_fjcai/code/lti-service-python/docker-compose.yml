@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  lti-service-python:
+    build: .
+    container_name: lti-service-python
+    restart: unless-stopped
+    ports:
+      - "8082:8082"
+    environment:
+      - DATABASE_URL=sqlite:///./lti_service.db
+      - JWT_SECRET=change-this-secret-in-production
+      - DEBUG=True
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8082/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  # Optional: PostgreSQL database
+  postgres:
+    image: postgres:15-alpine
+    container_name: lti-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: lti_service
+      POSTGRES_USER: lti_user
+      POSTGRES_PASSWORD: lti_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - microservices-network
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  microservices-network:
+    driver: bridge
+    external: true

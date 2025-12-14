@@ -1,0 +1,42 @@
+# Build stage: Maven + JDK 21
+FROM maven:3.9.11-eclipse-temurin-21-alpine AS builder
+
+WORKDIR /app
+
+# Copy Maven configuration
+COPY pom.xml . 
+COPY src ./src
+
+# Build the application
+RUN mvn clean package -DskipTests
+
+# Runtime stage: JDK 21 JRE
+FROM eclipse-temurin:21-jre-alpine
+
+WORKDIR /app
+
+# Install curl (as root)
+RUN apk add --no-cache curl
+
+# Create non-root user
+RUN addgroup -g 1001 -S spring && \
+    adduser -S spring -u 1001
+
+# Copy the built JAR
+COPY --from=builder /app/target/*.jar app.jar
+
+# Change ownership to spring user
+RUN chown spring:spring app.jar
+
+# Switch to non-root user
+USER spring
+
+# Expose port
+EXPOSE 8085
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD curl -f http://localhost:8085/auth/health || exit 1
+
+# Start the application
+CMD ["java", "-jar", "app.jar"]

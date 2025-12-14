@@ -1,0 +1,123 @@
+_format_version: "3.0"
+_transform: true
+
+services:
+  - name: user-service
+    url: http://user-service:8085
+    plugins:
+      - name: cors
+        config:
+          origins: ["*"]
+          methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
+          headers: ["Accept", "Accept-Version", "Content-Length", "Content-MD5", "Content-Type", "Date", "Authorization"]
+          exposed_headers: ["X-Auth-Token"]
+          credentials: true
+          max_age: 3600
+
+  - name: lti-service
+    url: http://lti-service:8082
+    plugins:
+      - name: cors
+        config:
+          origins: ["*"]
+          methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
+          headers: ["Accept", "Accept-Version", "Content-Length", "Content-MD5", "Content-Type", "Date", "Authorization"]
+          exposed_headers: ["X-Auth-Token"]
+          credentials: true
+          max_age: 3600
+
+  - name: frontend-service
+    url: http://frontend-service:5173
+    plugins:
+      - name: cors
+        config:
+          origins: ["*"]
+          methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
+          headers: ["Accept", "Accept-Version", "Content-Length", "Content-MD5", "Content-Type", "Date", "Authorization"]
+          exposed_headers: ["X-Auth-Token"]
+          credentials: true
+          max_age: 3600
+
+  - name: recommend-service
+    url: http://recommend-service:8088
+    connect_timeout: 60000
+    read_timeout: 60000
+    write_timeout: 60000
+    retries: 5
+    plugins:
+      - name: cors
+        config:
+          origins: ["*"]
+          methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
+          headers: ["Accept", "Accept-Version", "Content-Length", "Content-MD5", "Content-Type", "Date", "Authorization"]
+          exposed_headers: ["X-Auth-Token"]
+          credentials: true
+          max_age: 3600
+  - name: course-service
+    url: http://course-service:5001
+    connect_timeout: 60000
+    read_timeout: 60000
+    write_timeout: 60000
+    retries: 3
+    plugins:
+      - name: cors
+        config:
+          origins: ["*"]
+          methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
+          headers: ["Accept", "Accept-Version", "Content-Length", "Content-MD5", "Content-Type", "Date", "Authorization"]
+          exposed_headers: ["X-Auth-Token"]
+          credentials: true
+          max_age: 3600
+
+routes:
+  - name: auth-route
+    service: user-service
+    paths: ["/auth"]
+    strip_path: false
+    preserve_host: false
+
+  - name: users-route
+    service: user-service
+    paths: ["/api/users"]
+    strip_path: false
+    preserve_host: false
+
+  - name: lti-route
+    service: lti-service
+    paths: ["/lti"]
+    strip_path: false
+    preserve_host: false
+
+  - name: lti-api-route
+    service: lti-service
+    paths: ["/api/lti"]
+    strip_path: false
+    preserve_host: false
+
+  - name: frontend-route
+    service: frontend-service
+    paths: ["/"]
+    strip_path: false
+    preserve_host: false
+    protocols: ["http", "https"]
+
+  - name: recommend-route
+    service: recommend-service
+    paths: ["/api/suggest-action"]
+    strip_path: false
+    preserve_host: false
+    protocols: ["http", "https"]
+
+  - name: course-route
+    service: course-service
+    paths: ["/api/learning-path"]
+    strip_path: false
+    preserve_host: false
+    protocols: ["http", "https"]
+
+consumers:
+  - username: adaptive-learning-app
+    jwt_secrets:
+      - key: adaptive-learning-issuer
+        secret: 8811636d3cc7015b74e3eb74b68939a07791def83843ed3a63bee85b32aeb9ad
+        algorithm: HS256

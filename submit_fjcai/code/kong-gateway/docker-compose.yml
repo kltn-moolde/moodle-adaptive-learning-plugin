@@ -1,0 +1,152 @@
+version: '3.8'
+
+services:
+  # Kong Database
+  kong-database:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: kong
+      POSTGRES_PASSWORD: kong_password
+      POSTGRES_DB: kong
+    volumes:
+      - kong-db-data:/var/lib/postgresql/data
+    networks:
+      - kong-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kong"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Kong Migrations
+  kong-migration:
+    image: kong/kong-gateway:3.7.1.1
+    command: "kong migrations bootstrap"
+    restart: "no"
+    environment:
+      KONG_DATABASE: postgres
+      KONG_PG_HOST: kong-database
+      KONG_PG_USER: kong
+      KONG_PG_PASSWORD: kong_password
+      KONG_PG_DATABASE: kong
+    networks:
+      - kong-net
+    depends_on:
+      kong-database:
+        condition: service_healthy
+
+  # Kong Gateway
+  kong-gateway:
+    image: kong/kong-gateway:3.7.1.1
+    restart: unless-stopped
+    environment:
+      KONG_DATABASE: postgres
+      KONG_PG_HOST: kong-database
+      KONG_PG_USER: kong
+      KONG_PG_PASSWORD: kong_password
+      KONG_PG_DATABASE: kong
+      KONG_PROXY_ACCESS_LOG: /dev/stdout
+      KONG_ADMIN_ACCESS_LOG: /dev/stdout
+      KONG_PROXY_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_LISTEN: "0.0.0.0:8001"
+      KONG_PROXY_LISTEN: "0.0.0.0:8000, 0.0.0.0:8443 ssl"
+      KONG_ADMIN_GUI_LISTEN: "0.0.0.0:8002"
+      KONG_PLUGINS: "bundled,jwt"
+      KONG_LOG_LEVEL: info
+    ports:
+      - "8000:8000"   # Proxy HTTP
+      - "8443:8443"   # Proxy HTTPS  
+      - "8001:8001"   # Admin API
+      - "8002:8002"   # Admin GUI
+    networks:
+      - kong-net
+    depends_on:
+      kong-migration:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "kong", "health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Konga - Kong Admin UI
+  konga:
+    image: pantsel/konga:latest
+    restart: unless-stopped
+    environment:
+      DB_ADAPTER: postgres
+      DB_HOST: kong-database
+      DB_USER: kong
+      DB_PASSWORD: kong_password
+      DB_DATABASE: konga
+      NODE_ENV: production
+      KONGA_HOOK_TIMEOUT: 120000
+    ports:
+      - "1337:1337"
+    networks:
+      - kong-net
+    depends_on:
+      kong-database:
+        condition: service_healthy
+
+  # User Service (updated với JWT)
+  user-service:
+    build: ../userservice
+    restart: unless-stopped
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:postgresql://kong-database:5432/userservice
+      SPRING_DATASOURCE_USERNAME: kong
+      SPRING_DATASOURCE_PASSWORD: kong_password
+      JWT_SECRET: "your-super-secret-jwt-key-for-kong-gateway-2024"
+      JWT_EXPIRATION: 86400000  # 24 hours
+    networks:
+      - kong-net
+    depends_on:
+      kong-database:
+        condition: service_healthy
+
+  # Course Service
+  course-service:
+    build: ../courseservice
+    restart: unless-stopped
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    networks:
+      - kong-net
+
+  # LTI Service Python
+  lti-service:
+    build: ../lti-service-python
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://kong:kong_password@kong-database:5432/lti_service
+      JWT_SECRET: "your-super-secret-jwt-key-for-kong-gateway-2024"
+      FRONTEND_URL: http://localhost:3000
+    networks:
+      - kong-net
+    depends_on:
+      kong-database:
+        condition: service_healthy
+
+  # Frontend Service
+  frontend-service:
+    build: ../FE-service
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      REACT_APP_API_BASE_URL: http://localhost:8000
+      REACT_APP_AUTH_URL: http://localhost:8000/auth
+    networks:
+      - kong-net
+
+networks:
+  kong-net:
+    driver: bridge
+
+volumes:
+  kong-db-data:
+    driver: local
