@@ -54,13 +54,7 @@ lockbkbang@gmail.com}
 \IEEEauthorblockA{\textit{Khoa Công nghệ Thông tin} \\
 \textit{Trường Đại học Sài Gòn}\\
 TP. Hồ Chí Minh, Việt Nam \\
-email@sgu.edu.vn}
-\and
-\IEEEauthorblockN{3\textsuperscript{rd} ABC}
-\IEEEauthorblockA{\textit{Khoa Công nghệ Thông tin} \\
-\textit{Trường Đại học Sài Gòn}\\
-TP. Hồ Chí Minh, Việt Nam \\
-email@sgu.edu.vn}
+vankiet27012004@gmail.com}
 }
 
 \maketitle
@@ -146,23 +140,22 @@ Dữ liệu được lưu trữ phân tán theo mô hình "Database-per-service"
 \subsubsection{Cơ chế lưu trữ dữ liệu}
 Hệ thống áp dụng mô hình "Database-per-service" để đảm bảo tính lỏng lẻo (loose coupling). Trong đó, MongoDB được lựa chọn làm cơ sở dữ liệu chính cho Recommend Service. Với đặc thù dữ liệu log hành vi phi cấu trúc và trạng thái người học thay đổi liên tục theo thời gian thực (Real-time State Tracking), cơ sở dữ liệu NoSQL như MongoDB cho phép truy xuất và ghi nhận vector trạng thái nhanh chóng hơn so với các RDBMS truyền thống[cite: 325].
 \subsection{Quy trình Xử lý dữ liệu và Phân cụm}
-Để xây dựng không gian trạng thái cho thuật toán RL, chúng tôi thực hiện quy trình khai phá dữ liệu từ log hệ thống Moodle của một khóa học STEM thực tế (Course ID 670) với 13,995 sự kiện tương tác và 23 sinh viên tham gia đầy đủ\cite{b5}.
+Nghiên cứu sử dụng bộ dữ liệu mở Moodle Log \& Grades \cite{dataset_kaggle}, bao gồm hơn 1.2 triệu dòng nhật ký hành vi thô. Sau quá trình tiền xử lý loại bỏ các sự kiện hệ thống tự động (như \textit{webservice\_function\_called}), chúng tôi đã sàng lọc và lựa chọn \textbf{Khóa học ID 670} làm đối tượng huấn luyện mô hình (Ground Truth).
 
-\subsubsection{Tiền xử lý dữ liệu}
-Dữ liệu thô từ Moodle chứa nhiều nhiễu. Quá trình làm sạch bao gồm việc loại bỏ các sự kiện hệ thống tự động (như \textit{webservice\_function\_called}) và chuẩn hóa thời gian. Sau đó, chúng tôi trích xuất 114 đặc trưng hành vi và áp dụng kỹ thuật lọc tương quan (Correlation Filtering) để loại bỏ hiện tượng đa cộng tuyến, giữ lại 15 đặc trưng quan trọng nhất như: tần suất xem tài liệu, số lần nộp bài, thời gian phản hồi, v.v. \cite{b5}.
+Quyết định lựa chọn này dựa trên sự so sánh đối chiếu về chất lượng dữ liệu. Trong khi các khóa học khác (như Course ID 42) có mật độ tương tác cao nhưng dữ liệu điểm số bị lệch (Mean=1.07, chủ yếu là điểm 0), Course 670 thể hiện sự cân bằng lý tưởng cho bài toán Học tăng cường:
+\begin{itemize}
+    \item \textbf{Dữ liệu hành vi phong phú:} Ghi nhận 13,995 điểm dữ liệu tương tác từ 23 sinh viên, đảm bảo độ dài chuỗi hành động đủ lớn cho mô hình Markov.
+    \item \textbf{Phân phối điểm số chuẩn:} Với điểm trung bình $\mu=7.64$ và độ lệch chuẩn $\sigma=2.95$, phổ điểm có độ phân tán tốt, cho phép thuật toán phân biệt rõ ràng chiến lược học tập giữa các nhóm sinh viên (Giỏi, Khá, Yếu).
+\end{itemize}
 
-\subsubsection{Phân tích đặc trưng và Sàng lọc dữ liệu (EDA)}
-Dữ liệu log thô ban đầu chứa nhiễu lớn từ các sự kiện hệ thống tự động. Phân tích tần suất cho thấy sự kiện \textit{webservice\_function\_called} chiếm tỷ trọng áp đảo nhưng không mang giá trị sư phạm, do đó đã được loại bỏ.
-
-Để xây dựng không gian trạng thái $S_t$ hiệu quả, chúng tôi thực hiện trích xuất 114 đặc trưng hành vi ban đầu. Tuy nhiên, việc sử dụng quá nhiều biến đầu vào có thể gây ra hiện tượng bùng nổ không gian trạng thái (State Explosion). Do đó, kỹ thuật \textbf{Lọc tương quan (Correlation Filtering)} được áp dụng với ngưỡng 0.95 để loại bỏ các biến đa cộng tuyến (multicollinearity). Kết quả phân tích tại Hình \ref{fig:eda_matrix} giúp thu gọn không gian dữ liệu xuống còn \textbf{15 đặc trưng cốt lõi} độc lập (như \textit{module\_count}, \textit{mean\_grade}, \textit{time\_spent}), đảm bảo tính tinh gọn và hiệu quả tính toán cho mô hình Q-learning.
+\subsubsection{Tiền xử lý và Phân tích đặc trưng (EDA)}
+Dữ liệu log thô chứa nhiều nhiễu từ các sự kiện hệ thống tự động (như \textit{webservice\_function\_called}), vì vậy các sự kiện này được loại bỏ và thời gian được chuẩn hóa trước khi trích xuất đặc trưng. Từ 114 đặc trưng hành vi ban đầu, chúng tôi áp dụng \textbf{Lọc tương quan (Correlation Filtering)} với ngưỡng 0.95 để loại bỏ đa cộng tuyến, thu gọn còn \textbf{15 đặc trưng cốt lõi} (ví dụ: \textit{module\_count}, \textit{mean\_grade}, \textit{time\_spent}). Ma trận tương quan ở Hình \ref{fig:eda_matrix} cho thấy không gian đặc trưng đã được tinh gọn, giúp tránh bùng nổ bảng Q-table. Bộ đặc trưng này là đầu vào cho bước phân cụm được trình bày ở mục tiếp theo.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=\linewidth]{correlation.png}} % Hãy đổi tên file ảnh thành hình ma trận tương quan của bạn (Hình 3.14 trong khóa luận)
 \caption{Ma trận tương quan giữa 15 đặc trưng hành vi cốt lõi sau khi loại bỏ các biến đa cộng tuyến.}
 \label{fig:eda_matrix}
 \end{figure}
-
-Song song đó, để định nghĩa chiều \textit{Cluster} trong vector trạng thái, chúng tôi áp dụng thuật toán K-means. Số lượng nhóm tối ưu được xác định là $K=6$ thông qua chiến lược \textbf{Bỏ phiếu đa số (Majority Voting)} dựa trên kết quả đánh giá định lượng từ phương pháp \textbf{Elbow Method}, chỉ số \textbf{Silhouette} và \textbf{Davies-Bouldin Index}, đảm bảo sự phân tách rõ rệt về hành vi giữa các nhóm người học.
 
 \subsubsection{Phân cụm người học (Clustering)}
 Việc cá nhân hóa đòi hỏi hệ thống phải nhận diện được đặc điểm của từng nhóm đối tượng. Chúng tôi sử dụng thuật toán K-means để phân nhóm sinh viên dựa trên 15 đặc trưng đã trích xuất.
@@ -372,7 +365,7 @@ Quá trình huấn luyện diễn ra qua 500 vòng lặp (episodes), mỗi vòng
 Chúng tôi so sánh hiệu quả giữa hai chính sách trên cùng một môi trường mô phỏng:
 \begin{itemize}
     \item \textbf{Nhóm Q-learning (Thực nghiệm):} Hành động dựa trên bảng Q-table đã huấn luyện.
-    \item \textbf{Nhóm Historical Policy (Đối chứng):} Hành động dựa trên xác suất ngẫu nhiên mô phỏng lại thói quen của sinh viên các khóa trước.
+    \item \textbf{Nhóm Param Policy (Đối chứng):} Hành động dựa trên xác suất ngẫu nhiên mô phỏng lại thói quen của sinh viên các khóa trước.
 \end{itemize}
 
 Kết quả định lượng tổng hợp tại Bảng \ref{tab:results} và chi tiết từng phân cụm tại Hình \ref{fig:eval_result} cho thấy sự vượt trội rõ rệt của thuật toán Q-learning.
@@ -471,6 +464,9 @@ Nhóm tác giả xin chân thành cảm ơn TS. Đỗ Như Tài đã hướng d�
 
 \bibitem{b17} R. W. Bybee, \textit{The Case for STEM Education: Challenges and Opportunities}. NSTA Press, 2013. [cite: 738]
 
+% --- dataset ---
+\bibitem{dataset_kaggle} M. Sneiders, ``Moodle Grades and Action Logs Dataset,'' Kaggle, 2021. [Online]. Available: \url{https://www.kaggle.com/datasets/martinssneiders/moodle-grades-and-action-logs}.
+
 \end{thebibliography}
 
-\end{document}
+\end{document}g
