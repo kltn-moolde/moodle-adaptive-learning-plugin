@@ -138,7 +138,10 @@ class PolicyComparisonVisualizer:
         
         if save_path:
             plt.savefig(save_path, dpi=300, bbox_inches='tight')
+            pdf_path = str(save_path).replace('.png', '.pdf')
+            plt.savefig(pdf_path, dpi=300, bbox_inches='tight')
             print(f"✓ Saved overall comparison chart to: {save_path}")
+            print(f"✓ Saved overall comparison chart to: {pdf_path}")
         
         return fig
     
@@ -238,7 +241,10 @@ class PolicyComparisonVisualizer:
         
         if save_path:
             plt.savefig(save_path, dpi=300, bbox_inches='tight')
+            pdf_path = str(save_path).replace('.png', '.pdf')
+            plt.savefig(pdf_path, dpi=300, bbox_inches='tight')
             print(f"✓ Saved cluster comparison chart to: {save_path}")
+            print(f"✓ Saved cluster comparison chart to: {pdf_path}")
         
         return fig
     
@@ -382,7 +388,10 @@ class PolicyComparisonVisualizer:
         
         if save_path:
             plt.savefig(save_path, dpi=300, bbox_inches='tight')
+            pdf_path = str(save_path).replace('.png', '.pdf')
+            plt.savefig(pdf_path, dpi=300, bbox_inches='tight')
             print(f"✓ Saved comparison table to: {save_path}")
+            print(f"✓ Saved comparison table to: {pdf_path}")
         
         return fig
     

@@ -129,7 +129,7 @@ R_{total} = R_{base} + R_{LO} + R_{bonus} - P_{penalty}
 Trong đó, $R_{base}$ là phần thưởng cơ bản, $R_{LO}$ dựa trên mức độ đạt chuẩn đầu ra, $R_{bonus}$ cho các chuỗi hành vi tốt, và $P_{penalty}$ là điểm phạt để hạn chế hành vi kém hiệu quả.
 
 \subsection{Quy trình Xử lý dữ liệu và Phân cụm}
-Dữ liệu log thô từ LMS thường chứa nhiễu và không cấu trúc. Trước khi đưa vào mô hình RL, dữ liệu cần được tiền xử lý và chuẩn hóa. Thuật toán K-means được áp dụng để phân chia người học thành $K$ cụm (Clusters) có đặc điểm hành vi tương đồng. Việc xác định giá trị $K$ tối ưu được thực hiện thông qua phương pháp Elbow và chỉ số Silhouette. Giá trị Cluster ID sau đó trở thành một thành phần quan trọng trong vector trạng thái $S_t$.
+Dữ liệu log thô từ LMS thường chứa nhiễu và không cấu trúc. Trước khi đưa vào mô hình RL, dữ liệu cần được tiền xử lý và chuẩn hóa. Thuật toán K-means được áp dụng để phân chia người học thành $K$ cụm (Clusters) có đặc điểm hành vi tương đồng. Việc xác định giá trị $K$ tối ưu được thực hiện thông qua ba chỉ số đánh giá: phương pháp Elbow (Inertia), chỉ số Silhouette (tách biệt cụm), và chỉ số Davies-Bouldin (độ nén cụm). Kết quả từ ba chỉ số này được hợp nhất bằng cơ chế Bỏ phiếu đa số (Majority Voting) để xác định số cụm tối ưu. Giá trị Cluster ID sau đó trở thành một thành phần quan trọng trong vector trạng thái $S_t$.
 
 \subsection{Thuật toán Q-learning}
 Hệ thống sử dụng thuật toán Q-learning để cập nhật bảng giá trị Q (Q-table) theo công thức Bellman:
@@ -139,7 +139,7 @@ Q(s, a) \leftarrow Q(s, a) + \alpha [r + \gamma \max_{a'} Q(s', a') - Q(s, a)]
 Trong đó $\alpha$ là tốc độ học và $\gamma$ là hệ số chiết khấu. Chiến lược $\epsilon$-greedy được áp dụng để cân bằng giữa khám phá (Exploration) và khai thác (Exploitation).
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[width=0.9\linewidth]{fig3_qlearning_diagram.png}} 
+\centerline{\includegraphics[width=0.9\linewidth]{fig3_qlearning_diagram.pdf}} 
 \caption{Sơ đồ chi tiết luồng hoạt động của thuật toán Q-learning trong việc đưa ra gợi ý sư phạm.}
 \label{fig:qlearning_diagram}
 \end{figure}
@@ -221,7 +221,8 @@ Các tác nhân ảo (Virtual Agents) không hành động ngẫu nhiên mà s�
 Để đảm bảo tính khách quan và khả năng tái lập (reproducibility) của thực nghiệm, môi trường mô phỏng được thiết lập với các tham số chi tiết về nhiễu (noise) và quy mô mẫu như sau:
 
 \textbf{1) Quy mô và Tái lập:}
-Quá trình huấn luyện được thực hiện trên tổng số 500 episodes, tương ứng với 500 tác nhân người học ảo (Student Agents) được khởi tạo ngẫu nhiên. Hạt giống ngẫu nhiên (Random Seed) được cố định ở giá trị $42$ để đảm bảo sự nhất quán giữa các lần chạy thử nghiệm.
+Quá trình huấn luyện diễn ra qua 500 episodes. Trong mỗi episode, hệ thống khởi tạo một quần thể gồm 100 tác nhân người học ảo (Student Agents). Như vậy, Agent được học từ tổng cộng $50,000$ lượt tương tác mô phỏng, đảm bảo độ bao phủ không gian trạng thái. 
+Hạt giống ngẫu nhiên (Random Seed) được cố định ở giá trị $42$ để đảm bảo sự nhất quán giữa các lần chạy thử nghiệm.
 
 \textbf{2) Mô hình Nhiễu (Noise Modeling):}
 Mô phỏng tích hợp tính ngẫu nhiên để phản ánh sự biến thiên trong hành vi thực tế của sinh viên.
@@ -287,12 +288,12 @@ Số lượng cụm $K$ được quyết định dựa trên sự đồng thuậ
 \end{itemize}
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[width=\columnwidth]{fig3_clustering_metrics.png}} 
+\centerline{\includegraphics[width=\columnwidth]{fig4_clustering_metrics.pdf}} 
 \caption{Các chỉ số đánh giá phân cụm. Elbow và Davies-Bouldin ủng hộ $K=6$, trong khi Silhouette chấp nhận được ở ngưỡng này.}
 \label{fig:clustering_metrics}
 \end{figure}
 
-	extbf{3) Biện luận lựa chọn $K=6$:}
+\textbf{3) Biện luận lựa chọn $K=6$:}
 Mặc dù $K=2$ cho chỉ số tách biệt tốt nhất, nhưng việc phân chia sinh viên chỉ thành 2 nhóm (Giỏi/Yếu) là quá thô sơ, không đủ độ mịn để Agent tối ưu hóa chiến lược sư phạm. Ngược lại, $K \ge 10$ quá phức tạp và gây bùng nổ không gian trạng thái (State Explosion). Do đó, $K=6$ là điểm cân bằng tối ưu, đại diện cho 6 hồ sơ năng lực điển hình của người học.
 
 Trong quá trình phân tích cụm, một cụm được phát hiện là đại diện cho hành vi của giảng viên (tần suất cao các sự kiện chấm điểm và hoạt động diễn đàn). Cụm này được loại bỏ khỏi tập dữ liệu huấn luyện của Agent, chỉ giữ lại 5 cụm hành vi sinh viên. Các cụm sinh viên này sau đó được ánh xạ về ba nhóm sư phạm (Weak, Medium, Strong) để cấu hình hàm phần thưởng thích ứng.
@@ -429,7 +430,7 @@ Trong đó:
     \end{cases} $$
 \end{itemize}
 
-Không gian trạng thái tổng thể có kích thước $|S| = 5 \times 6 \times 4 \times 4 \times 3 \times 3 = 4,320$ trạng thái, đảm bảo tính khả thi để thuật toán Q-learning hội tụ trên tập dữ liệu giáo dục giới hạn.
+Trên cơ sở các định nghĩa trên, không gian trạng thái được xác định hoàn toàn bởi công thức kích thước đã nêu ở phần "Tham số mô hình" (Section 3.2.2), đảm bảo tính khả thi để thuật toán Q-learning hội tụ.
 
 \begin{table}[htbp]
 \caption{Không gian hành động hoàn chỉnh (15 Actions)}\label{tab:action_space_compact}
@@ -516,16 +517,14 @@ Kết quả huấn luyện cho thấy dung lượng Q-table đạt xấp xỉ 21
 
 \begin{figure}[htbp]
     \centering
-    % Thay thế tên file ảnh của bạn vào đây (ví dụ: convergence_reward.png)
-    \includegraphics[width=\linewidth]{fig4_convergence.png} 
+    \includegraphics[width=\linewidth]{fig5_convergence.pdf} 
     \caption{Biểu đồ hội tụ phần thưởng tích lũy (Cumulative Reward) qua 500 episodes. Sự ổn định bắt đầu xuất hiện rõ rệt sau episode 350.}
     \label{fig:convergence}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
-    % Thay thế tên file ảnh của bạn vào đây (ví dụ: epsilon_decay.png)
-    \includegraphics[width=\linewidth]{fig5_epsilon.png} 
+    \includegraphics[width=\linewidth]{fig6_epsilon.pdf} 
     \caption{Chiến lược giảm dần tham số Epsilon ($\epsilon$) qua 3 giai đoạn: Khám phá, Chuyển đổi và Khai thác.}
     \label{fig:epsilon}
 \end{figure}
@@ -536,7 +535,7 @@ Biểu đồ tại Hình \ref{fig:convergence} và Hình \ref{fig:epsilon} minh 
 Quá trình huấn luyện diễn ra qua 500 episodes với tham số $\alpha=0.1$, $\gamma=0.95$. Kết quả định lượng tổng hợp tại Bảng \ref{tab:results} và chi tiết từng phân cụm tại Hình \ref{fig:eval_result} cho thấy sự vượt trội rõ rệt của thuật toán Q-learning.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[width=\columnwidth]{evaluate_qlearning.png}}
+\centerline{\includegraphics[width=\columnwidth]{fig7_evaluate_qlearning.pdf}}
 \caption{So sánh hiệu suất giữa Q-Learning và Param Policy trên các chỉ số: Phần thưởng (Reward), Điểm số (Score), và Độ thành thạo (LO Mastery).}
 \label{fig:eval_result}
 \end{figure}
@@ -573,7 +572,7 @@ Kết quả định lượng được tổng hợp tại Bảng~\ref{tab:shap_im
 Ngược lại, \textit{Progress Level} có mean $|\text{SHAP}|$ thấp nhất (7.42) và phương sai nhỏ (95.96), với các điểm dữ liệu tập trung quanh giá trị 0 trên biểu đồ, xác nhận rằng tiến độ hoàn thành đơn thuần ít ảnh hưởng đến chiến lược tối ưu. Điều này hỗ trợ cho giả thuyết sư phạm: ``chất lượng tương tác'' (engagement quality) quan trọng hơn ``số lượng hoàn thành'' (completion quantity) trong việc dự báo kết quả học tập.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[width=\columnwidth]{shap_summary_beeswarm.png}}
+\centerline{\includegraphics[width=\columnwidth]{fig8_shap_summary_beeswarm.pdf}}
 \caption{Phân phối SHAP values trên 802 trạng thái từ Q-table. Mỗi điểm biểu diễn SHAP value của một trạng thái; màu sắc thể hiện giá trị đặc trưng (đỏ = cao, xanh = thấp). Trục hoành cho thấy mức độ ảnh hưởng lên Q-value (dương = tăng, âm = giảm). Engagement và Module ID có khoảng tác động (impact range) rộng nhất, trong khi Progress Level tập trung quanh 0.}
 \label{fig:shap_distribution}
 \end{figure}
@@ -584,8 +583,8 @@ Ngược lại, \textit{Progress Level} có mean $|\text{SHAP}|$ thấp nhất (
 \begin{center}
 \small
 \begin{tabular}{lccc}
-	oprule
-	extbf{Đặc trưng} & \textbf{Mean $|\text{SHAP}|$} & \textbf{Variance} & \textbf{Rank} \\
+	\toprule
+	\textbf{Đặc trưng} & \textbf{Mean $|\text{SHAP}|$} & \textbf{Variance} & \textbf{Rank} \\
 \midrule
 Module ID & 28.32 & 1171.49 & 1 \\
 Engagement & 26.53 & 995.79 & 2 \\

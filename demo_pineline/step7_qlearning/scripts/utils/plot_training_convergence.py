@@ -179,9 +179,12 @@ Trend:
         plt.tight_layout()
         
         if save:
-            filename = self.output_dir / 'reward_convergence.png'
-            plt.savefig(filename, dpi=150, bbox_inches='tight')
-            print(f"  ✓ Saved to {filename}")
+            filename_png = self.output_dir / 'reward_convergence.png'
+            filename_pdf = self.output_dir / 'reward_convergence.pdf'
+            plt.savefig(filename_png, dpi=150, bbox_inches='tight')
+            plt.savefig(filename_pdf, bbox_inches='tight')
+            print(f"  ✓ Saved to {filename_png}")
+            print(f"  ✓ Saved to {filename_pdf}")
         
         plt.show()
         
@@ -207,53 +210,61 @@ Trend:
         """
         print(f"\n📊 Plotting epsilon decay ({len(epsilon_history)} episodes)...")
         
-        fig, axes = plt.subplots(1, 2, figsize=(16, 5))
-        fig.suptitle('Epsilon Decay Analysis (Exploration → Exploitation)', 
-                    fontsize=16, fontweight='bold')
-        
         episodes = np.arange(len(epsilon_history))
         
-        # 1. Linear scale
-        ax1 = axes[0]
-        ax1.plot(episodes, epsilon_history, 'b-', linewidth=2)
-        ax1.fill_between(episodes, 0, epsilon_history, alpha=0.3)
+        # Linear scale (single plot for paper)
+        fig, ax = plt.subplots(figsize=(10, 6))
+        ax.plot(episodes, epsilon_history, 'b-', linewidth=2)
+        ax.fill_between(episodes, 0, epsilon_history, alpha=0.3)
         
         # Mark important thresholds
-        ax1.axhline(y=0.5, color='orange', linestyle='--', alpha=0.5, label='ε=0.5 (50% explore)')
-        ax1.axhline(y=0.1, color='red', linestyle='--', alpha=0.5, label='ε=0.1 (10% explore)')
-        ax1.axhline(y=0.01, color='darkred', linestyle='--', alpha=0.5, label='ε=0.01 (1% explore)')
+        ax.axhline(y=0.5, color='orange', linestyle='--', alpha=0.5, label='ε=0.5 (50% explore)')
+        ax.axhline(y=0.1, color='red', linestyle='--', alpha=0.5, label='ε=0.1 (10% explore)')
+        ax.axhline(y=0.01, color='darkred', linestyle='--', alpha=0.5, label='ε=0.01 (1% explore)')
         
-        ax1.set_xlabel('Episode')
-        ax1.set_ylabel('Epsilon (ε)')
-        ax1.set_title('Epsilon Decay (Linear Scale)')
-        ax1.set_ylim([-0.05, 1.05])
-        ax1.legend()
-        ax1.grid(True, alpha=0.3)
-        
-        # 2. Log scale
-        ax2 = axes[1]
-        # Avoid log(0)
-        epsilon_safe = [max(e, 0.001) for e in epsilon_history]
-        ax2.semilogy(episodes, epsilon_safe, 'g-', linewidth=2)
-        
-        ax2.axhline(y=0.5, color='orange', linestyle='--', alpha=0.5, label='ε=0.5')
-        ax2.axhline(y=0.1, color='red', linestyle='--', alpha=0.5, label='ε=0.1')
-        ax2.axhline(y=0.01, color='darkred', linestyle='--', alpha=0.5, label='ε=0.01')
-        
-        ax2.set_xlabel('Episode')
-        ax2.set_ylabel('Epsilon (ε, log scale)')
-        ax2.set_title('Epsilon Decay (Log Scale - Show Exponential Decay)')
-        ax2.legend()
-        ax2.grid(True, alpha=0.3, which='both')
+        ax.set_xlabel('Episode', fontsize=12, fontweight='bold')
+        ax.set_ylabel('Epsilon (ε)', fontsize=12, fontweight='bold')
+        ax.set_ylim([-0.05, 1.05])
+        ax.legend(fontsize=10)
+        ax.grid(True, alpha=0.3)
         
         plt.tight_layout()
         
         if save:
-            filename = self.output_dir / 'epsilon_decay.png'
-            plt.savefig(filename, dpi=150, bbox_inches='tight')
-            print(f"  ✓ Saved to {filename}")
+            filename_png = self.output_dir / 'epsilon_decay_linear.png'
+            filename_pdf = self.output_dir / 'epsilon_decay_linear.pdf'
+            plt.savefig(filename_png, dpi=300, bbox_inches='tight')
+            plt.savefig(filename_pdf, bbox_inches='tight')
+            print(f"  ✓ Saved to {filename_png}")
+            print(f"  ✓ Saved to {filename_pdf}")
         
-        plt.show()
+        plt.close()
+        
+        # Log scale (separate plot for paper)
+        fig, ax = plt.subplots(figsize=(10, 6))
+        epsilon_safe = [max(e, 0.001) for e in epsilon_history]
+        ax.semilogy(episodes, epsilon_safe, 'g-', linewidth=2)
+        
+        ax.axhline(y=0.5, color='orange', linestyle='--', alpha=0.5, label='ε=0.5')
+        ax.axhline(y=0.1, color='red', linestyle='--', alpha=0.5, label='ε=0.1')
+        ax.axhline(y=0.01, color='darkred', linestyle='--', alpha=0.5, label='ε=0.01')
+        
+        ax.set_xlabel('Episode', fontsize=12, fontweight='bold')
+        ax.set_ylabel('Epsilon (ε, log scale)', fontsize=12, fontweight='bold')
+        ax.legend(fontsize=10)
+        ax.grid(True, alpha=0.3, which='both')
+        
+        plt.tight_layout()
+        
+        if save:
+            filename_png = self.output_dir / 'epsilon_decay_log.png'
+            filename_pdf = self.output_dir / 'epsilon_decay_log.pdf'
+            plt.savefig(filename_png, dpi=300, bbox_inches='tight')
+            plt.savefig(filename_pdf, bbox_inches='tight')
+            print(f"  ✓ Saved to {filename_png}")
+            print(f"  ✓ Saved to {filename_pdf}")
+        
+        plt.close()
     
     def plot_qtable_growth(
         self,
@@ -271,107 +282,78 @@ Trend:
         """
         print(f"\n📊 Plotting Q-table growth ({len(q_table_size_history)} episodes)...")
         
-        fig, axes = plt.subplots(2, 2, figsize=(16, 10))
-        fig.suptitle('Q-Table Growth & Convergence Analysis', fontsize=16, fontweight='bold')
-        
         episodes = np.arange(len(q_table_size_history))
         
-        # 1. Q-table size progression
-        ax1 = axes[0, 0]
-        ax1.plot(episodes, q_table_size_history, 'b-', linewidth=2, marker='o', markersize=3)
-        ax1.fill_between(episodes, 0, q_table_size_history, alpha=0.3)
-        ax1.set_xlabel('Episode')
-        ax1.set_ylabel('Number of States in Q-table')
-        ax1.set_title('Q-Table Growth (New States Discovery)')
-        ax1.grid(True, alpha=0.3)
+        # Q-table size progression (single clean plot for paper)
+        fig, ax = plt.subplots(figsize=(10, 6))
+        ax.plot(episodes, q_table_size_history, 'b-', linewidth=2, marker='o', markersize=3)
+        ax.fill_between(episodes, 0, q_table_size_history, alpha=0.3)
+        ax.set_xlabel('Episode', fontsize=12, fontweight='bold')
+        ax.set_ylabel('Number of States in Q-table', fontsize=12, fontweight='bold')
+        ax.grid(True, alpha=0.3)
         
         # Add annotation for final size
         final_size = q_table_size_history[-1]
-        ax1.text(len(episodes)-1, final_size, f'  {final_size} states', 
-                verticalalignment='center', fontsize=9, fontweight='bold')
+        ax.text(len(episodes)-1, final_size, f'  {final_size} states', 
+                verticalalignment='center', fontsize=10, fontweight='bold')
         
-        # 2. Q-table growth rate
-        ax2 = axes[0, 1]
-        # Calculate growth rate: difference between consecutive episodes
+        plt.tight_layout()
+        
+        if save:
+            filename_png = self.output_dir / 'qtable_growth_states.png'
+            filename_pdf = self.output_dir / 'qtable_growth_states.pdf'
+            plt.savefig(filename_png, dpi=300, bbox_inches='tight')
+            plt.savefig(filename_pdf, bbox_inches='tight')
+            print(f"  ✓ Saved to {filename_png}")
+            print(f"  ✓ Saved to {filename_pdf}")
+        
+        plt.close()
+        
+        # Q-table growth rate (separate plot)
+        fig, ax = plt.subplots(figsize=(10, 6))
         if len(q_table_size_history) > 1:
             growth_rate = np.diff(q_table_size_history)
-            # Prepend initial size for first bar
             growth_rate = np.insert(growth_rate, 0, q_table_size_history[0])
         else:
             growth_rate = np.array(q_table_size_history)
         
         colors = ['green' if x > 0 else 'gray' for x in growth_rate]
-        ax2.bar(episodes, growth_rate, color=colors, alpha=0.6, edgecolor='black', linewidth=0.5)
-        ax2.set_xlabel('Episode')
-        ax2.set_ylabel('New States per Episode')
-        ax2.set_title('Q-Table Growth Rate (State Discovery)')
-        ax2.grid(True, alpha=0.3, axis='y')
-        
-        # 3. Cumulative updates
-        ax3 = axes[1, 0]
-        ax3.plot(episodes, total_updates_history, 'r-', linewidth=2)
-        ax3.fill_between(episodes, 0, total_updates_history, alpha=0.3, color='red')
-        ax3.set_xlabel('Episode')
-        ax3.set_ylabel('Cumulative Q-Table Updates')
-        ax3.set_title('Total Q-Table Updates Over Time')
-        ax3.grid(True, alpha=0.3)
-        
-        # 4. Convergence metrics
-        ax4 = axes[1, 1]
-        ax4.axis('off')
-        
-        # Calculate convergence indicators
-        if len(q_table_size_history) > 1:
-            growth_rate_data = np.diff(q_table_size_history)
-        else:
-            growth_rate_data = np.array(q_table_size_history)
-            
-        early_growth = np.mean(growth_rate_data[:20]) if len(growth_rate_data) > 20 else (np.mean(growth_rate_data) if len(growth_rate_data) > 0 else 0)
-        recent_growth = np.mean(growth_rate_data[-20:]) if len(growth_rate_data) > 20 else (np.mean(growth_rate_data) if len(growth_rate_data) > 0 else 0)
-        
-        # Episodes with no new states
-        no_growth_episodes = sum(1 for g in growth_rate_data[-20:] if g == 0) if len(growth_rate_data) > 20 else 0
-        
-        # Updates per state
-        avg_updates_per_state = total_updates_history[-1] / max(q_table_size_history[-1], 1)
-        
-        stats_text = f"""
-Q-TABLE CONVERGENCE ANALYSIS
-{'='*50}
-
-Q-Table Size:
-  Initial states:       {q_table_size_history[0]}
-  Final states:         {q_table_size_history[-1]}
-  Total new states:     {q_table_size_history[-1] - q_table_size_history[0]}
-  
-Growth Rate:
-  Early avg (1-20):     {early_growth:.2f} states/episode
-  Recent avg (last 20): {recent_growth:.2f} states/episode
-  Episodes w/ 0 growth: {no_growth_episodes}/20
-  
-Updates:
-  Total updates:        {total_updates_history[-1]:,}
-  Avg per state:        {avg_updates_per_state:.1f}
-  Updates per episode:  {total_updates_history[-1] / len(episodes):,.0f}
-  
-Convergence Indicators:
-  State discovery:      {'Converged ✓' if recent_growth < 0.5 else 'Still exploring'}
-  Q-table stability:    {'High ✓' if no_growth_episodes >= 15 else 'Moderate'}
-  Update frequency:     {avg_updates_per_state:.1f}x per state
-        """
-        
-        ax4.text(0.1, 0.95, stats_text, transform=ax4.transAxes, fontsize=10,
-                verticalalignment='top', fontfamily='monospace',
-                bbox=dict(boxstyle='round', facecolor='lightblue', alpha=0.5))
+        ax.bar(episodes, growth_rate, color=colors, alpha=0.6, edgecolor='black', linewidth=0.5)
+        ax.set_xlabel('Episode', fontsize=12, fontweight='bold')
+        ax.set_ylabel('New States per Episode', fontsize=12, fontweight='bold')
+        ax.grid(True, alpha=0.3, axis='y')
         
         plt.tight_layout()
         
         if save:
-            filename = self.output_dir / 'qtable_growth.png'
-            plt.savefig(filename, dpi=150, bbox_inches='tight')
-            print(f"  ✓ Saved to {filename}")
+            filename_png = self.output_dir / 'qtable_growth_rate.png'
+            filename_pdf = self.output_dir / 'qtable_growth_rate.pdf'
+            plt.savefig(filename_png, dpi=300, bbox_inches='tight')
+            plt.savefig(filename_pdf, bbox_inches='tight')
+            print(f"  ✓ Saved to {filename_png}")
+            print(f"  ✓ Saved to {filename_pdf}")
         
-        plt.show()
+        plt.close()
+        
+        # Cumulative updates (separate plot)
+        fig, ax = plt.subplots(figsize=(10, 6))
+        ax.plot(episodes, total_updates_history, 'r-', linewidth=2)
+        ax.fill_between(episodes, 0, total_updates_history, alpha=0.3, color='red')
+        ax.set_xlabel('Episode', fontsize=12, fontweight='bold')
+        ax.set_ylabel('Cumulative Q-Table Updates', fontsize=12, fontweight='bold')
+        ax.grid(True, alpha=0.3)
+        
+        plt.tight_layout()
+        
+        if save:
+            filename_png = self.output_dir / 'qtable_cumulative_updates.png'
+            filename_pdf = self.output_dir / 'qtable_cumulative_updates.pdf'
+            plt.savefig(filename_png, dpi=300, bbox_inches='tight')
+            plt.savefig(filename_pdf, bbox_inches='tight')
+            print(f"  ✓ Saved to {filename_png}")
+            print(f"  ✓ Saved to {filename_pdf}")
+        
+        plt.close()
     
     def plot_combined_convergence(
         self,
@@ -470,9 +452,12 @@ States: {q_table_size_history[-1]:3d}  |  Epsilon: {epsilon_history[-1]:5.3f}  |
         plt.tight_layout()
         
         if save:
-            filename = self.output_dir / 'convergence_combined.png'
-            plt.savefig(filename, dpi=150, bbox_inches='tight')
-            print(f"  ✓ Saved to {filename}")
+            filename_png = self.output_dir / 'convergence_combined.png'
+            filename_pdf = self.output_dir / 'convergence_combined.pdf'
+            plt.savefig(filename_png, dpi=150, bbox_inches='tight')
+            plt.savefig(filename_pdf, bbox_inches='tight')
+            print(f"  ✓ Saved to {filename_png}")
+            print(f"  ✓ Saved to {filename_pdf}")
         
         plt.show()
 
@@ -519,6 +504,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Plot Q-Learning training convergence')
     parser.add_argument('--course-id', type=int, default=5, help='Course ID')
     parser.add_argument('--demo', action='store_true', help='Run demo with synthetic data')
+    parser.add_argument('--history-file', type=str, default='data/simulated/training_history.json',
+                        help='Path to training history JSON file')
     
     args = parser.parse_args()
     
@@ -547,6 +534,44 @@ if __name__ == '__main__':
         plot_from_training_stats(
             episode_rewards=episode_rewards.tolist(),
             epsilon_history=epsilon_history.tolist(),
+            q_table_size_history=q_table_size_history,
+            total_updates_history=total_updates_history,
+            course_id=args.course_id
+        )
+    else:
+        # Load real training history
+        import json
+        from pathlib import Path
+        
+        history_path = Path(args.history_file)
+        if not history_path.exists():
+            print(f"❌ Error: Training history file not found: {history_path}")
+            print(f"   Please run training first or use --demo flag for synthetic data")
+            print(f"\nUsage:")
+            print(f"  Demo mode:  python3 {__file__} --demo")
+            print(f"  Real data:  python3 {__file__} --history-file path/to/training_history.json")
+            exit(1)
+        
+        print(f"Loading training history from: {history_path}")
+        with open(history_path, 'r') as f:
+            history = json.load(f)
+        
+        # Extract training stats
+        episode_rewards = history.get('episode_rewards', [])
+        epsilon_history = history.get('epsilon_history', [])
+        q_table_size_history = history.get('q_table_size_history', [])
+        total_updates_history = history.get('total_updates_history', [])
+        
+        if not episode_rewards:
+            print("❌ Error: No training data found in history file")
+            print("   Use --demo flag to generate plots with synthetic data")
+            exit(1)
+        
+        print(f"✓ Loaded {len(episode_rewards)} episodes")
+        
+        plot_from_training_stats(
+            episode_rewards=episode_rewards,
+            epsilon_history=epsilon_history,
             q_table_size_history=q_table_size_history,
             total_updates_history=total_updates_history,
             course_id=args.course_id

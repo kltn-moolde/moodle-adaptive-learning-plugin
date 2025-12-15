@@ -102,9 +102,12 @@ class ComparisonVisualizer:
         if output_dir:
             output_path = Path(output_dir)
             output_path.mkdir(parents=True, exist_ok=True)
-            viz_path = output_path / 'feature_distributions.png'
-            plt.savefig(viz_path, dpi=300, bbox_inches='tight')
-            logger.info(f"✓ Saved: {viz_path}")
+            viz_png = output_path / 'feature_distributions.png'
+            viz_pdf = output_path / 'feature_distributions.pdf'
+            plt.savefig(viz_png, dpi=300, bbox_inches='tight')
+            plt.savefig(viz_pdf, dpi=300, bbox_inches='tight')
+            logger.info(f"\u2713 Saved: {viz_png}")
+            logger.info(f"\u2713 Saved: {viz_pdf}")
             plt.close()
         else:
             plt.show()
@@ -154,9 +157,12 @@ class ComparisonVisualizer:
         if output_dir:
             output_path = Path(output_dir)
             output_path.mkdir(parents=True, exist_ok=True)
-            viz_path = output_path / 'cluster_distribution.png'
-            plt.savefig(viz_path, dpi=300, bbox_inches='tight')
-            logger.info(f"✓ Saved: {viz_path}")
+            viz_png = output_path / 'cluster_distribution.png'
+            viz_pdf = output_path / 'cluster_distribution.pdf'
+            plt.savefig(viz_png, dpi=300, bbox_inches='tight')
+            plt.savefig(viz_pdf, dpi=300, bbox_inches='tight')
+            logger.info(f"\u2713 Saved: {viz_png}")
+            logger.info(f"\u2713 Saved: {viz_pdf}")
             plt.close()
         else:
             plt.show()
@@ -193,9 +199,12 @@ class ComparisonVisualizer:
         if output_dir:
             output_path = Path(output_dir)
             output_path.mkdir(parents=True, exist_ok=True)
-            viz_path = output_path / 'correlation_matrix.png'
-            plt.savefig(viz_path, dpi=300, bbox_inches='tight')
-            logger.info(f"✓ Saved: {viz_path}")
+            viz_png = output_path / 'correlation_matrix.png'
+            viz_pdf = output_path / 'correlation_matrix.pdf'
+            plt.savefig(viz_png, dpi=300, bbox_inches='tight')
+            plt.savefig(viz_pdf, dpi=300, bbox_inches='tight')
+            logger.info(f"\u2713 Saved: {viz_png}")
+            logger.info(f"\u2713 Saved: {viz_pdf}")
             plt.close()
         else:
             plt.show()

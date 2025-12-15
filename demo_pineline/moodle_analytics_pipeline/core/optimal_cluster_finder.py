@@ -329,11 +329,14 @@ class OptimalClusterFinder:
                     fontsize=16, fontweight='bold', y=0.995)
         plt.tight_layout()
         
-        viz_path = output_path / 'optimal_clusters_evaluation.png'
-        plt.savefig(viz_path, dpi=300, bbox_inches='tight')
+        viz_png = output_path / 'optimal_clusters_evaluation.png'
+        viz_pdf = output_path / 'optimal_clusters_evaluation.pdf'
+        plt.savefig(viz_png, dpi=300, bbox_inches='tight')
+        plt.savefig(viz_pdf, dpi=300, bbox_inches='tight')
         plt.close()
         
-        logger.info(f"  ✓ Saved: {viz_path}")
+        logger.info(f"  ✓ Saved: {viz_png}")
+        logger.info(f"  ✓ Saved: {viz_pdf}")
     
     def save_evaluation_report(self, output_dir: str):
         """

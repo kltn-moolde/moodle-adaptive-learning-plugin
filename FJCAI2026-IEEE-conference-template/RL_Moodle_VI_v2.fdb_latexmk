@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1765783096.41251 "/Users/nguyenhuuloc/Documents/MyComputer/AdaptiveLearning/FJCAI2026-IEEE-conference-template/RL_Moodle_VI_v2.tex" "RL_Moodle_VI_v2.pdf" "RL_Moodle_VI_v2" 1765783100.78697 0
-  "/Users/nguyenhuuloc/Documents/MyComputer/AdaptiveLearning/FJCAI2026-IEEE-conference-template/RL_Moodle_VI_v2.tex" 1765783090.22132 52222 d3d67ee67f8d1d6dbda851e0340b192e ""
+["pdflatex"] 1765801714.6872 "/Users/nguyenhuuloc/Documents/MyComputer/AdaptiveLearning/FJCAI2026-IEEE-conference-template/RL_Moodle_VI_v2.tex" "RL_Moodle_VI_v2.pdf" "RL_Moodle_VI_v2" 1765801716.65842 0
+  "/Users/nguyenhuuloc/Documents/MyComputer/AdaptiveLearning/FJCAI2026-IEEE-conference-template/RL_Moodle_VI_v2.tex" 1765801713.4387 52473 26dcf8e9fb5a29df97b65f20d4e12a18 ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/data/fonts/map/pdftex/pdftex.map" 1765644262.39852 483841 8b30d5035ff272656a610e79bf5b8299 ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1741234274.26514 8799587 3b302ba410b8ef9dbba30436c29c2e74 ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/enc/dvips/vntex/t5.enc" 1741234482.42641 7824 21ade6c3c7fd67cb4ace8dbc91c53118 ""
@@ -110,16 +110,16 @@
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/vntex/vncaps.tex" 1741234482.87784 3273 a55ebdb07413d2fea580f210e3c0b252 ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/xcolor/xcolor.sty" 1741233944.94784 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "IEEEtran.cls" 1765546255.1068 281957 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
-  "RL_Moodle_VI_v2.aux" 1765783100.47947 11576 83d6ff89199e1fbc7ee014261eae125b "pdflatex"
-  "RL_Moodle_VI_v2.tex" 1765783090.22132 52222 d3d67ee67f8d1d6dbda851e0340b192e ""
-  "evaluate_qlearning.png" 1765636094.84962 129175 d2079b344f241b0b959f8c323877b0e6 ""
+  "RL_Moodle_VI_v2.aux" 1765801716.13919 11576 83d6ff89199e1fbc7ee014261eae125b "pdflatex"
+  "RL_Moodle_VI_v2.tex" 1765801713.4387 52473 26dcf8e9fb5a29df97b65f20d4e12a18 ""
   "fig1_problem_concept.pdf" 1765782411.24208 1555812 72fa53d37eb97d25d39b9a526926d2be ""
   "fig2_method_overview.pdf" 1765778975.27466 807664 a459ed8ae244f07cebb2e9bd58706249 ""
-  "fig3_clustering_metrics.png" 1765755583.19704 520135 c85ee636103aa4fb6cbaf487061b4224 ""
-  "fig3_qlearning_diagram.png" 1765736033.34697 4900470 9352744e1c9ada2619c406614eeca507 ""
-  "fig4_convergence.png" 1765751982.23636 66884 b6f884d5cc83c0cf02936dd2897457ca ""
-  "fig5_epsilon.png" 1765752102.03228 87988 093fdc9f96946ff459e2886fa3ec851f ""
-  "shap_summary_beeswarm.png" 1765644960.26326 307176 c35e69d17119baba171dbd5b48e5d25f ""
+  "fig3_qlearning_diagram.pdf" 1765791079.69408 860443 9079ad6deab32ab430e577cf99382493 ""
+  "fig4_clustering_metrics.pdf" 1765796529.70916 36049 8c89a925615f243f3776d08ca2efc7b2 ""
+  "fig5_convergence.pdf" 1765800791.72498 23273 2e4a96ce9db21bc085dbc4f6abfd9eed ""
+  "fig6_epsilon.pdf" 1765800882.84377 24669 5bb848fbf1f2151fac991abb1d8e33d0 ""
+  "fig7_evaluate_qlearning.pdf" 1765801002.54975 35109 2694f9da98865911fe7c64c8ed85e8c4 ""
+  "fig8_shap_summary_beeswarm.pdf" 1765801120.24675 65817 8d1a32c6e7c51fb0bb6933d56bd3daf0 ""
   (generated)
   "RL_Moodle_VI_v2.aux"
   "RL_Moodle_VI_v2.log"

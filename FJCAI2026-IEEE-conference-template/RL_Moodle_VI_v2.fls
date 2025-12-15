@@ -249,13 +249,12 @@ INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/font
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/latex-fonts/lasy10.tfm
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/latex-fonts/lasy7.tfm
-INPUT ./fig3_qlearning_diagram.png
-INPUT ./fig3_qlearning_diagram.png
-INPUT ./fig3_qlearning_diagram.png
-INPUT ./fig3_qlearning_diagram.png
-INPUT ./fig3_qlearning_diagram.png
-INPUT ./fig3_qlearning_diagram.png
-INPUT ./fig3_qlearning_diagram.png
+INPUT ./fig3_qlearning_diagram.pdf
+INPUT ./fig3_qlearning_diagram.pdf
+INPUT ./fig3_qlearning_diagram.pdf
+INPUT ./fig3_qlearning_diagram.pdf
+INPUT ./fig3_qlearning_diagram.pdf
+INPUT ./fig3_qlearning_diagram.pdf
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmrc8v.tfm
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmr6.tfm
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmmi6.tfm
@@ -267,43 +266,38 @@ INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/font
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/latex-fonts/lasy6.tfm
-INPUT ./fig3_clustering_metrics.png
-INPUT ./fig3_clustering_metrics.png
-INPUT ./fig3_clustering_metrics.png
-INPUT ./fig3_clustering_metrics.png
-INPUT ./fig3_clustering_metrics.png
-INPUT ./fig3_clustering_metrics.png
-INPUT ./fig3_clustering_metrics.png
+INPUT ./fig4_clustering_metrics.pdf
+INPUT ./fig4_clustering_metrics.pdf
+INPUT ./fig4_clustering_metrics.pdf
+INPUT ./fig4_clustering_metrics.pdf
+INPUT ./fig4_clustering_metrics.pdf
+INPUT ./fig4_clustering_metrics.pdf
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/vf/vntex/urwvn/utmrc8v.vf
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmr8v.tfm
-INPUT ./fig4_convergence.png
-INPUT ./fig4_convergence.png
-INPUT ./fig4_convergence.png
-INPUT ./fig4_convergence.png
-INPUT ./fig4_convergence.png
-INPUT ./fig4_convergence.png
-INPUT ./fig4_convergence.png
-INPUT ./fig5_epsilon.png
-INPUT ./fig5_epsilon.png
-INPUT ./fig5_epsilon.png
-INPUT ./fig5_epsilon.png
-INPUT ./fig5_epsilon.png
-INPUT ./fig5_epsilon.png
-INPUT ./fig5_epsilon.png
-INPUT ./evaluate_qlearning.png
-INPUT ./evaluate_qlearning.png
-INPUT ./evaluate_qlearning.png
-INPUT ./evaluate_qlearning.png
-INPUT ./evaluate_qlearning.png
-INPUT ./evaluate_qlearning.png
-INPUT ./evaluate_qlearning.png
-INPUT ./shap_summary_beeswarm.png
-INPUT ./shap_summary_beeswarm.png
-INPUT ./shap_summary_beeswarm.png
-INPUT ./shap_summary_beeswarm.png
-INPUT ./shap_summary_beeswarm.png
-INPUT ./shap_summary_beeswarm.png
-INPUT ./shap_summary_beeswarm.png
+INPUT ./fig5_convergence.pdf
+INPUT ./fig5_convergence.pdf
+INPUT ./fig5_convergence.pdf
+INPUT ./fig5_convergence.pdf
+INPUT ./fig5_convergence.pdf
+INPUT ./fig5_convergence.pdf
+INPUT ./fig6_epsilon.pdf
+INPUT ./fig6_epsilon.pdf
+INPUT ./fig6_epsilon.pdf
+INPUT ./fig6_epsilon.pdf
+INPUT ./fig6_epsilon.pdf
+INPUT ./fig6_epsilon.pdf
+INPUT ./fig7_evaluate_qlearning.pdf
+INPUT ./fig7_evaluate_qlearning.pdf
+INPUT ./fig7_evaluate_qlearning.pdf
+INPUT ./fig7_evaluate_qlearning.pdf
+INPUT ./fig7_evaluate_qlearning.pdf
+INPUT ./fig7_evaluate_qlearning.pdf
+INPUT ./fig8_shap_summary_beeswarm.pdf
+INPUT ./fig8_shap_summary_beeswarm.pdf
+INPUT ./fig8_shap_summary_beeswarm.pdf
+INPUT ./fig8_shap_summary_beeswarm.pdf
+INPUT ./fig8_shap_summary_beeswarm.pdf
+INPUT ./fig8_shap_summary_beeswarm.pdf
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmrc8v.tfm
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmrc8v.tfm
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmr9.tfm

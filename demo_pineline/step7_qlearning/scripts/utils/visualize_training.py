@@ -306,9 +306,12 @@ class TrainingVisualizer:
         plt.tight_layout()
         
         if save:
-            filename = self.output_dir / f'learning_progression_{cluster}_student{student_id}.png'
-            plt.savefig(filename, dpi=150, bbox_inches='tight')
-            print(f"  ✓ Saved to {filename}")
+            filename_png = self.output_dir / f'learning_progression_{cluster}_student{student_id}.png'
+            filename_pdf = self.output_dir / f'learning_progression_{cluster}_student{student_id}.pdf'
+            plt.savefig(filename_png, dpi=150, bbox_inches='tight')
+            plt.savefig(filename_pdf, bbox_inches='tight')
+            print(f"  ✓ Saved to {filename_png}")
+            print(f"  ✓ Saved to {filename_pdf}")
         
         plt.show()
         
@@ -449,9 +452,12 @@ class TrainingVisualizer:
         plt.tight_layout()
         
         if save:
-            filename = self.output_dir / 'cluster_comparison.png'
-            plt.savefig(filename, dpi=150, bbox_inches='tight')
-            print(f"  ✓ Saved to {filename}")
+            filename_png = self.output_dir / 'cluster_comparison.png'
+            filename_pdf = self.output_dir / 'cluster_comparison.pdf'
+            plt.savefig(filename_png, dpi=150, bbox_inches='tight')
+            plt.savefig(filename_pdf, bbox_inches='tight')
+            print(f"  ✓ Saved to {filename_png}")
+            print(f"  ✓ Saved to {filename_pdf}")
         
         plt.show()
     
@@ -534,9 +540,12 @@ class TrainingVisualizer:
         plt.tight_layout()
         
         if save:
-            filename = self.output_dir / 'midterm_predictions.png'
-            plt.savefig(filename, dpi=150, bbox_inches='tight')
-            print(f"  ✓ Saved to {filename}")
+            filename_png = self.output_dir / 'midterm_predictions.png'
+            filename_pdf = self.output_dir / 'midterm_predictions.pdf'
+            plt.savefig(filename_png, dpi=150, bbox_inches='tight')
+            plt.savefig(filename_pdf, bbox_inches='tight')
+            print(f"  ✓ Saved to {filename_png}")
+            print(f"  ✓ Saved to {filename_pdf}")
         
         plt.show()
         
@@ -624,9 +633,12 @@ class TrainingVisualizer:
         plt.tight_layout()
         
         if save:
-            filename = self.output_dir / 'action_distribution.png'
-            plt.savefig(filename, dpi=150, bbox_inches='tight')
-            print(f"  ✓ Saved to {filename}")
+            filename_png = self.output_dir / 'action_distribution.png'
+            filename_pdf = self.output_dir / 'action_distribution.pdf'
+            plt.savefig(filename_png, dpi=150, bbox_inches='tight')
+            plt.savefig(filename_pdf, bbox_inches='tight')
+            print(f"  ✓ Saved to {filename_png}")
+            print(f"  ✓ Saved to {filename_pdf}")
         
         plt.show()
 
