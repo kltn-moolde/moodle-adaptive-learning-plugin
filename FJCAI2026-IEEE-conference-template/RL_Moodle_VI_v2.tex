@@ -60,7 +60,7 @@ vankiet27012004@gmail.com}
 \maketitle
 
 \begin{abstract}
-Trong kỷ nguyên công nghiệp 4.0, giáo dục STEM đóng vai trò then chốt trong việc đào tạo nguồn nhân lực chất lượng cao. Tuy nhiên, các phương pháp giảng dạy truyền thống và hệ thống quản lý học tập (LMS) hiện hành thường áp dụng cách tiếp cận ``một kích cỡ cho tất cả'', thất bại trong việc đáp ứng nhu cầu cá nhân hóa của từng người học. Bài báo này đề xuất một hệ thống gợi ý lộ trình học tập thông minh sử dụng kỹ thuật Học tăng cường (Reinforcement Learning - RL), cụ thể là thuật toán Q-learning, được tích hợp vào nền tảng Moodle qua chuẩn LTI 1.3. Hệ thống mô hình hóa quá trình học tập dưới dạng Quy trình quyết định Markov (MDP), sử dụng dữ liệu hành vi thực tế để phân cụm người học và tối ưu hóa chiến lược gợi ý. Kết quả thực nghiệm mô phỏng trên 500 vòng lặp cho thấy thuật toán giúp tăng 22.5\% điểm số trung bình và giảm 51.0\% số lượng kỹ năng yếu so với phương pháp truyền thống.
+Trong bối cảnh Giáo dục 4.0, các hệ thống quản lý học tập (LMS) truyền thống thường thiếu khả năng cá nhân hóa, áp dụng một lộ trình cố định cho mọi đối tượng người học. Để giải quyết hạn chế này trong giáo dục STEM, bài báo đề xuất khung giải pháp học tập thích ứng sử dụng thuật toán Q-learning, được tích hợp vào nền tảng Moodle thông qua chuẩn LTI 1.3. Nghiên cứu mô hình hóa quá trình học tập dưới dạng Quy trình Quyết định Markov (MDP), kết hợp với kỹ thuật phân cụm hành vi để xây dựng không gian trạng thái đa chiều. Đặc biệt, để khắc phục vấn đề "khởi động lạnh" (cold-start) và khan hiếm dữ liệu, chúng tôi đề xuất quy trình mô phỏng hướng dữ liệu (Data-driven Simulation), tái tạo chính xác các đặc trưng phân phối của người học thực tế. Kết quả thực nghiệm trên 500 vòng lặp cho thấy chiến lược của tác nhân AI vượt trội so với phương pháp truyền thống, giúp tăng 22.5% điểm số trung bình và giảm 51.0% số lượng kỹ năng yếu, chứng minh tiềm năng hiện thực hóa đào tạo cá nhân hóa quy mô lớn
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -83,8 +83,8 @@ Nghiên cứu này đóng góp vào lĩnh vực Cá nhân hóa học tập (Pers
 \end{enumerate}
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[width=\linewidth]{fig1_problem_concept.png}} % Đặt tên file ảnh là fig1_problem_concept.png
-\caption{Comparison of learning approaches. (a) The traditional approach applies a fixed curriculum to divergent learners, leading to suboptimal engagement outcomes like boredom or frustration. (b) The proposed framework utilizes an AI Reinforcement Learning Agent to analyze individual student states from log data and recommend personalized actions (remedial, standard, or challenging), aiming for maximized engagement and mastery for all learner types.}
+\centerline{\includegraphics[width=\linewidth]{fig1_problem_concept.pdf}}
+\caption{So sánh các phương pháp tiếp cận học tập. (a) Phương pháp truyền thống áp dụng một chương trình cố định cho mọi đối tượng người học, dẫn đến mức độ tương tác không tối ưu (gây nhàm chán hoặc quá tải). (b) Khung giải pháp đề xuất sử dụng Tác nhân Học tăng cường (AI Agent) để phân tích trạng thái người học từ dữ liệu log, từ đó đưa ra các gợi ý hành động cá nhân hóa (ôn tập, tiêu chuẩn, hoặc nâng cao), nhằm tối đa hóa sự tương tác và mức độ thành thạo kiến thức.}
 \label{fig:concept}
 \end{figure}
 
@@ -95,7 +95,7 @@ Dựa trên các hạn chế của LMS truyền thống, nghiên cứu đề xu�
 
 % Hình 2: Tổng quan phương pháp (Overview)
 \begin{figure}[htbp]
-\centerline{\includegraphics[width=\linewidth]{fig2_method_overview.png}}
+\centerline{\includegraphics[width=\linewidth]{fig2_method_overview.pdf}}
 \caption{Tổng quan phương pháp đề xuất: Dữ liệu hành vi từ Moodle được chuyển đổi thành các trạng thái (State), qua đó Agent lựa chọn hành động (Action) tối ưu để nhận phần thưởng (Reward).}
 \label{fig:proposed_method}
 \end{figure}
@@ -145,34 +145,63 @@ Trong đó $\alpha$ là tốc độ học và $\gamma$ là hệ số chiết kh�
 \end{figure}
 
 \subsection{Khung giải thích mô hình (Explainability Framework)}
-Để giải quyết tính "hộp đen" của bảng Q-table và tăng sự tin cậy sư phạm, nghiên cứu tích hợp phương pháp \textbf{SHAP (SHapley Additive exPlanations)}~\cite{shap_arxiv}.
+Để giải quyết tính ``hộp đen'' của bảng Q-table, nghiên cứu tích hợp phương pháp \textbf{SHAP (SHapley Additive exPlanations)}~\cite{shap_arxiv}.
 
 \subsubsection{Cơ sở toán học}
-Giá trị SHAP $\phi_i$ đo lường đóng góp biên của đặc trưng $i$ vào giá trị Q dự đoán, dựa trên lý thuyết trò chơi hợp tác:
+Giá trị SHAP $\phi_i(s)$ đo lường đóng góp biên của đặc trưng $i$ vào giá trị Q dự đoán:
 \begin{equation}
-\phi_i = \sum_{S \subseteq F \setminus \{i\}} \frac{|S|!(|F|-|S|-1)!}{|F|!} [f(S \cup \{i\}) - f(S)]
+\phi_i(s) = \sum_{S \subseteq F \setminus \{i\}} \frac{|S|!(|F|-|S|-1)!}{|F|!} [f(S \cup \{i\}) - f(S)]
 \end{equation}
-trong đó $F$ là tập hợp đặc trưng và $f$ là hàm tra cứu Q-table. Tính chất cộng tính giúp phân rã giá trị Q thành tổng các đóng góp: $Q(s, a^*) = \phi_0 + \sum \phi_i(s)$.
+Tính chất cộng tính đảm bảo: $f(s) = \phi_0 + \sum_{i=1}^{6} \phi_i(s)$. Để đánh giá độ quan trọng toàn cục, chúng tôi tính trung bình trị tuyệt đối SHAP trên một tập mẫu kiểm tra gồm $N$ trạng thái ngẫu nhiên:
+\begin{equation}
+I_i = \frac{1}{N}\sum_{j=1}^{N}|\phi_i(s_j)|
+\end{equation}
 
-\subsubsection{Cơ chế triển khai}
-Do không gian trạng thái rời rạc, chúng tôi sử dụng \textbf{KernelExplainer} để xấp xỉ giá trị Shapley. Quy trình bao gồm: (1) Xây dựng hàm dự đoán từ Q-table đã hội tụ; (2) Lấy mẫu nền (Background sampling) từ tập trạng thái quan sát được; và (3) Tính toán trọng số đóng góp cho từng đặc trưng trong vector trạng thái $S_t$.
+\subsubsection{Triển khai kỹ thuật với KernelExplainer}
+Quy trình xấp xỉ giá trị Shapley được thực hiện qua 3 bước:
+\begin{enumerate}
+    \item \textbf{Hàm dự đoán:} Xây dựng hàm wrapper $f(s) = \max_{a} Q(s,a)$, ánh xạ trạng thái $s$ sang giá trị lợi ích tối đa kỳ vọng.
+    \item \textbf{Lấy mẫu nền (Background Sampling):} Sử dụng tập dữ liệu nền $D_{bg}$ ($N_{bg}=100$) để đại diện cho kỳ vọng cơ sở $E[f(x)]$.
+    \item \textbf{Tính toán (Computation):} Với mỗi trạng thái trong tập kiểm tra, KernelExplainer thực hiện tính toán trên toàn bộ $2^6=64$ liên minh đặc trưng, đảm bảo độ chính xác cao trong thời gian $O(N \cdot 2^D)$.
+\end{enumerate}
 
 \subsection{Khung mô phỏng hướng dữ liệu (Data-driven Simulation Framework)}
-Để giải quyết bài toán "khởi động lạnh" (Cold-start) và đảm bảo tính hội tụ của thuật toán trước khi triển khai thực tế, chúng tôi đề xuất quy trình huấn luyện hai giai đoạn dựa trên khái niệm "Digital Twin" (Bản sao số).
+Để giải quyết bài toán ``khởi động lạnh'' (Cold-start) và đảm bảo tính hội tụ trước khi triển khai thực tế, nghiên cứu đề xuất quy trình \textbf{Khai phá tham số (Parameter Mining)}. Quy trình này chuyển đổi dữ liệu log thô thành các tham số xác suất để vận hành ``Bản sao số'' (Digital Twin) của lớp học thực tế.
 
-\subsubsection{Mô hình hóa Xác suất chuyển đổi (Transition Probability Modeling)}
-Dựa trên dữ liệu lịch sử $\mathcal{D}_{history}$, hệ thống xây dựng một Ma trận xác suất chuyển đổi (Transition Probability Matrix - TPM) $\mathcal{P}$. Với mỗi cặp trạng thái - hành động $(s, a)$, xác suất người học chuyển sang trạng thái tiếp theo $s'$ được ước lượng bởi:
+\subsubsection{Chiến lược Ánh xạ và Ngữ cảnh hóa}
+Hệ thống chuẩn hóa các sự kiện kỹ thuật của Moodle về không gian hành động $A$ gồm 17 hành động chuẩn. Để tăng độ mịn cho không gian trạng thái, mỗi hành động được gắn nhãn ngữ cảnh thời gian dựa trên tiến độ học tập $P_t$:
+\begin{equation}
+Context(a_t) = \begin{cases} 
+\text{Past}, & \text{if } P_t < 25\% \\
+\text{Current}, & \text{if } 25\% \le P_t < 85\% \\
+\text{Future}, & \text{if } P_t \ge 85\%
+\end{cases}
+\end{equation}
+
+\subsubsection{Mô hình hóa Xác suất chuyển đổi (Transition Dynamics)}
+Dựa trên dữ liệu lịch sử $\mathcal{D}_{history}$, hệ thống xây dựng Ma trận xác suất chuyển đổi (TPM) $\mathcal{P}$. Với mỗi cặp trạng thái - hành động $(s, a)$, xác suất người học chuyển sang trạng thái tiếp theo $s'$ được ước lượng bởi:
 \begin{equation}
 P(s' | s, a) = \frac{count(s, a, s')}{\sum_{s^*} count(s, a, s^*)}
 \end{equation}
-Ma trận $\mathcal{P}$ này đóng vai trò là "môi trường nền" (Baseline Environment), phản ánh thói quen và phản ứng tự nhiên của người học trong quá khứ.
+Ma trận $\mathcal{P}$ đóng vai trò là quy luật vận hành của môi trường, đảm bảo phản ứng của hệ thống giả lập sát với thực tế.
 
-\subsubsection{Cơ chế Huấn luyện và Đánh giá (Training \& Evaluation Pipeline)}
-Quy trình được thực hiện theo chu trình khép kín:
+\subsubsection{Mô hình hóa Chính sách Đối chứng (Param Policy Baseline)}
+Để đánh giá hiệu quả, chúng tôi xây dựng một \textbf{Param Policy} ($\pi_{param}$) làm baseline so sánh. Đây là chính sách tham số hóa (parametric policy) dựa trên phân phối xác suất hành động từ dữ liệu lịch sử, mô phỏng lại thói quen tự nhiên của sinh viên trong quá khứ:
+\begin{equation}
+\begin{aligned}
+\pi_{param}(a|s) &= P(a \mid \text{Phase}(s), \text{Cluster}(s)) \\
+&= \frac{\text{count}\big(\text{Phase}(s), \text{Cluster}(s), a\big)}
+        {\sum_{a'} \text{count}\big(\text{Phase}(s), \text{Cluster}(s), a'\big)}
+\end{aligned}
+\end{equation}
+Với mỗi trạng thái $s$, hành động được gợi ý dựa trên tần suất xuất hiện trong tập huấn luyện, phân tầng theo giai đoạn học tập (Phase) và nhóm người học (Cluster). Đây là baseline để so sánh với chiến lược tối ưu hóa phần thưởng ($\pi^*$) của Q-learning.
+
+\subsubsection{Quy trình Huấn luyện và Đánh giá}
+Quy trình mô phỏng được thực hiện theo chu trình khép kín:
 \begin{enumerate}
-    \item \textbf{Khởi tạo (Initialization):} Xây dựng các Tác nhân Người học (Student Agents) với các đặc trưng hành vi được tham số hóa từ $\mathcal{D}_{history}$.
-    \item \textbf{Huấn luyện (Training):} Agent tương tác với các Tác nhân Người học trong môi trường giả lập để tối ưu bảng Q-table.
-    \item \textbf{Đối sánh (Comparison):} So sánh chiến lược tối ưu $\pi^*$ của Q-learning với chiến lược ngẫu nhiên có tham số (Parametric Policy) mô phỏng lại hành vi lịch sử $\mathcal{P}$.
+    \item \textbf{Khởi tạo (Initialization):} Thiết lập các Tác nhân Người học (Student Agents) với đặc trưng hành vi được tham số hóa từ các cụm dữ liệu (Clusters).
+    \item \textbf{Huấn luyện (Training):} Agent tương tác với Student Agents trong môi trường $\mathcal{P}$ để tối ưu bảng Q-table thông qua cơ chế thử-sai.
+    \item \textbf{Đối sánh (Comparison):} So sánh hiệu suất (Reward, Score, LO Mastery) giữa chiến lược tối ưu $\pi^*$ của Q-learning Agent và chính sách đối chứng $\pi_{param}$ (Param Policy baseline).
 \end{enumerate}
 
 \section{Thực nghiệm và Kết quả}
@@ -187,13 +216,6 @@ Các tác nhân ảo (Virtual Agents) không hành động ngẫu nhiên mà s�
     \item \textbf{Practice-first (10\%):} Ưu tiên thực hiện bài tập/quiz trước khi xem lý thuyết.
     \item \textbf{Video/Reading-first (20\%):} Ưu tiên tiêu thụ nội dung thụ động trước khi tương tác.
 \end{itemize}
-
-% \subsubsection{Tham số hành vi theo Phân cụm}
-% Hành vi của tác nhân được tham số hóa chi tiết dựa trên cụm (Cluster):
-% \begin{itemize}
-%     \item \textbf{Nhóm Weak:} Tốc độ học thấp ($\alpha \approx 0.22$) và độ biến động điểm số cao ($\sigma=0.18$).
-%     \item \textbf{Nhóm Strong:} Tốc độ học cao ($\alpha \approx 0.30$), tỷ lệ thành công cao ($0.90$) và độ biến động thấp.
-% \end{itemize}
 
 \subsubsection{Cấu hình Ngẫu nhiên và Tham số Mô phỏng (Simulation Settings \& Stochasticity)}
 Để đảm bảo tính khách quan và khả năng tái lập (reproducibility) của thực nghiệm, môi trường mô phỏng được thiết lập với các tham số chi tiết về nhiễu (noise) và quy mô mẫu như sau:
@@ -219,15 +241,21 @@ Mỗi episode kết thúc khi tác nhân người học hoàn thành toàn bộ 
 \begin{table}[htbp]
 \caption{Tổng hợp tham số cấu hình mô phỏng}\label{tab:sim_params}
 \begin{center}
-\begin{tabular}{llc}
+\begin{tabular}{lp{4.5cm}c}
 \toprule
 \textbf{Tham số} & \textbf{Mô tả} & \textbf{Giá trị} \\
 \midrule
 $N_{episodes}$ & Số lượng vòng lặp huấn luyện & 500 \\
 $Seed$ & Hạt giống ngẫu nhiên & 42 \\
 $N_{modules}$ & Số module trong khóa học & 6 \\
-$P_{success}$ & Xác suất thành công cơ sở (Weak/Med/Strong) & 0.72 / 0.78 / 0.90 \\
-$\alpha_{learn}$ & Tốc độ học tập (Weak/Med/Strong) & 0.22 / 0.32 / 0.30 \\
+\midrule
+\multicolumn{3}{l}{\textit{Tham số theo phân cụm:}} \\
+$P_{success}$ (Weak) & Xác suất thành công cơ sở & 0.72 \\
+$P_{success}$ (Medium) & Xác suất thành công cơ sở & 0.78 \\
+$P_{success}$ (Strong) & Xác suất thành công cơ sở & 0.90 \\
+$\alpha_{learn}$ (Weak) & Tốc độ học tập & 0.22 \\
+$\alpha_{learn}$ (Medium) & Tốc độ học tập & 0.32 \\
+$\alpha_{learn}$ (Strong) & Tốc độ học tập & 0.30 \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -240,16 +268,81 @@ Nghiên cứu sử dụng bộ dữ liệu chuẩn \textit{Moodle Log \& Grades}
 
 Quyết định này dựa trên sự cân bằng lý tưởng của dữ liệu: Khóa học ghi nhận 13,995 điểm tương tác từ 23 sinh viên với phân phối điểm số chuẩn ($\mu=7.64, \sigma=2.95$). Điều này khắc phục được hạn chế dữ liệu bị lệch (skewed data) thường thấy ở các khóa học khác (ví dụ Course ID 42 có Mean=1.07), giúp thuật toán phân biệt rõ ràng chiến lược học tập giữa các nhóm sinh viên (Giỏi, Khá, Yếu).
 
-\subsubsection{Tiền xử lý và Trích xuất đặc trưng}
-Để giải quyết bài toán bùng nổ không gian trạng thái, chúng tôi áp dụng kỹ thuật \textbf{Lọc tương quan (Correlation Filtering)} với ngưỡng 0.95 trên 114 đặc trưng hành vi thô ban đầu. Kết quả đã thu gọn không gian đầu vào xuống còn \textbf{15 đặc trưng cốt lõi} (Hình \ref{fig:correlation}), loại bỏ hoàn toàn hiện tượng đa cộng tuyến.
+\subsubsection{Quy trình Tiền xử lý và Phân cụm (Data Preprocessing \& Clustering)}
+Hệ thống sử dụng thuật toán K-Means nhờ ưu thế về tốc độ xử lý dữ liệu số. Để đảm bảo tính chính xác và tránh chọn tham số chủ quan, nghiên cứu áp dụng quy trình lọc hai lớp kết hợp với cơ chế ``Bỏ phiếu đa số'' (Majority Voting) để xác định cấu trúc phân nhóm.
+
+\textbf{1) Chọn lọc đặc trưng (Feature Selection):}
+Dữ liệu đầu vào được chuẩn hóa (Z-score normalization), sau đó đi qua bộ lọc hai lớp để tinh gọn không gian chiều:
+\begin{itemize}
+    \item \textbf{Lọc phương sai (Variance Filtering):} Loại bỏ các đặc trưng có phương sai dưới ngưỡng $0.01$ (ít biến động, không mang giá trị phân loại).
+    \item \textbf{Lọc tương quan (Correlation Filtering):} Với ngưỡng tương quan Pearson $> 0.95$, thuật toán đã loại bỏ \textbf{78 đặc trưng} bị trùng lặp thông tin, giải quyết triệt để hiện tượng đa cộng tuyến.
+\end{itemize}
+
+\textbf{2) Tối ưu hóa số cụm ($K$):}
+Số lượng cụm $K$ được quyết định dựa trên sự đồng thuận của 3 chỉ số đánh giá độ gom cụm (Hình \ref{fig:clustering_metrics}):
+\begin{itemize}
+    \item \textbf{Elbow Method:} Biểu đồ độ lỗi (Inertia) xuất hiện điểm uốn (knee point) rõ nét tại $K=6$.
+    \item \textbf{Silhouette Score:} Đạt giá trị cực đại tại $K=2$ ($0.42$). Tuy nhiên, tại $K=6$, chỉ số này vẫn duy trì mức ổn định chấp nhận được ($\approx 0.35$).
+    \item \textbf{Davies-Bouldin Index:} Chỉ số đo độ nén (càng thấp càng tốt) cho thấy điểm trũng cục bộ khả quan tại $K=6$.
+\end{itemize}
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[width=\columnwidth]{correlation.png}}
-\caption{Ma trận tương quan Pearson giữa 15 đặc trưng hành vi cốt lõi. Các cặp biến có $|r| > 0.95$ đã được loại bỏ, đảm bảo không có đa cộng tuyến trong mô hình Q-learning.}
-\label{fig:correlation}
+\centerline{\includegraphics[width=\columnwidth]{fig3_clustering_metrics.png}} 
+\caption{Các chỉ số đánh giá phân cụm. Elbow và Davies-Bouldin ủng hộ $K=6$, trong khi Silhouette chấp nhận được ở ngưỡng này.}
+\label{fig:clustering_metrics}
 \end{figure}
 
-Sau bước trích xuất, thuật toán K-means được áp dụng với $K=6$ cụm. Đáng chú ý, cụm dữ liệu của giảng viên đã được phát hiện và loại bỏ khỏi tập huấn luyện để đảm bảo tính chính xác cho Agent.
+	extbf{3) Biện luận lựa chọn $K=6$:}
+Mặc dù $K=2$ cho chỉ số tách biệt tốt nhất, nhưng việc phân chia sinh viên chỉ thành 2 nhóm (Giỏi/Yếu) là quá thô sơ, không đủ độ mịn để Agent tối ưu hóa chiến lược sư phạm. Ngược lại, $K \ge 10$ quá phức tạp và gây bùng nổ không gian trạng thái (State Explosion). Do đó, $K=6$ là điểm cân bằng tối ưu, đại diện cho 6 hồ sơ năng lực điển hình của người học.
+
+Trong quá trình phân tích cụm, một cụm được phát hiện là đại diện cho hành vi của giảng viên (tần suất cao các sự kiện chấm điểm và hoạt động diễn đàn). Cụm này được loại bỏ khỏi tập dữ liệu huấn luyện của Agent, chỉ giữ lại 5 cụm hành vi sinh viên. Các cụm sinh viên này sau đó được ánh xạ về ba nhóm sư phạm (Weak, Medium, Strong) để cấu hình hàm phần thưởng thích ứng.
+
+\subsubsection{Mô hình hóa Quy luật Chuyển đổi và Chính sách Đối chứng (Transition Dynamics \& Baseline)}
+Tính hợp lý của môi trường mô phỏng (Bản sao số) được xác định bởi Ma trận xác suất chuyển trạng thái. Kết quả khai phá dữ liệu (Parameter Mining) từ tập huấn luyện được định lượng chi tiết thông qua các bảng phân phối xác suất, đóng vai trò là tham số đầu vào cho chính sách đối chứng Param Policy ($\pi_{param}$).
+
+\textbf{1) Phân phối hành động theo Giai đoạn học tập (Learning Phase):}
+Dữ liệu tại Bảng \ref{tab:phase_probs} cho thấy sự chuyển dịch hành vi rõ rệt giữa các giai đoạn, từ thụ động sang kiến tạo và cuối cùng là phản tư.
+
+\begin{table}[htbp]
+\caption{Xác suất chọn hành động theo Giai đoạn (Learning Phase)}\label{tab:phase_probs}
+\begin{center}
+\begin{tabular}{llc}
+\toprule
+\textbf{Giai đoạn} & \textbf{Hành động ($a_t$)} & \textbf{Xác suất ($P$)} \\
+\midrule
+\multirow{2}{*}{Phase 0 (Pre-learning)} & view\_assignment & 56.4\% \\
+ & view\_content & 43.6\% \\
+\midrule
+\multirow{2}{*}{Phase 1 (Active)} & \textbf{attempt\_quiz} & \textbf{74.4\%} \\
+ & submit\_assignment & 25.6\% \\
+\midrule
+Phase 2 (Reflective) & post\_forum & 100.0\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+
+\textbf{2) Phân phối theo Mức độ Tương tác (Engagement Level):}
+Bảng \ref{tab:engage_probs} thể hiện sự phân hóa trong chiến lược chọn hành động giữa các nhóm sinh viên. Nhóm tương tác cao (High) có xu hướng duy trì cân bằng giữa xem nội dung và làm bài tập, trong khi nhóm thấp (Low) tập trung chủ yếu vào việc xem yêu cầu bài tập (\textit{view\_assignment}).
+
+\begin{table}[htbp]
+\caption{Phân phối xác suất hành động theo Mức độ tương tác}\label{tab:engage_probs}
+\begin{center}
+\resizebox{\columnwidth}{!}{% Resize bảng để vừa khít cột báo
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Mức độ} & \textbf{View Assign} & \textbf{View Content} & \textbf{Quiz} & \textbf{Submit} & \textbf{Forum} \\
+\midrule
+\textbf{High} & 52.2\% & 40.5\% & 5.8\% & 1.5\% & 0.02\% \\
+\textbf{Medium} & 51.7\% & 41.9\% & 4.3\% & 2.2\% & - \\
+\textbf{Low} & \textbf{57.6\%} & 34.0\% & 4.8\% & 3.6\% & - \\
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+Các tham số này được xuất ra dưới dạng cấu hình JSON để điều khiển hành vi ngẫu nhiên có hướng của các Tác nhân người học (Student Agents) trong quá trình mô phỏng.
 
 \subsubsection{Tham số mô hình (Model Parameters)}
 Trong quá trình thực nghiệm, các tham số mô hình được thiết lập chi tiết để đảm bảo sự hội tụ của thuật toán:
@@ -259,12 +352,84 @@ Trong quá trình thực nghiệm, các tham số mô hình được thiết l�
     \begin{equation}
     S_t = (C, M, P, Sc, Ph, E)
     \end{equation}
-    Trong đó: $C$ là cụm người học ($K=6$); $M$ là chỉ số module; $P, Sc$ là mức tiến độ và điểm số (rời rạc hóa 4 mức); $Ph$ là giai đoạn học tập ($0$: Pre, $1$: Active, $2$: Reflective); và $E$ là mức độ tương tác (Low, Med, High). Kích thước không gian là $5 \times 6 \times 4 \times 4 \times 3 \times 3 \approx 4,320$ trạng thái.
+    Trong đó: $C$ là chỉ số cụm hành vi sinh viên được suy ra từ mô hình K-means ban đầu với $K=6$; sau khi loại bỏ một cụm ứng với hành vi giảng viên, còn lại 5 cụm sinh viên ($C \in \{0,1,2,3,4\}$) được mã hóa vào không gian trạng thái. $M$ là chỉ số module; $P, Sc$ là mức tiến độ và điểm số (rời rạc hóa 4 mức); $Ph$ là giai đoạn học tập ($0$: Pre, $1$: Active, $2$: Reflective); và $E$ là mức độ tương tác (Low, Med, High). Kích thước không gian là $5 \times 6 \times 4 \times 4 \times 3 \times 3 \approx 4,320$ trạng thái.
 
     \item \textbf{Không gian hành động ($A$):} Gồm $m=15$ hành động được sàng lọc qua bộ lọc ICAP và Pareto ($>1\%$ tần suất). Để tối ưu hiển thị, các hành động được nhóm theo ngữ cảnh thời gian như trình bày tại Bảng \ref{tab:action_space_compact}.
 
     \item \textbf{Tham số Q-learning:} Tốc độ học $\alpha=0.1$, hệ số chiết khấu $\gamma=0.95$, và chiến lược $\epsilon$-greedy giảm dần.
 \end{itemize}
+
+\subsection{Mô hình hóa Không gian trạng thái (State Space Definition)}
+Bài toán được mô hình hóa dưới dạng Quy trình Quyết định Markov (MDP). Trạng thái $S_t$ tại thời điểm $t$ là một vector 6 chiều, kết hợp giữa đặc điểm phân cụm cố định và các biến hành vi động:
+\begin{equation}
+S_t = (C, M, P, Sc, Ph, E)
+\end{equation}
+
+Để đảm bảo khả năng hội tụ của bảng Q-table trong giới hạn tính toán, các biến trạng thái liên tục được rời rạc hóa (discretized) theo các ngưỡng sư phạm cụ thể, được chi tiết hóa tại Bảng \ref{tab:state_space_detail}.
+
+\begin{table}[htbp]
+\caption{Định nghĩa chi tiết và Miền giá trị của Không gian trạng thái}\label{tab:state_space_detail}
+\begin{center}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{l|l|l|c}
+\toprule
+\textbf{Ký hiệu} & \textbf{Thành phần} & \textbf{Định nghĩa / Rời rạc hóa (Bins)} & \textbf{Kích thước} \\
+\midrule
+$C$ & Cluster & Nhóm hành vi sinh viên sau khi loại bỏ cụm giảng viên từ mô hình K-means ban đầu ($ID \in \{0, 1, 2, 3, 4\}$) & 5 \\
+\midrule
+$M$ & Module & Chỉ số bài học hiện tại ($ID \in \{0, \dots, 5\}$) & 6 \\
+\midrule
+\multirow{4}{*}{$P$} & \multirow{4}{*}{Progress} & Mức 0.25: Mới bắt đầu ($< 25\%$) & \multirow{4}{*}{4} \\
+ & & Mức 0.50: Đang học ($25\% - 50\%$) & \\
+ & & Mức 0.75: Gần xong ($50\% - 99\%$) & \\
+ & & Mức 1.00: Hoàn thành ($100\%$) & \\
+\midrule
+\multirow{4}{*}{$Sc$} & \multirow{4}{*}{Score} & Mức 0.25 (Yếu): $< 2.5$ & \multirow{4}{*}{4} \\
+ & & Mức 0.50 (TB): $2.5 \le s < 5.0$ & \\
+ & & Mức 0.75 (Khá): $5.0 \le s < 7.5$ & \\
+ & & Mức 1.00 (Giỏi): $\ge 7.5$ & \\
+\midrule
+\multirow{3}{*}{$Ph$} & \multirow{3}{*}{Phase} & 0: Pre-learning (Tiếp thu thụ động) & \multirow{3}{*}{3} \\
+ & & 1: Active-learning (Tương tác/Làm bài) & \\
+ & & 2: Reflective-learning (Ôn tập/Thảo luận) & \\
+\midrule
+\multirow{3}{*}{$E$} & \multirow{3}{*}{Engagement} & 0: Thấp ($S_{total} < 8$) & \multirow{3}{*}{3} \\
+ & & 1: Trung bình ($8 \le S_{total} < 16$) & \\
+ & & 2: Cao ($S_{total} \ge 16$) & \\
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+\subsubsection{Cơ chế tính toán mức độ tương tác (Engagement Calculation)}
+Khác với các nghiên cứu trước chỉ đếm số lượng hành động, chúng tôi đề xuất công thức tính điểm tương tác tổng hợp $S_{total}$ dựa trên khung lý thuyết ICAP, kết hợp ba yếu tố: trọng số hành động, thời gian và tính nhất quán.
+
+\begin{equation}
+S_{total} = S_{weighted} + S_{time} + S_{consistency}
+\end{equation}
+
+Trong đó:
+\begin{itemize}
+    \item \textbf{$S_{weighted}$ (Chất lượng hành động):} Tổng trọng số ICAP của các hành động trong cửa sổ quan sát. Các hành động kiến tạo (như \textit{submit\_assignment}) có trọng số cao ($w=5$), trong khi hành động thụ động (như \textit{view}) có trọng số thấp ($w=1$):
+    $$ S_{weighted} = \sum_{i=1}^{n} w(action_i) $$
+    
+    \item \textbf{$S_{time}$ (Hiệu quả thời gian):} So sánh thời gian thực tế $T_{real}$ với thời gian kỳ vọng $T_{exp}$:
+    $$ S_{time} = \begin{cases} 
+    2 & \text{if } T_{real} \ge 50\% T_{exp} \\
+    1 & \text{if } 30\% \le T_{real} < 50\% T_{exp} \\
+    0 & \text{else}
+    \end{cases} $$
+    
+    \item \textbf{$S_{consistency}$ (Tính đều đặn):} Dựa trên khoảng cách trung bình $\Delta t$ giữa các lần tương tác:
+    $$ S_{consistency} = \begin{cases} 
+    2 & \text{if } 1\text{min} \le \Delta t \le 60\text{min} \\
+    1 & \text{if } 30\text{s} \le \Delta t \le 2\text{h} \\
+    0 & \text{else}
+    \end{cases} $$
+\end{itemize}
+
+Không gian trạng thái tổng thể có kích thước $|S| = 5 \times 6 \times 4 \times 4 \times 3 \times 3 = 4,320$ trạng thái, đảm bảo tính khả thi để thuật toán Q-learning hội tụ trên tập dữ liệu giáo dục giới hạn.
 
 \begin{table}[htbp]
 \caption{Không gian hành động hoàn chỉnh (15 Actions)}\label{tab:action_space_compact}
@@ -300,14 +465,38 @@ Trong quá trình thực nghiệm, các tham số mô hình được thiết l�
 \end{center}
 \end{table}
 
-% \subsection{Hiện thực hóa hệ thống (System Implementation)}
-% Để chứng minh tính khả thi kỹ thuật, khung giải pháp đã được hiện thực hóa và triển khai thử nghiệm dưới dạng kiến trúc Microservices (Hình \ref{fig:microservice}). Hệ thống bao gồm \textit{Recommend Service} giao tiếp với Moodle LMS thông qua chuẩn LTI 1.3, sử dụng MongoDB để lưu trữ log hành vi tốc độ cao.
+\subsubsection{Cấu hình Hàm phần thưởng (Reward Configuration)}
+Để giải quyết bài toán phân hóa đối tượng, hàm phần thưởng được thiết kế thích ứng (Adaptive Reward Shaping). Thay vì sử dụng các giá trị cố định, hệ thống điều chỉnh trọng số phần thưởng dựa trên 3 cụm người học (Weak, Medium, Strong), cụ thể hóa các giá trị $R_{comp}$ và $R_{LO}$ như sau:
 
-% \begin{figure}[htbp]
-% \centerline{\includegraphics[width=0.85\linewidth]{microservice.png}}
-% \caption{Kiến trúc Microservices được sử dụng để triển khai hệ thống trong thực nghiệm.}
-% \label{fig:microservice}
-% \end{figure}
+\begin{equation}
+R(s, a) = R_{comp}(C) + R_{score}(\Delta S) + R_{LO}(\Delta \Omega, C) - P_{fail}(C)
+\end{equation}
+
+Trong đó, chiến lược phân phối phần thưởng được thiết kế dựa trên triết lý sư phạm riêng biệt cho từng nhóm (Bảng \ref{tab:reward_params}):
+\begin{itemize}
+    \item \textbf{Nhóm Yếu (Weak):} Ưu tiên động lực ngắn hạn (Small wins) với phần thưởng hoàn thành cao nhất ($R_{comp}=10.0$) và điểm thưởng lớn cho việc cải thiện kỹ năng còn yếu ($R_{LO}=15.0$)[cite: 740].
+    \item \textbf{Nhóm Trung bình (Medium):} Tập trung vào sự phát triển cân bằng (Balanced Growth). Phần thưởng được thiết lập ở mức trung gian ($R_{comp}=7.0$) để khuyến khích sinh viên duy trì tiến độ và cải thiện điểm số ổn định[cite: 748].
+    \item \textbf{Nhóm Giỏi (Strong):} Hướng tới sự thành thạo (Mastery-oriented). Phần thưởng cơ bản thấp ($R_{comp}=5.0$) buộc sinh viên phải tìm kiếm các hành động mang lại hiệu quả cao về thời gian (Time Efficiency) hoặc giải quyết các bài tập khó để tối đa hóa điểm số[cite: 756].
+\end{itemize}
+
+\begin{table}[htbp]
+\caption{Tham số chi tiết hàm phần thưởng theo phân cụm}\label{tab:reward_params}
+\begin{center}
+\begin{tabular}{llccc}
+\toprule
+\multirow{2}{*}{\textbf{Thành phần}} & \multirow{2}{*}{\textbf{Ký hiệu}} & \multicolumn{3}{c}{\textbf{Giá trị thiết lập (Config Value)}} \\
+\cmidrule{3-5}
+ & & \textbf{Weak} & \textbf{Medium} & \textbf{Strong} \\
+\midrule
+Hoàn thành module & $R_{comp}$ & \textbf{10.0} & 7.0 & 5.0 \\
+Cải thiện LO Mastery & $R_{LO}$ & \textbf{15.0} & 10.0 & 7.0 \\
+Tăng điểm số & $R_{score}$ & \multicolumn{3}{c}{$\Delta Score \times 10.0$} \\
+Hiệu quả thời gian & $R_{time}$ & - & - & +1.5 \\
+Phạt thất bại/Kẹt & $P_{fail}$ & -3.0 & -2.0 & -1.0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
 
 \subsection{Độ đo đánh giá (Evaluation Metrics)}
 Hiệu quả của mô hình được đánh giá qua các chỉ số:
@@ -355,27 +544,59 @@ Quá trình huấn luyện diễn ra qua 500 episodes với tham số $\alpha=0.
 \begin{table}[htbp]
 \caption{Kết quả so sánh hiệu suất trung bình}\label{tab:results}
 \begin{center}
-\small
-\begin{tabular}{p{2.8cm}ccc}
+\resizebox{\columnwidth}{!}{% Tự động co giãn bảng cho vừa cột
+\begin{tabular}{lccc} 
 \toprule
-\textbf{Chỉ số} & \textbf{Đối chứng} & \textbf{Q-learning} & \textbf{Cải thiện} \\
+\textbf{Chỉ số} & \textbf{Param Policy} & \textbf{Q-learning} & \textbf{Cải thiện} \\
 \midrule
-Tổng phần thưởng & 88.4 & 389.6 & \textbf{+340.8\%} \\
-Điểm TB (thang 10) & 6.25 & 7.66 & \textbf{+22.5\%} \\
+Phần thưởng TB & $59.95 \pm 12.38$ & $264.26 \pm 27.33$ & \textbf{+340.8\%} \\
+Điểm TB (thang 10) & $5.82 \pm 0.48$ & $7.14 \pm 0.82$ & \textbf{+22.5\%} \\
+Độ thành thạo LO & $0.621 \pm 0.056$ & $0.707 \pm 0.085$ & \textbf{+13.9\%} \\
 Số kỹ năng yếu & 3.02 & 1.48 & \textbf{-51.0\%} \\
 \bottomrule
 \end{tabular}
+}
 \end{center}
 \end{table}
 
 \subsection{Phân tích độ quan trọng đặc trưng}
-Phân tích SHAP (Hình \ref{fig:shap_distribution}) trên mô hình đã huấn luyện chỉ ra rằng \textit{Module ID} và \textit{Engagement} là hai yếu tố ảnh hưởng nhất. Sự phân tán cao của giá trị SHAP đối với Engagement ($\sigma^2 = 995.79$) khẳng định rằng tác nhân AI đã học được cách đánh giá ngữ cảnh linh hoạt thay vì áp đặt luật cứng nhắc.
+Từ các giá trị SHAP thu được trên 802 trạng thái cốt lõi, chúng tôi tính toán hai chỉ số chính cho từng đặc trưng:
+\begin{itemize}
+    \item \textbf{Mean Absolute SHAP}: $I_i = \frac{1}{N}\sum_{j=1}^{N}|\phi_i(s_j)|$ - đo mức độ ảnh hưởng trung bình của đặc trưng $i$ lên Q-value.
+    \item \textbf{SHAP Variance}: $V_i = \text{Var}(\phi_i)$ - đo tính ổn định hay phụ thuộc ngữ cảnh của ảnh hưởng (variance cao = phụ thuộc ngữ cảnh nhiều).
+\end{itemize}
+
+Kết quả định lượng được tổng hợp tại Bảng~\ref{tab:shap_importance} và trực quan hóa tại Hình~\ref{fig:shap_distribution}. Phân tích cho thấy \textit{Module ID} (mean $|\text{SHAP}| = 28.32$) và \textit{Engagement} (26.53) là hai yếu tố quan trọng nhất ảnh hưởng đến quyết định gợi ý của Agent. 
+
+Đặc biệt, biểu đồ beeswarm (Hình~\ref{fig:shap_distribution}) tiết lộ các pattern quan trọng về tác động phi tuyến của các đặc trưng. \textit{Engagement} thể hiện phương sai cao nhất ($\sigma^2 = 995.79$), với phân phối SHAP values trải rộng từ khoảng $-50$ đến $+50$, chứng tỏ tác động của yếu tố này mang tính ngữ cảnh cao (context-dependent): mức tương tác cao có thể làm tăng Q-value mạnh (điểm màu đỏ, phía dương) khi sinh viên đang ở module và cụm phù hợp, nhưng cũng có thể làm giảm Q-value (điểm màu xanh, phía âm) nếu tương tác không đúng hướng (ví dụ xem nội dung thụ động quá nhiều trước kỳ đánh giá).
+
+Ngược lại, \textit{Progress Level} có mean $|\text{SHAP}|$ thấp nhất (7.42) và phương sai nhỏ (95.96), với các điểm dữ liệu tập trung quanh giá trị 0 trên biểu đồ, xác nhận rằng tiến độ hoàn thành đơn thuần ít ảnh hưởng đến chiến lược tối ưu. Điều này hỗ trợ cho giả thuyết sư phạm: ``chất lượng tương tác'' (engagement quality) quan trọng hơn ``số lượng hoàn thành'' (completion quantity) trong việc dự báo kết quả học tập.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=\columnwidth]{shap_summary_beeswarm.png}}
-\caption{Phân phối giá trị SHAP từ thực nghiệm. Module ID và Engagement có dải tác động rộng nhất đến quyết định của Agent.}
+\caption{Phân phối SHAP values trên 802 trạng thái từ Q-table. Mỗi điểm biểu diễn SHAP value của một trạng thái; màu sắc thể hiện giá trị đặc trưng (đỏ = cao, xanh = thấp). Trục hoành cho thấy mức độ ảnh hưởng lên Q-value (dương = tăng, âm = giảm). Engagement và Module ID có khoảng tác động (impact range) rộng nhất, trong khi Progress Level tập trung quanh 0.}
 \label{fig:shap_distribution}
 \end{figure}
+
+\begin{table}[htbp]
+\caption{Xếp hạng độ quan trọng của các đặc trưng từ phân tích SHAP trên 802 trạng thái. Mean $|\text{SHAP}|$ đo mức độ ảnh hưởng trung bình; Variance đo mức độ biến động (cao = phụ thuộc ngữ cảnh nhiều, thấp = ổn định).}
+\label{tab:shap_importance}
+\begin{center}
+\small
+\begin{tabular}{lccc}
+	oprule
+	extbf{Đặc trưng} & \textbf{Mean $|\text{SHAP}|$} & \textbf{Variance} & \textbf{Rank} \\
+\midrule
+Module ID & 28.32 & 1171.49 & 1 \\
+Engagement & 26.53 & 995.79 & 2 \\
+Student Cluster & 17.42 & 461.44 & 3 \\
+Score Level & 11.39 & 431.01 & 4 \\
+Learning Phase & 9.12 & 149.83 & 5 \\
+Progress Level & 7.42 & 95.96 & 6 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
 
 \subsection{Phân tích tác động sư phạm}
 Dựa trên biểu đồ trực quan tại Hình \ref{fig:eval_result}, hệ thống thích ứng tốt với từng nhóm người học:
@@ -384,6 +605,15 @@ Dựa trên biểu đồ trực quan tại Hình \ref{fig:eval_result}, hệ th�
     \item \textbf{Nhóm Giỏi (Strong):} Đạt điểm số tuyệt đối cao nhất (8.18/10) nhờ các gợi ý mang tính thách thức (Advanced).
 \end{itemize}
 Kiểm định T-test độc lập xác nhận sự khác biệt có ý nghĩa thống kê ($p < 0.001$) với kích thước ảnh hưởng lớn (Cohen's $d = 6.78$).
+
+% \subsection{Hiện thực hóa hệ thống (System Implementation)}
+% Để chứng minh tính khả thi kỹ thuật, khung giải pháp đã được hiện thực hóa và triển khai thử nghiệm dưới dạng kiến trúc Microservices (Hình \ref{fig:microservice}). Hệ thống bao gồm \textit{Recommend Service} giao tiếp với Moodle LMS thông qua chuẩn LTI 1.3, sử dụng MongoDB để lưu trữ log hành vi tốc độ cao.
+
+% \begin{figure}[htbp]
+% \centerline{\includegraphics[width=0.85\linewidth]{microservice.png}}
+% \caption{Kiến trúc Microservices được sử dụng để triển khai hệ thống trong thực nghiệm.}
+% \label{fig:microservice}
+% \end{figure}
 
 \section{Kết luận và Hướng phát triển}
 \label{sec:conclusion}
@@ -403,6 +633,10 @@ Hướng phát triển trong tương lai bao gồm:
 
 \section*{Lời cảm ơn}
 Nhóm tác giả xin chân thành cảm ơn TS. Đỗ Như Tài đã hướng dẫn tận tình. Nghiên cứu được thực hiện tại Khoa Công nghệ Thông tin, Trường Đại học Sài Gòn.
+
+\section*{Lời cam kết Đạo đức}
+Nghiên cứu sử dụng dữ liệu khóa học công khai từ Kaggle (đã anonymized).
+Nếu triển khai Live trên lớp học thực, sẽ xin phép từ Hội đồng Đạo đức [IRB].
 
 \begin{thebibliography}{00}
 

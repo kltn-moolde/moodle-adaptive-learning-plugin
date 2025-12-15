@@ -60,7 +60,7 @@ vankiet27012004@gmail.com}
 \maketitle
 
 \begin{abstract}
-Trong kỷ nguyên công nghiệp 4.0, giáo dục STEM đóng vai trò then chốt trong việc đào tạo nguồn nhân lực chất lượng cao. Tuy nhiên, các phương pháp giảng dạy truyền thống và hệ thống quản lý học tập (LMS) hiện hành thường áp dụng cách tiếp cận ``một kích cỡ cho tất cả'', thất bại trong việc đáp ứng nhu cầu cá nhân hóa của từng người học. Bài báo này đề xuất một hệ thống gợi ý lộ trình học tập thông minh sử dụng kỹ thuật Học tăng cường (Reinforcement Learning - RL), cụ thể là thuật toán Q-learning, được tích hợp vào nền tảng Moodle qua chuẩn LTI 1.3. Hệ thống mô hình hóa quá trình học tập dưới dạng Quy trình quyết định Markov (MDP), sử dụng dữ liệu hành vi thực tế để phân cụm người học và tối ưu hóa chiến lược gợi ý. Kết quả thực nghiệm mô phỏng trên 500 vòng lặp cho thấy thuật toán giúp tăng 22.5\% điểm số trung bình và giảm 51.0\% số lượng kỹ năng yếu so với phương pháp truyền thống.
+Trong kỷ nguyên công nghiệp 4.0, giáo dục STEM đóng vai trò then chốt trong việc đào tạo nguồn nhân lực chất lượng cao. Tuy nhiên, các hệ thống quản lý học tập (LMS) hiện hành thường áp dụng cách tiếp cận ``một kích cỡ cho tất cả'', chưa đáp ứng hiệu quả nhu cầu cá nhân hóa của người học. Bài báo này đề xuất hệ thống gợi ý lộ trình học tập thông minh ứng dụng kỹ thuật Học tăng cường (Reinforcement Learning), cụ thể là thuật toán Q-learning, được tích hợp vào nền tảng Moodle thông qua chuẩn LTI 1.3. Quá trình học tập được mô hình hóa dưới dạng Quy trình quyết định Markov (MDP), kết hợp phân cụm dữ liệu hành vi để tối ưu hóa chiến lược gợi ý. Kết quả thực nghiệm mô phỏng trên 500 vòng lặp cho thấy giải pháp đề xuất giúp tăng 22.5\% điểm số trung bình và giảm 51.0\% số lượng kỹ năng yếu so với phương pháp truyền thống, khẳng định tiềm năng ứng dụng trong việc hỗ trợ dạy và học STEM.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -174,21 +174,93 @@ Thông tin Cluster ID này sẽ được đưa vào vector trạng thái của t
 
 Bài toán gợi ý lộ trình học tập được mô hình hóa dưới dạng Quy trình Quyết định Markov (MDP), bao gồm bộ ba $<S, A, R>$.
 
-\subsection{Không gian trạng thái (State Space)}
-Trạng thái $S_t$ tại thời điểm $t$ đại diện cho tình trạng học tập hiện tại của sinh viên, được định nghĩa là một vector 6 chiều:
+% \subsection{Không gian trạng thái (State Space)}
+% Trạng thái $S_t$ tại thời điểm $t$ đại diện cho tình trạng học tập hiện tại của sinh viên, được định nghĩa là một vector 6 chiều:
+% \begin{equation}
+% S_t = (C, M, P, Sc, Ph, E)
+% \end{equation}
+% Trong đó:
+% \begin{itemize}
+%     \item $C$ (Cluster): Nhóm người học ($0 \dots 5$) từ kết quả phân cụm.
+%     \item $M$ (Module): Chỉ số bài học hiện tại trong lộ trình tuần tự.
+%     \item $P$ (Progress): Mức độ hoàn thành module, được rời rạc hóa thành 4 mức (0.25, 0.5, 0.75, 1.0).
+%     \item $Sc$ (Score): Điểm số tích lũy, chia thành 4 mức tương ứng (Yếu, TB, Khá, Giỏi).
+%     \item $Ph$ (Phase): Giai đoạn học tập (0: Pre-learning, 1: Active-learning, 2: Reflective-learning).
+%     \item $E$ (Engagement): Mức độ tương tác (Thấp, TB, Cao), tính toán dựa trên trọng số hành động theo khung ICAP \cite{b5}.
+% \end{itemize}
+% Kích thước không gian trạng thái là $5 \times 6 \times 4 \times 4 \times 3 \times 3 \approx 4,320$ trạng thái, đảm bảo tính khả thi cho việc hội tụ của bảng Q-table.
+
+\subsection{Mô hình hóa Không gian trạng thái (State Space Definition)}
+Bài toán được mô hình hóa dưới dạng Quy trình Quyết định Markov (MDP). Trạng thái $S_t$ tại thời điểm $t$ là một vector 6 chiều, kết hợp giữa đặc điểm phân cụm cố định và các biến hành vi động:
 \begin{equation}
 S_t = (C, M, P, Sc, Ph, E)
 \end{equation}
+
+Để đảm bảo khả năng hội tụ của bảng Q-table trong giới hạn tính toán, các biến trạng thái liên tục được rời rạc hóa (discretized) theo các ngưỡng sư phạm cụ thể, được chi tiết hóa tại Bảng \ref{tab:state_space_detail}.
+
+\begin{table}[htbp]
+\caption{Định nghĩa chi tiết và Miền giá trị của Không gian trạng thái}\label{tab:state_space_detail}
+\begin{center}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{l|l|l|c}
+\toprule
+\textbf{Ký hiệu} & \textbf{Thành phần} & \textbf{Định nghĩa / Rời rạc hóa (Bins)} & \textbf{Kích thước} \\
+\midrule
+$C$ & Cluster & Nhóm hành vi từ K-means ($ID \in \{0, 1, 2, 3, 4\}$) & 5 \\
+\midrule
+$M$ & Module & Chỉ số bài học hiện tại ($ID \in \{0, \dots, 5\}$) & 6 \\
+\midrule
+\multirow{4}{*}{$P$} & \multirow{4}{*}{Progress} & Mức 0.25: Mới bắt đầu ($< 25\%$) & \multirow{4}{*}{4} \\
+ & & Mức 0.50: Đang học ($25\% - 50\%$) & \\
+ & & Mức 0.75: Gần xong ($50\% - 99\%$) & \\
+ & & Mức 1.00: Hoàn thành ($100\%$) & \\
+\midrule
+\multirow{4}{*}{$Sc$} & \multirow{4}{*}{Score} & Mức 0.25 (Yếu): $< 2.5$ & \multirow{4}{*}{4} \\
+ & & Mức 0.50 (TB): $2.5 \le s < 5.0$ & \\
+ & & Mức 0.75 (Khá): $5.0 \le s < 7.5$ & \\
+ & & Mức 1.00 (Giỏi): $\ge 7.5$ & \\
+\midrule
+\multirow{3}{*}{$Ph$} & \multirow{3}{*}{Phase} & 0: Pre-learning (Tiếp thu thụ động) & \multirow{3}{*}{3} \\
+ & & 1: Active-learning (Tương tác/Làm bài) & \\
+ & & 2: Reflective-learning (Ôn tập/Thảo luận) & \\
+\midrule
+\multirow{3}{*}{$E$} & \multirow{3}{*}{Engagement} & 0: Thấp ($S_{total} < 8$) & \multirow{3}{*}{3} \\
+ & & 1: Trung bình ($8 \le S_{total} < 16$) & \\
+ & & 2: Cao ($S_{total} \ge 16$) & \\
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+\subsubsection{Cơ chế tính toán mức độ tương tác (Engagement Calculation)}
+Khác với các nghiên cứu trước chỉ đếm số lượng hành động, chúng tôi đề xuất công thức tính điểm tương tác tổng hợp $S_{total}$ dựa trên khung lý thuyết ICAP, kết hợp ba yếu tố: trọng số hành động, thời gian và tính nhất quán.
+
+\begin{equation}
+S_{total} = S_{weighted} + S_{time} + S_{consistency}
+\end{equation}
+
 Trong đó:
 \begin{itemize}
-    \item $C$ (Cluster): Nhóm người học ($0 \dots 5$) từ kết quả phân cụm.
-    \item $M$ (Module): Chỉ số bài học hiện tại trong lộ trình tuần tự.
-    \item $P$ (Progress): Mức độ hoàn thành module, được rời rạc hóa thành 4 mức (0.25, 0.5, 0.75, 1.0).
-    \item $Sc$ (Score): Điểm số tích lũy, chia thành 4 mức tương ứng (Yếu, TB, Khá, Giỏi).
-    \item $Ph$ (Phase): Giai đoạn học tập (0: Pre-learning, 1: Active-learning, 2: Reflective-learning).
-    \item $E$ (Engagement): Mức độ tương tác (Thấp, TB, Cao), tính toán dựa trên trọng số hành động theo khung ICAP \cite{b5}.
+    \item \textbf{$S_{weighted}$ (Chất lượng hành động):} Tổng trọng số ICAP của các hành động trong cửa sổ quan sát. Các hành động kiến tạo (như \textit{submit\_assignment}) có trọng số cao ($w=5$), trong khi hành động thụ động (như \textit{view}) có trọng số thấp ($w=1$):
+    $$ S_{weighted} = \sum_{i=1}^{n} w(action_i) $$
+    
+    \item \textbf{$S_{time}$ (Hiệu quả thời gian):} So sánh thời gian thực tế $T_{real}$ với thời gian kỳ vọng $T_{exp}$:
+    $$ S_{time} = \begin{cases} 
+    2 & \text{if } T_{real} \ge 50\% T_{exp} \\
+    1 & \text{if } 30\% \le T_{real} < 50\% T_{exp} \\
+    0 & \text{else}
+    \end{cases} $$
+    
+    \item \textbf{$S_{consistency}$ (Tính đều đặn):} Dựa trên khoảng cách trung bình $\Delta t$ giữa các lần tương tác:
+    $$ S_{consistency} = \begin{cases} 
+    2 & \text{if } 1\text{min} \le \Delta t \le 60\text{min} \\
+    1 & \text{if } 30\text{s} \le \Delta t \le 2\text{h} \\
+    0 & \text{else}
+    \end{cases} $$
 \end{itemize}
-Kích thước không gian trạng thái là $5 \times 6 \times 4 \times 4 \times 3 \times 3 \approx 4,320$ trạng thái, đảm bảo tính khả thi cho việc hội tụ của bảng Q-table.
+
+Không gian trạng thái tổng thể có kích thước $|S| = 5 \times 6 \times 4 \times 4 \times 3 \times 3 = 4,320$ trạng thái, đảm bảo tính khả thi để thuật toán Q-learning hội tụ trên tập dữ liệu giáo dục giới hạn.
 
 \subsection{Không gian hành động (Action Space)}
 Trong mô hình MDP, không gian hành động $A$ đại diện cho tập hợp các tương tác sư phạm mà hệ thống có thể đề xuất. Việc thiết kế $A$ không đơn thuần là liệt kê các sự kiện nhật ký (logs), mà là quá trình sàng lọc và mở rộng có chủ đích.
