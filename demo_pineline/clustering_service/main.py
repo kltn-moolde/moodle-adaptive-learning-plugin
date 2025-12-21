@@ -13,11 +13,14 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import logging
+import math
+import numpy as np
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
+from fastapi.encoders import jsonable_encoder
 from motor.motor_asyncio import AsyncIOMotorClient
-from typing import Dict, List
+from typing import Dict, List, Any
 
 from scheduler.job_runner import JobRunner
 from moodle_api import MoodleCustomAPIClient
@@ -34,6 +37,25 @@ logger = logging.getLogger(__name__)
 
 # Global job runner
 job_runner: JobRunner = None
+
+
+def clean_nan_values(obj: Any) -> Any:
+    """Recursively clean NaN, Infinity values from dict/list for JSON serialization"""
+    if isinstance(obj, dict):
+        return {key: clean_nan_values(value) for key, value in obj.items()}
+    elif isinstance(obj, list):
+        return [clean_nan_values(item) for item in obj]
+    elif isinstance(obj, float):
+        if math.isnan(obj) or math.isinf(obj):
+            return None
+        return obj
+    elif isinstance(obj, np.floating):
+        if np.isnan(obj) or np.isinf(obj):
+            return None
+        return float(obj)
+    elif isinstance(obj, np.integer):
+        return int(obj)
+    return obj
 
 
 @asynccontextmanager
@@ -82,6 +104,7 @@ async def root():
 
 
 @app.get("/health")
+@app.get("/api/health")
 async def health_check():
     """Health check endpoint"""
     return {
@@ -143,7 +166,7 @@ async def get_latest_result(course_id: int):
                 detail=f"No clustering results found for course {course_id}"
             )
         
-        return result
+        return clean_nan_values(result)
         
     except HTTPException:
         raise
@@ -170,11 +193,11 @@ async def get_result_history(course_id: int, limit: int = 10):
     try:
         results = await job_runner.course_cluster_model.get_all_results(course_id, limit=limit)
         
-        return {
+        return clean_nan_values({
             "course_id": course_id,
             "count": len(results),
             "results": results
-        }
+        })
         
     except Exception as e:
         logger.error(f"Failed to get result history: {str(e)}")
@@ -205,7 +228,7 @@ async def get_user_cluster_history(course_id: int, user_id: int):
                 detail=f"No history found for user {user_id} in course {course_id}"
             )
         
-        return history
+        return clean_nan_values(history)
         
     except HTTPException:
         raise
@@ -235,12 +258,12 @@ async def get_course_transitions(course_id: int):
         # Get statistics
         stats = await job_runner.user_history_model.get_transition_statistics(course_id)
         
-        return {
+        return clean_nan_values({
             "course_id": course_id,
             "statistics": stats,
             "total_users": len(transitions),
             "transitions": transitions
-        }
+        })
         
     except Exception as e:
         logger.error(f"Failed to get transitions: {str(e)}")
@@ -340,10 +363,10 @@ async def get_clustered_courses():
         cursor = job_runner.course_cluster_model.collection.aggregate(pipeline)
         courses = await cursor.to_list(length=None)
         
-        return {
+        return clean_nan_values({
             "total_courses": len(courses),
             "courses": courses
-        }
+        })
         
     except Exception as e:
         logger.error(f"Failed to get courses: {str(e)}")
@@ -388,12 +411,12 @@ async def get_cluster_details(course_id: int, cluster_id: int):
                 detail=f"Cluster {cluster_id} not found in course {course_id}"
             )
         
-        return {
+        return clean_nan_values({
             "course_id": course_id,
             "cluster_id": cluster_id,
             "run_timestamp": result.get('run_timestamp'),
             "cluster": cluster
-        }
+        })
         
     except HTTPException:
         raise
@@ -442,12 +465,12 @@ async def get_students_clusters(course_id: int):
                     "cluster_recommendations": cluster.get('recommendations', [])
                 })
         
-        return {
+        return clean_nan_values({
             "course_id": course_id,
             "run_timestamp": result.get('run_timestamp'),
             "total_students": len(students),
             "students": students
-        }
+        })
         
     except HTTPException:
         raise
@@ -519,7 +542,7 @@ async def get_course_overview(course_id: int):
             for c in clusters
         ]
         
-        return {
+        return clean_nan_values({
             "course_id": course_id,
             "run_timestamp": result.get('run_timestamp'),
             "overview": {
@@ -527,7 +550,7 @@ async def get_course_overview(course_id: int):
                 "cluster_distribution": cluster_distribution,
                 "cluster_summaries": cluster_summaries
             }
-        }
+        })
         
     except HTTPException:
         raise
@@ -613,7 +636,7 @@ async def get_at_risk_students(course_id: int):
         priority_order = {"high": 0, "medium": 1, "low": 2}
         at_risk_students.sort(key=lambda x: priority_order.get(x['priority'], 3))
         
-        return {
+        return clean_nan_values({
             "course_id": course_id,
             "run_timestamp": result.get('run_timestamp'),
             "total_at_risk": len(at_risk_students),
@@ -623,7 +646,7 @@ async def get_at_risk_students(course_id: int):
                 "low": sum(1 for s in at_risk_students if s['priority'] == 'low')
             },
             "at_risk_students": at_risk_students
-        }
+        })
         
     except HTTPException:
         raise
