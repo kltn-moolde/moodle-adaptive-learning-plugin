@@ -1,6 +1,6 @@
-PWD /Users/nguyenhuuloc/Documents/MyComputer/AdaptiveLearning/FJCAI2026-IEEE-conference-template
+PWD /Users/nguyenhuuloc/Documents/MyComputer/AdaptiveLearning/submit_fjcai/FJCAI2026-IEEE-conference-template
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt
-INPUT /Users/nguyenhuuloc/Documents/MyComputer/AdaptiveLearning/FJCAI2026-IEEE-conference-template/RL_Moodle_VI.tex
+INPUT /Users/nguyenhuuloc/Documents/MyComputer/AdaptiveLearning/submit_fjcai/FJCAI2026-IEEE-conference-template/RL_Moodle_VI.tex
 OUTPUT RL_Moodle_VI.log
 INPUT ./IEEEtran.cls
 INPUT IEEEtran.cls

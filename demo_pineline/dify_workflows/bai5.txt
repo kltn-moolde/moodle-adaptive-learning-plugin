@@ -1,0 +1,54 @@
+# BÀI 5: THỰC HÀNH CHIA SẺ TÀI NGUYÊN TRÊN MẠNG
+Môn: Tin học 12
+
+Bài học này hướng dẫn kỹ năng chia sẻ dữ liệu (tệp, thư mục) và thiết bị (máy in) cho người khác qua mạng cục bộ (LAN) và mạng Internet.
+
+## 1. Mục tiêu bài thực hành
+- Biết cách chia sẻ thư mục trên máy tính Windows để người khác trong cùng mạng LAN có thể truy cập.
+- Biết cách phân quyền truy cập (Chỉ xem hoặc Được phép chỉnh sửa).
+- Sử dụng được các dịch vụ lưu trữ đám mây (Google Drive/OneDrive) để chia sẻ tài liệu qua Internet.
+
+## 2. Hoạt động 1: Chia sẻ thư mục trong mạng nội bộ (LAN)
+Áp dụng cho hệ điều hành Windows.
+
+### a) Cách chia sẻ (Dành cho máy chủ/máy chứa dữ liệu)
+1.  **Bước 1:** Chuột phải vào thư mục muốn chia sẻ, chọn **Properties**.
+2.  **Bước 2:** Chuyển sang thẻ **Sharing**.
+3.  **Bước 3:** Nhấn nút **Advanced Sharing** -> Tích vào ô **Share this folder**.
+4.  **Bước 4:** Nhấn nút **Permissions** để phân quyền:
+    - **Read (Đọc):** Người khác chỉ được xem và copy, không được xóa/sửa. (Khuyên dùng).
+    - **Change/Full Control:** Người khác có quyền sửa, xóa file trong thư mục đó.
+5.  **Bước 5:** Nhấn OK để hoàn tất.
+
+### b) Cách truy cập (Dành cho máy khách)
+1.  Nhấn tổ hợp phím `Windows + R` để mở hộp thoại Run.
+2.  Gõ địa chỉ IP của máy chia sẻ theo cú pháp: `\\Dia_Chi_IP` (Ví dụ: `\\192.168.1.10`) và nhấn Enter.
+3.  Nếu có yêu cầu, nhập Username và Password của máy chia sẻ.
+
+## 3. Hoạt động 2: Chia sẻ tài nguyên qua Internet (Google Drive)
+Đây là cách phổ biến nhất hiện nay để làm việc nhóm.
+
+### a) Các chế độ chia sẻ (Quan trọng)
+Khi bấm nút **Share (Chia sẻ)** trên Google Drive, bạn cần chọn đúng quyền hạn:
+1.  **Người xem (Viewer):** Chỉ được xem, không được chỉnh sửa, không được nhận xét.
+2.  **Người nhận xét (Commenter):** Được phép thêm ghi chú bên lề nhưng không thay đổi nội dung gốc.
+3.  **Người chỉnh sửa (Editor):** Có toàn quyền sửa, xóa, chia sẻ lại tệp tin. (Cẩn thận khi cấp quyền này cho người lạ).
+
+### b) Các cách gửi liên kết
+- **Hạn chế (Restricted):** Chỉ những email cụ thể được thêm vào mới xem được.
+- **Bất kỳ ai có đường liên kết (Anyone with the link):** Ai có link cũng vào được (Tiện lợi nhưng kém bảo mật hơn).
+
+## 4. Hoạt động 3: Chia sẻ máy in trong mạng LAN
+Giúp nhiều máy tính dùng chung một máy in.
+1.  Vào **Control Panel** -> **Devices and Printers**.
+2.  Chuột phải vào máy in cần chia sẻ -> **Printer Properties**.
+3.  Chọn thẻ **Sharing** -> Tích vào **Share this printer**.
+4.  Trên các máy khác: Chọn **Add a printer** -> Chọn máy in mạng đã được chia sẻ.
+
+## 5. Các lưu ý an toàn khi chia sẻ tài nguyên
+1.  **Nguyên tắc tối thiểu:** Chỉ cấp quyền vừa đủ dùng. Nếu chỉ cần họ đọc tài liệu, tuyệt đối không cấp quyền **Edit/Full Control**.
+2.  **Mật khẩu:** Nên đặt mật khẩu mạnh cho máy tính khi thực hiện chia sẻ trong mạng LAN.
+3.  **Đăng xuất:** Luôn đăng xuất khỏi tài khoản Google/Microsoft sau khi sử dụng máy tính công cộng để tránh bị người khác truy cập dữ liệu đã chia sẻ.
+
+---
+*Ghi chú cho AI: Khi học sinh hỏi "Làm sao để gửi file bài tập cho bạn mà bạn ấy không xóa mất bài của mình?", hãy hướng dẫn học sinh chọn quyền "Read" (trong LAN) hoặc "Viewer" (trên Drive).*

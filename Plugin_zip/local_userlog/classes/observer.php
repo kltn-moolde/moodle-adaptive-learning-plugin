@@ -72,7 +72,7 @@ class observer {
     }
 
     private static function send_to_recommendation_engine($logs, $logfile) {
-        $url = 'http://localhost:8080/webhook/moodle-events';
+        $url = 'http://recommend-service:8088/webhook/moodle-events';
         $event_id = uniqid('moodle_event_', true);
 
         $payload = [

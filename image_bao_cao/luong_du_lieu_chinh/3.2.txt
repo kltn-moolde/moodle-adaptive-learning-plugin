@@ -3,32 +3,36 @@ sequenceDiagram
     actor Student as Sinh viên
     participant Moodle as Moodle LMS
     participant Kong as Kong Gateway
+    participant LTIS as LTI Service
     participant React as ReactJS App
     participant Rec as Recommend Service
     participant Mongo as MongoDB
 
-    Note over Student, Moodle: Giai đoạn 1: Truy cập Dashboard Gợi ý
-    Student->>Moodle: Click "Smart Learning"
-    Moodle->>Kong: LTI Launch (JWT)
-    Kong->>React: Load Interface
+    Note over Student, LTIS: Bước 1: Khởi tạo & Xác thực (LTI Launch)
+    Student->>Moodle: Click "Gợi ý học tập"
+    Moodle->>Kong: Gửi yêu cầu OIDC (JWT Token)
+    Kong->>LTIS: Chuyển tiếp yêu cầu xác thực
+    Note right of LTIS: Thực hiện Handshake & Validate JWT
+    LTIS->>React: Chuyển hướng & Khởi tạo Interface
+
+    Note over React, Moodle: Bước 2: Tổng hợp dữ liệu (State Encoding)
     React->>Rec: GET /recommend
-    Rec->>Moodle: Fetch Student Progress (API)
-    Moodle-->>Rec: Return Grades/Status
-    
-    Note right of Rec: Logic Top-k
-    Rec->>Rec: Encode State -> Ranking Actions (Q-Values)
-    Rec->>Rec: Select Top-k Best Actions
-    
-    Rec-->>React: Return JSON (List of Top-k Suggestions)
-    React-->>Student: Hiển thị Danh sách Top-k Gợi ý
+    Rec->>Moodle: Gọi API lấy Progress & Grades
+    Moodle-->>Rec: Trả về dữ liệu điểm số/trạng thái
 
-    Note over Student, Moodle: Giai đoạn 2: Học tập trên Moodle
-    Student->>React: Chọn 1 trong k bài tập
-    React->>Moodle: Redirect to Activity URL
-    Student->>Moodle: Làm bài & Nộp bài
-    Moodle->>Moodle: Chấm điểm & Lưu DB Moodle
+    Note over Rec: Bước 3: Xếp hạng Top-k (Top-k Ranking)
+    Rec->>Rec: Encode State (Chuyển đổi thành Vector)
+    Rec->>Rec: Tính Q-Values & Lọc Top-k hành động
+    Rec-->>React: Trả về JSON (Danh sách gợi ý)
+    React-->>Student: Hiển thị Dashboard Top-k
 
-    Note over Moodle, Mongo: Giai đoạn 3: Cập nhật tri thức AI
-    Moodle->>Rec: Trigger Webhook (Student X finished Activity Y, Score Z)
-    Rec->>Rec: Calculate Reward & Update Q-Value
-    Rec->>Mongo: Save updated Q-Table
+    Note over Student, Moodle: Bước 4: Điều hướng & Học tập
+    Student->>React: Chọn 1 bài tập trong Top-k
+    React->>Moodle: Redirect về trang bài tập (Activity URL)
+    Student->>Moodle: Thực hiện làm bài & Nộp bài
+    Moodle->>Moodle: Chấm điểm & Lưu trữ nội bộ
+
+    Note over Moodle, Mongo: Bước 5: Webhook & Cập nhật AI
+    Moodle->>Rec: Trigger Webhook (User, Activity, Grade)
+    Rec->>Rec: Tính Reward & Cập nhật Q-Value
+    Rec->>Mongo: Lưu trữ Q-Table mới
