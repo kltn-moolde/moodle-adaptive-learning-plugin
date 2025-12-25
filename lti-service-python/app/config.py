@@ -20,7 +20,7 @@ class Settings(BaseSettings):
     PORT: int = 8082
     
     # Frontend Configuration
-    FRONTEND_URL: str = "http://localhost:5173/"  # React Frontend URL
+    FRONTEND_URL: str = "http://localhost:5175/"  # React Frontend URL
     
     # Database
     DATABASE_URL: str = "sqlite:///./lti_service.db"
