@@ -14,7 +14,8 @@ from core import (
     FeatureSelector,
     OptimalClusterFinder,
     ComparisonVisualizer,
-    ClusterProfiler
+    ClusterProfiler,
+    ClusteringVisualizer
 )
 
 # Setup logging
@@ -38,8 +39,9 @@ class MoodleAnalyticsPipeline:
     1. Feature Extraction: Extract và normalize features từ raw data
     2. Feature Selection: Chọn features tối ưu (variance + correlation filtering)
     3. Optimal Clustering: Tìm số cụm tối ưu với KMeans + Voting (Elbow, Silhouette, Davies-Bouldin)
-    4. Cluster Profiling with AI: Mô tả và diễn giải từng cụm
-    5. Visualization: Biểu đồ và trực quan hóa các cụm và đặc trưng
+    4. Clustering Visualization: Visualize before/after clustering
+    5. Cluster Profiling with AI: Mô tả và diễn giải từng cụm
+    6. Visualization: Biểu đồ và trực quan hóa các cụm và đặc trưng
     """
     
     def __init__(self, base_output_dir: str = 'outputs'):
@@ -50,6 +52,7 @@ class MoodleAnalyticsPipeline:
         self.feature_dir = self.base_output_dir / 'features'
         self.feature_selection_dir = self.base_output_dir / 'feature_selection'
         self.optimal_clusters_dir = self.base_output_dir / 'optimal_clusters'
+        self.clustering_viz_dir = self.base_output_dir / 'clustering_visualization'
         self.comparison_dir = self.base_output_dir / 'comparison'
         self.cluster_profiling_dir = self.base_output_dir / 'cluster_profiling'
         
@@ -57,6 +60,7 @@ class MoodleAnalyticsPipeline:
         self.feature_extractor = FeatureExtractor()
         self.feature_selector = FeatureSelector()
         self.cluster_finder = OptimalClusterFinder()
+        self.clustering_visualizer = ClusteringVisualizer(reduction_method='pca')
         self.comparison_visualizer = ComparisonVisualizer()
         self.cluster_profiler = None  # Initialize on demand
         
@@ -68,7 +72,8 @@ class MoodleAnalyticsPipeline:
                          max_features: int = None,
                          k_range: range = range(2, 11),
                          enable_llm_profiling: bool = True,
-                         llm_provider: str = 'gemini'):
+                         llm_provider: str = 'gemini',
+                         reduction_method: str = 'pca'):
         """
         Run complete GMM-based pipeline từ đầu đến cuối
         
@@ -123,16 +128,32 @@ class MoodleAnalyticsPipeline:
             random_state=42
         )
         
-        # ========== PHASE 4: CLUSTER PROFILING (LLM-POWERED) ==========
+        # ========== PHASE 4: CLUSTERING VISUALIZATION (NEW) ==========
+        logger.info("\n📈 PHASE 4: Clustering Visualization (Before/After)")
+        logger.info("-"*80)
+        
+        self.clustering_visualizer = ClusteringVisualizer(
+            reduction_method=reduction_method,
+            random_state=42
+        )
+        
+        viz_results = self.clustering_visualizer.process_pipeline(
+            X=X_selected,
+            labels=optimal_kmeans.labels_,
+            output_dir=str(self.clustering_viz_dir),
+            n_clusters=optimal_k
+        )
+        
+        # ========== PHASE 5: PREPARE DATA WITH CLUSTERS ==========
         # Prepare real data with assigned clusters
         real_data_with_clusters = features_scaled.copy()
         real_data_with_clusters['cluster'] = optimal_kmeans.labels_
         real_path = self.optimal_clusters_dir / 'real_students_with_clusters.csv'
         real_data_with_clusters.to_csv(real_path, index=False)
         
-        # ========== PHASE 4: CLUSTER PROFILING (LLM-POWERED) ==========
+        # ========== PHASE 6: CLUSTER PROFILING (LLM-POWERED) ==========
         if enable_llm_profiling:
-            logger.info("\n🤖 PHASE 7: Cluster Profiling with AI")
+            logger.info("\n🤖 PHASE 6: Cluster Profiling with AI")
             logger.info("-"*80)
             
             try:
@@ -160,9 +181,10 @@ class MoodleAnalyticsPipeline:
                 logger.warning(f"Cluster profiling failed: {e}")
                 logger.warning("Continuing without LLM profiling...")
         else:
-            logger.info("\n⏭️ PHASE 7: Cluster Profiling (Skipped)")
-        # ========== PHASE 5: VISUALIZATION ==========
-        logger.info("\n📈 PHASE 5: Visualization")
+            logger.info("\n⏭️ PHASE 6: Cluster Profiling (Skipped)")
+            
+        # ========== PHASE 7: ADDITIONAL VISUALIZATION ==========
+        logger.info("\n📊 PHASE 7: Additional Visualization")
         logger.info("-"*80)
         try:
             # Visualize distributions and cluster separation
@@ -180,18 +202,20 @@ class MoodleAnalyticsPipeline:
         logger.info("="*80)
         
         logger.info(f"\n📁 Output directories:")
-        logger.info(f"  Features:           {self.feature_dir}")
-        logger.info(f"  Feature Selection:  {self.feature_selection_dir}")
-        logger.info(f"  Optimal Clusters:   {self.optimal_clusters_dir}")
-        logger.info(f"  Visualization:      {self.comparison_dir}")
+        logger.info(f"  Features:              {self.feature_dir}")
+        logger.info(f"  Feature Selection:     {self.feature_selection_dir}")
+        logger.info(f"  Optimal Clusters:      {self.optimal_clusters_dir}")
+        logger.info(f"  Clustering Viz:        {self.clustering_viz_dir}")
+        logger.info(f"  Additional Viz:        {self.comparison_dir}")
         if enable_llm_profiling:
-            logger.info(f"  Cluster Profiling:  {self.cluster_profiling_dir}")
+            logger.info(f"  Cluster Profiling:     {self.cluster_profiling_dir}")
         
         return {
             'features': features_scaled,
             'selected_features': selected_features,
             'optimal_k': optimal_k,
-            'real_data': real_data_with_clusters
+            'real_data': real_data_with_clusters,
+            'visualization': viz_results
         }
 
 
@@ -207,11 +231,20 @@ def main():
         variance_threshold=0.01,
         correlation_threshold=0.95,
         max_features=15,
-        k_range=range(2, 11)
+        k_range=range(2, 11),
+        reduction_method='pca'  # or 'tsne'
     )
     
     print("\n" + "="*80)
     print("📊 PIPELINE SUMMARY (KMeans)")
+    print("="*80)
+    print(f"Real students:        {len(results['real_data'])}")
+    print(f"Optimal clusters (k): {results['optimal_k']}")
+    print(f"Features extracted:   {len(results['features'].columns) - 1}")
+    print(f"Features selected:    {len(results['selected_features'])}")
+    print(f"\nVisualization method: {results['visualization']['reduction_method'].upper()}")
+    
+    print("\n✅ All outputs saved to 'outputs/' directory")
     print("="*80)
     print(f"Real students:        {len(results['real_data'])}")
     print(f"Optimal clusters (k): {results['optimal_k']}")

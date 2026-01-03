@@ -209,6 +209,86 @@ class ComparisonVisualizer:
         else:
             plt.show()
     
+    def visualize_radar_comparison(self, features: List[str], output_dir: str = None):
+        """
+        Visualize radar chart comparing cluster profiles
+        
+        Args:
+            features: List of features to compare
+            output_dir: Directory to save plot
+        """
+        if 'cluster' not in self.data.columns:
+            logger.warning("No cluster column found, skipping radar chart")
+            return
+        
+        logger.info("Creating radar chart for cluster comparison...")
+        
+        # Select available features
+        available_features = [f for f in features if f in self.data.columns]
+        
+        if len(available_features) < 3:
+            logger.warning("Need at least 3 features for radar chart")
+            return
+        
+        # Calculate mean values for each cluster
+        cluster_means = {}
+        for cluster in sorted(self.data['cluster'].unique()):
+            cluster_data = self.data[self.data['cluster'] == cluster][available_features]
+            cluster_means[cluster] = cluster_data.mean()
+        
+        # Normalize values to 0-1 range for better visualization
+        all_values = pd.DataFrame(cluster_means).T
+        normalized_values = (all_values - all_values.min()) / (all_values.max() - all_values.min())
+        normalized_values = normalized_values.fillna(0)  # Handle NaN from division by zero
+        
+        # Setup radar chart
+        num_vars = len(available_features)
+        angles = np.linspace(0, 2 * np.pi, num_vars, endpoint=False).tolist()
+        angles += angles[:1]  # Complete the circle
+        
+        # Create plot
+        fig, ax = plt.subplots(figsize=(12, 10), subplot_kw=dict(projection='polar'))
+        
+        # Color palette
+        colors = plt.cm.Set2(np.linspace(0, 1, len(cluster_means)))
+        
+        # Plot each cluster
+        for idx, (cluster, values) in enumerate(normalized_values.iterrows()):
+            values_list = values.tolist()
+            values_list += values_list[:1]  # Complete the circle
+            
+            ax.plot(angles, values_list, 'o-', linewidth=2, 
+                   label=f'Cluster {cluster}', color=colors[idx])
+            ax.fill(angles, values_list, alpha=0.15, color=colors[idx])
+        
+        # Fix axis labels
+        ax.set_xticks(angles[:-1])
+        ax.set_xticklabels(available_features, size=10)
+        ax.set_ylim(0, 1)
+        ax.set_yticks([0.25, 0.5, 0.75, 1.0])
+        ax.set_yticklabels(['0.25', '0.50', '0.75', '1.00'], size=8)
+        ax.grid(True, linestyle='--', alpha=0.6)
+        
+        # Title and legend
+        ax.set_title('Cluster Comparison - Radar Chart\n(Normalized Values)', 
+                    size=14, fontweight='bold', pad=20)
+        ax.legend(loc='upper right', bbox_to_anchor=(1.3, 1.1), fontsize=10)
+        
+        plt.tight_layout()
+        
+        if output_dir:
+            output_path = Path(output_dir)
+            output_path.mkdir(parents=True, exist_ok=True)
+            viz_png = output_path / 'cluster_radar_comparison.png'
+            viz_pdf = output_path / 'cluster_radar_comparison.pdf'
+            plt.savefig(viz_png, dpi=300, bbox_inches='tight')
+            plt.savefig(viz_pdf, dpi=300, bbox_inches='tight')
+            logger.info(f"\u2713 Saved: {viz_png}")
+            logger.info(f"\u2713 Saved: {viz_pdf}")
+            plt.close()
+        else:
+            plt.show()
+    
     def process_pipeline(self, real_path: str, features: List[str], 
                         output_dir: str, **kwargs):
         """
@@ -235,6 +315,9 @@ class ComparisonVisualizer:
         
         # Correlation matrix
         self.visualize_correlation_matrix(features, output_dir)
+        
+        # Radar chart comparison
+        self.visualize_radar_comparison(features, output_dir)
         
         logger.info("\n✅ Visualization pipeline completed")
         
