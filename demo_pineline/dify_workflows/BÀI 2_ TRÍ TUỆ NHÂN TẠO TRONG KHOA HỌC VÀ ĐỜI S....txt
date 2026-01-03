@@ -1,0 +1,42 @@
+﻿BÀI 2 - TRÍ TUỆ NHÂN TẠO TRONG KHOA HỌC VÀ ĐỜI SỐNG
+CHƯƠNG I: AI - "CÁNH TAY ĐẮC LỰC" TRONG NGHIÊN CỨU KHOA HỌC
+AI không chỉ giúp con người làm việc nhanh hơn, nó giúp chúng ta giải quyết những bài toán mà trước đây được coi là "bất khả thi".
+1.1. Cách mạng trong Y sinh học (The AlphaFold Moment)
+* Giải mã cấu trúc Protein: Protein là nền tảng của sự sống. Trước khi có AI, việc xác định hình dạng 3D của một protein có thể mất hàng năm trời làm thí nghiệm. Năm 2020, AlphaFold (của Google DeepMind) đã giải quyết được bài toán này trong vài giờ.
+* Thiết kế thuốc (Drug Discovery): AI sàng lọc hàng triệu hợp chất hóa học để tìm ra loại thuốc tiềm năng chống lại virus mới, rút ngắn quy trình từ 10 năm xuống còn vài tháng.
+* Cá nhân hóa phác đồ: AI phân tích bản đồ gen cá nhân để đưa ra liều lượng thuốc chính xác cho từng bệnh nhân, giảm tác dụng phụ.
+1.2. Chinh phục Vũ trụ và Vật lý hạt nhân
+* Tìm kiếm hành tinh: AI phân tích độ sáng của các vì sao từ kính thiên văn để phát hiện các hành tinh ngoài hệ Mặt Trời mà mắt thường không thể nhận ra trong hàng tỷ pixel dữ liệu.
+* Vật lý hạt nhân: Tại CERN, AI giúp lọc ra các va chạm hạt quan trọng trong số hàng tỷ va chạm diễn ra mỗi giây, hỗ trợ tìm kiếm các hạt mới như hạt Higgs.
+1.3. Khoa học Trái đất và Biến đổi khí hậu
+* Mô hình hóa khí hậu: AI tạo ra các "Bản sao số" (Digital Twins) của Trái đất để giả lập các kịch bản biến đổi khí hậu trong 50-100 năm tới.
+* Năng lượng sạch: AI tối ưu hóa việc quay các tấm pin năng lượng mặt trời hoặc tuabin gió để đón được nhiều năng lượng nhất dựa trên dữ liệu dự báo thời tiết theo thời gian thực.
+CHƯƠNG II: AI TRONG ĐỜI SỐNG - TỪ TIỆN NGHI ĐẾN THAY ĐỔI TƯ DUY
+2.1. Y tế: Khi bác sĩ có thêm "siêu nhãn lực"
+* Chẩn đoán hình ảnh (Radiology): Các thuật toán Deep Learning có khả năng phát hiện các khối u kích thước chỉ vài milimet trên ảnh CT hoặc MRI, tỉ lệ chính xác vượt qua cả các bác sĩ giàu kinh nghiệm trong một số trường hợp.
+* Phẫu thuật từ xa: Robot như Da Vinci kết hợp AI giúp giảm độ rung của tay bác sĩ, cho phép thực hiện các đường mổ cực nhỏ, giúp bệnh nhân hồi phục nhanh hơn.
+2.2. Giao thông thông minh và Đô thị thông minh (Smart City)
+* Hệ sinh thái xe tự lái: Không chỉ là ô tô, AI còn điều khiển tàu điện ngầm không người lái và máy bay không người lái (Drone) giao hàng.
+* Quản lý đô thị: Camera AI phân tích lưu lượng giao thông để điều chỉnh đèn tín hiệu, tự động phát hiện tai nạn hoặc sự cố hạ tầng (vỡ ống nước, cháy nổ) để thông báo cho cơ quan chức năng.
+2.3. Kinh tế và Thương mại số
+* Công cụ gợi ý (Recommendation Systems): Tại sao TikTok hay YouTube luôn biết bạn thích xem gì? Đó là nhờ AI phân tích từng giây bạn dừng lại ở một video để xây dựng "hồ sơ sở thích" cá nhân.
+* Thương mại điện tử: AI dự báo nhu cầu mua sắm của một khu vực để điều chuyển hàng về kho trước cả khi khách hàng đặt mua.
+CHƯƠNG III: TÍNH HAI MẶT VÀ ĐẠO ĐỨC AI (VẤN ĐỀ CỐT LÕI)
+Sự phát triển của AI đi kèm với những bài toán đạo đức hóc búa mà thế hệ các em (lớp 12) cần có tư duy phản biện để giải quyết.
+3.1. Deepfake và Sự xói mòn lòng tin
+AI có thể tạo ra video, giọng nói giả mạo giống thật đến 99%.
+* Nguy cơ: Lừa đảo chiếm đoạt tài sản, bôi nhọ danh dự, gây bất ổn chính trị bằng các phát ngôn giả mạo.
+* Thử thách: Làm thế nào để phân biệt đâu là thật, đâu là giả trong kỷ nguyên "Dead Internet"?
+3.2. Định kiến và Sự bất công (Algorithmic Bias)
+* AI học từ dữ liệu quá khứ. Nếu dữ liệu quá khứ có định kiến (ví dụ: ưu tiên nam giới hơn nữ giới trong tuyển dụng), AI sẽ tiếp tục thực hiện sự phân biệt đó một cách tự động và quy mô lớn hơn.
+* Bài toán: Làm sao để xây dựng một bộ dữ liệu "sạch" và công bằng?
+3.3. Quyền riêng tư vs. An ninh
+* Các hệ thống nhận diện khuôn mặt giúp bắt tội phạm nhanh hơn nhưng cũng đồng nghĩa với việc mọi cử động của người dân đều bị giám sát. Đâu là ranh giới giữa an toàn và tự do cá nhân?
+3.4. AI và Tương lai việc làm
+* Những nghề bị đe dọa: Nhập liệu, trực tổng đài, lái xe tải, công nhân lắp ráp, thậm chí là viết code cơ bản.
+* Những nghề mới ra đời: Kỹ sư gợi ý (Prompt Engineer), chuyên gia đạo đức AI, người kiểm định dữ liệu.
+* Lời khuyên: Con người cần tập trung vào các kỹ năng mà AI khó thay thế: Sáng tạo, Thấu cảm (Empathy) và Tư duy phản biện.
+CHƯƠNG IV: CÂU HỎI ÔN TẬP VÀ THẢO LUẬN MỞ
+1. Phân tích: Hãy nêu một ví dụ về việc AI giúp ích cho việc học tập của bạn và một ví dụ về việc nó có thể khiến bạn trở nên thụ động hơn.
+2. Tình huống: Nếu bạn là một nhà lập trình cho xe tự lái, trong tình huống bất khả kháng phải chọn giữa việc đâm vào một vật cản để bảo vệ người trong xe hay đánh lái để tránh vật cản nhưng gây nguy hiểm cho người đi bộ, bạn sẽ thiết lập cho AI ưu tiên điều gì? Tại sao?
+3. Dự đoán: Theo bạn, 10 năm nữa, nghề nghiệp nào sẽ biến mất hoàn toàn vì AI?

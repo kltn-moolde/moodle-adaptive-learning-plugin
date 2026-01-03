@@ -1,0 +1,66 @@
+﻿BÀI 6: VĂN HÓA ỨNG XỬ VÀ AN NINH NHÂN THÂN TRÊN KHÔNG GIAN MẠNG
+Môn: Tin học 12 (Định hướng CS & ICT)
+Chủ đề: Đạo đức, Pháp luật và Văn hóa trong môi trường số
+1. ĐỊNH DANH SỐ VÀ CƠ CHẾ LƯU VẾT DỮ LIỆU
+1.1. Danh tính số (Digital Identity)
+Danh tính số là phiên bản điện tử của một cá nhân, cho phép các hệ thống máy tính xác thực thực thể đó.
+* Cấu trúc cấu thành: Bao gồm thông tin định danh (tên, ngày sinh), thông tin sinh trắc học (vân tay, khuôn mặt - FaceID), và các thực thể kỹ thuật (địa chỉ IP, lịch sử giao dịch, tài khoản mạng xã hội).
+* Tính xác thực: Một cá nhân có thể có nhiều danh tính số (đa tài khoản), nhưng tất cả đều quy chiếu về một thực thể pháp lý duy nhất ngoài đời thực thông qua các quy định về định danh điện tử (như VNeID).
+1.2. Dấu chân số (Digital Footprint) - "Hồ sơ vĩnh viễn"
+Dấu chân số là tập hợp tất cả các dữ liệu còn sót lại sau các hoạt động trực tuyến.
+* Dấu chân chủ động (Active): Những gì bạn cố ý chia sẻ (đăng ảnh, viết status, gửi email, bình luận).
+* Dấu chân bị động (Passive): Những dữ liệu bị thu thập mà bạn không trực tiếp thực hiện (địa chỉ IP, lịch sử duyệt web qua Cookies, siêu dữ liệu - metadata của ảnh chứa vị trí GPS).
+* Hệ quả: Dữ liệu này được các thuật toán AI sử dụng để xây dựng hồ sơ tâm lý (Psychographic profiling) nhằm mục đích quảng cáo hoặc thao túng hành vi.
+2. QUY TẮC ỨNG XỬ (NETIQUETTE) VÀ KỸ NĂNG GIAO TIẾP SỐ
+2.1. 10 Nguyên tắc vàng của Virginia Shea
+Trong không gian mạng, do thiếu các biểu cảm phi ngôn ngữ (cử chỉ, tông giọng), con người dễ nảy sinh xung đột. Các quy tắc cơ bản bao gồm:
+1. Nhớ rằng đối phương là con người: Đừng viết những gì bạn không dám nói trực tiếp trước mặt họ.
+2. Tuân thủ chuẩn mực đạo đức như ngoài đời: Không vì ẩn danh mà phá bỏ các giá trị đạo đức cơ bản.
+3. Tôn trọng thời gian và băng thông của người khác: Tránh gửi rác dữ liệu (Spam) hoặc tag người khác vô tội vạ.
+4. Giúp kiểm soát các cuộc tranh cãi (Flame wars): Không đổ thêm dầu vào lửa trong các cuộc đấu khẩu vô nghĩa.
+2.2. Quy trình kiểm tra THINK (Mở rộng)
+Trước khi ấn nút "Đăng" hoặc "Gửi", học sinh cần đi qua bộ lọc 5 bước:
+* T (True): Thông tin này có bằng chứng xác thực hay chỉ là tin đồn (Rumor)?
+* H (Helpful): Bài đăng này giải quyết vấn đề gì hay chỉ gây thêm rắc rối?
+* I (Inspiring): Nó có mang lại năng lượng tích cực không?
+* N (Necessary): Thế giới có thực sự cần biết thông tin này ngay bây giờ không?
+* K (Kind): Nếu là người nhận, bạn có thấy bị tổn thương không?
+3. BẮT NẠT QUA MẠNG (CYBERBULLYING) - CƠ CHẾ VÀ ỨNG PHÓ
+3.1. Phân loại hành vi bắt nạt
+Bắt nạt mạng không chỉ là chửi bới, nó bao gồm:
+* Exclusion (Loại trừ): Cố ý loại một người ra khỏi nhóm chat chung để cô lập.
+* Outing (Tiết lộ): Công khai thông tin nhạy cảm, bí mật hoặc ảnh riêng tư để làm nhục (Doxing).
+* Harassment (Quấy rối): Gửi liên tục các tin nhắn tiêu cực một cách có hệ thống.
+* Impersonation (Mạo danh): Tạo tài khoản giả để đăng tin bôi nhọ hoặc gây hấn thay cho nạn nhân.
+3.2. Quy trình 4 bước ứng phó khẩn cấp (Dành cho nạn nhân)
+1. Stop (Dừng lại): Ngắt kết nối ngay lập tức. Không tranh cãi với kẻ bắt nạt vì điều đó cung cấp cho chúng sự chú ý mà chúng khao khát.
+2. Save (Lưu trữ): Chụp màn hình (Timestamp, ID người dùng) làm bằng chứng pháp lý.
+3. Block & Report (Chặn và Báo cáo): Sử dụng các công cụ kỹ thuật của nền tảng (Facebook, TikTok, Zalo) để ngắt liên lạc.
+4. Support (Tìm sự giúp đỡ): Liên hệ Tổng đài Quốc gia Bảo vệ Trẻ em (111) hoặc thông báo cho cha mẹ, thầy cô. Tuyệt đối không chịu đựng một mình.
+4. TIN GIẢ (FAKE NEWS) VÀ CHIẾN THUẬT LỪA ĐẢO SỐ
+4.1. Cơ chế lan truyền tin giả
+Tin giả thường khai thác Thiên kiến xác nhận (Confirmation Bias) - con người có xu hướng tin vào những gì phù hợp với niềm tin sẵn có của mình hơn là sự thật.
+* Deepfake: Sử dụng AI để giả mạo khuôn mặt và giọng nói của người khác trong video, khiến việc phân biệt thật giả trở nên cực kỳ khó khăn.
+* Clickbait: Tiêu đề giật gân để dẫn dụ người dùng vào các trang web chứa mã độc.
+4.2. Kỹ thuật Fact-checking (Kiểm chứng sự thật)
+* Kiểm tra nguồn tin: Tên miền có lạ không (ví dụ: .com.co thay vì .com)?
+* Kiểm tra hình ảnh: Sử dụng Google Reverse Image Search để xem ảnh có bị dùng sai ngữ cảnh hay đã qua chỉnh sửa không.
+* Đọc kỹ nội dung: Tin giả thường mắc lỗi chính tả, ngữ pháp hoặc dùng ngôn từ cực đoan.
+5. KHUNG PHÁP LÝ VÀ TRÁCH NHIỆM HÀNH VI
+5.1. Luật An ninh mạng (2018) và Nghị định 15/2020/NĐ-CP
+Tại Việt Nam, các hành vi vi phạm trên không gian mạng có thể bị xử phạt hành chính từ 10 - 20 triệu đồng hoặc truy cứu trách nhiệm hình sự:
+* Điều 101 (Nghị định 15): Xử phạt hành vi cung cấp, chia sẻ thông tin giả mạo, thông tin sai sự thật, xuyên tạc, vu khống, xúc phạm uy tín của cơ quan, tổ chức, danh dự, nhân phẩm của cá nhân.
+* Tội làm nhục người khác (Điều 155 Bộ luật Hình sự): Nếu hành vi xúc phạm nghiêm trọng nhân phẩm có thể bị phạt tù.
+6. DANH MỤC THUẬT NGỮ VÀ FAQ (TỐI ƯU CHO RAG)
+6.1. Glossary (Thuật ngữ)
+* Doxing: Hành vi công khai thông tin cá nhân của một người trên mạng mà không có sự đồng ý.
+* Phishing: Hình thức lừa đảo bằng cách giả mạo thực thể uy tín để lấy cắp thông tin nhạy cảm.
+* Echo Chamber (Phòng đoạn thanh): Môi trường mạng nơi bạn chỉ tiếp xúc với những ý kiến giống mình, làm tăng tính cực đoan.
+* Cyberbullying: Hành vi bắt nạt bằng công nghệ số.
+6.2. Câu hỏi thường gặp (FAQ) cho AI
+* Q: Tôi lỡ bình luận xúc phạm một bạn trên Facebook, sau đó tôi xóa đi thì có sao không?
+   * A: Dù đã xóa, bình luận đó có thể đã được chụp lại làm chứng cứ pháp lý. Nó đã để lại Dấu chân số và có thể ảnh hưởng đến danh tiếng lâu dài của bạn.
+* Q: Làm thế nào để bảo vệ "Dấu chân số" của mình?
+   * A: Sử dụng chế độ ẩn danh khi duyệt web, kiểm tra quyền riêng tư của tài khoản MXH định kỳ và suy nghĩ 5 giây (quy tắc THINK) trước khi tương tác.
+* Q: Khi thấy bạn mình bị bắt nạt trên mạng, tôi nên làm gì?
+   * A: Đừng đứng xem (bystander). Hãy bí mật ủng hộ bạn mình, khuyên bạn báo người lớn và cùng bạn báo cáo hành vi xấu với nền tảng mạng xã hội.
