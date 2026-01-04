@@ -84,7 +84,7 @@ class LOMasteryService:
         """
         try:
             # 1. Get user scores from Moodle
-            scores_data = self.moodle_client.get_user_scores(user_id, section_id=None)
+            scores_data = self.moodle_client.get_user_scores(user_id, section_id=None, course_id=course_id)
             
             # 2. Load Po_Lo.json for this course
             po_lo_data = self.po_lo_service.get_po_lo(course_id)

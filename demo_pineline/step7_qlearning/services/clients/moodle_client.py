@@ -249,7 +249,8 @@ class MoodleAPIClient:
     def get_user_scores(
         self,
         user_id: int,
-        section_id: Optional[int] = None
+        section_id: Optional[int] = None,
+        course_id: Optional[int] = None
     ) -> List[Dict]:
         """
         Get user scores across activities (quizzes)
@@ -260,15 +261,19 @@ class MoodleAPIClient:
         Args:
             user_id: User ID
             section_id: Section ID (optional - if None, get scores from all sections)
+            course_id: Course ID (optional - uses self.course_id if not provided)
             
         Returns:
             List of score dictionaries with quiz scores
         """
+        # Use provided course_id or fall back to instance course_id
+        effective_course_id = course_id if course_id is not None else self.course_id
+        
         # If specific section requested, get scores for that section only
         if section_id is not None:
             params = {
                 'userid': user_id,
-                'courseid': self.course_id,
+                'courseid': effective_course_id,
                 'sectionid': section_id
             }
             
@@ -286,7 +291,7 @@ class MoodleAPIClient:
         
         try:
             # Get course structure to find all sections
-            course_structure = self.get_course_structure()
+            course_structure = self.get_course_structure(course_id=effective_course_id)
             contents = course_structure.get('contents', [])
             
             if not contents:
@@ -319,7 +324,7 @@ class MoodleAPIClient:
                 # Get scores for this section with all required params
                 params = {
                     'userid': user_id,
-                    'courseid': self.course_id,
+                    'courseid': effective_course_id,
                     'sectionid': section_id_current
                 }
                 
@@ -404,7 +409,7 @@ class MoodleAPIClient:
         
         return progression
     
-    def get_course_structure(self) -> Dict:
+    def get_course_structure(self, course_id: Optional[int] = None) -> Dict:
         """
         Get course structure
         
@@ -438,11 +443,17 @@ class MoodleAPIClient:
             ]
         }
         
+        Args:
+            course_id: Course ID (optional - uses self.course_id if not provided)
+            
         Returns:
             Course structure dictionary
         """
+        # Use provided course_id or fall back to instance course_id
+        effective_course_id = course_id if course_id is not None else self.course_id
+        
         params = {
-            'courseid': self.course_id
+            'courseid': effective_course_id
         }
         
         # Try custom function first, fallback to standard

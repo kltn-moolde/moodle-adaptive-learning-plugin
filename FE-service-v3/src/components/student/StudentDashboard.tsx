@@ -273,7 +273,7 @@ export function StudentDashboard() {
 
         // Get PO-LO data
         try {
-          const recommendCourseId = course.id === 2 ? 5 : course.id;
+          const recommendCourseId = course.id;
           const [poloMapping, loMastery] = await Promise.all([
             getPOLOMapping(recommendCourseId),
             getLOMastery(userId, recommendCourseId)
