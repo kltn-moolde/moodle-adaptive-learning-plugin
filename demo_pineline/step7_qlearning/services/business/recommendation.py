@@ -184,6 +184,7 @@ class RecommendationService:
                         # Add activity details and explanation
                         rec_dict['activity_id'] = activity_rec.get('activity_id')
                         rec_dict['activity_name'] = activity_rec.get('activity_name', 'N/A')
+                        rec_dict['activity_url'] = activity_rec.get('url', None)  # Thêm URL để link đến bài học
                         rec_dict['target_los'] = activity_rec.get('weak_los', [])
                         rec_dict['explanation'] = activity_rec.get('reason', 'No explanation available')
                         rec_dict['alternatives'] = activity_rec.get('alternatives', [])

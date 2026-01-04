@@ -5,6 +5,15 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../ui/dialog";
+import { ScrollArea } from "../ui/scroll-area";
+import {
   LineChart,
   Line,
   XAxis,
@@ -18,7 +27,7 @@ import {
   PolarRadiusAxis,
   Radar,
 } from "recharts";
-import { BookOpen, Brain, TrendingUp, Award, Clock, AlertCircle } from "lucide-react";
+import { BookOpen, Brain, TrendingUp, Award, Clock, AlertCircle, ExternalLink, Sparkles, Target, Star, Info } from "lucide-react";
 import { useEffect, useState } from "react";
 import {
   getSiteInfo,
@@ -27,6 +36,9 @@ import {
   getActivityHeatmap,
   getCourseContent,
   getCourseCompletion,
+  getAIRecommendations,
+  getPOLOMapping,
+  getLOMastery,
 } from "../../services/moodleApi";
 import { getLtiParams } from "../../utils/ltiParams";
 
@@ -66,6 +78,16 @@ const mockLearningPath = [
   { id: 5, title: "Object-Oriented Programming", status: "locked", score: 0 },
 ];
 
+interface AIRecommendation {
+  activity_id: number;
+  activity_name: string;
+  activity_url: string;
+  explanation: string;
+  action_type: string;
+  q_value: number;
+  target_los: [string, number][];
+}
+
 export function StudentDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -78,6 +100,11 @@ export function StudentDashboard() {
   const [overallProgress, setOverallProgress] = useState(75);
   const [completedLessons, setCompletedLessons] = useState(0);
   const [totalLessons, setTotalLessons] = useState(0);
+  const [recommendations, setRecommendations] = useState<AIRecommendation[]>([]);
+  const [poProgress, setPOProgress] = useState<any[]>([]);
+  const [poloData, setPOLOData] = useState<any>(null);
+  const [loMasteryData, setLOMasteryData] = useState<any>(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   useEffect(() => {
     fetchDashboardData();
@@ -229,6 +256,47 @@ export function StudentDashboard() {
           { skill: "Quizzes", value: Math.min(progress.overall + 18, 100) },
         ];
         setSkillsData(skillsPerformance);
+
+        // Get AI recommendations
+        try {
+          // Convert courseId if needed (course 2 -> course 5)
+          const recommendCourseId = course.id === 2 ? 5 : course.id;
+          const aiData = await getAIRecommendations(userId, recommendCourseId);
+          if (aiData && aiData.recommendations) {
+            setRecommendations(aiData.recommendations.slice(0, 5));
+            console.log("Fetched AI recommendations:", aiData.recommendations);
+            console.log("First recommendation:", aiData.recommendations[0]);
+          }
+        } catch (err) {
+          console.error("Failed to fetch AI recommendations:", err);
+        }
+
+        // Get PO-LO data
+        try {
+          const recommendCourseId = course.id === 2 ? 5 : course.id;
+          const [poloMapping, loMastery] = await Promise.all([
+            getPOLOMapping(recommendCourseId),
+            getLOMastery(userId, recommendCourseId)
+          ]);
+          
+          if (poloMapping && poloMapping.data) {
+            setPOLOData(poloMapping.data);
+          }
+          
+          if (loMastery && loMastery.data && loMastery.data.po_progress) {
+            setLOMasteryData(loMastery.data);
+            // Transform PO progress for radar chart
+            const poData = Object.entries(loMastery.data.po_progress).map(([key, value]) => ({
+              po: key,
+              value: Math.round((value as number) * 100),
+              description: poloMapping?.data?.programme_outcomes?.find((p: any) => p.id === key)?.description || ""
+            }));
+            setPOProgress(poData);
+            console.log("Fetched PO-LO data:", { poloMapping, loMastery, poData });
+          }
+        } catch (err) {
+          console.error("Failed to fetch PO-LO data:", err);
+        }
       }
 
       setLoading(false);
@@ -405,50 +473,86 @@ export function StudentDashboard() {
         </motion.div>
 
 
-        {/* Next Lesson */}
+        {/* AI Recommendations */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.2 }}
         >
-          <Card className="rounded-2xl">
-            <CardHeader>
+          <Card className="rounded-2xl h-[410px] flex flex-col">
+            <CardHeader className="pb-3">
               <CardTitle className="flex items-center gap-2">
-                <BookOpen className="h-5 w-5 text-primary" />
-                Bài học tiếp theo
+                <Sparkles className="h-5 w-5 text-primary" />
+                Gợi ý từ AI
               </CardTitle>
-              <CardDescription>Đề xuất từ AI cho bạn</CardDescription>
+              <CardDescription>Các hoạt động học tập được đề xuất cho bạn</CardDescription>
             </CardHeader>
-            <CardContent>
-              <div className="bg-secondary p-3 sm:p-4 rounded-xl mb-4">
-                <h3 className="mb-2 text-sm sm:text-base">{nextLesson.title}</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground mb-4">
-                  {nextLesson.status === "in-progress"
-                    ? "Tiếp tục hành trình học tập với mô-đun này."
-                    : "Phù hợp với trình độ hiện tại của bạn!"}
-                </p>
-                <div className="flex flex-wrap items-center gap-2 text-xs mb-4">
-                  <Badge variant="outline" className="border-primary text-primary text-xs">
-                    {nextLesson.status === "in-progress" ? "Tiếp tục" : "Bắt đầu"}
-                  </Badge>
-                  <Badge variant="outline" className="text-xs">⏱️ 45 phút</Badge>
-                  {nextLesson.status === "completed" && (
-                    <Badge variant="outline" className="text-xs">✓ Đã hoàn thành: {nextLesson.score}%</Badge>
-                  )}
+            <CardContent className="flex-1 overflow-y-auto">
+              {recommendations.length > 0 ? (
+                <div className="space-y-3 pr-2">
+                  {recommendations.map((rec, index) => (
+                    <motion.div
+                      key={`${rec.action_id}-${rec.activity_id}-${index}`}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                    >
+                      <a
+                        href={rec.activity_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block"
+                      >
+                        <div className="p-4 rounded-xl border hover:border-primary hover:shadow-md hover:bg-secondary/50 transition-all cursor-pointer group">
+                          <div className="flex items-start justify-between gap-3 mb-3">
+                            <div className="flex-1 min-w-0">
+                              <h4 className="text-base font-semibold group-hover:text-primary transition-colors mb-1 leading-tight">
+                                {rec.activity_name || "Hoạt động học tập"}
+                              </h4>
+                              <div className="flex flex-wrap items-center gap-2 mt-2">
+                                <Badge variant="outline" className="text-xs font-medium">
+                                  {rec.action_type?.replace(/_/g, ' ') || "N/A"}
+                                </Badge>
+                                {rec.target_los && rec.target_los.length > 0 && (
+                                  <Badge variant="secondary" className="text-xs flex items-center gap-1">
+                                    <Target className="h-3 w-3" />
+                                    {rec.target_los[0][0]}
+                                  </Badge>
+                                )}
+                                {rec.q_value !== undefined && (
+                                  <Badge 
+                                    variant="outline" 
+                                    className={`text-xs font-semibold flex items-center gap-1 ${
+                                      rec.q_value > 100 ? 'border-green-500 bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-400' :
+                                      rec.q_value > 50 ? 'border-yellow-500 bg-yellow-50 text-yellow-700 dark:bg-yellow-950 dark:text-yellow-400' :
+                                      'border-gray-500'
+                                    }`}
+                                  >
+                                    <Star className="h-3 w-3 fill-current" />
+                                    {rec.q_value.toFixed(1)}
+                                  </Badge>
+                                )}
+                              </div>
+                            </div>
+                            <ExternalLink className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 mt-1" />
+                          </div>
+                          
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            {rec.explanation || "Không có mô tả"}
+                          </p>
+                        </div>
+                      </a>
+                    </motion.div>
+                  ))}
                 </div>
-                <Button className="w-full rounded-xl bg-primary hover:bg-primary/90 text-sm sm:text-base">
-                  {nextLesson.status === "in-progress" ? "Tiếp tục học →" : "Bắt đầu học ngay →"}
-                </Button>
-              </div>
-
-              <div className="space-y-2">
-                <p className="text-xs sm:text-sm text-muted-foreground">Mục tiêu học tập:</p>
-                <ul className="text-xs sm:text-sm space-y-1 ml-4">
-                  <li>✓ Hiểu logic điều kiện</li>
-                  <li>✓ Sử dụng câu lệnh if, elif và else</li>
-                  <li>✓ Áp dụng điều kiện trong tình huống thực tế</li>
-                </ul>
-              </div>
+              ) : (
+                <div className="flex flex-col items-center justify-center py-8 text-center">
+                  <Brain className="h-12 w-12 text-muted-foreground mb-3 opacity-50" />
+                  <p className="text-sm text-muted-foreground">
+                    Đang tải gợi ý từ AI...
+                  </p>
+                </div>
+              )}
             </CardContent>
           </Card>
         </motion.div>
@@ -495,7 +599,7 @@ export function StudentDashboard() {
           </Card>
         </motion.div>
 
-        {/* Skills Radar */}
+        {/* PO Progress Radar */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -503,25 +607,145 @@ export function StudentDashboard() {
         >
           <Card className="rounded-2xl">
             <CardHeader>
-              <CardTitle>Phân tích kỹ năng</CardTitle>
-              <CardDescription>Hiệu suất qua các lĩnh vực khác nhau</CardDescription>
+              <div className="flex items-start justify-between">
+                <div className="flex-1">
+                  <CardTitle className="flex items-center gap-2">
+                    Đạt chuẩn đầu ra (PO)
+                    <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+                      <DialogTrigger asChild>
+                        <Button variant="ghost" size="icon" className="h-6 w-6 rounded-full">
+                          <Info className="h-4 w-4 text-muted-foreground" />
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent 
+                        className="sm:max-w-[90vw] md:max-w-3xl max-h-[85vh] overflow-hidden"
+                        style={{ translate: 'none' }}
+                      >
+                        <DialogHeader>
+                          <DialogTitle>Chi tiết PO & LO của khóa học</DialogTitle>
+                          <DialogDescription>
+                            Programme Outcomes (PO) và Learning Outcomes (LO) cho khóa học này
+                          </DialogDescription>
+                        </DialogHeader>
+                        <ScrollArea className="max-h-[calc(85vh-120px)] pr-4">
+                          {poloData && (
+                            <div className="space-y-6">
+                              {/* Programme Outcomes */}
+                              <div>
+                                <h3 className="text-lg font-semibold mb-3">Programme Outcomes (PO)</h3>
+                                <div className="space-y-3">
+                                  {poloData.programme_outcomes?.map((po: any) => {
+                                    const progress = loMasteryData?.po_progress?.[po.id] || 0;
+                                    return (
+                                      <div key={po.id} className="p-3 rounded-lg border bg-card">
+                                        <div className="flex items-center justify-between mb-2">
+                                          <Badge variant="outline" className="font-semibold">{po.id}</Badge>
+                                          <Badge 
+                                            className={`${
+                                              progress > 0.7 ? 'bg-green-100 text-green-700 dark:bg-green-950' :
+                                              progress > 0.4 ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-950' :
+                                              'bg-gray-100 text-gray-700 dark:bg-gray-950'
+                                            }`}
+                                          >
+                                            {Math.round(progress * 100)}%
+                                          </Badge>
+                                        </div>
+                                        <p className="text-sm text-muted-foreground">{po.description}</p>
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                              </div>
+
+                              {/* Learning Outcomes */}
+                              <div>
+                                <h3 className="text-lg font-semibold mb-3">Learning Outcomes (LO)</h3>
+                                <div className="space-y-3">
+                                  {poloData.learning_outcomes?.map((lo: any) => {
+                                    const mastery = loMasteryData?.lo_mastery?.[lo.id] || 0;
+                                    return (
+                                      <div key={lo.id} className="p-3 rounded-lg border bg-card">
+                                        <div className="flex items-center justify-between mb-2">
+                                          <div className="flex items-center gap-2">
+                                            <Badge variant="secondary" className="font-semibold">{lo.id}</Badge>
+                                            <div className="flex flex-wrap gap-1">
+                                              {lo.mapped_to?.map((po: string) => (
+                                                <Badge key={po} variant="outline" className="text-xs">{po}</Badge>
+                                              ))}
+                                            </div>
+                                          </div>
+                                          <Badge 
+                                            className={`${
+                                              mastery > 0.7 ? 'bg-green-100 text-green-700 dark:bg-green-950' :
+                                              mastery > 0.4 ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-950' :
+                                              'bg-gray-100 text-gray-700 dark:bg-gray-950'
+                                            }`}
+                                          >
+                                            {Math.round(mastery * 100)}%
+                                          </Badge>
+                                        </div>
+                                        <p className="text-sm text-muted-foreground mb-2">{lo.description}</p>
+                                        {lo.related_activities && lo.related_activities.length > 0 && (
+                                          <div className="mt-2">
+                                            <p className="text-xs font-medium text-muted-foreground mb-1">Hoạt động liên quan:</p>
+                                            <div className="flex flex-wrap gap-1">
+                                              {lo.related_activities.slice(0, 3).map((activity: string, idx: number) => (
+                                                <Badge key={idx} variant="outline" className="text-xs">{activity}</Badge>
+                                              ))}
+                                              {lo.related_activities.length > 3 && (
+                                                <Badge variant="outline" className="text-xs">+{lo.related_activities.length - 3} more</Badge>
+                                              )}
+                                            </div>
+                                          </div>
+                                        )}
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                        </ScrollArea>
+                      </DialogContent>
+                    </Dialog>
+                  </CardTitle>
+                  <CardDescription>Tiến độ đạt chuẩn đầu ra của bạn</CardDescription>
+                </div>
+              </div>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={250}>
-                <RadarChart data={skillsData}>
+                <RadarChart data={poProgress.length > 0 ? poProgress : skillsData}>
                   <PolarGrid stroke="#E2E8F0" />
-                  <PolarAngleAxis dataKey="skill" stroke="#64748B" fontSize={12} />
-                  <PolarRadiusAxis stroke="#64748B" fontSize={12} />
+                  <PolarAngleAxis 
+                    dataKey={poProgress.length > 0 ? "po" : "skill"} 
+                    stroke="#64748B" 
+                    fontSize={12} 
+                  />
+                  <PolarRadiusAxis stroke="#64748B" fontSize={12} domain={[0, 100]} />
                   <Radar
-                    name="Performance"
+                    name="Progress"
                     dataKey="value"
                     stroke="#16A34A"
                     fill="#16A34A"
                     fillOpacity={0.3}
                   />
-                  <Tooltip />
+                  <Tooltip 
+                    formatter={(value: any) => [`${value}%`, 'Progress']}
+                    contentStyle={{
+                      backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                      border: '1px solid #E2E8F0',
+                      borderRadius: '8px',
+                      padding: '8px'
+                    }}
+                  />
                 </RadarChart>
               </ResponsiveContainer>
+              {poProgress.length === 0 && (
+                <p className="text-center text-xs text-muted-foreground mt-2">
+                  Đang tải dữ liệu PO...
+                </p>
+              )}
             </CardContent>
           </Card>
         </motion.div>

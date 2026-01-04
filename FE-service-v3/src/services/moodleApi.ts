@@ -400,3 +400,80 @@ export async function getStrugglingTopics(
     return [];
   }
 }
+
+/**
+ * Get AI recommendations for student
+ */
+export async function getAIRecommendations(userId: number, courseId: number): Promise<any> {
+  try {
+    const RECOMMEND_API_URL = "http://139.99.103.223:8088";
+    const response = await fetch(`${RECOMMEND_API_URL}/api/recommend/user_id/${userId}/course_id/${courseId}`);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    
+    if (!data.success) {
+      throw new Error("Recommendation API returned unsuccessful response");
+    }
+
+    return data;
+  } catch (error) {
+    console.error("Error fetching AI recommendations:", error);
+    return null;
+  }
+}
+
+/**
+ * Get PO-LO mapping for a course
+ */
+export async function getPOLOMapping(courseId: number): Promise<any> {
+  const RECOMMEND_API_URL = "http://139.99.103.223:8088";
+  
+  try {
+    const response = await fetch(`${RECOMMEND_API_URL}/api/po-lo/${courseId}`);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    
+    if (!data.success) {
+      throw new Error("PO-LO API returned unsuccessful response");
+    }
+
+    return data;
+  } catch (error) {
+    console.error("Error fetching PO-LO mapping:", error);
+    return null;
+  }
+}
+
+/**
+ * Get LO mastery for a user in a course
+ */
+export async function getLOMastery(userId: number, courseId: number): Promise<any> {
+  const RECOMMEND_API_URL = "http://139.99.103.223:8088";
+  
+  try {
+    const response = await fetch(`${RECOMMEND_API_URL}/api/lo-mastery/${userId}/${courseId}`);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    
+    if (!data.success) {
+      throw new Error("LO Mastery API returned unsuccessful response");
+    }
+
+    return data;
+  } catch (error) {
+    console.error("Error fetching LO mastery:", error);
+    return null;
+  }
+}

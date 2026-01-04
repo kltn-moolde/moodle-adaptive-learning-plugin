@@ -79,6 +79,11 @@ class ActivityRecommender:
         # Activity ID -> Lesson ID mapping (for time context filtering)
         self.activity_to_lesson: Dict[int, int] = {}
         
+        # Load URL mapping from course.json for fallback
+        self.url_mapping: Dict[int, str] = {}  # activity_id -> url
+        self.name_to_url: Dict[str, str] = {}  # activity_name -> url
+        self._load_url_mapping_from_course_json()
+        
         # Try loading from course_structure.json first
         loaded_from_course_structure = False
         try:
@@ -91,22 +96,29 @@ class ActivityRecommender:
                 section_id = section.get('id')
                 section_component = section.get('component')
                 
-                # Chỉ xử lý section có component="mod_subsection" (đây là lesson)
-                if section_component == 'mod_subsection':
-                    modules = section.get('modules', [])
-                    for module in modules:
-                        activity_id = module.get('id')
-                        if activity_id:
-                            # Map activity_id -> lesson_id (section_id)
+                # Load all modules from all sections (not just subsections)
+                modules = section.get('modules', [])
+                for module in modules:
+                    activity_id = module.get('id')
+                    activity_name = module.get('name', f'Activity {activity_id}')
+                    
+                    if activity_id:
+                        # Map activity_id -> lesson_id (section_id) if it's a subsection
+                        if section_component == 'mod_subsection':
                             self.activity_to_lesson[activity_id] = section_id
-                            
-                            self.activity_info[activity_id] = {
-                                'id': activity_id,
-                                'name': module.get('name', f'Activity {activity_id}'),
-                                'type': module.get('modname', 'unknown'),
-                                'lesson_id': section_id,  # Thêm lesson_id vào activity_info
-                                'difficulty': self._infer_difficulty(module.get('name', ''))
-                            }
+                        
+                        # Get URL from module, fallback to course.json lookup
+                        url = module.get('url') or self._get_activity_url(activity_id, activity_name)
+                        
+                        # Always store activity info with URL
+                        self.activity_info[activity_id] = {
+                            'id': activity_id,
+                            'name': activity_name,
+                            'type': module.get('modname', 'unknown'),
+                            'lesson_id': section_id if section_component == 'mod_subsection' else None,
+                            'difficulty': self._infer_difficulty(activity_name),
+                            'url': url  # Lấy URL từ course structure hoặc course.json
+                        }
             
             # Fallback: try old format (modules -> sections -> activities)
             if not self.activity_info:
@@ -116,13 +128,19 @@ class ActivityRecommender:
                     for section in module.get('sections', []):
                         for activity in section.get('activities', []):
                             activity_id = activity.get('id')
+                            activity_name = activity.get('name', f'Activity {activity_id}')
+                            
                             if activity_id:
+                                # Get URL from fallback mapping
+                                url = self._get_activity_url(activity_id, activity_name)
+                                
                                 self.activity_info[activity_id] = {
                                     'id': activity_id,
-                                    'name': activity.get('name', f'Activity {activity_id}'),
+                                    'name': activity_name,
                                     'type': activity.get('type', 'unknown'),
                                     'module_idx': module_idx,
-                                    'difficulty': self._infer_difficulty(activity.get('name', ''))
+                                    'difficulty': self._infer_difficulty(activity_name),
+                                    'url': url  # Lấy URL từ course.json
                                 }
             
             loaded_from_course_structure = True
@@ -143,6 +161,58 @@ class ActivityRecommender:
         elif 'hard' in name_lower:
             return 'hard'
         return 'medium'
+    
+    def _load_url_mapping_from_course_json(self):
+        """
+        Load URL mapping từ course.json (dùng để fallback khi course_structure không có URL)
+        Mapping: activity_id -> url và activity_name -> url
+        """
+        course_json_path = Path(__file__).parent.parent / 'data' / 'course.json'
+        
+        try:
+            with open(course_json_path, 'r', encoding='utf-8') as f:
+                course_data = json.load(f)
+            
+            def extract_urls(node):
+                """Đệ quy extract URLs từ hierarchy"""
+                if node.get('type') == 'activity':
+                    activity_id = node.get('id')
+                    activity_name = node.get('name')
+                    url = node.get('metadata', {}).get('url')
+                    
+                    if activity_id and url:
+                        self.url_mapping[activity_id] = url
+                    if activity_name and url:
+                        self.name_to_url[activity_name] = url
+                
+                # Đệ quy vào children
+                for child in node.get('children', []):
+                    extract_urls(child)
+            
+            # Extract từ hierarchy root
+            extract_urls(course_data.get('hierarchy', {}))
+            
+            print(f"✓ Loaded {len(self.url_mapping)} URL mappings from course.json")
+            
+        except Exception as e:
+            print(f"⚠️  Could not load URL mapping from course.json: {e}")
+    
+    def _get_activity_url(self, activity_id: int, activity_name: str = None) -> Optional[str]:
+        """
+        Get URL cho activity, fallback theo thứ tự:
+        1. Từ url_mapping (by ID)
+        2. Từ name_to_url (by name)
+        3. Return None
+        """
+        # Try by ID first
+        if activity_id in self.url_mapping:
+            return self.url_mapping[activity_id]
+        
+        # Try by name
+        if activity_name and activity_name in self.name_to_url:
+            return self.name_to_url[activity_name]
+        
+        return None
     
     def _build_activity_info_from_po_lo(self, po_lo_data: Dict):
         """Build activity info from Po_Lo.json when course_structure is not available"""
@@ -172,12 +242,16 @@ class ActivityRecommender:
                     else:
                         activity_type = 'resource'
                     
+                    # Get URL from course.json mapping
+                    url = self._get_activity_url(activity_id, activity_name)
+                    
                     self.activity_info[activity_id] = {
                         'id': activity_id,
                         'name': activity_name,
                         'type': activity_type,
                         'module_idx': module_idx,
-                        'difficulty': self._infer_difficulty(activity_name)
+                        'difficulty': self._infer_difficulty(activity_name),
+                        'url': url  # Lấy URL từ course.json
                     }
     
     def recommend_activity(
@@ -314,6 +388,7 @@ class ActivityRecommender:
         return {
             'activity_id': activity_id,
             'activity_name': activity_name,
+            'url': activity_info.get('url', None),  # Thêm URL cho activity
             'weak_los': targeted_los,
             'reason': reason,
             'alternatives': alternatives,

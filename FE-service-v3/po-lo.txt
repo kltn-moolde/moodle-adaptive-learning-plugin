@@ -1,0 +1,292 @@
+{{http://139.99.103.223:8088}}/api/po-lo/5 -> 5 ở đây là course_id
+
+{
+    "success": true,
+    "course_id": 5,
+    "data": {
+        "programme_outcomes": [
+            {
+                "id": "PO1",
+                "description": "Hiểu biết cơ bản về trí tuệ nhân tạo (AI) và ứng dụng của nó trong xã hội tri thức, bao gồm vai trò của AI trong khoa học và đời sống hàng ngày."
+            },
+            {
+                "id": "PO2",
+                "description": "Kiến thức về mạng máy tính, Internet và các thiết bị mạng thông dụng, bao gồm kỹ năng thực hành chia sẻ tài nguyên trên mạng."
+            },
+            {
+                "id": "PO3",
+                "description": "Hiểu biết về đạo đức, pháp luật và văn hóa trong môi trường số, tập trung vào giao tiếp và ứng xử an toàn trên không gian mạng."
+            },
+            {
+                "id": "PO4",
+                "description": "Khả năng giải quyết vấn đề với sự trợ giúp của máy tính, bao gồm ứng dụng học máy (ML) trong các lĩnh vực thực tế như y tế và nông nghiệp."
+            },
+            {
+                "id": "PO5",
+                "description": "Kỹ năng đánh giá và tự học qua các hoạt động đánh giá (quiz, assignment) và hợp tác (forum), phù hợp với cách tiếp cận STEM của bộ giáo dục Việt Nam."
+            }
+        ],
+        "learning_outcomes": [
+            {
+                "id": "LO1.1",
+                "description": "Nhận biết và giải thích các khái niệm cơ bản về trí tuệ nhân tạo qua tài liệu SGK và video bài giảng.",
+                "mapped_to": [
+                    "PO1"
+                ],
+                "related_activities": [
+                    "SGK_CS_Bai1",
+                    "Video bài giảng 1"
+                ],
+                "activity_ids": [
+                    54,
+                    98
+                ]
+            },
+            {
+                "id": "LO1.2",
+                "description": "Áp dụng kiến thức AI để đánh giá qua các bài kiểm tra ở mức độ easy, medium, hard.",
+                "mapped_to": [
+                    "PO1",
+                    "PO5"
+                ],
+                "related_activities": [
+                    "bài kiểm tra bài 1 - easy",
+                    "bài kiểm tra bài 1 - medium",
+                    "bài kiểm tra bài 1 - hard"
+                ],
+                "activity_ids": [
+                    56,
+                    57,
+                    58
+                ]
+            },
+            {
+                "id": "LO1.3",
+                "description": "Thảo luận về tác động của AI đến con người qua diễn đàn.",
+                "mapped_to": [
+                    "PO1",
+                    "PO5"
+                ],
+                "related_activities": [
+                    "AI có thay thế con người không?"
+                ],
+                "activity_ids": [
+                    92
+                ]
+            },
+            {
+                "id": "LO1.4",
+                "description": "Hiểu ứng dụng AI trong khoa học và đời sống qua tài liệu và video.",
+                "mapped_to": [
+                    "PO1"
+                ],
+                "related_activities": [
+                    "SGK_CS_Bai2",
+                    "Video bài giảng 2"
+                ],
+                "activity_ids": [
+                    60,
+                    99
+                ]
+            },
+            {
+                "id": "LO1.5",
+                "description": "Đánh giá kiến thức ứng dụng AI qua các bài kiểm tra ở các mức độ.",
+                "mapped_to": [
+                    "PO1",
+                    "PO5"
+                ],
+                "related_activities": [
+                    "bài kiểm tra bài 2 - easy",
+                    "bài kiểm tra bài 2 - medium",
+                    "bài kiểm tra bài 2 - hard"
+                ],
+                "activity_ids": [
+                    62,
+                    63,
+                    64
+                ]
+            },
+            {
+                "id": "LO2.1",
+                "description": "Mô tả các thiết bị mạng thông dụng qua tài liệu và video bài giảng.",
+                "mapped_to": [
+                    "PO2"
+                ],
+                "related_activities": [
+                    "SGK_CS_Bai3",
+                    "Video bài giảng 3"
+                ],
+                "activity_ids": [
+                    67,
+                    100
+                ]
+            },
+            {
+                "id": "LO2.2",
+                "description": "Thực hành và đánh giá kiến thức thiết bị mạng qua trắc nghiệm ở các mức độ.",
+                "mapped_to": [
+                    "PO2",
+                    "PO5"
+                ],
+                "related_activities": [
+                    "Trắc nghiệm bài 3 - easy",
+                    "bài kiểm tra bài 3 - medium",
+                    "bài kiểm tra bài 3 - hard"
+                ],
+                "activity_ids": [
+                    68,
+                    69,
+                    70
+                ]
+            },
+            {
+                "id": "LO2.3",
+                "description": "Hiểu và thực hành chia sẻ tài nguyên trên mạng qua tài liệu và video.",
+                "mapped_to": [
+                    "PO2"
+                ],
+                "related_activities": [
+                    "SGK_CS_Bai4",
+                    "Video bài giảng 4",
+                    "SGK_CS_Bai5",
+                    "Video bài giảng 5"
+                ],
+                "activity_ids": [
+                    73,
+                    101,
+                    79,
+                    103
+                ]
+            },
+            {
+                "id": "LO2.4",
+                "description": "Đánh giá kỹ năng chia sẻ tài nguyên qua trắc nghiệm và diễn đàn.",
+                "mapped_to": [
+                    "PO2",
+                    "PO5"
+                ],
+                "related_activities": [
+                    "Trắc nghiệm bài 4 - easy",
+                    "Bài kiểm tra bài 4 - medium",
+                    "Bài kiểm tra bài 4 - hard",
+                    "Trắc nghiệm bài 5 - easy",
+                    "Bài kiểm tra bài 5 - medium",
+                    "Bài kiểm tra bài 5 - hard",
+                    "chia sẻ bản vẽ"
+                ],
+                "activity_ids": [
+                    74,
+                    75,
+                    76,
+                    80,
+                    81,
+                    82,
+                    95
+                ]
+            },
+            {
+                "id": "LO3.1",
+                "description": "Hiểu các nguyên tắc giao tiếp và ứng xử trong không gian mạng qua tài liệu và video.",
+                "mapped_to": [
+                    "PO3"
+                ],
+                "related_activities": [
+                    "SGK_CS_Bai6",
+                    "Video bài giảng 6"
+                ],
+                "activity_ids": [
+                    85,
+                    104
+                ]
+            },
+            {
+                "id": "LO3.2",
+                "description": "Áp dụng kiến thức đạo đức số qua trắc nghiệm và thảo luận tình huống.",
+                "mapped_to": [
+                    "PO3",
+                    "PO5"
+                ],
+                "related_activities": [
+                    "Trắc nghiệm bài 6 - easy",
+                    "Bài kiểm tra bài 6 - medium",
+                    "Bài kiểm tra bài 6 - hard",
+                    "thảo luận tình huống đạo đức số"
+                ],
+                "activity_ids": [
+                    86,
+                    87,
+                    88,
+                    93
+                ]
+            },
+            {
+                "id": "LO4.1",
+                "description": "Thảo luận ứng dụng ML trong y tế và nông nghiệp qua diễn đàn.",
+                "mapped_to": [
+                    "PO4",
+                    "PO5"
+                ],
+                "related_activities": [
+                    "ML ứng dụng trong y tế, nông nghiệp"
+                ],
+                "activity_ids": [
+                    96
+                ]
+            },
+            {
+                "id": "LO4.2",
+                "description": "Đánh giá kiến thức giải quyết vấn đề bằng máy tính qua quiz test.",
+                "mapped_to": [
+                    "PO4",
+                    "PO5"
+                ],
+                "related_activities": [
+                    "quiz test"
+                ],
+                "activity_ids": [
+                    105
+                ]
+            },
+            {
+                "id": "LO5.1",
+                "description": "Hoàn thành kiểm tra giữa kỳ để đánh giá tổng hợp kiến thức từ các chủ đề đầu.",
+                "mapped_to": [
+                    "PO1",
+                    "PO2",
+                    "PO5"
+                ],
+                "related_activities": [
+                    "Kiểm tra giữa kỳ, 45 phút",
+                    "Câu 1",
+                    "Câu 2",
+                    "Câu 3"
+                ],
+                "activity_ids": [
+                    107,
+                    109,
+                    110,
+                    111
+                ]
+            },
+            {
+                "id": "LO5.2",
+                "description": "Sử dụng công cụ hỗ trợ học tập như chat bot và adaptive learning để tự học và củng cố kiến thức.",
+                "mapped_to": [
+                    "PO5"
+                ],
+                "related_activities": [
+                    "Chat bot",
+                    "adaptive learning"
+                ],
+                "activity_ids": [
+                    112,
+                    91
+                ]
+            }
+        ],
+        "relationships": {
+            "description": "Mỗi LO có danh sách activity_ids để tích hợp vào Q-Learning. Dùng để: (1) Gợi ý activity cụ thể, (2) Tính ΔLO mastery, (3) Giải thích hành động."
+        }
+    }
+}
