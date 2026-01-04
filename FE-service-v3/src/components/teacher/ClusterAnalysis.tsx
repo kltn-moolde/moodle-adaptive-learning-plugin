@@ -833,17 +833,18 @@ export default function ClusterAnalysis() {
               <CardDescription>Tỷ lệ học sinh trong từng cụm</CardDescription>
             </CardHeader>
             <CardContent>
-              <ResponsiveContainer width="100%" height={300}>
-                <PieChart>
+              <ResponsiveContainer width="100%" height={450}>
+                <PieChart margin={{ top: 20, right: 30, bottom: 80, left: 30 }}>
                   <Pie
                     data={overview.overview.cluster_distribution}
                     dataKey="percentage"
                     nameKey="cluster_name"
                     cx="50%"
-                    cy="50%"
+                    cy="40%"
                     innerRadius={60}
-                    outerRadius={100}
+                    outerRadius={95}
                     label={(entry) => `${entry.percentage.toFixed(1)}%`}
+                    labelLine={true}
                   >
                     {overview.overview.cluster_distribution.map((entry) => (
                       <Cell key={`cell-${entry.cluster_id}`} fill={getClusterColor(entry.cluster_id)} />
@@ -857,7 +858,11 @@ export default function ClusterAnalysis() {
                       borderRadius: "8px",
                     }}
                   />
-                  <Legend />
+                  <Legend 
+                    verticalAlign="bottom" 
+                    height={60}
+                    wrapperStyle={{ paddingTop: "10px" }}
+                  />
                 </PieChart>
               </ResponsiveContainer>
             </CardContent>
@@ -889,7 +894,7 @@ export default function ClusterAnalysis() {
                 <BarChart 
                   data={sortedClusters} 
                   layout="vertical" 
-                  margin={{ left: 50, right: 30, top: 20, bottom: 20 }}
+                  margin={{ left: 20, right: 40, top: 20, bottom: 20 }}
                 >
                   <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" />
                   <XAxis 
@@ -901,7 +906,7 @@ export default function ClusterAnalysis() {
                     type="category"
                     dataKey="cluster_name"
                     stroke="#64748B"
-                    width={220}
+                    width={280}
                     tick={{ fontSize: 11 }}
                     interval={0}
                   />
@@ -934,13 +939,19 @@ export default function ClusterAnalysis() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 * index }}
+              className="h-full"
             >
               <Card
-                className="rounded-2xl border-0 shadow-lg cursor-pointer transition-all hover:scale-[1.02] hover:shadow-xl"
-                onClick={() => setSelectedCluster(getClusterDetail(summary.cluster_id) || null)}
+                className="h-full flex flex-col rounded-2xl border-0 shadow-lg cursor-pointer transition-all hover:scale-[1.02] hover:shadow-xl"
+                onClick={() => {
+                  const detail = getClusterDetail(summary.cluster_id);
+                  console.log("Cluster detail:", detail);
+                  console.log("Top features:", detail?.statistics?.top_features);
+                  setSelectedCluster(detail || null);
+                }}
                 style={{ borderLeft: `4px solid ${getClusterColor(summary.cluster_id)}` }}
               >
-                <CardHeader>
+                <CardHeader className="flex-shrink-0">
                   <div className="flex items-start justify-between">
                     <Badge
                       className="rounded-full px-3 py-1"
@@ -961,8 +972,8 @@ export default function ClusterAnalysis() {
                   <CardTitle className="mt-3 text-lg">{summary.name}</CardTitle>
                   <CardDescription className="line-clamp-2">{summary.description}</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
+                <CardContent className="flex-1 flex flex-col">
+                  <div className="space-y-2 flex-1">
                     {summary.key_characteristics.slice(0, 2).map((char, idx) => (
                       <div key={idx} className="flex items-start gap-2 text-sm">
                         <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
@@ -1059,31 +1070,97 @@ export default function ClusterAnalysis() {
                 </div>
 
                 {/* Feature Analysis Radar Chart */}
-                {selectedCluster.statistics.top_features.length > 0 && (
+                {selectedCluster.statistics?.feature_means && Object.keys(selectedCluster.statistics.feature_means).length > 0 ? (
                   <div>
-                    <h3 className="font-semibold mb-3">Phân Tích Đặc Trưng</h3>
+                    <h3 className="font-semibold mb-3">
+                      Phân Tích Đặc Trưng ({Object.keys(selectedCluster.statistics.feature_means).length} đặc trưng)
+                    </h3>
                     <Card>
                       <CardContent className="pt-6">
-                        <ResponsiveContainer width="100%" height={300}>
+                        <ResponsiveContainer width="100%" height={600}>
                           <RadarChart
-                            data={selectedCluster.statistics.top_features.map((f) => ({
-                              feature: f.feature.replace(/_/g, " ").slice(0, 20),
-                              value: f.value,
-                            }))}
+                            cx="50%"
+                            cy="50%"
+                            outerRadius="75%"
+                            data={(() => {
+                              const featureMeans = selectedCluster.statistics.feature_means;
+                              const featureEntries = Object.entries(featureMeans);
+                              
+                              console.log("=== RADAR CHART DATA ===");
+                              console.log("Total features:", featureEntries.length);
+                              console.log("Feature means:", featureMeans);
+                              
+                              // Get all values for normalization
+                              const allValues = featureEntries.map(([_, value]) => value as number);
+                              const minVal = Math.min(...allValues);
+                              const maxVal = Math.max(...allValues);
+                              const range = maxVal - minVal || 1;
+                              
+                              return featureEntries.map(([featureName, value], idx) => {
+                                // Normalize value to [0, 1] range
+                                const normalizedValue = (value as number - minVal) / range;
+                                
+                                const dataPoint = {
+                                  feature: featureName
+                                    .replace(/event_\\\\/, "")
+                                    .replace(/combo_\\\\/, "")
+                                    .replace(/\\\\event\\\\/, " ")
+                                    .replace(/action_/g, "")
+                                    .replace(/_/g, " ")
+                                    .substring(0, 35),
+                                  value: normalizedValue,
+                                  rawValue: value as number
+                                };
+                                console.log(`Feature ${idx + 1}/${featureEntries.length}:`, dataPoint);
+                                return dataPoint;
+                              });
+                            })()}
                           >
-                            <PolarGrid />
-                            <PolarAngleAxis dataKey="feature" tick={{ fontSize: 11 }} />
-                            <PolarRadiusAxis angle={90} domain={[0, 1]} />
+                            <PolarGrid stroke="#ddd" strokeWidth={1} />
+                            <PolarAngleAxis 
+                              dataKey="feature" 
+                              tick={{ fontSize: 9, fill: "#333" }}
+                            />
+                            <PolarRadiusAxis 
+                              angle={90} 
+                              domain={[0, 1]} 
+                              tick={{ fontSize: 9, fill: "#666" }}
+                              tickCount={5}
+                            />
                             <Radar
-                              name="Giá trị"
+                              name="Mức độ"
                               dataKey="value"
                               stroke={getClusterColor(selectedCluster.cluster_id)}
                               fill={getClusterColor(selectedCluster.cluster_id)}
-                              fillOpacity={0.6}
+                              fillOpacity={0.5}
+                              strokeWidth={3}
                             />
-                            <Tooltip />
+                            <Tooltip 
+                              formatter={(value: number, name: string, props: any) => [
+                                `${(props.payload.rawValue * 100).toFixed(1)}%`,
+                                "Mức độ"
+                              ]}
+                              contentStyle={{
+                                backgroundColor: "rgba(255, 255, 255, 0.95)",
+                                border: "1px solid #ddd",
+                                borderRadius: "8px",
+                                padding: "10px"
+                              }}
+                            />
+                            <Legend 
+                              wrapperStyle={{ paddingTop: "20px" }}
+                            />
                           </RadarChart>
                         </ResponsiveContainer>
+                      </CardContent>
+                    </Card>
+                  </div>
+                ) : (
+                  <div>
+                    <h3 className="font-semibold mb-3">Phân Tích Đặc Trưng</h3>
+                    <Card>
+                      <CardContent className="p-8 text-center text-muted-foreground">
+                        <p>Không có dữ liệu đặc trưng để hiển thị</p>
                       </CardContent>
                     </Card>
                   </div>

@@ -524,3 +524,94 @@ export async function getClusteringResults(courseId: number): Promise<Clustering
   }
 }
 
+// ===================================================================
+// LO/PO Mastery API
+// ===================================================================
+
+const LO_MASTERY_API_URL = import.meta.env.VITE_LO_MASTERY_API_URL || "http://139.99.103.223:8088";
+
+export interface LOMasteryData {
+  course_id: number;
+  user_id: number;
+  last_sync: string;
+  lo_mastery: { [key: string]: number };
+  po_progress: { [key: string]: number };
+  metadata: {
+    total_activities_completed: number;
+    total_quizzes_taken: number;
+    avg_quiz_score: number;
+    activities_by_lo: { [key: string]: number[] };
+  };
+}
+
+export interface SyncResult {
+  success: boolean;
+  course_id: number;
+  user_id: number;
+  result?: {
+    success: boolean;
+    user_id: number;
+    course_id: number;
+    elapsed_time: number;
+    lo_count: number;
+    po_count: number;
+    avg_lo_mastery: number;
+  };
+  error?: string;
+}
+
+/**
+ * Sync student mastery data (call before getting mastery)
+ */
+export async function syncStudentMastery(
+  courseId: number,
+  userId: number
+): Promise<SyncResult | null> {
+  try {
+    const response = await fetch(
+      `${LO_MASTERY_API_URL}/api/lo-mastery/sync/${courseId}?user_id=${userId}`,
+      { method: 'POST' }
+    );
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error syncing student mastery:", error);
+    return null;
+  }
+}
+
+/**
+ * Get student LO/PO mastery data
+ */
+export async function getStudentMastery(
+  userId: number,
+  courseId: number,
+  useCache: boolean = true
+): Promise<LOMasteryData | null> {
+  try {
+    const response = await fetch(
+      `${LO_MASTERY_API_URL}/api/lo-mastery/${userId}/${courseId}?use_cache=${useCache}`
+    );
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    
+    // API returns { success, user_id, course_id, data }
+    if (result.success && result.data) {
+      return result.data;
+    }
+    
+    return null;
+  } catch (error) {
+    console.error("Error fetching student mastery:", error);
+    return null;
+  }
+}

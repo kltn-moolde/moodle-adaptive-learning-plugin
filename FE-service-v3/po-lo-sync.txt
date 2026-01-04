@@ -1,0 +1,17 @@
+{{http://139.99.103.223:8088}}/api/lo-mastery/sync/2?user_id=3
+trong đó -> 2 là courseid, 3 là user_id
+
+{
+    "success": true,
+    "course_id": 2,
+    "user_id": 3,
+    "result": {
+        "success": true,
+        "user_id": 3,
+        "course_id": 2,
+        "elapsed_time": 0.6439833641052246,
+        "lo_count": 15,
+        "po_count": 5,
+        "avg_lo_mastery": 0.3466666666666667
+    }
+}

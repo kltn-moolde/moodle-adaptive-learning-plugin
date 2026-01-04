@@ -619,7 +619,7 @@ export function StudentDashboard() {
                       </DialogTrigger>
                       <DialogContent 
                         className="sm:max-w-[90vw] md:max-w-3xl max-h-[85vh] overflow-hidden"
-                        style={{ translate: 'none' }}
+                        style={{ translate: 'none', maxWidth: '80vw' }}
                       >
                         <DialogHeader>
                           <DialogTitle>Chi tiết PO & LO của khóa học</DialogTitle>
