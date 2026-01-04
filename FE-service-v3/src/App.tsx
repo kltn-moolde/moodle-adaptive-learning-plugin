@@ -6,6 +6,7 @@ import { StudentDashboard } from "./components/student/StudentDashboard";
 import { TeacherDashboard } from "./components/teacher/TeacherDashboard";
 import { StudentList } from "./components/teacher/StudentList";
 import { CourseAnalytics } from "./components/teacher/CourseAnalytics";
+import ClusterAnalysis from "./components/teacher/ClusterAnalysis";
 import { Button } from "./components/ui/button";
 import { Users, GraduationCap } from "lucide-react";
 
@@ -56,6 +57,8 @@ export default function App() {
           return <TeacherDashboard />;
         case "students":
           return <StudentList />;
+        case "cluster-analysis":
+          return <ClusterAnalysis />;
         case "course-analytics":
           return <CourseAnalytics />;
         case "ai-insights":

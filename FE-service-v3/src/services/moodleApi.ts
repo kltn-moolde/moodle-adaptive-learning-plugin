@@ -8,9 +8,11 @@ import type {
   MoodleLogEntry,
   MoodleCourseContent,
 } from "../types/moodle";
+import type { ClusteringOverview, ClusteringResults } from "../types/clustering";
 
 const MOODLE_URL = import.meta.env.VITE_MOODLE_URL || "";
 const MOODLE_TOKEN = import.meta.env.VITE_MOODLE_TOKEN || "";
+const CLUSTERING_API_URL = import.meta.env.VITE_CLUSTERING_API_URL || "http://139.99.103.223:8089";
 
 interface MoodleApiParams {
   [key: string]: string | number | boolean | undefined;
@@ -477,3 +479,48 @@ export async function getLOMastery(userId: number, courseId: number): Promise<an
     return null;
   }
 }
+
+// ==================== CLUSTERING API ====================
+
+/**
+ * Get clustering overview for a course
+ */
+export async function getClusteringOverview(courseId: number): Promise<ClusteringOverview | null> {
+  try {
+    const response = await fetch(
+      `${CLUSTERING_API_URL}/api/clustering/courses/${courseId}/overview`
+    );
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching clustering overview:", error);
+    return null;
+  }
+}
+
+/**
+ * Get detailed clustering results for a course
+ */
+export async function getClusteringResults(courseId: number): Promise<ClusteringResults | null> {
+  try {
+    const response = await fetch(
+      `${CLUSTERING_API_URL}/api/clustering/courses/${courseId}/results`
+    );
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching clustering results:", error);
+    return null;
+  }
+}
+

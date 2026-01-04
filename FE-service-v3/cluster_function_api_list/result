@@ -1,0 +1,653 @@
+{{http://139.99.103.223:8089}}/api/clustering/courses/2/results
+
+{
+    "_id": "695a312332b3a16580a46522",
+    "course_id": 2,
+    "run_timestamp": "2026-01-04T09:21:39.511000",
+    "optimal_k": 6,
+    "clusters": [
+        {
+            "cluster_id": 0,
+            "user_ids": [
+                14,
+                16,
+                17,
+                18,
+                19,
+                21,
+                22,
+                23,
+                24,
+                25,
+                27,
+                28,
+                29,
+                30,
+                31,
+                33,
+                34,
+                36,
+                38,
+                39,
+                40,
+                42,
+                43
+            ],
+            "size": 23,
+            "percentage": 21.69811320754717,
+            "name": "Học sinh hoạt động buổi tối tích cực",
+            "description": "Nhóm học sinh này có mức độ hoạt động tổng thể cao hơn mức trung bình, đặc biệt là vào buổi tối. Họ duy trì sự tương tác thường xuyên với hệ thống nhưng các hoạt động cụ thể như xem phần học hay nộp bài kiểm tra lại ở mức tương tự các nhóm khác.",
+            "characteristics": [
+                "Có xu hướng học tập và hoạt động trên hệ thống vào buổi tối nhiều hơn đáng kể.",
+                "Thực hiện nhiều sự kiện và tương tác trên hệ thống mỗi ngày so với mức trung bình.",
+                "Mức độ xem các phần nội dung khóa học và báo cáo tiến độ cá nhân tương đương với học sinh trung bình.",
+                "Số lượng bài kiểm tra được nộp không có sự khác biệt lớn so với mức trung bình."
+            ],
+            "recommendations": [
+                "Cung cấp thêm tài liệu hoặc hoạt động ngoại khóa phù hợp với khung giờ buổi tối.",
+                "Khuyến khích họ tham gia các diễn đàn thảo luận hoặc hoạt động nhóm để tận dụng sự tích cực chung."
+            ],
+            "statistics": {
+                "feature_means": {
+                    "event_\\mod_quiz\\event\\attempt_summary_viewed": 0.0,
+                    "event_\\tool_usertours\\event\\tour_started": 0.0,
+                    "action_autosaved": 0.0,
+                    "action_ended": 0.0,
+                    "action_viewed": 0.07632850241545894,
+                    "combo_\\core\\event\\course_module_completion_updated_updated": 0.13664596273291924,
+                    "combo_\\core\\event\\course_user_report_viewed_viewed": 0.15384615384615385,
+                    "combo_\\core\\event\\section_viewed_viewed": 0.32487922705314015,
+                    "combo_\\core\\event\\user_graded_graded": 0.0,
+                    "combo_\\mod_hvp\\event\\course_module_viewed_viewed": 0.1153119092627599,
+                    "combo_\\mod_quiz\\event\\attempt_reviewed_reviewed": 0.19254658385093168,
+                    "combo_\\mod_quiz\\event\\attempt_submitted_submitted": 0.0,
+                    "combo_\\mod_quiz\\event\\attempt_viewed_viewed": 0.18185618729096992,
+                    "total_days_active": 0.0,
+                    "avg_events_per_day": 0.5795445354654589,
+                    "evening_activity": 0.35200668896321075
+                },
+                "feature_stds": {
+                    "event_\\mod_quiz\\event\\attempt_summary_viewed": 0.0,
+                    "event_\\tool_usertours\\event\\tour_started": 0.0,
+                    "action_autosaved": 0.0,
+                    "action_ended": 0.0,
+                    "action_viewed": 0.015225745716663129,
+                    "combo_\\core\\event\\course_module_completion_updated_updated": 0.04827331446378113,
+                    "combo_\\core\\event\\course_user_report_viewed_viewed": 0.06136338732442044,
+                    "combo_\\core\\event\\section_viewed_viewed": 0.13950237805375437,
+                    "combo_\\core\\event\\user_graded_graded": 0.0,
+                    "combo_\\mod_hvp\\event\\course_module_viewed_viewed": 0.07637385659402293,
+                    "combo_\\mod_quiz\\event\\attempt_reviewed_reviewed": 0.0680715619990625,
+                    "combo_\\mod_quiz\\event\\attempt_submitted_submitted": 0.0,
+                    "combo_\\mod_quiz\\event\\attempt_viewed_viewed": 0.0782186054874697,
+                    "total_days_active": 0.0,
+                    "avg_events_per_day": 0.14512840110902261,
+                    "evening_activity": 0.12029677734062008
+                },
+                "top_features": [
+                    {
+                        "feature": "evening_activity",
+                        "z_score": 1.139740862863887,
+                        "interpretation": "higher"
+                    },
+                    {
+                        "feature": "avg_events_per_day",
+                        "z_score": 0.8284596295843938,
+                        "interpretation": "higher"
+                    },
+                    {
+                        "feature": "combo_\\core\\event\\section_viewed_viewed",
+                        "z_score": 0.42799438624055647,
+                        "interpretation": "similar"
+                    },
+                    {
+                        "feature": "combo_\\core\\event\\course_user_report_viewed_viewed",
+                        "z_score": 0.3142618278839475,
+                        "interpretation": "similar"
+                    },
+                    {
+                        "feature": "combo_\\mod_quiz\\event\\attempt_submitted_submitted",
+                        "z_score": -0.30316363414544734,
+                        "interpretation": "similar"
+                    }
+                ]
+            }
+        },
+        {
+            "cluster_id": 1,
+            "user_ids": [
+                2
+            ],
+            "size": 1,
+            "percentage": 0.9433962264150944,
+            "name": "Học sinh siêu tích cực (Super-Engager)",
+            "description": "Đây là một học sinh cực kỳ tích cực và năng động trên hệ thống, thể hiện mức độ tương tác và hoàn thành công việc vượt trội so với tất cả các học sinh khác. Học sinh này là một ngoại lệ về mức độ tham gia và cống hiến.",
+            "characteristics": [
+                "Có mức độ xem nội dung tổng thể cực kỳ cao.",
+                "Duy trì hoạt động liên tục và tích cực trên hệ thống trong một số ngày rất lớn.",
+                "Tương tác rất nhiều với các nội dung đa phương tiện và tương tác (H5P).",
+                "Hoàn thành và cập nhật trạng thái hoàn thành module học tập với tần suất cực cao.",
+                "Thực hiện nhiều hành động tự động lưu, cho thấy sự chủ động trong việc nhập liệu hoặc làm bài."
+            ],
+            "recommendations": [
+                "Cung cấp các cơ hội học tập nâng cao hoặc mở rộng kiến thức để giữ vững động lực.",
+                "Khuyến khích trở thành người hướng dẫn hoặc hỗ trợ các bạn khác trong các hoạt động học tập."
+            ],
+            "statistics": {
+                "feature_means": {
+                    "event_\\mod_quiz\\event\\attempt_summary_viewed": 0.42857142857142855,
+                    "event_\\tool_usertours\\event\\tour_started": 0.2857142857142857,
+                    "action_autosaved": 1.0,
+                    "action_ended": 1.0,
+                    "action_viewed": 1.0,
+                    "combo_\\core\\event\\course_module_completion_updated_updated": 1.0,
+                    "combo_\\core\\event\\course_user_report_viewed_viewed": 0.07692307692307693,
+                    "combo_\\core\\event\\section_viewed_viewed": 0.861111111111111,
+                    "combo_\\core\\event\\user_graded_graded": 0.0,
+                    "combo_\\mod_hvp\\event\\course_module_viewed_viewed": 1.0,
+                    "combo_\\mod_quiz\\event\\attempt_reviewed_reviewed": 0.47619047619047616,
+                    "combo_\\mod_quiz\\event\\attempt_submitted_submitted": 0.0,
+                    "combo_\\mod_quiz\\event\\attempt_viewed_viewed": 0.2403846153846154,
+                    "total_days_active": 1.0,
+                    "avg_events_per_day": 0.390061121445655,
+                    "evening_activity": 0.2692307692307693
+                },
+                "feature_stds": {
+                    "event_\\mod_quiz\\event\\attempt_summary_viewed": null,
+                    "event_\\tool_usertours\\event\\tour_started": null,
+                    "action_autosaved": null,
+                    "action_ended": null,
+                    "action_viewed": null,
+                    "combo_\\core\\event\\course_module_completion_updated_updated": null,
+                    "combo_\\core\\event\\course_user_report_viewed_viewed": null,
+                    "combo_\\core\\event\\section_viewed_viewed": null,
+                    "combo_\\core\\event\\user_graded_graded": null,
+                    "combo_\\mod_hvp\\event\\course_module_viewed_viewed": null,
+                    "combo_\\mod_quiz\\event\\attempt_reviewed_reviewed": null,
+                    "combo_\\mod_quiz\\event\\attempt_submitted_submitted": null,
+                    "combo_\\mod_quiz\\event\\attempt_viewed_viewed": null,
+                    "total_days_active": null,
+                    "avg_events_per_day": null,
+                    "evening_activity": null
+                },
+                "top_features": [
+                    {
+                        "feature": "action_viewed",
+                        "z_score": 9.009473377120546,
+                        "interpretation": "much higher"
+                    },
+                    {
+                        "feature": "total_days_active",
+                        "z_score": 8.53528499670038,
+                        "interpretation": "much higher"
+                    },
+                    {
+                        "feature": "combo_\\mod_hvp\\event\\course_module_viewed_viewed",
+                        "z_score": 7.430925427541866,
+                        "interpretation": "much higher"
+                    },
+                    {
+                        "feature": "combo_\\core\\event\\course_module_completion_updated_updated",
+                        "z_score": 7.210762421174449,
+                        "interpretation": "much higher"
+                    },
+                    {
+                        "feature": "action_autosaved",
+                        "z_score": 7.17700731240147,
+                        "interpretation": "much higher"
+                    }
+                ]
+            }
+        },
+        {
+            "cluster_id": 2,
+            "user_ids": [
+                -1,
+                6,
+                8,
+                11,
+                13,
+                15,
+                20,
+                26,
+                32,
+                35,
+                37,
+                41,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                53,
+                54,
+                56,
+                57,
+                58,
+                61,
+                62,
+                65,
+                67,
+                68,
+                69,
+                71,
+                72,
+                74,
+                79,
+                80,
+                81,
+                82,
+                83,
+                84,
+                85,
+                86,
+                87,
+                88,
+                91,
+                92,
+                93,
+                96,
+                98,
+                99,
+                100,
+                101,
+                103,
+                104,
+                105,
+                205
+            ],
+            "size": 54,
+            "percentage": 50.943396226415096,
+            "name": "Học sinh thụ động/Trung bình",
+            "description": "Đây là nhóm học sinh lớn nhất, có mức độ tương tác tổng thể thấp hơn hoặc tương đương với mức trung bình. Đặc biệt, họ ít khi xem các phần khóa học chi tiết hoặc theo dõi báo cáo tiến độ cá nhân, cho thấy sự thụ động trong việc tự quản lý học tập.",
+            "characteristics": [
+                "Ít xem các phần/mục chi tiết của khóa học so với các nhóm khác.",
+                "Hầu như không xem báo cáo tiến độ cá nhân của mình.",
+                "Hoạt động vào buổi tối và số sự kiện trung bình mỗi ngày tương đương hoặc hơi thấp hơn mức chung.",
+                "Mức độ xem lại bài kiểm tra sau khi làm xong cũng không nổi bật."
+            ],
+            "recommendations": [
+                "Tăng cường các thông báo và nhắc nhở về tiến độ học tập và các mốc quan trọng.",
+                "Thiết kế các hoạt động yêu cầu tương tác bắt buộc hơn với nội dung khóa học để thúc đẩy tham gia.",
+                "Cá nhân hóa các gợi ý học tập hoặc cung cấp hỗ trợ trực tiếp để giải quyết khó khăn."
+            ],
+            "statistics": {
+                "feature_means": {
+                    "event_\\mod_quiz\\event\\attempt_summary_viewed": 0.0,
+                    "event_\\tool_usertours\\event\\tour_started": 0.018518518518518517,
+                    "action_autosaved": 0.0,
+                    "action_ended": 0.009259259259259259,
+                    "action_viewed": 0.059506172839506155,
+                    "combo_\\core\\event\\course_module_completion_updated_updated": 0.11816578483245148,
+                    "combo_\\core\\event\\course_user_report_viewed_viewed": 0.024216524216524222,
+                    "combo_\\core\\event\\section_viewed_viewed": 0.10442386831275717,
+                    "combo_\\core\\event\\user_graded_graded": 0.022417153996101363,
+                    "combo_\\mod_hvp\\event\\course_module_viewed_viewed": 0.1419753086419753,
+                    "combo_\\mod_quiz\\event\\attempt_reviewed_reviewed": 0.13403880070546734,
+                    "combo_\\mod_quiz\\event\\attempt_submitted_submitted": 0.024691358024691357,
+                    "combo_\\mod_quiz\\event\\attempt_viewed_viewed": 0.15064102564102566,
+                    "total_days_active": 0.015015015015015017,
+                    "avg_events_per_day": 0.4291264709149376,
+                    "evening_activity": 0.036680911680911685
+                },
+                "feature_stds": {
+                    "event_\\mod_quiz\\event\\attempt_summary_viewed": 0.0,
+                    "event_\\tool_usertours\\event\\tour_started": 0.13608276348795434,
+                    "action_autosaved": 0.0,
+                    "action_ended": 0.06804138174397717,
+                    "action_viewed": 0.017556861725212237,
+                    "combo_\\core\\event\\course_module_completion_updated_updated": 0.055301835100209806,
+                    "combo_\\core\\event\\course_user_report_viewed_viewed": 0.03606177967838551,
+                    "combo_\\core\\event\\section_viewed_viewed": 0.045447020445789264,
+                    "combo_\\core\\event\\user_graded_graded": 0.13625335568466496,
+                    "combo_\\mod_hvp\\event\\course_module_viewed_viewed": 0.05569639439468411,
+                    "combo_\\mod_quiz\\event\\attempt_reviewed_reviewed": 0.06346710101282382,
+                    "combo_\\mod_quiz\\event\\attempt_submitted_submitted": 0.08811684285757156,
+                    "combo_\\mod_quiz\\event\\attempt_viewed_viewed": 0.04959504426617852,
+                    "total_days_active": 0.07206675996061676,
+                    "avg_events_per_day": 0.13558959818647318,
+                    "evening_activity": 0.07827356949765403
+                },
+                "top_features": [
+                    {
+                        "feature": "combo_\\core\\event\\section_viewed_viewed",
+                        "z_score": -0.7535196209046354,
+                        "interpretation": "lower"
+                    },
+                    {
+                        "feature": "combo_\\core\\event\\course_user_report_viewed_viewed",
+                        "z_score": -0.576793313729385,
+                        "interpretation": "lower"
+                    },
+                    {
+                        "feature": "evening_activity",
+                        "z_score": -0.47570323178491786,
+                        "interpretation": "similar"
+                    },
+                    {
+                        "feature": "combo_\\mod_quiz\\event\\attempt_reviewed_reviewed",
+                        "z_score": -0.330860183988665,
+                        "interpretation": "similar"
+                    },
+                    {
+                        "feature": "avg_events_per_day",
+                        "z_score": -0.20612956297839022,
+                        "interpretation": "similar"
+                    }
+                ]
+            }
+        },
+        {
+            "cluster_id": 3,
+            "user_ids": [
+                3
+            ],
+            "size": 1,
+            "percentage": 0.9433962264150944,
+            "name": "Học sinh chuyên sâu về bài kiểm tra",
+            "description": "Đây là một học sinh duy nhất có sự tập trung và tương tác cực kỳ cao với các hoạt động kiểm tra, từ việc xem, làm cho đến xem lại kết quả và tóm tắt bài làm. Họ dành nhiều thời gian để phân tích và đánh giá các bài kiểm tra.",
+            "characteristics": [
+                "Xem tóm tắt bài kiểm tra và các bài kiểm tra nói chung với tần suất cực kỳ cao.",
+                "Tích cực xem lại các bài kiểm tra sau khi nộp để đánh giá và rút kinh nghiệm.",
+                "Thực hiện nhiều hành động tự động lưu, có thể liên quan đến quá trình làm bài hoặc chỉnh sửa nội dung.",
+                "Tổng số hành động kết thúc (action_ended) của học sinh này rất cao, cho thấy nhiều phiên làm việc hoặc tương tác đã được hoàn tất."
+            ],
+            "recommendations": [
+                "Cung cấp thêm các bài kiểm tra thực hành hoặc câu hỏi nâng cao để thử thách và duy trì động lực.",
+                "Khuyến khích học sinh này chia sẻ kinh nghiệm ôn tập và làm bài với các bạn khác để trở thành người dẫn dắt."
+            ],
+            "statistics": {
+                "feature_means": {
+                    "event_\\mod_quiz\\event\\attempt_summary_viewed": 1.0,
+                    "event_\\tool_usertours\\event\\tour_started": 0.2857142857142857,
+                    "action_autosaved": 1.0,
+                    "action_ended": 1.0,
+                    "action_viewed": 0.5096296296296297,
+                    "combo_\\core\\event\\course_module_completion_updated_updated": 0.7619047619047619,
+                    "combo_\\core\\event\\course_user_report_viewed_viewed": 1.0,
+                    "combo_\\core\\event\\section_viewed_viewed": 1.0,
+                    "combo_\\core\\event\\user_graded_graded": 0.10526315789473684,
+                    "combo_\\mod_hvp\\event\\course_module_viewed_viewed": 0.5362318840579711,
+                    "combo_\\mod_quiz\\event\\attempt_reviewed_reviewed": 1.0,
+                    "combo_\\mod_quiz\\event\\attempt_submitted_submitted": 1.0,
+                    "combo_\\mod_quiz\\event\\attempt_viewed_viewed": 1.0,
+                    "total_days_active": 0.2702702702702703,
+                    "avg_events_per_day": 0.2616073801298356,
+                    "evening_activity": 1.0
+                },
+                "feature_stds": {
+                    "event_\\mod_quiz\\event\\attempt_summary_viewed": null,
+                    "event_\\tool_usertours\\event\\tour_started": null,
+                    "action_autosaved": null,
+                    "action_ended": null,
+                    "action_viewed": null,
+                    "combo_\\core\\event\\course_module_completion_updated_updated": null,
+                    "combo_\\core\\event\\course_user_report_viewed_viewed": null,
+                    "combo_\\core\\event\\section_viewed_viewed": null,
+                    "combo_\\core\\event\\user_graded_graded": null,
+                    "combo_\\mod_hvp\\event\\course_module_viewed_viewed": null,
+                    "combo_\\mod_quiz\\event\\attempt_reviewed_reviewed": null,
+                    "combo_\\mod_quiz\\event\\attempt_submitted_submitted": null,
+                    "combo_\\mod_quiz\\event\\attempt_viewed_viewed": null,
+                    "total_days_active": null,
+                    "avg_events_per_day": null,
+                    "evening_activity": null
+                },
+                "top_features": [
+                    {
+                        "feature": "event_\\mod_quiz\\event\\attempt_summary_viewed",
+                        "z_score": 8.713821215518735,
+                        "interpretation": "much higher"
+                    },
+                    {
+                        "feature": "combo_\\mod_quiz\\event\\attempt_viewed_viewed",
+                        "z_score": 8.073463515788099,
+                        "interpretation": "much higher"
+                    },
+                    {
+                        "feature": "action_autosaved",
+                        "z_score": 7.17700731240147,
+                        "interpretation": "much higher"
+                    },
+                    {
+                        "feature": "combo_\\mod_quiz\\event\\attempt_reviewed_reviewed",
+                        "z_score": 7.031238634255905,
+                        "interpretation": "much higher"
+                    },
+                    {
+                        "feature": "action_ended",
+                        "z_score": 6.407062477240575,
+                        "interpretation": "much higher"
+                    }
+                ]
+            }
+        },
+        {
+            "cluster_id": 4,
+            "user_ids": [
+                44,
+                51,
+                52,
+                55,
+                59,
+                60,
+                63,
+                64,
+                66,
+                70,
+                73,
+                75,
+                76,
+                77,
+                78,
+                89,
+                90,
+                94,
+                95,
+                97,
+                102
+            ],
+            "size": 21,
+            "percentage": 19.81132075471698,
+            "name": "Học sinh khám phá cấu trúc sớm",
+            "description": "Nhóm học sinh này có xu hướng khám phá và xem các phần nội dung của khóa học một cách có hệ thống nhưng lại ít tương tác với các nội dung đa phương tiện và ít hoạt động vào buổi tối. Họ có vẻ thích tìm hiểu cấu trúc hơn là tương tác sâu.",
+            "characteristics": [
+                "Thường xuyên xem và khám phá các phần/mục của khóa học để nắm bắt cấu trúc.",
+                "Ít tương tác với các module nội dung tương tác như H5P.",
+                "Có mức độ hoạt động vào buổi tối thấp hơn đáng kể so với trung bình.",
+                "Mức độ xem bài kiểm tra hoặc cập nhật trạng thái hoàn thành module tương đương với các học sinh khác."
+            ],
+            "recommendations": [
+                "Tích hợp các yếu tố tương tác (như H5P) vào các phần cấu trúc để khuyến khích sự tham gia sâu hơn.",
+                "Cung cấp các buổi hỏi đáp hoặc tương tác trực tiếp vào ban ngày để phù hợp với lịch trình của họ."
+            ],
+            "statistics": {
+                "feature_means": {
+                    "event_\\mod_quiz\\event\\attempt_summary_viewed": 0.0,
+                    "event_\\tool_usertours\\event\\tour_started": 0.0,
+                    "action_autosaved": 0.0,
+                    "action_ended": 0.0,
+                    "action_viewed": 0.06462081128747796,
+                    "combo_\\core\\event\\course_module_completion_updated_updated": 0.09523809523809526,
+                    "combo_\\core\\event\\course_user_report_viewed_viewed": 0.15384615384615383,
+                    "combo_\\core\\event\\section_viewed_viewed": 0.39021164021164023,
+                    "combo_\\core\\event\\user_graded_graded": 0.0,
+                    "combo_\\mod_hvp\\event\\course_module_viewed_viewed": 0.050379572118702566,
+                    "combo_\\mod_quiz\\event\\attempt_reviewed_reviewed": 0.1473922902494331,
+                    "combo_\\mod_quiz\\event\\attempt_submitted_submitted": 0.0,
+                    "combo_\\mod_quiz\\event\\attempt_viewed_viewed": 0.11584249084249088,
+                    "total_days_active": 0.0,
+                    "avg_events_per_day": 0.4605368057401009,
+                    "evening_activity": 0.0
+                },
+                "feature_stds": {
+                    "event_\\mod_quiz\\event\\attempt_summary_viewed": 0.0,
+                    "event_\\tool_usertours\\event\\tour_started": 0.0,
+                    "action_autosaved": 0.0,
+                    "action_ended": 0.0,
+                    "action_viewed": 0.0034577977871200678,
+                    "combo_\\core\\event\\course_module_completion_updated_updated": 2.844100168142183e-17,
+                    "combo_\\core\\event\\course_user_report_viewed_viewed": 2.844100168142183e-17,
+                    "combo_\\core\\event\\section_viewed_viewed": 0.01858453840178145,
+                    "combo_\\core\\event\\user_graded_graded": 0.0,
+                    "combo_\\mod_hvp\\event\\course_module_viewed_viewed": 0.0074169031263646235,
+                    "combo_\\mod_quiz\\event\\attempt_reviewed_reviewed": 0.014323457321862819,
+                    "combo_\\mod_quiz\\event\\attempt_submitted_submitted": 0.0,
+                    "combo_\\mod_quiz\\event\\attempt_viewed_viewed": 0.013069918399768728,
+                    "total_days_active": 0.0,
+                    "avg_events_per_day": 0.0283364874038083,
+                    "evening_activity": 0.0
+                },
+                "top_features": [
+                    {
+                        "feature": "combo_\\core\\event\\section_viewed_viewed",
+                        "z_score": 0.7781385683026858,
+                        "interpretation": "higher"
+                    },
+                    {
+                        "feature": "combo_\\mod_hvp\\event\\course_module_viewed_viewed",
+                        "z_score": -0.6713774741516857,
+                        "interpretation": "lower"
+                    },
+                    {
+                        "feature": "evening_activity",
+                        "z_score": -0.6636230481474525,
+                        "interpretation": "lower"
+                    },
+                    {
+                        "feature": "combo_\\mod_quiz\\event\\attempt_viewed_viewed",
+                        "z_score": -0.46976354291812056,
+                        "interpretation": "similar"
+                    },
+                    {
+                        "feature": "combo_\\core\\event\\course_module_completion_updated_updated",
+                        "z_score": -0.3569684366918041,
+                        "interpretation": "similar"
+                    }
+                ]
+            }
+        },
+        {
+            "cluster_id": 5,
+            "user_ids": [
+                5,
+                7,
+                9,
+                10,
+                12,
+                206
+            ],
+            "size": 6,
+            "percentage": 5.660377358490567,
+            "name": "Học sinh định hướng kết quả và đánh giá",
+            "description": "Nhóm học sinh này thể hiện sự tập trung cao độ vào việc hoàn thành các bài kiểm tra, theo dõi sát sao tiến độ học tập và thường xuyên hoạt động vào buổi tối. Họ có xu hướng chủ động kiểm tra và đánh giá kết quả của mình.",
+            "characteristics": [
+                "Nộp các bài kiểm tra với tần suất cao hơn đáng kể so với mức trung bình.",
+                "Thường xuyên xem báo cáo tiến độ cá nhân để theo dõi hiệu suất học tập.",
+                "Có xu hướng xem lại các bài kiểm tra đã làm để rút kinh nghiệm.",
+                "Tương tự Nhóm 0, họ cũng có mức độ hoạt động vào buổi tối cao.",
+                "Chủ động xem các phần/mục của khóa học, có thể để tìm kiếm thông tin liên quan đến bài kiểm tra."
+            ],
+            "recommendations": [
+                "Cung cấp phản hồi chi tiết và kịp thời cho các bài kiểm tra để hỗ trợ việc học tập.",
+                "Tạo ra các công cụ hoặc tài nguyên giúp họ tự đánh giá và lên kế hoạch học tập hiệu quả hơn."
+            ],
+            "statistics": {
+                "feature_means": {
+                    "event_\\mod_quiz\\event\\attempt_summary_viewed": 0.07142857142857142,
+                    "event_\\tool_usertours\\event\\tour_started": 0.047619047619047616,
+                    "action_autosaved": 0.0,
+                    "action_ended": 0.08333333333333333,
+                    "action_viewed": 0.11333333333333333,
+                    "combo_\\core\\event\\course_module_completion_updated_updated": 0.22222222222222218,
+                    "combo_\\core\\event\\course_user_report_viewed_viewed": 0.38461538461538464,
+                    "combo_\\core\\event\\section_viewed_viewed": 0.4675925925925925,
+                    "combo_\\core\\event\\user_graded_graded": 0.11403508771929825,
+                    "combo_\\mod_hvp\\event\\course_module_viewed_viewed": 0.12801932367149757,
+                    "combo_\\mod_quiz\\event\\attempt_reviewed_reviewed": 0.34920634920634924,
+                    "combo_\\mod_quiz\\event\\attempt_submitted_submitted": 0.7777777777777777,
+                    "combo_\\mod_quiz\\event\\attempt_viewed_viewed": 0.2403846153846154,
+                    "total_days_active": 0.06756756756756759,
+                    "avg_events_per_day": 0.3064709008769599,
+                    "evening_activity": 0.3974358974358975
+                },
+                "feature_stds": {
+                    "event_\\mod_quiz\\event\\attempt_summary_viewed": 0.17496355305594127,
+                    "event_\\tool_usertours\\event\\tour_started": 0.11664236870396086,
+                    "action_autosaved": 0.0,
+                    "action_ended": 0.2041241452319315,
+                    "action_viewed": 0.03690940973178751,
+                    "combo_\\core\\event\\course_module_completion_updated_updated": 0.10286889997472794,
+                    "combo_\\core\\event\\course_user_report_viewed_viewed": 0.2619905594757908,
+                    "combo_\\core\\event\\section_viewed_viewed": 0.20368265884557596,
+                    "combo_\\core\\event\\user_graded_graded": 0.03961961330047794,
+                    "combo_\\mod_hvp\\event\\course_module_viewed_viewed": 0.12714586722971055,
+                    "combo_\\mod_quiz\\event\\attempt_reviewed_reviewed": 0.11533906110847586,
+                    "combo_\\mod_quiz\\event\\attempt_submitted_submitted": 0.27216552697590873,
+                    "combo_\\mod_quiz\\event\\attempt_viewed_viewed": 0.10084700463174534,
+                    "total_days_active": 0.09478744819864963,
+                    "avg_events_per_day": 0.19996115753209315,
+                    "evening_activity": 0.1966497000671223
+                },
+                "top_features": [
+                    {
+                        "feature": "combo_\\mod_quiz\\event\\attempt_submitted_submitted",
+                        "z_score": 3.267430279123155,
+                        "interpretation": "much higher"
+                    },
+                    {
+                        "feature": "combo_\\core\\event\\course_user_report_viewed_viewed",
+                        "z_score": 1.9005358162505395,
+                        "interpretation": "much higher"
+                    },
+                    {
+                        "feature": "combo_\\mod_quiz\\event\\attempt_reviewed_reviewed",
+                        "z_score": 1.4984189521128377,
+                        "interpretation": "higher"
+                    },
+                    {
+                        "feature": "evening_activity",
+                        "z_score": 1.3724790398194282,
+                        "interpretation": "higher"
+                    },
+                    {
+                        "feature": "combo_\\core\\event\\section_viewed_viewed",
+                        "z_score": 1.1928559952081388,
+                        "interpretation": "higher"
+                    }
+                ]
+            }
+        }
+    ],
+    "features_used": [
+        "event_\\mod_quiz\\event\\attempt_summary_viewed",
+        "event_\\tool_usertours\\event\\tour_started",
+        "action_autosaved",
+        "action_ended",
+        "action_viewed",
+        "combo_\\core\\event\\course_module_completion_updated_updated",
+        "combo_\\core\\event\\course_user_report_viewed_viewed",
+        "combo_\\core\\event\\section_viewed_viewed",
+        "combo_\\core\\event\\user_graded_graded",
+        "combo_\\mod_hvp\\event\\course_module_viewed_viewed",
+        "combo_\\mod_quiz\\event\\attempt_reviewed_reviewed",
+        "combo_\\mod_quiz\\event\\attempt_submitted_submitted",
+        "combo_\\mod_quiz\\event\\attempt_viewed_viewed",
+        "total_days_active",
+        "avg_events_per_day",
+        "evening_activity"
+    ],
+    "metadata": {
+        "total_students": 106,
+        "total_logs": 11162,
+        "features_extracted": 118,
+        "features_selected": 16,
+        "execution_time_seconds": 28.497091,
+        "clustering_metrics": {
+            "inertia": 8.861924374234572,
+            "silhouette": 0.37224461447550616,
+            "davies_bouldin": 0.686410803348026
+        }
+    }
+}

@@ -1,0 +1,124 @@
+{{http://139.99.103.223:8089}}/api/clustering/courses/2/overview
+
+{
+    "course_id": 2,
+    "run_timestamp": "2026-01-04T09:21:39.511000",
+    "overview": {
+        "overall_metrics": {
+            "total_students": 106,
+            "total_logs": 11162,
+            "features_analyzed": 16,
+            "optimal_clusters": 6,
+            "clustering_quality": {
+                "silhouette_score": 0.37224461447550616,
+                "davies_bouldin_index": 0.686410803348026
+            }
+        },
+        "cluster_distribution": [
+            {
+                "cluster_id": 0,
+                "cluster_name": "Học sinh hoạt động buổi tối tích cực",
+                "student_count": 23,
+                "percentage": 21.69811320754717
+            },
+            {
+                "cluster_id": 1,
+                "cluster_name": "Học sinh siêu tích cực (Super-Engager)",
+                "student_count": 1,
+                "percentage": 0.9433962264150944
+            },
+            {
+                "cluster_id": 2,
+                "cluster_name": "Học sinh thụ động/Trung bình",
+                "student_count": 54,
+                "percentage": 50.943396226415096
+            },
+            {
+                "cluster_id": 3,
+                "cluster_name": "Học sinh chuyên sâu về bài kiểm tra",
+                "student_count": 1,
+                "percentage": 0.9433962264150944
+            },
+            {
+                "cluster_id": 4,
+                "cluster_name": "Học sinh khám phá cấu trúc sớm",
+                "student_count": 21,
+                "percentage": 19.81132075471698
+            },
+            {
+                "cluster_id": 5,
+                "cluster_name": "Học sinh định hướng kết quả và đánh giá",
+                "student_count": 6,
+                "percentage": 5.660377358490567
+            }
+        ],
+        "cluster_summaries": [
+            {
+                "cluster_id": 0,
+                "name": "Học sinh hoạt động buổi tối tích cực",
+                "description": "Nhóm học sinh này có mức độ hoạt động tổng thể cao hơn mức trung bình, đặc biệt là vào buổi tối. Họ duy trì sự tương tác thường xuyên với hệ thống nhưng các hoạt động cụ thể như xem phần học hay nộp bài kiểm tra lại ở mức tương tự các nhóm khác.",
+                "student_count": 23,
+                "key_characteristics": [
+                    "Có xu hướng học tập và hoạt động trên hệ thống vào buổi tối nhiều hơn đáng kể.",
+                    "Thực hiện nhiều sự kiện và tương tác trên hệ thống mỗi ngày so với mức trung bình.",
+                    "Mức độ xem các phần nội dung khóa học và báo cáo tiến độ cá nhân tương đương với học sinh trung bình."
+                ]
+            },
+            {
+                "cluster_id": 1,
+                "name": "Học sinh siêu tích cực (Super-Engager)",
+                "description": "Đây là một học sinh cực kỳ tích cực và năng động trên hệ thống, thể hiện mức độ tương tác và hoàn thành công việc vượt trội so với tất cả các học sinh khác. Học sinh này là một ngoại lệ về mức độ tham gia và cống hiến.",
+                "student_count": 1,
+                "key_characteristics": [
+                    "Có mức độ xem nội dung tổng thể cực kỳ cao.",
+                    "Duy trì hoạt động liên tục và tích cực trên hệ thống trong một số ngày rất lớn.",
+                    "Tương tác rất nhiều với các nội dung đa phương tiện và tương tác (H5P)."
+                ]
+            },
+            {
+                "cluster_id": 2,
+                "name": "Học sinh thụ động/Trung bình",
+                "description": "Đây là nhóm học sinh lớn nhất, có mức độ tương tác tổng thể thấp hơn hoặc tương đương với mức trung bình. Đặc biệt, họ ít khi xem các phần khóa học chi tiết hoặc theo dõi báo cáo tiến độ cá nhân, cho thấy sự thụ động trong việc tự quản lý học tập.",
+                "student_count": 54,
+                "key_characteristics": [
+                    "Ít xem các phần/mục chi tiết của khóa học so với các nhóm khác.",
+                    "Hầu như không xem báo cáo tiến độ cá nhân của mình.",
+                    "Hoạt động vào buổi tối và số sự kiện trung bình mỗi ngày tương đương hoặc hơi thấp hơn mức chung."
+                ]
+            },
+            {
+                "cluster_id": 3,
+                "name": "Học sinh chuyên sâu về bài kiểm tra",
+                "description": "Đây là một học sinh duy nhất có sự tập trung và tương tác cực kỳ cao với các hoạt động kiểm tra, từ việc xem, làm cho đến xem lại kết quả và tóm tắt bài làm. Họ dành nhiều thời gian để phân tích và đánh giá các bài kiểm tra.",
+                "student_count": 1,
+                "key_characteristics": [
+                    "Xem tóm tắt bài kiểm tra và các bài kiểm tra nói chung với tần suất cực kỳ cao.",
+                    "Tích cực xem lại các bài kiểm tra sau khi nộp để đánh giá và rút kinh nghiệm.",
+                    "Thực hiện nhiều hành động tự động lưu, có thể liên quan đến quá trình làm bài hoặc chỉnh sửa nội dung."
+                ]
+            },
+            {
+                "cluster_id": 4,
+                "name": "Học sinh khám phá cấu trúc sớm",
+                "description": "Nhóm học sinh này có xu hướng khám phá và xem các phần nội dung của khóa học một cách có hệ thống nhưng lại ít tương tác với các nội dung đa phương tiện và ít hoạt động vào buổi tối. Họ có vẻ thích tìm hiểu cấu trúc hơn là tương tác sâu.",
+                "student_count": 21,
+                "key_characteristics": [
+                    "Thường xuyên xem và khám phá các phần/mục của khóa học để nắm bắt cấu trúc.",
+                    "Ít tương tác với các module nội dung tương tác như H5P.",
+                    "Có mức độ hoạt động vào buổi tối thấp hơn đáng kể so với trung bình."
+                ]
+            },
+            {
+                "cluster_id": 5,
+                "name": "Học sinh định hướng kết quả và đánh giá",
+                "description": "Nhóm học sinh này thể hiện sự tập trung cao độ vào việc hoàn thành các bài kiểm tra, theo dõi sát sao tiến độ học tập và thường xuyên hoạt động vào buổi tối. Họ có xu hướng chủ động kiểm tra và đánh giá kết quả của mình.",
+                "student_count": 6,
+                "key_characteristics": [
+                    "Nộp các bài kiểm tra với tần suất cao hơn đáng kể so với mức trung bình.",
+                    "Thường xuyên xem báo cáo tiến độ cá nhân để theo dõi hiệu suất học tập.",
+                    "Có xu hướng xem lại các bài kiểm tra đã làm để rút kinh nghiệm."
+                ]
+            }
+        ]
+    }
+}

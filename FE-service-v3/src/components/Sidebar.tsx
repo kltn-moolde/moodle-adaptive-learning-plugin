@@ -8,6 +8,7 @@ import {
   MessageSquare,
   ArrowRight,
   GraduationCap,
+  Network,
 } from "lucide-react";
 import { cn } from "./ui/utils";
 
@@ -30,6 +31,7 @@ const teacherMenuItems = [
   { id: "dashboard", label: "Bảng điều khiển", icon: LayoutDashboard },
   // { id: "class-overview", label: "Class Overview", icon: GraduationCap },
   { id: "students", label: "Danh sách học sinh", icon: Users },
+  { id: "cluster-analysis", label: "Phân tích cụm", icon: Network },
   { id: "course-analytics", label: "Phân tích khóa học", icon: BarChart3 },
   // { id: "ai-insights", label: "AI Insights", icon: Brain },
   { id: "settings", label: "Cài đặt", icon: Settings },
