@@ -45,7 +45,11 @@ class ModelLoader:
         
         # Auto-generate paths if not provided
         if model_path is None:
-            model_path = PROJECT_ROOT / 'models' / f'qtable_{course_id}.pkl'
+            # HARDCODE: Course 2 uses Course 5's Q-table
+            if course_id == 2:
+                model_path = PROJECT_ROOT / 'models' / 'qtable_5.pkl'
+            else:
+                model_path = PROJECT_ROOT / 'models' / f'qtable_{course_id}.pkl'
         if course_path is None:
             # Try course-specific first, then fallback to default
             course_path = PROJECT_ROOT / 'data' / 'local' / f'course_structure_{course_id}.json'

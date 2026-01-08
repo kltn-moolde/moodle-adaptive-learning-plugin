@@ -61,6 +61,27 @@ def get_services_for_course(course_id: int):
     loader = model_manager.get_loader(course_id, verbose=False)
     course_path = get_course_path(course_id)
     
+    # Initialize ActivityRecommender for this course
+    from core.activity_recommender import ActivityRecommender
+    po_lo_path = HERE / 'data' / f'Po_Lo_{course_id}.json'
+    
+    # Fallback to Po_Lo.json if course-specific file doesn't exist
+    if not po_lo_path.exists():
+        po_lo_path = HERE / 'data' / 'Po_Lo.json'
+    
+    activity_recommender = None
+    if po_lo_path.exists():
+        try:
+            activity_recommender = ActivityRecommender(
+                po_lo_path=str(po_lo_path),
+                course_structure_path=str(course_path),
+                course_id=course_id
+            )
+            print(f"   ✓ ActivityRecommender initialized for course {course_id}")
+        except Exception as e:
+            print(f"   ⚠️  Failed to initialize ActivityRecommender for course {course_id}: {e}")
+            activity_recommender = None
+    
     return {
         'loader': loader,
         'qtable_service': QTableService(agent=loader.agent, action_space=loader.action_space),
@@ -69,18 +90,39 @@ def get_services_for_course(course_id: int):
             agent=loader.agent,
             action_space=loader.action_space,
             state_builder=loader.state_builder,
-            course_structure_path=str(course_path)
+            course_structure_path=str(course_path),
+            activity_recommender=activity_recommender
         )
     }
 
 # Initialize default services (for backward compatibility)
 qtable_service = QTableService(agent=model_loader.agent, action_space=model_loader.action_space)
 cluster_service = ClusterService(cluster_profiles=model_loader.cluster_profiles)
+
+# Initialize default ActivityRecommender
+from core.activity_recommender import ActivityRecommender
+default_po_lo_path = HERE / 'data' / f'Po_Lo_{DEFAULT_COURSE_ID}.json'
+if not default_po_lo_path.exists():
+    default_po_lo_path = HERE / 'data' / 'Po_Lo.json'
+
+default_activity_recommender = None
+if default_po_lo_path.exists():
+    try:
+        default_activity_recommender = ActivityRecommender(
+            po_lo_path=str(default_po_lo_path),
+            course_structure_path=str(get_course_path(DEFAULT_COURSE_ID)),
+            course_id=DEFAULT_COURSE_ID
+        )
+        print(f"✓ Default ActivityRecommender initialized for course {DEFAULT_COURSE_ID}")
+    except Exception as e:
+        print(f"⚠️  Failed to initialize default ActivityRecommender: {e}")
+
 recommendation_service = RecommendationService(
     agent=model_loader.agent,
     action_space=model_loader.action_space,
     state_builder=model_loader.state_builder,
-    course_structure_path=str(get_course_path(DEFAULT_COURSE_ID))
+    course_structure_path=str(get_course_path(DEFAULT_COURSE_ID)),
+    activity_recommender=default_activity_recommender
 )
 
 # ===================================================================

@@ -262,8 +262,8 @@ export function StudentDashboard() {
         // Get AI recommendations
         try {
           // Convert courseId if needed (course 2 -> course 5)
-          const recommendCourseId = course.id === 2 ? 5 : course.id;
-          const aiData = await getAIRecommendations(userId, recommendCourseId);
+          // const recommendCourseId = course.id === 2
+          const aiData = await getAIRecommendations(userId, 2);
           if (aiData && aiData.recommendations) {
             setRecommendations(aiData.recommendations.slice(0, 5));
             console.log("Fetched AI recommendations:", aiData.recommendations);

@@ -116,6 +116,71 @@ class LogProcessingPipeline:
         print(f"  - Q-table updates: {'Enabled' if self.enable_qtable_updates else 'Disabled'}")
         print(f"{'='*70}")
     
+    def _update_lo_mastery_from_logs(self, raw_logs: List[Dict], states: Dict) -> int:
+        """
+        Update LO mastery for users who have quiz/grade events
+        
+        Args:
+            raw_logs: List of raw log dictionaries
+            states: Built states dict {(user_id, course_id, lesson_id): state}
+            
+        Returns:
+            Number of users updated
+        """
+        # Detect quiz submission events
+        quiz_events = [
+            'mod_quiz\\event\\attempt_submitted',
+            '\\mod_quiz\\event\\attempt_submitted',
+            'quiz_submit',
+            'attempt_submitted'
+        ]
+        
+        # Find unique (user_id, course_id) pairs with quiz/grade events
+        users_to_update = set()
+        for log in raw_logs:
+            eventname = log.get('eventname', '')
+            if any(event in eventname for event in quiz_events) or log.get('grade') is not None:
+                user_id = log.get('userid')
+                course_id = log.get('courseid')
+                if user_id and course_id:
+                    users_to_update.add((user_id, course_id))
+        
+        # Update LO mastery using LOMasteryService
+        updated_count = 0
+        for user_id, course_id in users_to_update:
+            try:
+                # Import here to avoid circular dependency
+                from services.business.lo_mastery_service import LOMasteryService
+                from services.business.po_lo import POLOService
+                from pathlib import Path
+                
+                # Initialize services
+                data_dir = Path('data')
+                po_lo_service = POLOService(data_dir=str(data_dir))
+                lo_mastery_service = LOMasteryService(
+                    moodle_client=self.moodle_client,
+                    po_lo_service=po_lo_service,
+                    repository=self.repository
+                )
+                
+                # Sync mastery from Moodle
+                success = lo_mastery_service.sync_student_mastery(
+                    user_id=user_id,
+                    course_id=course_id
+                )
+                
+                if success:
+                    updated_count += 1
+                    print(f"  ✓ Updated LO mastery for user {user_id}, course {course_id}")
+                else:
+                    print(f"  ⚠️  Failed to update LO mastery for user {user_id}, course {course_id}")
+                    
+            except Exception as e:
+                print(f"  ✗ Error updating LO mastery for user {user_id}, course {course_id}: {e}")
+                self.stats['errors'] += 1
+        
+        return updated_count
+    
     def process_logs_from_dict(
         self,
         raw_logs: List[Dict],
@@ -170,6 +235,12 @@ class LogProcessingPipeline:
             
             print(f"  ✓ Saved {saved_count} states")
             self.stats['total_states_saved'] += saved_count
+        
+        # Step 2.5: Update LO Mastery for users with quiz/grade events
+        if save_to_db and self.moodle_client:
+            print("\nStep 2.5: Updating LO Mastery from grades...")
+            lo_mastery_updates = self._update_lo_mastery_from_logs(raw_logs, states)
+            print(f"  ✓ Updated LO mastery for {lo_mastery_updates} users")
         
         # Step 3: Optionally save logs
         if save_logs:
