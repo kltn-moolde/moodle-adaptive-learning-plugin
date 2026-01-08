@@ -79,11 +79,13 @@ const mockLearningPath = [
 ];
 
 interface AIRecommendation {
+  action_id: number;
   activity_id: number;
   activity_name: string;
   activity_url: string;
   explanation: string;
   action_type: string;
+  module_name: string;
   q_value: number;
   target_los: [string, number][];
 }
@@ -511,7 +513,7 @@ export function StudentDashboard() {
                               </h4>
                               <div className="flex flex-wrap items-center gap-2 mt-2">
                                 <Badge variant="outline" className="text-xs font-medium">
-                                  {rec.action_type?.replace(/_/g, ' ') || "N/A"}
+                                  {rec.module_name?.replace(/_/g, ' ') || "N/A"}
                                 </Badge>
                                 {rec.target_los && rec.target_los.length > 0 && (
                                   <Badge variant="secondary" className="text-xs flex items-center gap-1">

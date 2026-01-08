@@ -4,7 +4,9 @@ namespace local_userlog\external;
 defined('MOODLE_INTERNAL') || die();
 
 require_once("$CFG->libdir/externallib.php");
+require_once($CFG->dirroot . '/question/format.php');
 require_once($CFG->dirroot . '/question/format/xml/format.php');
+require_once($CFG->libdir . '/questionlib.php');
 
 use external_api;
 use external_function_parameters;
