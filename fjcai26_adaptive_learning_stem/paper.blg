@@ -1,0 +1,62 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: paper.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: IEEEtran.bst
+Reallocating 'name_of_file' (item size: 1) to 6 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Database file #1: paper.bib
+Warning--entry type for "dataset_kaggle" isn't style-file defined
+--line 81 of file paper.bib
+Warning--I didn't find a database entry for "b5"
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+You've used 10 entries,
+            4087 wiz_defined-function locations,
+            889 strings with 9139 characters,
+and the built_in function-call counts, 6991 in all, are:
+= -- 594
+> -- 150
+< -- 57
++ -- 80
+- -- 27
+* -- 344
+:= -- 1125
+add.period$ -- 20
+call.type$ -- 10
+change.case$ -- 9
+chr.to.int$ -- 108
+cite$ -- 10
+duplicate$ -- 514
+empty$ -- 523
+format.name$ -- 35
+if$ -- 1593
+int.to.chr$ -- 0
+int.to.str$ -- 10
+missing$ -- 90
+newline$ -- 55
+num.names$ -- 10
+pop$ -- 185
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 547
+stack$ -- 0
+substring$ -- 269
+swap$ -- 420
+text.length$ -- 21
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 10
+warning$ -- 0
+while$ -- 31
+width$ -- 12
+write$ -- 124
+(There were 2 warnings)

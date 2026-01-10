@@ -1,0 +1,98 @@
+\relax 
+\providecommand \babel@aux [2]{\global \let \babel@toc \@gobbletwo }
+\@nameuse{bbl@beforestart}
+\citation{frey2017future}
+\citation{capuano2020adaptive}
+\citation{thuan2022ung,sang2020du}
+\citation{sutton1998reinforcement}
+\citation{chi2014icap}
+\citation{gligorea2023adaptive}
+\babel@aux{english}{}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{}\protected@file@percent }
+\newlabel{sec:intro}{{I}{1}{}{section.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Comparison of learning approaches. (a) Traditional methods apply a uniform learning path to all learners, often resulting in suboptimal engagement due to boredom or cognitive overload. (b) The proposed framework employs an AI agent to infer learner states from interaction logs and generate personalized action recommendations (review, standard, or enrichment) to maximize engagement and knowledge mastery.}}{1}{}\protected@file@percent }
+\newlabel{fig:concept}{{1}{1}{}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Proposed method overview. Moodle behavioral logs are transformed into learner states. Based on the current state, the agent selects an action and receives feedback in the form of rewards.}}{2}{}\protected@file@percent }
+\newlabel{fig:proposed_method}{{2}{2}{}{figure.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {II}Proposed Method}{2}{}\protected@file@percent }
+\newlabel{sec:methodology}{{II}{2}{}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-A}}Problem Overview}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {II-A}1}State Space $S$}{2}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Detailed flowchart of the Q-learning procedure for generating pedagogical recommendations.}}{2}{}\protected@file@percent }
+\newlabel{fig:qlearning_diagram}{{3}{2}{}{figure.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {II-A}2}Action Space $A$}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {II-A}3}Reward Function $R$}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-B}}Data Processing and Clustering}{2}{}\protected@file@percent }
+\citation{lundberg2017unified}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-C}}Q-learning Algorithm}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-D}}Explainability Framework}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {II-D}1}Mathematical Basis}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {II-D}2}KernelExplainer Implementation}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-E}}Data-driven Simulation Framework}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {II-E}1}Action Mapping and Contextualization}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {II-E}2}Transition Dynamics Modeling}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {II-E}3}Param Policy Baseline}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {II-E}4}Training and Evaluation Procedure}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {III}Experiments and Results}{3}{}\protected@file@percent }
+\newlabel{sec:experiments}{{III}{3}{}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Simulation Setup}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-A}1}Learning Style Modeling}{3}{}\protected@file@percent }
+\citation{dataset_kaggle}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-A}2}Simulation settings and stochasticity}{4}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Summary of simulation configuration parameters}}{4}{}\protected@file@percent }
+\newlabel{tab:sim_params}{{I}{4}{}{table.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Experimental Setup}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-B}1}Ground-Truth Dataset}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-B}2}Data Preprocessing and Clustering}{4}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Clustering validation metrics. The Elbow and Davies-Bouldin criteria indicate $K=6$, while the Silhouette coefficient remains acceptable at this value.}}{5}{}\protected@file@percent }
+\newlabel{fig:clustering_metrics}{{4}{5}{}{figure.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Probability of action selection by learning phase}}{5}{}\protected@file@percent }
+\newlabel{tab:phase_probs}{{II}{5}{}{table.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-B}3}Modeling transition dynamics and baseline}{5}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Action probability distribution by engagement level}}{5}{}\protected@file@percent }
+\newlabel{tab:engage_probs}{{III}{5}{}{table.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-B}4}Model Parameters}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-B}5}State Space Modeling}{5}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Detailed definition and value domain of the state space}}{6}{}\protected@file@percent }
+\newlabel{tab:state_space_detail}{{IV}{6}{}{table.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-B}6}Engagement Scoring Mechanism}{6}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces Complete action space (15 pedagogical actions)}}{6}{}\protected@file@percent }
+\newlabel{tab:action_space_compact}{{V}{6}{}{table.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Evaluation Metrics}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Data generation and convergence analysis}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-D}1}Data generation process with simulation}{6}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Cumulative reward convergence over 500 training episodes. Stable convergence behavior becomes evident after approximately episode 350.}}{7}{}\protected@file@percent }
+\newlabel{fig:convergence}{{5}{7}{}{figure.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Progressive decay of the exploration parameter $\epsilon $ across three training stages: exploration, transition, and exploitation.}}{7}{}\protected@file@percent }
+\newlabel{fig:epsilon}{{6}{7}{}{figure.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-D}2}Convergence and Coverage Analysis}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-E}}A/B Testing Comparison Results}{7}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Performance comparison between Q-learning and the Param Policy baseline in terms of cumulative reward, average score, and learning outcome (LO) mastery.}}{7}{}\protected@file@percent }
+\newlabel{fig:eval_result}{{7}{7}{}{figure.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces Average performance comparison results}}{7}{}\protected@file@percent }
+\newlabel{tab:results}{{VI}{7}{}{table.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-F}}Feature Importance Analysis}{7}{}\protected@file@percent }
+\citation{b5}
+\citation{mnih2015human}
+\citation{gligorea2023adaptive}
+\bibstyle{IEEEtran}
+\bibdata{paper}
+\bibcite{frey2017future}{1}
+\bibcite{capuano2020adaptive}{2}
+\bibcite{thuan2022ung}{3}
+\bibcite{sang2020du}{4}
+\bibcite{sutton1998reinforcement}{5}
+\bibcite{chi2014icap}{6}
+\@writefile{lot}{\contentsline {table}{\numberline {VII}{\ignorespaces Feature importance ranking based on SHAP analysis over 802 core states}}{8}{}\protected@file@percent }
+\newlabel{tab:shap_importance}{{VII}{8}{}{table.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Distribution of SHAP values across 802 core states. Each point represents a state; color denotes feature magnitude (red = high, blue = low), while the horizontal axis indicates the direction and strength of influence on the Q-value.}}{8}{}\protected@file@percent }
+\newlabel{fig:shap_distribution}{{8}{8}{}{figure.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-G}}Pedagogical Impact Analysis}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Conclusion}{8}{}\protected@file@percent }
+\newlabel{sec:conclusion}{{IV}{8}{}{section.4}{}}
+\@writefile{toc}{\contentsline {section}{References}{8}{}\protected@file@percent }
+\bibcite{gligorea2023adaptive}{7}
+\bibcite{lundberg2017unified}{8}
+\bibcite{dataset_kaggle}{9}
+\bibcite{mnih2015human}{10}
+\gdef \@abspage@last{9}
