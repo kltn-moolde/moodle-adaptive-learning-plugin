@@ -84,4 +84,5 @@ demo_pineline/step7_qlearning/data/*.csv
 submit_fjcai/*.csv
 
 submit_fjcai/code/moodle_analytics_pipeline/data/*.csv
-submit_fjcai/code/step7_qlearning/data/
+submit_fjcai/code/step7_qlearning/data/*.csv
+Draft/demo_pineline/data/
