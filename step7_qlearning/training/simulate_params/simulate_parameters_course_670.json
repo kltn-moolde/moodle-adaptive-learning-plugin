@@ -1,0 +1,1276 @@
+{
+  "course_id": 670,
+  "n_clusters": 5,
+  "n_modules": 8,
+  "n_actions": 15,
+  "action_space": [
+    [
+      "view_assignment",
+      "past"
+    ],
+    [
+      "view_content",
+      "past"
+    ],
+    [
+      "attempt_quiz",
+      "past"
+    ],
+    [
+      "review_quiz",
+      "past"
+    ],
+    [
+      "post_forum",
+      "past"
+    ],
+    [
+      "view_assignment",
+      "current"
+    ],
+    [
+      "view_content",
+      "current"
+    ],
+    [
+      "submit_assignment",
+      "current"
+    ],
+    [
+      "attempt_quiz",
+      "current"
+    ],
+    [
+      "submit_quiz",
+      "current"
+    ],
+    [
+      "review_quiz",
+      "current"
+    ],
+    [
+      "post_forum",
+      "current"
+    ],
+    [
+      "view_content",
+      "future"
+    ],
+    [
+      "attempt_quiz",
+      "future"
+    ],
+    [
+      "post_forum",
+      "future"
+    ]
+  ],
+  "action_transition_matrix": {
+    "(3, 5, 0, 0, 0)": {
+      "view_content_past": 1.0
+    },
+    "(3, 3, 0, 0, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(3, 2, 0, 0, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(3, 0, 0, 0, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(3, 5, 1, 0, 0)": {
+      "view_content_current": 1.0
+    },
+    "(3, 5, 2, 0, 0)": {
+      "view_content_current": 1.0
+    },
+    "(3, 0, 1, 0, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(3, 3, 1, 0, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(3, 2, 1, 0, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(3, 1, 0, 0, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(3, 1, 1, 0, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(3, 3, 2, 0, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(3, 5, 3, 0, 0)": {
+      "view_content_current": 0.40425531914893614,
+      "view_content_future": 0.5957446808510638
+    },
+    "(3, 1, 2, 0, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(3, 2, 2, 0, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(3, 0, 2, 0, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(3, 7, 0, 0, 1)": {
+      "attempt_quiz_past": 1.0
+    },
+    "(3, 6, 0, 0, 1)": {
+      "attempt_quiz_past": 1.0
+    },
+    "(3, 3, 3, 0, 0)": {
+      "view_assignment_current": 0.4,
+      "view_assignment_future": 0.6
+    },
+    "(3, 6, 1, 0, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(3, 7, 1, 0, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(3, 6, 2, 0, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(3, 7, 2, 0, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(3, 6, 3, 0, 1)": {
+      "attempt_quiz_current": 0.4,
+      "attempt_quiz_future": 0.6
+    },
+    "(3, 7, 3, 0, 1)": {
+      "attempt_quiz_current": 0.4,
+      "attempt_quiz_future": 0.6
+    },
+    "(3, 2, 3, 0, 0)": {
+      "view_assignment_current": 0.4107142857142857,
+      "view_assignment_future": 0.5892857142857143
+    },
+    "(3, 0, 3, 0, 0)": {
+      "view_assignment_current": 0.375,
+      "view_assignment_future": 0.625
+    },
+    "(3, 1, 3, 0, 0)": {
+      "view_assignment_current": 0.42857142857142855,
+      "view_assignment_future": 0.5714285714285714
+    },
+    "(2, 5, 0, 0, 0)": {
+      "view_content_past": 1.0
+    },
+    "(2, 5, 1, 0, 0)": {
+      "view_content_current": 1.0
+    },
+    "(2, 3, 0, 0, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(2, 2, 0, 0, 0)": {
+      "view_assignment_past": 0.6666666666666666,
+      "view_assignment_current": 0.3333333333333333
+    },
+    "(2, 5, 2, 0, 0)": {
+      "view_content_current": 1.0
+    },
+    "(2, 3, 1, 0, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(2, 2, 1, 0, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(2, 2, 2, 0, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(2, 5, 3, 0, 0)": {
+      "view_content_current": 0.5,
+      "view_content_future": 0.5
+    },
+    "(2, 3, 2, 0, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(2, 2, 3, 0, 0)": {
+      "view_assignment_future": 1.0
+    },
+    "(2, 0, 0, 0, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(2, 3, 3, 0, 0)": {
+      "view_assignment_current": 0.5,
+      "view_assignment_future": 0.5
+    },
+    "(2, 0, 1, 0, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(2, 0, 2, 0, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(4, 5, 0, 3, 0)": {
+      "view_content_past": 0.9937694704049844,
+      "view_content_current": 0.006230529595015576
+    },
+    "(4, 2, 0, 3, 0)": {
+      "view_assignment_past": 0.9807692307692307,
+      "view_assignment_current": 0.019230769230769232
+    },
+    "(4, 3, 0, 3, 0)": {
+      "view_assignment_past": 0.9884393063583815,
+      "view_assignment_current": 0.011560693641618497
+    },
+    "(4, 3, 0, 3, 1)": {
+      "submit_assignment_past": 1.0
+    },
+    "(4, 0, 0, 3, 0)": {
+      "view_assignment_past": 0.8695652173913043,
+      "view_assignment_current": 0.13043478260869565
+    },
+    "(4, 3, 1, 3, 1)": {
+      "submit_assignment_current": 1.0
+    },
+    "(4, 3, 1, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(4, 0, 1, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(4, 5, 1, 3, 0)": {
+      "view_content_current": 1.0
+    },
+    "(4, 0, 2, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(4, 2, 1, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(4, 3, 2, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(4, 3, 2, 3, 1)": {
+      "submit_assignment_current": 1.0
+    },
+    "(4, 5, 2, 3, 0)": {
+      "view_content_current": 1.0
+    },
+    "(4, 1, 0, 3, 0)": {
+      "view_assignment_past": 0.9166666666666666,
+      "view_assignment_current": 0.08333333333333333
+    },
+    "(4, 5, 3, 3, 0)": {
+      "view_content_current": 0.4,
+      "view_content_future": 0.6
+    },
+    "(4, 2, 2, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(4, 0, 3, 3, 0)": {
+      "view_assignment_current": 0.4117647058823529,
+      "view_assignment_future": 0.5882352941176471
+    },
+    "(4, 3, 3, 3, 0)": {
+      "view_assignment_current": 0.40804597701149425,
+      "view_assignment_future": 0.5919540229885057
+    },
+    "(4, 3, 3, 3, 1)": {
+      "submit_assignment_current": 0.3333333333333333,
+      "submit_assignment_future": 0.6666666666666666
+    },
+    "(4, 2, 3, 3, 0)": {
+      "view_assignment_current": 0.40404040404040403,
+      "view_assignment_future": 0.5959595959595959
+    },
+    "(4, 1, 1, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(4, 1, 2, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(4, 1, 3, 3, 0)": {
+      "view_assignment_current": 0.5714285714285714,
+      "view_assignment_future": 0.42857142857142855
+    },
+    "(4, 7, 0, 3, 1)": {
+      "attempt_quiz_past": 0.8888888888888888,
+      "attempt_quiz_current": 0.1111111111111111
+    },
+    "(4, 7, 1, 3, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(4, 6, 0, 3, 1)": {
+      "attempt_quiz_past": 1.0
+    },
+    "(4, 6, 1, 3, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(4, 6, 2, 3, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(4, 6, 3, 3, 1)": {
+      "attempt_quiz_current": 0.5,
+      "attempt_quiz_future": 0.5
+    },
+    "(4, 7, 2, 3, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(4, 7, 3, 3, 1)": {
+      "attempt_quiz_current": 0.4,
+      "attempt_quiz_future": 0.6
+    },
+    "(0, 3, 0, 3, 0)": {
+      "view_assignment_past": 0.9947916666666666,
+      "view_assignment_current": 0.005208333333333333
+    },
+    "(0, 2, 0, 3, 0)": {
+      "view_assignment_past": 0.9827586206896551,
+      "view_assignment_current": 0.017241379310344827
+    },
+    "(0, 3, 0, 3, 1)": {
+      "submit_assignment_past": 1.0
+    },
+    "(0, 5, 0, 3, 0)": {
+      "view_content_past": 1.0
+    },
+    "(0, 1, 0, 3, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(0, 0, 0, 3, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(0, 5, 1, 3, 0)": {
+      "view_content_current": 1.0
+    },
+    "(0, 3, 1, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(0, 3, 1, 3, 1)": {
+      "submit_assignment_current": 1.0
+    },
+    "(0, 0, 1, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(0, 2, 1, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(0, 0, 2, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(0, 0, 3, 3, 0)": {
+      "view_assignment_current": 0.47058823529411764,
+      "view_assignment_future": 0.5294117647058824
+    },
+    "(0, 3, 2, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(0, 3, 2, 3, 1)": {
+      "submit_assignment_current": 1.0
+    },
+    "(0, 2, 2, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(0, 5, 2, 3, 0)": {
+      "view_content_current": 1.0
+    },
+    "(0, 3, 3, 3, 0)": {
+      "view_assignment_current": 0.39790575916230364,
+      "view_assignment_future": 0.6020942408376964
+    },
+    "(0, 3, 3, 3, 1)": {
+      "submit_assignment_current": 0.45454545454545453,
+      "submit_assignment_future": 0.5454545454545454
+    },
+    "(0, 2, 3, 3, 0)": {
+      "view_assignment_current": 0.41284403669724773,
+      "view_assignment_future": 0.5871559633027523
+    },
+    "(0, 5, 3, 3, 0)": {
+      "view_content_current": 0.40304182509505704,
+      "view_content_future": 0.596958174904943
+    },
+    "(0, 1, 1, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(0, 1, 2, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(0, 1, 3, 3, 0)": {
+      "view_assignment_current": 0.5,
+      "view_assignment_future": 0.5
+    },
+    "(0, 7, 0, 3, 1)": {
+      "attempt_quiz_past": 0.8888888888888888,
+      "attempt_quiz_current": 0.1111111111111111
+    },
+    "(0, 7, 1, 3, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(0, 6, 0, 3, 1)": {
+      "attempt_quiz_past": 1.0
+    },
+    "(0, 6, 1, 3, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(0, 6, 2, 3, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(0, 6, 3, 3, 1)": {
+      "attempt_quiz_current": 0.5,
+      "attempt_quiz_future": 0.5
+    },
+    "(0, 7, 2, 3, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(0, 7, 3, 3, 1)": {
+      "attempt_quiz_current": 0.6,
+      "attempt_quiz_future": 0.4
+    },
+    "(4, 5, 0, 2, 0)": {
+      "view_content_past": 1.0
+    },
+    "(4, 3, 0, 2, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(4, 2, 0, 2, 0)": {
+      "view_assignment_past": 0.9666666666666667,
+      "view_assignment_current": 0.03333333333333333
+    },
+    "(4, 5, 1, 2, 0)": {
+      "view_content_current": 1.0
+    },
+    "(4, 0, 0, 2, 0)": {
+      "view_assignment_past": 0.8571428571428571,
+      "view_assignment_current": 0.14285714285714285
+    },
+    "(4, 5, 2, 2, 0)": {
+      "view_content_current": 1.0
+    },
+    "(4, 3, 0, 2, 1)": {
+      "submit_assignment_past": 1.0
+    },
+    "(4, 0, 1, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(4, 3, 1, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(4, 3, 1, 2, 1)": {
+      "submit_assignment_current": 1.0
+    },
+    "(4, 0, 2, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(4, 2, 1, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(4, 3, 2, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(4, 3, 2, 2, 1)": {
+      "submit_assignment_current": 1.0
+    },
+    "(4, 2, 2, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(4, 5, 3, 2, 0)": {
+      "view_content_current": 0.40476190476190477,
+      "view_content_future": 0.5952380952380952
+    },
+    "(4, 3, 3, 2, 0)": {
+      "view_assignment_current": 0.41025641025641024,
+      "view_assignment_future": 0.5897435897435898
+    },
+    "(4, 0, 3, 2, 0)": {
+      "view_assignment_current": 0.4,
+      "view_assignment_future": 0.6
+    },
+    "(4, 2, 3, 2, 0)": {
+      "view_assignment_current": 0.39285714285714285,
+      "view_assignment_future": 0.6071428571428571
+    },
+    "(4, 3, 3, 2, 1)": {
+      "submit_assignment_future": 1.0
+    },
+    "(4, 1, 0, 2, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(4, 7, 0, 2, 1)": {
+      "attempt_quiz_past": 1.0
+    },
+    "(0, 5, 0, 1, 0)": {
+      "view_content_past": 1.0
+    },
+    "(0, 3, 0, 1, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(0, 2, 0, 1, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(0, 3, 0, 1, 1)": {
+      "submit_assignment_past": 1.0
+    },
+    "(0, 5, 1, 1, 0)": {
+      "view_content_current": 1.0
+    },
+    "(0, 5, 2, 1, 0)": {
+      "view_content_current": 1.0
+    },
+    "(0, 5, 3, 1, 0)": {
+      "view_content_current": 0.4126984126984127,
+      "view_content_future": 0.5873015873015873
+    },
+    "(0, 2, 1, 1, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(0, 3, 1, 1, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(0, 3, 1, 1, 1)": {
+      "submit_assignment_current": 1.0
+    },
+    "(0, 2, 2, 1, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(0, 0, 0, 1, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(0, 3, 2, 1, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(0, 3, 2, 1, 1)": {
+      "submit_assignment_current": 1.0
+    },
+    "(0, 0, 1, 1, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(0, 3, 3, 1, 1)": {
+      "submit_assignment_current": 1.0
+    },
+    "(0, 3, 3, 1, 0)": {
+      "view_assignment_current": 0.42857142857142855,
+      "view_assignment_future": 0.5714285714285714
+    },
+    "(0, 2, 3, 1, 0)": {
+      "view_assignment_current": 0.5,
+      "view_assignment_future": 0.5
+    },
+    "(3, 5, 0, 2, 0)": {
+      "view_content_past": 0.98989898989899,
+      "view_content_current": 0.010101010101010102
+    },
+    "(3, 3, 0, 2, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(3, 2, 0, 2, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(3, 3, 0, 2, 1)": {
+      "submit_assignment_past": 1.0
+    },
+    "(3, 0, 0, 2, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(3, 3, 1, 2, 1)": {
+      "submit_assignment_current": 1.0
+    },
+    "(3, 3, 1, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(3, 0, 1, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(3, 5, 1, 2, 0)": {
+      "view_content_current": 1.0
+    },
+    "(3, 2, 1, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(3, 3, 2, 2, 1)": {
+      "submit_assignment_current": 1.0
+    },
+    "(3, 3, 2, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(3, 2, 2, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(3, 1, 0, 2, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(3, 5, 2, 2, 0)": {
+      "view_content_current": 1.0
+    },
+    "(3, 0, 2, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(3, 3, 3, 2, 0)": {
+      "view_assignment_current": 0.4126984126984127,
+      "view_assignment_future": 0.5873015873015873
+    },
+    "(3, 1, 1, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(3, 5, 3, 2, 0)": {
+      "view_content_current": 0.40625,
+      "view_content_future": 0.59375
+    },
+    "(3, 0, 3, 2, 0)": {
+      "view_assignment_current": 0.3333333333333333,
+      "view_assignment_future": 0.6666666666666666
+    },
+    "(3, 2, 3, 2, 0)": {
+      "view_assignment_current": 0.4186046511627907,
+      "view_assignment_future": 0.5813953488372093
+    },
+    "(3, 3, 3, 2, 1)": {
+      "submit_assignment_future": 1.0
+    },
+    "(3, 1, 2, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(3, 1, 3, 2, 0)": {
+      "view_assignment_current": 0.5,
+      "view_assignment_future": 0.5
+    },
+    "(3, 7, 0, 2, 1)": {
+      "attempt_quiz_past": 1.0
+    },
+    "(3, 6, 0, 2, 1)": {
+      "attempt_quiz_past": 1.0
+    },
+    "(3, 6, 1, 2, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(3, 6, 2, 2, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(3, 6, 3, 2, 1)": {
+      "attempt_quiz_current": 0.5,
+      "attempt_quiz_future": 0.5
+    },
+    "(3, 7, 1, 2, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(3, 7, 2, 2, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(3, 7, 3, 2, 1)": {
+      "attempt_quiz_current": 0.5,
+      "attempt_quiz_future": 0.5
+    },
+    "(4, 4, 0, 3, 2)": {
+      "post_forum_past": 1.0
+    },
+    "(4, 4, 1, 3, 2)": {
+      "post_forum_current": 1.0
+    },
+    "(1, 5, 0, 3, 0)": {
+      "view_content_past": 1.0
+    },
+    "(1, 3, 0, 3, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(1, 2, 0, 3, 0)": {
+      "view_assignment_past": 0.9863013698630136,
+      "view_assignment_current": 0.0136986301369863
+    },
+    "(1, 5, 1, 3, 0)": {
+      "view_content_current": 1.0
+    },
+    "(1, 1, 0, 3, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(1, 5, 2, 3, 0)": {
+      "view_content_current": 1.0
+    },
+    "(1, 7, 0, 3, 1)": {
+      "attempt_quiz_past": 1.0
+    },
+    "(1, 2, 1, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(1, 3, 0, 3, 1)": {
+      "submit_assignment_past": 1.0
+    },
+    "(1, 3, 1, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(1, 3, 1, 3, 1)": {
+      "submit_assignment_current": 1.0
+    },
+    "(1, 0, 0, 3, 0)": {
+      "view_assignment_past": 0.9,
+      "view_assignment_current": 0.1
+    },
+    "(1, 7, 1, 3, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(1, 6, 0, 3, 1)": {
+      "attempt_quiz_past": 0.9411764705882353,
+      "attempt_quiz_current": 0.058823529411764705
+    },
+    "(1, 5, 3, 3, 0)": {
+      "view_content_current": 0.4066666666666667,
+      "view_content_future": 0.5933333333333334
+    },
+    "(1, 6, 1, 3, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(1, 6, 2, 3, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(1, 6, 3, 3, 1)": {
+      "attempt_quiz_current": 0.38461538461538464,
+      "attempt_quiz_future": 0.6153846153846154
+    },
+    "(1, 7, 2, 3, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(1, 7, 3, 3, 1)": {
+      "attempt_quiz_current": 0.5,
+      "attempt_quiz_future": 0.5
+    },
+    "(1, 2, 2, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(1, 1, 1, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(1, 3, 2, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(1, 3, 2, 3, 1)": {
+      "submit_assignment_current": 1.0
+    },
+    "(1, 2, 3, 3, 0)": {
+      "view_assignment_current": 0.417910447761194,
+      "view_assignment_future": 0.582089552238806
+    },
+    "(1, 3, 3, 3, 0)": {
+      "view_assignment_current": 0.4090909090909091,
+      "view_assignment_future": 0.5909090909090909
+    },
+    "(1, 0, 1, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(1, 0, 2, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(1, 1, 2, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(1, 1, 3, 3, 0)": {
+      "view_assignment_current": 0.4,
+      "view_assignment_future": 0.6
+    },
+    "(1, 3, 3, 3, 1)": {
+      "submit_assignment_future": 0.6,
+      "submit_assignment_current": 0.4
+    },
+    "(1, 0, 3, 3, 0)": {
+      "view_assignment_current": 0.5,
+      "view_assignment_future": 0.5
+    },
+    "(2, 5, 0, 3, 0)": {
+      "view_content_past": 0.9913793103448276,
+      "view_content_current": 0.008620689655172414
+    },
+    "(2, 3, 0, 3, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(2, 2, 0, 3, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(2, 3, 0, 3, 1)": {
+      "submit_assignment_past": 1.0
+    },
+    "(2, 0, 0, 3, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(2, 0, 1, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(2, 5, 1, 3, 0)": {
+      "view_content_current": 1.0
+    },
+    "(2, 0, 2, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(2, 3, 1, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(2, 3, 1, 3, 1)": {
+      "submit_assignment_current": 1.0
+    },
+    "(2, 2, 1, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(2, 3, 2, 3, 1)": {
+      "submit_assignment_current": 1.0
+    },
+    "(2, 3, 2, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(2, 5, 2, 3, 0)": {
+      "view_content_current": 1.0
+    },
+    "(2, 2, 2, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(2, 1, 0, 3, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(2, 5, 3, 3, 0)": {
+      "view_content_current": 0.4017857142857143,
+      "view_content_future": 0.5982142857142857
+    },
+    "(2, 0, 3, 3, 0)": {
+      "view_assignment_current": 0.4444444444444444,
+      "view_assignment_future": 0.5555555555555556
+    },
+    "(2, 3, 3, 3, 0)": {
+      "view_assignment_current": 0.4148936170212766,
+      "view_assignment_future": 0.5851063829787234
+    },
+    "(2, 1, 1, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(2, 2, 3, 3, 0)": {
+      "view_assignment_current": 0.4107142857142857,
+      "view_assignment_future": 0.5892857142857143
+    },
+    "(2, 1, 2, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(2, 3, 3, 3, 1)": {
+      "submit_assignment_future": 0.6666666666666666,
+      "submit_assignment_current": 0.3333333333333333
+    },
+    "(2, 1, 3, 3, 0)": {
+      "view_assignment_current": 0.3333333333333333,
+      "view_assignment_future": 0.6666666666666666
+    },
+    "(2, 7, 0, 3, 1)": {
+      "attempt_quiz_past": 1.0
+    },
+    "(2, 7, 1, 3, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(2, 6, 0, 3, 1)": {
+      "attempt_quiz_past": 1.0
+    },
+    "(2, 6, 1, 3, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(2, 6, 2, 3, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(2, 6, 3, 3, 1)": {
+      "attempt_quiz_current": 0.4444444444444444,
+      "attempt_quiz_future": 0.5555555555555556
+    },
+    "(2, 7, 2, 3, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(2, 7, 3, 3, 1)": {
+      "attempt_quiz_current": 0.6666666666666666,
+      "attempt_quiz_future": 0.3333333333333333
+    },
+    "(0, 0, 2, 1, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(0, 0, 3, 1, 0)": {
+      "view_assignment_future": 1.0
+    },
+    "(0, 1, 0, 1, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(0, 7, 0, 1, 1)": {
+      "attempt_quiz_past": 1.0
+    },
+    "(0, 7, 1, 1, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(0, 6, 0, 1, 1)": {
+      "attempt_quiz_past": 1.0
+    },
+    "(0, 6, 1, 1, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(0, 6, 2, 1, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(0, 6, 3, 1, 1)": {
+      "attempt_quiz_current": 0.5,
+      "attempt_quiz_future": 0.5
+    },
+    "(0, 7, 2, 1, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(0, 7, 3, 1, 1)": {
+      "attempt_quiz_future": 1.0
+    },
+    "(3, 5, 0, 3, 0)": {
+      "view_content_past": 0.9848484848484849,
+      "view_content_current": 0.015151515151515152
+    },
+    "(3, 3, 0, 3, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(3, 2, 0, 3, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(3, 3, 0, 3, 1)": {
+      "submit_assignment_past": 1.0
+    },
+    "(3, 2, 1, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(3, 5, 1, 3, 0)": {
+      "view_content_current": 1.0
+    },
+    "(3, 0, 0, 3, 0)": {
+      "view_assignment_past": 0.8,
+      "view_assignment_current": 0.2
+    },
+    "(3, 3, 1, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(3, 3, 1, 3, 1)": {
+      "submit_assignment_current": 1.0
+    },
+    "(3, 5, 2, 3, 0)": {
+      "view_content_current": 1.0
+    },
+    "(3, 0, 1, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(3, 3, 2, 3, 1)": {
+      "submit_assignment_current": 1.0
+    },
+    "(3, 3, 2, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(3, 0, 2, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(3, 0, 3, 3, 0)": {
+      "view_assignment_current": 0.3333333333333333,
+      "view_assignment_future": 0.6666666666666666
+    },
+    "(3, 2, 2, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(3, 7, 0, 3, 1)": {
+      "attempt_quiz_past": 0.6666666666666666,
+      "attempt_quiz_current": 0.3333333333333333
+    },
+    "(3, 6, 0, 3, 1)": {
+      "attempt_quiz_past": 1.0
+    },
+    "(3, 6, 1, 3, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(3, 6, 2, 3, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(3, 6, 3, 3, 1)": {
+      "attempt_quiz_current": 0.5,
+      "attempt_quiz_future": 0.5
+    },
+    "(3, 7, 1, 3, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(3, 5, 3, 3, 0)": {
+      "view_content_current": 0.3968253968253968,
+      "view_content_future": 0.6031746031746031
+    },
+    "(3, 7, 2, 3, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(3, 1, 0, 3, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(3, 7, 3, 3, 1)": {
+      "attempt_quiz_future": 1.0
+    },
+    "(3, 3, 3, 3, 0)": {
+      "view_assignment_current": 0.3783783783783784,
+      "view_assignment_future": 0.6216216216216216
+    },
+    "(3, 3, 3, 3, 1)": {
+      "submit_assignment_current": 1.0
+    },
+    "(3, 2, 3, 3, 0)": {
+      "view_assignment_current": 0.4090909090909091,
+      "view_assignment_future": 0.5909090909090909
+    },
+    "(3, 1, 1, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(3, 1, 2, 3, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(0, 5, 0, 2, 0)": {
+      "view_content_past": 1.0
+    },
+    "(0, 3, 0, 2, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(0, 2, 0, 2, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(0, 3, 0, 2, 1)": {
+      "submit_assignment_past": 1.0
+    },
+    "(0, 0, 0, 2, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(0, 5, 1, 2, 0)": {
+      "view_content_current": 1.0
+    },
+    "(0, 0, 1, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(0, 0, 2, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(0, 3, 1, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(0, 3, 1, 2, 1)": {
+      "submit_assignment_current": 1.0
+    },
+    "(0, 0, 3, 2, 0)": {
+      "view_assignment_current": 0.3333333333333333,
+      "view_assignment_future": 0.6666666666666666
+    },
+    "(0, 2, 1, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(0, 5, 2, 2, 0)": {
+      "view_content_current": 1.0
+    },
+    "(0, 3, 2, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(0, 3, 2, 2, 1)": {
+      "submit_assignment_current": 1.0
+    },
+    "(0, 1, 0, 2, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(0, 2, 2, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(0, 2, 3, 2, 0)": {
+      "view_assignment_current": 0.40476190476190477,
+      "view_assignment_future": 0.5952380952380952
+    },
+    "(0, 3, 3, 2, 0)": {
+      "view_assignment_current": 0.42424242424242425,
+      "view_assignment_future": 0.5757575757575758
+    },
+    "(0, 1, 1, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(0, 1, 2, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(0, 5, 3, 2, 0)": {
+      "view_content_current": 0.4117647058823529,
+      "view_content_future": 0.5882352941176471
+    },
+    "(0, 3, 3, 2, 1)": {
+      "submit_assignment_future": 1.0
+    },
+    "(0, 1, 3, 2, 0)": {
+      "view_assignment_current": 0.5,
+      "view_assignment_future": 0.5
+    },
+    "(0, 7, 0, 2, 1)": {
+      "attempt_quiz_past": 0.75,
+      "attempt_quiz_current": 0.25
+    },
+    "(0, 7, 1, 2, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(0, 6, 0, 2, 1)": {
+      "attempt_quiz_past": 0.8333333333333334,
+      "attempt_quiz_current": 0.16666666666666666
+    },
+    "(0, 6, 1, 2, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(0, 6, 2, 2, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(0, 7, 2, 2, 1)": {
+      "attempt_quiz_current": 1.0
+    },
+    "(0, 6, 3, 2, 1)": {
+      "attempt_quiz_current": 0.25,
+      "attempt_quiz_future": 0.75
+    },
+    "(0, 7, 3, 2, 1)": {
+      "attempt_quiz_current": 0.5,
+      "attempt_quiz_future": 0.5
+    },
+    "(2, 5, 0, 2, 0)": {
+      "view_content_past": 1.0
+    },
+    "(2, 5, 1, 2, 0)": {
+      "view_content_current": 1.0
+    },
+    "(2, 3, 0, 2, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(2, 2, 0, 2, 0)": {
+      "view_assignment_past": 1.0
+    },
+    "(2, 3, 0, 2, 1)": {
+      "submit_assignment_past": 1.0
+    },
+    "(2, 2, 1, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(2, 5, 2, 2, 0)": {
+      "view_content_current": 1.0
+    },
+    "(2, 0, 0, 2, 0)": {
+      "view_assignment_past": 0.75,
+      "view_assignment_current": 0.25
+    },
+    "(2, 3, 1, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(2, 3, 1, 2, 1)": {
+      "submit_assignment_current": 1.0
+    },
+    "(2, 0, 1, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(2, 0, 2, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(2, 3, 2, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(2, 3, 2, 2, 1)": {
+      "submit_assignment_current": 1.0
+    },
+    "(2, 2, 2, 2, 0)": {
+      "view_assignment_current": 1.0
+    },
+    "(2, 3, 3, 2, 1)": {
+      "submit_assignment_current": 0.5,
+      "submit_assignment_future": 0.5
+    },
+    "(2, 3, 3, 2, 0)": {
+      "view_assignment_current": 0.36363636363636365,
+      "view_assignment_future": 0.6363636363636364
+    },
+    "(2, 5, 3, 2, 0)": {
+      "view_content_current": 0.6666666666666666,
+      "view_content_future": 0.3333333333333333
+    },
+    "(2, 2, 3, 2, 0)": {
+      "view_assignment_current": 0.5,
+      "view_assignment_future": 0.5
+    },
+    "(2, 0, 3, 2, 0)": {
+      "view_assignment_future": 0.5,
+      "view_assignment_current": 0.5
+    }
+  },
+  "time_patterns": {
+    "view_content": {
+      "mean": 207.0350126434546,
+      "std": 472.7825780303776,
+      "min": 0.0,
+      "max": 3589.0
+    },
+    "view_assignment": {
+      "mean": 64.14818715209869,
+      "std": 283.08646699110864,
+      "min": 0.0,
+      "max": 3574.0
+    },
+    "attempt_quiz": {
+      "mean": 189.17708333333334,
+      "std": 454.40273753511747,
+      "min": 0.0,
+      "max": 3572.0
+    },
+    "submit_assignment": {
+      "mean": 6.29004329004329,
+      "std": 39.70125214866696,
+      "min": 0.0,
+      "max": 308.0
+    },
+    "post_forum": {
+      "mean": 1.5,
+      "std": 0.7071067811865476,
+      "min": 1.0,
+      "max": 2.0
+    }
+  },
+  "progress_patterns": {
+    "view_content": {
+      "avg_change": -0.04622586307782329,
+      "std_change": 0.48981124096433876,
+      "improve_prob": 0.0528574214940511
+    },
+    "view_assignment": {
+      "avg_change": 0.009034783918084625,
+      "std_change": 0.6195939712409653,
+      "improve_prob": 0.12196958289414245
+    },
+    "attempt_quiz": {
+      "avg_change": 0.353204172876304,
+      "std_change": 0.9129720966286579,
+      "improve_prob": 0.2459016393442623
+    },
+    "submit_assignment": {
+      "avg_change": 0.0,
+      "std_change": 0.2637521893583148,
+      "improve_prob": 0.034782608695652174
+    },
+    "post_forum": {
+      "avg_change": 0.5,
+      "std_change": 0.5,
+      "improve_prob": 0.5
+    }
+  },
+  "action_probs_by_learning_phase": {
+    "0": {
+      "view_assignment": 0.5638785205293518,
+      "view_content": 0.4361214794706481
+    },
+    "1": {
+      "attempt_quiz": 0.7441860465116279,
+      "submit_assignment": 0.2558139534883721
+    },
+    "2": {
+      "post_forum": 1.0
+    }
+  },
+  "action_probs_by_engagement": {
+    "high": {
+      "attempt_quiz": 0.05790108564535585,
+      "post_forum": 0.00024125452352231604,
+      "submit_assignment": 0.015199034981905911,
+      "view_assignment": 0.5219541616405308,
+      "view_content": 0.40470446320868514
+    },
+    "low": {
+      "attempt_quiz": 0.04801097393689986,
+      "submit_assignment": 0.03566529492455418,
+      "view_assignment": 0.5761316872427984,
+      "view_content": 0.3401920438957476
+    },
+    "medium": {
+      "attempt_quiz": 0.042732716385411,
+      "submit_assignment": 0.02150244964616222,
+      "view_assignment": 0.5171475231355471,
+      "view_content": 0.4186173108328797
+    }
+  }
+}

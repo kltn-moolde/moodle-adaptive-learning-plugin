@@ -1,0 +1,947 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1761706909000,152,Get login page,200,OK,Thread Group 1-1,text,true,,19204,136,1,1,http://139.99.103.223:9090/login/index.php,133,0,56
+1761706909916,124,Get login page,200,OK,Thread Group 1-2,text,true,,19204,136,2,2,http://139.99.103.223:9090/login/index.php,93,0,33
+1761706910912,127,Get login page,200,OK,Thread Group 1-3,text,true,,19204,136,3,3,http://139.99.103.223:9090/login/index.php,95,0,33
+1761706911907,137,Get login page,200,OK,Thread Group 1-4,text,true,,19204,136,4,4,http://139.99.103.223:9090/login/index.php,104,0,34
+1761706911732,469,Login,200,OK,Thread Group 1-1,text,true,,217002,1023,4,4,http://139.99.103.223:9090/my/,99,0,0
+1761706911732,99,Login-0,303,See Other,Thread Group 1-1,text,true,,2301,346,4,4,http://139.99.103.223:9090/login/index.php,99,0,0
+1761706911833,45,Login-1,303,See Other,Thread Group 1-1,text,true,,1887,352,4,4,http://139.99.103.223:9090/login/index.php?testsession=45,45,0,0
+1761706911879,322,Login-2,200,OK,Thread Group 1-1,text,true,,212814,325,4,4,http://139.99.103.223:9090/my/,191,0,0
+1761706912907,125,Get login page,200,OK,Thread Group 1-5,text,true,,19204,136,5,5,http://139.99.103.223:9090/login/index.php,93,0,33
+1761706913900,129,Get login page,200,OK,Thread Group 1-6,text,true,,19204,136,6,6,http://139.99.103.223:9090/login/index.php,97,0,34
+1761706914287,445,Login,200,OK,Thread Group 1-2,text,true,,216998,1015,6,6,http://139.99.103.223:9090/my/,95,0,0
+1761706914287,95,Login-0,303,See Other,Thread Group 1-2,text,true,,2297,346,6,6,http://139.99.103.223:9090/login/index.php,95,0,0
+1761706914383,47,Login-1,303,See Other,Thread Group 1-2,text,true,,1887,348,6,6,http://139.99.103.223:9090/login/index.php?testsession=46,47,0,0
+1761706914430,302,Login-2,200,OK,Thread Group 1-2,text,true,,212814,321,6,6,http://139.99.103.223:9090/my/,176,0,0
+1761706914897,123,Get login page,200,OK,Thread Group 1-7,text,true,,19204,136,7,7,http://139.99.103.223:9090/login/index.php,91,0,32
+1761706915892,125,Get login page,200,OK,Thread Group 1-8,text,true,,19204,136,8,8,http://139.99.103.223:9090/login/index.php,94,0,32
+1761706916445,316,test login,200,OK,Thread Group 1-1,text,true,,213480,551,8,8,http://139.99.103.223:9090/my/,32,0,0
+1761706916445,32,test login-0,301,Moved Permanently,Thread Group 1-1,text,true,,488,275,8,8,http://139.99.103.223:9090/my,32,0,0
+1761706916477,284,test login-1,200,OK,Thread Group 1-1,text,true,,212992,276,8,8,http://139.99.103.223:9090/my/,157,0,0
+1761706916889,117,Get login page,200,OK,Thread Group 1-9,text,true,,19204,136,9,9,http://139.99.103.223:9090/login/index.php,87,0,32
+1761706916782,435,Login,200,OK,Thread Group 1-3,text,true,,217007,1031,9,9,http://139.99.103.223:9090/my/,119,0,32
+1761706916782,119,Login-0,303,See Other,Thread Group 1-3,text,true,,2306,346,9,9,http://139.99.103.223:9090/login/index.php,119,0,32
+1761706916901,44,Login-1,303,See Other,Thread Group 1-3,text,true,,1887,356,9,9,http://139.99.103.223:9090/login/index.php?testsession=47,44,0,0
+1761706916945,272,Login-2,200,OK,Thread Group 1-3,text,true,,212814,329,9,9,http://139.99.103.223:9090/my/,141,0,0
+1761706917880,131,Get login page,200,OK,Thread Group 1-10,text,true,,19204,136,10,10,http://139.99.103.223:9090/login/index.php,100,0,31
+1761706918878,131,Get login page,200,OK,Thread Group 1-11,text,true,,19204,136,11,11,http://139.99.103.223:9090/login/index.php,100,0,33
+1761706919266,486,Login,200,OK,Thread Group 1-4,text,true,,217005,1027,11,11,http://139.99.103.223:9090/my/,133,0,33
+1761706919266,133,Login-0,303,See Other,Thread Group 1-4,text,true,,2304,346,11,11,http://139.99.103.223:9090/login/index.php,133,0,33
+1761706919400,53,Login-1,303,See Other,Thread Group 1-4,text,true,,1887,354,11,11,http://139.99.103.223:9090/login/index.php?testsession=48,53,0,0
+1761706919454,298,Login-2,200,OK,Thread Group 1-4,text,true,,212814,327,11,11,http://139.99.103.223:9090/my/,168,0,0
+1761706919874,124,Get login page,200,OK,Thread Group 1-12,text,true,,19204,136,12,12,http://139.99.103.223:9090/login/index.php,93,0,33
+1761706920873,135,Get login page,200,OK,Thread Group 1-13,text,true,,19204,136,13,13,http://139.99.103.223:9090/login/index.php,104,0,34
+1761706921867,131,Get login page,200,OK,Thread Group 1-14,text,true,,19204,136,14,14,http://139.99.103.223:9090/login/index.php,100,0,32
+1761706921779,506,Login,200,OK,Thread Group 1-5,text,true,,216999,1015,14,14,http://139.99.103.223:9090/my/,159,0,34
+1761706921779,159,Login-0,303,See Other,Thread Group 1-5,text,true,,2298,346,14,14,http://139.99.103.223:9090/login/index.php,159,0,34
+1761706921939,43,Login-1,303,See Other,Thread Group 1-5,text,true,,1887,348,14,14,http://139.99.103.223:9090/login/index.php?testsession=49,42,0,0
+1761706921982,303,Login-2,200,OK,Thread Group 1-5,text,true,,212814,321,14,14,http://139.99.103.223:9090/my/,167,0,0
+1761706921916,380,test login,200,OK,Thread Group 1-2,text,true,,213481,543,14,14,http://139.99.103.223:9090/my/,64,0,33
+1761706921916,64,test login-0,301,Moved Permanently,Thread Group 1-2,text,true,,489,271,14,14,http://139.99.103.223:9090/my,64,0,33
+1761706921981,315,test login-1,200,OK,Thread Group 1-2,text,true,,212992,272,14,14,http://139.99.103.223:9090/my/,186,0,0
+1761706922866,119,Get login page,200,OK,Thread Group 1-15,text,true,,19204,136,15,15,http://139.99.103.223:9090/login/index.php,87,0,32
+1761706923860,121,Get login page,200,OK,Thread Group 1-16,text,true,,19204,136,16,16,http://139.99.103.223:9090/login/index.php,90,0,33
+1761706924267,476,Login,200,OK,Thread Group 1-6,text,true,,217003,1023,16,16,http://139.99.103.223:9090/my/,125,0,32
+1761706924267,125,Login-0,303,See Other,Thread Group 1-6,text,true,,2302,346,16,16,http://139.99.103.223:9090/login/index.php,125,0,32
+1761706924393,44,Login-1,303,See Other,Thread Group 1-6,text,true,,1887,352,16,16,http://139.99.103.223:9090/login/index.php?testsession=50,44,0,0
+1761706924437,306,Login-2,200,OK,Thread Group 1-6,text,true,,212814,325,16,16,http://139.99.103.223:9090/my/,173,0,0
+1761706924858,131,Get login page,200,OK,Thread Group 1-17,text,true,,19204,136,17,17,http://139.99.103.223:9090/login/index.php,100,0,33
+1761706925855,119,Get login page,200,OK,Thread Group 1-18,text,true,,19204,136,18,18,http://139.99.103.223:9090/login/index.php,88,0,32
+1761706926854,121,Get login page,200,OK,Thread Group 1-19,text,true,,19204,136,19,19,http://139.99.103.223:9090/login/index.php,90,0,33
+1761706926770,450,Login,200,OK,Thread Group 1-7,text,true,,217007,1031,19,19,http://139.99.103.223:9090/my/,121,0,32
+1761706926770,121,Login-0,303,See Other,Thread Group 1-7,text,true,,2306,346,19,19,http://139.99.103.223:9090/login/index.php,121,0,32
+1761706926892,42,Login-1,303,See Other,Thread Group 1-7,text,true,,1887,356,19,19,http://139.99.103.223:9090/login/index.php?testsession=51,42,0,0
+1761706926935,285,Login-2,200,OK,Thread Group 1-7,text,true,,212814,329,19,19,http://139.99.103.223:9090/my/,148,0,0
+1761706927851,121,Get login page,200,OK,Thread Group 1-20,text,true,,19204,136,20,20,http://139.99.103.223:9090/login/index.php,90,0,33
+1761706928911,354,test login,200,OK,Thread Group 1-3,text,true,,213481,559,20,20,http://139.99.103.223:9090/my/,70,0,31
+1761706928911,70,test login-0,301,Moved Permanently,Thread Group 1-3,text,true,,489,279,20,20,http://139.99.103.223:9090/my,70,0,31
+1761706928982,283,test login-1,200,OK,Thread Group 1-3,text,true,,212992,280,20,20,http://139.99.103.223:9090/my/,146,0,0
+1761706929265,464,Login,200,OK,Thread Group 1-8,text,true,,217001,1019,20,20,http://139.99.103.223:9090/my/,123,0,32
+1761706929265,123,Login-0,303,See Other,Thread Group 1-8,text,true,,2300,346,20,20,http://139.99.103.223:9090/login/index.php,123,0,32
+1761706929389,45,Login-1,303,See Other,Thread Group 1-8,text,true,,1887,350,20,20,http://139.99.103.223:9090/login/index.php?testsession=52,45,0,0
+1761706929434,295,Login-2,200,OK,Thread Group 1-8,text,true,,212814,323,20,20,http://139.99.103.223:9090/my/,168,0,0
+1761706931771,451,Login,200,OK,Thread Group 1-9,text,true,,217005,1027,20,20,http://139.99.103.223:9090/my/,122,0,32
+1761706931771,122,Login-0,303,See Other,Thread Group 1-9,text,true,,2304,346,20,20,http://139.99.103.223:9090/login/index.php,122,0,32
+1761706931894,44,Login-1,303,See Other,Thread Group 1-9,text,true,,1887,354,20,20,http://139.99.103.223:9090/login/index.php?testsession=53,43,0,0
+1761706931938,284,Login-2,200,OK,Thread Group 1-9,text,true,,212814,327,20,20,http://139.99.103.223:9090/my/,154,0,0
+1761706932065,297,View Section 1,200,OK,Thread Group 1-1,text,true,,321959,303,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=2,163,0,32
+1761706934248,465,Login,200,OK,Thread Group 1-10,text,true,,217001,1019,20,20,http://139.99.103.223:9090/my/,131,0,32
+1761706934248,131,Login-0,303,See Other,Thread Group 1-10,text,true,,2300,346,20,20,http://139.99.103.223:9090/login/index.php,131,0,32
+1761706934380,44,Login-1,303,See Other,Thread Group 1-10,text,true,,1887,350,20,20,http://139.99.103.223:9090/login/index.php?testsession=54,44,0,0
+1761706934424,289,Login-2,200,OK,Thread Group 1-10,text,true,,212814,323,20,20,http://139.99.103.223:9090/my/,158,0,0
+1761706934407,340,test login,200,OK,Thread Group 1-4,text,true,,213481,555,20,20,http://139.99.103.223:9090/my/,63,0,31
+1761706934407,63,test login-0,301,Moved Permanently,Thread Group 1-4,text,true,,489,277,20,20,http://139.99.103.223:9090/my,63,0,31
+1761706934470,277,test login-1,200,OK,Thread Group 1-4,text,true,,212992,278,20,20,http://139.99.103.223:9090/my/,149,0,0
+1761706936744,455,Login,200,OK,Thread Group 1-11,text,true,,217003,1023,20,20,http://139.99.103.223:9090/my/,126,0,32
+1761706936744,126,Login-0,303,See Other,Thread Group 1-11,text,true,,2302,346,20,20,http://139.99.103.223:9090/login/index.php,126,0,32
+1761706936871,43,Login-1,303,See Other,Thread Group 1-11,text,true,,1887,352,20,20,http://139.99.103.223:9090/login/index.php?testsession=55,42,0,0
+1761706936914,285,Login-2,200,OK,Thread Group 1-11,text,true,,212814,325,20,20,http://139.99.103.223:9090/my/,158,0,0
+1761706939248,451,Login,200,OK,Thread Group 1-12,text,true,,217003,1023,20,20,http://139.99.103.223:9090/my/,119,0,33
+1761706939248,119,Login-0,303,See Other,Thread Group 1-12,text,true,,2302,346,20,20,http://139.99.103.223:9090/login/index.php,119,0,33
+1761706939368,43,Login-1,303,See Other,Thread Group 1-12,text,true,,1887,352,20,20,http://139.99.103.223:9090/login/index.php?testsession=56,43,0,0
+1761706939411,288,Login-2,200,OK,Thread Group 1-12,text,true,,212814,325,20,20,http://139.99.103.223:9090/my/,152,0,0
+1761706941407,346,test login,200,OK,Thread Group 1-5,text,true,,213481,543,20,20,http://139.99.103.223:9090/my/,63,0,32
+1761706941407,63,test login-0,301,Moved Permanently,Thread Group 1-5,text,true,,489,271,20,20,http://139.99.103.223:9090/my,63,0,32
+1761706941470,283,test login-1,200,OK,Thread Group 1-5,text,true,,212992,272,20,20,http://139.99.103.223:9090/my/,151,0,0
+1761706941729,459,Login,200,OK,Thread Group 1-13,text,true,,217003,1023,20,20,http://139.99.103.223:9090/my/,126,0,32
+1761706941729,126,Login-0,303,See Other,Thread Group 1-13,text,true,,2302,346,20,20,http://139.99.103.223:9090/login/index.php,126,0,32
+1761706941856,42,Login-1,303,See Other,Thread Group 1-13,text,true,,1887,352,20,20,http://139.99.103.223:9090/login/index.php?testsession=57,42,0,0
+1761706941899,289,Login-2,200,OK,Thread Group 1-13,text,true,,212814,325,20,20,http://139.99.103.223:9090/my/,157,0,0
+1761706944231,461,Login,200,OK,Thread Group 1-14,text,true,,217001,1019,20,20,http://139.99.103.223:9090/my/,126,0,35
+1761706944231,126,Login-0,303,See Other,Thread Group 1-14,text,true,,2300,346,20,20,http://139.99.103.223:9090/login/index.php,126,0,35
+1761706944358,43,Login-1,303,See Other,Thread Group 1-14,text,true,,1887,350,20,20,http://139.99.103.223:9090/login/index.php?testsession=58,43,0,0
+1761706944402,290,Login-2,200,OK,Thread Group 1-14,text,true,,212814,323,20,20,http://139.99.103.223:9090/my/,158,0,0
+1761706946483,316,View Section 1,200,OK,Thread Group 1-2,text,true,,321959,299,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=2,170,0,32
+1761706946746,457,Login,200,OK,Thread Group 1-15,text,true,,217001,1019,20,20,http://139.99.103.223:9090/my/,118,0,32
+1761706946746,118,Login-0,303,See Other,Thread Group 1-15,text,true,,2300,346,20,20,http://139.99.103.223:9090/login/index.php,118,0,32
+1761706946865,42,Login-1,303,See Other,Thread Group 1-15,text,true,,1887,350,20,20,http://139.99.103.223:9090/login/index.php?testsession=59,42,0,0
+1761706946908,295,Login-2,200,OK,Thread Group 1-15,text,true,,212814,323,20,20,http://139.99.103.223:9090/my/,161,0,0
+1761706946899,335,test login,200,OK,Thread Group 1-6,text,true,,213481,551,20,20,http://139.99.103.223:9090/my/,63,0,31
+1761706946899,63,test login-0,301,Moved Permanently,Thread Group 1-6,text,true,,489,275,20,20,http://139.99.103.223:9090/my,63,0,31
+1761706946962,272,test login-1,200,OK,Thread Group 1-6,text,true,,212992,276,20,20,http://139.99.103.223:9090/my/,145,0,0
+1761706949238,463,Login,200,OK,Thread Group 1-16,text,true,,216999,1015,20,20,http://139.99.103.223:9090/my/,123,0,32
+1761706949238,123,Login-0,303,See Other,Thread Group 1-16,text,true,,2298,346,20,20,http://139.99.103.223:9090/login/index.php,123,0,32
+1761706949362,43,Login-1,303,See Other,Thread Group 1-16,text,true,,1887,348,20,20,http://139.99.103.223:9090/login/index.php?testsession=60,43,0,0
+1761706949406,295,Login-2,200,OK,Thread Group 1-16,text,true,,212814,321,20,20,http://139.99.103.223:9090/my/,166,0,0
+1761706951724,804,Login,200,OK,Thread Group 1-17,text,true,,217003,1023,20,20,http://139.99.103.223:9090/my/,133,0,34
+1761706951724,133,Login-0,303,See Other,Thread Group 1-17,text,true,,2302,346,20,20,http://139.99.103.223:9090/login/index.php,133,0,34
+1761706951857,332,Login-1,303,See Other,Thread Group 1-17,text,true,,1887,352,20,20,http://139.99.103.223:9090/login/index.php?testsession=61,332,0,0
+1761706952190,338,Login-2,200,OK,Thread Group 1-17,text,true,,212814,325,20,20,http://139.99.103.223:9090/my/,199,0,0
+1761706953896,346,test login,200,OK,Thread Group 1-7,text,true,,213481,559,20,20,http://139.99.103.223:9090/my/,64,0,32
+1761706953896,64,test login-0,301,Moved Permanently,Thread Group 1-7,text,true,,489,279,20,20,http://139.99.103.223:9090/my,64,0,32
+1761706953961,281,test login-1,200,OK,Thread Group 1-7,text,true,,212992,280,20,20,http://139.99.103.223:9090/my/,146,0,0
+1761706954234,450,Login,200,OK,Thread Group 1-18,text,true,,217001,1019,20,20,http://139.99.103.223:9090/my/,118,0,32
+1761706954234,118,Login-0,303,See Other,Thread Group 1-18,text,true,,2300,346,20,20,http://139.99.103.223:9090/login/index.php,118,0,32
+1761706954352,44,Login-1,303,See Other,Thread Group 1-18,text,true,,1887,350,20,20,http://139.99.103.223:9090/login/index.php?testsession=62,44,0,0
+1761706954396,288,Login-2,200,OK,Thread Group 1-18,text,true,,212814,323,20,20,http://139.99.103.223:9090/my/,159,0,0
+1761706956728,455,Login,200,OK,Thread Group 1-19,text,true,,216999,1015,20,20,http://139.99.103.223:9090/my/,122,0,32
+1761706956728,122,Login-0,303,See Other,Thread Group 1-19,text,true,,2298,346,20,20,http://139.99.103.223:9090/login/index.php,122,0,32
+1761706956850,43,Login-1,303,See Other,Thread Group 1-19,text,true,,1887,348,20,20,http://139.99.103.223:9090/login/index.php?testsession=63,43,0,0
+1761706956893,290,Login-2,200,OK,Thread Group 1-19,text,true,,212814,321,20,20,http://139.99.103.223:9090/my/,159,0,0
+1761706957892,349,test login,200,OK,Thread Group 1-8,text,true,,213481,547,20,20,http://139.99.103.223:9090/my/,65,0,33
+1761706957892,65,test login-0,301,Moved Permanently,Thread Group 1-8,text,true,,489,273,20,20,http://139.99.103.223:9090/my,65,0,33
+1761706957957,284,test login-1,200,OK,Thread Group 1-8,text,true,,212992,274,20,20,http://139.99.103.223:9090/my/,151,0,0
+1761706959230,442,Login,200,OK,Thread Group 1-20,text,true,,217001,1019,20,20,http://139.99.103.223:9090/my/,117,0,33
+1761706959230,117,Login-0,303,See Other,Thread Group 1-20,text,true,,2300,346,20,20,http://139.99.103.223:9090/login/index.php,117,0,33
+1761706959348,43,Login-1,303,See Other,Thread Group 1-20,text,true,,1887,350,20,20,http://139.99.103.223:9090/login/index.php?testsession=64,43,0,0
+1761706959391,281,Login-2,200,OK,Thread Group 1-20,text,true,,212814,323,20,20,http://139.99.103.223:9090/my/,149,0,0
+1761706960392,366,test login,200,OK,Thread Group 1-9,text,true,,213481,555,20,20,http://139.99.103.223:9090/my/,70,0,33
+1761706960392,71,test login-0,301,Moved Permanently,Thread Group 1-9,text,true,,489,277,20,20,http://139.99.103.223:9090/my,70,0,33
+1761706960463,295,test login-1,200,OK,Thread Group 1-9,text,true,,212992,278,20,20,http://139.99.103.223:9090/my/,166,0,0
+1761706962055,297,View Chủ đề 1,200,OK,Thread Group 1-1,text,true,,265395,303,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,157,0,33
+1761706962407,305,View Chủ đề 2,200,OK,Thread Group 1-3,text,true,,321959,307,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=2,164,0,33
+1761706962880,342,test login,200,OK,Thread Group 1-10,text,true,,213481,547,20,20,http://139.99.103.223:9090/my/,64,0,32
+1761706962880,64,test login-0,301,Moved Permanently,Thread Group 1-10,text,true,,489,273,20,20,http://139.99.103.223:9090/my,64,0,32
+1761706962945,277,test login-1,200,OK,Thread Group 1-10,text,true,,212992,274,20,20,http://139.99.103.223:9090/my/,142,0,0
+1761706965379,348,test login,200,OK,Thread Group 1-11,text,true,,213481,551,20,20,http://139.99.103.223:9090/my/,64,0,32
+1761706965379,64,test login-0,301,Moved Permanently,Thread Group 1-11,text,true,,489,275,20,20,http://139.99.103.223:9090/my,64,0,32
+1761706965444,283,test login-1,200,OK,Thread Group 1-11,text,true,,212992,276,20,20,http://139.99.103.223:9090/my/,150,0,0
+1761706967874,347,test login,200,OK,Thread Group 1-12,text,true,,213481,551,20,20,http://139.99.103.223:9090/my/,65,0,32
+1761706967874,65,test login-0,301,Moved Permanently,Thread Group 1-12,text,true,,489,275,20,20,http://139.99.103.223:9090/my,65,0,32
+1761706967939,282,test login-1,200,OK,Thread Group 1-12,text,true,,212992,276,20,20,http://139.99.103.223:9090/my/,150,0,0
+1761706968857,315,View Chủ đề 2,200,OK,Thread Group 1-4,text,true,,321959,305,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=2,171,0,34
+1761706970373,351,test login,200,OK,Thread Group 1-13,text,true,,213481,551,20,20,http://139.99.103.223:9090/my/,65,0,33
+1761706970373,65,test login-0,301,Moved Permanently,Thread Group 1-13,text,true,,489,275,20,20,http://139.99.103.223:9090/my,65,0,33
+1761706970439,285,test login-1,200,OK,Thread Group 1-13,text,true,,212992,276,20,20,http://139.99.103.223:9090/my/,150,0,0
+1761706972867,349,test login,200,OK,Thread Group 1-14,text,true,,213481,547,20,20,http://139.99.103.223:9090/my/,66,0,34
+1761706972867,66,test login-0,301,Moved Permanently,Thread Group 1-14,text,true,,489,273,20,20,http://139.99.103.223:9090/my,66,0,34
+1761706972934,282,test login-1,200,OK,Thread Group 1-14,text,true,,212992,274,20,20,http://139.99.103.223:9090/my/,148,0,0
+1761706975367,355,test login,200,OK,Thread Group 1-15,text,true,,213481,547,20,20,http://139.99.103.223:9090/my/,65,0,33
+1761706975367,65,test login-0,301,Moved Permanently,Thread Group 1-15,text,true,,489,273,20,20,http://139.99.103.223:9090/my,65,0,33
+1761706975433,289,test login-1,200,OK,Thread Group 1-15,text,true,,212992,274,20,20,http://139.99.103.223:9090/my/,159,0,0
+1761706975925,305,View Section 1,200,OK,Thread Group 1-5,text,true,,321959,299,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=2,169,0,33
+1761706977887,293,View Chủ đề 1,200,OK,Thread Group 1-2,text,true,,265395,299,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,159,0,32
+1761706977863,373,test login,200,OK,Thread Group 1-16,text,true,,213481,543,20,20,http://139.99.103.223:9090/my/,64,0,32
+1761706977863,64,test login-0,301,Moved Permanently,Thread Group 1-16,text,true,,489,271,20,20,http://139.99.103.223:9090/my,64,0,32
+1761706977928,308,test login-1,200,OK,Thread Group 1-16,text,true,,212992,272,20,20,http://139.99.103.223:9090/my/,144,0,0
+1761706980358,373,test login,200,OK,Thread Group 1-17,text,true,,213481,551,20,20,http://139.99.103.223:9090/my/,64,0,32
+1761706980358,64,test login-0,301,Moved Permanently,Thread Group 1-17,text,true,,489,275,20,20,http://139.99.103.223:9090/my,64,0,32
+1761706980422,309,test login-1,200,OK,Thread Group 1-17,text,true,,212992,276,20,20,http://139.99.103.223:9090/my/,178,0,0
+1761706982750,322,View Chủ đề 2,200,OK,Thread Group 1-6,text,true,,321959,303,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=2,171,0,32
+1761706982856,368,test login,200,OK,Thread Group 1-18,text,true,,213481,547,20,20,http://139.99.103.223:9090/my/,67,0,35
+1761706982856,67,test login-0,301,Moved Permanently,Thread Group 1-18,text,true,,489,273,20,20,http://139.99.103.223:9090/my,67,0,35
+1761706982923,301,test login-1,200,OK,Thread Group 1-18,text,true,,212992,274,20,20,http://139.99.103.223:9090/my/,167,0,0
+1761706985354,361,test login,200,OK,Thread Group 1-19,text,true,,213481,543,20,20,http://139.99.103.223:9090/my/,67,0,33
+1761706985354,67,test login-0,301,Moved Permanently,Thread Group 1-19,text,true,,489,271,20,20,http://139.99.103.223:9090/my,67,0,33
+1761706985422,293,test login-1,200,OK,Thread Group 1-19,text,true,,212992,272,20,20,http://139.99.103.223:9090/my/,161,0,0
+1761706987852,359,test login,200,OK,Thread Group 1-20,text,true,,213481,547,20,20,http://139.99.103.223:9090/my/,64,0,32
+1761706987852,64,test login-0,301,Moved Permanently,Thread Group 1-20,text,true,,489,273,20,20,http://139.99.103.223:9090/my,64,0,32
+1761706987916,295,test login-1,200,OK,Thread Group 1-20,text,true,,212992,274,20,20,http://139.99.103.223:9090/my/,160,0,0
+1761706988421,314,View Chủ đề 1,200,OK,Thread Group 1-7,text,true,,265395,307,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,180,0,32
+1761706991024,298,View Chủ đề 1,200,OK,Thread Group 1-8,text,true,,265395,301,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,166,0,32
+1761706993390,300,View Chủ đề 2,200,OK,Thread Group 1-9,text,true,,321959,305,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=2,164,0,31
+1761706994134,294,View video bai 1,200,OK,Thread Group 1-1,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,192,0,31
+1761706994296,284,View video bai 3,200,OK,Thread Group 1-3,text,true,,158829,299,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=66,181,0,33
+1761706997426,299,View Section 1,200,OK,Thread Group 1-10,text,true,,321959,301,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=2,158,0,33
+1761706998972,301,View Chủ đề 1,200,OK,Thread Group 1-11,text,true,,265395,303,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,169,0,33
+1761707000317,294,View video bai 3,200,OK,Thread Group 1-4,text,true,,158829,297,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=66,195,0,33
+1761707002145,302,View Section 1,200,OK,Thread Group 1-12,text,true,,321959,303,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=2,161,0,32
+1761707004835,312,View Chủ đề 2,200,OK,Thread Group 1-13,text,true,,321959,303,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=2,162,0,33
+1761707006204,317,View Chủ đề 1,200,OK,Thread Group 1-5,text,true,,265395,299,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,178,0,38
+1761707007412,326,View Chủ đề 2,200,OK,Thread Group 1-14,text,true,,321959,301,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=2,170,0,32
+1761707008559,304,View Chủ đề 1,200,OK,Thread Group 1-15,text,true,,265395,301,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,167,0,32
+1761707008637,297,View video bai 1,200,OK,Thread Group 1-2,text,true,,158862,291,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,194,0,33
+1761707010862,307,View Chủ đề 1,200,OK,Thread Group 1-16,text,true,,265395,299,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,174,0,32
+1761707011214,287,View video bai 3,200,OK,Thread Group 1-6,text,true,,158829,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=66,186,0,33
+1761707015090,316,View Section 1,200,OK,Thread Group 1-17,text,true,,321959,303,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=2,174,0,33
+1761707017080,273,View Bài 1,200,OK,Thread Group 1-7,text,true,,194731,301,20,20,http://139.99.103.223:9090/course/section.php?id=14,170,0,32
+1761707017672,315,View Section 1,200,OK,Thread Group 1-18,text,true,,321959,301,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=2,170,0,34
+1761707020302,314,View Chủ đề 1,200,OK,Thread Group 1-19,text,true,,265395,299,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,177,0,32
+1761707021944,257,View Bài 1,200,OK,Thread Group 1-8,text,true,,194731,295,20,20,http://139.99.103.223:9090/course/section.php?id=14,155,0,32
+1761707022771,274,View video bai 3,200,OK,Thread Group 1-3,text,true,,158829,299,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=66,173,0,32
+1761707022934,282,View video bai 1,200,OK,Thread Group 1-1,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,179,0,32
+1761707023362,311,View Chủ đề 1,200,OK,Thread Group 1-20,text,true,,265395,301,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,175,0,34
+1761707025296,321,View video bai 3,200,OK,Thread Group 1-9,text,true,,158829,297,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=66,217,0,31
+1761707027724,308,View Chủ đề 1,200,OK,Thread Group 1-10,text,true,,265395,301,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,168,0,31
+1761707029387,279,View video bai 3,200,OK,Thread Group 1-4,text,true,,158829,297,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=66,176,0,32
+1761707030573,262,View Bài 1,200,OK,Thread Group 1-11,text,true,,194731,297,20,20,http://139.99.103.223:9090/course/section.php?id=14,161,0,32
+1761707032921,304,View Chủ đề 1,200,OK,Thread Group 1-12,text,true,,265395,303,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,171,0,32
+1761707034902,275,View video bai 3,200,OK,Thread Group 1-13,text,true,,158829,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=66,176,0,31
+1761707037229,297,View video bai 1,200,OK,Thread Group 1-5,text,true,,158862,291,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,195,0,33
+1761707037817,276,View video bai 1,200,OK,Thread Group 1-2,text,true,,158862,291,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,176,0,33
+1761707038448,284,View video bai 3,200,OK,Thread Group 1-14,text,true,,158829,293,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=66,182,0,32
+1761707040137,266,View Bài 1,200,OK,Thread Group 1-15,text,true,,194731,295,20,20,http://139.99.103.223:9090/course/section.php?id=14,166,0,33
+1761707041695,305,View video bai 3,200,OK,Thread Group 1-6,text,true,,158829,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=66,198,0,32
+1761707043390,256,View Bài 1,200,OK,Thread Group 1-16,text,true,,194731,293,20,20,http://139.99.103.223:9090/course/section.php?id=14,154,0,32
+1761707045102,299,View Chủ đề 1,200,OK,Thread Group 1-17,text,true,,265395,303,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,167,0,32
+1761707046340,303,View Chủ đề 1,200,OK,Thread Group 1-18,text,true,,265395,301,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,170,0,33
+1761707049710,498,View pdf bai 1,200,OK,Thread Group 1-7,text,true,,5634395,334,20,20,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,94,0,33
+1761707050574,258,View Bài 1,200,OK,Thread Group 1-19,text,true,,194731,293,20,20,http://139.99.103.223:9090/course/section.php?id=14,155,0,34
+1761707051649,517,View pdf bai 1,200,OK,Thread Group 1-8,text,true,,5634395,328,20,20,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,92,0,32
+1761707051938,294,View bài 3,200,OK,Thread Group 1-3,text,true,,193824,301,20,20,http://139.99.103.223:9090/course/section.php?id=17,184,0,35
+1761707052333,284,View video bai 1,200,OK,Thread Group 1-1,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,185,0,33
+1761707052778,255,View Bài 1,200,OK,Thread Group 1-20,text,true,,194731,295,20,20,http://139.99.103.223:9090/course/section.php?id=14,153,0,32
+1761707055390,269,View video bai 3,200,OK,Thread Group 1-9,text,true,,158829,297,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=66,169,0,32
+1761707057276,288,View video bai 1,200,OK,Thread Group 1-10,text,true,,158862,293,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,189,0,33
+1761707059162,537,View pdf bai 1,200,OK,Thread Group 1-11,text,true,,5634395,330,20,20,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,91,0,33
+1761707059607,284,View bài 3,200,OK,Thread Group 1-4,text,true,,193824,299,20,20,http://139.99.103.223:9090/course/section.php?id=17,181,0,57
+1761707061673,293,View video bai 1,200,OK,Thread Group 1-12,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,189,0,32
+1761707063708,260,View video bai 3,200,OK,Thread Group 1-13,text,true,,158829,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=66,163,0,33
+1761707066075,262,View video bai 1,200,OK,Thread Group 1-5,text,true,,158862,291,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,162,0,32
+1761707067318,280,View video bai 3,200,OK,Thread Group 1-14,text,true,,158829,293,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=66,181,0,32
+1761707068076,267,View video bai 1,200,OK,Thread Group 1-2,text,true,,158862,291,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,170,0,32
+1761707069640,503,View pdf bai 1,200,OK,Thread Group 1-15,text,true,,5634395,328,20,20,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,94,0,33
+1761707071624,263,View bài 3,200,OK,Thread Group 1-6,text,true,,193824,297,20,20,http://139.99.103.223:9090/course/section.php?id=17,160,0,38
+1761707073350,648,View pdf bai 1,200,OK,Thread Group 1-16,text,true,,5634395,326,20,20,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,127,0,68
+1761707074952,282,View video bai 1,200,OK,Thread Group 1-17,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,181,0,33
+1761707076436,292,View video bai 1,200,OK,Thread Group 1-18,text,true,,158862,293,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,191,0,33
+1761707078879,290,View Grade,200,OK,Thread Group 1-7,text,true,,245758,316,20,20,http://139.99.103.223:9090/course/user.php?mode=grade&id=2&user=51,153,0,31
+1761707080647,561,View pdf bai 1,200,OK,Thread Group 1-19,text,true,,5634395,326,20,20,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,90,0,32
+1761707081000,572,View pdf bai 1,200,OK,Thread Group 1-20,text,true,,5634395,328,20,20,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,123,0,62
+1761707082700,294,View Grade,200,OK,Thread Group 1-8,text,true,,245002,310,20,20,http://139.99.103.223:9090/course/user.php?mode=grade&id=2&user=52,155,0,32
+1761707083341,294,View Chủ đề 2,200,OK,Thread Group 1-3,text,true,,321959,307,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=2,157,0,32
+1761707083917,270,View bài 1,200,OK,Thread Group 1-1,text,true,,194731,297,20,20,http://139.99.103.223:9090/course/section.php?id=14,169,0,33
+1761707086106,253,View bài 3,200,OK,Thread Group 1-9,text,true,,193824,299,20,20,http://139.99.103.223:9090/course/section.php?id=17,150,0,33
+1761707086098,275,View video bai 1,200,OK,Thread Group 1-10,text,true,,158862,293,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,174,0,32
+1761707089247,588,Start Quiz medium bài 2,200,OK,Thread Group 1-4,text,true,,160096,648,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=298&cmid=63,335,0,34
+1761707089247,336,Start Quiz medium bài 2-0,303,See Other,Thread Group 1-4,text,true,,1966,333,20,20,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=12&cmid=63&sesskey=AzdJFWOIM9,335,0,34
+1761707089583,252,Start Quiz medium bài 2-1,200,OK,Thread Group 1-4,text,true,,158130,315,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=298&cmid=63,153,0,0
+1761707090977,295,View Grade,200,OK,Thread Group 1-11,text,true,,245002,312,20,20,http://139.99.103.223:9090/course/user.php?mode=grade&id=2&user=55,154,0,31
+1761707093668,271,View video bai 1,200,OK,Thread Group 1-12,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,172,0,33
+1761707095070,265,View bài 3,200,OK,Thread Group 1-13,text,true,,193824,297,20,20,http://139.99.103.223:9090/course/section.php?id=17,165,0,31
+1761707095637,276,View video bai 1,200,OK,Thread Group 1-5,text,true,,158862,291,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,173,0,32
+1761707095991,271,View bài 3,200,OK,Thread Group 1-14,text,true,,193824,295,20,20,http://139.99.103.223:9090/course/section.php?id=17,169,0,33
+1761707097589,258,View bài 1,200,OK,Thread Group 1-2,text,true,,194731,293,20,20,http://139.99.103.223:9090/course/section.php?id=14,162,0,36
+1761707101116,298,View Chủ đề 2,200,OK,Thread Group 1-6,text,true,,321959,303,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=2,164,0,32
+1761707101260,285,View Grade,200,OK,Thread Group 1-15,text,true,,245002,310,20,20,http://139.99.103.223:9090/course/user.php?mode=grade&id=2&user=59,151,0,33
+1761707102952,331,View Grade,200,OK,Thread Group 1-16,text,true,,245002,308,20,20,http://139.99.103.223:9090/course/user.php?mode=grade&id=2&user=60,187,0,33
+1761707105071,273,View video bai 1,200,OK,Thread Group 1-17,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,172,0,32
+1761707106787,274,View video bai 1,200,OK,Thread Group 1-18,text,true,,158862,293,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,171,0,32
+1761707107428,259,View bài 2,200,OK,Thread Group 1-7,text,true,,194483,301,20,20,http://139.99.103.223:9090/course/section.php?id=15,161,0,32
+1761707109370,284,View Grade,200,OK,Thread Group 1-19,text,true,,245002,308,20,20,http://139.99.103.223:9090/course/user.php?mode=grade&id=2&user=63,153,0,33
+1761707111627,501,View pdf bai 1,200,OK,Thread Group 1-1,text,true,,5634395,330,20,20,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,88,0,33
+1761707112626,264,View bài 2,200,OK,Thread Group 1-8,text,true,,194483,295,20,20,http://139.99.103.223:9090/course/section.php?id=15,164,0,32
+1761707113303,301,View Grade,200,OK,Thread Group 1-20,text,true,,245758,310,20,20,http://139.99.103.223:9090/course/user.php?mode=grade&id=2&user=64,162,0,32
+1761707114407,282,View video bai 3,200,OK,Thread Group 1-3,text,true,,158829,299,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=66,182,0,31
+1761707115216,288,View Chủ đề 2,200,OK,Thread Group 1-9,text,true,,321959,305,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=2,153,0,32
+1761707117417,274,View video bai 1,200,OK,Thread Group 1-10,text,true,,158862,293,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,172,0,32
+1761707117762,281,Get bộ câu hỏi medium bài 2,200,OK,Thread Group 1-4,text,true,,158130,417,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php,182,0,34
+1761707121223,264,View bài 2,200,OK,Thread Group 1-11,text,true,,194483,297,20,20,http://139.99.103.223:9090/course/section.php?id=15,160,0,33
+1761707121583,270,View video bai 1,200,OK,Thread Group 1-12,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,173,0,33
+1761707123564,294,View Chủ đề 2,200,OK,Thread Group 1-13,text,true,,321959,303,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=2,157,0,33
+1761707125711,263,View bài 1,200,OK,Thread Group 1-5,text,true,,194731,293,20,20,http://139.99.103.223:9090/course/section.php?id=14,160,0,32
+1761707126540,434,View pdf bai 1,200,OK,Thread Group 1-2,text,true,,5634395,326,20,20,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,86,0,33
+1761707127901,289,View Chủ đề 2,200,OK,Thread Group 1-14,text,true,,321959,301,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=2,155,0,33
+1761707129904,265,View bài 2,200,OK,Thread Group 1-15,text,true,,194483,295,20,20,http://139.99.103.223:9090/course/section.php?id=15,162,0,33
+1761707130003,266,View video bai 3,200,OK,Thread Group 1-6,text,true,,158829,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=66,168,0,33
+1761707133469,266,View bài 2,200,OK,Thread Group 1-16,text,true,,194483,293,20,20,http://139.99.103.223:9090/course/section.php?id=15,167,0,33
+1761707134940,262,View video bai 1,200,OK,Thread Group 1-17,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,160,0,32
+1761707136875,269,View video bai 1,200,OK,Thread Group 1-18,text,true,,158862,293,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,167,0,33
+1761707137094,477,View pdf bai 2,200,OK,Thread Group 1-7,text,true,,6429496,334,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,87,0,32
+1761707140215,257,View bài 2,200,OK,Thread Group 1-19,text,true,,194483,293,20,20,http://139.99.103.223:9090/course/section.php?id=15,158,0,32
+1761707140887,253,View bài 2,200,OK,Thread Group 1-20,text,true,,194483,295,20,20,http://139.99.103.223:9090/course/section.php?id=15,153,0,32
+1761707141334,573,View pdf bai 2,200,OK,Thread Group 1-8,text,true,,6429496,328,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,88,0,33
+1761707144269,289,View Chủ đề 1,200,OK,Thread Group 1-1,text,true,,265395,303,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,156,0,33
+1761707144759,280,View video bai 3,200,OK,Thread Group 1-3,text,true,,158829,299,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=66,180,0,33
+1761707144831,278,View video bai 3,200,OK,Thread Group 1-9,text,true,,158829,297,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=66,175,0,32
+1761707148196,264,View bài 1,200,OK,Thread Group 1-10,text,true,,194731,295,20,20,http://139.99.103.223:9090/course/section.php?id=14,161,0,32
+1761707148454,377,Submit câu 1,200,OK,Thread Group 1-4,text,true,,160424,870,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=298&cmid=63&page=1,113,0,32
+1761707148454,113,Submit câu 1-0,303,See Other,Thread Group 1-4,text,true,,1984,548,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=63,113,0,32
+1761707148568,263,Submit câu 1-1,200,OK,Thread Group 1-4,text,true,,158440,322,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=298&cmid=63&page=1,159,0,0
+1761707148544,591,View pdf bai 2,200,OK,Thread Group 1-11,text,true,,6429496,330,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,89,0,33
+1761707152511,262,View bài 1,200,OK,Thread Group 1-12,text,true,,194731,297,20,20,http://139.99.103.223:9090/course/section.php?id=14,159,0,33
+1761707154468,271,View video bai 3,200,OK,Thread Group 1-13,text,true,,158829,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=66,172,0,32
+1761707155626,469,View pdf bai 1,200,OK,Thread Group 1-5,text,true,,5634395,326,20,20,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,88,0,33
+1761707157852,292,View Chủ đề 1,200,OK,Thread Group 1-2,text,true,,265395,299,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,161,0,32
+1761707158169,269,View video bai 3,200,OK,Thread Group 1-14,text,true,,158829,293,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=66,176,0,32
+1761707160392,314,View video bai 3,200,OK,Thread Group 1-6,text,true,,158829,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=66,213,0,32
+1761707161098,534,View pdf bai 2,200,OK,Thread Group 1-15,text,true,,6429496,328,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,88,0,31
+1761707162336,528,View pdf bai 2,200,OK,Thread Group 1-16,text,true,,6429496,326,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,92,0,32
+1761707164676,275,View bài 1,200,OK,Thread Group 1-17,text,true,,194731,297,20,20,http://139.99.103.223:9090/course/section.php?id=14,173,0,32
+1761707166520,257,View bài 1,200,OK,Thread Group 1-18,text,true,,194731,295,20,20,http://139.99.103.223:9090/course/section.php?id=14,155,0,32
+1761707167868,312,View Chủ đề 1,200,OK,Thread Group 1-7,text,true,,265395,307,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,178,0,32
+1761707170823,593,View pdf bai 2,200,OK,Thread Group 1-19,text,true,,6429496,326,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,95,0,33
+1761707171742,292,View Chủ đề 1,200,OK,Thread Group 1-8,text,true,,265395,301,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,173,0,32
+1761707172401,561,View pdf bai 2,200,OK,Thread Group 1-20,text,true,,6429496,328,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,94,0,34
+1761707173431,267,View bài 3,200,OK,Thread Group 1-3,text,true,,193824,301,20,20,http://139.99.103.223:9090/course/section.php?id=17,164,0,32
+1761707173512,267,View video bai 3,200,OK,Thread Group 1-9,text,true,,158829,297,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=66,166,0,32
+1761707173794,270,View video bai 1,200,OK,Thread Group 1-1,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,166,0,32
+1761707176309,474,View pdf bai 1,200,OK,Thread Group 1-10,text,true,,5634395,328,20,20,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,87,0,33
+1761707178094,356,Submit câu 2,200,OK,Thread Group 1-4,text,true,,160442,870,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=298&cmid=63&page=2,110,0,34
+1761707178094,110,Submit câu 2-0,303,See Other,Thread Group 1-4,text,true,,1984,548,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=63,110,0,34
+1761707178204,246,Submit câu 2-1,200,OK,Thread Group 1-4,text,true,,158458,322,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=298&cmid=63&page=2,147,0,0
+1761707178490,300,View Chủ đề 1,200,OK,Thread Group 1-11,text,true,,265395,303,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,165,0,33
+1761707181853,579,View pdf bai 1,200,OK,Thread Group 1-12,text,true,,5634395,330,20,20,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,94,0,33
+1761707184439,301,View Chủ đề 1,200,OK,Thread Group 1-5,text,true,,265395,299,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,170,0,32
+1761707186162,433,View video bai 3,200,OK,Thread Group 1-13,text,true,,158829,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=66,238,0,89
+1761707187939,430,View video bai 1,200,OK,Thread Group 1-2,text,true,,158862,291,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,225,0,84
+1761707188519,402,View video bai 3,200,OK,Thread Group 1-14,text,true,,158829,293,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=66,209,0,53
+1761707188551,438,View Chủ đề 1,200,OK,Thread Group 1-15,text,true,,265395,301,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,229,0,90
+1761707190910,296,View Chủ đề 1,200,OK,Thread Group 1-16,text,true,,265395,299,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,162,0,34
+1761707191801,257,View bài 3,200,OK,Thread Group 1-6,text,true,,193824,297,20,20,http://139.99.103.223:9090/course/section.php?id=17,155,0,32
+1761707195377,533,View pdf bai 1,200,OK,Thread Group 1-17,text,true,,5634395,330,20,20,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,97,0,33
+1761707197771,282,View bài 2,200,OK,Thread Group 1-7,text,true,,194483,301,20,20,http://139.99.103.223:9090/course/section.php?id=15,159,0,33
+1761707197736,537,View pdf bai 1,200,OK,Thread Group 1-18,text,true,,5634395,328,20,20,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,91,0,32
+1761707201215,298,View Chủ đề 1,200,OK,Thread Group 1-19,text,true,,265395,299,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,161,0,32
+1761707201503,263,View video bai 1,200,OK,Thread Group 1-1,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,164,0,31
+1761707201656,253,View bài 2,200,OK,Thread Group 1-8,text,true,,194483,295,20,20,http://139.99.103.223:9090/course/section.php?id=15,154,0,34
+1761707202668,295,View Chủ đề 1,200,OK,Thread Group 1-20,text,true,,265395,301,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,160,0,32
+1761707203623,578,Start Quiz medium bài 2,200,OK,Thread Group 1-3,text,true,,160096,652,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=299&cmid=63,338,0,31
+1761707203623,338,Start Quiz medium bài 2-0,303,See Other,Thread Group 1-3,text,true,,1966,335,20,20,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=12&cmid=63&sesskey=OxtCv0pipd,338,0,31
+1761707203962,239,Start Quiz medium bài 2-1,200,OK,Thread Group 1-3,text,true,,158130,317,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=299&cmid=63,138,0,0
+1761707205429,263,View bài 3,200,OK,Thread Group 1-9,text,true,,193824,299,20,20,http://139.99.103.223:9090/course/section.php?id=17,161,0,32
+1761707206472,297,View Chủ đề 1,200,OK,Thread Group 1-10,text,true,,265395,301,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,164,0,32
+1761707208633,249,View bài 2,200,OK,Thread Group 1-11,text,true,,194483,297,20,20,http://139.99.103.223:9090/course/section.php?id=15,151,0,32
+1761707209200,365,Submit câu 3,200,OK,Thread Group 1-4,text,true,,160442,870,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=298&cmid=63&page=2,113,0,32
+1761707209200,113,Submit câu 3-0,303,See Other,Thread Group 1-4,text,true,,1984,548,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=63,113,0,32
+1761707209313,252,Submit câu 3-1,200,OK,Thread Group 1-4,text,true,,158458,322,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=298&cmid=63&page=2,150,0,0
+1761707213675,287,View Chủ đề 1,200,OK,Thread Group 1-12,text,true,,265395,303,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,154,0,32
+1761707214586,261,View bài 3,200,OK,Thread Group 1-13,text,true,,193824,297,20,20,http://139.99.103.223:9090/course/section.php?id=17,158,0,32
+1761707214853,266,View video bai 1,200,OK,Thread Group 1-5,text,true,,158862,291,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,166,0,31
+1761707218239,268,View bài 3,200,OK,Thread Group 1-14,text,true,,193824,295,20,20,http://139.99.103.223:9090/course/section.php?id=17,167,0,32
+1761707218295,287,View video bai 1,200,OK,Thread Group 1-2,text,true,,158862,291,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,187,0,33
+1761707218771,255,View bài 2,200,OK,Thread Group 1-15,text,true,,194483,295,20,20,http://139.99.103.223:9090/course/section.php?id=15,155,0,32
+1761707221714,613,Start Quiz medium bài 2,200,OK,Thread Group 1-6,text,true,,160096,644,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=300&cmid=63,377,0,33
+1761707221714,377,Start Quiz medium bài 2-0,303,See Other,Thread Group 1-6,text,true,,1966,331,20,20,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=12&cmid=63&sesskey=7oPJ4ltFlq,377,0,33
+1761707222091,236,Start Quiz medium bài 2-1,200,OK,Thread Group 1-6,text,true,,158130,313,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=300&cmid=63,138,0,0
+1761707222207,259,View bài 2,200,OK,Thread Group 1-16,text,true,,194483,293,20,20,http://139.99.103.223:9090/course/section.php?id=15,158,0,32
+1761707224770,297,View Chủ đề 1,200,OK,Thread Group 1-17,text,true,,265395,303,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,160,0,32
+1761707228193,293,View Chủ đề 1,200,OK,Thread Group 1-18,text,true,,265395,301,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,156,0,32
+1761707228794,257,View bài 2,200,OK,Thread Group 1-19,text,true,,194483,293,20,20,http://139.99.103.223:9090/course/section.php?id=15,156,0,32
+1761707229468,549,View pdf bai 2,200,OK,Thread Group 1-7,text,true,,6429496,334,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,86,0,32
+1761707231259,547,View pdf bai 2,200,OK,Thread Group 1-8,text,true,,6429496,328,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,85,0,32
+1761707231642,263,View bài 2,200,OK,Thread Group 1-20,text,true,,194483,295,20,20,http://139.99.103.223:9090/course/section.php?id=15,158,0,33
+1761707232777,282,View video bai 1,200,OK,Thread Group 1-1,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,182,0,33
+1761707233618,278,Get bộ câu hỏi medium bài 2,200,OK,Thread Group 1-3,text,true,,158130,419,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php,180,0,33
+1761707233459,556,Start Quiz medium bài 2,200,OK,Thread Group 1-9,text,true,,160096,648,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=301&cmid=63,312,0,32
+1761707233459,313,Start Quiz medium bài 2-0,303,See Other,Thread Group 1-9,text,true,,1966,333,20,20,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=12&cmid=63&sesskey=auPWw2WMoa,312,0,32
+1761707233772,243,Start Quiz medium bài 2-1,200,OK,Thread Group 1-9,text,true,,158130,315,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=301&cmid=63,137,0,0
+1761707237507,278,View video bai 1,200,OK,Thread Group 1-10,text,true,,158862,293,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,177,0,33
+1761707238572,549,View pdf bai 2,200,OK,Thread Group 1-11,text,true,,6429496,330,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,86,0,31
+1761707240402,359,Submit Quiz,200,OK,Thread Group 1-4,text,true,,165470,678,20,20,http://139.99.103.223:9090/mod/quiz/review.php?attempt=298&cmid=63,108,0,32
+1761707240402,108,Submit Quiz-0,303,See Other,Thread Group 1-4,text,true,,1964,364,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=298&finishattempt=1&slots=&cmid=63&sesskey=AzdJFWOIM9,108,0,32
+1761707240510,251,Submit Quiz-1,200,OK,Thread Group 1-4,text,true,,163506,314,20,20,http://139.99.103.223:9090/mod/quiz/review.php?attempt=298&cmid=63,148,0,0
+1761707241209,261,View video bai 1,200,OK,Thread Group 1-12,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,162,0,33
+1761707245796,268,View video bai 1,200,OK,Thread Group 1-5,text,true,,158862,291,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,165,0,32
+1761707246196,260,View video bai 1,200,OK,Thread Group 1-2,text,true,,158862,291,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,161,0,32
+1761707246279,574,Start Quiz medium bài 2,200,OK,Thread Group 1-13,text,true,,160096,644,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=302&cmid=63,328,0,33
+1761707246279,328,Start Quiz medium bài 2-0,303,See Other,Thread Group 1-13,text,true,,1966,331,20,20,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=12&cmid=63&sesskey=wwYN9ejQGR,328,0,33
+1761707246607,246,Start Quiz medium bài 2-1,200,OK,Thread Group 1-13,text,true,,158130,313,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=302&cmid=63,149,0,0
+1761707248717,589,Start Quiz medium bài 2,200,OK,Thread Group 1-14,text,true,,160096,640,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=303&cmid=63,333,0,32
+1761707248717,334,Start Quiz medium bài 2-0,303,See Other,Thread Group 1-14,text,true,,1966,329,20,20,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=12&cmid=63&sesskey=lD7hvWaEr3,333,0,32
+1761707249050,256,Start Quiz medium bài 2-1,200,OK,Thread Group 1-14,text,true,,158130,311,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=303&cmid=63,150,0,0
+1761707249861,488,View pdf bai 2,200,OK,Thread Group 1-15,text,true,,6429496,328,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,89,0,32
+1761707252307,299,Get bộ câu hỏi medium bài 2,200,OK,Thread Group 1-6,text,true,,158130,415,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php,193,0,31
+1761707253073,521,View pdf bai 2,200,OK,Thread Group 1-16,text,true,,6429496,326,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,90,0,33
+1761707253722,270,View video bai 1,200,OK,Thread Group 1-17,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,169,0,32
+1761707256948,521,View pdf bai 2,200,OK,Thread Group 1-7,text,true,,6429496,334,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,85,0,31
+1761707258406,273,View video bai 1,200,OK,Thread Group 1-18,text,true,,158862,293,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,173,0,32
+1761707260263,494,View pdf bai 2,200,OK,Thread Group 1-19,text,true,,6429496,326,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,91,0,33
+1761707262366,389,Submit câu 1,200,OK,Thread Group 1-3,text,true,,160424,874,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=299&cmid=63&page=1,116,0,33
+1761707262366,116,Submit câu 1-0,303,See Other,Thread Group 1-3,text,true,,1984,550,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=63,116,0,33
+1761707262482,273,Submit câu 1-1,200,OK,Thread Group 1-3,text,true,,158440,324,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=299&cmid=63&page=1,170,0,0
+1761707262812,258,View bài 1,200,OK,Thread Group 1-1,text,true,,194731,297,20,20,http://139.99.103.223:9090/course/section.php?id=14,157,0,31
+1761707263036,494,View pdf bai 2,200,OK,Thread Group 1-20,text,true,,6429496,328,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,86,0,34
+1761707263779,506,View pdf bai 2,200,OK,Thread Group 1-8,text,true,,6429496,328,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,90,0,31
+1761707266111,284,Get bộ câu hỏi medium bài 2,200,OK,Thread Group 1-9,text,true,,158130,417,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php,179,0,33
+1761707267938,263,View video bai 1,200,OK,Thread Group 1-10,text,true,,158862,293,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,163,0,31
+1761707269247,269,View video bai 2,200,OK,Thread Group 1-4,text,true,,158886,297,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=61,168,0,33
+1761707269463,496,View pdf bai 2,200,OK,Thread Group 1-11,text,true,,6429496,330,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,89,0,32
+1761707273832,277,View video bai 1,200,OK,Thread Group 1-12,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,175,0,32
+1761707275661,275,Get bộ câu hỏi medium bài 2,200,OK,Thread Group 1-13,text,true,,158130,415,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php,175,0,33
+1761707277240,265,View bài 1,200,OK,Thread Group 1-2,text,true,,194731,293,20,20,http://139.99.103.223:9090/course/section.php?id=14,164,0,33
+1761707277320,268,View video bai 1,200,OK,Thread Group 1-5,text,true,,158862,291,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,167,0,32
+1761707278153,282,Get bộ câu hỏi medium bài 2,200,OK,Thread Group 1-14,text,true,,158130,413,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php,183,0,33
+1761707280063,560,View pdf bai 2,200,OK,Thread Group 1-15,text,true,,6429496,328,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,87,0,32
+1761707280805,366,Submit câu 1,200,OK,Thread Group 1-6,text,true,,160424,866,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=300&cmid=63&page=1,108,0,34
+1761707280805,108,Submit câu 1-0,303,See Other,Thread Group 1-6,text,true,,1984,546,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=63,108,0,34
+1761707280913,258,Submit câu 1-1,200,OK,Thread Group 1-6,text,true,,158440,320,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=300&cmid=63&page=1,156,0,0
+1761707281494,595,View pdf bai 2,200,OK,Thread Group 1-16,text,true,,6429496,326,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,87,0,33
+1761707285049,276,View video bai 1,200,OK,Thread Group 1-17,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,176,0,31
+1761707288439,274,View video bai 1,200,OK,Thread Group 1-18,text,true,,158862,293,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,171,0,33
+1761707288604,531,View pdf bai 2,200,OK,Thread Group 1-19,text,true,,6429496,326,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,87,0,32
+1761707288978,306,View Chủ đề 1,200,OK,Thread Group 1-7,text,true,,265395,307,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,172,0,39
+1761707290988,289,View Chủ đề 1,200,OK,Thread Group 1-8,text,true,,265395,301,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,156,0,32
+1761707292720,548,View pdf bai 2,200,OK,Thread Group 1-20,text,true,,6429496,328,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,91,0,33
+1761707293394,551,View pdf bai 1,200,OK,Thread Group 1-1,text,true,,5634395,330,20,20,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,93,0,32
+1761707294102,362,Submit câu 2,200,OK,Thread Group 1-3,text,true,,160442,874,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=299&cmid=63&page=2,106,0,34
+1761707294102,106,Submit câu 2-0,303,See Other,Thread Group 1-3,text,true,,1984,550,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=63,106,0,34
+1761707294208,256,Submit câu 2-1,200,OK,Thread Group 1-3,text,true,,158458,324,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=299&cmid=63&page=2,158,0,0
+1761707296164,366,Submit câu 1,200,OK,Thread Group 1-9,text,true,,160424,870,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=301&cmid=63&page=1,112,0,32
+1761707296164,112,Submit câu 1-0,303,See Other,Thread Group 1-9,text,true,,1984,548,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=63,112,0,32
+1761707296276,254,Submit câu 1-1,200,OK,Thread Group 1-9,text,true,,158440,322,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=301&cmid=63&page=1,153,0,0
+1761707296793,267,View video bai 1,200,OK,Thread Group 1-10,text,true,,158862,293,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,165,0,33
+1761707298928,293,View Chủ đề 1,200,OK,Thread Group 1-11,text,true,,265395,303,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,157,0,33
+1761707299819,404,Start Quiz hard bài 2,200,OK,Thread Group 1-4,text,true,,160075,648,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=304&cmid=64,132,0,33
+1761707299819,132,Start Quiz hard bài 2-0,303,See Other,Thread Group 1-4,text,true,,1966,333,20,20,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=13&cmid=64&sesskey=AzdJFWOIM9,132,0,33
+1761707299951,272,Start Quiz hard bài 2-1,200,OK,Thread Group 1-4,text,true,,158109,315,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=304&cmid=64,141,0,0
+1761707302506,288,View video bai 1,200,OK,Thread Group 1-12,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,185,0,33
+1761707305067,375,Submit câu 1,200,OK,Thread Group 1-13,text,true,,160424,866,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=302&cmid=63&page=1,108,0,34
+1761707305067,108,Submit câu 1-0,303,See Other,Thread Group 1-13,text,true,,1984,546,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=63,108,0,34
+1761707305176,266,Submit câu 1-1,200,OK,Thread Group 1-13,text,true,,158440,320,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=302&cmid=63&page=1,164,0,0
+1761707305645,266,View bài 1,200,OK,Thread Group 1-5,text,true,,194731,293,20,20,http://139.99.103.223:9090/course/section.php?id=14,161,0,33
+1761707307075,473,View pdf bai 1,200,OK,Thread Group 1-2,text,true,,5634395,326,20,20,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,87,0,32
+1761707307511,367,Submit câu 1,200,OK,Thread Group 1-14,text,true,,160424,862,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=303&cmid=63&page=1,115,0,35
+1761707307511,115,Submit câu 1-0,303,See Other,Thread Group 1-14,text,true,,1984,544,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=63,115,0,35
+1761707307626,252,Submit câu 1-1,200,OK,Thread Group 1-14,text,true,,158440,318,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=303&cmid=63&page=1,150,0,0
+1761707310511,319,View Chủ đề 1,200,OK,Thread Group 1-15,text,true,,265395,301,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,179,0,33
+1761707311407,299,View Chủ đề 1,200,OK,Thread Group 1-16,text,true,,265395,299,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,171,0,34
+1761707311822,388,Submit câu 2,200,OK,Thread Group 1-6,text,true,,160442,866,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=300&cmid=63&page=2,116,0,33
+1761707311822,117,Submit câu 2-0,303,See Other,Thread Group 1-6,text,true,,1984,546,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=63,116,0,33
+1761707311939,271,Submit câu 2-1,200,OK,Thread Group 1-6,text,true,,158458,320,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=300&cmid=63&page=2,169,0,0
+1761707315747,271,View video bai 1,200,OK,Thread Group 1-17,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,170,0,32
+1761707317731,279,View video bai 1,200,OK,Thread Group 1-18,text,true,,158862,293,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,175,0,31
+1761707317951,258,View bài 2,200,OK,Thread Group 1-7,text,true,,194483,301,20,20,http://139.99.103.223:9090/course/section.php?id=15,157,0,31
+1761707320649,298,View Chủ đề 1,200,OK,Thread Group 1-19,text,true,,265395,299,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,161,0,32
+1761707321151,266,View bài 2,200,OK,Thread Group 1-8,text,true,,194483,295,20,20,http://139.99.103.223:9090/course/section.php?id=15,163,0,32
+1761707322497,289,View Chủ đề 1,200,OK,Thread Group 1-20,text,true,,265395,301,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,158,0,32
+1761707323216,303,View Chủ đề 1,200,OK,Thread Group 1-1,text,true,,265395,303,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,170,0,31
+1761707323458,357,Submit câu 3,200,OK,Thread Group 1-3,text,true,,160442,874,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=299&cmid=63&page=2,107,0,32
+1761707323458,107,Submit câu 3-0,303,See Other,Thread Group 1-3,text,true,,1984,550,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=63,107,0,32
+1761707323566,249,Submit câu 3-1,200,OK,Thread Group 1-3,text,true,,158458,324,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=299&cmid=63&page=2,148,0,0
+1761707326202,392,Submit câu 2,200,OK,Thread Group 1-9,text,true,,160442,870,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=301&cmid=63&page=2,106,0,33
+1761707326202,106,Submit câu 2-0,303,See Other,Thread Group 1-9,text,true,,1984,548,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=63,106,0,33
+1761707326308,286,Submit câu 2-1,200,OK,Thread Group 1-9,text,true,,158458,322,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=301&cmid=63&page=2,185,0,0
+1761707326764,277,View bài 1,200,OK,Thread Group 1-10,text,true,,194731,295,20,20,http://139.99.103.223:9090/course/section.php?id=14,175,0,32
+1761707329687,358,Submit câu 1,200,OK,Thread Group 1-4,text,true,,160457,870,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=304&cmid=64&page=1,111,0,31
+1761707329687,111,Submit câu 1-0,303,See Other,Thread Group 1-4,text,true,,1984,548,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=64,111,0,31
+1761707329798,247,Submit câu 1-1,200,OK,Thread Group 1-4,text,true,,158473,322,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=304&cmid=64&page=1,146,0,0
+1761707330856,260,View bài 2,200,OK,Thread Group 1-11,text,true,,194483,297,20,20,http://139.99.103.223:9090/course/section.php?id=15,154,0,32
+1761707332621,256,View bài 1,200,OK,Thread Group 1-12,text,true,,194731,297,20,20,http://139.99.103.223:9090/course/section.php?id=14,155,0,32
+1761707334110,355,Submit câu 2,200,OK,Thread Group 1-13,text,true,,160442,866,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=302&cmid=63&page=2,110,0,33
+1761707334110,110,Submit câu 2-0,303,See Other,Thread Group 1-13,text,true,,1984,546,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=63,110,0,33
+1761707334221,244,Submit câu 2-1,200,OK,Thread Group 1-13,text,true,,158458,320,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=302&cmid=63&page=2,143,0,0
+1761707334803,624,View pdf bai 1,200,OK,Thread Group 1-5,text,true,,5634395,326,20,20,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,87,0,32
+1761707336067,294,View Chủ đề 1,200,OK,Thread Group 1-2,text,true,,265395,299,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,159,0,32
+1761707337445,349,Submit câu 2,200,OK,Thread Group 1-14,text,true,,160442,862,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=303&cmid=63&page=2,107,0,33
+1761707337445,107,Submit câu 2-0,303,See Other,Thread Group 1-14,text,true,,1984,544,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=63,107,0,33
+1761707337552,242,Submit câu 2-1,200,OK,Thread Group 1-14,text,true,,158458,318,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=303&cmid=63&page=2,143,0,0
+1761707339769,254,View bài 2,200,OK,Thread Group 1-15,text,true,,194483,295,20,20,http://139.99.103.223:9090/course/section.php?id=15,155,0,33
+1761707339932,343,Submit câu 3,200,OK,Thread Group 1-6,text,true,,160442,866,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=300&cmid=63&page=2,101,0,32
+1761707339932,101,Submit câu 3-0,303,See Other,Thread Group 1-6,text,true,,1984,546,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=63,101,0,32
+1761707340033,242,Submit câu 3-1,200,OK,Thread Group 1-6,text,true,,158458,320,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=300&cmid=63&page=2,143,0,0
+1761707343758,275,View bài 2,200,OK,Thread Group 1-16,text,true,,194483,293,20,20,http://139.99.103.223:9090/course/section.php?id=15,169,0,33
+1761707343844,270,View bài 1,200,OK,Thread Group 1-17,text,true,,194731,297,20,20,http://139.99.103.223:9090/course/section.php?id=14,168,0,33
+1761707346724,259,View bài 1,200,OK,Thread Group 1-18,text,true,,194731,295,20,20,http://139.99.103.223:9090/course/section.php?id=14,157,0,32
+1761707349296,579,View pdf bai 2,200,OK,Thread Group 1-7,text,true,,6429496,334,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,86,0,32
+1761707351300,262,View bài 2,200,OK,Thread Group 1-19,text,true,,194483,293,20,20,http://139.99.103.223:9090/course/section.php?id=15,156,0,33
+1761707351663,265,View video bai 1,200,OK,Thread Group 1-1,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,162,0,33
+1761707352611,528,View pdf bai 2,200,OK,Thread Group 1-8,text,true,,6429496,328,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,89,0,32
+1761707353529,366,Submit Quiz,200,OK,Thread Group 1-3,text,true,,165470,682,20,20,http://139.99.103.223:9090/mod/quiz/review.php?attempt=299&cmid=63,110,0,31
+1761707353529,110,Submit Quiz-0,303,See Other,Thread Group 1-3,text,true,,1964,366,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=299&finishattempt=1&slots=&cmid=63&sesskey=OxtCv0pipd,110,0,31
+1761707353639,256,Submit Quiz-1,200,OK,Thread Group 1-3,text,true,,163506,316,20,20,http://139.99.103.223:9090/mod/quiz/review.php?attempt=299&cmid=63,157,0,0
+1761707353675,263,View bài 2,200,OK,Thread Group 1-20,text,true,,194483,295,20,20,http://139.99.103.223:9090/course/section.php?id=15,161,0,32
+1761707355664,333,Submit câu 3,200,OK,Thread Group 1-9,text,true,,160442,870,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=301&cmid=63&page=2,101,0,33
+1761707355664,101,Submit câu 3-0,303,See Other,Thread Group 1-9,text,true,,1984,548,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=63,101,0,33
+1761707355765,232,Submit câu 3-1,200,OK,Thread Group 1-9,text,true,,158458,322,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=301&cmid=63&page=2,134,0,0
+1761707356253,535,View pdf bai 1,200,OK,Thread Group 1-10,text,true,,5634395,328,20,20,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,85,0,31
+1761707357879,353,Submit câu 2,200,OK,Thread Group 1-4,text,true,,160460,870,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=304&cmid=64&page=2,105,0,35
+1761707357879,105,Submit câu 2-0,303,See Other,Thread Group 1-4,text,true,,1984,548,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=64,105,0,35
+1761707357984,248,Submit câu 2-1,200,OK,Thread Group 1-4,text,true,,158476,322,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=304&cmid=64&page=2,145,0,0
+1761707358869,565,View pdf bai 2,200,OK,Thread Group 1-11,text,true,,6429496,330,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,84,0,31
+1761707363512,523,View pdf bai 1,200,OK,Thread Group 1-12,text,true,,5634395,330,20,20,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,101,0,34
+1761707364679,356,Submit câu 3,200,OK,Thread Group 1-13,text,true,,160442,866,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=302&cmid=63&page=2,105,0,35
+1761707364679,105,Submit câu 3-0,303,See Other,Thread Group 1-13,text,true,,1984,546,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=63,105,0,35
+1761707364784,251,Submit câu 3-1,200,OK,Thread Group 1-13,text,true,,158458,320,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=302&cmid=63&page=2,149,0,0
+1761707366261,312,View video bai 1,200,OK,Thread Group 1-2,text,true,,158862,291,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,211,0,31
+1761707366396,317,View Chủ đề 1,200,OK,Thread Group 1-5,text,true,,265395,299,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,177,0,32
+1761707366359,375,Submit câu 3,200,OK,Thread Group 1-14,text,true,,160442,862,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=303&cmid=63&page=2,107,0,33
+1761707366359,107,Submit câu 3-0,303,See Other,Thread Group 1-14,text,true,,1984,544,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=63,107,0,33
+1761707366466,268,Submit câu 3-1,200,OK,Thread Group 1-14,text,true,,158458,318,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=303&cmid=63&page=2,170,0,0
+1761707371289,543,View pdf bai 2,200,OK,Thread Group 1-15,text,true,,6429496,328,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,86,0,32
+1761707371865,483,View pdf bai 2,200,OK,Thread Group 1-16,text,true,,6429496,326,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,84,0,32
+1761707371907,441,Submit Quiz,200,OK,Thread Group 1-6,text,true,,165470,674,20,20,http://139.99.103.223:9090/mod/quiz/review.php?attempt=300&cmid=63,112,0,33
+1761707371907,112,Submit Quiz-0,303,See Other,Thread Group 1-6,text,true,,1964,362,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=300&finishattempt=1&slots=&cmid=63&sesskey=7oPJ4ltFlq,112,0,33
+1761707372020,328,Submit Quiz-1,200,OK,Thread Group 1-6,text,true,,163506,312,20,20,http://139.99.103.223:9090/mod/quiz/review.php?attempt=300&cmid=63,163,0,0
+1761707373868,500,View pdf bai 1,200,OK,Thread Group 1-17,text,true,,5634395,330,20,20,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,88,0,32
+1761707378189,503,View pdf bai 2,200,OK,Thread Group 1-7,text,true,,6429496,334,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,89,0,32
+1761707378793,474,View pdf bai 1,200,OK,Thread Group 1-18,text,true,,5634395,328,20,20,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,84,0,31
+1761707381025,545,View pdf bai 2,200,OK,Thread Group 1-19,text,true,,6429496,326,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,87,0,32
+1761707382434,319,View video bai 1,200,OK,Thread Group 1-1,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,188,0,33
+1761707382396,568,View pdf bai 2,200,OK,Thread Group 1-20,text,true,,6429496,328,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,86,0,32
+1761707383626,561,View pdf bai 2,200,OK,Thread Group 1-8,text,true,,6429496,328,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,86,0,30
+1761707384777,282,View video bai 2,200,OK,Thread Group 1-3,text,true,,158886,299,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=61,180,0,32
+1761707385308,376,Submit Quiz,200,OK,Thread Group 1-9,text,true,,165470,678,20,20,http://139.99.103.223:9090/mod/quiz/review.php?attempt=301&cmid=63,114,0,31
+1761707385308,114,Submit Quiz-0,303,See Other,Thread Group 1-9,text,true,,1964,364,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=301&finishattempt=1&slots=&cmid=63&sesskey=auPWw2WMoa,114,0,31
+1761707385422,262,Submit Quiz-1,200,OK,Thread Group 1-9,text,true,,163506,314,20,20,http://139.99.103.223:9090/mod/quiz/review.php?attempt=301&cmid=63,161,0,0
+1761707388417,309,View Chủ đề 1,200,OK,Thread Group 1-10,text,true,,265395,301,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,176,0,33
+1761707388407,357,Submit câu 3,200,OK,Thread Group 1-4,text,true,,160460,870,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=304&cmid=64&page=2,109,0,33
+1761707388407,109,Submit câu 3-0,303,See Other,Thread Group 1-4,text,true,,1984,548,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=64,109,0,33
+1761707388516,248,Submit câu 3-1,200,OK,Thread Group 1-4,text,true,,158476,322,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=304&cmid=64&page=2,154,0,0
+1761707388723,466,View pdf bai 2,200,OK,Thread Group 1-11,text,true,,6429496,330,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,87,0,34
+1761707393287,318,View Chủ đề 1,200,OK,Thread Group 1-12,text,true,,265395,303,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,184,0,31
+1761707394313,362,Submit Quiz,200,OK,Thread Group 1-13,text,true,,165470,674,20,20,http://139.99.103.223:9090/mod/quiz/review.php?attempt=302&cmid=63,104,0,32
+1761707394313,104,Submit Quiz-0,303,See Other,Thread Group 1-13,text,true,,1964,362,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=302&finishattempt=1&slots=&cmid=63&sesskey=wwYN9ejQGR,104,0,32
+1761707394418,257,Submit Quiz-1,200,OK,Thread Group 1-13,text,true,,163506,312,20,20,http://139.99.103.223:9090/mod/quiz/review.php?attempt=302&cmid=63,156,0,0
+1761707396113,277,View video bai 1,200,OK,Thread Group 1-2,text,true,,158862,291,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,176,0,32
+1761707396551,270,View video bai 1,200,OK,Thread Group 1-5,text,true,,158862,291,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,169,0,32
+1761707398543,360,Submit Quiz,200,OK,Thread Group 1-14,text,true,,165470,670,20,20,http://139.99.103.223:9090/mod/quiz/review.php?attempt=303&cmid=63,111,0,32
+1761707398543,112,Submit Quiz-0,303,See Other,Thread Group 1-14,text,true,,1964,360,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=303&finishattempt=1&slots=&cmid=63&sesskey=lD7hvWaEr3,111,0,32
+1761707398655,248,Submit Quiz-1,200,OK,Thread Group 1-14,text,true,,163506,310,20,20,http://139.99.103.223:9090/mod/quiz/review.php?attempt=303&cmid=63,151,0,0
+1761707400621,288,View video bai 2,200,OK,Thread Group 1-6,text,true,,158886,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=61,182,0,32
+1761707401257,589,View pdf bai 2,200,OK,Thread Group 1-15,text,true,,6429496,328,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,91,0,32
+1761707403864,341,View Chủ đề 1,200,OK,Thread Group 1-17,text,true,,265395,303,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,163,0,32
+1761707403697,695,View pdf bai 2,200,OK,Thread Group 1-16,text,true,,6429496,326,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,85,0,32
+1761707407685,291,View Chủ đề 1,200,OK,Thread Group 1-18,text,true,,265395,301,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,161,0,33
+1761707408950,301,View Chủ đề 1,200,OK,Thread Group 1-7,text,true,,265395,307,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,165,0,32
+1761707409018,511,View pdf bai 2,200,OK,Thread Group 1-19,text,true,,6429496,326,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,95,0,32
+1761707411580,565,View pdf bai 2,200,OK,Thread Group 1-20,text,true,,6429496,328,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,84,0,32
+1761707412730,288,View Chủ đề 1,200,OK,Thread Group 1-8,text,true,,265395,301,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,158,0,33
+1761707413201,269,View video bai 1,200,OK,Thread Group 1-1,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,168,0,32
+1761707413404,393,Start Quiz hard bài 2,200,OK,Thread Group 1-3,text,true,,160075,652,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=305&cmid=64,139,0,34
+1761707413404,139,Start Quiz hard bài 2-0,303,See Other,Thread Group 1-3,text,true,,1966,335,20,20,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=13&cmid=64&sesskey=OxtCv0pipd,139,0,34
+1761707413543,254,Start Quiz hard bài 2-1,200,OK,Thread Group 1-3,text,true,,158109,317,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=305&cmid=64,156,0,0
+1761707415434,261,View video bai 2,200,OK,Thread Group 1-9,text,true,,158886,297,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=61,164,0,31
+1761707418445,267,View video bai 1,200,OK,Thread Group 1-10,text,true,,158862,293,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,165,0,31
+1761707418926,362,Submit Quiz,200,OK,Thread Group 1-4,text,true,,165546,678,20,20,http://139.99.103.223:9090/mod/quiz/review.php?attempt=304&cmid=64,105,0,33
+1761707418926,105,Submit Quiz-0,303,See Other,Thread Group 1-4,text,true,,1964,364,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=304&finishattempt=1&slots=&cmid=64&sesskey=AzdJFWOIM9,105,0,33
+1761707419031,257,Submit Quiz-1,200,OK,Thread Group 1-4,text,true,,163582,314,20,20,http://139.99.103.223:9090/mod/quiz/review.php?attempt=304&cmid=64,153,0,0
+1761707419678,296,View Chủ đề 1,200,OK,Thread Group 1-11,text,true,,265395,303,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,165,0,31
+1761707423757,267,View video bai 1,200,OK,Thread Group 1-12,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,164,0,32
+1761707423853,271,View video bai 2,200,OK,Thread Group 1-13,text,true,,158886,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=61,171,0,32
+1761707426137,270,View video bai 2,200,OK,Thread Group 1-14,text,true,,158886,293,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=61,168,0,32
+1761707426966,268,View video bai 1,200,OK,Thread Group 1-2,text,true,,158862,291,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,169,0,34
+1761707427031,273,View video bai 1,200,OK,Thread Group 1-5,text,true,,158862,291,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,174,0,31
+1761707430269,290,View Chủ đề 1,200,OK,Thread Group 1-15,text,true,,265395,301,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,155,0,31
+1761707430875,391,Start Quiz hard bài 2,200,OK,Thread Group 1-6,text,true,,160075,644,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=306&cmid=64,133,0,32
+1761707430875,133,Start Quiz hard bài 2-0,303,See Other,Thread Group 1-6,text,true,,1966,331,20,20,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=13&cmid=64&sesskey=7oPJ4ltFlq,133,0,32
+1761707431008,258,Start Quiz hard bài 2-1,200,OK,Thread Group 1-6,text,true,,158109,313,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=306&cmid=64,157,0,0
+1761707431054,297,View Chủ đề 1,200,OK,Thread Group 1-16,text,true,,265395,299,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,164,0,32
+1761707435027,287,View video bai 1,200,OK,Thread Group 1-17,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,188,0,32
+1761707437161,270,View bài 2,200,OK,Thread Group 1-7,text,true,,194483,301,20,20,http://139.99.103.223:9090/course/section.php?id=15,170,0,31
+1761707437238,264,View video bai 1,200,OK,Thread Group 1-18,text,true,,158862,293,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,165,0,32
+1761707440987,288,View Chủ đề 1,200,OK,Thread Group 1-19,text,true,,265395,299,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,155,0,32
+1761707442142,264,View bài 1,200,OK,Thread Group 1-1,text,true,,194731,297,20,20,http://139.99.103.223:9090/course/section.php?id=14,166,0,31
+1761707442172,260,View bài 2,200,OK,Thread Group 1-8,text,true,,194483,295,20,20,http://139.99.103.223:9090/course/section.php?id=15,162,0,32
+1761707442150,292,View Chủ đề 1,200,OK,Thread Group 1-20,text,true,,265395,301,20,20,http://139.99.103.223:9090/course/view.php?id=2&section=1,160,0,32
+1761707443787,369,Start Quiz hard bài 2,200,OK,Thread Group 1-9,text,true,,160075,648,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=307&cmid=64,126,0,32
+1761707443787,126,Start Quiz hard bài 2-0,303,See Other,Thread Group 1-9,text,true,,1966,333,20,20,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=13&cmid=64&sesskey=auPWw2WMoa,126,0,32
+1761707443914,242,Start Quiz hard bài 2-1,200,OK,Thread Group 1-9,text,true,,158109,315,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=307&cmid=64,138,0,0
+1761707444142,353,Submit câu 1,200,OK,Thread Group 1-3,text,true,,160457,874,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=305&cmid=64&page=1,105,0,33
+1761707444142,106,Submit câu 1-0,303,See Other,Thread Group 1-3,text,true,,1984,550,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=64,105,0,33
+1761707444248,247,Submit câu 1-1,200,OK,Thread Group 1-3,text,true,,158473,324,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=305&cmid=64&page=1,146,0,0
+1761707445958,272,View video bai 1,200,OK,Thread Group 1-10,text,true,,158862,293,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,169,0,32
+1761707450324,269,Set grade,200,OK,Thread Group 1-4,text,true,,159331,460,20,20,http://139.99.103.223:9090/grade/report/singleview/index.php?action=savegrades&id=2&userid=48&finalgrade=9&sesskey=AzdJFWOIM9%20,166,0,33
+1761707450738,261,View bài 2,200,OK,Thread Group 1-11,text,true,,194483,297,20,20,http://139.99.103.223:9090/course/section.php?id=15,156,0,32
+1761707453031,275,View video bai 1,200,OK,Thread Group 1-12,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,173,0,32
+1761707453675,376,Start Quiz hard bài 2,200,OK,Thread Group 1-13,text,true,,160075,644,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=308&cmid=64,125,0,33
+1761707453675,125,Start Quiz hard bài 2-0,303,See Other,Thread Group 1-13,text,true,,1966,331,20,20,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=13&cmid=64&sesskey=wwYN9ejQGR,125,0,33
+1761707453800,251,Start Quiz hard bài 2-1,200,OK,Thread Group 1-13,text,true,,158109,313,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=308&cmid=64,147,0,0
+1761707455482,271,View video bai 1,200,OK,Thread Group 1-5,text,true,,158862,291,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,167,0,32
+1761707455983,385,Start Quiz hard bài 2,200,OK,Thread Group 1-14,text,true,,160075,640,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=309&cmid=64,126,0,32
+1761707455983,126,Start Quiz hard bài 2-0,303,See Other,Thread Group 1-14,text,true,,1966,329,20,20,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=13&cmid=64&sesskey=lD7hvWaEr3,126,0,32
+1761707456109,259,Start Quiz hard bài 2-1,200,OK,Thread Group 1-14,text,true,,158109,311,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=309&cmid=64,157,0,0
+1761707457929,271,View bài 1,200,OK,Thread Group 1-2,text,true,,194731,293,20,20,http://139.99.103.223:9090/course/section.php?id=14,167,0,33
+1761707460156,253,View bài 2,200,OK,Thread Group 1-15,text,true,,194483,295,20,20,http://139.99.103.223:9090/course/section.php?id=15,149,0,32
+1761707461197,362,Submit câu 1,200,OK,Thread Group 1-6,text,true,,160457,866,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=306&cmid=64&page=1,106,0,34
+1761707461197,106,Submit câu 1-0,303,See Other,Thread Group 1-6,text,true,,1984,546,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=64,106,0,34
+1761707461304,255,Submit câu 1-1,200,OK,Thread Group 1-6,text,true,,158473,320,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=306&cmid=64&page=1,157,0,0
+1761707463002,256,View bài 2,200,OK,Thread Group 1-16,text,true,,194483,293,20,20,http://139.99.103.223:9090/course/section.php?id=15,152,0,33
+1761707466005,263,View video bai 1,200,OK,Thread Group 1-18,text,true,,158862,293,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,163,0,32
+1761707466098,267,View video bai 1,200,OK,Thread Group 1-17,text,true,,158862,295,20,20,http://139.99.103.223:9090/mod/hvp/view.php?id=55,160,0,32
+1761707466962,954,View pdf bai 2,200,OK,Thread Group 1-7,text,true,,6429496,334,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,90,0,32
+1761707469533,260,View bài 2,200,OK,Thread Group 1-19,text,true,,194483,293,20,20,http://139.99.103.223:9090/course/section.php?id=15,158,0,32
+1761707471468,252,View bài 2,200,OK,Thread Group 1-20,text,true,,194483,295,20,20,http://139.99.103.223:9090/course/section.php?id=15,154,0,33
+1761707471591,474,View pdf bai 1,200,OK,Thread Group 1-1,text,true,,5634395,330,20,20,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,89,0,32
+1761707471945,597,View pdf bai 2,200,OK,Thread Group 1-8,text,true,,6429496,328,20,20,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,140,0,84
+1761707472590,357,Submit câu 2,200,OK,Thread Group 1-3,text,true,,160460,874,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=305&cmid=64&page=2,108,0,33
+1761707472590,108,Submit câu 2-0,303,See Other,Thread Group 1-3,text,true,,1984,550,20,20,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=64,108,0,33
+1761707472698,249,Submit câu 2-1,200,OK,Thread Group 1-3,text,true,,158476,324,20,20,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=305&cmid=64&page=2,146,0,0
+1761707474420,5,Debug Sampler,200,OK,Thread Group 1-4,text,true,,912,0,20,20,null,0,0,0
+1761707475749,362,Submit câu 1,200,OK,Thread Group 1-9,text,true,,160457,870,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=307&cmid=64&page=1,114,0,34
+1761707475749,114,Submit câu 1-0,303,See Other,Thread Group 1-9,text,true,,1984,548,19,19,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=64,114,0,34
+1761707475864,247,Submit câu 1-1,200,OK,Thread Group 1-9,text,true,,158473,322,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=307&cmid=64&page=1,145,0,0
+1761707476766,273,View video bai 1,200,OK,Thread Group 1-10,text,true,,158862,293,19,19,http://139.99.103.223:9090/mod/hvp/view.php?id=55,167,0,31
+1761707479657,550,View pdf bai 2,200,OK,Thread Group 1-11,text,true,,6429496,330,19,19,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,84,0,32
+1761707481329,273,View video bai 1,200,OK,Thread Group 1-12,text,true,,158862,295,19,19,http://139.99.103.223:9090/mod/hvp/view.php?id=55,172,0,31
+1761707483402,365,Submit câu 1,200,OK,Thread Group 1-13,text,true,,160457,866,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=308&cmid=64&page=1,109,0,32
+1761707483402,109,Submit câu 1-0,303,See Other,Thread Group 1-13,text,true,,1984,546,19,19,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=64,109,0,32
+1761707483511,256,Submit câu 1-1,200,OK,Thread Group 1-13,text,true,,158473,320,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=308&cmid=64&page=1,160,0,0
+1761707484867,259,View bài 1,200,OK,Thread Group 1-5,text,true,,194731,293,19,19,http://139.99.103.223:9090/course/section.php?id=14,159,0,31
+1761707486831,477,View pdf bai 1,200,OK,Thread Group 1-2,text,true,,5634395,326,19,19,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,88,0,31
+1761707487171,384,Submit câu 1,200,OK,Thread Group 1-14,text,true,,160457,862,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=309&cmid=64&page=1,129,0,36
+1761707487171,129,Submit câu 1-0,303,See Other,Thread Group 1-14,text,true,,1984,544,19,19,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=64,129,0,36
+1761707487300,255,Submit câu 1-1,200,OK,Thread Group 1-14,text,true,,158473,318,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=309&cmid=64&page=1,153,0,0
+1761707491066,357,Submit câu 2,200,OK,Thread Group 1-6,text,true,,160460,866,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=306&cmid=64&page=2,112,0,32
+1761707491066,112,Submit câu 2-0,303,See Other,Thread Group 1-6,text,true,,1984,546,19,19,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=64,112,0,32
+1761707491178,245,Submit câu 2-1,200,OK,Thread Group 1-6,text,true,,158476,320,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=306&cmid=64&page=2,144,0,0
+1761707491147,543,View pdf bai 2,200,OK,Thread Group 1-15,text,true,,6429496,328,19,19,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,90,0,31
+1761707493351,564,View pdf bai 2,200,OK,Thread Group 1-16,text,true,,6429496,326,19,19,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,93,0,33
+1761707496317,282,View video bai 1,200,OK,Thread Group 1-17,text,true,,158862,295,19,19,http://139.99.103.223:9090/mod/hvp/view.php?id=55,181,0,34
+1761707496970,286,View video bai 1,200,OK,Thread Group 1-18,text,true,,158862,293,19,19,http://139.99.103.223:9090/mod/hvp/view.php?id=55,183,0,33
+1761707497794,469,View pdf bai 2,200,OK,Thread Group 1-7,text,true,,6429496,334,19,19,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,85,0,32
+1761707498571,553,View pdf bai 2,200,OK,Thread Group 1-19,text,true,,6429496,326,19,19,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,91,0,34
+1761707501829,303,View Chủ đề 1,200,OK,Thread Group 1-1,text,true,,265395,303,19,19,http://139.99.103.223:9090/course/view.php?id=2&section=1,170,0,33
+1761707502256,369,Submit câu 3,200,OK,Thread Group 1-3,text,true,,160460,874,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=305&cmid=64&page=2,107,0,32
+1761707502256,107,Submit câu 3-0,303,See Other,Thread Group 1-3,text,true,,1984,550,19,19,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=64,107,0,32
+1761707502363,262,Submit câu 3-1,200,OK,Thread Group 1-3,text,true,,158476,324,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=305&cmid=64&page=2,147,0,0
+1761707502339,388,Submit câu 2,200,OK,Thread Group 1-9,text,true,,160460,870,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=307&cmid=64&page=2,106,0,34
+1761707502339,106,Submit câu 2-0,303,See Other,Thread Group 1-9,text,true,,1984,548,19,19,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=64,106,0,34
+1761707502446,281,Submit câu 2-1,200,OK,Thread Group 1-9,text,true,,158476,322,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=307&cmid=64&page=2,150,0,0
+1761707502269,506,View pdf bai 2,200,OK,Thread Group 1-20,text,true,,6429496,328,19,19,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,86,0,33
+1761707502946,564,View pdf bai 2,200,OK,Thread Group 1-8,text,true,,6429496,328,19,19,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,87,0,31
+1761707506738,263,View bài 1,200,OK,Thread Group 1-10,text,true,,194731,295,19,19,http://139.99.103.223:9090/course/section.php?id=14,160,0,32
+1761707507827,550,View pdf bai 2,200,OK,Thread Group 1-11,text,true,,6429496,330,19,19,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,88,0,32
+1761707512008,363,Submit câu 2,200,OK,Thread Group 1-13,text,true,,160460,866,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=308&cmid=64&page=2,109,0,33
+1761707512008,109,Submit câu 2-0,303,See Other,Thread Group 1-13,text,true,,1984,546,19,19,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=64,109,0,33
+1761707512117,254,Submit câu 2-1,200,OK,Thread Group 1-13,text,true,,158476,320,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=308&cmid=64&page=2,151,0,0
+1761707512110,270,View bài 1,200,OK,Thread Group 1-12,text,true,,194731,297,19,19,http://139.99.103.223:9090/course/section.php?id=14,166,0,33
+1761707513446,542,View pdf bai 1,200,OK,Thread Group 1-5,text,true,,5634395,326,19,19,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,89,0,33
+1761707516614,359,Submit câu 2,200,OK,Thread Group 1-14,text,true,,160460,862,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=309&cmid=64&page=2,106,0,32
+1761707516614,106,Submit câu 2-0,303,See Other,Thread Group 1-14,text,true,,1984,544,19,19,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=64,106,0,32
+1761707516720,253,Submit câu 2-1,200,OK,Thread Group 1-14,text,true,,158476,318,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=309&cmid=64&page=2,152,0,0
+1761707516887,568,Start Quiz 1,200,OK,Thread Group 1-2,text,true,,160442,636,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=310&cmid=56,322,0,32
+1761707516887,322,Start Quiz 1-0,303,See Other,Thread Group 1-2,text,true,,1966,327,19,19,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=11&cmid=56&sesskey=57g72b0uzG,322,0,32
+1761707517209,246,Start Quiz 1-1,200,OK,Thread Group 1-2,text,true,,158476,309,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=310&cmid=56,144,0,0
+1761707518006,560,View pdf bai 2,200,OK,Thread Group 1-15,text,true,,6429496,328,19,19,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,89,0,34
+1761707518819,358,Submit câu 3,200,OK,Thread Group 1-6,text,true,,160460,866,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=306&cmid=64&page=2,103,0,33
+1761707518819,103,Submit câu 3-0,303,See Other,Thread Group 1-6,text,true,,1984,546,19,19,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=64,103,0,33
+1761707518922,255,Submit câu 3-1,200,OK,Thread Group 1-6,text,true,,158476,320,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=306&cmid=64&page=2,148,0,0
+1761707521305,493,View pdf bai 2,200,OK,Thread Group 1-16,text,true,,6429496,326,19,19,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,84,0,32
+1761707523744,258,View bài 1,200,OK,Thread Group 1-17,text,true,,194731,297,19,19,http://139.99.103.223:9090/course/section.php?id=14,156,0,32
+1761707525449,383,Start Quiz easy bài 2,200,OK,Thread Group 1-7,text,true,,160095,652,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=311&cmid=62,136,0,32
+1761707525449,136,Start Quiz easy bài 2-0,303,See Other,Thread Group 1-7,text,true,,1966,335,19,19,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=12&cmid=62&sesskey=rmFl2dkYi7,136,0,32
+1761707525585,247,Start Quiz easy bài 2-1,200,OK,Thread Group 1-7,text,true,,158129,317,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=311&cmid=62,150,0,0
+1761707526600,258,View bài 1,200,OK,Thread Group 1-18,text,true,,194731,295,19,19,http://139.99.103.223:9090/course/section.php?id=14,154,0,32
+1761707528093,496,View pdf bai 2,200,OK,Thread Group 1-19,text,true,,6429496,326,19,19,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,86,0,32
+1761707530262,517,View pdf bai 2,200,OK,Thread Group 1-20,text,true,,6429496,328,19,19,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,87,0,32
+1761707530743,318,View Chủ đề 1,200,OK,Thread Group 1-8,text,true,,265395,301,19,19,http://139.99.103.223:9090/course/view.php?id=2&section=1,182,0,40
+1761707530763,377,Submit Quiz,200,OK,Thread Group 1-3,text,true,,165546,682,19,19,http://139.99.103.223:9090/mod/quiz/review.php?attempt=305&cmid=64,116,0,42
+1761707530763,116,Submit Quiz-0,303,See Other,Thread Group 1-3,text,true,,1964,366,19,19,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=305&finishattempt=1&slots=&cmid=64&sesskey=OxtCv0pipd,116,0,42
+1761707530880,260,Submit Quiz-1,200,OK,Thread Group 1-3,text,true,,163582,316,19,19,http://139.99.103.223:9090/mod/quiz/review.php?attempt=305&cmid=64,158,0,0
+1761707531837,346,Submit câu 3,200,OK,Thread Group 1-9,text,true,,160460,870,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=307&cmid=64&page=2,98,0,33
+1761707531837,98,Submit câu 3-0,303,See Other,Thread Group 1-9,text,true,,1984,548,19,19,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=64,98,0,33
+1761707531935,248,Submit câu 3-1,200,OK,Thread Group 1-9,text,true,,158476,322,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=307&cmid=64&page=2,148,0,0
+1761707531979,293,View video bai 1,200,OK,Thread Group 1-1,text,true,,158862,295,19,19,http://139.99.103.223:9090/mod/hvp/view.php?id=55,164,0,32
+1761707534396,467,View pdf bai 1,200,OK,Thread Group 1-10,text,true,,5634395,328,19,19,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,88,0,32
+1761707536437,292,View Chủ đề 1,200,OK,Thread Group 1-11,text,true,,265395,303,19,19,http://139.99.103.223:9090/course/view.php?id=2&section=1,160,0,32
+1761707538508,469,View pdf bai 1,200,OK,Thread Group 1-12,text,true,,5634395,330,19,19,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,89,0,31
+1761707541876,294,View Chủ đề 1,200,OK,Thread Group 1-5,text,true,,265395,299,19,19,http://139.99.103.223:9090/course/view.php?id=2&section=1,163,0,31
+1761707542626,339,Submit câu 3,200,OK,Thread Group 1-13,text,true,,160460,866,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=308&cmid=64&page=2,99,0,31
+1761707542626,99,Submit câu 3-0,303,See Other,Thread Group 1-13,text,true,,1984,546,19,19,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=64,99,0,31
+1761707542725,240,Submit câu 3-1,200,OK,Thread Group 1-13,text,true,,158476,320,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=308&cmid=64&page=2,142,0,0
+1761707543018,272,Get bộ câu hỏi easy 1,200,OK,Thread Group 1-2,text,true,,158476,411,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php,171,0,31
+1761707543348,352,Submit câu 3,200,OK,Thread Group 1-14,text,true,,160460,862,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=309&cmid=64&page=2,106,0,32
+1761707543348,106,Submit câu 3-0,303,See Other,Thread Group 1-14,text,true,,1984,544,19,19,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=64,106,0,32
+1761707543454,246,Submit câu 3-1,200,OK,Thread Group 1-14,text,true,,158476,318,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=309&cmid=64&page=2,145,0,0
+1761707545723,626,Start Quiz easy bài 2,200,OK,Thread Group 1-15,text,true,,160095,640,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=312&cmid=62,361,0,32
+1761707545723,361,Start Quiz easy bài 2-0,303,See Other,Thread Group 1-15,text,true,,1966,329,19,19,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=12&cmid=62&sesskey=wh2CRG8SOH,361,0,32
+1761707546084,265,Start Quiz easy bài 2-1,200,OK,Thread Group 1-15,text,true,,158129,311,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=312&cmid=62,164,0,0
+1761707548507,298,View Chủ đề 1,200,OK,Thread Group 1-16,text,true,,265395,299,19,19,http://139.99.103.223:9090/course/view.php?id=2&section=1,165,0,32
+1761707548631,365,Submit Quiz,200,OK,Thread Group 1-6,text,true,,165546,674,19,19,http://139.99.103.223:9090/mod/quiz/review.php?attempt=306&cmid=64,108,0,32
+1761707548631,108,Submit Quiz-0,303,See Other,Thread Group 1-6,text,true,,1964,362,19,19,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=306&finishattempt=1&slots=&cmid=64&sesskey=7oPJ4ltFlq,108,0,32
+1761707548740,256,Submit Quiz-1,200,OK,Thread Group 1-6,text,true,,163582,312,19,19,http://139.99.103.223:9090/mod/quiz/review.php?attempt=306&cmid=64,156,0,0
+1761707551579,507,View pdf bai 1,200,OK,Thread Group 1-17,text,true,,5634395,330,19,19,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,84,0,30
+1761707555660,493,View pdf bai 1,200,OK,Thread Group 1-18,text,true,,5634395,328,19,19,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,86,0,32
+1761707555859,389,Submit câu 1,200,OK,Thread Group 1-7,text,true,,160348,937,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=311&cmid=62&page=1,114,0,33
+1761707555859,114,Submit câu 1-0,303,See Other,Thread Group 1-7,text,true,,1984,613,19,19,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=62,114,0,33
+1761707555973,275,Submit câu 1-1,200,OK,Thread Group 1-7,text,true,,158364,324,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=311&cmid=62&page=1,173,0,0
+1761707558042,591,Start Quiz easy bài 2,200,OK,Thread Group 1-19,text,true,,160095,636,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=313&cmid=62,331,0,33
+1761707558042,331,Start Quiz easy bài 2-0,303,See Other,Thread Group 1-19,text,true,,1966,327,19,19,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=12&cmid=62&sesskey=8BzaIcLxsX,331,0,33
+1761707558373,260,Start Quiz easy bài 2-1,200,OK,Thread Group 1-19,text,true,,158129,309,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=313&cmid=62,152,0,0
+1761707558564,263,View bài 2,200,OK,Thread Group 1-8,text,true,,194483,295,19,19,http://139.99.103.223:9090/course/section.php?id=15,166,0,36
+1761707559092,264,Set grade,200,OK,Thread Group 1-3,text,true,,159331,462,19,19,http://139.99.103.223:9090/grade/report/singleview/index.php?action=savegrades&id=2&userid=47&finalgrade=9&sesskey=OxtCv0pipd%20,164,0,31
+1761707559506,303,View Chủ đề 1,200,OK,Thread Group 1-20,text,true,,265395,301,19,19,http://139.99.103.223:9090/course/view.php?id=2&section=1,168,0,32
+1761707560528,375,Submit Quiz,200,OK,Thread Group 1-9,text,true,,165546,678,19,19,http://139.99.103.223:9090/mod/quiz/review.php?attempt=307&cmid=64,113,0,31
+1761707560528,113,Submit Quiz-0,303,See Other,Thread Group 1-9,text,true,,1964,364,19,19,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=307&finishattempt=1&slots=&cmid=64&sesskey=auPWw2WMoa,113,0,31
+1761707560641,262,Submit Quiz-1,200,OK,Thread Group 1-9,text,true,,163582,314,19,19,http://139.99.103.223:9090/mod/quiz/review.php?attempt=307&cmid=64,161,0,0
+1761707560908,288,View video bai 1,200,OK,Thread Group 1-1,text,true,,158862,295,19,19,http://139.99.103.223:9090/mod/hvp/view.php?id=55,187,0,33
+1761707562461,579,Start Quiz 1,200,OK,Thread Group 1-10,text,true,,160442,640,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=314&cmid=56,327,0,32
+1761707562461,327,Start Quiz 1-0,303,See Other,Thread Group 1-10,text,true,,1966,329,19,19,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=11&cmid=56&sesskey=LbcettF3td,327,0,32
+1761707562789,251,Start Quiz 1-1,200,OK,Thread Group 1-10,text,true,,158476,311,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=314&cmid=56,148,0,0
+1761707564601,257,View bài 2,200,OK,Thread Group 1-11,text,true,,194483,297,19,19,http://139.99.103.223:9090/course/section.php?id=15,156,0,32
+1761707567802,571,Start Quiz 1,200,OK,Thread Group 1-12,text,true,,160442,644,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=315&cmid=56,320,0,32
+1761707567802,320,Start Quiz 1-0,303,See Other,Thread Group 1-12,text,true,,1966,331,19,19,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=11&cmid=56&sesskey=2REqx9NV1A,320,0,32
+1761707568122,251,Start Quiz 1-1,200,OK,Thread Group 1-12,text,true,,158476,313,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=315&cmid=56,149,0,0
+1761707569389,379,Submit Quiz,200,OK,Thread Group 1-13,text,true,,165546,674,19,19,http://139.99.103.223:9090/mod/quiz/review.php?attempt=308&cmid=64,123,0,33
+1761707569389,123,Submit Quiz-0,303,See Other,Thread Group 1-13,text,true,,1964,362,19,19,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=308&finishattempt=1&slots=&cmid=64&sesskey=wwYN9ejQGR,123,0,33
+1761707569512,256,Submit Quiz-1,200,OK,Thread Group 1-13,text,true,,163582,312,19,19,http://139.99.103.223:9090/mod/quiz/review.php?attempt=308&cmid=64,156,0,0
+1761707570039,282,View video bai 1,200,OK,Thread Group 1-5,text,true,,158862,291,19,19,http://139.99.103.223:9090/mod/hvp/view.php?id=55,179,0,34
+1761707571795,369,Submit Quiz,200,OK,Thread Group 1-14,text,true,,165546,670,19,19,http://139.99.103.223:9090/mod/quiz/review.php?attempt=309&cmid=64,117,0,34
+1761707571795,118,Submit Quiz-0,303,See Other,Thread Group 1-14,text,true,,1964,360,19,19,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=309&finishattempt=1&slots=&cmid=64&sesskey=lD7hvWaEr3,117,0,34
+1761707571913,251,Submit Quiz-1,200,OK,Thread Group 1-14,text,true,,163582,310,19,19,http://139.99.103.223:9090/mod/quiz/review.php?attempt=309&cmid=64,149,0,0
+1761707574393,376,Submit câu 1,200,OK,Thread Group 1-2,text,true,,160716,858,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=310&cmid=56&page=1,110,0,33
+1761707574393,110,Submit câu 1-0,303,See Other,Thread Group 1-2,text,true,,1984,542,19,19,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=56,110,0,33
+1761707574503,266,Submit câu 1-1,200,OK,Thread Group 1-2,text,true,,158732,316,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=310&cmid=56&page=1,167,0,0
+1761707575440,262,Set grade,200,OK,Thread Group 1-6,text,true,,159332,458,19,19,http://139.99.103.223:9090/grade/report/singleview/index.php?action=savegrades&id=2&userid=50&finalgrade=9&sesskey=7oPJ4ltFlq%20,160,0,32
+1761707575631,351,Submit câu 1,200,OK,Thread Group 1-15,text,true,,160348,925,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=312&cmid=62&page=1,106,0,33
+1761707575631,106,Submit câu 1-0,303,See Other,Thread Group 1-15,text,true,,1984,607,19,19,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=62,106,0,33
+1761707575737,245,Submit câu 1-1,200,OK,Thread Group 1-15,text,true,,158364,318,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=312&cmid=62&page=1,144,0,0
+1761707576565,262,View bài 2,200,OK,Thread Group 1-16,text,true,,194483,293,19,19,http://139.99.103.223:9090/course/section.php?id=15,159,0,32
+1761707580338,602,Start Quiz 1,200,OK,Thread Group 1-17,text,true,,160442,644,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=316&cmid=56,361,0,32
+1761707580338,361,Start Quiz 1-0,303,See Other,Thread Group 1-17,text,true,,1966,331,19,19,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=11&cmid=56&sesskey=1neO4pCB2R,361,0,32
+1761707580700,240,Start Quiz 1-1,200,OK,Thread Group 1-17,text,true,,158476,313,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=316&cmid=56,144,0,0
+1761707583129,300,View Chủ đề 1,200,OK,Thread Group 1-18,text,true,,265395,301,19,19,http://139.99.103.223:9090/course/view.php?id=2&section=1,166,0,31
+1761707583718,348,Submit câu 2,200,OK,Thread Group 1-7,text,true,,160348,937,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=311&cmid=62&page=2,101,0,31
+1761707583718,101,Submit câu 2-0,303,See Other,Thread Group 1-7,text,true,,1984,613,19,19,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=62,101,0,31
+1761707583819,247,Submit câu 2-1,200,OK,Thread Group 1-7,text,true,,158364,324,19,19,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=311&cmid=62&page=2,147,0,0
+1761707584413,2,Debug Sampler,200,OK,Thread Group 1-3,text,true,,912,0,19,19,null,0,0,0
+1761707584633,343,Submit câu 1,200,OK,Thread Group 1-19,text,true,,160348,921,18,18,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=313&cmid=62&page=1,101,0,32
+1761707584633,101,Submit câu 1-0,303,See Other,Thread Group 1-19,text,true,,1984,605,18,18,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=62,101,0,32
+1761707584735,241,Submit câu 1-1,200,OK,Thread Group 1-19,text,true,,158364,316,18,18,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=313&cmid=62&page=1,141,0,0
+1761707586413,515,View pdf bai 2,200,OK,Thread Group 1-8,text,true,,6429496,328,18,18,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,93,0,32
+1761707588177,263,View video bai 1,200,OK,Thread Group 1-1,text,true,,158862,295,18,18,http://139.99.103.223:9090/mod/hvp/view.php?id=55,162,0,31
+1761707588632,261,View bài 2,200,OK,Thread Group 1-20,text,true,,194483,295,18,18,http://139.99.103.223:9090/course/section.php?id=15,159,0,33
+1761707589128,259,Set grade,200,OK,Thread Group 1-9,text,true,,159332,460,18,18,http://139.99.103.223:9090/grade/report/singleview/index.php?action=savegrades&id=2&userid=53&finalgrade=9&sesskey=auPWw2WMoa%20,159,0,32
+1761707592780,287,Get bộ câu hỏi easy 1,200,OK,Thread Group 1-10,text,true,,158476,413,18,18,http://139.99.103.223:9090/mod/quiz/attempt.php,185,0,33
+1761707595283,532,View pdf bai 2,200,OK,Thread Group 1-11,text,true,,6429496,330,18,18,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,89,0,32
+1761707597670,263,Set grade,200,OK,Thread Group 1-13,text,true,,159335,458,18,18,http://139.99.103.223:9090/grade/report/singleview/index.php?action=savegrades&id=2&userid=57&finalgrade=9&sesskey=wwYN9ejQGR%20,162,0,31
+1761707597731,283,Get bộ câu hỏi easy 1,200,OK,Thread Group 1-12,text,true,,158476,415,18,18,http://139.99.103.223:9090/mod/quiz/attempt.php,180,0,35
+1761707600113,271,View video bai 1,200,OK,Thread Group 1-5,text,true,,158862,291,18,18,http://139.99.103.223:9090/mod/hvp/view.php?id=55,171,0,32
+1761707600258,363,Submit câu 2,200,OK,Thread Group 1-2,text,true,,160703,858,18,18,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=310&cmid=56&page=2,104,0,32
+1761707600258,104,Submit câu 2-0,303,See Other,Thread Group 1-2,text,true,,1984,542,18,18,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=56,104,0,32
+1761707600362,259,Submit câu 2-1,200,OK,Thread Group 1-2,text,true,,158719,316,18,18,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=310&cmid=56&page=2,148,0,0
+1761707600898,1,Debug Sampler,200,OK,Thread Group 1-6,text,true,,912,0,18,18,null,0,0,0
+1761707601108,258,Set grade,200,OK,Thread Group 1-14,text,true,,159328,456,17,17,http://139.99.103.223:9090/grade/report/singleview/index.php?action=savegrades&id=2&userid=58&finalgrade=9&sesskey=lD7hvWaEr3%20,157,0,32
+1761707602820,368,Submit câu 2,200,OK,Thread Group 1-15,text,true,,160348,925,17,17,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=312&cmid=62&page=2,103,0,32
+1761707602820,103,Submit câu 2-0,303,See Other,Thread Group 1-15,text,true,,1984,607,17,17,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=62,103,0,32
+1761707602924,264,Submit câu 2-1,200,OK,Thread Group 1-15,text,true,,158364,318,17,17,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=312&cmid=62&page=2,163,0,0
+1761707607717,529,View pdf bai 2,200,OK,Thread Group 1-16,text,true,,6429496,326,17,17,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,84,0,31
+1761707609663,274,Get bộ câu hỏi easy 1,200,OK,Thread Group 1-17,text,true,,158476,415,17,17,http://139.99.103.223:9090/mod/quiz/attempt.php,173,0,33
+1761707611389,1,Debug Sampler,200,OK,Thread Group 1-9,text,true,,912,0,17,17,null,0,0,0
+1761707611438,383,Submit câu 2,200,OK,Thread Group 1-19,text,true,,160348,921,16,16,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=313&cmid=62&page=2,107,0,33
+1761707611438,107,Submit câu 2-0,303,See Other,Thread Group 1-19,text,true,,1984,605,16,16,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=62,107,0,33
+1761707611546,275,Submit câu 2-1,200,OK,Thread Group 1-19,text,true,,158364,316,16,16,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=313&cmid=62&page=2,178,0,0
+1761707612300,277,View video bai 1,200,OK,Thread Group 1-18,text,true,,158862,293,16,16,http://139.99.103.223:9090/mod/hvp/view.php?id=55,176,0,34
+1761707613822,346,Submit câu 3,200,OK,Thread Group 1-7,text,true,,160348,937,16,16,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=311&cmid=62&page=2,99,0,32
+1761707613822,99,Submit câu 3-0,303,See Other,Thread Group 1-7,text,true,,1984,613,16,16,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=62,99,0,32
+1761707613921,247,Submit câu 3-1,200,OK,Thread Group 1-7,text,true,,158364,324,16,16,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=311&cmid=62&page=2,146,0,0
+1761707614394,552,View pdf bai 2,200,OK,Thread Group 1-8,text,true,,6429496,328,16,16,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,84,0,31
+1761707615455,557,View pdf bai 2,200,OK,Thread Group 1-20,text,true,,6429496,328,16,16,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,90,0,32
+1761707616857,253,View bài 1,200,OK,Thread Group 1-1,text,true,,194731,297,16,16,http://139.99.103.223:9090/course/section.php?id=14,151,0,32
+1761707617894,370,Submit câu 1,200,OK,Thread Group 1-10,text,true,,160716,862,16,16,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=314&cmid=56&page=1,101,0,33
+1761707617894,101,Submit câu 1-0,303,See Other,Thread Group 1-10,text,true,,1984,544,16,16,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=56,101,0,33
+1761707617995,269,Submit câu 1-1,200,OK,Thread Group 1-10,text,true,,158732,318,16,16,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=314&cmid=56&page=1,165,0,0
+1761707619875,576,View pdf bai 2,200,OK,Thread Group 1-11,text,true,,6429496,330,16,16,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,85,0,32
+1761707621374,0,Debug Sampler,200,OK,Thread Group 1-13,text,true,,912,0,16,16,null,0,0,0
+1761707622365,1,Debug Sampler,200,OK,Thread Group 1-14,text,true,,913,0,15,15,null,0,0,0
+1761707623408,359,Submit câu 1,200,OK,Thread Group 1-12,text,true,,160716,866,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=315&cmid=56&page=1,107,0,34
+1761707623408,107,Submit câu 1-0,303,See Other,Thread Group 1-12,text,true,,1984,546,14,14,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=56,107,0,34
+1761707623515,252,Submit câu 1-1,200,OK,Thread Group 1-12,text,true,,158732,320,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=315&cmid=56&page=1,150,0,0
+1761707627004,281,View video bai 1,200,OK,Thread Group 1-5,text,true,,158862,291,14,14,http://139.99.103.223:9090/mod/hvp/view.php?id=55,182,0,33
+1761707627118,357,Submit câu 3,200,OK,Thread Group 1-2,text,true,,160703,858,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=310&cmid=56&page=2,111,0,32
+1761707627118,111,Submit câu 3-0,303,See Other,Thread Group 1-2,text,true,,1984,542,14,14,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=56,111,0,32
+1761707627229,246,Submit câu 3-1,200,OK,Thread Group 1-2,text,true,,158719,316,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=310&cmid=56&page=2,144,0,0
+1761707629753,374,Submit câu 3,200,OK,Thread Group 1-15,text,true,,160348,925,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=312&cmid=62&page=2,109,0,33
+1761707629753,109,Submit câu 3-0,303,See Other,Thread Group 1-15,text,true,,1984,607,14,14,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=62,109,0,33
+1761707629863,264,Submit câu 3-1,200,OK,Thread Group 1-15,text,true,,158364,318,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=312&cmid=62&page=2,164,0,0
+1761707631655,541,View pdf bai 2,200,OK,Thread Group 1-16,text,true,,6429496,326,14,14,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,87,0,32
+1761707635009,267,View video bai 1,200,OK,Thread Group 1-18,text,true,,158862,293,14,14,http://139.99.103.223:9090/mod/hvp/view.php?id=55,165,0,32
+1761707635202,343,Submit câu 1,200,OK,Thread Group 1-17,text,true,,160716,866,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=316&cmid=56&page=1,104,0,32
+1761707635202,104,Submit câu 1-0,303,See Other,Thread Group 1-17,text,true,,1984,546,14,14,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=56,104,0,32
+1761707635306,239,Submit câu 1-1,200,OK,Thread Group 1-17,text,true,,158732,320,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=316&cmid=56&page=1,138,0,0
+1761707636037,337,Submit câu 3,200,OK,Thread Group 1-19,text,true,,160348,921,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=313&cmid=62&page=2,102,0,33
+1761707636037,102,Submit câu 3-0,303,See Other,Thread Group 1-19,text,true,,1984,605,14,14,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=62,102,0,33
+1761707636139,235,Submit câu 3-1,200,OK,Thread Group 1-19,text,true,,158364,316,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=313&cmid=62&page=2,136,0,0
+1761707636918,359,Submit Quiz,200,OK,Thread Group 1-7,text,true,,162727,682,14,14,http://139.99.103.223:9090/mod/quiz/review.php?attempt=311&cmid=62,109,0,33
+1761707636918,109,Submit Quiz-0,303,See Other,Thread Group 1-7,text,true,,1964,366,14,14,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=311&finishattempt=1&slots=&cmid=62&sesskey=rmFl2dkYi7,109,0,33
+1761707637027,250,Submit Quiz-1,200,OK,Thread Group 1-7,text,true,,160763,316,14,14,http://139.99.103.223:9090/mod/quiz/review.php?attempt=311&cmid=62,153,0,0
+1761707637418,547,Start Quiz easy bài 2,200,OK,Thread Group 1-8,text,true,,160095,640,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=317&cmid=62,307,0,32
+1761707637418,307,Start Quiz easy bài 2-0,303,See Other,Thread Group 1-8,text,true,,1966,329,14,14,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=12&cmid=62&sesskey=m4XUogEtI3,307,0,32
+1761707637725,240,Start Quiz easy bài 2-1,200,OK,Thread Group 1-8,text,true,,158129,311,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=317&cmid=62,139,0,0
+1761707638303,540,View pdf bai 1,200,OK,Thread Group 1-1,text,true,,5634395,330,14,14,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,89,0,32
+1761707638741,618,View pdf bai 2,200,OK,Thread Group 1-20,text,true,,6429496,328,14,14,http://139.99.103.223:9090/pluginfile.php/292/mod_resource/content/2/SGK_CS_Bai2.pdf,120,0,66
+1761707641558,342,Submit câu 2,200,OK,Thread Group 1-10,text,true,,160703,862,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=314&cmid=56&page=2,105,0,32
+1761707641558,105,Submit câu 2-0,303,See Other,Thread Group 1-10,text,true,,1984,544,14,14,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=56,105,0,32
+1761707641664,236,Submit câu 2-1,200,OK,Thread Group 1-10,text,true,,158719,318,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=314&cmid=56&page=2,136,0,0
+1761707644433,359,Submit câu 2,200,OK,Thread Group 1-12,text,true,,160703,866,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=315&cmid=56&page=2,106,0,32
+1761707644433,106,Submit câu 2-0,303,See Other,Thread Group 1-12,text,true,,1984,546,14,14,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=56,106,0,32
+1761707644539,253,Submit câu 2-1,200,OK,Thread Group 1-12,text,true,,158719,320,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=315&cmid=56&page=2,153,0,0
+1761707644252,566,Start Quiz easy bài 2,200,OK,Thread Group 1-11,text,true,,160095,644,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=318&cmid=62,324,0,32
+1761707644252,324,Start Quiz easy bài 2-0,303,See Other,Thread Group 1-11,text,true,,1966,331,14,14,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=12&cmid=62&sesskey=1e2lHybqms,324,0,32
+1761707644576,242,Start Quiz easy bài 2-1,200,OK,Thread Group 1-11,text,true,,158129,313,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=318&cmid=62,144,0,0
+1761707646744,256,View bài 1,200,OK,Thread Group 1-5,text,true,,194731,293,14,14,http://139.99.103.223:9090/course/section.php?id=14,150,0,32
+1761707649773,369,Submit Quiz,200,OK,Thread Group 1-2,text,true,,166510,666,14,14,http://139.99.103.223:9090/mod/quiz/review.php?attempt=310&cmid=56,105,0,32
+1761707649773,105,Submit Quiz-0,303,See Other,Thread Group 1-2,text,true,,1964,358,14,14,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=310&finishattempt=1&slots=&cmid=56&sesskey=57g72b0uzG,105,0,32
+1761707649878,264,Submit Quiz-1,200,OK,Thread Group 1-2,text,true,,164546,308,14,14,http://139.99.103.223:9090/mod/quiz/review.php?attempt=310&cmid=56,162,0,0
+1761707651074,357,Submit Quiz,200,OK,Thread Group 1-15,text,true,,162727,670,14,14,http://139.99.103.223:9090/mod/quiz/review.php?attempt=312&cmid=62,107,0,32
+1761707651074,107,Submit Quiz-0,303,See Other,Thread Group 1-15,text,true,,1964,360,14,14,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=312&finishattempt=1&slots=&cmid=62&sesskey=wh2CRG8SOH,107,0,32
+1761707651182,249,Submit Quiz-1,200,OK,Thread Group 1-15,text,true,,160763,310,14,14,http://139.99.103.223:9090/mod/quiz/review.php?attempt=312&cmid=62,150,0,0
+1761707651674,535,Start Quiz easy bài 2,200,OK,Thread Group 1-16,text,true,,160095,636,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=319&cmid=62,297,0,33
+1761707651674,297,Start Quiz easy bài 2-0,303,See Other,Thread Group 1-16,text,true,,1966,327,14,14,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=12&cmid=62&sesskey=e4W6Hz1XS7,297,0,33
+1761707651971,238,Start Quiz easy bài 2-1,200,OK,Thread Group 1-16,text,true,,158129,309,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=319&cmid=62,136,0,0
+1761707655239,270,View video bai 1,200,OK,Thread Group 1-18,text,true,,158862,293,14,14,http://139.99.103.223:9090/mod/hvp/view.php?id=55,168,0,32
+1761707656031,351,Submit câu 2,200,OK,Thread Group 1-17,text,true,,160703,866,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=316&cmid=56&page=2,109,0,32
+1761707656031,109,Submit câu 2-0,303,See Other,Thread Group 1-17,text,true,,1984,546,14,14,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=56,109,0,32
+1761707656141,241,Submit câu 2-1,200,OK,Thread Group 1-17,text,true,,158719,320,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=316&cmid=56&page=2,141,0,0
+1761707656344,264,Set grade,200,OK,Thread Group 1-7,text,true,,159332,462,14,14,http://139.99.103.223:9090/grade/report/singleview/index.php?action=savegrades&id=2&userid=51&finalgrade=8&sesskey=rmFl2dkYi7%20,165,0,32
+1761707658607,370,Submit Quiz,200,OK,Thread Group 1-19,text,true,,162727,666,14,14,http://139.99.103.223:9090/mod/quiz/review.php?attempt=313&cmid=62,108,0,32
+1761707658607,108,Submit Quiz-0,303,See Other,Thread Group 1-19,text,true,,1964,358,14,14,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=313&finishattempt=1&slots=&cmid=62&sesskey=8BzaIcLxsX,108,0,32
+1761707658715,262,Submit Quiz-1,200,OK,Thread Group 1-19,text,true,,160763,308,14,14,http://139.99.103.223:9090/mod/quiz/review.php?attempt=313&cmid=62,160,0,0
+1761707659319,369,Submit câu 1,200,OK,Thread Group 1-8,text,true,,160348,925,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=317&cmid=62&page=1,109,0,32
+1761707659319,109,Submit câu 1-0,303,See Other,Thread Group 1-8,text,true,,1984,607,14,14,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=62,109,0,32
+1761707659429,259,Submit câu 1-1,200,OK,Thread Group 1-8,text,true,,158364,318,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=317&cmid=62&page=1,161,0,0
+1761707660850,437,Start Quiz easy bài 2,200,OK,Thread Group 1-20,text,true,,160001,640,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=320&cmid=62,132,0,31
+1761707660850,133,Start Quiz easy bài 2-0,303,See Other,Thread Group 1-20,text,true,,1966,329,14,14,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=12&cmid=62&sesskey=1PkFKGGDlx,132,0,31
+1761707660983,304,Start Quiz easy bài 2-1,200,OK,Thread Group 1-20,text,true,,158035,311,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=320&cmid=62,204,0,0
+1761707661942,570,Start Quiz 1,200,OK,Thread Group 1-1,text,true,,160442,644,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=321&cmid=56,319,0,32
+1761707661942,319,Start Quiz 1-0,303,See Other,Thread Group 1-1,text,true,,1966,331,14,14,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=11&cmid=56&sesskey=kWLwTOEzLS,319,0,32
+1761707662261,251,Start Quiz 1-1,200,OK,Thread Group 1-1,text,true,,158476,313,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=321&cmid=56,151,0,0
+1761707664035,340,Submit câu 3,200,OK,Thread Group 1-10,text,true,,160703,862,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=314&cmid=56&page=2,98,0,32
+1761707664035,98,Submit câu 3-0,303,See Other,Thread Group 1-10,text,true,,1984,544,14,14,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=56,98,0,32
+1761707664132,243,Submit câu 3-1,200,OK,Thread Group 1-10,text,true,,158719,318,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=314&cmid=56&page=2,141,0,0
+1761707664705,353,Submit câu 1,200,OK,Thread Group 1-11,text,true,,160348,929,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=318&cmid=62&page=1,102,0,31
+1761707664705,102,Submit câu 1-0,303,See Other,Thread Group 1-11,text,true,,1984,609,14,14,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=62,102,0,31
+1761707664807,251,Submit câu 1-1,200,OK,Thread Group 1-11,text,true,,158364,320,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=318&cmid=62&page=1,151,0,0
+1761707666703,392,Submit câu 3,200,OK,Thread Group 1-12,text,true,,160703,866,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=315&cmid=56&page=2,104,0,33
+1761707666703,104,Submit câu 3-0,303,See Other,Thread Group 1-12,text,true,,1984,546,14,14,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=56,104,0,33
+1761707666807,288,Submit câu 3-1,200,OK,Thread Group 1-12,text,true,,158719,320,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=315&cmid=56&page=2,188,0,0
+1761707669001,534,View pdf bai 1,200,OK,Thread Group 1-5,text,true,,5634395,326,14,14,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,85,0,33
+1761707671700,270,Set grade,200,OK,Thread Group 1-2,text,true,,159335,454,14,14,http://139.99.103.223:9090/grade/report/singleview/index.php?action=savegrades&id=2&userid=46&finalgrade=6&sesskey=57g72b0uzG%20,168,0,32
+1761707671736,261,Set grade,200,OK,Thread Group 1-15,text,true,,159327,456,14,14,http://139.99.103.223:9090/grade/report/singleview/index.php?action=savegrades&id=2&userid=59&finalgrade=8&sesskey=wh2CRG8SOH%20,159,0,32
+1761707673397,376,Submit câu 1,200,OK,Thread Group 1-16,text,true,,160348,921,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=319&cmid=62&page=1,104,0,32
+1761707673397,104,Submit câu 1-0,303,See Other,Thread Group 1-16,text,true,,1984,605,14,14,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=62,104,0,32
+1761707673501,272,Submit câu 1-1,200,OK,Thread Group 1-16,text,true,,158364,316,14,14,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=319&cmid=62&page=1,170,0,0
+1761707673896,1,Debug Sampler,200,OK,Thread Group 1-7,text,true,,807,0,14,14,null,0,0,0
+1761707676149,266,View bài 1,200,OK,Thread Group 1-18,text,true,,194731,295,13,13,http://139.99.103.223:9090/course/section.php?id=14,161,0,33
+1761707677113,353,Submit câu 3,200,OK,Thread Group 1-17,text,true,,160703,866,13,13,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=316&cmid=56&page=2,99,0,33
+1761707677113,99,Submit câu 3-0,303,See Other,Thread Group 1-17,text,true,,1984,546,13,13,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=56,99,0,33
+1761707677213,253,Submit câu 3-1,200,OK,Thread Group 1-17,text,true,,158719,320,13,13,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=316&cmid=56&page=2,151,0,0
+1761707678408,342,Set grade,200,OK,Thread Group 1-19,text,true,,159335,454,13,13,http://139.99.103.223:9090/grade/report/singleview/index.php?action=savegrades&id=2&userid=63&finalgrade=8&sesskey=8BzaIcLxsX%20,221,0,96
+1761707681025,277,Get bộ câu hỏi easy 1,200,OK,Thread Group 1-1,text,true,,158476,415,13,13,http://139.99.103.223:9090/mod/quiz/attempt.php,175,0,33
+1761707681369,353,Submit câu 1,200,OK,Thread Group 1-20,text,true,,160442,925,13,13,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=320&cmid=62&page=1,107,0,33
+1761707681369,107,Submit câu 1-0,303,See Other,Thread Group 1-20,text,true,,1984,607,13,13,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=62,107,0,33
+1761707681477,245,Submit câu 1-1,200,OK,Thread Group 1-20,text,true,,158458,318,13,13,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=320&cmid=62&page=1,147,0,0
+1761707681916,341,Submit câu 2,200,OK,Thread Group 1-8,text,true,,160348,925,13,13,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=317&cmid=62&page=2,101,0,33
+1761707681916,101,Submit câu 2-0,303,See Other,Thread Group 1-8,text,true,,1984,607,13,13,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=62,101,0,33
+1761707682017,240,Submit câu 2-1,200,OK,Thread Group 1-8,text,true,,158364,318,13,13,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=317&cmid=62&page=2,138,0,0
+1761707684538,353,Submit Quiz,200,OK,Thread Group 1-10,text,true,,166509,670,13,13,http://139.99.103.223:9090/mod/quiz/review.php?attempt=314&cmid=56,105,0,33
+1761707684538,105,Submit Quiz-0,303,See Other,Thread Group 1-10,text,true,,1964,360,13,13,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=314&finishattempt=1&slots=&cmid=56&sesskey=LbcettF3td,105,0,33
+1761707684644,247,Submit Quiz-1,200,OK,Thread Group 1-10,text,true,,164545,310,13,13,http://139.99.103.223:9090/mod/quiz/review.php?attempt=314&cmid=56,145,0,0
+1761707686915,1,Debug Sampler,200,OK,Thread Group 1-2,text,true,,907,0,13,13,null,0,0,0
+1761707686748,342,Submit câu 2,200,OK,Thread Group 1-11,text,true,,160348,929,12,12,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=318&cmid=62&page=2,103,0,33
+1761707686748,103,Submit câu 2-0,303,See Other,Thread Group 1-11,text,true,,1984,609,12,12,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=62,103,0,33
+1761707686851,239,Submit câu 2-1,200,OK,Thread Group 1-11,text,true,,158364,320,12,12,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=318&cmid=62&page=2,139,0,0
+1761707687868,0,Debug Sampler,200,OK,Thread Group 1-15,text,true,,809,0,12,12,null,0,0,0
+1761707687679,370,Submit Quiz,200,OK,Thread Group 1-12,text,true,,166502,674,11,11,http://139.99.103.223:9090/mod/quiz/review.php?attempt=315&cmid=56,117,0,32
+1761707687679,117,Submit Quiz-0,303,See Other,Thread Group 1-12,text,true,,1964,362,11,11,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=315&finishattempt=1&slots=&cmid=56&sesskey=2REqx9NV1A,117,0,32
+1761707687796,253,Submit Quiz-1,200,OK,Thread Group 1-12,text,true,,164538,312,11,11,http://139.99.103.223:9090/mod/quiz/review.php?attempt=315&cmid=56,152,0,0
+1761707690661,556,Start Quiz 1,200,OK,Thread Group 1-5,text,true,,160442,636,11,11,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=322&cmid=56,314,0,32
+1761707690661,314,Start Quiz 1-0,303,See Other,Thread Group 1-5,text,true,,1966,327,11,11,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=11&cmid=56&sesskey=6FJvOVD38M,314,0,32
+1761707690975,242,Start Quiz 1-1,200,OK,Thread Group 1-5,text,true,,158476,309,11,11,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=322&cmid=56,140,0,0
+1761707693354,0,Debug Sampler,200,OK,Thread Group 1-19,text,true,,809,0,11,11,null,0,0,0
+1761707693799,343,Submit câu 2,200,OK,Thread Group 1-16,text,true,,160348,921,10,10,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=319&cmid=62&page=2,101,0,32
+1761707693799,101,Submit câu 2-0,303,See Other,Thread Group 1-16,text,true,,1984,605,10,10,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=62,101,0,32
+1761707693901,241,Submit câu 2-1,200,OK,Thread Group 1-16,text,true,,158364,316,10,10,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=319&cmid=62&page=2,139,0,0
+1761707695727,352,Submit Quiz,200,OK,Thread Group 1-17,text,true,,166509,674,10,10,http://139.99.103.223:9090/mod/quiz/review.php?attempt=316&cmid=56,104,0,31
+1761707695727,104,Submit Quiz-0,303,See Other,Thread Group 1-17,text,true,,1964,362,10,10,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=316&finishattempt=1&slots=&cmid=56&sesskey=1neO4pCB2R,104,0,31
+1761707695831,248,Submit Quiz-1,200,OK,Thread Group 1-17,text,true,,164545,312,10,10,http://139.99.103.223:9090/mod/quiz/review.php?attempt=316&cmid=56,145,0,0
+1761707697911,502,View pdf bai 1,200,OK,Thread Group 1-18,text,true,,5634395,328,10,10,http://139.99.103.223:9090/pluginfile.php/286/mod_resource/content/2/SGK_CS_Bai1.pdf,84,0,31
+1761707699252,350,Submit câu 2,200,OK,Thread Group 1-20,text,true,,160442,925,10,10,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=320&cmid=62&page=2,101,0,33
+1761707699252,101,Submit câu 2-0,303,See Other,Thread Group 1-20,text,true,,1984,607,10,10,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=62,101,0,33
+1761707699354,248,Submit câu 2-1,200,OK,Thread Group 1-20,text,true,,158458,318,10,10,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=320&cmid=62&page=2,145,0,0
+1761707700716,361,Submit câu 1,200,OK,Thread Group 1-1,text,true,,160716,866,10,10,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=321&cmid=56&page=1,111,0,33
+1761707700716,111,Submit câu 1-0,303,See Other,Thread Group 1-1,text,true,,1984,546,10,10,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=56,111,0,33
+1761707700827,250,Submit câu 1-1,200,OK,Thread Group 1-1,text,true,,158732,320,10,10,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=321&cmid=56&page=1,150,0,0
+1761707701466,382,Submit câu 3,200,OK,Thread Group 1-8,text,true,,160348,925,10,10,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=317&cmid=62&page=2,104,0,33
+1761707701466,104,Submit câu 3-0,303,See Other,Thread Group 1-8,text,true,,1984,607,10,10,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=62,104,0,33
+1761707701570,278,Submit câu 3-1,200,OK,Thread Group 1-8,text,true,,158364,318,10,10,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=317&cmid=62&page=2,176,0,0
+1761707702330,299,Set grade,200,OK,Thread Group 1-12,text,true,,159335,458,10,10,http://139.99.103.223:9090/grade/report/singleview/index.php?action=savegrades&id=2&userid=56&finalgrade=6&sesskey=2REqx9NV1A%20,199,0,33
+1761707702409,294,Set grade,200,OK,Thread Group 1-10,text,true,,159335,456,10,10,http://139.99.103.223:9090/grade/report/singleview/index.php?action=savegrades&id=2&userid=54&finalgrade=6&sesskey=LbcettF3td%20,192,0,31
+1761707705085,347,Submit câu 3,200,OK,Thread Group 1-11,text,true,,160348,929,10,10,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=318&cmid=62&page=2,104,0,32
+1761707705085,104,Submit câu 3-0,303,See Other,Thread Group 1-11,text,true,,1984,609,10,10,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=62,104,0,32
+1761707705190,242,Submit câu 3-1,200,OK,Thread Group 1-11,text,true,,158364,320,10,10,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=318&cmid=62&page=2,142,0,0
+1761707705831,283,Get bộ câu hỏi easy 1,200,OK,Thread Group 1-5,text,true,,158476,411,10,10,http://139.99.103.223:9090/mod/quiz/attempt.php,179,0,32
+1761707709327,342,Submit câu 3,200,OK,Thread Group 1-16,text,true,,160348,921,10,10,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=319&cmid=62&page=2,102,0,33
+1761707709327,102,Submit câu 3-0,303,See Other,Thread Group 1-16,text,true,,1984,605,10,10,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=62,102,0,33
+1761707709429,240,Submit câu 3-1,200,OK,Thread Group 1-16,text,true,,158364,316,10,10,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=319&cmid=62&page=2,143,0,0
+1761707709955,263,Set grade,200,OK,Thread Group 1-17,text,true,,159331,458,10,10,http://139.99.103.223:9090/grade/report/singleview/index.php?action=savegrades&id=2&userid=61&finalgrade=6&sesskey=1neO4pCB2R%20,159,0,32
+1761707711179,626,Start Quiz 1,200,OK,Thread Group 1-18,text,true,,160442,640,10,10,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=323&cmid=56,378,0,32
+1761707711179,378,Start Quiz 1-0,303,See Other,Thread Group 1-18,text,true,,1966,329,10,10,http://139.99.103.223:9090/mod/quiz/startattempt.php?id=11&cmid=56&sesskey=6kuWXP0MBc,378,0,32
+1761707711557,248,Start Quiz 1-1,200,OK,Thread Group 1-18,text,true,,158476,311,10,10,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=323&cmid=56,146,0,0
+1761707713375,1,Debug Sampler,200,OK,Thread Group 1-12,text,true,,908,0,10,10,null,0,0,0
+1761707714378,1,Debug Sampler,200,OK,Thread Group 1-10,text,true,,908,0,9,9,null,0,0,0
+1761707714042,346,Submit Quiz,200,OK,Thread Group 1-8,text,true,,162727,670,8,8,http://139.99.103.223:9090/mod/quiz/review.php?attempt=317&cmid=62,101,0,32
+1761707714042,101,Submit Quiz-0,303,See Other,Thread Group 1-8,text,true,,1964,360,8,8,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=317&finishattempt=1&slots=&cmid=62&sesskey=m4XUogEtI3,101,0,32
+1761707714142,246,Submit Quiz-1,200,OK,Thread Group 1-8,text,true,,160763,310,8,8,http://139.99.103.223:9090/mod/quiz/review.php?attempt=317&cmid=62,143,0,0
+1761707714570,355,Submit câu 2,200,OK,Thread Group 1-1,text,true,,160703,866,8,8,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=321&cmid=56&page=2,105,0,32
+1761707714570,105,Submit câu 2-0,303,See Other,Thread Group 1-1,text,true,,1984,546,8,8,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=56,105,0,32
+1761707714675,250,Submit câu 2-1,200,OK,Thread Group 1-1,text,true,,158719,320,8,8,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=321&cmid=56&page=2,145,0,0
+1761707716432,361,Submit câu 3,200,OK,Thread Group 1-20,text,true,,160442,925,8,8,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=320&cmid=62&page=2,107,0,36
+1761707716432,107,Submit câu 3-0,303,See Other,Thread Group 1-20,text,true,,1984,607,8,8,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=62,107,0,36
+1761707716539,254,Submit câu 3-1,200,OK,Thread Group 1-20,text,true,,158458,318,8,8,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=320&cmid=62&page=2,153,0,0
+1761707720139,364,Submit Quiz,200,OK,Thread Group 1-11,text,true,,162727,674,8,8,http://139.99.103.223:9090/mod/quiz/review.php?attempt=318&cmid=62,113,0,38
+1761707720139,113,Submit Quiz-0,303,See Other,Thread Group 1-11,text,true,,1964,362,8,8,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=318&finishattempt=1&slots=&cmid=62&sesskey=1e2lHybqms,113,0,38
+1761707720252,251,Submit Quiz-1,200,OK,Thread Group 1-11,text,true,,160763,312,8,8,http://139.99.103.223:9090/mod/quiz/review.php?attempt=318&cmid=62,147,0,0
+1761707721355,1,Debug Sampler,200,OK,Thread Group 1-17,text,true,,908,0,8,8,null,0,0,0
+1761707722610,351,Submit câu 1,200,OK,Thread Group 1-5,text,true,,160716,858,7,7,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=322&cmid=56&page=1,109,0,33
+1761707722610,109,Submit câu 1-0,303,See Other,Thread Group 1-5,text,true,,1984,542,7,7,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=56,109,0,33
+1761707722719,242,Submit câu 1-1,200,OK,Thread Group 1-5,text,true,,158732,316,7,7,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=322&cmid=56&page=1,140,0,0
+1761707724848,355,Submit Quiz,200,OK,Thread Group 1-16,text,true,,162727,666,7,7,http://139.99.103.223:9090/mod/quiz/review.php?attempt=319&cmid=62,107,0,33
+1761707724848,107,Submit Quiz-0,303,See Other,Thread Group 1-16,text,true,,1964,358,7,7,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=319&finishattempt=1&slots=&cmid=62&sesskey=e4W6Hz1XS7,107,0,33
+1761707724956,247,Submit Quiz-1,200,OK,Thread Group 1-16,text,true,,160763,308,7,7,http://139.99.103.223:9090/mod/quiz/review.php?attempt=319&cmid=62,144,0,0
+1761707726488,299,Get bộ câu hỏi easy 1,200,OK,Thread Group 1-18,text,true,,158476,413,7,7,http://139.99.103.223:9090/mod/quiz/attempt.php,194,0,34
+1761707726531,356,Submit Quiz,200,OK,Thread Group 1-20,text,true,,162726,670,7,7,http://139.99.103.223:9090/mod/quiz/review.php?attempt=320&cmid=62,105,0,32
+1761707726531,105,Submit Quiz-0,303,See Other,Thread Group 1-20,text,true,,1964,360,7,7,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=320&finishattempt=1&slots=&cmid=62&sesskey=1PkFKGGDlx,105,0,32
+1761707726636,251,Submit Quiz-1,200,OK,Thread Group 1-20,text,true,,160762,310,7,7,http://139.99.103.223:9090/mod/quiz/review.php?attempt=320&cmid=62,147,0,0
+1761707727449,260,Set grade,200,OK,Thread Group 1-8,text,true,,159332,456,7,7,http://139.99.103.223:9090/grade/report/singleview/index.php?action=savegrades&id=2&userid=52&finalgrade=8&sesskey=m4XUogEtI3%20,159,0,33
+1761707728425,354,Submit câu 3,200,OK,Thread Group 1-1,text,true,,160703,866,7,7,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=321&cmid=56&page=2,101,0,32
+1761707728425,101,Submit câu 3-0,303,See Other,Thread Group 1-1,text,true,,1984,546,7,7,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=56,101,0,32
+1761707728526,253,Submit câu 3-1,200,OK,Thread Group 1-1,text,true,,158719,320,7,7,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=321&cmid=56&page=2,147,0,0
+1761707730854,366,Submit câu 2,200,OK,Thread Group 1-5,text,true,,160703,858,7,7,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=322&cmid=56&page=2,100,0,33
+1761707730854,100,Submit câu 2-0,303,See Other,Thread Group 1-5,text,true,,1984,542,7,7,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=56,100,0,33
+1761707730954,266,Submit câu 2-1,200,OK,Thread Group 1-5,text,true,,158719,316,7,7,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=322&cmid=56&page=2,162,0,0
+1761707732613,267,Set grade,200,OK,Thread Group 1-11,text,true,,159335,458,7,7,http://139.99.103.223:9090/grade/report/singleview/index.php?action=savegrades&id=2&userid=55&finalgrade=8&sesskey=1e2lHybqms%20,164,0,34
+1761707733392,0,Debug Sampler,200,OK,Thread Group 1-8,text,true,,808,0,7,7,null,0,0,0
+1761707734165,259,Set grade,200,OK,Thread Group 1-16,text,true,,159321,454,6,6,http://139.99.103.223:9090/grade/report/singleview/index.php?action=savegrades&id=2&userid=60&finalgrade=8&sesskey=e4W6Hz1XS7%20,156,0,33
+1761707736814,263,Set grade,200,OK,Thread Group 1-20,text,true,,159328,456,6,6,http://139.99.103.223:9090/grade/report/singleview/index.php?action=savegrades&id=2&userid=64&finalgrade=8&sesskey=1PkFKGGDlx%20,161,0,32
+1761707737878,1,Debug Sampler,200,OK,Thread Group 1-11,text,true,,808,0,6,6,null,0,0,0
+1761707738039,346,Submit câu 1,200,OK,Thread Group 1-18,text,true,,160716,862,5,5,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=323&cmid=56&page=1,104,0,33
+1761707738039,104,Submit câu 1-0,303,See Other,Thread Group 1-18,text,true,,1984,544,5,5,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=56,104,0,33
+1761707738143,242,Submit câu 1-1,200,OK,Thread Group 1-18,text,true,,158732,318,5,5,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=323&cmid=56&page=1,140,0,0
+1761707738241,348,Submit Quiz,200,OK,Thread Group 1-1,text,true,,166509,674,5,5,http://139.99.103.223:9090/mod/quiz/review.php?attempt=321&cmid=56,98,0,31
+1761707738241,98,Submit Quiz-0,303,See Other,Thread Group 1-1,text,true,,1964,362,5,5,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=321&finishattempt=1&slots=&cmid=56&sesskey=kWLwTOEzLS,98,0,31
+1761707738339,250,Submit Quiz-1,200,OK,Thread Group 1-1,text,true,,164545,312,5,5,http://139.99.103.223:9090/mod/quiz/review.php?attempt=321&cmid=56,148,0,0
+1761707739860,0,Debug Sampler,200,OK,Thread Group 1-16,text,true,,809,0,5,5,null,0,0,0
+1761707740947,327,Submit câu 3,200,OK,Thread Group 1-5,text,true,,160703,858,4,4,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=322&cmid=56&page=2,95,0,32
+1761707740947,95,Submit câu 3-0,303,See Other,Thread Group 1-5,text,true,,1984,542,4,4,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=56,95,0,32
+1761707741043,231,Submit câu 3-1,200,OK,Thread Group 1-5,text,true,,158719,316,4,4,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=322&cmid=56&page=2,132,0,0
+1761707742350,0,Debug Sampler,200,OK,Thread Group 1-20,text,true,,809,0,4,4,null,0,0,0
+1761707745030,343,Submit câu 2,200,OK,Thread Group 1-18,text,true,,160703,862,3,3,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=323&cmid=56&page=2,101,0,32
+1761707745030,101,Submit câu 2-0,303,See Other,Thread Group 1-18,text,true,,1984,544,3,3,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=56,101,0,32
+1761707745131,242,Submit câu 2-1,200,OK,Thread Group 1-18,text,true,,158719,318,3,3,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=323&cmid=56&page=2,143,0,0
+1761707745412,250,Set grade,200,OK,Thread Group 1-1,text,true,,159335,458,3,3,http://139.99.103.223:9090/grade/report/singleview/index.php?action=savegrades&id=2&userid=45&finalgrade=6&sesskey=kWLwTOEzLS%20,149,0,33
+1761707745944,1,Debug Sampler,200,OK,Thread Group 1-1,text,true,,907,0,3,3,null,0,0,0
+1761707748138,360,Submit Quiz,200,OK,Thread Group 1-5,text,true,,166503,666,2,2,http://139.99.103.223:9090/mod/quiz/review.php?attempt=322&cmid=56,103,0,32
+1761707748138,104,Submit Quiz-0,303,See Other,Thread Group 1-5,text,true,,1964,358,2,2,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=322&finishattempt=1&slots=&cmid=56&sesskey=6FJvOVD38M,103,0,32
+1761707748242,256,Submit Quiz-1,200,OK,Thread Group 1-5,text,true,,164539,308,2,2,http://139.99.103.223:9090/mod/quiz/review.php?attempt=322&cmid=56,154,0,0
+1761707749259,317,Submit câu 3,200,OK,Thread Group 1-18,text,true,,160702,862,2,2,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=323&cmid=56&page=2,69,0,0
+1761707749259,69,Submit câu 3-0,303,See Other,Thread Group 1-18,text,true,,1983,544,2,2,http://139.99.103.223:9090/mod/quiz/processattempt.php?cmid=56,69,0,0
+1761707749328,248,Submit câu 3-1,200,OK,Thread Group 1-18,text,true,,158719,318,2,2,http://139.99.103.223:9090/mod/quiz/attempt.php?attempt=323&cmid=56&page=2,153,0,0
+1761707752646,218,Set grade,200,OK,Thread Group 1-5,text,true,,159330,454,2,2,http://139.99.103.223:9090/grade/report/singleview/index.php?action=savegrades&id=2&userid=49&finalgrade=6&sesskey=6FJvOVD38M%20,123,0,0
+1761707752871,0,Debug Sampler,200,OK,Thread Group 1-5,text,true,,907,0,2,2,null,0,0,0
+1761707755492,343,Submit Quiz,200,OK,Thread Group 1-18,text,true,,166503,670,1,1,http://139.99.103.223:9090/mod/quiz/review.php?attempt=323&cmid=56,102,0,32
+1761707755492,102,Submit Quiz-0,303,See Other,Thread Group 1-18,text,true,,1964,360,1,1,http://139.99.103.223:9090/mod/quiz/processattempt.php?attempt=323&finishattempt=1&slots=&cmid=56&sesskey=6kuWXP0MBc,102,0,32
+1761707755594,241,Submit Quiz-1,200,OK,Thread Group 1-18,text,true,,164539,310,1,1,http://139.99.103.223:9090/mod/quiz/review.php?attempt=323&cmid=56,143,0,0
+1761707759175,216,Set grade,200,OK,Thread Group 1-18,text,true,,159327,456,1,1,http://139.99.103.223:9090/grade/report/singleview/index.php?action=savegrades&id=2&userid=62&finalgrade=6&sesskey=6kuWXP0MBc%20,122,0,0
+1761707759400,0,Debug Sampler,200,OK,Thread Group 1-18,text,true,,907,0,1,1,null,0,0,0

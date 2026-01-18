@@ -1,0 +1,17 @@
+classDiagram
+    direction LR
+
+    class Course {
+        +_id: ObjectId
+        +moodle_course_id: String
+        +title: String
+        +structure: Array<Chapter>
+    }
+
+    class Chapter {
+        +chapter_id: String
+        +title: String
+        +lessons: Array<Lesson>
+    }
+
+    Course *-- Chapter : contains

@@ -1,0 +1,64 @@
+﻿1. TỔNG QUAN VỀ CHIA SẺ TÀI NGUYÊN (RESOURCE SHARING)
+1.1. Khái niệm và Phân loại
+Chia sẻ tài nguyên là quá trình cấp quyền truy cập vào các thành phần phần cứng (máy in, ổ cứng) hoặc phần mềm (tệp tin, ứng dụng) cho các máy tính khác trong cùng một mạng.
+* Chia sẻ cục bộ (Local Sharing): Diễn ra trong mạng LAN thông qua các giao thức như SMB/CIFS.
+* Chia sẻ đám mây (Cloud Sharing): Diễn ra qua Internet thông qua các nhà cung cấp dịch vụ SaaS (Software as a Service).
+1.2. Các mô hình chia sẻ chính
+* Mô hình Ngang hàng (Peer-to-Peer - P2P): Các máy tính có vai trò ngang nhau, mỗi máy tự quản lý tài nguyên và quyền truy cập của mình.
+* Mô hình Khách - Chủ (Client-Server): Tài nguyên được tập trung tại một máy chủ mạnh (File Server). Máy chủ quản lý tập trung quyền truy cập và bảo mật.
+2. CHIA SẺ TÀI NGUYÊN TRONG MẠNG CỤC BỘ (LAN) TRÊN WINDOWS
+2.1. Nền tảng kỹ thuật: Giao thức SMB (Server Message Block)
+Hệ điều hành Windows sử dụng giao thức SMB (phổ biến nhất là phiên bản SMBv2 và SMBv3) để thực hiện chia sẻ tệp và máy in. Giao thức này cho phép ứng dụng trên một máy tính có thể đọc và viết vào các tệp cũng như yêu cầu dịch vụ từ chương trình máy chủ trong mạng.
+2.2. Hệ thống phân quyền: Sự khác biệt giữa Share và NTFS Permissions
+Đây là phần cực kỳ quan trọng để đảm bảo an ninh mạng:
+* Share Permissions (Quyền chia sẻ): Áp dụng khi người dùng truy cập thư mục qua mạng. Gồm 3 mức: Read, Change, Full Control.
+* NTFS Permissions (Quyền bảo mật): Áp dụng cho cả người dùng tại chỗ (local) và qua mạng. Gồm các mức chi tiết hơn: Read & Execute, List Folder Contents, Write, Modify, Full Control.
+* Nguyên tắc "Effective Permission": Khi cả hai loại quyền được thiết lập, Windows sẽ áp dụng quyền nghiêm ngặt nhất (Most Restrictive).
+2.3. Quy trình thực hành chia sẻ nâng cao (Advanced Sharing)
+1. Kích hoạt Network Discovery: Vào Network and Sharing Center > Advanced sharing settings. Phải bật "Turn on network discovery" và "Turn on file and printer sharing".
+2. Thiết lập chia sẻ:
+   * Chuột phải vào thư mục > Properties > thẻ Sharing.
+   * Chọn Advanced Sharing (Cho phép tùy chỉnh tên chia sẻ và giới hạn số lượng người truy cập đồng thời).
+   * Thiết lập Permissions: Thêm người dùng (User) hoặc Nhóm (Group) và cấp quyền tương ứng.
+3. Thiết lập bảo mật (Security): Chuyển sang thẻ Security để cấu hình NTFS Permissions tương ứng với quyền Sharing đã cấp.
+2.4. Truy cập tài nguyên dùng chung
+* Qua đường dẫn UNC (Universal Naming Convention): \\Tên_Máy_Chủ\Tên_Thư_Mục_Chia_Sẻ hoặc \\Địa_Chỉ_IP\Tên_Thư_Mục.
+* Ánh xạ ổ đĩa mạng (Mapping Network Drive): Gán một ký tự ổ đĩa (như Z:, Y:) cho thư mục mạng để truy cập nhanh như ổ đĩa cục bộ.
+3. CHIA SẺ TÀI NGUYÊN QUA ĐÁM MÂY (CLOUD STORAGE)
+3.1. Cơ chế hoạt động của Cloud Sharing
+Dữ liệu được tải lên máy chủ của nhà cung cấp (Google, Microsoft, Amazon). Thay vì cấp quyền qua địa chỉ MAC/IP, hệ thống cấp quyền qua Tài khoản định danh (Identity-based Access).
+3.2. Phân quyền truy cập chi tiết (Granular Access Control)
+Trong môi trường doanh nghiệp và học tập, việc hiểu rõ các mức quyền là bắt buộc:
+* Viewer (Người xem): Không có quyền thay đổi Metadata hoặc nội dung. Chỉ có quyền đọc luồng dữ liệu.
+* Commenter (Người nhận xét): Có quyền tạo các đối tượng ghi chú gắn liền với các tọa độ hoặc đoạn văn bản cụ thể nhưng không làm thay đổi nội dung gốc.
+* Editor (Người chỉnh sửa): Có quyền thay đổi nội dung, cấu trúc thư mục, và đôi khi là quyền chia sẻ lại cho người khác.
+* Owner (Chủ sở hữu): Quyền cao nhất, có thể xóa vĩnh viễn tài nguyên và quản lý quyền của tất cả các Editor khác.
+3.3. Các hình thức chia sẻ liên kết (Link Sharing)
+* Restricted (Hạn chế): Chỉ những tài khoản được chỉ định mới có thể mở.
+* Domain-only (Trong tổ chức): Chỉ những người có email cùng đuôi (ví dụ @truonghoc.edu.vn) mới truy cập được.
+* Anyone with the link (Công khai): Bất kỳ ai có URL đều truy cập được. Nguy cơ rò rỉ dữ liệu cực cao nếu liên kết bị bot tìm kiếm thu thập.
+4. CHIA SẺ THIẾT BỊ NGOẠI VI (MÁY IN & MÁY QUÉT)
+4.1. Máy in qua mạng (Network Printer) vs Máy in chia sẻ (Shared Printer)
+* Shared Printer: Máy in kết nối với một máy tính qua USB, máy tính đó chia sẻ lại cho mạng. Nhược điểm: Máy tính đó tắt thì không in được.
+* Network Printer: Máy in có cổng LAN hoặc Wi-Fi, sở hữu một địa chỉ IP riêng. Nó hoạt động như một thực thể độc lập trong mạng.
+4.2. Giao thức in ấn
+* IPP (Internet Printing Protocol): Cho phép in ấn qua Internet.
+* LPD/LPR: Các giao thức truyền thống trong môi trường Unix/Windows.
+5. CÁC VẤN ĐỀ VỀ AN NINH VÀ ĐẠO ĐỨC TRONG CHIA SẺ DỮ LIỆU
+5.1. Rủi ro mã độc (Ransomware lây lan qua LAN)
+Ransomware thường sử dụng lỗ hổng trong giao thức SMB (như WannaCry) để tự động lây lan từ máy này sang máy khác thông qua các thư mục chia sẻ có quyền "Write".
+5.2. Quyền riêng tư và Bản quyền
+* Việc chia sẻ trái phép các tệp tin có bản quyền (phần mềm bẻ khóa, phim, nhạc) là vi phạm pháp luật.
+* Kiểm soát dữ liệu nhạy cảm: Tránh chia sẻ các thư mục chứa thông tin cá nhân (CCCD, mật khẩu) trên mạng nội bộ mà không có mã hóa.
+5.3. Quy trình xử lý sự cố (Troubleshooting)
+Nếu không truy cập được tài nguyên chia sẻ, cần kiểm tra theo thứ tự:
+1. Lớp vật lý: Cáp mạng/Wi-Fi có kết nối không?
+2. Lớp mạng: Lệnh ping đến địa chỉ IP máy chủ có phản hồi không?
+3. Lớp dịch vụ: Firewall (Tường lửa) có đang chặn cổng 445 (SMB) không?
+4. Lớp định danh: Username/Password có đúng không?
+6. DANH MỤC THUẬT NGỮ (DÀNH CHO HỆ THỐNG RAG)
+* UNC Path: Đường dẫn chuẩn để xác định tài nguyên mạng.
+* Permissions: Tập hợp các quy tắc xác định ai có thể làm gì với tài nguyên.
+* ACL (Access Control List): Danh sách kiểm soát truy cập đính kèm với tệp/thư mục.
+* SaaS (Software as a Service): Mô hình phần mềm đám mây như Google Drive.
+* Quota: Hạn mức dung lượng lưu trữ được cấp cho một người dùng.

@@ -1,0 +1,32 @@
+erDiagram
+    LTI_CONSUMERS {
+        int id PK
+        string issuer "https://moodle.school.edu"
+        string client_id
+        text public_key
+        text private_key
+    }
+
+    USERS {
+        bigint id PK
+        string moodle_user_id "LTI Subject ID"
+        string email
+        string full_name
+        int lti_consumer_id FK
+        datetime last_login
+    }
+
+    ROLES {
+        int id PK
+        string role_name "STUDENT/TEACHER"
+    }
+
+    USER_ROLES {
+        bigint user_id FK
+        int role_id FK
+        string context_id "Moodle Course ID"
+    }
+
+    LTI_CONSUMERS ||--o{ USERS : "manages"
+    USERS ||--o{ USER_ROLES : "has"
+    ROLES ||--o{ USER_ROLES : "defines"

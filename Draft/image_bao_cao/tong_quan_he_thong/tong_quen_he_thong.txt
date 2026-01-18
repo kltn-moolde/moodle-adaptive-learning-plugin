@@ -1,0 +1,104 @@
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'primaryColor': '#ffffff',
+    'primaryTextColor': '#000000',
+    'primaryBorderColor': '#000000',
+    'lineColor': '#000000',
+    'secondaryColor': '#f4f4f4',
+    'tertiaryColor': '#ffffff',
+    'mainBkg': '#ffffff',
+    'nodeBorder': '#000000'
+  }
+}}%%
+
+flowchart TD
+    %% --- ĐỊNH NGHĨA STYLE (CHUYÊN NGHIỆP) ---
+    %% Style cho khối xử lý chính (Service/App)
+    classDef component fill:#ffffff,stroke:#000000,stroke-width:1px,color:#000000;
+    %% Style cho thành phần quan trọng (Gateway/Frontend) - Viền đậm hơn
+    classDef highlight fill:#f0f0f0,stroke:#000000,stroke-width:2px,color:#000000;
+    %% Style cho hệ thống bên ngoài (External) - Nét đứt
+    classDef external fill:#ffffff,stroke:#555555,stroke-width:1px,stroke-dasharray: 5 5,color:#555555;
+    %% Style cho Database - Hình trụ
+    classDef database fill:#ffffff,stroke:#000000,stroke-width:1px,shape:cylinder,color:#000000;
+
+    %% --- 1. EXTERNAL & USER ---
+    subgraph User_Context [EXTERNAL CONTEXT]
+        direction LR
+        User([Sinh viên / Giảng viên]):::component
+        Moodle[Moodle LMS<br/>LTI Consumer]:::external
+    end
+
+    %% --- 2. FRONTEND ---
+    subgraph Presentation_Layer [PRESENTATION LAYER]
+        direction TB
+        ReactJS[ReactJS Application<br/>SPA Client]:::highlight
+    end
+
+    %% --- 3. INFRASTRUCTURE ---
+    subgraph Infra_Layer [INFRASTRUCTURE LAYER]
+        direction TB
+        Kong{{Kong API Gateway<br/>Load Balancer & Auth}}:::highlight
+    end
+
+    %% --- 4. BACKEND ---
+    subgraph Backend_Layer [BACKEND SERVICES CLUSTER]
+        direction TB
+        
+        subgraph Core_Services [Business Microservices]
+            direction LR
+            LTI_Svc[LTI Service]:::component
+            User_Svc[User Service]:::component
+            Course_Svc[Course Service]:::component
+            Question_Svc[Question Service]:::component
+        end
+        
+        subgraph AI_Services [AI & Chat Module]
+            direction LR
+            Chat_Svc[Chat Service]:::component
+            Recommend_Svc[Recommend Service<br/>Q-Learning Agent]:::component
+            Chatflow[[Chatbot Workflow]]:::component
+        end
+    end
+
+    %% --- 5. DATA & EXTERNAL AI ---
+    Dify[External: Dify.AI Engine]:::external
+
+    subgraph Data_Layer [DATA PERSISTENCE LAYER]
+        direction LR
+        MySQL[(MySQL Relational DB)]:::database
+        MongoDB[(MongoDB Log Store)]:::database
+    end
+
+    %% ================= KẾT NỐI (CONNECTIONS) =================
+    
+    %% 1. Luồng khởi tạo (Initial Flow)
+    User -- Tương tác --> Moodle
+    Moodle == 1. LTI 1.3 Launch Request ==> ReactJS
+    
+    %% 2. Luồng Frontend -> Gateway
+    ReactJS == 2. API Requests / WebSocket ==> Kong
+
+    %% 3. Định tuyến (Routing)
+    Kong -- /api/lti --> LTI_Svc
+    Kong -- /api/users --> User_Svc
+    Kong -- /api/courses --> Course_Svc
+    Kong -- /api/chat --> Chat_Svc
+    Kong -- /api/questions --> Question_Svc
+
+    %% 4. Luồng xử lý AI (Internal Processing)
+    Chat_Svc <--> Chatflow
+    Chatflow -. Inference API .-> Dify
+
+    %% 5. Lưu trữ dữ liệu (Data Access)
+    %% Gom nhóm đường nối cho gọn
+    LTI_Svc & User_Svc & Course_Svc & Question_Svc & Chat_Svc --> MySQL
+    Recommend_Svc -.-> MySQL
+    Recommend_Svc -- Log Analysis --> MongoDB
+
+    %% Layout Hints (Giúp sơ đồ thẳng hàng)
+    User_Context ~~~ Presentation_Layer
+    Presentation_Layer ~~~ Infra_Layer
+    Infra_Layer ~~~ Backend_Layer
+    Backend_Layer ~~~ Data_Layer

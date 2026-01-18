@@ -1,0 +1,76 @@
+﻿GIÁO TRÌNH CHI TIẾT: BÀI 4 - GIAO THỨC MẠNG VÀ CƠ CHẾ VẬN HÀNH INTERNET
+CHƯƠNG I: TẠI SAO PHẢI CẦN GIAO THỨC?
+Trong một mạng lưới toàn cầu với hàng tỷ thiết bị từ nhiều nhà sản xuất khác nhau (Apple, Samsung, Dell, Cisco...), nếu mỗi máy nói một "ngôn ngữ" riêng, dữ liệu sẽ bị hỗn loạn.
+* Tính thống nhất: Giao thức quy định định dạng của gói tin, cách bắt đầu và kết thúc một phiên truyền dữ liệu.
+* Kiểm soát lỗi: Quy định cách xử lý khi dữ liệu bị mất hoặc hỏng trên đường truyền.
+* Mô hình hóa: Để dễ quản lý, người ta chia giao thức thành các tầng. Phổ biến nhất là mô hình OSI (7 tầng) và mô hình TCP/IP (4 tầng).
+
+
+CHƯƠNG II: BỘ GIAO THỨC TCP/IP - "XƯƠNG SỐNG" CỦA INTERNET
+Dù có hàng ngàn giao thức, nhưng Internet hiện đại vận hành dựa trên bộ TCP/IP.
+2.1. Giao thức IP (Internet Protocol) - Tầng Mạng
+IP chịu trách nhiệm dán nhãn địa chỉ và chọn đường đi (routing).
+* Địa chỉ IPv4: Gồm 32 bit. Tổng số địa chỉ là $2^{32} \approx 4,3$ tỷ địa chỉ. Do sự bùng nổ của thiết bị IoT, con số này đã cạn kiệt.
+* Địa chỉ IPv6: Gồm 128 bit, viết dưới dạng Hexa (Ví dụ: 2001:0db8:85a3:0000:0000:8a2e:0370:7334). Tổng số địa chỉ là $2^{128}$, một con số cực lớn, đủ để gán cho mỗi nguyên tử trên bề mặt Trái Đất một địa chỉ IP.
+2.2. Giao thức TCP (Transmission Control Protocol) - Tầng Giao vận
+TCP là giao thức có hướng kết nối (Connection-oriented). Nó đảm bảo độ tin cậy tuyệt đối.
+* Bắt tay 3 bước (Three-way Handshake): Trước khi gửi dữ liệu, máy A và máy B phải "chào hỏi" nhau:
+   1. A gửi SYN: "Tôi muốn kết nối".
+   2. B gửi SYN-ACK: "Tôi đã sẵn sàng, mời bạn gửi".
+   3. A gửi ACK: "Đã nhận rõ, tôi bắt đầu gửi đây".
+* Bổ sung kiến thức: UDP (User Datagram Protocol): Trái ngược với TCP, UDP gửi dữ liệu mà không cần kiểm tra xem đích đã nhận được chưa. Nó nhanh hơn nhưng dễ mất dữ liệu. Ứng dụng: Livestream, Chơi game online, Gọi video.
+CHƯƠNG III: CÁC GIAO THỨC TẦNG ỨNG DỤNG (SÁT VỚI NGƯỜI DÙNG)
+3.1. DNS - "Bản đồ" của Internet
+DNS hoạt động theo cấu trúc phân cấp:
+* Root Servers: Đỉnh cao nhất của hệ thống.
+* TLD Servers: Quản lý phần đuôi như .com, .vn, .org.
+* Authoritative Servers: Nơi lưu trữ địa chỉ IP thực sự của website.
+* Cơ chế Cache: Để tăng tốc, máy tính của bạn và Router thường lưu lại các địa chỉ IP đã truy cập trước đó để không phải "hỏi" lại từ đầu.
+3.2. HTTP vs HTTPS - Câu chuyện bảo mật
+* HTTP (Cổng 80): Dữ liệu truyền đi dưới dạng văn bản thuần túy (Plain text). Nếu bạn nhập mật khẩu trên trang HTTP, hacker có thể dễ dàng đọc được thông qua kỹ thuật "nghe lén" (Sniffing).
+* HTTPS (Cổng 443): Là HTTP kết hợp với chứng chỉ bảo mật SSL/TLS.
+   * Mã hóa: Dữ liệu biến thành những ký tự vô nghĩa trước khi gửi đi. Chỉ máy chủ có "chìa khóa" mới giải mã được.
+   * Xác thực: Đảm bảo bạn đang vào đúng trang web của Ngân hàng chứ không phải một trang giả mạo.
+3.3. DHCP - Sự tiện lợi của kết nối tự động
+Khi bạn kết nối vào một mạng mới, quy trình DORA diễn ra trong vài giây:
+1. D (Discover): Máy tính hét lên: "Có ai là máy chủ DHCP ở đây không?".
+2. O (Offer): Router trả lời: "Tôi đây, tôi có địa chỉ 192.168.1.15 còn trống này".
+3. R (Request): Máy tính: "Vâng, cho tôi mượn địa chỉ đó nhé".
+4. A (Acknowledge): Router: "Xong, bạn có thể dùng nó trong 24 giờ tới".
+CHƯƠNG IV: TỔNG HỢP CÁC GIAO THỨC THƯỜNG GẶP
+Giao thức
+	Chức năng chính
+	Cổng (Port) mặc định
+	HTTP
+	Truy cập web không bảo mật
+	80
+	HTTPS
+	Truy cập web bảo mật (Mã hóa)
+	443
+	DNS
+	Phân giải tên miền thành IP
+	53
+	FTP
+	Truyền tải tập tin
+	20, 21
+	SMTP
+	Gửi Email
+	25 hoặc 587
+	POP3
+	Nhận Email (Tải về máy, xóa trên server)
+	110
+	IMAP
+	Nhận Email (Đồng bộ trên nhiều thiết bị)
+	143
+	SSH
+	Điều khiển máy tính từ xa bảo mật
+	22
+	CHƯƠNG V: TÌNH HUỐNG THỰC TẾ (CASE STUDY)
+Tình huống 1: Tại sao trang web ngân hàng luôn bắt đầu bằng https://?
+* Giải thích: Khi bạn giao dịch, thông tin số thẻ và mã PIN rất nhạy cảm. HTTPS ngăn chặn tấn công Man-in-the-middle (Người đứng giữa). Nếu hacker chặn được gói tin giữa chừng, chúng cũng chỉ thấy một đống ký tự đã mã hóa mà không thể đọc được nội dung thật.
+Tình huống 2: Tại sao mạng báo "Connected, no Internet"?
+* Nguyên nhân: Có thể máy bạn đã nhận được IP từ DHCP (đã kết nối vào Router), nhưng giao thức DNS đang gặp lỗi (không tìm được địa chỉ IP của trang web) hoặc đường truyền từ Modem ra nhà mạng bị đứt.
+CHƯƠNG VI: BÀI TẬP VẬN DỤNG
+1. So sánh: Tại sao khi xem bóng đá trực tuyến, đôi khi bạn thấy hàng xóm ăn mừng trước mình 30 giây? Điều này liên quan gì đến giao thức TCP và UDP?
+2. Thực hành: Mở trình duyệt, nhấn F12 -> Tab Network. Hãy tải lại một trang web và quan sát xem các file được tải về qua giao thức gì (HTTP/2 hay HTTP/3).
+3. Tính toán: Nếu IPv4 có 32 bit, hãy giải thích tại sao mỗi nhóm số trong địa chỉ IP (như 192) không bao giờ vượt quá số 255? .
