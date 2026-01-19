@@ -213,19 +213,7 @@ Hệ thống sẽ tự động:
 
 ## 📄 Giấy phép
 
-Hệ thống này được phát hành dưới giấy phép **MIT License**.
-
-```
-MIT License
-
-Copyright (c) 2026 Nguyen Huu Loc, Van Tuan Kiet
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction...
-```
-
-Xem chi tiết tại [LICENSE](LICENSE).
+Dự án này được cấp phép theo **Giấy phép MIT** - xem file [LICENSE](LICENSE) để biết thêm chi tiết.
 
 ---
 
