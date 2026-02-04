@@ -1,6 +1,6 @@
-PWD /Users/nguyenhuuloc/Documents/MyComputer/AdaptiveLearning/fjcai26_adaptive_learning_stem
+PWD /Users/nguyenhuuloc/Documents/MyComputer/moodle-adaptive-learning-plugin/fjcai26_adaptive_learning_stem
 INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt
-INPUT /Users/nguyenhuuloc/Documents/MyComputer/AdaptiveLearning/fjcai26_adaptive_learning_stem/paper.tex
+INPUT /Users/nguyenhuuloc/Documents/MyComputer/moodle-adaptive-learning-plugin/fjcai26_adaptive_learning_stem/paper.tex
 OUTPUT paper.log
 INPUT ./IEEEtran.cls
 INPUT IEEEtran.cls

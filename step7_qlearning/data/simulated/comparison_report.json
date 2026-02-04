@@ -1,6 +1,6 @@
 {
-  "q_learning_file": "data/simulated/qlearning_policy_results.json",
-  "param_policy_file": "data/simulated/param_policy_results.json",
+  "q_learning_file": "../../data/simulated/qlearning_policy_results.json",
+  "param_policy_file": "../../data/simulated/param_policy_results.json",
   "q_learning_stats": {
     "total_students": 100,
     "avg_reward": 264.2591930370693,

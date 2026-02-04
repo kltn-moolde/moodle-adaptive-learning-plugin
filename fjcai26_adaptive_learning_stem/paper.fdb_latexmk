@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex paper"] 1768050979.08247 "paper.aux" "paper.bbl" "paper" 1768050982.76046 0
-  "./paper.bib" 1768050682.18323 2923 b026dc5f426e2cde906e08da2e2bc028 ""
+["bibtex paper"] 1770226703.68778 "paper.aux" "paper.bbl" "paper" 1770226707.89943 0
+  "./paper.bib" 1770217118.34187 2923 b026dc5f426e2cde906e08da2e2bc028 ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/bibtex/bst/ieeetran/IEEEtran.bst" 1768050970.19159 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "paper.aux" 1768050981.18212 9727 7130d348eaf7dd8c4d44411d5c5224f9 "pdflatex"
+  "paper.aux" 1770226705.96622 9713 518ed736e82585d2890ef1823537e5c2 "pdflatex"
   (generated)
   "paper.bbl"
   "paper.blg"
   (rewritten before read)
-["pdflatex"] 1768050979.75641 "/Users/nguyenhuuloc/Documents/MyComputer/AdaptiveLearning/fjcai26_adaptive_learning_stem/paper.tex" "paper.pdf" "paper" 1768050982.76073 0
-  "/Users/nguyenhuuloc/Documents/MyComputer/AdaptiveLearning/fjcai26_adaptive_learning_stem/paper.tex" 1768050682.18664 47395 77947f094201a19fbce672e48ba7eba0 ""
+["pdflatex"] 1770226704.62917 "/Users/nguyenhuuloc/Documents/MyComputer/moodle-adaptive-learning-plugin/fjcai26_adaptive_learning_stem/paper.tex" "paper.pdf" "paper" 1770226707.89978 0
+  "/Users/nguyenhuuloc/Documents/MyComputer/moodle-adaptive-learning-plugin/fjcai26_adaptive_learning_stem/paper.tex" 1770226697.88928 47477 e620354f286f711a44e3d7aee564793a ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/data/fonts/map/pdftex/pdftex.map" 1768050972.64872 483841 8b30d5035ff272656a610e79bf5b8299 ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1741234274.26514 8799587 3b302ba410b8ef9dbba30436c29c2e74 ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/enc/dvips/vntex/t5.enc" 1741234482.42641 7824 21ade6c3c7fd67cb4ace8dbc91c53118 ""
@@ -116,18 +116,18 @@
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/vntex/vietnam.sty" 1741234482.87744 2477 91784aa2c9213f74609391e3cae65a13 ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/vntex/vncaps.tex" 1741234482.87784 3273 a55ebdb07413d2fea580f210e3c0b252 ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/xcolor/xcolor.sty" 1741233944.94784 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "IEEEtran.cls" 1768050681.96582 281957 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
-  "fig1_problem_concept.pdf" 1768050682.01666 1570135 64c2242951591f3450e328c7913b1f4b ""
-  "fig2_method_overview.pdf" 1768050682.04384 811964 5d57e41454539b5c5f1e4070e2c5ad4f ""
-  "fig3_qlearning_diagram.pdf" 1768050682.07623 864742 e2e06cb6e9f5d0d7c21fbc73109d9cd6 ""
-  "fig4_clustering_metrics.pdf" 1768050682.08112 36049 8c89a925615f243f3776d08ca2efc7b2 ""
-  "fig5_convergence.pdf" 1768050682.08625 23273 2e4a96ce9db21bc085dbc4f6abfd9eed ""
-  "fig6_epsilon.pdf" 1768050682.0922 24669 5bb848fbf1f2151fac991abb1d8e33d0 ""
-  "fig7_evaluate_qlearning.pdf" 1768050682.09954 35109 2694f9da98865911fe7c64c8ed85e8c4 ""
-  "fig8_shap_summary_beeswarm.pdf" 1768050682.10895 65817 8d1a32c6e7c51fb0bb6933d56bd3daf0 ""
-  "paper.aux" 1768050981.18212 9727 7130d348eaf7dd8c4d44411d5c5224f9 "pdflatex"
-  "paper.bbl" 1768050979.68072 3093 50a79c868e169f2284e99d3dcc5cf3ba "bibtex paper"
-  "paper.tex" 1768050682.18664 47395 77947f094201a19fbce672e48ba7eba0 ""
+  "IEEEtran.cls" 1770217118.2912 281957 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
+  "fig1_problem_concept.pdf" 1770217118.30072 1570135 64c2242951591f3450e328c7913b1f4b ""
+  "fig2_method_overview.pdf" 1770217118.30772 811964 5d57e41454539b5c5f1e4070e2c5ad4f ""
+  "fig3_qlearning_diagram.pdf" 1770217118.32257 864742 e2e06cb6e9f5d0d7c21fbc73109d9cd6 ""
+  "fig4_clustering_metrics.pdf" 1770217118.32583 36049 8c89a925615f243f3776d08ca2efc7b2 ""
+  "fig5_convergence.pdf" 1770217118.32634 23273 2e4a96ce9db21bc085dbc4f6abfd9eed ""
+  "fig6_epsilon.pdf" 1770217118.32655 24669 5bb848fbf1f2151fac991abb1d8e33d0 ""
+  "fig7_evaluate_qlearning.pdf" 1770221745.29363 35297 00a6e8cd8a33d7160391dba8c35c4725 ""
+  "fig8_shap_summary_beeswarm.pdf" 1770217118.32738 65817 8d1a32c6e7c51fb0bb6933d56bd3daf0 ""
+  "paper.aux" 1770226705.96622 9713 518ed736e82585d2890ef1823537e5c2 "pdflatex"
+  "paper.bbl" 1770226704.53861 3093 50a79c868e169f2284e99d3dcc5cf3ba "bibtex paper"
+  "paper.tex" 1770226697.88928 47477 e620354f286f711a44e3d7aee564793a ""
   (generated)
   "paper.aux"
   "paper.log"

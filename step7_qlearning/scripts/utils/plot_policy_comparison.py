@@ -69,7 +69,7 @@ class PolicyComparisonVisualizer:
                      fontsize=16, fontweight='bold', y=1.02)
         
         # --- LEFT: Bar chart comparison ---
-        metrics = ['Avg Reward', 'Avg Midterm\nScore (/10)', 'Avg LO\nMastery', 'Avg Weak\nLO Count']
+        metrics = ['Avg Reward', 'Avg Final\nScore (/10)', 'Avg LO\nMastery', 'Avg Weak\nLO Count']
         q_values = [
             q_stats['avg_reward'],
             q_stats.get('avg_midterm_score_10', q_stats['avg_midterm_score'] / 2.0),  # Hệ 10
@@ -159,7 +159,7 @@ class PolicyComparisonVisualizer:
                      fontsize=16, fontweight='bold', y=0.995)
         
         metrics = ['avg_reward', 'avg_midterm_10', 'avg_lo_mastery']
-        titles = ['Average Reward by Cluster', 'Average Midterm Score by Cluster', 
+        titles = ['Average Reward by Cluster', 'Average Final Score by Cluster', 
                   'Average LO Mastery by Cluster']
         ylabels = ['Reward', 'Midterm Score (0-10)', 'LO Mastery (0-1)']
         

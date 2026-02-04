@@ -12,7 +12,6 @@ Reallocating 'singl_function' (item size: 4) to 100 items.
 Database file #1: paper.bib
 Warning--entry type for "dataset_kaggle" isn't style-file defined
 --line 81 of file paper.bib
-Warning--I didn't find a database entry for "b5"
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
@@ -20,7 +19,7 @@ Warning--I didn't find a database entry for "b5"
 Done.
 You've used 10 entries,
             4087 wiz_defined-function locations,
-            889 strings with 9139 characters,
+            888 strings with 9137 characters,
 and the built_in function-call counts, 6991 in all, are:
 = -- 594
 > -- 150
@@ -59,4 +58,4 @@ warning$ -- 0
 while$ -- 31
 width$ -- 12
 write$ -- 124
-(There were 2 warnings)
+(There was 1 warning)
