@@ -19,7 +19,7 @@
 
 **Authors:** Nguyen Huu Loc, Van Tuan Kiet
 
-**Supervisor:** Dr. Do Nhu Tai
+**Supervisor:** PhD. Do Nhu Tai
 
 **Institution:** Faculty of Information Technology - Saigon University
 
