@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex paper"] 1770226703.68778 "paper.aux" "paper.bbl" "paper" 1770226707.89943 0
+["bibtex paper"] 1770302048.47077 "paper.aux" "paper.bbl" "paper" 1771032788.5322 0
   "./paper.bib" 1770217118.34187 2923 b026dc5f426e2cde906e08da2e2bc028 ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/bibtex/bst/ieeetran/IEEEtran.bst" 1768050970.19159 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "paper.aux" 1770226705.96622 9713 518ed736e82585d2890ef1823537e5c2 "pdflatex"
+  "paper.aux" 1771032786.93926 9713 85134f6ab9f309bf63b71f57a619aa7e "pdflatex"
   (generated)
   "paper.bbl"
   "paper.blg"
   (rewritten before read)
-["pdflatex"] 1770226704.62917 "/Users/nguyenhuuloc/Documents/MyComputer/moodle-adaptive-learning-plugin/fjcai26_adaptive_learning_stem/paper.tex" "paper.pdf" "paper" 1770226707.89978 0
-  "/Users/nguyenhuuloc/Documents/MyComputer/moodle-adaptive-learning-plugin/fjcai26_adaptive_learning_stem/paper.tex" 1770226697.88928 47477 e620354f286f711a44e3d7aee564793a ""
+["pdflatex"] 1771032785.56422 "/Users/nguyenhuuloc/Documents/MyComputer/moodle-adaptive-learning-plugin/fjcai26_adaptive_learning_stem/paper.tex" "paper.pdf" "paper" 1771032788.53259 0
+  "/Users/nguyenhuuloc/Documents/MyComputer/moodle-adaptive-learning-plugin/fjcai26_adaptive_learning_stem/paper.tex" 1771032758.99744 47986 a13c3b0a0547681cc681bddafa58e095 ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/data/fonts/map/pdftex/pdftex.map" 1768050972.64872 483841 8b30d5035ff272656a610e79bf5b8299 ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1741234274.26514 8799587 3b302ba410b8ef9dbba30436c29c2e74 ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/enc/dvips/vntex/t5.enc" 1741234482.42641 7824 21ade6c3c7fd67cb4ace8dbc91c53118 ""
@@ -125,9 +125,9 @@
   "fig6_epsilon.pdf" 1770217118.32655 24669 5bb848fbf1f2151fac991abb1d8e33d0 ""
   "fig7_evaluate_qlearning.pdf" 1770221745.29363 35297 00a6e8cd8a33d7160391dba8c35c4725 ""
   "fig8_shap_summary_beeswarm.pdf" 1770217118.32738 65817 8d1a32c6e7c51fb0bb6933d56bd3daf0 ""
-  "paper.aux" 1770226705.96622 9713 518ed736e82585d2890ef1823537e5c2 "pdflatex"
-  "paper.bbl" 1770226704.53861 3093 50a79c868e169f2284e99d3dcc5cf3ba "bibtex paper"
-  "paper.tex" 1770226697.88928 47477 e620354f286f711a44e3d7aee564793a ""
+  "paper.aux" 1771032786.93926 9713 85134f6ab9f309bf63b71f57a619aa7e "pdflatex"
+  "paper.bbl" 1770302049.40147 3093 50a79c868e169f2284e99d3dcc5cf3ba "bibtex paper"
+  "paper.tex" 1771032758.99744 47986 a13c3b0a0547681cc681bddafa58e095 ""
   (generated)
   "paper.aux"
   "paper.log"

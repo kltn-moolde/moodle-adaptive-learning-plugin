@@ -1,101 +1,121 @@
-%\documentclass[conference, twoside]{IEEEtran}
-\documentclass[conference]{IEEEtran}
-\IEEEoverridecommandlockouts
-% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
-%Template version as of 6/27/2024
+%% FJCAI2026 Format - Converted from paper.tex
+%% Original content preserved, only formatting changed
 
-\usepackage{multirow}
-\usepackage{booktabs}
+\documentclass[9pt, conference, a4paper, compsocconf]{IEEEtran}
+\usepackage{amsmath,amsxtra,amssymb,amsthm,latexsym,amscd,amsfonts}
+\usepackage[utf8]{vietnam}
+\usepackage[top=2.7cm, bottom = 5.4cm, left=2.72cm, right = 2.85cm]{geometry}
+\headsep = 0.7cm
+\headheight = 1.0cm 
+\footskip = 1.0cm
+\voffset = -0.74 cm 
+%%%%
+\usepackage{balance}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
 \usepackage{cite}
 \usepackage{algorithmic}
 \usepackage{graphicx}
 \usepackage{textcomp}
+\usepackage{booktabs}   
+\usepackage{tabularx}  
 \usepackage{xcolor}
-\usepackage{amsmath,amsxtra,amssymb,amsthm,latexsym,amscd,amsfonts}
-\usepackage[utf8]{vietnam}
-\usepackage[english]{babel} %Figure ... English (có thể bỏ đi nếu bài viết tiếng Việt)
-\usepackage{fancyhdr}
-\pagestyle{fancy}
+\usepackage{pgfplots}
+\usepackage{multirow}
+\usepackage{subcaption}
+\pgfplotsset{compat=1.17} 
 
-\renewcommand{\headrulewidth}{0pt} % dòng kẻ
-\renewcommand{\footrulewidth}{0pt}
+\usepackage{tikz}
+\usetikzlibrary{positioning}  
+\usetikzlibrary{arrows.meta}  
+\usetikzlibrary{shapes}      
+\usetikzlibrary{calc}      
+\usetikzlibrary{fit}          
+\usepackage[english]{babel}
 \renewcommand{\sectionmark}[1]{\markright{\MakeUppercase{#1}}{}}
+\renewcommand{\headrulewidth}{0pt}
+\usepackage{array}
 
-% Trang lẻ (odd pages - thường ở bên phải khi lật sách)
-\setlength{\oddsidemargin}{0.5pt}   % giảm lề trái
-\addtolength{\textwidth}{-0.5cm}    % tăng lề phải
-
-% Trang chẵn (even pages - thường ở bên trái)
-%\setlength{\evensidemargin}{-0.5cm} % giảm lề trái hơn nữa
-%\addtolength{\textwidth}{-0.5cm}      % tăng lề phải
-
-\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
-    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
-
-%%% Edited 9/2/2025 by Phi Ho Truong
-%\makeatother
+\usepackage{caption}
+\captionsetup{
+  font={footnotesize}, 
+  labelfont=bf,
+  justification=centering,
+  singlelinecheck=false
+}
+\usepackage[font=footnotesize]{subfig}
 
 \makeatletter
 \def\ps@IEEEtitlepagestyle{%
-\def\@oddhead{\hfil \small{\textit{Hội thảo khoa học Quốc gia về Trí tuệ nhân tạo (FJCAI) - Cần Thơ, 27-28/3/2026}\hfil}%
-	\def\@evenhead{\hfil\small{\textit{Hội thảo khoa học quốc gia về Trí tuệ nhân tạo (FJCAI) - Cần Thơ, 27-28/3/2026}\hfil}}%
+\def\@oddhead{\hfil \small{\textit{Hội thảo khoa học Quốc gia về Trí tuệ nhân tạo 2026 (FJCAI) - Cần Thơ, 27-28/3/2026}\hfil}%
+	\def\@evenhead{\hfil\small{\textit{Hội thảo khoa học quốc gia về Trí tuệ nhân tạo 2026 (FJCAI) - Cần Thơ, 27-28/3/2026}\hfil}}%
 		\def\@oddfoot{\scriptsize \thepage \hfil }%
 		\def\@evenfoot{\scriptsize \hfil \thepage}
 	}
 }
+
+\def\@maketitle{%
+  \newpage
+  \null
+  \begin{center}%
+    {%
+      \fontsize{16}{18}\selectfont
+      \bfseries \@title \par
+    }%
+    \vskip 4em%
+    {%
+    \fontsize{9}{3.5}\selectfont
+      
+      \begin{tabular}[t]{c}%
+        \@author
+      \end{tabular}\par
+    }%
+  \end{center}%
+  \par
+}
+
+\renewenvironment{abstract}
+  {\normalfont
+   \@IEEEabskeysecsize
+   \setlength{\parindent}{0pt}
+   \noindent
+   \if@twocolumn
+     \bfseries\textit{\abstractname}: 
+   \else
+     \begin{center}\textbf{\abstractname}\end{center}
+   \fi}
+  {\par}
+  
+\renewenvironment{IEEEkeywords}
+  {\normalfont
+   \@IEEEabskeysecsize
+   \vspace{0.3em}       
+   \setlength{\parindent}{0pt}
+   \noindent
+   {\bfseries\itshape \IEEEkeywordsname: }\ignorespaces}
+  {\par}
+
+\def\IEEEbibitemsep{1.5pt plus .5pt}
+
 \makeatother
 
-\makeatletter % changes the catcode of @ to 11
-\newcommand{\linebreakand}{%
-  \end{@IEEEauthorhalign}
-  \hfill\mbox{}\par
-  \mbox{}\hfill\begin{@IEEEauthorhalign}
-}
-\makeatother % changes the catcode of @ back to 12
-
-\fancyhf{}
-%\setcounter{page}{1}
-%\fancyfoot[LE,RO]{\thepage}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 \begin{document}
-	
-\fancyhead[RE,LO]{\centering{\small{\textit{Hội thảo khoa học Quốc gia về Trí tuệ nhân tạo (FJCAI) - Cần Thơ, 27-28/3/2026}}}}
+\pagenumbering{gobble}
+\fontsize{9}{10}
+\selectfont
 
-% \title{Bản định dạng mẫu IEEEtran.cls dùng cho Hội thảo FJCAI có hỗ trợ mã tiếng Việt*\\
-% {\footnotesize \textsuperscript{*}Note: Sub-titles are not captured for https://ieeexplore.ieee.org  and
-% should not be used}
-% \thanks{Identify applicable funding agency here. If none, delete this.}
-% }
+\fancyhead[L]{\centering{\small{\textit{Hội thảo khoa học Quốc gia về Trí tuệ nhân tạo 2026 (FJCAI) - Cần Thơ, 27-28/3/2026}}}}
+
 \title{Adaptive STEM Learning Pathway Optimisation via Reinforcement Learning}
 
-\author{
-    \IEEEauthorblockN{1\textsuperscript{st} Nhu-Tai Do}
-    \IEEEauthorblockA{\textit{Dept. of Information Technology} \\
-    \textit{Saigon University, Vietnam}\\
-    Ho Chi Minh City, Vietnam \\
-    dntai@sgu.edu.vn}
-    
-    \and
-    \IEEEauthorblockN{2\textsuperscript{nd} Nguyen Huu Loc}
-    \IEEEauthorblockA{\textit{Dept. of Information Technology} \\
-    \textit{Saigon University, Vietnam}\\
-    Ho Chi Minh City, Vietnam \\
-    lockbkbang@gmail.com}
-    
-    \and
-    \IEEEauthorblockN{3\textsuperscript{rd} Van Tuan Kiet}
-    \IEEEauthorblockA{\textit{Dept. of Information Technology} \\
-    \textit{Saigon University, Vietnam}\\
-    Ho Chi Minh City, Vietnam \\
-    vankiet27012004@gmail.com}    
-    \and
-
-    \linebreakand %
-    \IEEEauthorblockN{4\textsuperscript{th} Nguyen Thi Ngoc Thanh}
-    \IEEEauthorblockA{\textit{Dept. of Information Technology} \\
-    \textit{Ho Chi Minh City Open University, Vietnam}\\
-    Ho Chi Minh City, Vietnam \\
-    thanh.ntn@ou.edu.vn}\thanks{Corresponding author: thanh.ntn@ou.edu.vn}    
+\author{\IEEEauthorblockN{Nhu-Tai Do\IEEEauthorrefmark{1}, Nguyen Huu Loc\IEEEauthorrefmark{1}, Van Tuan Kiet\IEEEauthorrefmark{1}, Nguyen Thi Ngoc Thanh\IEEEauthorrefmark{2}}
+	\IEEEauthorblockA{\IEEEauthorrefmark{1}Dept. of Information Technology, Saigon University, Ho Chi Minh City, Vietnam}
+	\IEEEauthorblockA{\IEEEauthorrefmark{2}Dept. of Information Technology, Ho Chi Minh City Open University, Vietnam}
+	\IEEEauthorblockA{Email: dntai@sgu.edu.vn, lockbkbang@gmail.com, vankiet27012004@gmail.com, thanh.ntn@ou.edu.vn}
 }
 
 \maketitle
@@ -108,12 +128,10 @@ In the context of education 4.0, conventional learning management systems often 
 Reinforcement learning, Q-learning, personalized learning, STEM education, data-driven simulation, Markov decision process
 \end{IEEEkeywords}
 
-%\IEEEpeerreviewmaketitle
-
 \section{Introduction}
 \label{sec:intro}
 
-The rapid advancement of artificial intelligence is profoundly reshaping multiple domains, including education. According to the seminal study by Frey and Osborne, approximately 47\% of traditional occupations are at risk of automation \cite{frey2017future}, highlighting the urgent need to equip the workforce with new competencies, particularly in STEM. STEM education emphasizes the development of critical thinking and problem-solving skills; however, its effective implementation remains challenging due to the substantial heterogeneity in learners’ abilities, prior knowledge, and learning paces.
+The rapid advancement of artificial intelligence is profoundly reshaping multiple domains, including education. According to the seminal study by Frey and Osborne, approximately 47\% of traditional occupations are at risk of automation \cite{frey2017future}, highlighting the urgent need to equip the workforce with new competencies, particularly in STEM. STEM education emphasizes the development of critical thinking and problem-solving skills; however, its effective implementation remains challenging due to the substantial heterogeneity in learners' abilities, prior knowledge, and learning paces.
 
 One of the most pressing challenges in contemporary education is the realization of large-scale personalized adaptive learning. Conventional learning management systems (LMS), such as Moodle and Blackboard, primarily function as repositories for learning materials and assessment records, offering limited capability for behavioral analysis and timely pedagogical intervention \cite{capuano2020adaptive}. In the Vietnamese context, existing studies on AI applications in education have predominantly focused on predictive tasks, such as forecasting dropout risks or final examination outcomes \cite{thuan2022ung, sang2020du}, while comparatively little attention has been paid to prescriptive approaches that actively recommend pedagogical actions to improve learning outcomes.
 
@@ -166,7 +184,6 @@ The objective is to maximize the accumulated reward over time. To reflect multip
 \begin{equation}
 R_{\text{total}} = R_{\text{base}} + R_{\text{LO}} + R_{\text{bonus}} - P_{\text{penalty}}.
 \end{equation}
-% Here, $R_{\text{base}}$ provides a baseline incentive for meaningful engagement, $R_{\text{LO}}$ captures learning-outcome attainment, $R_{\text{bonus}}$ rewards beneficial behavior sequences, and $P_{\text{penalty}}$ penalizes inefficient or unproductive actions.
 Here, cluster-adaptive $R_{base}$ personalizes motivation, $R_{LO}$ tracks actual mastery gains, process-driven $R_{bonus}$ reinforces valid pedagogical sequences, and adaptive $P_{penalty}$ minimizes inefficiency
 
 \subsection{Data Processing and Clustering}
@@ -175,14 +192,14 @@ Raw LMS logs are typically noisy and unstructured. Before being used by the RL a
 The optimal number of clusters is selected using three complementary validation criteria: the Elbow method (inertia), the Silhouette coefficient (inter-cluster separation), and the Davies-Davies–Bouldin (cluster compactness). A majority voting scheme aggregates the three criteria to determine the final $K$. The resulting cluster ID is incorporated as a key component of the state vector $S_t$.
 
 \subsection{Q-learning Algorithm}
-We adopt Q-learning to learn the optimal state and state-action function (Q-table) using Bellman’s update rule shown in Fig.\ref{fig:qlearning_diagram}:
+We adopt Q-learning to learn the optimal state and state-action function (Q-table) using Bellman's update rule shown in Fig.\ref{fig:qlearning_diagram}:
 \begin{equation}
 Q(s, a) \leftarrow Q(s, a) + \alpha \left[r + \gamma \max_{a'} Q(s', a') - Q(s, a)\right],
 \end{equation}
 where $\alpha$ is the learning rate and $\gamma$ is the discount factor. An $\epsilon$-greedy strategy is employed to balance exploration and exploitation during training.
 
 \subsection{Explainability Framework}
-To mitigate the black-box nature of the learned Q-table, we integrate SHAP \cite{lundberg2017unified} to quantify how each state feature contributes to the agent’s decision.
+To mitigate the black-box nature of the learned Q-table, we integrate SHAP \cite{lundberg2017unified} to quantify how each state feature contributes to the agent's decision.
 
 \subsubsection{Mathematical Basis}
 The SHAP value $\phi_i(s)$ measures the marginal contribution of feature $i$ to the predicted utility:
@@ -238,7 +255,7 @@ For benchmarking, we construct a \textbf{Param Policy} baseline $\pi_{\text{para
         {\sum_{a'} \text{count}\big(\text{Phase}(s), \text{Cluster}(s), a'\big)}.
 \end{aligned}
 \end{equation}
-This baseline mimics learners’ natural historical tendencies and serves as a reference point against the optimized Q-learning policy $\pi^*$.
+This baseline mimics learners' natural historical tendencies and serves as a reference point against the optimized Q-learning policy $\pi^*$.
 
 \subsubsection{Training and Evaluation Procedure}
 The simulation is executed in a closed-loop manner:
@@ -304,7 +321,7 @@ $\alpha_{\text{learn}}$ (Strong) & Learning rate & 0.30 \\
 \subsubsection{Ground-Truth Dataset}
 This study uses the publicly available \textit{Moodle Log \& Grades} dataset~\cite{dataset_kaggle}. Among the available courses, we selected \textbf{Course ID 670} as the empirical basis for constructing the data-driven simulation environment.
 
-This choice is motivated by its balanced data characteristics. The course contains 13{,}995 interaction events from 23 students, with an approximately normal score distribution ($\mu = 7.64$, $\sigma = 2.95$). In contrast, several other courses exhibit highly skewed score distributions (e.g., Course ID 42 with a mean score of 1.07), which can obscure behavioral differences and hinder the learning agent’s ability to distinguish strategies across competency groups (e.g., Excellent, Average, and Weak). Therefore, Course ID 670 provides a reliable foundation for both clustering analysis and policy learning.
+This choice is motivated by its balanced data characteristics. The course contains 13{,}995 interaction events from 23 students, with an approximately normal score distribution ($\mu = 7.64$, $\sigma = 2.95$). In contrast, several other courses exhibit highly skewed score distributions (e.g., Course ID 42 with a mean score of 1.07), which can obscure behavioral differences and hinder the learning agent's ability to distinguish strategies across competency groups (e.g., Excellent, Average, and Weak). Therefore, Course ID 670 provides a reliable foundation for both clustering analysis and policy learning.
 
 \subsubsection{Data Preprocessing and Clustering}
 We apply K-means clustering due to its efficiency and suitability for numerical feature spaces shown in Fig.\ref{fig:clustering_metrics}. To improve robustness and avoid subjective parameter tuning, the clustering pipeline incorporates (i) a two-stage feature filtering procedure and (ii) a majority voting mechanism for selecting the optimal number of clusters.
@@ -392,7 +409,7 @@ To ensure stable learning dynamics and convergence of the Q-learning algorithm, 
 S_t = (C, M, P, Sc, Ph, E)
 \end{equation}
 where $C$ denotes the learner behavior cluster obtained from the K-means model with $K=6$. After excluding one cluster corresponding to instructor activity, the remaining five student clusters are encoded as $C \in \{0,1,2,3,4\}$.  
-$M$ represents the current module index; $P$ and $Sc$ denote the learner’s progress and score level, respectively, both discretized into four ordinal levels.  
+$M$ represents the current module index; $P$ and $Sc$ denote the learner's progress and score level, respectively, both discretized into four ordinal levels.  
 $Ph$ indicates the learning phase ($0$: pre-learning, $1$: active learning, $2$: reflective learning), while $E$ captures the engagement level (low, medium, high).  
 Under this formulation, the total state space comprises $5 \times 6 \times 4 \times 4 \times 3 \times 3 \approx 4{,}320$ distinct states, balancing representational richness and computational tractability.
 
@@ -582,15 +599,15 @@ To interpret the learned policy, SHAP values were computed over 809 representati
 \[
 I_i = \frac{1}{N}\sum_{j=1}^{N}|\phi_i(s_j)|,
 \]
-which measures the average magnitude of feature $i$’s contribution to the estimated Q-value.
+which measures the average magnitude of feature $i$'s contribution to the estimated Q-value.
 \item \textbf{SHAP Variance}: 
 \[
 V_i = \mathrm{Var}(\phi_i),
 \]
-which captures the variability of a feature’s influence across contexts, with higher variance indicating stronger context dependence.
+which captures the variability of a feature's influence across contexts, with higher variance indicating stronger context dependence.
 \end{itemize}
 
-The numerical rankings are summarized in Table~\ref{tab:shap_importance} and visually illustrated by the beeswarm plot in Figure~\ref{fig:shap_distribution}. The analysis reveals that \textit{Module ID} (mean $|\text{SHAP}| = 28.32$) and \textit{Engagement} (26.53) are the two most influential factors guiding the agent’s decision-making process.
+The numerical rankings are summarized in Table~\ref{tab:shap_importance} and visually illustrated by the beeswarm plot in Figure~\ref{fig:shap_distribution}. The analysis reveals that \textit{Module ID} (mean $|\text{SHAP}| = 28.32$) and \textit{Engagement} (26.53) are the two most influential factors guiding the agent's decision-making process.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=0.9\columnwidth]{fig8_shap_summary_beeswarm.pdf}}
@@ -629,24 +646,49 @@ Weak Group: Learners in this group predominantly received remedial recommendatio
 
 Strong Group: High-performing learners were consistently guided toward more challenging and exploratory activities (advanced actions). As a result, this group achieved the highest final performance, with an average score of $8.18/10$, reflecting successful promotion of mastery-oriented learning.
 
-An independent two-sample T-test confirms that the observed differences between learner groups are statistically significant ($p < 0.001$), with a very large effect size (Cohen’s $d = 6.78$). This provides strong evidence that the adaptive strategies learned by the Q-learning agent yield not only statistically reliable improvements but also pedagogically meaningful impacts.
+An independent two-sample T-test confirms that the observed differences between learner groups are statistically significant ($p < 0.001$), with a very large effect size (Cohen's $d = 6.78$). This provides strong evidence that the adaptive strategies learned by the Q-learning agent yield not only statistically reliable improvements but also pedagogically meaningful impacts.
 
 \section{Conclusion}
 \label{sec:conclusion}
-
-% This paper presents a comprehensive framework for personalized STEM education based on reinforcement learning. The main contributions of the study are threefold:  (1) the design of an open and extensible system architecture built on microservices and the LTI~1.3 standard;  (2) a structured learner modeling pipeline that integrates behavioral clustering and engagement-aware state representations; and  (3) the application of a Q-learning algorithm with an adaptive reward shaping mechanism tailored to different learner profiles.
-
-% Experimental results demonstrate that the proposed approach not only improves overall academic performance, with an average score increase of $22.5\%$, but also significantly reduces learning gaps among weak students, decreasing the number of weak skills by $51\%$. These findings support the pedagogical principle of inclusive education, ensuring that learning support is effectively differentiated so that no learner is left behind.
-
-% Despite these promising results, the study has several limitations. First, the evaluation is conducted in a simulated environment rather than a live classroom deployment. Second, the discretization of the state space, while necessary for tabular Q-learning, constrains the expressiveness of learner representations.
-
-% Future research will focus on several promising directions to further enhance the proposed framework. First, deep reinforcement learning techniques such as deep Q-networks and proximal policy optimization will be explored to replace tabular Q-learning, enabling the model to handle high-dimensional and continuous state spaces more effectively~\cite{mnih2015human}. Second, the system will be deployed in real STEM courses at the university level to collect authentic learner interaction data and to validate the proposed approach under real-world instructional conditions. Finally, federated learning paradigms will be investigated to support privacy-preserving collaborative model training across multiple educational institutions, allowing large-scale deployment while ensuring the confidentiality of learner data~\cite{gligorea2023adaptive}.
 
 This paper proposes a reinforcement learning–based framework for personalized STEM education, featuring an open microservices architecture integrated via LTI~1.3, a behavior- and engagement-aware learner modeling pipeline, and a Q-learning algorithm with adaptive reward shaping. Experimental results demonstrate that the proposed approach improves average academic performance by $22.5\%$ while substantially reducing learning gaps among weak students by $51\%$, thereby supporting the pedagogical principle of inclusive and differentiated learning.
 
 Despite these promising results, the current evaluation is limited to a simulated environment and relies on discretized state representations inherent to tabular Q-learning. Future work will focus on extending the framework with deep reinforcement learning methods such as DQN and PPO to handle high-dimensional and continuous state spaces more effectively~\cite{mnih2015human}, validating the system through real-world deployment in university-level STEM courses, evaluating model adaptability across diverse datasets with skewed performance distributions and exploring federated learning paradigms to enable privacy-preserving collaborative training across multiple institutions~\cite{gligorea2023adaptive}.
 
-\bibliographystyle{IEEEtran}
-\bibliography{paper}
+\balance
+
+\begin{thebibliography}{10}
+
+\bibitem{frey2017future}
+C.~B.~Frey and M.~A.~Osborne, ``The future of employment: How susceptible are jobs to computerisation?,'' \textit{Technological forecasting and social change}, vol.~114, pp.~254--280, 2017.
+
+\bibitem{capuano2020adaptive}
+N.~Capuano and S.~Caball\'e, ``Adaptive learning technologies,'' \textit{Ai Magazine}, vol.~41, no.~2, pp.~96--98, 2020.
+
+\bibitem{thuan2022ung}
+T.~B.~Thuấn, ``Ứng dụng Machine Learning dự báo sinh viên diện cảnh báo học tập tại Trường Đại học Kinh tế Huế,'' \textit{Tạp chí Khoa học Quản lý và Kinh tế}, no.~21, 2022.
+
+\bibitem{sang2020du}
+L.~H.~Sang, N.~T.~Hải, T.~T.~Điện, and N.~T.~Nghe, ``Dự báo kết quả học tập bằng kỹ thuật học sâu với mạng nơ-ron đa tầng,'' \textit{Tạp chí Khoa học Đại học Cần Thơ}, vol.~56, no.~3, pp.~20--28, 2020.
+
+\bibitem{sutton1998reinforcement}
+R.~S.~Sutton and A.~G.~Barto, \textit{Reinforcement learning: An introduction}. MIT press, 1998.
+
+\bibitem{chi2014icap}
+M.~T.~H.~Chi and R.~Wylie, ``The ICAP framework: Linking cognitive engagement to active learning outcomes,'' \textit{Educational psychologist}, vol.~49, no.~4, pp.~219--243, 2014.
+
+\bibitem{gligorea2023adaptive}
+I.~Gligorea, M.~Cioca, R.~Oancea, A.-T.~Gorski, H.~Gorski, and P.~Tudorache, ``Adaptive learning using artificial intelligence in e-learning: A literature review,'' \textit{Education Sciences}, vol.~13, no.~12, p.~1216, 2023.
+
+\bibitem{lundberg2017unified}
+S.~M.~Lundberg and S.-I.~Lee, ``A unified approach to interpreting model predictions,'' \textit{Advances in neural information processing systems}, vol.~30, 2017.
+
+\bibitem{dataset_kaggle}
+M.~Sneiders, ``Moodle Log \& Grades Dataset,'' Kaggle, 2021. [Online]. Available: https://www.kaggle.com/datasets/martinssneiders/moodle-grades-and-action-logs
+
+\bibitem{mnih2015human}
+V.~Mnih, K.~Kavukcuoglu, D.~Silver, \textit{et al.}, ``Human-level control through deep reinforcement learning,'' \textit{Nature}, vol.~518, no.~7540, pp.~529--533, 2015.
+
+\end{thebibliography}
 
 \end{document}

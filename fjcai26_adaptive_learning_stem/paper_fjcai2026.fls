@@ -1,0 +1,554 @@
+PWD /Users/nguyenhuuloc/Documents/MyComputer/moodle-adaptive-learning-plugin/fjcai26_adaptive_learning_stem
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt
+INPUT /Users/nguyenhuuloc/Documents/MyComputer/moodle-adaptive-learning-plugin/fjcai26_adaptive_learning_stem/paper_fjcai2026.tex
+OUTPUT paper_fjcai2026.log
+INPUT ./IEEEtran.cls
+INPUT IEEEtran.cls
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/psnfss/ot1ptm.fd
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/psnfss/ot1ptm.fd
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/psnfss/ot1ptm.fd
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmr7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmr7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmr7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmr7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmb7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmri7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmbi7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmr7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmb7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmri7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmbi7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmr7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmb7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmri7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmbi7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmb7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmri7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmbi7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmb7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmri7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmbi7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmb7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmri7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmbi7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmr7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmb7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmri7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmbi7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmr7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmb7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmri7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmbi7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmr7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmb7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmri7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/adobe/times/ptmbi7t.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amsmath.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amsmath.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amsopn.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amstext.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amstext.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amsgen.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amsgen.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amsbsy.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amsbsy.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amsopn.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amsxtra.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amsxtra.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/amssymb.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/amssymb.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/amsfonts.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/amsfonts.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amscls/amsthm.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amscls/amsthm.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/latexsym.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/latexsym.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amscd.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amscd.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/vntex/vietnam.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/vntex/vietnam.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/ifthen.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/ifthen.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/inputenc.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/fontenc.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/fontenc.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/vntex/t5enc.def
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/vntex/t5enc.def
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/vntex/t5enc.def
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/vntex/t5enc.dfu
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/vntex/t5enc.dfu
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/vntex/t5enc.dfu
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/vntex/t5ptm.fd
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/vntex/t5ptm.fd
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/vntex/t5ptm.fd
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmr8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/inputenc.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/vntex/vncaps.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/vntex/vncaps.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/vntex/vncaps.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/geometry/geometry.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/geometry/geometry.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics/keyval.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics/keyval.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/iftex/ifvtex.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/iftex/ifvtex.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/iftex/iftex.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/iftex/iftex.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/geometry/geometry.cfg
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/geometry/geometry.cfg
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/geometry/geometry.cfg
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/preprint/balance.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/preprint/balance.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/fancyhdr/fancyhdr.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/fancyhdr/fancyhdr.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/cite/cite.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/cite/cite.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/algorithms/algorithmic.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/algorithms/algorithmic.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics/graphicx.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics/graphicx.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics/graphics.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics/graphics.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics/trig.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics/trig.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics-cfg/graphics.cfg
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics-cfg/graphics.cfg
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics-cfg/graphics.cfg
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics-def/pdftex.def
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics-def/pdftex.def
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics-def/pdftex.def
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/textcomp.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/textcomp.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/booktabs/booktabs.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/booktabs/booktabs.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/tools/tabularx.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/tools/tabularx.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/tools/array.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/tools/array.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/xcolor/xcolor.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/xcolor/xcolor.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics-cfg/color.cfg
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics-cfg/color.cfg
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics-cfg/color.cfg
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics/mathcolor.ltx
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics/mathcolor.ltx
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics/mathcolor.ltx
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgfplots/pgfplots.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgfplots/pgfplots.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/pgfplots.revision.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/pgfplots.revision.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/pgfplots.revision.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/systemlayer/pgfsys-luatex.def
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/systemlayer/pgfsys-luatex.def
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgf/frontendlayer/tikz.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgf/frontendlayer/tikz.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgf/basiclayer/pgf.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgf/basiclayer/pgf.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgf/utilities/pgfrcs.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgf/utilities/pgfrcs.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/utilities/pgfutil-common.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/utilities/pgfutil-latex.def
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/utilities/pgfrcs.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/utilities/pgfrcs.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/utilities/pgfrcs.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/pgf.revision.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/pgf.revision.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgf/basiclayer/pgfcore.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgf/basiclayer/pgfcore.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgf/systemlayer/pgfsys.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgf/systemlayer/pgfsys.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/systemlayer/pgfsys.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/systemlayer/pgfsys.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/systemlayer/pgfsys.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/utilities/pgfkeys.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/systemlayer/pgf.cfg
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcore.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcore.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcore.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmath.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathutil.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathparser.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.random.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.base.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.round.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathcalc.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathfloat.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfint.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgf/utilities/pgffor.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgf/utilities/pgffor.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgf/utilities/pgfkeys.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgf/utilities/pgfkeys.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/utilities/pgfkeys.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/utilities/pgfkeys.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/utilities/pgfkeys.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgf/math/pgfmath.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/pgf/math/pgfmath.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmath.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmath.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmath.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/utilities/pgffor.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/utilities/pgffor.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/utilities/pgffor.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/pgfplots.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/pgfplotscore.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/sys/pgfplotssysgeneric.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/libs/pgfplotslibrary.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_loader.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/pgflibraryfpu.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/pgflibraryfpu.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/pgflibraryfpu.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfutil-common-lists.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/util/pgfplotsutil.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/liststructure/pgfplotsliststructure.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/liststructure/pgfplotsliststructureext.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/liststructure/pgfplotsarray.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/liststructure/pgfplotsmatrix.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/numtable/pgfplotstableshared.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/liststructure/pgfplotsdeque.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/util/pgfplotsbinary.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/util/pgfplotsbinary.data.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/util/pgfplotsutil.verb.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/libs/pgflibrarypgfplots.surfshading.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/sys/pgflibrarypgfplots.surfshading.pgfsys-pdftex.def
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/sys/pgflibrarypgfplots.surfshading.pgfsys-pdftex.def
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/util/pgfplotscolormap.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/util/pgfplotscolor.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/pgfplotsstackedplots.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/pgfplotsplothandlers.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/pgfplotsmeshplothandler.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/pgfplotsmeshplotimage.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/pgfplots.scaling.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/pgfplotscoordprocessing.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/pgfplots.errorbars.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/pgfplots.markers.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/pgfplotsticks.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/pgfplots.paths.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/libs/tikzlibrarypgfplots.contourlua.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgfplots/libs/tikzlibrarypgfplots.contourlua.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryplotmarks.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryplotmarks.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/multirow/multirow.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/multirow/multirow.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/caption/subcaption.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/caption/subcaption.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/caption/caption.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/caption/caption.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/caption/caption3.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/caption/caption3.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geometric.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geometric.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.misc.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.misc.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/shapes/pgflibraryshapes.misc.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/shapes/pgflibraryshapes.misc.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.symbols.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.symbols.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/shapes/pgflibraryshapes.symbols.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/shapes/pgflibraryshapes.symbols.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.arrows.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.arrows.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/shapes/pgflibraryshapes.arrows.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/shapes/pgflibraryshapes.arrows.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.callouts.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.callouts.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/shapes/pgflibraryshapes.callouts.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/shapes/pgflibraryshapes.callouts.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.multipart.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.multipart.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/shapes/pgflibraryshapes.multipart.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/libraries/shapes/pgflibraryshapes.multipart.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfit.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfit.code.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/babel/babel.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/babel/babel.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/babel/txtbabel.def
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/arabi/bblopts.cfg
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/arabi/bblopts.cfg
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/arabi/bblopts.cfg
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/babel-english/english.ldf
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/babel-english/english.ldf
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/babel-english/english.ldf
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/babel/locale/en/babel-english.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/babel/locale/en/babel-english.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/babel/locale/en/babel-english.tex
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/babel/locale/en/babel-en.ini
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/subfig/subfig.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/subfig/subfig.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/l3backend/l3backend-pdftex.def
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/l3backend/l3backend-pdftex.def
+INPUT ./paper_fjcai2026.aux
+INPUT ./paper_fjcai2026.aux
+INPUT paper_fjcai2026.aux
+OUTPUT paper_fjcai2026.aux
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/vntex/t5cmr.fd
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/vntex/t5cmr.fd
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/vntex/t5cmr.fd
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmr8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmb8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmri8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmbi8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmr8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmb8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmri8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmbi8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmr8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmb8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmri8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmbi8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmr8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmb8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmri8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmbi8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmb8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmri8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmbi8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmr8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmb8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmri8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmbi8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmr8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmb8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmri8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmbi8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmr8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmb8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmri8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmbi8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmr8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmb8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmri8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmbi8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/context/base/mkii/supp-pdf.mkii
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/context/base/mkii/supp-pdf.mkii
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/context/base/mkii/supp-pdf.mkii
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/epstopdf-pkg/epstopdf-base.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/epstopdf-pkg/epstopdf-base.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/infwarerr/infwarerr.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/infwarerr/infwarerr.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/grfext/grfext.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/grfext/grfext.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/kvdefinekeys/kvdefinekeys.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/kvdefinekeys/kvdefinekeys.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/kvoptions/kvoptions.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/kvoptions/kvoptions.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/ltxcmds/ltxcmds.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/ltxcmds/ltxcmds.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/kvsetkeys/kvsetkeys.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/kvsetkeys/kvsetkeys.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pdftexcmds/pdftexcmds.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pdftexcmds/pdftexcmds.sty
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/00miktex/epstopdf-sys.cfg
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/00miktex/epstopdf-sys.cfg
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/00miktex/epstopdf-sys.cfg
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmr8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmb8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmr9.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmr6.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmmi9.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmmi6.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmsy9.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmsy6.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsa.fd
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsa.fd
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsa.fd
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msam7.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msam5.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsb.fd
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsb.fd
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsb.fd
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/ulasy.fd
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/ulasy.fd
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/ulasy.fd
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/latex-fonts/lasy9.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/latex-fonts/lasy6.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/latex-fonts/lasy5.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msam7.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/latex-fonts/lasy10.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/latex-fonts/lasy7.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmr8.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmmi8.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmsy8.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/latex-fonts/lasy8.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmr8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmrc8v.tfm
+INPUT ./fig1_problem_concept.pdf
+INPUT ./fig1_problem_concept.pdf
+INPUT ./fig1_problem_concept.pdf
+INPUT ./fig1_problem_concept.pdf
+OUTPUT paper_fjcai2026.pdf
+INPUT ./fig1_problem_concept.pdf
+INPUT ./fig1_problem_concept.pdf
+INPUT ./fig2_method_overview.pdf
+INPUT ./fig2_method_overview.pdf
+INPUT ./fig2_method_overview.pdf
+INPUT ./fig2_method_overview.pdf
+INPUT ./fig2_method_overview.pdf
+INPUT ./fig2_method_overview.pdf
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/data/fonts/map/pdftex/pdftex.map
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/vf/vntex/urwvn/utmrc8v.vf
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmr8v.tfm
+INPUT ./fig3_qlearning_diagram.pdf
+INPUT ./fig3_qlearning_diagram.pdf
+INPUT ./fig3_qlearning_diagram.pdf
+INPUT ./fig3_qlearning_diagram.pdf
+INPUT ./fig3_qlearning_diagram.pdf
+INPUT ./fig3_qlearning_diagram.pdf
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmro8v.tfm
+INPUT ./fig4_clustering_metrics.pdf
+INPUT ./fig4_clustering_metrics.pdf
+INPUT ./fig4_clustering_metrics.pdf
+INPUT ./fig4_clustering_metrics.pdf
+INPUT ./fig4_clustering_metrics.pdf
+INPUT ./fig4_clustering_metrics.pdf
+INPUT ./fig5_convergence.pdf
+INPUT ./fig5_convergence.pdf
+INPUT ./fig5_convergence.pdf
+INPUT ./fig5_convergence.pdf
+INPUT ./fig5_convergence.pdf
+INPUT ./fig5_convergence.pdf
+INPUT ./fig6_epsilon.pdf
+INPUT ./fig6_epsilon.pdf
+INPUT ./fig6_epsilon.pdf
+INPUT ./fig6_epsilon.pdf
+INPUT ./fig6_epsilon.pdf
+INPUT ./fig6_epsilon.pdf
+INPUT ./fig7_evaluate_qlearning.pdf
+INPUT ./fig7_evaluate_qlearning.pdf
+INPUT ./fig7_evaluate_qlearning.pdf
+INPUT ./fig7_evaluate_qlearning.pdf
+INPUT ./fig7_evaluate_qlearning.pdf
+INPUT ./fig7_evaluate_qlearning.pdf
+INPUT ./fig8_shap_summary_beeswarm.pdf
+INPUT ./fig8_shap_summary_beeswarm.pdf
+INPUT ./fig8_shap_summary_beeswarm.pdf
+INPUT ./fig8_shap_summary_beeswarm.pdf
+INPUT ./fig8_shap_summary_beeswarm.pdf
+INPUT ./fig8_shap_summary_beeswarm.pdf
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msam5.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msam5.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmb8v.tfm
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/vntex/urwvn/utmb8v.tfm
+INPUT paper_fjcai2026.aux
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/enc/dvips/vntex/t5.enc
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cmextra/cmex9.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cmextra/cmex9.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi6.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi6.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi9.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi9.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr6.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr6.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr9.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr9.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy5.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy5.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy6.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy6.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy9.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy9.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/vntex/urwvn/utmb8v.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/vntex/urwvn/utmb8v.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/vntex/urwvn/utmbi8v.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/vntex/urwvn/utmbi8v.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/vntex/urwvn/utmr8v.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/vntex/urwvn/utmr8v.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/vntex/urwvn/utmri8v.pfb
+INPUT /Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/vntex/urwvn/utmri8v.pfb
