@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1771035568.37825 "/Users/nguyenhuuloc/Documents/MyComputer/moodle-adaptive-learning-plugin/fjcai26_adaptive_learning_stem/paper_fjcai2026.tex" "paper_fjcai2026.pdf" "paper_fjcai2026" 1771035570.86478 0
-  "/Users/nguyenhuuloc/Documents/MyComputer/moodle-adaptive-learning-plugin/fjcai26_adaptive_learning_stem/paper_fjcai2026.tex" 1771035556.08164 47315 80da45ec9bc7e74000bd66307a9b4663 ""
+["pdflatex"] 1771049459.63605 "/Users/nguyenhuuloc/Documents/MyComputer/moodle-adaptive-learning-plugin/fjcai26_adaptive_learning_stem/paper_fjcai2026.tex" "paper_fjcai2026.pdf" "paper_fjcai2026" 1771049462.43687 0
+  "/Users/nguyenhuuloc/Documents/MyComputer/moodle-adaptive-learning-plugin/fjcai26_adaptive_learning_stem/paper_fjcai2026.tex" 1771049458.21428 47337 9b5892c021271dd6eff847d986245fb4 ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/data/fonts/map/pdftex/pdftex.map" 1771034575.12342 483841 8b30d5035ff272656a610e79bf5b8299 ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1741234274.26514 8799587 3b302ba410b8ef9dbba30436c29c2e74 ""
   "/Users/nguyenhuuloc/Library/Application Support/MiKTeX/texmfs/install/fonts/enc/dvips/vntex/t5.enc" 1741234482.42641 7824 21ade6c3c7fd67cb4ace8dbc91c53118 ""
@@ -252,8 +252,8 @@
   "fig6_epsilon.pdf" 1770217118.32655 24669 5bb848fbf1f2151fac991abb1d8e33d0 ""
   "fig7_evaluate_qlearning.pdf" 1770221745.29363 35297 00a6e8cd8a33d7160391dba8c35c4725 ""
   "fig8_shap_summary_beeswarm.pdf" 1770217118.32738 65817 8d1a32c6e7c51fb0bb6933d56bd3daf0 ""
-  "paper_fjcai2026.aux" 1771035570.4648 9671 e6e35700a0089d025911b0547ea18623 "pdflatex"
-  "paper_fjcai2026.tex" 1771035556.08164 47315 80da45ec9bc7e74000bd66307a9b4663 ""
+  "paper_fjcai2026.aux" 1771049461.95122 9671 e6e35700a0089d025911b0547ea18623 "pdflatex"
+  "paper_fjcai2026.tex" 1771049458.21428 47337 9b5892c021271dd6eff847d986245fb4 ""
   (generated)
   "paper_fjcai2026.aux"
   "paper_fjcai2026.log"

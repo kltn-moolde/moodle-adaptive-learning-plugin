@@ -108,13 +108,13 @@
 \fontsize{9}{10}
 \selectfont
 
-\fancyhead[L]{\centering{\small{\textit{Hội thảo khoa học Quốc gia về Trí tuệ nhân tạo 2026 (FJCAI) - Cần Thơ, 27-28/3/2026}}}}
+\fancyhead[RE,LO]{\centering{\small{\textit{Hội thảo khoa học Quốc gia về Trí tuệ nhân tạo 2026 (FJCAI) - Cần Thơ, 27-28/3/2026}}}}
 
 \title{Adaptive STEM Learning Pathway Optimisation via Reinforcement Learning}
 
 \author{\IEEEauthorblockN{Nhu-Tai Do\IEEEauthorrefmark{1}, Nguyen Huu Loc\IEEEauthorrefmark{1}, Van Tuan Kiet\IEEEauthorrefmark{1}, Nguyen Thi Ngoc Thanh\IEEEauthorrefmark{2}}
 	\IEEEauthorblockA{\IEEEauthorrefmark{1}Dept. of Information Technology, Saigon University, Ho Chi Minh City, Vietnam}
-	\IEEEauthorblockA{\IEEEauthorrefmark{2}Dept. of Information Technology, Ho Chi Minh City Open University, Vietnam}
+	\IEEEauthorblockA{\IEEEauthorrefmark{2}Dept. of Information Technology, Open University, Ho Chi Minh City, Vietnam}
 	\IEEEauthorblockA{Email: dntai@sgu.edu.vn, lockbkbang@gmail.com, vankiet27012004@gmail.com, thanh.ntn@ou.edu.vn}
 }
 
@@ -127,6 +127,8 @@ In the context of education 4.0, conventional learning management systems often 
 \begin{IEEEkeywords}
 Reinforcement learning, Q-learning, personalized learning, STEM education, data-driven simulation, Markov decision process
 \end{IEEEkeywords}
+
+\IEEEpeerreviewmaketitle
 
 \section{Introduction}
 \label{sec:intro}
@@ -295,8 +297,8 @@ Termination conditions: Each episode terminates when the learner agent completes
 \begin{table}[htbp]
 \caption{Summary of simulation configuration parameters}
 \label{tab:sim_params}
-\begin{center}
-\begin{tabular}{lp{4.5cm}c}
+\centering
+\begin{tabularx}{\columnwidth}{lXc}
 \toprule
 \textbf{Parameter} & \textbf{Description} & \textbf{Value} \\
 \midrule
@@ -312,8 +314,7 @@ $\alpha_{\text{learn}}$ (Weak) & Learning rate & 0.22 \\
 $\alpha_{\text{learn}}$ (Medium) & Learning rate & 0.32 \\
 $\alpha_{\text{learn}}$ (Strong) & Learning rate & 0.30 \\
 \bottomrule
-\end{tabular}
-\end{center}
+\end{tabularx}
 \end{table}
 
 \subsection{Experimental Setup}
@@ -361,8 +362,8 @@ Table~\ref{tab:phase_probs} summarizes the empirical distribution of learner act
 \begin{table}[t]
 \caption{Probability of action selection by learning phase}
 \label{tab:phase_probs}
-\begin{center}
-\begin{tabular}{llc}
+\centering
+\begin{tabularx}{\columnwidth}{lXc}
 \toprule
 \textbf{Phase} & \textbf{Action ($a_t$)} & \textbf{Probability ($P$)} \\
 \midrule
@@ -374,8 +375,7 @@ Table~\ref{tab:phase_probs} summarizes the empirical distribution of learner act
 \midrule
 Phase 2 (Reflective) & post\_forum & 100.0\% \\
 \bottomrule
-\end{tabular}
-\end{center}
+\end{tabularx}
 \end{table}
 
 \textbf{2) Action distribution by engagement level:}
